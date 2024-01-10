@@ -1,0 +1,33 @@
+$breakpoint-tablet: 912px;
+
+.menu-option {
+  border: none;
+  display: flex;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;
+  line-height: 24px;
+  padding: 16px;
+  align-items: center;
+  letter-spacing: 0.1%;
+  text-decoration: none;
+  transition-duration: 1s;
+  background-color: #fff;
+  @media (max-width: $breakpoint-tablet) {
+    flex-direction: column;
+  }
+  &:hover {
+    background-color: #f8f9fc;
+  }
+}
+
+.selected {
+  background-color: #f8f9fc;
+}
+
+.menu-option-icon {
+  padding-right: 8px;
+  @media (max-width: $breakpoint-tablet) {
+    padding-right: 0;
+  }
+}
