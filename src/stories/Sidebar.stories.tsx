@@ -1,12 +1,12 @@
-import React from "react"
-import { Story } from "@storybook/react"
+import React from "react";
+import { Story } from "@storybook/react";
 
-import { MenuOption } from "../components/MenuOption"
-import { Sidebar, ISidebar } from "../components/Sidebar"
-import walletIcon from '../../public/assets/wallet.svg'
-import lendingIcon from '../../public/assets/lending.svg'
-import dashboardIcon from '../../public/assets/dashboard.svg'
-import borrowingIcon from '../../public/assets/borrowing.svg'
+import { MenuOption } from "../components/MenuOption";
+import walletIcon from "../../public/assets/wallet.svg";
+import { Sidebar, ISidebar } from "../components/Sidebar";
+import lendingIcon from "../../public/assets/lending.svg";
+import dashboardIcon from "../../public/assets/dashboard.svg";
+import borrowingIcon from "../../public/assets/borrowing.svg";
 
 export default {
   title: "Sidebar",
@@ -34,7 +34,6 @@ const sideBarItems = [
     icon: walletIcon,
     isSelected: false,
   },
-
 ];
 
 const Template: Story<ISidebar> = (args) => <Sidebar {...args} />;
@@ -44,12 +43,12 @@ SidebarItem.args = {
   menuOptions: (
     <div className="flex-sidebar-story">
       {sideBarItems.map((data) => (
-        <div key={data.text} style={{ width: '100%' }}>
+        <div key={data.text} style={{ width: "100%" }}>
           <MenuOption
             text={data.text}
             icon={data.icon}
             isSelected={data.isSelected}
-            color={data.isSelected ? '#26A66B' : undefined}
+            color={data.isSelected ? "#26A66B" : undefined}
           />
         </div>
       ))}
