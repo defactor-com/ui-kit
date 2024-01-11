@@ -44,11 +44,12 @@ SidebarItem.args = {
   menuOptions: (
     <div className="flex-sidebar-story">
       {sideBarItems.map((data) => (
-        <div key={data.text} style={{width: '100%'}}>
+        <div key={data.text} style={{ width: '100%' }}>
           <MenuOption
             text={data.text}
             icon={data.icon}
             isSelected={data.isSelected}
+            color={data.isSelected ? '#26A66B' : undefined}
           />
         </div>
       ))}
