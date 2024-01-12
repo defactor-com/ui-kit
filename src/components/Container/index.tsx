@@ -6,14 +6,12 @@ export interface IContainer {
   externalStyles: string;
 }
 
-export const Container: React.FC<IContainer> = ({
+export const Container = ({
   externalStyles,
   content,
   ...props
-}) => {
-  return (
-    <div className={clsx(externalStyles, "container")} {...props}>
-      {content}
-    </div>
-  );
-};
+}: IContainer) => (
+  <div className={clsx(externalStyles, "container")} {...props}>
+    {content}
+  </div>
+);

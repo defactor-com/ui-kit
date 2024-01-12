@@ -7,13 +7,13 @@ export interface IMenuOption extends React.HTMLAttributes<HTMLButtonElement> {
   isSelected: Boolean;
 }
 
-export const MenuOption: React.FC<IMenuOption> = ({
+export const MenuOption = ({
   icon,
   text,
   color,
   isSelected,
   ...props
-}) => (
+}: IMenuOption) => (
   <button
     className={!isSelected ? "menu-option" : "menu-option selected"}
     style={{ borderRight: isSelected ? `2px solid ${color}` : "none" }}

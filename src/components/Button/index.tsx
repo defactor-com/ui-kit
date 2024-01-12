@@ -12,7 +12,7 @@ export interface IButton extends React.HTMLAttributes<HTMLButtonElement> {
   variant: "contained" | "outlined" | "text";
 }
 
-export const Button: React.FC<IButton> = ({
+export const Button = ({
   icon,
   color,
   label,
@@ -22,7 +22,7 @@ export const Button: React.FC<IButton> = ({
   borderColor,
   externalStyles,
   ...props
-}) => {
+}: IButton) => {
   const classNames = `btn btn-${variant} ${
     fullWidth ? "full-width" : undefined
   }`;
