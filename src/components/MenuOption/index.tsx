@@ -19,7 +19,7 @@ export const MenuOption: React.FC<IMenuOption> = ({
     style={{ borderRight: isSelected ? `2px solid ${color}` : "none" }}
     {...props}
   >
-    <img src={icon} alt={text} className="menu-option-icon" />
+    {icon && <img src={icon} alt={text} className="menu-option-icon" />}
     {text}
   </button>
 );
