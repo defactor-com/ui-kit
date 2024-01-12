@@ -1,0 +1,29 @@
+.modal-dialog {
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  padding: 24px;
+  position: fixed;
+  min-width: 210px;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+}
+
+.header-container {
+  display: flex;
+  justify-content: end;
+}
+
+.drawer-container {
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.close {
+  cursor: pointer;
+}
