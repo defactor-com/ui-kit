@@ -23,6 +23,9 @@ $breakpoint-tablet: 912px;
 
 .selected {
   background-color: #f8f9fc;
+  @media (max-width: $breakpoint-tablet) {
+    border-right: none !important;
+  }
 }
 
 .menu-option-icon {
