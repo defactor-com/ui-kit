@@ -42,6 +42,4 @@ ui-kit/
 
 ## Contributing
 
-Please Read EOS Costa Rica's [Open Source Contributing Guidelines](https://developers.eoscostarica.io/docs/open-source-guidelines).
-
-Please report bugs big and small by [opening an issue](https://github.com/edenia/eden-UI-kit/issues)
+Please report bugs big and small by [opening an issue](https://github.com/defactor-com/ui-kit/issues)
