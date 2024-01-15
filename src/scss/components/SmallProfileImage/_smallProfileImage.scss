@@ -1,0 +1,17 @@
+.avatar-container {
+  border-radius: 50%;
+  min-height: 48px;
+  min-width: 48px;
+  display: flex;
+}
+
+.app-avatar {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  margin: auto;
+}
+
+.avatar-container {
+  display: flex;
+}
