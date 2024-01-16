@@ -5,7 +5,6 @@ import {
   SmallProfileImage,
   ISmallProfileImage,
 } from "../components/SmallProfileImage";
-import factrIcon from "../../public/assets/factr-icon.svg";
 
 export default {
   title: "Small Profile Image",
@@ -18,5 +17,5 @@ const Template: Story<ISmallProfileImage> = (args) => (
 
 export const SmallProfileImageItem = Template.bind({});
 SmallProfileImageItem.args = {
-  image: factrIcon,
+  image: "https://ui-kit.defactor.dev/static/media/factr-icon.6bf3a589.svg",
 };

@@ -2,11 +2,7 @@ import React from "react";
 import { Story } from "@storybook/react";
 
 import { MenuOption } from "../components/MenuOption";
-import walletIcon from "../../public/assets/wallet.svg";
 import { Sidebar, ISidebar } from "../components/Sidebar";
-import lendingIcon from "../../public/assets/lending.svg";
-import dashboardIcon from "../../public/assets/dashboard.svg";
-import borrowingIcon from "../../public/assets/borrowing.svg";
 
 export default {
   title: "Sidebar",
@@ -15,23 +11,23 @@ export default {
 
 const sideBarItems = [
   {
+    icon: "https://ui-kit.defactor.dev/static/media/dashboard.c6657eac.svg",
     text: "Dashboard",
-    icon: dashboardIcon,
     isSelected: true,
   },
   {
+    icon: "https://ui-kit.defactor.dev/static/media/lending.59e5eaed.svg",
+    isSelected: false,
     text: "Lending",
-    icon: lendingIcon,
-    isSelected: false,
   },
   {
+    icon: "https://ui-kit.defactor.dev/static/media/borrowing.b18b9777.svg",
+    isSelected: false,
     text: "Borrowing",
-    icon: borrowingIcon,
-    isSelected: false,
   },
   {
+    icon: "https://ui-kit.defactor.dev/static/media/wallet.b04b2642.svg",
     text: "My Account",
-    icon: walletIcon,
     isSelected: false,
   },
 ];

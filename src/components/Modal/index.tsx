@@ -1,8 +1,6 @@
 import React from "react";
 import clsx from "clsx";
 
-import closeIcon from "../../../public/assets/close-icon.svg";
-
 export interface IModal {
   close(): void;
   isOpen: boolean;
@@ -18,9 +16,9 @@ export const Modal = ({ isOpen, content, close, externalStyles }: IModal) => {
           <div className="header-container">
             <img
               onClick={close}
-              src={closeIcon}
               alt="Close icon"
               className="close"
+              src="https://ui-kit.defactor.dev/static/media/close-icon.1c50431a.svg"
             />
           </div>
           {content}
