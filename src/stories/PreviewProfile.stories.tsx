@@ -1,7 +1,6 @@
 import React from "react";
 import { Story } from "@storybook/react";
 
-import factrIcon from "../../public/assets/factr-icon.svg";
 import { PreviewProfile, IPreviewProfile } from "../components/PreviewProfile";
 
 export default {
@@ -14,5 +13,5 @@ const Template: Story<IPreviewProfile> = (args) => <PreviewProfile {...args} />;
 export const PreviewProfileItem = Template.bind({});
 PreviewProfileItem.args = {
   label: "FACTR",
-  image: factrIcon,
+  image: "https://ui-kit.defactor.dev/static/media/factr-icon.6bf3a589.svg",
 };
