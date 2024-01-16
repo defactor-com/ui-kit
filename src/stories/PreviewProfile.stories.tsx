@@ -13,5 +13,5 @@ const Template: Story<IPreviewProfile> = (args) => <PreviewProfile {...args} />;
 export const PreviewProfileItem = Template.bind({});
 PreviewProfileItem.args = {
   label: "FACTR",
-  image: "https://ui-kit.defactor.dev/static/media/factr-icon.6bf3a589.svg",
+  image: "https://raw.githubusercontent.com/defactor-com/ui-kit/20424e8bad5f6efb4217766dc57a2507954f5a9e/public/assets/factr-icon.svg?token=AMGHX6LTTECR2URKUHFBIYLFU3SPI",
 };

@@ -38,3 +38,9 @@ $breakpoint-tablet: 912px;
   overflow-y: auto;
   height: 100%;
 }
+
+.flex-sidebar-story {
+  @media (max-width: $breakpoint-tablet) {
+    display: flex;
+  }
+}
