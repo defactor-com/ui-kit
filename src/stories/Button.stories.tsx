@@ -1,20 +1,19 @@
-import React from "react"
-import { Story } from "@storybook/react"
+import React from "react";
+import { Story } from "@storybook/react";
 
-import { Button, IButton } from "../components/Button"
+import { Button, IButton } from "../components/Button";
 
 export default {
   title: "Button",
   component: Button,
 };
 
-
 const Template: Story<IButton> = (args) => <Button {...args} />;
 
 export const Contained = Template.bind({});
 Contained.args = {
   variant: "contained",
-  bgColor: '#26A66B',
+  bgColor: "#26A66B",
   label: "Contained",
 };
 
@@ -32,8 +31,8 @@ Text.args = {
 
 export const IconButton = Template.bind({});
 IconButton.args = {
+  icon: "https://raw.githubusercontent.com/defactor-com/ui-kit/20424e8bad5f6efb4217766dc57a2507954f5a9e/public/assets/lending-white.svg?token=AMGHX6MYBJGZSPOYULFV22DFU3SIU",
   variant: "contained",
-  bgColor: '#26A66B',
-  icon: 'https://ui-kit.defactor.dev/static/media/lending-white.f0f9b328.svg',
+  bgColor: "#26A66B",
   label: "Lend",
 };

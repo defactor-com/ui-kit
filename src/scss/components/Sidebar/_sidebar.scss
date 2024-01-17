@@ -1,4 +1,4 @@
-$breakpoint-tablet: 912px;
+$breakpoint-tablet: 911px;
 
 .sidebar-container {
   background-color: rgb(255, 255, 255);
@@ -37,4 +37,10 @@ $breakpoint-tablet: 912px;
 .sidebar-options-container {
   overflow-y: auto;
   height: 100%;
+}
+
+.flex-sidebar-story {
+  @media (max-width: $breakpoint-tablet) {
+    display: flex;
+  }
 }

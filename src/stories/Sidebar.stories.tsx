@@ -11,22 +11,22 @@ export default {
 
 const sideBarItems = [
   {
-    icon: "https://ui-kit.defactor.dev/static/media/dashboard.c6657eac.svg",
+    icon: "https://raw.githubusercontent.com/defactor-com/ui-kit/20424e8bad5f6efb4217766dc57a2507954f5a9e/public/assets/dashboard.svg?token=AMGHX6LJXN2XY6KTV4ZSJATFU3RGK",
     text: "Dashboard",
     isSelected: true,
   },
   {
-    icon: "https://ui-kit.defactor.dev/static/media/lending.59e5eaed.svg",
+    icon: "https://raw.githubusercontent.com/defactor-com/ui-kit/20424e8bad5f6efb4217766dc57a2507954f5a9e/public/assets/lending.svg?token=AMGHX6ISRRZNRYHFJ766GR3FU3RP2",
     isSelected: false,
     text: "Lending",
   },
   {
-    icon: "https://ui-kit.defactor.dev/static/media/borrowing.b18b9777.svg",
+    icon: "https://raw.githubusercontent.com/defactor-com/ui-kit/20424e8bad5f6efb4217766dc57a2507954f5a9e/public/assets/borrowing.svg?token=AMGHX6PXQM6MECTE67UJBY3FU3RRW",
     isSelected: false,
     text: "Borrowing",
   },
   {
-    icon: "https://ui-kit.defactor.dev/static/media/wallet.b04b2642.svg",
+    icon: "https://raw.githubusercontent.com/defactor-com/ui-kit/20424e8bad5f6efb4217766dc57a2507954f5a9e/public/assets/wallet.svg?token=AMGHX6IHWBBIAABTKAIHORDFU3RUA",
     text: "My Account",
     isSelected: false,
   },
@@ -44,7 +44,7 @@ SidebarItem.args = {
             text={data.text}
             icon={data.icon}
             isSelected={data.isSelected}
-            color={data.isSelected ? "#26A66B" : undefined}
+            color={data.isSelected ? "#ffccff" : undefined}
           />
         </div>
       ))}
