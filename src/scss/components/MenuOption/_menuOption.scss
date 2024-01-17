@@ -1,13 +1,13 @@
 $breakpoint-tablet: 912px;
 
 .menu-option {
+  width: 100%;
   border: none;
+  padding: 16px;
   display: flex;
   cursor: pointer;
   font-size: 14px;
-  width: 100%;
   line-height: 24px;
-  padding: 16px;
   align-items: center;
   letter-spacing: 0.1%;
   text-decoration: none;
@@ -22,6 +22,7 @@ $breakpoint-tablet: 912px;
 }
 
 .selected {
+  font-weight: 700;
   background-color: #f8f9fc;
   @media (max-width: $breakpoint-tablet) {
     border-right: none !important;
