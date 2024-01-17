@@ -44,7 +44,7 @@ SidebarItem.args = {
             text={data.text}
             icon={data.icon}
             isSelected={data.isSelected}
-            color={data.isSelected ? "#26A66B" : undefined}
+            color={data.isSelected ? "#ffccff" : undefined}
           />
         </div>
       ))}

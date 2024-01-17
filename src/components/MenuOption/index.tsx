@@ -12,7 +12,10 @@ export const MenuOption: React.FC<IMenuOption> = React.memo(
   ({ icon, text, color, isSelected, ...props }: IMenuOption) => (
     <button
       className={clsx("menu-option", { selected: isSelected })}
-      style={{ borderRight: isSelected ? `2px solid ${color}` : "none" }}
+      style={{
+        borderRight: isSelected ? `2px solid ${color}` : "none",
+        color: window.innerWidth < 912 && isSelected ? color : "",
+      }}
       {...props}
     >
       {icon && <img src={icon} alt={text} className="menu-option-icon" />}

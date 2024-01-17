@@ -26,6 +26,7 @@ $breakpoint-tablet: 911px;
   background-color: #f8f9fc;
   @media (max-width: $breakpoint-tablet) {
     border-right: none !important;
+    color: #00A965;
   }
 }
 
