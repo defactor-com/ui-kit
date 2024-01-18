@@ -33,7 +33,7 @@ export default [
       external(),
       resolve(),
       typescript(),
-      image(), // Añade el plugin a la lista
+      image(),
       terser(),
     ],
   },
