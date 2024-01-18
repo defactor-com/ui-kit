@@ -4,6 +4,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import scss from "rollup-plugin-scss";
 import typescript from "@rollup/plugin-typescript";
 import { terser } from "rollup-plugin-terser";
+import image from '@rollup/plugin-image'; // Importa el plugin
 
 export default [
   {
@@ -32,6 +33,7 @@ export default [
       external(),
       resolve(),
       typescript(),
+      image(), // Añade el plugin a la lista
       terser(),
     ],
   },
