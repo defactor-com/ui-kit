@@ -6,6 +6,7 @@ export interface IButton extends React.HTMLAttributes<HTMLButtonElement> {
   label?: string;
   color?: string;
   bgColor?: string;
+  fontFamily?: string;
   fullWidth?: boolean;
   borderColor: string;
   externalStyles: string;
@@ -19,6 +20,7 @@ export const Button = ({
   variant,
   bgColor,
   fullWidth,
+  fontFamily,
   borderColor,
   externalStyles,
   ...props
@@ -32,6 +34,7 @@ export const Button = ({
       className={clsx(externalStyles, classNames)}
       style={{
         color: color,
+        fontFamily: fontFamily,
         backgroundColor: bgColor,
         borderColor: borderColor,
       }}

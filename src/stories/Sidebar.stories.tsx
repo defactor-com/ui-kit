@@ -2,7 +2,11 @@ import React from "react";
 import { Story } from "@storybook/react";
 
 import { MenuOption } from "../components/MenuOption";
+import adminIcon from "../../public/assets/admin-icon.svg";
 import { Sidebar, ISidebar } from "../components/Sidebar";
+import lendingIcon from "../../public/assets/lending.svg";
+import dashboardIcon from "../../public/assets/dashboard.svg";
+import borrowingIcon from "../../public/assets/borrowing.svg";
 
 export default {
   title: "Sidebar",
@@ -11,23 +15,23 @@ export default {
 
 const sideBarItems = [
   {
-    icon: "https://raw.githubusercontent.com/defactor-com/ui-kit/20424e8bad5f6efb4217766dc57a2507954f5a9e/public/assets/dashboard.svg?token=AMGHX6LJXN2XY6KTV4ZSJATFU3RGK",
+    icon: dashboardIcon,
     text: "Dashboard",
     isSelected: true,
   },
   {
-    icon: "https://raw.githubusercontent.com/defactor-com/ui-kit/20424e8bad5f6efb4217766dc57a2507954f5a9e/public/assets/lending.svg?token=AMGHX6ISRRZNRYHFJ766GR3FU3RP2",
+    icon: lendingIcon,
     isSelected: false,
     text: "Lending",
   },
   {
-    icon: "https://raw.githubusercontent.com/defactor-com/ui-kit/20424e8bad5f6efb4217766dc57a2507954f5a9e/public/assets/borrowing.svg?token=AMGHX6PXQM6MECTE67UJBY3FU3RRW",
+    icon: borrowingIcon,
     isSelected: false,
     text: "Borrowing",
   },
   {
-    icon: "https://raw.githubusercontent.com/defactor-com/ui-kit/20424e8bad5f6efb4217766dc57a2507954f5a9e/public/assets/wallet.svg?token=AMGHX6IHWBBIAABTKAIHORDFU3RUA",
-    text: "My Account",
+    icon: adminIcon,
+    text: "Admin Tools",
     isSelected: false,
   },
 ];
@@ -44,7 +48,7 @@ SidebarItem.args = {
             text={data.text}
             icon={data.icon}
             isSelected={data.isSelected}
-            color={data.isSelected ? "#ffccff" : undefined}
+            color={data.isSelected ? "#26A66B" : undefined}
           />
         </div>
       ))}
