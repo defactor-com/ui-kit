@@ -10,13 +10,13 @@ export interface IPreviewProfile {
   imgChild?: React.ReactElement;
 }
 
-export const PreviewProfile: React.FC<IPreviewProfile> = ({
+export const PreviewProfile = ({
   label,
   image,
   bgColor,
   imgChild,
   fontFamily,
-}) => (
+}: IPreviewProfile) => (
   <div className="preview-profile-container">
     <SmallProfileImage image={image} bgColor={bgColor} imgChild={imgChild} />
     <span className="label-space" style={{ fontFamily: fontFamily }}>
