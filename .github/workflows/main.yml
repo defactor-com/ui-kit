@@ -11,10 +11,10 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 18
+      - name: Setup Node.js 21
         uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: 21.x
       - run: npm install -g yarn
       - run: yarn install --frozen-lockfile
       - run: yarn lint && yarn build

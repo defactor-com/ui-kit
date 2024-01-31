@@ -1,6 +1,6 @@
 {
   "name": "@defactor/ui-kit",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -23,7 +23,7 @@
     "dist"
   ],
   "engines": {
-    "node": "18"
+    "node": "21"
   },
   "keywords": [],
   "author": "Defactor Labs",
