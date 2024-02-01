@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 export interface IContainer {
   content: React.ReactNode;
-  externalStyles: string;
+  externalStyles?: string;
 }
 
 export const Container = ({

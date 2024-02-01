@@ -2,9 +2,11 @@ import "./scss/styles.scss";
 
 export * from "./components/Pill";
 export * from "./components/Modal";
+export * from "./components/Input";
 export * from "./components/Button";
 export * from "./components/Sidebar";
 export * from "./components/Container";
+export * from "./components/LendBorrow";
 export * from "./components/MenuOption";
 export * from "./components/FlatContainer";
 export * from "./components/PreviewProfile";

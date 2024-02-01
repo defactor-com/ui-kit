@@ -1,0 +1,31 @@
+.componentContainer {
+  padding: 0px;
+  max-width: 310px;
+}
+
+.buttonsStyles {
+  color: #211f23;
+  font-weight: 700;
+  border-radius: 0px;
+}
+
+.buttonsStylesSelected {
+  font-weight: 500;
+  background-color: #f8f9fc;
+  border-bottom: #00a965 2px solid;
+}
+
+.headerLendBorrow {
+  display: flex;
+}
+
+.bodyLendBorrow {
+  padding: 40px 24px 24px 24px;
+}
+
+.containerButtonLendBorrow {
+  width: 100%;
+  display: flex;
+  margin-top: 40px;
+  justify-content: center;
+}
