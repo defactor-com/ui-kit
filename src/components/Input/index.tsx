@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from "react";
 
-type IInput = {
+export type IInput = {
   value: string | number | readonly string[] | undefined;
   type?: React.HTMLInputTypeAttribute | undefined;
   onChange(e: ChangeEvent<HTMLInputElement>): void;

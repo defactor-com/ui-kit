@@ -1,9 +1,13 @@
+$breakpoint-tablet: 911px;
+
 .input-container {
+  width: auto;
   display: flex;
+  padding: 16px;
   border-radius: 4px;
   align-items: center;
-  padding: 16px;
   border: 1px solid #7c7d7e;
+  justify-content: space-between;
 }
 
 .input-container:focus-within {
@@ -21,5 +25,4 @@
 .currency {
   font-size: 14px;
   color: #7c7d7e;
-  margin-left: 16px;
 }
