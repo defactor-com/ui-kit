@@ -5,6 +5,7 @@ export * from "./components/Modal";
 export * from "./components/Input";
 export * from "./components/Button";
 export * from "./components/Sidebar";
+export * from "./components/Dashboard";
 export * from "./components/Container";
 export * from "./components/LendBorrow";
 export * from "./components/MenuOption";
