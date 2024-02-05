@@ -1,4 +1,64 @@
 .toltip-container {
+  padding: 8px 16px 16px 16px !important;
   background-color: #f8f9fc !important;
   border: solid 1.27px #f9f9f9 !important;
+}
+
+.date-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #7a7a7a;
+  line-height: 100%;
+  letter-spacing: 0.22px;
+  text-transform: uppercase;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.value-label {
+  font-weight: 700;
+  font-size: 20px;
+  color: #242424;
+  line-height: 100%;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+
+.fluctuation-container {
+  margin-left: 8px;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+
+.fluctuation-up {
+  color: #00a965;
+  background-color: rgba(0, 169, 101, 0.1);
+}
+
+.fluctuation-down {
+  color: #d21a4d;
+  background-color: rgba(229, 0, 74, 0.1);
+}
+
+.fluctuation-label {
+  font-size: 16px;
+  line-height: 100%;
+}
+
+.dashboard-bottom-flat-containers {
+  width: 28% !important;
+  padding: 16px !important;
+}
+
+.point {
+  margin-right: 8px;
+  border-radius: 4px;
+  height: 8px;
+  width: 8px;
+}
+
+.dashboard-right-flat-containers {
+  margin-top: 16px;
 }
