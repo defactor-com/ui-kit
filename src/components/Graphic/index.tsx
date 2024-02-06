@@ -1,5 +1,4 @@
 import React from "react";
-import clsx from "clsx";
 import {
   Area,
   YAxis,
@@ -25,20 +24,22 @@ export interface GraphicDataType {
 
 export interface IGraphic {
   data: GraphicDataType[] | undefined;
+  fontFamily?: string;
   currency: string;
   color: string;
 }
 
-const CustomTooltip: React.FC<TooltipProps<ValueType, NameType>> = ({
-  payload,
-  active,
-}) => {
+interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
+  fontFamily?: string;
+}
+
+const CustomTooltip = ({ fontFamily, payload, active }: CustomTooltipProps) => {
   if (active && payload && payload.length) {
     return (
       <Container
         externalStyles="toltip-container"
         content={
-          <div>
+          <div style={{ fontFamily: fontFamily }}>
             <span className="date-label">{payload[0].payload.date}</span>
             <div className="display-flex">
               <span className="value-label">{payload[0].value}</span>
@@ -53,7 +54,7 @@ const CustomTooltip: React.FC<TooltipProps<ValueType, NameType>> = ({
   return null;
 };
 
-const Graphic = ({ color, data, currency }: IGraphic) => (
+const Graphic = ({ color, data, currency, fontFamily }: IGraphic) => (
   <ResponsiveContainer width="100%" height="55%">
     <AreaChart data={data}>
       <defs>
@@ -71,12 +72,13 @@ const Graphic = ({ color, data, currency }: IGraphic) => (
             y={props.y}
             fontSize={12}
             fill="#7C7D7E"
-            fontWeight={700}
             textAnchor="end"
+            fontWeight={500}
+            fontFamily={fontFamily}
           >{`${props.payload.value} ${currency}`}</text>
         )}
       />
-      <Tooltip content={<CustomTooltip />} />
+      <Tooltip content={<CustomTooltip fontFamily="fontFamily" />} />
       <Area
         dataKey="uv"
         stroke={color}

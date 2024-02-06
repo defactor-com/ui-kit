@@ -68,7 +68,32 @@ const data: GraphicDataType[] = [
 ];
 
 const Template: Story<IDashboard> = (args) => {
-  return <Dashboard {...args} color="#26A66B" currency="USDC" data={data} />;
+  return (
+    <Dashboard
+      {...args}
+      data={data}
+      currency="USDC"
+      color="#26A66B"
+      poolsLabel="Pools"
+      totalValueLocked={888888888888}
+      titleGraphic="Total Value Locked"
+      poolsLabel1Container="Active Loans"
+      poolsValue1Container={1200.00}
+      poolsLabel2Container="All Repaid Loans"
+      poolsValue2Container={2500.00}
+      poolsLabel3Container="Interest Paid "
+      poolsValue3Container={200.00}
+      label1BottomContainer="Asset Received"
+      value1BottomContainer={20000.00}
+      fluctuation1BottomContainer="+3.4%"
+      label2BottomContainer="Investing"
+      value2BottomContainer={20000.00}
+      fluctuation2BottomContainer="-3.4%"
+      label3BottomContainer="Asset Received"
+      value3BottomContainer={20000.00}
+      fluctuation3BottomContainer="+3.4%"
+    />
+  );
 };
 
 export const DashboardItem = Template.bind({});

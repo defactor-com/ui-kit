@@ -1,3 +1,7 @@
+$breakpoint-tablet: 911px;
+
+$breakpoint-mobile: 600px;
+
 .toltip-container {
   padding: 8px 16px 16px 16px !important;
   background-color: #f8f9fc !important;
@@ -50,6 +54,10 @@
 .dashboard-bottom-flat-containers {
   width: 28% !important;
   padding: 16px !important;
+  @media (max-width: $breakpoint-mobile) {
+    width: 88% !important;
+    margin-top: 8px;
+  }
 }
 
 .point {
@@ -61,4 +69,129 @@
 
 .dashboard-right-flat-containers {
   margin-top: 16px;
+  min-width: 260px;
+  width: 90% !important;
+  @media (max-width: $breakpoint-tablet) {
+    width: 27% !important;
+    min-width: 100px;
+  }
+  @media (max-width: $breakpoint-mobile) {
+    width: 88% !important;
+    margin-top: 8px;
+  }
+}
+
+.dashboard-container {
+  display: flex;
+  width: 100%;
+  @media (max-width: $breakpoint-tablet) {
+    display: block;
+  }
+}
+
+.graphic-container {
+  width: 100%;
+  padding: 8px 24px 8px 8px;
+  border-right: solid 1px rgba(0, 0, 0, 0.2);
+  @media (max-width: $breakpoint-tablet) {
+    border-right: none;
+  }
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0;
+  }
+}
+
+.graphic-container-internal {
+  width: 100%;
+  height: 100%;
+  padding-right: 24px;
+}
+
+.graphic-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.margin-left {
+  margin-left: 8px;
+}
+
+.total-value-container {
+  display: flex;
+  margin-bottom: 24px;
+  align-items: flex-end;
+}
+
+.padding-bottom-medium {
+  padding-bottom: 4px;
+}
+
+.footer-container-dashboard {
+  width: 100%;
+  display: flex;
+  margin-top: 16px;
+  justify-content: space-between;
+  @media (max-width: $breakpoint-mobile) {
+    display: block;
+  }
+}
+
+.flex-column-direction {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+.flat-body-container {
+  display: flex;
+  margin-top: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.margin-top-medium {
+  margin-top: 4px;
+}
+
+.margin-top {
+  margin-top: 8px;
+}
+
+.margin-left-medium {
+  margin-left: 4px;
+}
+
+.pools-icon-container {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  margin-right: 8px;
+  align-items: center;
+  border-radius: 100px;
+  justify-content: center;
+  background-color: #f8f9fc;
+}
+
+.pools-body-container {
+  @media (max-width: $breakpoint-tablet) {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  @media (max-width: $breakpoint-mobile) {
+    display: block;
+  }
+}
+
+.pools-container {
+  padding-left: 16px;
+  @media (max-width: $breakpoint-tablet) {
+    margin-top: 16px;
+    padding-left: 0;
+  }
 }
