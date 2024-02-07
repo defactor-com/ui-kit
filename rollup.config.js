@@ -1,10 +1,11 @@
-import { babel } from "@rollup/plugin-babel";
-import external from "rollup-plugin-peer-deps-external";
-import resolve from "@rollup/plugin-node-resolve";
 import scss from "rollup-plugin-scss";
-import typescript from "@rollup/plugin-typescript";
+import image from "@rollup/plugin-image";
+import { babel } from "@rollup/plugin-babel";
 import { terser } from "rollup-plugin-terser";
-import image from '@rollup/plugin-image';
+import commonjs from "@rollup/plugin-commonjs";
+import resolve from "@rollup/plugin-node-resolve";
+import typescript from "@rollup/plugin-typescript";
+import external from "rollup-plugin-peer-deps-external";
 
 export default [
   {
@@ -21,6 +22,10 @@ export default [
       },
     ],
     plugins: [
+      commonjs({
+        include: /node_modules/,
+        requireReturnsDefault: "auto",
+      }),
       scss({
         output: true,
         failOnError: true,
