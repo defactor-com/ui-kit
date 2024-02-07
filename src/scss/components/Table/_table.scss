@@ -1,0 +1,22 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.remove-padding {
+  padding: 0 !important;
+}
+
+th,
+td {
+  padding: 16px 24px;
+  text-align: center;
+}
+
+.th-option {
+  width: 0 !important;
+}
+
+tr {
+  border-top: 1px solid #eaecf0;
+}

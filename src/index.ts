@@ -3,6 +3,7 @@ import "./scss/styles.scss";
 export * from "./components/Pill";
 export * from "./components/Point";
 export * from "./components/Modal";
+export * from "./components/Table";
 export * from "./components/Input";
 export * from "./components/Button";
 export * from "./components/Sidebar";
