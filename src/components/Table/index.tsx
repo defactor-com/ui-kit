@@ -8,35 +8,46 @@ export interface IHeaderObject {
   sortFunction?(): void;
 }
 
-export interface ITable {
-  haveOptions?: boolean;
-  headers: Array<IHeaderObject>;
-  rows: Array<Array<React.ReactNode>>;
+interface IRowsObject {
+  function?(): void;
+  items: Array<React.ReactNode>;
 }
 
-export const Table = ({ rows, headers, haveOptions }: ITable) => {
+export interface ITable {
+  haveOptions?: boolean;
+  headerbgColor?: string;
+  rows: Array<IRowsObject>;
+  headers: Array<IHeaderObject>;
+}
+
+export const Table = ({
+  rows,
+  headers,
+  haveOptions,
+  headerbgColor,
+}: ITable) => {
   return (
     <Container
       externalStyles="remove-padding"
       content={
         <table>
-          <thead style={{ backgroundColor: "rgba(0, 169, 101, 0.05)" }}>
+          <thead
+            style={{
+              backgroundColor: headerbgColor
+                ? headerbgColor
+                : "rgba(0, 169, 101, 0.05)",
+            }}
+          >
             <tr>
               {headers.map((item: IHeaderObject) => (
                 <th key={item.label}>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
+                  <div className="center-element">
                     {item.label}
                     {item.sortFunction && (
                       <img
-                        style={{ marginLeft: 4 }}
                         src={downIcon}
                         onClick={item.sortFunction}
+                        className="margin-left-medium"
                       />
                     )}
                   </div>
@@ -47,8 +58,12 @@ export const Table = ({ rows, headers, haveOptions }: ITable) => {
           </thead>
           <tbody>
             {rows.map((row, index) => (
-              <tr key={index}>
-                {row.map((itemRow, indexRow) => (
+              <tr
+                key={index}
+                onClick={row.function}
+                className={row.function ? "cursor-pointer" : ""}
+              >
+                {row.items.map((itemRow, indexRow) => (
                   <td key={indexRow}>{itemRow}</td>
                 ))}
               </tr>
