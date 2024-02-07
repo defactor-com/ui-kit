@@ -20,7 +20,7 @@ export const Modal = ({ isOpen, content, close, externalStyles }: IModal) => {
               onClick={close}
               src={closeIcon}
               alt="Close icon"
-              className="close"
+              className="cursor-pointer"
             />
           </div>
           {content}

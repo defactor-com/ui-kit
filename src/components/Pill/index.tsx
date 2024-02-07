@@ -6,7 +6,7 @@ export interface IPill {
   color: string;
   bgColor: string;
   fontFamily?: string;
-  externalStyles: string;
+  externalStyles?: string;
 }
 
 export const Pill = ({
