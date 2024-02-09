@@ -29,11 +29,15 @@ export interface IGraphic {
   color: string;
 }
 
-interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
+export interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
   fontFamily?: string;
 }
 
-const CustomTooltip = ({ fontFamily, payload, active }: CustomTooltipProps) => {
+export const CustomTooltip = ({
+  fontFamily,
+  payload,
+  active,
+}: CustomTooltipProps) => {
   if (active && payload && payload.length) {
     return (
       <Container
@@ -54,7 +58,7 @@ const CustomTooltip = ({ fontFamily, payload, active }: CustomTooltipProps) => {
   return null;
 };
 
-const Graphic = ({ color, data, currency, fontFamily }: IGraphic) => (
+export const Graphic = ({ color, data, currency, fontFamily }: IGraphic) => (
   <ResponsiveContainer width="100%" height="55%">
     <AreaChart data={data}>
       <defs>
@@ -78,7 +82,7 @@ const Graphic = ({ color, data, currency, fontFamily }: IGraphic) => (
           >{`${props.payload.value} ${currency}`}</text>
         )}
       />
-      <Tooltip content={<CustomTooltip fontFamily="fontFamily" />} />
+      <Tooltip content={<CustomTooltip fontFamily={fontFamily} />} />
       <Area
         dataKey="uv"
         stroke={color}
@@ -90,5 +94,3 @@ const Graphic = ({ color, data, currency, fontFamily }: IGraphic) => (
     </AreaChart>
   </ResponsiveContainer>
 );
-
-export default Graphic;

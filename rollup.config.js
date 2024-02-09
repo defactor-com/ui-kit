@@ -24,7 +24,17 @@ export default [
     plugins: [
       commonjs({
         include: /node_modules/,
-        requireReturnsDefault: "auto",
+        namedExports: {
+          "node_modules/recharts/index.js": [
+            "Area",
+            "YAxis",
+            "Tooltip",
+            "AreaChart",
+            "TooltipProps",
+            "CartesianGrid",
+            "ResponsiveContainer",
+          ],
+        },
       }),
       scss({
         output: true,
