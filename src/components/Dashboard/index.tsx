@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { Point } from "../Point";
 import { Container } from "../Container";
 import { FlatContainer } from "../FlatContainer";
-import Graphic, { GraphicDataType } from "../Graphic";
+import { GraphicDataType, Graphic } from "../Graphic";
 import lendIcon from "../../../public/assets/lending.svg";
 import dolarIcon from "../../../public/assets/dolar-icon.svg";
 import { FluctuationComponent } from "../FluctuationComponent";
@@ -222,5 +222,3 @@ export const Dashboard = ({
     }
   />
 );
-
-export default Dashboard;

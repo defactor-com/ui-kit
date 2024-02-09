@@ -17,5 +17,3 @@ export const Input = ({ value, type, onChange }: IInput) => (
     <span className="currency">USDC</span>
   </div>
 );
-
-export default Input;

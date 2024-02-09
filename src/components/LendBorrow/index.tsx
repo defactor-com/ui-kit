@@ -7,7 +7,7 @@ import borrowingIcon from "../../../public/assets/borrowing.svg";
 import lendingIcon from "../../../public/assets/lending.svg";
 import { Container } from "../Container";
 import { Button } from "../Button";
-import Input from "../Input";
+import { Input } from "../Input";
 
 export interface ILendBorrow {
   color?: string;
