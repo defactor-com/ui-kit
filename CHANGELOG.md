@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.0.30
+
+### Patch Changes
+
+- 6574d52: fix export external modules
+
 ## 0.0.2
 
 ### Patch Changes
