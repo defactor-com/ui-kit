@@ -55,7 +55,7 @@ $breakpoint-mobile: 600px;
   width: 28% !important;
   padding: 16px !important;
   @media (max-width: $breakpoint-mobile) {
-    width: 88% !important;
+    width: 100% !important;
     margin-top: 8px;
   }
 }
@@ -76,7 +76,7 @@ $breakpoint-mobile: 600px;
     min-width: 100px;
   }
   @media (max-width: $breakpoint-mobile) {
-    width: 88% !important;
+    width: 100% !important;
     margin-top: 8px;
   }
 }
@@ -105,6 +105,9 @@ $breakpoint-mobile: 600px;
   width: 100%;
   height: 100%;
   padding-right: 24px;
+  @media (max-width: $breakpoint-mobile) {
+    padding-right: 0;
+  }
 }
 
 .graphic-header {
