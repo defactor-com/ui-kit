@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.0.31
+
+### Patch Changes
+
+- b694ff7: improved responsive table component
+
 ## 0.0.30
 
 ### Patch Changes
