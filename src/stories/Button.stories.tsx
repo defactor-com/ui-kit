@@ -2,7 +2,7 @@ import React from "react";
 import { Story } from "@storybook/react";
 
 import { Button, IButton } from "../components/Button";
-import lendingIcon from '../../public/assets/lending-white.svg'
+import lendingIcon from "../../public/assets/lending-white.svg";
 
 export default {
   title: "Button",
@@ -32,8 +32,8 @@ Text.args = {
 
 export const IconButton = Template.bind({});
 IconButton.args = {
-  icon: lendingIcon,
   variant: "contained",
   bgColor: "#26A66B",
+  icon: lendingIcon,
   label: "Lend",
 };
