@@ -13,6 +13,8 @@ export interface ILendBorrow {
   color?: string;
   onLend(): void;
   onBorrow(): void;
+  disabled?: boolean;
+  loader?: React.ReactElement;
   onChange(e: ChangeEvent<HTMLInputElement>): void;
   value: string | number | readonly string[] | undefined;
 }
@@ -21,8 +23,10 @@ export const LendBorrow = ({
   color,
   value,
   onLend,
+  loader,
   onBorrow,
   onChange,
+  disabled,
 }: ILendBorrow) => {
   const [activeTab, setActiveTab] = useState("lendTab");
 
@@ -68,7 +72,9 @@ export const LendBorrow = ({
                   <Button
                     icon={lendingWhiteIcon}
                     variant="contained"
+                    disabled={disabled}
                     onClick={onLend}
+                    loader={loader}
                     bgColor={color}
                     label="Lend"
                   />
@@ -82,7 +88,9 @@ export const LendBorrow = ({
                   <Button
                     icon={borrowingWhiteIcon}
                     variant="contained"
+                    disabled={disabled}
                     onClick={onBorrow}
+                    loader={loader}
                     bgColor={color}
                     label="Borrow"
                   />
