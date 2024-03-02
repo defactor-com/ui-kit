@@ -15,6 +15,8 @@ const Template: Story<ITable> = (args) => {
     <Table
       {...args}
       haveOptions
+      emptyTitle="No pools to show"
+      emptyDescription="Pools will be listed here when available. "
       headers={[
         { label: "Position", sortFunction: () => {} },
         { label: "Amount" },

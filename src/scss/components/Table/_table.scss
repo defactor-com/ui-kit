@@ -27,3 +27,19 @@ tr {
   align-items: center;
   justify-content: center;
 }
+
+.empt-state-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 32px 0 32px 0;
+  justify-content: center;
+}
+
+.img-empty {
+  margin-bottom: 16px;
+}
+
+.small-margin-button {
+  margin-bottom: 8px;
+}
