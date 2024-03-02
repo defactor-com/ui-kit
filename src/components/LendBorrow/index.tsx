@@ -15,6 +15,7 @@ export interface ILendBorrow {
   onBorrow(): void;
   disabled?: boolean;
   loader?: React.ReactElement;
+  collateralSection: React.ReactElement;
   onChange(e: ChangeEvent<HTMLInputElement>): void;
   value: string | number | readonly string[] | undefined;
 }
@@ -27,6 +28,7 @@ export const LendBorrow = ({
   onBorrow,
   onChange,
   disabled,
+  collateralSection,
 }: ILendBorrow) => {
   const [activeTab, setActiveTab] = useState("lendTab");
 
@@ -84,6 +86,7 @@ export const LendBorrow = ({
             {activeTab === "borrowTab" && (
               <div>
                 <Input value={value} onChange={onChange} type="number" />
+                {collateralSection}
                 <div className="containerButtonLendBorrow">
                   <Button
                     icon={borrowingWhiteIcon}
