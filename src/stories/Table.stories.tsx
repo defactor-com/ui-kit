@@ -14,7 +14,21 @@ const Template: Story<ITable> = (args) => {
   return (
     <Table
       {...args}
+      loading
       haveOptions
+      visiblePage={3}
+      nextPage={() => {}}
+      totalRowsNumber={22}
+      rowsPageSelected={5}
+      rowsPage={[5, 10, 15]}
+      handleSelectedRowsPage={() => {}}
+      loaderComponent={
+        <div
+          style={{ width: "100%", display: "flex", justifyContent: "center" }}
+        >
+          <span>cargando...</span>
+        </div>
+      }
       emptyTitle="No pools to show"
       emptyDescription="Pools will be listed here when available. "
       headers={[
