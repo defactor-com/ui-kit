@@ -43,3 +43,28 @@ tr {
 .small-margin-button {
   margin-bottom: 8px;
 }
+
+.pagination-container {
+  border-top: 1px solid #eaecf0;
+  align-items: center;
+  padding: 8px 40px;
+  display: flex;
+  height: 64px;
+}
+
+.container-rows-per-page {
+  position: absolute;
+}
+
+.select-item {
+  margin-left: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+.page-selector-container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: auto;
+}
