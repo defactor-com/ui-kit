@@ -21,12 +21,13 @@ const Template: Story<ITable> = (args) => {
       totalRowsNumber={22}
       rowsPageSelected={5}
       rowsPage={[5, 10, 15]}
+      rowsNumberLabel="Rows per page:"
       handleSelectedRowsPage={() => {}}
       loaderComponent={
         <div
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
         >
-          <span>cargando...</span>
+          <span>Loading...</span>
         </div>
       }
       emptyTitle="No pools to show"

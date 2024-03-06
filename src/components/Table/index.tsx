@@ -25,9 +25,10 @@ export interface ITable {
   visiblePage?: number;
   haveOptions?: boolean;
   headerbgColor?: string;
-  rowsPage?: Array<number>;
   totalRowsNumber: number;
+  rowsNumberLabel?: string;
   rows: Array<IRowsObject>;
+  rowsPage?: Array<number>;
   emptyDescription: string;
   rowsPageSelected: number;
   headers: Array<IHeaderObject>;
@@ -48,6 +49,7 @@ export const Table = ({
   visiblePage,
   headerbgColor,
   loaderComponent,
+  rowsNumberLabel,
   totalRowsNumber,
   emptyDescription,
   rowsPageSelected,
@@ -121,13 +123,30 @@ export const Table = ({
               </tbody>
             )}
           </table>
+          {!rows?.length && !loading && (
+            <div className="empt-state-container">
+              <img src={admirationIcon} className="img-empty" />
+              <span
+                className={clsx("variant-h3", "small-margin-button")}
+                style={{ fontFamily: fontFamily }}
+              >
+                {emptyTitle}
+              </span>
+              <span
+                style={{ fontFamily: fontFamily }}
+                className="variant-body1"
+              >
+                {emptyDescription}
+              </span>
+            </div>
+          )}
           <div className="pagination-container">
             <div className="container-rows-per-page">
               <span
                 className="variant-body1"
                 style={{ fontFamily: fontFamily }}
               >
-                Rows per page:
+                {rowsNumberLabel}
               </span>
               <select
                 className="select-item"
@@ -180,23 +199,6 @@ export const Table = ({
               <></>
             )}
           </div>
-          {!rows?.length && !loading && (
-            <div className="empt-state-container">
-              <img src={admirationIcon} className="img-empty" />
-              <span
-                className={clsx("variant-h3", "small-margin-button")}
-                style={{ fontFamily: fontFamily }}
-              >
-                {emptyTitle}
-              </span>
-              <span
-                style={{ fontFamily: fontFamily }}
-                className="variant-body1"
-              >
-                {emptyDescription}
-              </span>
-            </div>
-          )}
         </>
       }
     />
