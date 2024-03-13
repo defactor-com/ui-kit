@@ -197,3 +197,17 @@ $breakpoint-mobile: 600px;
     padding-left: 0;
   }
 }
+
+.hide-bars-container {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  padding: 0 24px 0;
+  flex-wrap: wrap;
+  gap: 24px;
+  & .checkbox {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+  }
+}
+

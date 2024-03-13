@@ -4,12 +4,13 @@ import clsx from "clsx";
 import { Point } from "../Point";
 import { Container } from "../Container";
 import { FlatContainer } from "../FlatContainer";
-import { GraphicDataType, Graphic } from "../Graphic";
+import { GraphicDataType, Graphic, SeriesDataType } from "../Graphic";
 import lendIcon from "../../../public/assets/lending.svg";
 import dolarIcon from "../../../public/assets/dolar-icon.svg";
 import { FluctuationComponent } from "../FluctuationComponent";
 
 export type IDashboard = {
+  colors: string[];
   color: string;
   currency: string;
   fontFamily: string;
@@ -32,10 +33,13 @@ export type IDashboard = {
   fluctuation2BottomContainer: string;
   fluctuation3BottomContainer: string;
   data: GraphicDataType[] | undefined;
+  series: SeriesDataType[];
 };
 
 export const Dashboard = ({
   data,
+  series,
+  colors,
   color,
   currency,
   fontFamily,
@@ -76,8 +80,9 @@ export const Dashboard = ({
               </span>
             </div>
             <Graphic
-              color={color}
+              colors={colors}
               data={data}
+              series={series}
               currency={currency}
               fontFamily={fontFamily}
             />
@@ -87,7 +92,7 @@ export const Dashboard = ({
                 content={
                   <div className="flex-column-direction">
                     <span className={clsx("variant-body1", "flex-center")}>
-                      <Point color={color} /> {label1BottomContainer}
+                      <Point color={colors[0] || color} /> {label1BottomContainer}
                     </span>
                     <div className="flat-body-container">
                       <div className="flex-column-direction">
@@ -112,7 +117,7 @@ export const Dashboard = ({
                 content={
                   <div className="flex-column-direction">
                     <span className={clsx("variant-body1", "flex-center")}>
-                      <Point color={color} /> {label2BottomContainer}
+                      <Point color={colors[1] || color} /> {label2BottomContainer}
                     </span>
                     <div className="flat-body-container">
                       <div className="flex-column-direction">
@@ -137,7 +142,7 @@ export const Dashboard = ({
                 content={
                   <div className="flex-column-direction">
                     <span className={clsx("flex-center", "variant-body1")}>
-                      <Point color={color} /> {label3BottomContainer}
+                      <Point color={colors[2] || color} /> {label3BottomContainer}
                     </span>
                     <div className="flat-body-container">
                       <div className="flex-column-direction">
