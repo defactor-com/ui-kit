@@ -73,6 +73,8 @@ const Template: Story<IDashboard> = (args) => {
       poolsLabel="Pools"
       totalValueLocked={888888888888}
       titleGraphic="Total Value Locked"
+      chartSubtitle="Pool Utilization"
+      chartDescription="Optional Description"
       poolsLabel1Container="Active Loans"
       poolsValue1Container={1200.0}
       poolsLabel2Container="All Repaid Loans"

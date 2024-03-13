@@ -17,6 +17,8 @@ export type IDashboard = {
   poolsLabel: string;
   titleGraphic: string;
   totalValueLocked: number;
+  chartSubtitle: string;
+  chartDescription: string;
   poolsLabel1Container: string;
   poolsValue1Container: number;
   poolsLabel2Container: string;
@@ -46,6 +48,8 @@ export const Dashboard = ({
   poolsLabel,
   titleGraphic,
   totalValueLocked,
+  chartSubtitle,
+  chartDescription,
   poolsLabel1Container,
   poolsValue1Container,
   poolsLabel2Container,
@@ -79,12 +83,31 @@ export const Dashboard = ({
                 {currency}
               </span>
             </div>
-            <Graphic
-              colors={colors}
-              data={data}
-              series={series}
-              currency={currency}
-              fontFamily={fontFamily}
+            <Container
+              content={
+                <>
+                  <div
+                    className={clsx(
+                      "flex-column-direction",
+                      "chart-title-container"
+                    )}
+                  >
+                    {chartSubtitle && (
+                      <span className="variant-h3">{chartSubtitle}</span>
+                    )}
+                    {chartDescription && (
+                      <span className="variant-body2">{chartDescription}</span>
+                    )}
+                  </div>
+                  <Graphic
+                    colors={colors}
+                    data={data}
+                    series={series}
+                    currency={currency}
+                    fontFamily={fontFamily}
+                  />
+                </>
+              }
             />
             <div className="footer-container-dashboard">
               <FlatContainer
@@ -92,7 +115,8 @@ export const Dashboard = ({
                 content={
                   <div className="flex-column-direction">
                     <span className={clsx("variant-body1", "flex-center")}>
-                      <Point color={colors[0] || color} /> {label1BottomContainer}
+                      <Point color={colors[0] || color} />{" "}
+                      {label1BottomContainer}
                     </span>
                     <div className="flat-body-container">
                       <div className="flex-column-direction">
@@ -117,7 +141,8 @@ export const Dashboard = ({
                 content={
                   <div className="flex-column-direction">
                     <span className={clsx("variant-body1", "flex-center")}>
-                      <Point color={colors[1] || color} /> {label2BottomContainer}
+                      <Point color={colors[1] || color} />{" "}
+                      {label2BottomContainer}
                     </span>
                     <div className="flat-body-container">
                       <div className="flex-column-direction">
@@ -142,7 +167,8 @@ export const Dashboard = ({
                 content={
                   <div className="flex-column-direction">
                     <span className={clsx("flex-center", "variant-body1")}>
-                      <Point color={colors[2] || color} /> {label3BottomContainer}
+                      <Point color={colors[2] || color} />{" "}
+                      {label3BottomContainer}
                     </span>
                     <div className="flat-body-container">
                       <div className="flex-column-direction">

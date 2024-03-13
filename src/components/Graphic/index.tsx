@@ -94,7 +94,7 @@ export const Graphic = ({
     color.toLocaleLowerCase().replace(" ", "-");
   return (
     <>
-      <ResponsiveContainer width="100%" height="55%">
+      <ResponsiveContainer width="100%" height="55%" minHeight="200px">
         <ComposedChart data={chartData}>
           <defs>
             {(keyNames || []).map((name, index) => (
