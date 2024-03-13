@@ -1,12 +1,13 @@
 import React from "react";
 import {
   Area,
+  Line,
   YAxis,
   Tooltip,
-  AreaChart,
   TooltipProps,
   CartesianGrid,
   ResponsiveContainer,
+  ComposedChart,
 } from "recharts";
 import clsx from "clsx";
 import {
@@ -89,12 +90,12 @@ export const Graphic = ({
     { chartData, keyName, keyNames, tooltipActive },
     { isHide, setHide, handleOpenTooltip, handleCloseTooltip },
   ] = useGraphicState({ data, series });
-  const getColorId = (color: string) => color.toLocaleLowerCase().replace(" ","-")
-
+  const getColorId = (color: string) =>
+    color.toLocaleLowerCase().replace(" ", "-");
   return (
     <>
       <ResponsiveContainer width="100%" height="55%">
-        <AreaChart data={chartData}>
+        <ComposedChart data={chartData}>
           <defs>
             {(keyNames || []).map((name, index) => (
               <linearGradient
@@ -108,12 +109,12 @@ export const Graphic = ({
                 <stop
                   offset="5%"
                   stopColor={colors[index % colors.length]}
-                  stopOpacity={0.8}
+                  stopOpacity={0.4}
                 />
                 <stop
                   offset="95%"
                   stopColor={colors[index % colors.length]}
-                  stopOpacity={0}
+                  stopOpacity={0.2}
                 />
               </linearGradient>
             ))}
@@ -149,6 +150,21 @@ export const Graphic = ({
             <Area
               key={`area-${name}`}
               hide={isHide?.(name)}
+              dot={false}
+              activeDot={false}
+              dataKey={name}
+              stroke={colors[index % colors.length]}
+              type="monotone"
+              strokeWidth={2}
+              fillOpacity={1}
+              fill={`url(#color-${getColorId(name)})`}
+            />
+          ))}
+
+          {(keyNames || []).map((name, index) => (
+            <Line
+              key={`line-${name}`}
+              hide={isHide?.(name)}
               dot={{
                 stroke: colors[index % colors.length],
                 strokeWidth: 2,
@@ -170,10 +186,9 @@ export const Graphic = ({
               type="monotone"
               strokeWidth={2}
               fillOpacity={1}
-              fill={`url(#color-${getColorId(name)})`}
             />
           ))}
-        </AreaChart>
+        </ComposedChart>
       </ResponsiveContainer>
       <div className={clsx("display-flex", "hide-bars-container")}>
         {(keyNames || []).map((name, index) => (
