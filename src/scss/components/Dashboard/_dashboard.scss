@@ -214,6 +214,9 @@ $breakpoint-mobile: 600px;
   @media (max-width: $breakpoint-mobile) {
     box-shadow: none !important;
   }
+  & .recharts-surface {
+    overflow: visible;
+  }
 }
 
 .hide-bars-container {
