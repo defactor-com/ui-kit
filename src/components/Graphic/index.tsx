@@ -59,11 +59,11 @@ export const CustomTooltip = ({
 
     return (
       <Container
-        externalStyles="toltip-container"
+        externalStyles="tooltip-container"
         content={
           <div style={{ fontFamily: fontFamily }}>
             <span className="date-label">{item.payload.date}</span>
-            <div className="display-flex">
+            <div className={clsx("display-flex","margin-top")}>
               <span className="value-label">{item.value}</span>
               <FluctuationComponent
                 label={item?.payload.fluctuation[keyName || ""]}
