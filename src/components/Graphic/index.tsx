@@ -38,7 +38,6 @@ export interface IGraphic {
   data: GraphicDataType[] | undefined;
   series: SeriesDataType[];
   fontFamily?: string;
-  currency: string;
   colors: string[];
 }
 
@@ -83,7 +82,6 @@ export const Graphic = ({
   colors,
   data,
   series,
-  currency,
   fontFamily,
 }: IGraphic) => {
   const [
@@ -109,12 +107,12 @@ export const Graphic = ({
                 <stop
                   offset="5%"
                   stopColor={colors[index % colors.length]}
-                  stopOpacity={0.4}
+                  stopOpacity={0.2}
                 />
                 <stop
                   offset="95%"
                   stopColor={colors[index % colors.length]}
-                  stopOpacity={0.2}
+                  stopOpacity={0.1}
                 />
               </linearGradient>
             ))}
@@ -132,7 +130,7 @@ export const Graphic = ({
                 textAnchor="end"
                 fontWeight={500}
                 fontFamily={fontFamily}
-              >{`${props.payload.value} ${currency}`}</text>
+              >{props.payload.value}</text>
             )}
           />
 

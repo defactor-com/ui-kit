@@ -9,9 +9,14 @@ import lendIcon from "../../../public/assets/lending.svg";
 import dolarIcon from "../../../public/assets/dolar-icon.svg";
 import { FluctuationComponent } from "../FluctuationComponent";
 
+export type BottomContainerItem = {
+  label: string;
+  value: number;
+  fluctuation: string;
+};
+
 export type IDashboard = {
   colors: string[];
-  color: string;
   currency: string;
   fontFamily: string;
   poolsLabel: string;
@@ -25,15 +30,7 @@ export type IDashboard = {
   poolsValue2Container: number;
   poolsLabel3Container: string;
   poolsValue3Container: number;
-  label1BottomContainer: string;
-  value1BottomContainer: number;
-  label2BottomContainer: string;
-  value2BottomContainer: number;
-  label3BottomContainer: string;
-  value3BottomContainer: number;
-  fluctuation1BottomContainer: string;
-  fluctuation2BottomContainer: string;
-  fluctuation3BottomContainer: string;
+  bottomContainerItems: BottomContainerItem[];
   data: GraphicDataType[] | undefined;
   series: SeriesDataType[];
 };
@@ -41,8 +38,8 @@ export type IDashboard = {
 export const Dashboard = ({
   data,
   series,
+  bottomContainerItems,
   colors,
-  color,
   currency,
   fontFamily,
   poolsLabel,
@@ -56,15 +53,6 @@ export const Dashboard = ({
   poolsValue2Container,
   poolsLabel3Container,
   poolsValue3Container,
-  label1BottomContainer,
-  value1BottomContainer,
-  label2BottomContainer,
-  value2BottomContainer,
-  label3BottomContainer,
-  value3BottomContainer,
-  fluctuation1BottomContainer,
-  fluctuation2BottomContainer,
-  fluctuation3BottomContainer,
 }: IDashboard) => (
   <Container
     content={
@@ -103,91 +91,32 @@ export const Dashboard = ({
                     colors={colors}
                     data={data}
                     series={series}
-                    currency={currency}
                     fontFamily={fontFamily}
                   />
                 </>
               }
             />
             <div className="footer-container-dashboard">
-              <FlatContainer
-                externalStyles="dashboard-bottom-flat-containers"
-                content={
-                  <div className="flex-column-direction">
-                    <span className={clsx("variant-body1", "flex-center")}>
-                      <Point color={colors[0] || color} />{" "}
-                      {label1BottomContainer}
-                    </span>
-                    <div className="flat-body-container">
-                      <div className="flex-column-direction">
-                        <span className="variant-h3">
-                          {value1BottomContainer}
-                        </span>
-                        <span
-                          className={clsx("variant-body2", "margin-top-medium")}
-                        >
-                          {currency}
-                        </span>
+              {(bottomContainerItems || []).map((item, index) => (
+                <FlatContainer
+                  key={`bottom-item-${index}`}
+                  externalStyles="dashboard-bottom-flat-containers"
+                  content={
+                    <div className="flex-column-direction">
+                      <span className={clsx("flex-center", "variant-body1")}>
+                        <Point color={colors[index % colors.length]} />{" "}
+                        {item.label}
+                      </span>
+                      <div className="flat-body-container">
+                        <div className="flex-column-direction">
+                          <span className="variant-h3">{item.value}</span>
+                        </div>
+                        <FluctuationComponent label={item.fluctuation} />
                       </div>
-                      <FluctuationComponent
-                        label={fluctuation1BottomContainer}
-                      />
                     </div>
-                  </div>
-                }
-              />
-              <FlatContainer
-                externalStyles="dashboard-bottom-flat-containers"
-                content={
-                  <div className="flex-column-direction">
-                    <span className={clsx("variant-body1", "flex-center")}>
-                      <Point color={colors[1] || color} />{" "}
-                      {label2BottomContainer}
-                    </span>
-                    <div className="flat-body-container">
-                      <div className="flex-column-direction">
-                        <span className="variant-h3">
-                          {value2BottomContainer}
-                        </span>
-                        <span
-                          className={clsx("margin-top-medium", "variant-body2")}
-                        >
-                          {currency}
-                        </span>
-                      </div>
-                      <FluctuationComponent
-                        label={fluctuation2BottomContainer}
-                      />
-                    </div>
-                  </div>
-                }
-              />
-              <FlatContainer
-                externalStyles="dashboard-bottom-flat-containers"
-                content={
-                  <div className="flex-column-direction">
-                    <span className={clsx("flex-center", "variant-body1")}>
-                      <Point color={colors[2] || color} />{" "}
-                      {label3BottomContainer}
-                    </span>
-                    <div className="flat-body-container">
-                      <div className="flex-column-direction">
-                        <span className="variant-h3">
-                          {value3BottomContainer}
-                        </span>
-                        <span
-                          className={clsx("margin-top-medium", "variant-body2")}
-                        >
-                          {currency}
-                        </span>
-                      </div>
-                      <FluctuationComponent
-                        label={fluctuation3BottomContainer}
-                      />
-                    </div>
-                  </div>
-                }
-              />
+                  }
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -206,11 +135,6 @@ export const Dashboard = ({
                   <span className="variant-body1">{poolsLabel1Container}</span>
                   <div className="margin-top">
                     <span className="variant-h3">{poolsValue1Container}</span>
-                    <span
-                      className={clsx("variant-body2", "margin-left-medium")}
-                    >
-                      {currency}
-                    </span>
                   </div>
                 </div>
               }
@@ -222,11 +146,6 @@ export const Dashboard = ({
                   <span className="variant-body1">{poolsLabel2Container}</span>
                   <div className="margin-top">
                     <span className="variant-h3">{poolsValue2Container}</span>
-                    <span
-                      className={clsx("variant-body2", "margin-left-medium")}
-                    >
-                      {currency}
-                    </span>
                   </div>
                 </div>
               }
@@ -238,11 +157,6 @@ export const Dashboard = ({
                   <span className="variant-body1">{poolsLabel3Container}</span>
                   <div className="margin-top">
                     <span className="variant-h3">{poolsValue3Container}</span>
-                    <span
-                      className={clsx("variant-body2", "margin-left-medium")}
-                    >
-                      {currency}
-                    </span>
                   </div>
                 </div>
               }

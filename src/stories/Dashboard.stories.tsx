@@ -61,6 +61,12 @@ const data: GraphicDataType[] = [
   },
 ];
 
+const bottomContainerItems = [
+  { label: "Total Available", value: 20000, fluctuation: "+3.4%" },
+  { label: "Total Borrowed", value: 20000, fluctuation: "-3.4%" },
+  { label: "Total Lent", value: 20000, fluctuation: "+3.4%" },
+]
+
 const Template: Story<IDashboard> = (args) => {
   return (
     <Dashboard
@@ -69,7 +75,6 @@ const Template: Story<IDashboard> = (args) => {
       colors={colors}
       series={series}
       currency="USDC"
-      color="#26A66B"
       poolsLabel="Pools"
       totalValueLocked={888888888888}
       titleGraphic="Total Value Locked"
@@ -81,15 +86,7 @@ const Template: Story<IDashboard> = (args) => {
       poolsValue2Container={2500.0}
       poolsLabel3Container="Interest Paid "
       poolsValue3Container={200.0}
-      label1BottomContainer="Total Available"
-      value1BottomContainer={20000.0}
-      fluctuation1BottomContainer="+3.4%"
-      label2BottomContainer="Total Borrowed"
-      value2BottomContainer={20000.0}
-      fluctuation2BottomContainer="-3.4%"
-      label3BottomContainer="Total Lent"
-      value3BottomContainer={20000.0}
-      fluctuation3BottomContainer="+3.4%"
+      bottomContainerItems={bottomContainerItems}
     />
   );
 };
