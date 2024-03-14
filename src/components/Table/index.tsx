@@ -43,7 +43,7 @@ export interface ITable {
   nextPage?(motion: string): void;
   loaderComponent?: React.ReactNode;
   handleSelectedRowsPage(selectedValue: string): void;
-  setFilters?: React.Dispatch<React.SetStateAction<boolean>>;
+  setFilters: React.Dispatch<React.SetStateAction<String[]>>;
 }
 
 export const Table = ({
@@ -64,6 +64,7 @@ export const Table = ({
   emptyDescription,
   rowsPageSelected,
   handleSelectedRowsPage,
+  setFilters,
 }: ITable) => {
   const [activeFilter, setActiveFilter] = useState(false);
   const buildPaginationArray = (): Array<number> => {
@@ -78,6 +79,16 @@ export const Table = ({
     }
 
     return paginationArray;
+  };
+
+  const updateDate = () => {
+    const data: String[] = [];
+    filters.forEach((filter) => {
+      const element = document.getElementById(filter.label);
+      data.push(element?.value || "");
+    });
+    setFilters(data);
+    setActiveFilter(!activeFilter);
   };
 
   return (
@@ -124,15 +135,19 @@ export const Table = ({
               {activeFilter && (
                 <tr className="tr-head">
                   {filters.map((filter: IFilterObject) => (
-                    <th className="th-filter">
+                    <th key={filter.label} className="th-filter">
                       <div className="filter-container">
                         {filter.options ? (
-                          <select className="input-filter">
-                            <option disabled selected className="input-filter">
+                          <select
+                            className="input-filter"
+                            defaultValue={filter.label}
+                          >
+                            <option disabled className="input-filter">
                               {filter.label}
                             </option>
                             {filter.options.map((option) => (
                               <option
+                                key={option.toString()}
                                 id={filter.label}
                                 className="input-filter"
                               >
@@ -142,6 +157,7 @@ export const Table = ({
                           </select>
                         ) : (
                           <input
+                            id={filter.label}
                             placeholder={filter.label}
                             className="input-filter"
                           />
@@ -152,7 +168,7 @@ export const Table = ({
                   <th className="th-option">
                     <div className="center-element">
                       <Button
-                        onClick={() => setActiveFilter(!activeFilter)}
+                        onClick={() => updateDate()}
                         fontFamily={fontFamily}
                         icon={approveIcon}
                         variant="text"

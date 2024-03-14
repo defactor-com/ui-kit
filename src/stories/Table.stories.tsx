@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Story } from "@storybook/react";
 
 import { Pill } from "../components/Pill";
@@ -11,6 +11,12 @@ export default {
 };
 
 const Template: Story<ITable> = (args) => {
+  const [data, SetData] = useState<String[]>([]);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   return (
     <Table
       {...args}
@@ -23,6 +29,7 @@ const Template: Story<ITable> = (args) => {
       rowsPage={[5, 10, 15]}
       rowsNumberLabel="Rows per page:"
       handleSelectedRowsPage={() => {}}
+      setFilters={SetData}
       loaderComponent={
         <div
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
