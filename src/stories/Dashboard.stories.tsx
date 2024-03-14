@@ -86,6 +86,7 @@ const Template: Story<IDashboard> = (args) => {
       poolsValue2Container={2500.0}
       poolsLabel3Container="Interest Paid "
       poolsValue3Container={200.0}
+      bottomLabel="General"
       bottomContainerItems={bottomContainerItems}
     />
   );

@@ -30,6 +30,7 @@ export type IDashboard = {
   poolsValue2Container: number;
   poolsLabel3Container: string;
   poolsValue3Container: number;
+  bottomLabel: string;
   bottomContainerItems: BottomContainerItem[];
   data: GraphicDataType[] | undefined;
   series: SeriesDataType[];
@@ -38,6 +39,7 @@ export type IDashboard = {
 export const Dashboard = ({
   data,
   series,
+  bottomLabel,
   bottomContainerItems,
   colors,
   currency,
@@ -72,12 +74,13 @@ export const Dashboard = ({
               </span>
             </div>
             <Container
+              externalStyles="chart-container"
               content={
                 <>
                   <div
                     className={clsx(
                       "flex-column-direction",
-                      "chart-title-container"
+                      "margin-bottom-high"
                     )}
                   >
                     {chartSubtitle && (
@@ -96,6 +99,14 @@ export const Dashboard = ({
                 </>
               }
             />
+            {bottomLabel && (
+              <div className={clsx("flex-center", "margin-top-high")}>
+                <div className="pools-icon-container">
+                  <img width={20} src={lendIcon} alt="lend icon" />
+                </div>
+                <span className="variant-h3">{bottomLabel}</span>
+              </div>
+            )}
             <div className="footer-container-dashboard">
               {(bottomContainerItems || []).map((item, index) => (
                 <FlatContainer

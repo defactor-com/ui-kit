@@ -63,7 +63,7 @@ export const CustomTooltip = ({
         content={
           <div style={{ fontFamily: fontFamily }}>
             <span className="date-label">{item.payload.date}</span>
-            <div className={clsx("display-flex","margin-top")}>
+            <div className={clsx("display-flex", "margin-top")}>
               <span className="value-label">{item.value}</span>
               <FluctuationComponent
                 label={item?.payload.fluctuation[keyName || ""]}
@@ -78,12 +78,7 @@ export const CustomTooltip = ({
   return null;
 };
 
-export const Graphic = ({
-  colors,
-  data,
-  series,
-  fontFamily,
-}: IGraphic) => {
+export const Graphic = ({ colors, data, series, fontFamily }: IGraphic) => {
   const [
     { chartData, keyName, keyNames, tooltipActive },
     { isHide, setHide, handleOpenTooltip, handleCloseTooltip },
@@ -118,7 +113,7 @@ export const Graphic = ({
             ))}
           </defs>
 
-          <CartesianGrid strokeDasharray="12 12" vertical={false} />
+          <CartesianGrid strokeDasharray="12 12" />
           <YAxis
             axisLine={false}
             tick={(props) => (
@@ -130,7 +125,9 @@ export const Graphic = ({
                 textAnchor="end"
                 fontWeight={500}
                 fontFamily={fontFamily}
-              >{props.payload.value}</text>
+              >
+                {props.payload.value}
+              </text>
             )}
           />
 
