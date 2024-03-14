@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 import { Point } from "../Point";
 import { Container } from "../Container";
-import { FlatContainer } from "../FlatContainer";
+import { CardContainer } from "../CardContainer";
 import { GraphicDataType, Graphic, SeriesDataType } from "../Graphic";
 import lendIcon from "../../../public/assets/lending.svg";
 import dolarIcon from "../../../public/assets/dolar-icon.svg";
@@ -109,7 +109,7 @@ export const Dashboard = ({
             )}
             <div className="footer-container-dashboard">
               {(bottomContainerItems || []).map((item, index) => (
-                <FlatContainer
+                <CardContainer
                   key={`bottom-item-${index}`}
                   externalStyles="dashboard-bottom-flat-containers"
                   content={
@@ -139,7 +139,7 @@ export const Dashboard = ({
             <span className="variant-h3">{poolsLabel}</span>
           </div>
           <div className="pools-body-container">
-            <FlatContainer
+            <CardContainer
               externalStyles="dashboard-right-flat-containers"
               content={
                 <div>
@@ -150,7 +150,7 @@ export const Dashboard = ({
                 </div>
               }
             />
-            <FlatContainer
+            <CardContainer
               externalStyles="dashboard-right-flat-containers"
               content={
                 <div>
@@ -161,7 +161,7 @@ export const Dashboard = ({
                 </div>
               }
             />
-            <FlatContainer
+            <CardContainer
               externalStyles="dashboard-right-flat-containers"
               content={
                 <div>
