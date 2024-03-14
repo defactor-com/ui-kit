@@ -67,6 +67,16 @@ const bottomContainerItems = [
   { label: "Total Lent", value: 20000, fluctuation: "+3.4%" },
 ]
 
+const formatValue = (value: number) => {
+  const newValue = value.toFixed(2)
+
+  const [integer, decimal] = newValue.toString().split('.')
+
+  return `$${integer.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}${
+    decimal ? '.' + decimal : ''
+  }`
+}
+
 const Template: Story<IDashboard> = (args) => {
   return (
     <Dashboard
@@ -88,6 +98,7 @@ const Template: Story<IDashboard> = (args) => {
       poolsValue3Container={200.0}
       bottomLabel="General"
       bottomContainerItems={bottomContainerItems}
+      formatValue={formatValue}
     />
   );
 };

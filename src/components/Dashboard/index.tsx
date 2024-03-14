@@ -34,6 +34,7 @@ export type IDashboard = {
   bottomContainerItems: BottomContainerItem[];
   data: GraphicDataType[] | undefined;
   series: SeriesDataType[];
+  formatValue: (value: number) => string;
 };
 
 export const Dashboard = ({
@@ -55,6 +56,7 @@ export const Dashboard = ({
   poolsValue2Container,
   poolsLabel3Container,
   poolsValue3Container,
+  formatValue = (value) => value.toString(),
 }: IDashboard) => (
   <Container
     content={
@@ -68,7 +70,7 @@ export const Dashboard = ({
               </span>
             </div>
             <div className="total-value-container">
-              <span className="variant-h1">{totalValueLocked}</span>
+              <span className="variant-h1">{formatValue(totalValueLocked)}</span>
               <span className={clsx("variant-body2", "padding-bottom-medium")}>
                 {currency}
               </span>
@@ -91,6 +93,7 @@ export const Dashboard = ({
                     )}
                   </div>
                   <Graphic
+                    formatValue={formatValue}
                     colors={colors}
                     data={data}
                     series={series}
@@ -99,6 +102,7 @@ export const Dashboard = ({
                 </>
               }
             />
+            <hr className="horizontal-line"/>
             {bottomLabel && (
               <div className={clsx("flex-center", "margin-top-high")}>
                 <div className="pools-icon-container">
@@ -120,7 +124,9 @@ export const Dashboard = ({
                       </span>
                       <div className="flat-body-container">
                         <div className="flex-column-direction">
-                          <span className="variant-h3">{item.value}</span>
+                          <span className="variant-h3">
+                            {formatValue(item.value)}
+                          </span>
                         </div>
                         <FluctuationComponent label={item.fluctuation} />
                       </div>
@@ -145,7 +151,9 @@ export const Dashboard = ({
                 <div>
                   <span className="variant-body1">{poolsLabel1Container}</span>
                   <div className="margin-top">
-                    <span className="variant-h3">{poolsValue1Container}</span>
+                    <span className="variant-h3">
+                      {formatValue(poolsValue1Container)}
+                    </span>
                   </div>
                 </div>
               }
@@ -156,7 +164,9 @@ export const Dashboard = ({
                 <div>
                   <span className="variant-body1">{poolsLabel2Container}</span>
                   <div className="margin-top">
-                    <span className="variant-h3">{poolsValue2Container}</span>
+                    <span className="variant-h3">
+                      {formatValue(poolsValue2Container)}
+                    </span>
                   </div>
                 </div>
               }
@@ -167,7 +177,9 @@ export const Dashboard = ({
                 <div>
                   <span className="variant-body1">{poolsLabel3Container}</span>
                   <div className="margin-top">
-                    <span className="variant-h3">{poolsValue3Container}</span>
+                    <span className="variant-h3">
+                      {formatValue(poolsValue3Container)}
+                    </span>
                   </div>
                 </div>
               }

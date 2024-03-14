@@ -39,11 +39,13 @@ export interface IGraphic {
   series: SeriesDataType[];
   fontFamily?: string;
   colors: string[];
+  formatValue: (value: number) => string;
 }
 
 export interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
   fontFamily?: string;
   keyName?: string;
+  formatValue: (value: number) => string;
 }
 
 export const CustomTooltip = ({
@@ -51,6 +53,7 @@ export const CustomTooltip = ({
   payload,
   active,
   keyName,
+  formatValue,
 }: CustomTooltipProps) => {
   if (active && payload && payload.length && keyName) {
     const item = payload.find((item) => item.name === keyName);
@@ -64,7 +67,9 @@ export const CustomTooltip = ({
           <div style={{ fontFamily: fontFamily }}>
             <span className="date-label">{item.payload.date}</span>
             <div className={clsx("display-flex", "margin-top")}>
-              <span className="value-label">{item.value}</span>
+              <span className="value-label">
+                {formatValue(Number(item.value))}
+              </span>
               <FluctuationComponent
                 label={item?.payload.fluctuation[keyName || ""]}
               />
@@ -78,7 +83,13 @@ export const CustomTooltip = ({
   return null;
 };
 
-export const Graphic = ({ colors, data, series, fontFamily }: IGraphic) => {
+export const Graphic = ({
+  colors,
+  data,
+  series,
+  fontFamily,
+  formatValue,
+}: IGraphic) => {
   const [
     { chartData, keyName, keyNames, tooltipActive },
     { isHide, setHide, handleOpenTooltip, handleCloseTooltip },
@@ -134,7 +145,11 @@ export const Graphic = ({ colors, data, series, fontFamily }: IGraphic) => {
           <Tooltip
             content={
               tooltipActive ? (
-                <CustomTooltip fontFamily={fontFamily} keyName={keyName} />
+                <CustomTooltip
+                  fontFamily={fontFamily}
+                  formatValue={formatValue}
+                  keyName={keyName}
+                />
               ) : (
                 <></>
               )
