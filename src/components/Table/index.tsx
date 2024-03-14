@@ -1,16 +1,23 @@
 import clsx from "clsx";
-import React from "react";
+import React, { useState } from "react";
 
 import { Button } from "../Button";
 import { Container } from "../Container";
 import leftIcon from "../../../public/assets/chevron_left.svg";
 import rightIcon from "../../../public/assets/chevron_right.svg";
 import downIcon from "../../../public/assets/arrow-down-icon.svg";
+import filterIcon from "../../../public/assets/filter-options-icon.svg";
+import approveIcon from "../../../public/assets/approve-icon.svg";
 import admirationIcon from "../../../public/assets/admiration-icon.svg";
 
 export interface IHeaderObject {
   label: string;
   sortFunction?(): void;
+}
+
+export interface IFilterObject {
+  label: string;
+  options?: Array<String>;
 }
 
 interface IRowsObject {
@@ -32,15 +39,18 @@ export interface ITable {
   emptyDescription: string;
   rowsPageSelected: number;
   headers: Array<IHeaderObject>;
+  filters: Array<IFilterObject>;
   nextPage?(motion: string): void;
   loaderComponent?: React.ReactNode;
   handleSelectedRowsPage(selectedValue: string): void;
+  setFilters?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const Table = ({
   rows,
   loading,
   headers,
+  filters,
   rowsPage,
   nextPage,
   emptyTitle,
@@ -55,6 +65,7 @@ export const Table = ({
   rowsPageSelected,
   handleSelectedRowsPage,
 }: ITable) => {
+  const [activeFilter, setActiveFilter] = useState(false);
   const buildPaginationArray = (): Array<number> => {
     const paginationArray = [];
     let amountElements = totalRowsNumber / rowsPageSelected;
@@ -97,8 +108,59 @@ export const Table = ({
                     </div>
                   </th>
                 ))}
-                {haveOptions && <th className="th-option" />}
+                {haveOptions && (
+                  <th className="th-option">
+                    <div className="center-element">
+                      <Button
+                        onClick={() => setActiveFilter(!activeFilter)}
+                        fontFamily={fontFamily}
+                        icon={filterIcon}
+                        variant="text"
+                      />
+                    </div>
+                  </th>
+                )}
               </tr>
+              {activeFilter && (
+                <tr className="tr-head">
+                  {filters.map((filter: IFilterObject) => (
+                    <th className="th-filter">
+                      <div className="filter-container">
+                        {filter.options ? (
+                          <select className="input-filter">
+                            <option disabled selected className="input-filter">
+                              {filter.label}
+                            </option>
+                            {filter.options.map((option) => (
+                              <option
+                                id={filter.label}
+                                className="input-filter"
+                              >
+                                {option}
+                              </option>
+                            ))}
+                          </select>
+                        ) : (
+                          <input
+                            placeholder={filter.label}
+                            className="input-filter"
+                          />
+                        )}
+                      </div>
+                    </th>
+                  ))}
+                  <th className="th-option">
+                    <div className="center-element">
+                      <Button
+                        onClick={() => setActiveFilter(!activeFilter)}
+                        fontFamily={fontFamily}
+                        icon={approveIcon}
+                        variant="text"
+                      />
+                    </div>
+                  </th>
+                </tr>
+              )}
             </thead>
             {(rows?.length > 0 || loading) && (
               <tbody>

@@ -40,6 +40,14 @@ const Template: Story<ITable> = (args) => {
         { label: "Unlocks" },
         { label: "Status" },
       ]}
+      filters={[
+        { label: "Position", options: ["Gold", "Silver"] },
+        { label: "Amount" },
+        { label: "Rewards" },
+        { label: "Lock" },
+        { label: "Unlocks" },
+        { label: "Status" },
+      ]}
     />
   );
 };
