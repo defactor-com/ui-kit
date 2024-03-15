@@ -20,7 +20,7 @@ export interface IFilterObject {
   options?: Array<String>;
 }
 
-interface IRowsObject {
+export interface IRowsObject {
   function?(): void;
   items: Array<React.ReactNode>;
 }
@@ -81,10 +81,10 @@ export const Table = ({
     return paginationArray;
   };
 
-  const updateDate = () => {
+  const updateData = () => {
     const data: String[] = [];
     filters.forEach((filter) => {
-      const element = document.getElementById(filter.label);
+      const element = document.getElementById(filter.label) as HTMLInputElement;
       data.push(element?.value || "");
     });
     setFilters(data);
@@ -110,10 +110,14 @@ export const Table = ({
                     <div className="center-element">
                       {item.label}
                       {item.sortFunction && (
-                        <img
-                          src={downIcon}
+                        <Button
                           onClick={item.sortFunction}
-                          className="margin-left-medium"
+                          fontFamily={fontFamily}
+                          icon={downIcon}
+                          variant="text"
+                          style={{
+                            padding: "14px 18px 14px 8px",
+                          }}
                         />
                       )}
                     </div>
@@ -127,6 +131,7 @@ export const Table = ({
                         fontFamily={fontFamily}
                         icon={filterIcon}
                         variant="text"
+                        style={{ padding: "8px 16px 8px 0px" }}
                       />
                     </div>
                   </th>
@@ -168,7 +173,7 @@ export const Table = ({
                   <th className="th-option">
                     <div className="center-element">
                       <Button
-                        onClick={() => updateDate()}
+                        onClick={() => updateData()}
                         fontFamily={fontFamily}
                         icon={approveIcon}
                         variant="text"
@@ -260,8 +265,10 @@ export const Table = ({
                         visiblePage === item ? "underline" : "none",
                       color: visiblePage === item ? "#26A66B" : "none",
                       fontWeight: visiblePage === item ? "bold" : "normal",
+                      cursor: "pointer",
                     }}
                     key={item}
+                    onClick={() => {}}
                   >
                     {item}
                   </span>

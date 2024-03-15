@@ -9,6 +9,10 @@ table {
   padding: 0 !important;
 }
 
+tbody td {
+  width: calc(100% / 5);
+}
+
 th,
 td {
   padding: 16px 24px;
@@ -16,7 +20,8 @@ td {
 }
 
 .th-option {
-  width: 100 !important;
+  width: auto;
+  padding: 0;
 }
 
 tr {

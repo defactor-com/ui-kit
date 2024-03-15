@@ -1,21 +1,85 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Story } from "@storybook/react";
 
 import { Pill } from "../components/Pill";
-import { Table, ITable } from "../components/Table";
-import optionIcon from "../../public/assets/options-icon.svg";
+import { Table, ITable, IRowsObject } from "../components/Table";
 
 export default {
   title: "Table",
   component: Table,
 };
 
-const Template: Story<ITable> = (args) => {
-  const [data, SetData] = useState<String[]>([]);
+const dataTable = [
+  {
+    function: () => {},
+    position: "Gold",
+    amount: "1500 USDC",
+    rewards: "1.5 USDC (10% APY)",
+    lock: "365 Days",
+    unLock: "Dec 31, 2024",
+    status: "Claim",
+    backgroundPill: "#26A66B",
+    colorPill: "#fff",
+  },
+  {
+    function: null,
+    position: "Silver",
+    amount: "900 USDC",
+    rewards: "15 USDC (18% APY)",
+    lock: "270 Days",
+    unLock: "Oct 15, 2024",
+    status: "Locked",
+    backgroundPill: "rgba(235, 159, 0, 0.10)",
+    colorPill: "#E0A225",
+  },
+  {
+    function: null,
+    position: "Bronze",
+    amount: "800 USDC",
+    rewards: "5 USDC (7% APY)",
+    lock: "180 Days",
+    unLock: "Sep 1, 2024",
+    status: "Claim",
+    backgroundPill: "#26A66B",
+    colorPill: "#fff",
+  },
+  {
+    function: null,
+    position: "Platinum",
+    amount: "2000 USDC",
+    rewards: "20 USDC (15% APY)",
+    lock: "400 Days",
+    unLock: "Feb 15, 2025",
+    status: "Locked",
+    backgroundPill: "rgba(235, 159, 0, 0.10)",
+    colorPill: "#E0A225",
+  },
+  {
+    function: null,
+    position: "Diamond",
+    amount: "3000 USDC",
+    rewards: "30 USDC (20% APY)",
+    lock: "450 Days",
+    unLock: "Mar 20, 2025",
+    status: "Claim",
+    backgroundPill: "#26A66B",
+    colorPill: "#fff",
+  },
+  {
+    function: null,
+    position: "Emerald",
+    amount: "2500 USDC",
+    rewards: "25 USDC (17.5% APY)",
+    lock: "380 Days",
+    unLock: "Jan 5, 2025",
+    status: "Locked",
+    backgroundPill: "rgba(235, 159, 0, 0.10)",
+    colorPill: "#E0A225",
+  },
+];
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+const Template: Story<ITable> = (args) => {
+  const [data, setData] = useState<String[]>([]);
 
   return (
     <Table
@@ -29,7 +93,7 @@ const Template: Story<ITable> = (args) => {
       rowsPage={[5, 10, 15]}
       rowsNumberLabel="Rows per page:"
       handleSelectedRowsPage={() => {}}
-      setFilters={SetData}
+      setFilters={setData}
       loaderComponent={
         <div
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
@@ -59,68 +123,42 @@ const Template: Story<ITable> = (args) => {
   );
 };
 
+const dynamicRows = dataTable.map((item) => {
+  const row: IRowsObject = {
+    items: [
+      <div>
+        <span>{item.position}</span>
+      </div>,
+      <div>
+        <span>{item.amount}</span>
+      </div>,
+      <div>
+        <span>{item.rewards}</span>
+      </div>,
+      <div>
+        <span>{item.lock}</span>
+      </div>,
+      <div>
+        <span>{item.unLock}</span>
+      </div>,
+      <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+        <Pill
+          label={item.status}
+          bgColor={item.backgroundPill}
+          color={item.colorPill}
+        />
+      </div>,
+    ],
+  };
+
+  if (item.function !== null) {
+    row.function = item.function;
+  }
+
+  return row;
+});
+
 export const TableItem = Template.bind({});
 TableItem.args = {
-  rows: [
-    {
-      function: () => {},
-      items: [
-        <div>
-          <span>Gold</span>
-        </div>,
-        <div>
-          <span>1,200 USDC</span>
-        </div>,
-        <div>
-          <span>1 USDC (9,25% APY)</span>
-        </div>,
-        <div>
-          <span>360 Days</span>
-        </div>,
-        <div>
-          <span>Dec 25 2024</span>
-        </div>,
-        <div
-          style={{ width: "100%", display: "flex", justifyContent: "center" }}
-        >
-          <Pill label="Claim" bgColor="#26A66B" color="#FFF" />
-        </div>,
-        <>
-          <img src={optionIcon} alt="options icon" className="cursor-pointer" />
-        </>,
-      ],
-    },
-    {
-      function: () => {},
-      items: [
-        <div>
-          <span>Silver</span>
-        </div>,
-        <div>
-          <span>1,200 USDC</span>
-        </div>,
-        <div>
-          <span>10 USDC (12,3% APY)</span>
-        </div>,
-        <div>
-          <span>180 Days</span>
-        </div>,
-        <div>
-          <span>Aug 9, 2024 13:31</span>
-        </div>,
-        <div
-          style={{ width: "100%", display: "flex", justifyContent: "center" }}
-        >
-          <Pill
-            label="Locked"
-            bgColor="rgba(235, 159, 0, 0.10)"
-            color="#E0A225"
-          />
-        </div>,
-        <>
-          <img src={optionIcon} alt="options icon" className="cursor-pointer" />
-        </>,
-      ],
-    },
-  ],
+  rows: dynamicRows,
 };
