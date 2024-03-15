@@ -1,5 +1,4 @@
 table {
-  position: relative;
   width: 100%;
   border-collapse: collapse;
 }
@@ -10,7 +9,7 @@ table {
 }
 
 tbody td {
-  width: calc(100% / 5);
+  width: auto;
 }
 
 th,
@@ -22,6 +21,11 @@ td {
 .th-option {
   width: auto;
   padding: 0;
+}
+
+.td-void {
+  padding: 0;
+  width: 0;
 }
 
 tr {
@@ -41,6 +45,15 @@ tr {
 .tr-head.hidden {
   height: 0;
   overflow: hidden;
+}
+
+.tr-action {
+  width: auto;
+}
+
+.tr-action:hover {
+  width: 100%;
+  background: rgba(38, 166, 107, 0.1);
 }
 
 .tr-head.visible {

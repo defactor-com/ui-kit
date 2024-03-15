@@ -101,7 +101,7 @@ export const Table = ({
               style={{
                 backgroundColor: headerbgColor
                   ? headerbgColor
-                  : "rgba(0, 169, 101, 0.05)",
+                  : "rgba(38, 166, 107, 0.1)",
               }}
             >
               <tr>
@@ -189,15 +189,16 @@ export const Table = ({
                   <tr
                     key={index}
                     onClick={row.onClickRow}
-                    className={row.onClickRow ? "cursor-pointer" : ""}
+                    className={"tr-action"}
                   >
                     {row.items.map((itemRow, indexRow) => (
                       <td key={indexRow}>{itemRow}</td>
                     ))}
+                    <td className="td-void"></td>
                   </tr>
                 ))}
                 {!rows.length && (
-                  <tr>
+                  <tr style={{ border: "2px solid red" }}>
                     {headers.map((item) => (
                       <td key={item.label}>{loaderComponent}</td>
                     ))}
