@@ -9,9 +9,9 @@ export default {
   component: Table,
 };
 
-const dataTable = [
+const tableData = [
   {
-    function: () => {},
+    onClickRow: () => {},
     position: "Gold",
     amount: "1500 USDC",
     rewards: "1.5 USDC (10% APY)",
@@ -22,7 +22,7 @@ const dataTable = [
     colorPill: "#fff",
   },
   {
-    function: null,
+    onClickRow: null,
     position: "Silver",
     amount: "900 USDC",
     rewards: "15 USDC (18% APY)",
@@ -33,7 +33,7 @@ const dataTable = [
     colorPill: "#E0A225",
   },
   {
-    function: null,
+    onClickRow: null,
     position: "Bronze",
     amount: "800 USDC",
     rewards: "5 USDC (7% APY)",
@@ -44,7 +44,7 @@ const dataTable = [
     colorPill: "#fff",
   },
   {
-    function: null,
+    onClickRow: null,
     position: "Platinum",
     amount: "2000 USDC",
     rewards: "20 USDC (15% APY)",
@@ -55,7 +55,7 @@ const dataTable = [
     colorPill: "#E0A225",
   },
   {
-    function: null,
+    onClickRow: null,
     position: "Diamond",
     amount: "3000 USDC",
     rewards: "30 USDC (20% APY)",
@@ -66,7 +66,7 @@ const dataTable = [
     colorPill: "#fff",
   },
   {
-    function: null,
+    onClickRow: null,
     position: "Emerald",
     amount: "2500 USDC",
     rewards: "25 USDC (17.5% APY)",
@@ -123,7 +123,7 @@ const Template: Story<ITable> = (args) => {
   );
 };
 
-const dynamicRows = dataTable.map((item) => {
+const dynamicRows = tableData.map((item) => {
   const row: IRowsObject = {
     items: [
       <div>
@@ -151,8 +151,8 @@ const dynamicRows = dataTable.map((item) => {
     ],
   };
 
-  if (item.function !== null) {
-    row.function = item.function;
+  if (item.onClickRow !== null) {
+    row.onClickRow = item.onClickRow;
   }
 
   return row;

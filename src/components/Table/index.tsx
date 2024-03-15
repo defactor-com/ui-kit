@@ -21,7 +21,7 @@ export interface IFilterObject {
 }
 
 export interface IRowsObject {
-  function?(): void;
+  onClickRow?(): void;
   items: Array<React.ReactNode>;
 }
 
@@ -188,8 +188,8 @@ export const Table = ({
                 {rows?.map((row, index) => (
                   <tr
                     key={index}
-                    onClick={row.function}
-                    className={row.function ? "cursor-pointer" : ""}
+                    onClick={row.onClickRow}
+                    className={row.onClickRow ? "cursor-pointer" : ""}
                   >
                     {row.items.map((itemRow, indexRow) => (
                       <td key={indexRow}>{itemRow}</td>
