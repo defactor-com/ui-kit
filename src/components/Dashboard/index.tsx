@@ -34,7 +34,7 @@ export type IDashboard = {
   bottomContainerItems: BottomContainerItem[];
   data: GraphicDataType[] | undefined;
   series: SeriesDataType[];
-  formatValue: (value: number) => string;
+  formatValue: (value: number, options?: Intl.NumberFormatOptions) => string;
 };
 
 export const Dashboard = ({
@@ -56,7 +56,7 @@ export const Dashboard = ({
   poolsValue2Container,
   poolsLabel3Container,
   poolsValue3Container,
-  formatValue = (value) => value.toString(),
+  formatValue = (value) => value.toLocaleString("en-US"),
 }: IDashboard) => (
   <Container
     content={
@@ -70,7 +70,9 @@ export const Dashboard = ({
               </span>
             </div>
             <div className="total-value-container">
-              <span className="variant-h1">{formatValue(totalValueLocked)}</span>
+              <span className="variant-h1">
+                {formatValue(totalValueLocked, { style: "decimal" })}
+              </span>
               <span className={clsx("variant-body2", "padding-bottom-medium")}>
                 {currency}
               </span>
@@ -102,7 +104,7 @@ export const Dashboard = ({
                 </>
               }
             />
-            <hr className="horizontal-line"/>
+            <hr className="horizontal-line" />
             {bottomLabel && (
               <div className={clsx("flex-center", "margin-top-high")}>
                 <div className="pools-icon-container">

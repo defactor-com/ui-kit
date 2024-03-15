@@ -65,17 +65,15 @@ const bottomContainerItems = [
   { label: "Total Available", value: 20000, fluctuation: "+3.4%" },
   { label: "Total Borrowed", value: 20000, fluctuation: "-3.4%" },
   { label: "Total Lent", value: 20000, fluctuation: "+3.4%" },
-]
+];
 
-const formatValue = (value: number) => {
-  const newValue = value.toFixed(2)
-
-  const [integer, decimal] = newValue.toString().split('.')
-
-  return `$${integer.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}${
-    decimal ? '.' + decimal : ''
-  }`
-}
+const formatValue = (value: number, options?: Intl.NumberFormatOptions) => {
+  return value.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+    ...options,
+  });
+};
 
 const Template: Story<IDashboard> = (args) => {
   return (

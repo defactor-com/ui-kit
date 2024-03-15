@@ -18,6 +18,7 @@ import {
 import { Container } from "../Container";
 import { FluctuationComponent } from "../FluctuationComponent";
 import { Point } from "../Point";
+
 import useGraphicState from "./useGraphicState";
 
 export interface GraphicDataType {
