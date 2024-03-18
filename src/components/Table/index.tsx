@@ -1,11 +1,14 @@
 import clsx from "clsx";
-import React from "react";
+import React, { useState } from "react";
 
 import { Button } from "../Button";
 import { Container } from "../Container";
+import { DropDown } from "../DropDown";
 import leftIcon from "../../../public/assets/chevron_left.svg";
 import rightIcon from "../../../public/assets/chevron_right.svg";
 import downIcon from "../../../public/assets/arrow-down-icon.svg";
+import filterIcon from "../../../public/assets/filter-options-icon.svg";
+import approveIcon from "../../../public/assets/approve-icon.svg";
 import admirationIcon from "../../../public/assets/admiration-icon.svg";
 
 export interface IHeaderObject {
@@ -13,8 +16,14 @@ export interface IHeaderObject {
   sortFunction?(): void;
 }
 
-interface IRowsObject {
-  function?(): void;
+export interface IFilterObject {
+  label: string;
+  options?: string[];
+  type?: "multiple" | "date";
+}
+
+export interface IRowsObject {
+  onClickRow?(): void;
   items: Array<React.ReactNode>;
 }
 
@@ -32,15 +41,18 @@ export interface ITable {
   emptyDescription: string;
   rowsPageSelected: number;
   headers: Array<IHeaderObject>;
+  filters: Array<IFilterObject>;
   nextPage?(motion: string): void;
   loaderComponent?: React.ReactNode;
   handleSelectedRowsPage(selectedValue: string): void;
+  setFilters: React.Dispatch<React.SetStateAction<Array<IFilterObject>>>;
 }
 
 export const Table = ({
   rows,
   loading,
   headers,
+  filters,
   rowsPage,
   nextPage,
   emptyTitle,
@@ -54,7 +66,9 @@ export const Table = ({
   emptyDescription,
   rowsPageSelected,
   handleSelectedRowsPage,
+  setFilters,
 }: ITable) => {
+  const [activeFilter, setActiveFilter] = useState(false);
   const buildPaginationArray = (): Array<number> => {
     const paginationArray = [];
     let amountElements = totalRowsNumber / rowsPageSelected;
@@ -69,6 +83,19 @@ export const Table = ({
     return paginationArray;
   };
 
+  const updateData = () => {
+    const data: Array<IFilterObject> = [];
+    filters.forEach((filter) => {
+      const element = document.getElementById(filter.label) as HTMLInputElement;
+      let selectFilter: IFilterObject = { label: filter.label, options: [] };
+      if (filter.options) selectFilter.options = element.innerText.split(",");
+      else selectFilter.options = [element?.value || ""];
+      data.push(selectFilter);
+    });
+    setFilters(data);
+    setActiveFilter(!activeFilter);
+  };
+
   return (
     <Container
       externalStyles="remove-padding"
@@ -79,7 +106,7 @@ export const Table = ({
               style={{
                 backgroundColor: headerbgColor
                   ? headerbgColor
-                  : "rgba(0, 169, 101, 0.05)",
+                  : "rgba(38, 166, 107, 0.1)",
               }}
             >
               <tr>
@@ -88,33 +115,89 @@ export const Table = ({
                     <div className="center-element">
                       {item.label}
                       {item.sortFunction && (
-                        <img
-                          src={downIcon}
+                        <Button
                           onClick={item.sortFunction}
-                          className="margin-left-medium"
+                          fontFamily={fontFamily}
+                          icon={downIcon}
+                          variant="text"
+                          style={{
+                            padding: "14px 18px 14px 8px",
+                          }}
                         />
                       )}
                     </div>
                   </th>
                 ))}
-                {haveOptions && <th className="th-option" />}
+                {haveOptions && (
+                  <th className="th-option">
+                    <div className="center-element">
+                      <Button
+                        onClick={() => setActiveFilter(!activeFilter)}
+                        fontFamily={fontFamily}
+                        icon={filterIcon}
+                        variant="text"
+                        style={{ padding: "8px 16px 8px 0px" }}
+                      />
+                    </div>
+                  </th>
+                )}
               </tr>
+              {activeFilter && (
+                <tr className="tr-head">
+                  {filters.map((filter: IFilterObject) => (
+                    <th key={filter.label} className="th-filter">
+                      <div className="filter-container">
+                        {filter.options ? (
+                          <DropDown
+                            placeholder={filter.label}
+                            options={filter.options}
+                          />
+                        ) : filter.type === "date" ? (
+                          <input
+                            id={filter.label}
+                            placeholder={filter.label}
+                            className="input-filter"
+                            type="date"
+                          />
+                        ) : (
+                          <input
+                            id={filter.label}
+                            placeholder={filter.label}
+                            className="input-filter"
+                          />
+                        )}
+                      </div>
+                    </th>
+                  ))}
+                  <th className="th-option">
+                    <div className="center-element">
+                      <Button
+                        onClick={() => updateData()}
+                        fontFamily={fontFamily}
+                        icon={approveIcon}
+                        variant="text"
+                      />
+                    </div>
+                  </th>
+                </tr>
+              )}
             </thead>
             {(rows?.length > 0 || loading) && (
               <tbody>
                 {rows?.map((row, index) => (
                   <tr
                     key={index}
-                    onClick={row.function}
-                    className={row.function ? "cursor-pointer" : ""}
+                    onClick={row.onClickRow}
+                    className={row.onClickRow ? "tr-action" : "tr-hightlight"}
                   >
                     {row.items.map((itemRow, indexRow) => (
                       <td key={indexRow}>{itemRow}</td>
                     ))}
+                    <td className="td-void"></td>
                   </tr>
                 ))}
                 {!rows.length && (
-                  <tr>
+                  <tr style={{ border: "2px solid red" }}>
                     {headers.map((item) => (
                       <td key={item.label}>{loaderComponent}</td>
                     ))}
@@ -182,8 +265,10 @@ export const Table = ({
                         visiblePage === item ? "underline" : "none",
                       color: visiblePage === item ? "#26A66B" : "none",
                       fontWeight: visiblePage === item ? "bold" : "normal",
+                      cursor: "pointer",
                     }}
                     key={item}
+                    onClick={() => {}}
                   >
                     {item}
                   </span>

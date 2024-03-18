@@ -8,6 +8,10 @@ table {
   padding: 0 !important;
 }
 
+tbody td {
+  width: auto;
+}
+
 th,
 td {
   padding: 16px 24px;
@@ -15,7 +19,13 @@ td {
 }
 
 .th-option {
-  width: 0 !important;
+  width: auto;
+  padding: 0;
+}
+
+.td-void {
+  padding: 0;
+  width: 0;
 }
 
 tr {
@@ -26,6 +36,60 @@ tr {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.tr-head {
+  transition: height 2s ease;
+}
+
+.tr-head.hidden {
+  height: 0;
+  overflow: hidden;
+}
+
+.tr-hightlight {
+  width: auto;
+}
+
+.tr-hightlight:hover {
+  width: 100%;
+  background: rgba(38, 166, 107, 0.1);
+}
+
+.tr-action {
+  cursor: pointer;
+}
+
+.tr-action:hover {
+  background: rgba(38, 166, 107, 0.1);
+}
+
+.tr-head.visible {
+  height: 100%;
+}
+
+.th-filter {
+  padding: 16px 8px;
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-filter {
+  text-align: center;
+  width: 105px;
+  height: 33px;
+  border-radius: 4px;
+  padding: 0;
+  color: #7c7d7e;
+  border: 1px solid #7c7d7e;
+}
+
+.input-filter:focus-visible {
+  border: 1px solid #26a66b !important;
 }
 
 .empt-state-container {

@@ -9,6 +9,7 @@ export * from "./components/Button";
 export * from "./components/Sidebar";
 export * from "./components/Graphic";
 export * from "./components/Dashboard";
+export * from "./components/DropDown";
 export * from "./components/Container";
 export * from "./components/LendBorrow";
 export * from "./components/MenuOption";
