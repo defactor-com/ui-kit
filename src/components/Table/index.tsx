@@ -18,7 +18,7 @@ export interface IHeaderObject {
 
 export interface IFilterObject {
   label: string;
-  options?: Array<String>;
+  options?: string[];
   type?: "multiple" | "date";
 }
 
@@ -45,7 +45,7 @@ export interface ITable {
   nextPage?(motion: string): void;
   loaderComponent?: React.ReactNode;
   handleSelectedRowsPage(selectedValue: string): void;
-  setFilters: React.Dispatch<React.SetStateAction<String[]>>;
+  setFilters: React.Dispatch<React.SetStateAction<Array<IFilterObject>>>;
 }
 
 export const Table = ({
@@ -84,10 +84,13 @@ export const Table = ({
   };
 
   const updateData = () => {
-    const data: String[] = [];
+    const data: Array<IFilterObject> = [];
     filters.forEach((filter) => {
       const element = document.getElementById(filter.label) as HTMLInputElement;
-      data.push(element?.value || "");
+      let selectFilter: IFilterObject = { label: filter.label, options: [] };
+      if (filter.options) selectFilter.options = element.innerText.split(",");
+      else selectFilter.options = [element?.value || ""];
+      data.push(selectFilter);
     });
     setFilters(data);
     setActiveFilter(!activeFilter);
@@ -145,23 +148,10 @@ export const Table = ({
                     <th key={filter.label} className="th-filter">
                       <div className="filter-container">
                         {filter.options ? (
-                          <select
-                            className="input-filter"
-                            defaultValue={filter.label}
-                          >
-                            <option disabled className="input-filter">
-                              {filter.label}
-                            </option>
-                            {filter.options.map((option) => (
-                              <option
-                                key={option.toString()}
-                                id={filter.label}
-                                className="input-filter"
-                              >
-                                {option}
-                              </option>
-                            ))}
-                          </select>
+                          <DropDown
+                            placeholder={filter.label}
+                            options={filter.options}
+                          />
                         ) : filter.type === "date" ? (
                           <input
                             id={filter.label}

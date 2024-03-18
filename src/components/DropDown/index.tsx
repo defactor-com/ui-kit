@@ -37,6 +37,7 @@ export const DropDown = ({ placeholder, options }: IDropDownObject) => {
     <div>
       <FormControl>
         <Select
+          id={placeholder}
           multiple
           displayEmpty
           value={personName}
@@ -44,7 +45,7 @@ export const DropDown = ({ placeholder, options }: IDropDownObject) => {
           input={<OutlinedInput />}
           renderValue={(selected) => {
             if (selected.length === 0) {
-              return <em>{placeholder}</em>;
+              return <em style={{ color: "#7c7d7e" }}>{placeholder}</em>;
             }
 
             return selected.join(", ");

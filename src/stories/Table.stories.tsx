@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Story } from "@storybook/react";
 
 import { Pill } from "../components/Pill";
-import { Table, ITable, IRowsObject } from "../components/Table";
+import { Table, ITable, IRowsObject, IFilterObject } from "../components/Table";
 
 export default {
   title: "Table",
@@ -79,7 +79,7 @@ const tableData = [
 ];
 
 const Template: Story<ITable> = (args) => {
-  const [data, setData] = useState<String[]>([]);
+  const [data, setData] = useState<Array<IFilterObject>>([]);
 
   return (
     <Table
