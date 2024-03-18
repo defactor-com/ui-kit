@@ -211,6 +211,7 @@ $breakpoint-mobile: 600px;
 }
 
 .chart-container {
+  margin-bottom: 24px;
   @media (max-width: $breakpoint-mobile) {
     box-shadow: none !important;
   }
@@ -243,6 +244,7 @@ $breakpoint-mobile: 600px;
   display: none;
   @media (max-width: $breakpoint-mobile) {
     display: block;
-    border: 0.5px solid #BDBDBD80
+    border: 0.5px solid #BDBDBD80;
+    margin-top: 24px;
   }
 }

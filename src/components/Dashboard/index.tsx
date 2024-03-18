@@ -8,6 +8,7 @@ import { GraphicDataType, Graphic, SeriesDataType } from "../Graphic";
 import lendIcon from "../../../public/assets/lending.svg";
 import dolarIcon from "../../../public/assets/dolar-icon.svg";
 import { FluctuationComponent } from "../FluctuationComponent";
+import { ChartContainer } from "../ChartContainer";
 
 export type BottomContainerItem = {
   label: string;
@@ -77,34 +78,19 @@ export const Dashboard = ({
                 {currency}
               </span>
             </div>
-            <Container
-              externalStyles="chart-container"
+            <ChartContainer
+              chartDescription={chartDescription}
+              chartSubtitle={chartSubtitle}
               content={
-                <>
-                  <div
-                    className={clsx(
-                      "flex-column-direction",
-                      "margin-bottom-high"
-                    )}
-                  >
-                    {chartSubtitle && (
-                      <span className="variant-h3">{chartSubtitle}</span>
-                    )}
-                    {chartDescription && (
-                      <span className="variant-body2">{chartDescription}</span>
-                    )}
-                  </div>
-                  <Graphic
-                    formatValue={formatValue}
-                    colors={colors}
-                    data={data}
-                    series={series}
-                    fontFamily={fontFamily}
-                  />
-                </>
+                <Graphic
+                  formatValue={formatValue}
+                  colors={colors}
+                  data={data}
+                  series={series}
+                  fontFamily={fontFamily}
+                />
               }
             />
-            <hr className="horizontal-line" />
             {bottomLabel && (
               <div className={clsx("flex-center", "margin-top-high")}>
                 <div className="pools-icon-container">
