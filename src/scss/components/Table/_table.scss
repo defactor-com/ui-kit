@@ -47,12 +47,20 @@ tr {
   overflow: hidden;
 }
 
-.tr-action {
+.tr-hightlight {
   width: auto;
 }
 
-.tr-action:hover {
+.tr-hightlight:hover {
   width: 100%;
+  background: rgba(38, 166, 107, 0.1);
+}
+
+.tr-action {
+  cursor: pointer;
+}
+
+.tr-action:hover {
   background: rgba(38, 166, 107, 0.1);
 }
 

@@ -197,7 +197,7 @@ export const Table = ({
                   <tr
                     key={index}
                     onClick={row.onClickRow}
-                    className={"tr-action"}
+                    className={row.onClickRow ? "tr-action" : "tr-hightlight"}
                   >
                     {row.items.map((itemRow, indexRow) => (
                       <td key={indexRow}>{itemRow}</td>
