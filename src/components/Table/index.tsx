@@ -18,6 +18,7 @@ export interface IHeaderObject {
 export interface IFilterObject {
   label: string;
   options?: Array<String>;
+  type?: "multiple" | "date";
 }
 
 export interface IRowsObject {
@@ -160,6 +161,13 @@ export const Table = ({
                               </option>
                             ))}
                           </select>
+                        ) : filter.type === "date" ? (
+                          <input
+                            id={filter.label}
+                            placeholder={filter.label}
+                            className="input-filter"
+                            type="date"
+                          />
                         ) : (
                           <input
                             id={filter.label}

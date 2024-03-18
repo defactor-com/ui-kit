@@ -112,11 +112,11 @@ const Template: Story<ITable> = (args) => {
         { label: "Status" },
       ]}
       filters={[
-        { label: "Position", options: ["Gold", "Silver"] },
+        { label: "Position", options: ["Gold", "Silver"], type: "multiple" },
         { label: "Amount" },
         { label: "Rewards" },
         { label: "Lock" },
-        { label: "Unlocks" },
+        { label: "Unlocks", type: "date" },
         { label: "Status" },
       ]}
     />
