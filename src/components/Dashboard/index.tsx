@@ -10,6 +10,11 @@ import dolarIcon from "../../../public/assets/dolar-icon.svg";
 import { FluctuationComponent } from "../FluctuationComponent";
 import { ChartContainer } from "../ChartContainer";
 
+export type RightContainerItem = {
+  label: string;
+  value: number;
+};
+
 export type BottomContainerItem = {
   label: string;
   value: number;
@@ -20,19 +25,14 @@ export type IDashboard = {
   colors: string[];
   currency: string;
   fontFamily: string;
-  poolsLabel: string;
+  rightLabel: string;
   titleGraphic: string;
   totalValueLocked: number;
   chartSubtitle: string;
   chartDescription: string;
-  poolsLabel1Container: string;
-  poolsValue1Container: number;
-  poolsLabel2Container: string;
-  poolsValue2Container: number;
-  poolsLabel3Container: string;
-  poolsValue3Container: number;
   bottomLabel: string;
   bottomContainerItems: BottomContainerItem[];
+  rightContainerItems: RightContainerItem[];
   data: GraphicDataType[] | undefined;
   series: SeriesDataType[];
   formatValue: (value: number, options?: Intl.NumberFormatOptions) => string;
@@ -42,21 +42,16 @@ export const Dashboard = ({
   data,
   series,
   bottomLabel,
-  bottomContainerItems,
+  bottomContainerItems = [],
+  rightContainerItems = [],
   colors,
   currency,
   fontFamily,
-  poolsLabel,
+  rightLabel,
   titleGraphic,
   totalValueLocked,
   chartSubtitle,
   chartDescription,
-  poolsLabel1Container,
-  poolsValue1Container,
-  poolsLabel2Container,
-  poolsValue2Container,
-  poolsLabel3Container,
-  poolsValue3Container,
   formatValue = (value) => value.toLocaleString("en-US"),
 }: IDashboard) => (
   <Container
@@ -91,38 +86,42 @@ export const Dashboard = ({
                 />
               }
             />
-            {bottomLabel && (
-              <div className={clsx("flex-center", "margin-top-high")}>
-                <div className="pools-icon-container">
-                  <img width={20} src={lendIcon} alt="lend icon" />
+            {bottomLabel && bottomContainerItems.length > 0 && (
+              <>
+                <div className={clsx("flex-center", "margin-top-high")}>
+                  <div className="pools-icon-container">
+                    <img width={20} src={lendIcon} alt="lend icon" />
+                  </div>
+                  <span className="variant-h3">{bottomLabel}</span>
                 </div>
-                <span className="variant-h3">{bottomLabel}</span>
-              </div>
-            )}
-            <div className="footer-container-dashboard">
-              {(bottomContainerItems || []).map((item, index) => (
-                <CardContainer
-                  key={`bottom-item-${index}`}
-                  externalStyles="dashboard-bottom-flat-containers"
-                  content={
-                    <div className="flex-column-direction">
-                      <span className={clsx("flex-center", "variant-body1")}>
-                        <Point color={colors[index % colors.length]} />{" "}
-                        {item.label}
-                      </span>
-                      <div className="flat-body-container">
+                <div className="footer-container-dashboard">
+                  {(bottomContainerItems || []).map((item, index) => (
+                    <CardContainer
+                      key={`bottom-item-${index}`}
+                      externalStyles="dashboard-bottom-flat-containers"
+                      content={
                         <div className="flex-column-direction">
-                          <span className="variant-h3">
-                            {formatValue(item.value)}
+                          <span
+                            className={clsx("flex-center", "variant-body1")}
+                          >
+                            <Point color={colors[index % colors.length]} />{" "}
+                            {item.label}
                           </span>
+                          <div className="flat-body-container">
+                            <div className="flex-column-direction">
+                              <span className="variant-h3">
+                                {formatValue(item.value)}
+                              </span>
+                            </div>
+                            <FluctuationComponent label={item.fluctuation} />
+                          </div>
                         </div>
-                        <FluctuationComponent label={item.fluctuation} />
-                      </div>
-                    </div>
-                  }
-                />
-              ))}
-            </div>
+                      }
+                    />
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </div>
         <div className="pools-container">
@@ -130,48 +129,24 @@ export const Dashboard = ({
             <div className="pools-icon-container">
               <img width={20} src={lendIcon} alt="lend icon" />
             </div>
-            <span className="variant-h3">{poolsLabel}</span>
+            <span className="variant-h3">{rightLabel}</span>
           </div>
           <div className="pools-body-container">
-            <CardContainer
-              externalStyles="dashboard-right-flat-containers"
-              content={
-                <div>
-                  <span className="variant-body1">{poolsLabel1Container}</span>
-                  <div className="margin-top">
-                    <span className="variant-h3">
-                      {formatValue(poolsValue1Container)}
-                    </span>
+            {(rightContainerItems || []).map((item, index) => (
+              <CardContainer
+                externalStyles="dashboard-right-flat-containers"
+                content={
+                  <div>
+                    <span className="variant-body1">{item.label}</span>
+                    <div className="margin-top">
+                      <span className="variant-h3">
+                        {formatValue(item.value)}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              }
-            />
-            <CardContainer
-              externalStyles="dashboard-right-flat-containers"
-              content={
-                <div>
-                  <span className="variant-body1">{poolsLabel2Container}</span>
-                  <div className="margin-top">
-                    <span className="variant-h3">
-                      {formatValue(poolsValue2Container)}
-                    </span>
-                  </div>
-                </div>
-              }
-            />
-            <CardContainer
-              externalStyles="dashboard-right-flat-containers"
-              content={
-                <div>
-                  <span className="variant-body1">{poolsLabel3Container}</span>
-                  <div className="margin-top">
-                    <span className="variant-h3">
-                      {formatValue(poolsValue3Container)}
-                    </span>
-                  </div>
-                </div>
-              }
-            />
+                }
+              />
+            ))}
           </div>
         </div>
       </div>

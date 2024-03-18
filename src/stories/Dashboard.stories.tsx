@@ -67,6 +67,12 @@ const bottomContainerItems = [
   { label: "Total Lent", value: 20000, fluctuation: "+3.4%" },
 ];
 
+const rightContainerItems = [
+  { label: "Active Loans", value: 1200 },
+  { label: "All Repaid Loans", value: 2500 },
+  { label: "Interest Paid", value: 200 },
+];
+
 const formatValue = (value: number, options?: Intl.NumberFormatOptions) => {
   return value.toLocaleString("en-US", {
     style: "currency",
@@ -83,19 +89,14 @@ const Template: Story<IDashboard> = (args) => {
       colors={colors}
       series={series}
       currency="USDC"
-      poolsLabel="Pools"
       totalValueLocked={888888888888}
       titleGraphic="Total Value Locked"
       chartSubtitle="Pool Utilization"
       chartDescription="Optional Description"
-      poolsLabel1Container="Active Loans"
-      poolsValue1Container={1200.0}
-      poolsLabel2Container="All Repaid Loans"
-      poolsValue2Container={2500.0}
-      poolsLabel3Container="Interest Paid "
-      poolsValue3Container={200.0}
       bottomLabel="General"
       bottomContainerItems={bottomContainerItems}
+      rightLabel="Pools"
+      rightContainerItems={rightContainerItems}
       formatValue={formatValue}
     />
   );
