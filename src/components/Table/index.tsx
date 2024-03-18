@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 import { Button } from "../Button";
 import { Container } from "../Container";
+import { DropDown } from "../DropDown";
 import leftIcon from "../../../public/assets/chevron_left.svg";
 import rightIcon from "../../../public/assets/chevron_right.svg";
 import downIcon from "../../../public/assets/arrow-down-icon.svg";
