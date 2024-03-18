@@ -1,0 +1,33 @@
+.pie-chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & .recharts-responsive-container{
+    width: 25%;
+  }
+  @media (max-width: $breakpoint-tablet) {
+    & .recharts-responsive-container{
+      width: 50%;
+    }
+  }
+  @media (max-width: $breakpoint-mobile) {
+    flex-direction: column;
+    & .recharts-responsive-container{
+      width: 100%;
+    }
+  }
+}
+
+.pie-chart-legend-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 0 24px 0;
+  @media (max-width: $breakpoint-mobile) {
+    margin-top: 16px;
+    gap: 16px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

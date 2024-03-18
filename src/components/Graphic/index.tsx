@@ -35,18 +35,25 @@ export interface SeriesDataType {
   name: string;
 }
 
-export interface IGraphic {
-  data: GraphicDataType[] | undefined;
-  series: SeriesDataType[];
+export interface IChart {
   fontFamily?: string;
   colors: string[];
-  formatValue: (value: number) => string;
+  formatValue: (value: number, options?: Intl.NumberFormatOptions) => string;
+}
+
+export interface IGraphic extends IChart {
+  data: GraphicDataType[] | undefined;
+  series: SeriesDataType[];
 }
 
 export interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
   fontFamily?: string;
+  colors: string[];
+  formatValue: (value: number, options?: Intl.NumberFormatOptions) => string;
+}
+
+export interface GraphicTooltipProps extends CustomTooltipProps {
   keyName?: string;
-  formatValue: (value: number) => string;
 }
 
 export const CustomTooltip = ({
@@ -55,7 +62,7 @@ export const CustomTooltip = ({
   active,
   keyName,
   formatValue,
-}: CustomTooltipProps) => {
+}: GraphicTooltipProps) => {
   if (active && payload && payload.length && keyName) {
     const item = payload.find((item) => item.name === keyName);
 
@@ -147,6 +154,7 @@ export const Graphic = ({
             content={
               tooltipActive ? (
                 <CustomTooltip
+                  colors={colors}
                   fontFamily={fontFamily}
                   formatValue={formatValue}
                   keyName={keyName}
