@@ -39,15 +39,15 @@ const CustomTooltip = ({
   );
 };
 
-export type dataType = { value: number; name: string }[];
+export type PieDataType = { value: number; name: string }[];
 
 export interface IPieChart extends IChart {
-  data: dataType;
+  data: PieDataType;
 }
 
-const groupData = (data: dataType) => {
+const groupData = (data: PieDataType) => {
   const groupSize = 5
-  return data.reduce((result: dataType[], curr, index) => {
+  return data.reduce((result: PieDataType[], curr, index) => {
     const newIndex = Math.floor(index / groupSize);
     if (!result[newIndex]) {
       result[newIndex] = [];

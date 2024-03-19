@@ -19,11 +19,13 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  padding-right: 4px;
   @media (max-width: $breakpoint-mobile) {
     margin-top: 16px;
     gap: 16px;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 0;
   }
 }
