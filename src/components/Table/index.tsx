@@ -137,6 +137,7 @@ export const Table = ({
                           style={{
                             padding: "14px 18px 14px 8px",
                           }}
+                          externalStyles="button-style"
                         />
                       )}
                     </div>
@@ -151,6 +152,7 @@ export const Table = ({
                         icon={filterIcon}
                         variant="text"
                         style={{ padding: "8px 16px 8px 0px" }}
+                        externalStyles="button-style"
                       />
                     </div>
                   </th>
@@ -190,6 +192,7 @@ export const Table = ({
                         fontFamily={fontFamily}
                         icon={approveIcon}
                         variant="text"
+                        externalStyles="button-style"
                       />
                     </div>
                   </th>
@@ -268,12 +271,17 @@ export const Table = ({
                   fontFamily={fontFamily}
                   icon={leftIcon}
                   variant="text"
+                  externalStyles={clsx(
+                    "button-style",
+                    "arrow-button",
+                    "left-arrow-button"
+                  )}
                 />
                 {buildPaginationArray().map((item) => (
                   <span
                     className="variant-body1"
                     style={{
-                      margin: "0 8px",
+                      margin: "8px",
                       fontFamily: fontFamily,
                       textDecoration:
                         visiblePage === item ? "underline" : "none",
@@ -292,6 +300,11 @@ export const Table = ({
                   fontFamily={fontFamily}
                   icon={rightIcon}
                   variant="text"
+                  externalStyles={clsx(
+                    "button-style",
+                    "arrow-button",
+                    "right-arrow-button"
+                  )}
                 />
               </div>
             ) : (

@@ -32,6 +32,25 @@ tr {
   border-top: 1px solid #eaecf0;
 }
 
+.arrow-button {
+  box-shadow: 0px 1.3333333730697632px 4px 1.3333333730697632px
+    rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 1.3333333730697632px 2.6666667461395264px 0px
+    rgba(0, 0, 0, 0.3);
+}
+
+.right-arrow-button {
+  margin-left: 16px;
+}
+
+.left-arrow-button {
+  margin-right: 16px;
+}
+
+.button-style:hover {
+  background-color: transparent !important;
+}
+
 .center-element {
   display: flex;
   align-items: center;
@@ -47,12 +66,7 @@ tr {
   overflow: hidden;
 }
 
-.tr-hightlight {
-  width: auto;
-}
-
 .tr-hightlight:hover {
-  width: 100%;
   background: rgba(38, 166, 107, 0.1);
 }
 
