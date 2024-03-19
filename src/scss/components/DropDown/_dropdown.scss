@@ -1,5 +1,5 @@
 .dropdown-container {
-  width: 105px;
+  width: 115px;
   height: 33px;
   border-radius: 4px;
   color: #7c7d7e;
@@ -9,4 +9,10 @@
 
 .dropdown-container:hover {
   border: 1px solid #26a66b;
+}
+
+.checkBox {
+  .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked {
+    color: #26a66b;
+  }
 }

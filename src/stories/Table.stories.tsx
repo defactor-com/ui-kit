@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { Story } from "@storybook/react";
 
 import { Pill } from "../components/Pill";
-import { Table, ITable, IRowsObject, IFilterObject } from "../components/Table";
+import {
+  Table,
+  ITable,
+  IRowsObject,
+  IFilterSelectedObject,
+} from "../components/Table";
 
 export default {
   title: "Table",
@@ -79,7 +84,9 @@ const tableData = [
 ];
 
 const Template: Story<ITable> = (args) => {
-  const [data, setData] = useState<Array<IFilterObject>>([]);
+  const [filters, setFilters] = useState<Array<IFilterSelectedObject>>([]);
+
+  console.log(filters);
 
   return (
     <Table
@@ -93,7 +100,7 @@ const Template: Story<ITable> = (args) => {
       rowsPage={[5, 10, 15]}
       rowsNumberLabel="Rows per page:"
       handleSelectedRowsPage={() => {}}
-      setFilters={setData}
+      setFilters={setFilters}
       loaderComponent={
         <div
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
@@ -112,7 +119,18 @@ const Template: Story<ITable> = (args) => {
         { label: "Status" },
       ]}
       filters={[
-        { label: "Position", options: ["Gold", "Silver"], type: "multiple" },
+        {
+          label: "Position",
+          options: [
+            "Gold",
+            "Silver",
+            "Bronze",
+            "Platinum",
+            "Diamond",
+            "Emerald",
+          ],
+          type: "multiple",
+        },
         { label: "Amount" },
         { label: "Rewards" },
         { label: "Lock" },

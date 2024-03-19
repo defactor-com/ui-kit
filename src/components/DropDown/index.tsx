@@ -9,7 +9,7 @@ import Checkbox from "@mui/material/Checkbox";
 
 export interface IDropDownObject {
   placeholder: string;
-  options: string[];
+  options: Array<string>;
 }
 
 const ITEM_HEIGHT = 37;
@@ -24,7 +24,7 @@ const MenuProps = {
 };
 
 export const DropDown = ({ placeholder, options }: IDropDownObject) => {
-  const [personName, setPersonName] = React.useState<string[]>([]);
+  const [personName, setPersonName] = React.useState<Array<string>>([]);
 
   const handleChange = (event: SelectChangeEvent<typeof personName>) => {
     const {
@@ -37,7 +37,7 @@ export const DropDown = ({ placeholder, options }: IDropDownObject) => {
     <div>
       <FormControl>
         <Select
-          id={placeholder}
+          name={placeholder}
           multiple
           displayEmpty
           value={personName}
@@ -58,7 +58,7 @@ export const DropDown = ({ placeholder, options }: IDropDownObject) => {
             <em>{placeholder}</em>
           </MenuItem>
           {options.map((name) => (
-            <MenuItem key={name} value={name}>
+            <MenuItem key={name} value={name} className="checkBox">
               <Checkbox checked={personName.indexOf(name) > -1} />
               <ListItemText primary={name} />
             </MenuItem>
