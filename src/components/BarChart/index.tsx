@@ -14,16 +14,17 @@ import { Point } from "../Point";
 import { Container } from "../Container";
 import { CustomTooltipProps, IChart } from "../Graphic";
 
-export interface GraphicDataType {
-  name: string;
+export interface ChartSeriesType {
+  name: string; 
+  data: number[]
 }
 
 export interface IBarChart extends IChart {
   data: string[];
-  series: { name: string; data: number[] }[];
+  series: ChartSeriesType[];
 }
 
-export const CustomTooltip = ({
+const CustomTooltip = ({
   fontFamily,
   payload,
   colors,
@@ -47,8 +48,8 @@ export const CustomTooltip = ({
             {payload.map((item, index) => (
               <span
                 key={`bar-chart-tooltip-${index}`}
-                style={{ fontFamily }}
                 className="flex-center"
+                style={{ fontFamily }}
               >
                 <Point color={colors[index % colors.length]} />{" "}
                 {`${item.name}: `}

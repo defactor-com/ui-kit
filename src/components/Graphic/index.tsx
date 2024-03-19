@@ -72,17 +72,17 @@ export const CustomTooltip = ({
       <Container
         externalStyles="tooltip-container"
         content={
-          <div style={{ fontFamily: fontFamily }}>
-            <span className="date-label">{item.payload.date}</span>
+          <>
+            <span className="date-label" style={{ fontFamily }}>{item.payload.date}</span>
             <div className={clsx("display-flex", "margin-top")}>
-              <span className="value-label">
+              <span className="value-label" style={{ fontFamily }}>
                 {formatValue(Number(item.value))}
               </span>
               <FluctuationComponent
                 label={item?.payload.fluctuation[keyName || ""]}
               />
             </div>
-          </div>
+          </>
         }
       />
     );
@@ -213,6 +213,7 @@ export const Graphic = ({
         {(keyNames || []).map((name, index) => (
           <span
             className={clsx("flex-center", "variant-body1")}
+            style={{ fontFamily: fontFamily }}
             key={`checkbox-${name}`}
           >
             <input

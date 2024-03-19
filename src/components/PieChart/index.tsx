@@ -12,7 +12,7 @@ import { Point } from "../Point";
 import { Container } from "../Container";
 import { CustomTooltipProps, IChart } from "../Graphic";
 
-export const CustomTooltip = ({
+const CustomTooltip = ({
   fontFamily,
   payload,
   formatValue,
@@ -46,8 +46,9 @@ export interface IPieChart extends IChart {
 }
 
 const groupData = (data: dataType) => {
+  const groupSize = 5
   return data.reduce((result: dataType[], curr, index) => {
-    const newIndex = Math.floor(index / 5);
+    const newIndex = Math.floor(index / groupSize);
     if (!result[newIndex]) {
       result[newIndex] = [];
     }
