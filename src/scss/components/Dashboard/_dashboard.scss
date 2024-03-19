@@ -72,8 +72,10 @@ $breakpoint-mobile: 600px;
   min-width: 260px;
   width: 90% !important;
   @media (max-width: $breakpoint-tablet) {
+    flex-grow: 1;
     width: 27% !important;
     min-width: 100px;
+    margin: 0;
   }
   @media (max-width: $breakpoint-mobile) {
     width: 100% !important;
@@ -187,10 +189,15 @@ $breakpoint-mobile: 600px;
   @media (max-width: $breakpoint-tablet) {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    gap: 16px;
+    margin-top: 16px;
+    justify-content: start;
+    flex-wrap: wrap;
   }
   @media (max-width: $breakpoint-mobile) {
     flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
   }
 }
 

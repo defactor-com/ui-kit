@@ -15,8 +15,8 @@ import { Container } from "../Container";
 import { CustomTooltipProps, IChart } from "../Graphic";
 
 export interface ChartSeriesType {
-  name: string; 
-  data: number[]
+  name: string;
+  data: number[];
 }
 
 export interface IBarChart extends IChart {
@@ -46,23 +46,34 @@ const CustomTooltip = ({
           </span>
           <div className={clsx("flex-column-direction", "margin-top")}>
             {payload.map((item, index) => (
-              <span
+              <div
                 key={`bar-chart-tooltip-${index}`}
-                className="flex-center"
-                style={{ fontFamily }}
+                className="bar-chart-tooltip-item"
               >
-                <Point color={colors[index % colors.length]} />{" "}
-                {`${item.name}: `}
+                <span style={{ fontFamily }} className="flex-center">
+                  <Point color={colors[index % colors.length]} />{" "}
+                  {`${item.name}: `}
+                </span>
                 <span className="value-label" style={{ fontFamily }}>
                   {formatValue(Number(item.value))}
                 </span>
-              </span>
+              </div>
             ))}
           </div>
         </span>
       }
     />
   );
+};
+
+const getHorizontalCoordinates = (max: number, gap: number) => {
+  const horizontalLines = [];
+
+  for (let index = 0; gap * index <= max; index++) {
+    horizontalLines.push(gap * index + 5);
+  }
+
+  return horizontalLines;
 };
 
 export const BarChart = ({
@@ -89,10 +100,14 @@ export const BarChart = ({
       <ResponsiveContainer
         width="100%"
         height={100 * data.length}
-        minHeight="250px"
       >
-        <RechartsBarChart data={chartData} layout="vertical" barGap={0}>
-          <CartesianGrid strokeDasharray="12 12" />
+        <RechartsBarChart data={chartData} layout="vertical" barGap={8}>
+          <CartesianGrid
+            strokeDasharray="12 12"
+            horizontalCoordinatesGenerator={(props) =>
+              getHorizontalCoordinates(props.yAxis.height, props.yAxis.bandSize)
+            }
+          />
           <XAxis
             type="number"
             axisLine={false}
@@ -122,7 +137,7 @@ export const BarChart = ({
               key={`bar-${name}-${index}`}
               dataKey={name}
               fill={colors[index % colors.length]}
-              barSize={18}
+              barSize={25}
               fontFamily={fontFamily}
             />
           ))}
