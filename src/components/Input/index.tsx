@@ -21,8 +21,8 @@ export const Input = ({
 
   const addPrecision = (value: string, precision: number): string => {
     if (precision < 0) return value;
-    const numero = parseFloat(value.replace(/[^0-9]/g, ""));
-    const valuePrecision = numero / Math.pow(10, precision);
+    const number = parseFloat(value.replace(/[^0-9]/g, ""));
+    const valuePrecision = number / Math.pow(10, precision);
     return valuePrecision.toString();
   };
 
@@ -36,11 +36,11 @@ export const Input = ({
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let test = "";
-    test = e.target.value.replace(/[^0-9.]/g, "");
-    test = addPrecision(test, precision);
-    test = validateNumber(test);
-    setInputValue(test);
+    let formattedValue = "";
+    formattedValue = e.target.value.replace(/[^0-9.]/g, "");
+    formattedValue = addPrecision(formattedValue, precision);
+    formattedValue = validateNumber(formattedValue);
+    setInputValue(formattedValue);
     onChange(e);
   };
 
