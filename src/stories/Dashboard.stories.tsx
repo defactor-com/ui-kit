@@ -155,7 +155,7 @@ const Charts = () => (
       }
     />
     <ChartContainer
-      chartSubtitle="Pool by Status"
+      chartSubtitle="Pools by Status"
       chartDescription="Optional Description"
       content={
         <PieChart
@@ -180,10 +180,10 @@ DashboardLendingItem.args = {
 };
 
 const rightContainerItems2 = [
-  { label: "Loans Ready to Borrows", value: 2500 },
-  { label: "Total Borrows Repaid", value: 200 },
-  { label: "Total Debt", value: 800 },
-  { label: "Next Borrow to Reach Maturity", value: 'Pool B' },
+  { label: "Funds Available", value: 2500 },
+  { label: "Total Loans Repaid", value: 200 },
+  { label: "Total Loans", value: 800 },
+  { label: "Next Loan to Reach Maturity", value: 'Pool B' },
 ];
 
 export const DashboardBorrowingItem = Template.bind({});
