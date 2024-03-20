@@ -78,7 +78,7 @@ const rightContainerItems = [
   { label: "Active Loans", value: 1200 },
   { label: "All Repaid Loans", value: 2500 },
   { label: "Interest Paid", value: 200 },
-  { label: "Loan to Value Ratio", value: "75%" },
+  { label: "Loan to Value Ratio", value: "75%", color: colors[0], fluctuation: "+3.4%" },
 ];
 
 const formatValue = (value: number | string, options?: Intl.NumberFormatOptions) => {

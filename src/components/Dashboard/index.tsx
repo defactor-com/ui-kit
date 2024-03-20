@@ -1,22 +1,16 @@
 import React from "react";
 import clsx from "clsx";
 
-import { Point } from "../Point";
 import { Container } from "../Container";
-import { CardContainer } from "../CardContainer";
 import lendIcon from "../../../public/assets/lending.svg";
 import dolarIcon from "../../../public/assets/dolar-icon.svg";
-import { FluctuationComponent } from "../FluctuationComponent";
+import { CardComponent } from "../CardComponent";
 
-export type RightContainerItem = {
+export type CardItem = {
   label: string;
   value: number | string;
-};
-
-export type BottomContainerItem = {
-  label: string;
-  value: number | string;
-  fluctuation: string;
+  fluctuation?: string;
+  color?: string;
 };
 
 export type IDashboard = {
@@ -28,18 +22,18 @@ export type IDashboard = {
   titleGraphic: string;
   totalValueLocked: number | string;
   bottomLabel: string;
-  bottomContainerItems: BottomContainerItem[];
-  rightContainerItems: RightContainerItem[];
+  bottomContainerItems: CardItem[];
+  rightContainerItems: CardItem[];
 };
 
 const BottomContainer = ({
   bottomLabel,
   bottomContainerItems,
-  colors,
+  colors = [],
   fontFamily,
 }: {
   bottomLabel: string;
-  bottomContainerItems: BottomContainerItem[];
+  bottomContainerItems: CardItem[];
   colors: string[];
   fontFamily?: string;
 }) => {
@@ -55,27 +49,14 @@ const BottomContainer = ({
       </div>
       <div className="footer-container-dashboard">
         {(bottomContainerItems || []).map((item, index) => (
-          <CardContainer
+          <CardComponent
             key={`bottom-item-${index}`}
             externalStyles="dashboard-bottom-flat-containers"
-            content={
-              <div className="flex-column-direction">
-                <span
-                  className={clsx("flex-center", "variant-body1")}
-                  style={{ fontFamily }}
-                >
-                  <Point color={colors[index % colors.length]} /> {item.label}
-                </span>
-                <div className="flat-body-container">
-                  <div className="flex-column-direction">
-                    <span className="variant-h3" style={{ fontFamily }}>
-                      {item.value}
-                    </span>
-                  </div>
-                  <FluctuationComponent label={item.fluctuation} />
-                </div>
-              </div>
-            }
+            value={item.value}
+            label={item.label}
+            fluctuation={item.fluctuation}
+            fontFamily={fontFamily}
+            color={item.color || colors[index % colors.length]}
           />
         ))}
       </div>
@@ -89,7 +70,7 @@ const RightContainer = ({
   fontFamily,
 }: {
   rightLabel: string;
-  rightContainerItems: RightContainerItem[];
+  rightContainerItems: CardItem[];
   fontFamily?: string;
 }) => {
   return (
@@ -104,21 +85,14 @@ const RightContainer = ({
       </div>
       <div className="pools-body-container">
         {(rightContainerItems || []).map((item, index) => (
-          <CardContainer
+          <CardComponent
             key={`right-item-${index}`}
             externalStyles="dashboard-right-flat-containers"
-            content={
-              <div>
-                <span className="variant-body1" style={{ fontFamily }}>
-                  {item.label}
-                </span>
-                <div className="margin-top">
-                  <span className="variant-h3" style={{ fontFamily }}>
-                    {item.value}
-                  </span>
-                </div>
-              </div>
-            }
+            value={item.value}
+            label={item.label}
+            fontFamily={fontFamily}
+            fluctuation={item.fluctuation}
+            color={item.color}
           />
         ))}
       </div>
@@ -171,7 +145,7 @@ export const Dashboard = ({
             {bottomLabel && bottomContainerItems.length > 0 && (
               <BottomContainer
                 bottomContainerItems={bottomContainerItems}
-                bottomLabel={bottomLabel} 
+                bottomLabel={bottomLabel}
                 colors={colors}
                 fontFamily={fontFamily}
               />
