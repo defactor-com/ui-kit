@@ -35,10 +35,12 @@ export interface SeriesDataType {
   name: string;
 }
 
+export type FormatValueType = (value: number | string, options?: Intl.NumberFormatOptions) => string;
+
 export interface IChart {
   fontFamily?: string;
   colors: string[];
-  formatValue: (value: number, options?: Intl.NumberFormatOptions) => string;
+  formatValue: FormatValueType;
 }
 
 export interface IGraphic extends IChart {
@@ -49,7 +51,7 @@ export interface IGraphic extends IChart {
 export interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
   fontFamily?: string;
   colors: string[];
-  formatValue: (value: number, options?: Intl.NumberFormatOptions) => string;
+  formatValue: FormatValueType;
 }
 
 export interface GraphicTooltipProps extends CustomTooltipProps {
@@ -96,7 +98,7 @@ export const Graphic = ({
   data,
   series,
   fontFamily,
-  formatValue,
+  formatValue = (value) => value.toLocaleString("en-US"),
 }: IGraphic) => {
   const [
     { chartData, keyName, keyNames, tooltipActive },

@@ -15,11 +15,9 @@ export type RightContainerItem = {
 
 export type BottomContainerItem = {
   label: string;
-  value: number;
+  value: number | string;
   fluctuation: string;
 };
-
-export type formatValueType = (value: number, options?: Intl.NumberFormatOptions) => string;
 
 export type IDashboard = {
   content: React.ReactNode;
@@ -28,24 +26,21 @@ export type IDashboard = {
   fontFamily?: string;
   rightLabel: string;
   titleGraphic: string;
-  totalValueLocked: number;
+  totalValueLocked: number | string;
   bottomLabel: string;
   bottomContainerItems: BottomContainerItem[];
   rightContainerItems: RightContainerItem[];
-  formatValue: formatValueType;
 };
 
 const BottomContainer = ({
   bottomLabel,
   bottomContainerItems,
   colors,
-  formatValue,
   fontFamily,
 }: {
   bottomLabel: string;
   bottomContainerItems: BottomContainerItem[];
   colors: string[];
-  formatValue: formatValueType;
   fontFamily?: string;
 }) => {
   return (
@@ -74,7 +69,7 @@ const BottomContainer = ({
                 <div className="flat-body-container">
                   <div className="flex-column-direction">
                     <span className="variant-h3" style={{ fontFamily }}>
-                      {formatValue(item.value)}
+                      {item.value}
                     </span>
                   </div>
                   <FluctuationComponent label={item.fluctuation} />
@@ -91,12 +86,10 @@ const BottomContainer = ({
 const RightContainer = ({
   rightLabel,
   rightContainerItems,
-  formatValue,
   fontFamily,
 }: {
   rightLabel: string;
   rightContainerItems: RightContainerItem[];
-  formatValue: formatValueType;
   fontFamily?: string;
 }) => {
   return (
@@ -121,9 +114,7 @@ const RightContainer = ({
                 </span>
                 <div className="margin-top">
                   <span className="variant-h3" style={{ fontFamily }}>
-                    {typeof item.value === "string"
-                      ? item.value
-                      : formatValue(item.value)}
+                    {item.value}
                   </span>
                 </div>
               </div>
@@ -146,7 +137,6 @@ export const Dashboard = ({
   titleGraphic,
   totalValueLocked,
   content,
-  formatValue = (value) => value.toLocaleString("en-US"),
 }: IDashboard) => (
   <Container
     content={
@@ -167,7 +157,7 @@ export const Dashboard = ({
             {totalValueLocked && (
               <div className="total-value-container">
                 <span className="variant-h1" style={{ fontFamily }}>
-                  {formatValue(totalValueLocked, { style: "decimal" })}
+                  {totalValueLocked}
                 </span>
                 <span
                   className={clsx("variant-body2", "padding-bottom-medium")}
@@ -181,8 +171,7 @@ export const Dashboard = ({
             {bottomLabel && bottomContainerItems.length > 0 && (
               <BottomContainer
                 bottomContainerItems={bottomContainerItems}
-                bottomLabel={bottomLabel}
-                formatValue={formatValue}
+                bottomLabel={bottomLabel} 
                 colors={colors}
                 fontFamily={fontFamily}
               />
@@ -192,7 +181,6 @@ export const Dashboard = ({
         <RightContainer
           rightContainerItems={rightContainerItems}
           rightLabel={rightLabel}
-          formatValue={formatValue}
           fontFamily={fontFamily}
         />
       </div>

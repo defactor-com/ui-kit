@@ -81,7 +81,7 @@ const rightContainerItems = [
   { label: "Loan to Value Ratio", value: "75%" },
 ];
 
-const formatValue = (value: number, options?: Intl.NumberFormatOptions) => {
+const formatValue = (value: number | string, options?: Intl.NumberFormatOptions) => {
   return value.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
@@ -97,13 +97,12 @@ export const DashboardItem = Template.bind({});
 DashboardItem.args = {
   colors,
   currency: "USDC",
-  totalValueLocked: 888888888888,
+  totalValueLocked: '888888888888',
   titleGraphic: "Total Value Locked",
   bottomLabel: "General",
   bottomContainerItems,
   rightLabel: "Pools",
   rightContainerItems,
-  formatValue,
   content: (
     <ChartContainer
       chartSubtitle={"Pool Utilization"}
@@ -175,7 +174,6 @@ DashboardLendingItem.args = {
   titleGraphic: "Total Value Locked",
   rightLabel: "Stats",
   rightContainerItems: rightContainerItems1,
-  formatValue,
   content: <Charts />,
 };
 
@@ -189,7 +187,6 @@ const rightContainerItems2 = [
 export const DashboardBorrowingItem = Template.bind({});
 DashboardBorrowingItem.args = {
   rightLabel: "Stats",
-  formatValue,
   rightContainerItems: rightContainerItems2,
   content: <Charts />,
 };
