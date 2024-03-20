@@ -1,5 +1,8 @@
 import clsx from "clsx";
 import React, { useState } from "react";
+import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
 import { Button } from "../Button";
 import { Container } from "../Container";
@@ -18,8 +21,13 @@ export interface IHeaderObject {
 
 export interface IFilterObject {
   label: string;
-  options?: string[];
+  options?: Array<string>;
   type?: "multiple" | "date";
+}
+
+export interface IFilterSelectedObject {
+  label: string;
+  options?: Array<string> | string;
 }
 
 export interface IRowsObject {
@@ -45,7 +53,9 @@ export interface ITable {
   nextPage?(motion: string): void;
   loaderComponent?: React.ReactNode;
   handleSelectedRowsPage(selectedValue: string): void;
-  setFilters: React.Dispatch<React.SetStateAction<Array<IFilterObject>>>;
+  setFilters: React.Dispatch<
+    React.SetStateAction<Array<IFilterSelectedObject>>
+  >;
 }
 
 export const Table = ({
@@ -84,16 +94,20 @@ export const Table = ({
   };
 
   const updateData = () => {
-    const data: Array<IFilterObject> = [];
+    const data: Array<IFilterSelectedObject> = [];
     filters.forEach((filter) => {
-      const element = document.getElementById(filter.label) as HTMLInputElement;
-      let selectFilter: IFilterObject = { label: filter.label, options: [] };
-      if (filter.options) selectFilter.options = element.innerText.split(",");
-      else selectFilter.options = [element?.value || ""];
+      const element = document.getElementsByName(
+        filter.label
+      )[0] as HTMLInputElement;
+      let selectFilter: IFilterSelectedObject = {
+        label: filter.label,
+        options: [],
+      };
+      if (filter.options) selectFilter.options = element.value.split(",");
+      else selectFilter.options = element?.value || "";
       data.push(selectFilter);
     });
     setFilters(data);
-    setActiveFilter(!activeFilter);
   };
 
   return (
@@ -123,6 +137,7 @@ export const Table = ({
                           style={{
                             padding: "14px 18px 14px 8px",
                           }}
+                          externalStyles="button-style"
                         />
                       )}
                     </div>
@@ -137,6 +152,7 @@ export const Table = ({
                         icon={filterIcon}
                         variant="text"
                         style={{ padding: "8px 16px 8px 0px" }}
+                        externalStyles="button-style"
                       />
                     </div>
                   </th>
@@ -153,15 +169,15 @@ export const Table = ({
                             options={filter.options}
                           />
                         ) : filter.type === "date" ? (
-                          <input
-                            id={filter.label}
-                            placeholder={filter.label}
-                            className="input-filter"
-                            type="date"
-                          />
+                          <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <MobileDatePicker
+                              name={filter.label}
+                              className="imput-calendar"
+                            />
+                          </LocalizationProvider>
                         ) : (
                           <input
-                            id={filter.label}
+                            name={filter.label}
                             placeholder={filter.label}
                             className="input-filter"
                           />
@@ -176,6 +192,7 @@ export const Table = ({
                         fontFamily={fontFamily}
                         icon={approveIcon}
                         variant="text"
+                        externalStyles="button-style"
                       />
                     </div>
                   </th>
@@ -254,12 +271,17 @@ export const Table = ({
                   fontFamily={fontFamily}
                   icon={leftIcon}
                   variant="text"
+                  externalStyles={clsx(
+                    "button-style",
+                    "arrow-button",
+                    "left-arrow-button"
+                  )}
                 />
                 {buildPaginationArray().map((item) => (
                   <span
                     className="variant-body1"
                     style={{
-                      margin: "0 8px",
+                      margin: "8px",
                       fontFamily: fontFamily,
                       textDecoration:
                         visiblePage === item ? "underline" : "none",
@@ -278,6 +300,11 @@ export const Table = ({
                   fontFamily={fontFamily}
                   icon={rightIcon}
                   variant="text"
+                  externalStyles={clsx(
+                    "button-style",
+                    "arrow-button",
+                    "right-arrow-button"
+                  )}
                 />
               </div>
             ) : (
