@@ -35,18 +35,25 @@ export interface SeriesDataType {
   name: string;
 }
 
-export interface IGraphic {
-  data: GraphicDataType[] | undefined;
-  series: SeriesDataType[];
+export interface IChart {
   fontFamily?: string;
   colors: string[];
-  formatValue: (value: number) => string;
+  formatValue: (value: number, options?: Intl.NumberFormatOptions) => string;
+}
+
+export interface IGraphic extends IChart {
+  data: GraphicDataType[] | undefined;
+  series: SeriesDataType[];
 }
 
 export interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
   fontFamily?: string;
+  colors: string[];
+  formatValue: (value: number, options?: Intl.NumberFormatOptions) => string;
+}
+
+export interface GraphicTooltipProps extends CustomTooltipProps {
   keyName?: string;
-  formatValue: (value: number) => string;
 }
 
 export const CustomTooltip = ({
@@ -55,7 +62,7 @@ export const CustomTooltip = ({
   active,
   keyName,
   formatValue,
-}: CustomTooltipProps) => {
+}: GraphicTooltipProps) => {
   if (active && payload && payload.length && keyName) {
     const item = payload.find((item) => item.name === keyName);
 
@@ -65,17 +72,17 @@ export const CustomTooltip = ({
       <Container
         externalStyles="tooltip-container"
         content={
-          <div style={{ fontFamily: fontFamily }}>
-            <span className="date-label">{item.payload.date}</span>
+          <>
+            <span className="date-label" style={{ fontFamily }}>{item.payload.date}</span>
             <div className={clsx("display-flex", "margin-top")}>
-              <span className="value-label">
+              <span className="value-label" style={{ fontFamily }}>
                 {formatValue(Number(item.value))}
               </span>
               <FluctuationComponent
                 label={item?.payload.fluctuation[keyName || ""]}
               />
             </div>
-          </div>
+          </>
         }
       />
     );
@@ -147,6 +154,7 @@ export const Graphic = ({
             content={
               tooltipActive ? (
                 <CustomTooltip
+                  colors={colors}
                   fontFamily={fontFamily}
                   formatValue={formatValue}
                   keyName={keyName}
@@ -205,6 +213,7 @@ export const Graphic = ({
         {(keyNames || []).map((name, index) => (
           <span
             className={clsx("flex-center", "variant-body1")}
+            style={{ fontFamily: fontFamily }}
             key={`checkbox-${name}`}
           >
             <input

@@ -1,8 +1,15 @@
 import React from "react";
 import { Story } from "@storybook/react";
 
-import { GraphicDataType, SeriesDataType } from "../components/Graphic";
+import {
+  Graphic,
+  GraphicDataType,
+  SeriesDataType,
+} from "../components/Graphic";
 import { Dashboard, IDashboard } from "../components/Dashboard";
+import { ChartContainer } from "../components/ChartContainer";
+import { BarChart } from "../components/BarChart";
+import { PieChart } from "../components/PieChart";
 
 export default {
   title: "Dashboard",
@@ -67,6 +74,13 @@ const bottomContainerItems = [
   { label: "Total Lent", value: 20000, fluctuation: "+3.4%" },
 ];
 
+const rightContainerItems = [
+  { label: "Active Loans", value: 1200 },
+  { label: "All Repaid Loans", value: 2500 },
+  { label: "Interest Paid", value: 200 },
+  { label: "Loan to Value Ratio", value: "75%" },
+];
+
 const formatValue = (value: number, options?: Intl.NumberFormatOptions) => {
   return value.toLocaleString("en-US", {
     style: "currency",
@@ -76,30 +90,106 @@ const formatValue = (value: number, options?: Intl.NumberFormatOptions) => {
 };
 
 const Template: Story<IDashboard> = (args) => {
-  return (
-    <Dashboard
-      {...args}
-      data={data}
-      colors={colors}
-      series={series}
-      currency="USDC"
-      poolsLabel="Pools"
-      totalValueLocked={888888888888}
-      titleGraphic="Total Value Locked"
-      chartSubtitle="Pool Utilization"
-      chartDescription="Optional Description"
-      poolsLabel1Container="Active Loans"
-      poolsValue1Container={1200.0}
-      poolsLabel2Container="All Repaid Loans"
-      poolsValue2Container={2500.0}
-      poolsLabel3Container="Interest Paid "
-      poolsValue3Container={200.0}
-      bottomLabel="General"
-      bottomContainerItems={bottomContainerItems}
-      formatValue={formatValue}
-    />
-  );
+  return <Dashboard {...args} />;
 };
 
 export const DashboardItem = Template.bind({});
-DashboardItem.args = {};
+DashboardItem.args = {
+  colors,
+  currency: "USDC",
+  totalValueLocked: 888888888888,
+  titleGraphic: "Total Value Locked",
+  bottomLabel: "General",
+  bottomContainerItems,
+  rightLabel: "Pools",
+  rightContainerItems,
+  formatValue,
+  content: (
+    <ChartContainer
+      chartSubtitle={"Pool Utilization"}
+      chartDescription={"Optional Description"}
+      content={
+        <Graphic
+          formatValue={formatValue}
+          colors={colors}
+          data={data}
+          series={series}
+        />
+      }
+    />
+  ),
+};
+
+const poolNames = ["POOL A", "POOL B", "POOL C"];
+const barChartColors = ["#5A5BEB", "#26A66B80"];
+const barChatSeries = [
+  { name: "Lending", data: [3, 2.2, 9.5] },
+  { name: "Borrowing", data: [4.5, 5.2, 2.3] },
+];
+const pieChartData = [
+  { name: "Active", value: 135 },
+  { name: "Claimed", value: 50 },
+  { name: "Available", value: 65 },
+];
+const pieChartColors = ["#26A66B", "#5A5BEB", "#D21A4D"];
+const rightContainerItems1 = [
+  { label: "Total Active Loans", value: 1200 },
+  { label: "Loans Ready to Claim", value: 2500 },
+  { label: "Total Claimed Loans", value: 200 },
+  { label: "Total Interest Earned", value: 800 },
+  { label: "Total Amount Lent", value: 7000 },
+];
+
+const Charts = () => (
+  <>
+    <ChartContainer
+      chartSubtitle="Pool Utilization"
+      chartDescription="Optional Description"
+      content={
+        <BarChart
+          formatValue={formatValue}
+          series={barChatSeries}
+          colors={barChartColors}
+          data={poolNames}
+        />
+      }
+    />
+    <ChartContainer
+      chartSubtitle="Pools by Status"
+      chartDescription="Optional Description"
+      content={
+        <PieChart
+          formatValue={formatValue}
+          colors={pieChartColors}
+          data={pieChartData}
+        />
+      }
+    />
+  </>
+);
+
+export const DashboardLendingItem = Template.bind({});
+DashboardLendingItem.args = {
+  currency: "USDC",
+  totalValueLocked: 888888888888,
+  titleGraphic: "Total Value Locked",
+  rightLabel: "Stats",
+  rightContainerItems: rightContainerItems1,
+  formatValue,
+  content: <Charts />,
+};
+
+const rightContainerItems2 = [
+  { label: "Funds Available", value: 2500 },
+  { label: "Total Loans Repaid", value: 200 },
+  { label: "Total Loans", value: 800 },
+  { label: "Next Loan to Reach Maturity", value: 'Pool B' },
+];
+
+export const DashboardBorrowingItem = Template.bind({});
+DashboardBorrowingItem.args = {
+  rightLabel: "Stats",
+  formatValue,
+  rightContainerItems: rightContainerItems2,
+  content: <Charts />,
+};
