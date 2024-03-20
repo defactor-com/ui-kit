@@ -14,7 +14,9 @@ const Template: Story<ILendBorrow> = (args) => {
     setValue(e.target.value);
   };
 
-  return <LendBorrow {...args} value={value} onChange={handleChange} />;
+  return (
+    <LendBorrow {...args} value={value} onChange={handleChange} precision={2} />
+  );
 };
 
 export const LendBorrowItem = Template.bind({});
