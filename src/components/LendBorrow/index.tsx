@@ -7,7 +7,7 @@ import borrowingIcon from "../../../public/assets/borrowing.svg";
 import lendingIcon from "../../../public/assets/lending.svg";
 import { Container } from "../Container";
 import { Button } from "../Button";
-import { Input } from "../Input";
+import { Input, InputValue } from "../Input";
 
 export interface ILendBorrow {
   color?: string;
@@ -17,7 +17,8 @@ export interface ILendBorrow {
   loader?: React.ReactElement;
   collateralSection: React.ReactElement;
   onChange(e: ChangeEvent<HTMLInputElement>): void;
-  value: string | number | readonly string[] | undefined;
+  value: InputValue | bigint;
+  precision?: number;
 }
 
 export const LendBorrow = ({
@@ -29,8 +30,12 @@ export const LendBorrow = ({
   onChange,
   disabled,
   collateralSection,
+  precision,
 }: ILendBorrow) => {
   const [activeTab, setActiveTab] = useState("lendTab");
+  const [newValue, setNewValue] = useState<InputValue>(
+    typeof value === "bigint" ? value.toString() : value
+  );
 
   const openTab = (tabName: React.SetStateAction<string>) => {
     setActiveTab(tabName);
@@ -69,7 +74,12 @@ export const LendBorrow = ({
           <div className="bodyLendBorrow">
             {activeTab === "lendTab" && (
               <div>
-                <Input value={value} onChange={onChange} setFormat={true} />
+                <Input
+                  value={newValue}
+                  onChange={onChange}
+                  setFormat={true}
+                  precision={precision}
+                />
                 <div className="containerButtonLendBorrow">
                   <Button
                     icon={lendingWhiteIcon}
@@ -85,7 +95,12 @@ export const LendBorrow = ({
             )}
             {activeTab === "borrowTab" && (
               <div>
-                <Input value={value} onChange={onChange} setFormat={true} />
+                <Input
+                  value={newValue}
+                  onChange={onChange}
+                  setFormat={true}
+                  precision={precision}
+                />
                 {collateralSection}
                 <div className="containerButtonLendBorrow">
                   <Button
