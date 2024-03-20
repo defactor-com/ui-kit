@@ -69,7 +69,7 @@ export const LendBorrow = ({
           <div className="bodyLendBorrow">
             {activeTab === "lendTab" && (
               <div>
-                <Input value={value} onChange={onChange} type="number" />
+                <Input value={value} onChange={onChange} setFormat={true} />
                 <div className="containerButtonLendBorrow">
                   <Button
                     icon={lendingWhiteIcon}
@@ -85,7 +85,7 @@ export const LendBorrow = ({
             )}
             {activeTab === "borrowTab" && (
               <div>
-                <Input value={value} onChange={onChange} type="number" />
+                <Input value={value} onChange={onChange} setFormat={true} />
                 {collateralSection}
                 <div className="containerButtonLendBorrow">
                   <Button
