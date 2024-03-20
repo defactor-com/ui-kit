@@ -16,7 +16,7 @@ export * from "./components/MenuOption";
 export * from "./components/CardContainer";
 export * from "./components/BarChart";
 export * from "./components/PieChart";
-export * from "./components/CardContainer";
+export * from "./components/ChartContainer";
 export * from "./components/FlatContainer";
 export * from "./components/PreviewProfile";
 export * from "./components/SmallProfileImage";
