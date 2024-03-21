@@ -6,7 +6,7 @@ import {
   GraphicDataType,
   SeriesDataType,
 } from "../components/Graphic";
-import { Dashboard, IDashboard } from "../components/Dashboard";
+import { CardItem, Dashboard, IDashboard } from "../components/Dashboard";
 import { ChartContainer } from "../components/ChartContainer";
 import { BarChart } from "../components/BarChart";
 import { PieChart } from "../components/PieChart";
@@ -68,16 +68,16 @@ const data: GraphicDataType[] = [
   },
 ];
 
-const bottomContainerItems = [
-  { label: "Total Available", value: 20000, fluctuation: "+3.4%" },
-  { label: "Total Borrowed", value: 20000, fluctuation: "-3.4%" },
-  { label: "Total Lent", value: 20000, fluctuation: "+3.4%" },
+const bottomContainerItems: CardItem[] = [
+  { label: "Total Available", value: '$20,000.00', fluctuation: "+3.4%" },
+  { label: "Total Borrowed", value: '$20,000.00', fluctuation: "-3.4%" },
+  { label: "Total Lent", value: '$20,000.00', fluctuation: "+3.4%" },
 ];
 
-const rightContainerItems = [
-  { label: "Active Loans", value: 1200 },
-  { label: "All Repaid Loans", value: 2500 },
-  { label: "Interest Paid", value: 200 },
+const rightContainerItems: CardItem[] = [
+  { label: "Active Loans", value: '$12,00.00' },
+  { label: "All Repaid Loans", value: '$2,500.00' },
+  { label: "Interest Paid", value: '$200.00' },
   { label: "Loan to Value Ratio", value: "75%", color: colors[0], fluctuation: "+3.4%" },
 ];
 
@@ -97,7 +97,7 @@ export const DashboardItem = Template.bind({});
 DashboardItem.args = {
   colors,
   currency: "USDC",
-  totalValueLocked: '888888888888',
+  totalValueLocked: formatValue(888888888888),
   titleGraphic: "Total Value Locked",
   bottomLabel: "General",
   bottomContainerItems,
@@ -131,12 +131,12 @@ const pieChartData = [
   { name: "Available", value: 65 },
 ];
 const pieChartColors = ["#26A66B", "#5A5BEB", "#D21A4D"];
-const rightContainerItems1 = [
-  { label: "Total Active Loans", value: 1200 },
-  { label: "Loans Ready to Claim", value: 2500 },
-  { label: "Total Claimed Loans", value: 200 },
-  { label: "Total Interest Earned", value: 800 },
-  { label: "Total Amount Lent", value: 7000 },
+const rightContainerItems1: CardItem[] = [
+  { label: "Total Active Loans", value: '1,200' },
+  { label: "Loans Ready to Claim", value: '2,500' },
+  { label: "Total Claimed Loans", value: '200' },
+  { label: "Total Interest Earned", value: '800' },
+  { label: "Total Amount Lent", value: '$7,000.00' },
 ];
 
 const Charts = () => (
@@ -170,15 +170,15 @@ const Charts = () => (
 export const DashboardLendingItem = Template.bind({});
 DashboardLendingItem.args = {
   currency: "USDC",
-  totalValueLocked: 888888888888,
+  totalValueLocked: formatValue(888888888888),
   titleGraphic: "Total Value Locked",
   rightLabel: "Stats",
   rightContainerItems: rightContainerItems1,
   content: <Charts />,
 };
 
-const rightContainerItems2 = [
-  { label: "Funds Available", value: 2500 },
+const rightContainerItems2: CardItem[] = [
+  { label: "Funds Available", value: '$2500.00' },
   { label: "Total Loans Repaid", value: 200 },
   { label: "Total Loans", value: 800 },
   { label: "Next Loan to Reach Maturity", value: 'Pool B' },

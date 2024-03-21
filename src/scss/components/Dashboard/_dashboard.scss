@@ -33,7 +33,13 @@ $breakpoint-mobile: 600px;
 .fluctuation-container {
   margin-left: 8px;
   padding: 2px 5px;
+  text-align: center;
+}
+
+.fluctuation-percentage-container {
   border-radius: 5px;
+  width: fit-content;
+  margin-top: 8px;
 }
 
 .fluctuation-up {
@@ -49,6 +55,14 @@ $breakpoint-mobile: 600px;
 .fluctuation-label {
   font-size: 16px;
   line-height: 100%;
+}
+
+.fluctuation-change-value {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.02em;
+  color: #7C7D7E;
 }
 
 .dashboard-bottom-flat-containers {
@@ -139,6 +153,7 @@ $breakpoint-mobile: 600px;
   display: flex;
   margin-top: 16px;
   justify-content: space-between;
+  gap: 8px;
   @media (max-width: $breakpoint-mobile) {
     flex-wrap: wrap;
     margin-top: 8px;
@@ -158,7 +173,7 @@ $breakpoint-mobile: 600px;
 .flat-body-container {
   display: flex;
   margin-top: 8px;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
 }
 
