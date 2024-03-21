@@ -7,7 +7,7 @@ export * from "./components/Table";
 export * from "./components/Input";
 export * from "./components/Button";
 export * from "./components/Sidebar";
-export * from "./components/Graphic";
+export * from "./components/LineChart";
 export * from "./components/Dashboard";
 export * from "./components/DropDown";
 export * from "./components/Container";

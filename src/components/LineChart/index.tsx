@@ -19,9 +19,9 @@ import { Container } from "../Container";
 import { FluctuationComponent } from "../FluctuationComponent";
 import { Point } from "../Point";
 
-import useGraphicState from "./useGraphicState";
+import useLineChartState from "./useLineChartState";
 
-export interface GraphicDataType {
+export interface LineChartDataType {
   date: string;
 }
 
@@ -41,11 +41,11 @@ export type FormatValueType = (value: number | string, options?: Intl.NumberForm
 export interface IChart {
   fontFamily?: string;
   colors: string[];
-  formatValue: FormatValueType;
+  formatValue?: FormatValueType;
 }
 
-export interface IGraphic extends IChart {
-  data: GraphicDataType[] | undefined;
+export interface ILineChart extends IChart {
+  data: LineChartDataType[] | undefined;
   series: SeriesDataType[];
 }
 
@@ -55,7 +55,7 @@ export interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
   formatValue: FormatValueType;
 }
 
-export interface GraphicTooltipProps extends CustomTooltipProps {
+export interface LineChartTooltipProps extends CustomTooltipProps {
   keyName?: string;
 }
 
@@ -65,7 +65,7 @@ export const CustomTooltip = ({
   active,
   keyName,
   formatValue,
-}: GraphicTooltipProps) => {
+}: LineChartTooltipProps) => {
   if (active && payload && payload.length && keyName) {
     const item = payload.find((item) => item.name === keyName);
 
@@ -97,17 +97,17 @@ export const CustomTooltip = ({
   return null;
 };
 
-export const Graphic = ({
+export const LineChart = ({
   colors,
   data,
   series,
   fontFamily,
   formatValue = (value) => value.toLocaleString("en-US"),
-}: IGraphic) => {
+}: ILineChart) => {
   const [
     { chartData, keyName, keyNames, tooltipActive },
     { isHide, setHide, handleOpenTooltip, handleCloseTooltip },
-  ] = useGraphicState({ data, series });
+  ] = useLineChartState({ data, series });
   const getColorId = (color: string) =>
     color.toLocaleLowerCase().replace(" ", "-");
   return (

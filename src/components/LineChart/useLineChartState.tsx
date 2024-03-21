@@ -1,16 +1,16 @@
 import { useState } from "react";
 
-import { GraphicDataType, SeriesDataType } from ".";
+import { LineChartDataType, SeriesDataType } from ".";
 
-const useGraphicState = ({
+const useLineChartState = ({
   data,
   series,
 }: {
-  data: GraphicDataType[] | undefined;
+  data: LineChartDataType[] | undefined;
   series: SeriesDataType[];
 }) => {
   const getInitialData = (
-    data: GraphicDataType[] | undefined,
+    data: LineChartDataType[] | undefined,
     series: SeriesDataType[]
   ) => {
     const chartData: any =
@@ -63,4 +63,4 @@ const useGraphicState = ({
   ];
 };
 
-export default useGraphicState;
+export default useLineChartState;

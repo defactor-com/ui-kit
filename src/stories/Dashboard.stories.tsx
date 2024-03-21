@@ -2,10 +2,10 @@ import React from "react";
 import { Story } from "@storybook/react";
 
 import {
-  Graphic,
-  GraphicDataType,
+  LineChart,
+  LineChartDataType,
   SeriesDataType,
-} from "../components/Graphic";
+} from "../components/LineChart";
 import { CardItem, Dashboard, IDashboard } from "../components/Dashboard";
 import { ChartContainer } from "../components/ChartContainer";
 import { BarChart } from "../components/BarChart";
@@ -50,7 +50,7 @@ const series: SeriesDataType[] = [
   },
 ];
 
-const data: GraphicDataType[] = [
+const data: LineChartDataType[] = [
   {
     date: "25 July 00:00",
   },
@@ -135,7 +135,7 @@ DashboardItem.args = {
       chartSubtitle={"Pool Utilization"}
       chartDescription={"Optional Description"}
       content={
-        <Graphic
+        <LineChart
           formatValue={formatValue}
           colors={colors}
           data={data}
@@ -185,7 +185,6 @@ const Charts = () => (
       chartDescription="Optional Description"
       content={
         <PieChart
-          formatValue={formatValue}
           colors={pieChartColors}
           data={pieChartData}
         />
