@@ -10,6 +10,7 @@ export type CardItem = {
   label: string;
   value: number | string;
   fluctuation?: string;
+  fluctuationValue?: string;
   color?: string;
 };
 
@@ -55,6 +56,7 @@ const BottomContainer = ({
             value={item.value}
             label={item.label}
             fluctuation={item.fluctuation}
+            fluctuationValue={item.fluctuationValue}
             fontFamily={fontFamily}
             color={item.color || colors[index % colors.length]}
           />
@@ -92,6 +94,7 @@ const RightContainer = ({
             label={item.label}
             fontFamily={fontFamily}
             fluctuation={item.fluctuation}
+            fluctuationValue={item.fluctuationValue}
             color={item.color}
           />
         ))}

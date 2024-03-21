@@ -21,31 +21,31 @@ const series: SeriesDataType[] = [
   {
     name: "Total Available",
     data: [
-      { value: 40, fluctuation: "+1.4%" },
-      { value: 60, fluctuation: "-0.2%" },
-      { value: 90, fluctuation: "+5.3%" },
-      { value: 50, fluctuation: "+5.3%" },
-      { value: 30, fluctuation: "+5.3%" },
+      { value: 40, fluctuation: "+1.4%", fluctuationValue: "+$2,400" },
+      { value: 60, fluctuation: "-0.2%", fluctuationValue: "+$2,400" },
+      { value: 90, fluctuation: "+5.3%", fluctuationValue: "+$2,400" },
+      { value: 50, fluctuation: "+5.3%", fluctuationValue: "+$2,400" },
+      { value: 30, fluctuation: "+5.3%", fluctuationValue: "+$2,400" },
     ],
   },
   {
     name: "Total Borrowed",
     data: [
-      { value: 50, fluctuation: "+3.5%" },
-      { value: 40, fluctuation: "-0.8%" },
-      { value: 20, fluctuation: "+1.8%" },
-      { value: 30, fluctuation: "+1.8%" },
-      { value: 60, fluctuation: "+1.8%" },
+      { value: 50, fluctuation: "+3.5%", fluctuationValue: "+$2,400" },
+      { value: 40, fluctuation: "-0.8%", fluctuationValue: "+$2,400" },
+      { value: 20, fluctuation: "+1.8%", fluctuationValue: "+$2,400" },
+      { value: 30, fluctuation: "+1.8%", fluctuationValue: "+$2,400" },
+      { value: 60, fluctuation: "+1.8%", fluctuationValue: "+$2,400" },
     ],
   },
   {
     name: "Total Lent",
     data: [
-      { value: 10, fluctuation: "-0.5%" },
-      { value: 20, fluctuation: "+1.2%" },
-      { value: 40, fluctuation: "-1.1%" },
-      { value: 80, fluctuation: "-1.1%" },
-      { value: 40, fluctuation: "-1.1%" },
+      { value: 10, fluctuation: "-0.5%", fluctuationValue: "+$2,400" },
+      { value: 20, fluctuation: "+1.2%", fluctuationValue: "+$2,400" },
+      { value: 40, fluctuation: "-1.1%", fluctuationValue: "+$2,400" },
+      { value: 80, fluctuation: "-1.1%", fluctuationValue: "+$2,400" },
+      { value: 40, fluctuation: "-1.1%", fluctuationValue: "+$2,400" },
     ],
   },
 ];
@@ -69,19 +69,42 @@ const data: GraphicDataType[] = [
 ];
 
 const bottomContainerItems: CardItem[] = [
-  { label: "Total Available", value: '$20,000.00', fluctuation: "+3.4%" },
-  { label: "Total Borrowed", value: '$20,000.00', fluctuation: "-3.4%" },
-  { label: "Total Lent", value: '$20,000.00', fluctuation: "+3.4%" },
+  {
+    label: "Total Available",
+    value: "$20,000.00",
+    fluctuation: "+3.4%",
+    fluctuationValue: "+$2,400",
+  },
+  {
+    label: "Total Borrowed",
+    value: "$20,000.00",
+    fluctuation: "-3.4%",
+    fluctuationValue: "-$2,400",
+  },
+  {
+    label: "Total Lent",
+    value: "$20,000.00",
+    fluctuation: "+3.4%",
+    fluctuationValue: "+$2,400",
+  },
 ];
 
 const rightContainerItems: CardItem[] = [
-  { label: "Active Loans", value: '$12,00.00' },
-  { label: "All Repaid Loans", value: '$2,500.00' },
-  { label: "Interest Paid", value: '$200.00' },
-  { label: "Loan to Value Ratio", value: "75%", color: colors[0], fluctuation: "+3.4%" },
+  { label: "Active Loans", value: "$12,00.00" },
+  { label: "All Repaid Loans", value: "$2,500.00" },
+  { label: "Interest Paid", value: "$200.00" },
+  {
+    label: "Loan to Value Ratio",
+    value: "75%",
+    color: colors[0],
+    fluctuation: "+3.4%",
+  },
 ];
 
-const formatValue = (value: number | string, options?: Intl.NumberFormatOptions) => {
+const formatValue = (
+  value: number | string,
+  options?: Intl.NumberFormatOptions
+) => {
   return value.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
@@ -97,7 +120,11 @@ export const DashboardItem = Template.bind({});
 DashboardItem.args = {
   colors,
   currency: "USDC",
-  totalValueLocked: formatValue(888888888888),
+  totalValueLocked: formatValue(888888888888, {
+    style: "decimal",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }),
   titleGraphic: "Total Value Locked",
   bottomLabel: "General",
   bottomContainerItems,
@@ -132,11 +159,11 @@ const pieChartData = [
 ];
 const pieChartColors = ["#26A66B", "#5A5BEB", "#D21A4D"];
 const rightContainerItems1: CardItem[] = [
-  { label: "Total Active Loans", value: '1,200' },
-  { label: "Loans Ready to Claim", value: '2,500' },
-  { label: "Total Claimed Loans", value: '200' },
-  { label: "Total Interest Earned", value: '800' },
-  { label: "Total Amount Lent", value: '$7,000.00' },
+  { label: "Total Active Loans", value: "1,200" },
+  { label: "Loans Ready to Claim", value: "2,500" },
+  { label: "Total Claimed Loans", value: "200" },
+  { label: "Total Interest Earned", value: "800" },
+  { label: "Total Amount Lent", value: "$7,000.00" },
 ];
 
 const Charts = () => (
@@ -170,7 +197,11 @@ const Charts = () => (
 export const DashboardLendingItem = Template.bind({});
 DashboardLendingItem.args = {
   currency: "USDC",
-  totalValueLocked: formatValue(888888888888),
+  totalValueLocked: formatValue(888888888888, {
+    style: "decimal",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }),
   titleGraphic: "Total Value Locked",
   rightLabel: "Stats",
   rightContainerItems: rightContainerItems1,
@@ -178,10 +209,10 @@ DashboardLendingItem.args = {
 };
 
 const rightContainerItems2: CardItem[] = [
-  { label: "Funds Available", value: '$2500.00' },
+  { label: "Funds Available", value: "$2500.00" },
   { label: "Total Loans Repaid", value: 200 },
   { label: "Total Loans", value: 800 },
-  { label: "Next Loan to Reach Maturity", value: 'Pool B' },
+  { label: "Next Loan to Reach Maturity", value: "Pool B" },
 ];
 
 export const DashboardBorrowingItem = Template.bind({});

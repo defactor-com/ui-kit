@@ -27,6 +27,7 @@ export interface GraphicDataType {
 
 export interface DataArrayType {
   fluctuation: string;
+  fluctuationValue?: string;
   value: number;
 }
 
@@ -70,18 +71,21 @@ export const CustomTooltip = ({
 
     if (!item) return <></>;
 
+    const fluctuation = item?.payload?.fluctuation?.[keyName || ""]
+
     return (
       <Container
         externalStyles="tooltip-container"
         content={
           <>
             <span className="date-label" style={{ fontFamily }}>{item.payload.date}</span>
-            <div className={clsx("display-flex", "margin-top")}>
+            <div className={clsx("flex-center", "margin-top")}>
               <span className="value-label" style={{ fontFamily }}>
                 {formatValue(Number(item.value))}
               </span>
               <FluctuationComponent
-                label={item?.payload.fluctuation[keyName || ""]}
+                label={fluctuation?.percentage}
+                value={fluctuation?.value}
               />
             </div>
           </>

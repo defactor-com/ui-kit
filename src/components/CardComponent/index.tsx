@@ -9,6 +9,7 @@ export interface ICardComponent {
   label: string;
   value: number | string;
   fluctuation?: string;
+  fluctuationValue?: string;
   color?: string;
   fontFamily?: string;
   externalStyles?: string;
@@ -18,6 +19,7 @@ export const CardComponent = ({
   label,
   value,
   fluctuation,
+  fluctuationValue,
   color,
   fontFamily,
   externalStyles,
@@ -38,7 +40,7 @@ export const CardComponent = ({
               {value}
             </span>
           </div>
-          {fluctuation && <FluctuationComponent label={fluctuation} />}
+          {fluctuation && <FluctuationComponent label={fluctuation} value={fluctuationValue} />}
         </div>
       </div>
     }
