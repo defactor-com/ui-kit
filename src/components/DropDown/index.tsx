@@ -28,18 +28,18 @@ export const DropDown = ({
   options,
   onChange,
 }: IDropDownObject) => {
-  const [personName, setPersonName] = useState<Array<string>>([]);
+  const [selectedOptions, setSelectedOptions] = useState<Array<string>>([]);
 
-  const handleChange = (event: SelectChangeEvent<typeof personName>) => {
+  const handleChange = (event: SelectChangeEvent<typeof selectedOptions>) => {
     const {
       target: { value },
     } = event;
-    setPersonName(typeof value === "string" ? value.split(",") : value);
+    setSelectedOptions(typeof value === "string" ? value.split(",") : value);
   };
 
   useEffect(() => {
     if (onChange) onChange();
-  }, [personName]);
+  }, [selectedOptions]);
 
   return (
     <div>
@@ -48,7 +48,7 @@ export const DropDown = ({
           name={placeholder}
           multiple
           displayEmpty
-          value={personName}
+          value={selectedOptions}
           onChange={handleChange}
           input={<OutlinedInput />}
           renderValue={(selected) => {
@@ -67,7 +67,7 @@ export const DropDown = ({
           </MenuItem>
           {options.map((name) => (
             <MenuItem key={name} value={name} className="checkBox">
-              <Checkbox checked={personName.indexOf(name) > -1} />
+              <Checkbox checked={selectedOptions.indexOf(name) > -1} />
               <ListItemText primary={name} />
             </MenuItem>
           ))}
