@@ -86,8 +86,6 @@ const tableData = [
 const Template: Story<ITable> = (args) => {
   const [filters, setFilters] = useState<Array<IFilterSelectedObject>>([]);
 
-  console.log(filters);
-
   return (
     <Table
       {...args}

@@ -49,7 +49,7 @@ export interface ITable {
   emptyDescription: string;
   rowsPageSelected: number;
   headers: Array<IHeaderObject>;
-  filters: Array<IFilterObject>;
+  filters?: Array<IFilterObject>;
   nextPage?(motion: string): void;
   loaderComponent?: React.ReactNode;
   handleSelectedRowsPage(selectedValue: string): void;
@@ -94,20 +94,22 @@ export const Table = ({
   };
 
   const updateData = () => {
-    const data: Array<IFilterSelectedObject> = [];
-    filters.forEach((filter) => {
-      const element = document.getElementsByName(
-        filter.label
-      )[0] as HTMLInputElement;
-      let selectFilter: IFilterSelectedObject = {
-        label: filter.label,
-        options: [],
-      };
-      if (filter.options) selectFilter.options = element.value.split(",");
-      else selectFilter.options = element?.value || "";
-      data.push(selectFilter);
-    });
-    setFilters(data);
+    if (filters) {
+      const data: Array<IFilterSelectedObject> = [];
+      filters.forEach((filter) => {
+        const element = document.getElementsByName(
+          filter.label
+        )[0] as HTMLInputElement;
+        let selectFilter: IFilterSelectedObject = {
+          label: filter.label,
+          options: [],
+        };
+        if (filter.options) selectFilter.options = element.value.split(",");
+        else selectFilter.options = element?.value || "";
+        data.push(selectFilter);
+      });
+      setFilters(data);
+    }
   };
 
   return (
@@ -143,7 +145,7 @@ export const Table = ({
                     </div>
                   </th>
                 ))}
-                {haveOptions && (
+                {haveOptions && filters && filters?.length > 0 && (
                   <th className="th-option">
                     <div className="center-element">
                       <Button
@@ -158,7 +160,7 @@ export const Table = ({
                   </th>
                 )}
               </tr>
-              {activeFilter && (
+              {activeFilter && filters && (
                 <tr className="tr-head">
                   {filters.map((filter: IFilterObject) => (
                     <th key={filter.label} className="th-filter">
