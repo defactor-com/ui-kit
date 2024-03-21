@@ -1,5 +1,12 @@
 # @defactor/ui-kit
 
+## 0.0.48
+
+### Patch Changes
+
+- fb45ce9: Update table filters
+- ffc8f3f: Update table and input component
+
 ## 0.0.31
 
 ### Patch Changes
