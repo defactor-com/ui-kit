@@ -11,7 +11,6 @@ import leftIcon from "../../../public/assets/chevron_left.svg";
 import rightIcon from "../../../public/assets/chevron_right.svg";
 import downIcon from "../../../public/assets/arrow-down-icon.svg";
 import filterIcon from "../../../public/assets/filter-options-icon.svg";
-import approveIcon from "../../../public/assets/approve-icon.svg";
 import admirationIcon from "../../../public/assets/admiration-icon.svg";
 
 export interface IHeaderObject {
@@ -49,7 +48,7 @@ export interface ITable {
   emptyDescription: string;
   rowsPageSelected: number;
   headers: Array<IHeaderObject>;
-  filters: Array<IFilterObject>;
+  filters?: Array<IFilterObject>;
   nextPage?(motion: string): void;
   loaderComponent?: React.ReactNode;
   handleSelectedRowsPage(selectedValue: string): void;
@@ -94,20 +93,22 @@ export const Table = ({
   };
 
   const updateData = () => {
-    const data: Array<IFilterSelectedObject> = [];
-    filters.forEach((filter) => {
-      const element = document.getElementsByName(
-        filter.label
-      )[0] as HTMLInputElement;
-      let selectFilter: IFilterSelectedObject = {
-        label: filter.label,
-        options: [],
-      };
-      if (filter.options) selectFilter.options = element.value.split(",");
-      else selectFilter.options = element?.value || "";
-      data.push(selectFilter);
-    });
-    setFilters(data);
+    if (filters) {
+      const data: Array<IFilterSelectedObject> = [];
+      filters.forEach((filter) => {
+        const element = document.getElementsByName(
+          filter.label
+        )[0] as HTMLInputElement;
+        let selectFilter: IFilterSelectedObject = {
+          label: filter.label,
+          options: [],
+        };
+        if (filter.options) selectFilter.options = element.value.split(",");
+        else selectFilter.options = element?.value || "";
+        data.push(selectFilter);
+      });
+      setFilters(data);
+    }
   };
 
   return (
@@ -143,7 +144,7 @@ export const Table = ({
                     </div>
                   </th>
                 ))}
-                {haveOptions && (
+                {haveOptions && filters && filters?.length > 0 && (
                   <th className="th-option">
                     <div className="center-element">
                       <Button
@@ -158,7 +159,7 @@ export const Table = ({
                   </th>
                 )}
               </tr>
-              {activeFilter && (
+              {activeFilter && filters && (
                 <tr className="tr-head">
                   {filters.map((filter: IFilterObject) => (
                     <th key={filter.label} className="th-filter">
@@ -167,12 +168,14 @@ export const Table = ({
                           <DropDown
                             placeholder={filter.label}
                             options={filter.options}
+                            onChange={() => updateData()}
                           />
                         ) : filter.type === "date" ? (
                           <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <MobileDatePicker
                               name={filter.label}
                               className="imput-calendar"
+                              onAccept={() => updateData()}
                             />
                           </LocalizationProvider>
                         ) : (
@@ -180,22 +183,13 @@ export const Table = ({
                             name={filter.label}
                             placeholder={filter.label}
                             className="input-filter"
+                            onChange={() => updateData()}
                           />
                         )}
                       </div>
                     </th>
                   ))}
-                  <th className="th-option">
-                    <div className="center-element">
-                      <Button
-                        onClick={() => updateData()}
-                        fontFamily={fontFamily}
-                        icon={approveIcon}
-                        variant="text"
-                        externalStyles="button-style"
-                      />
-                    </div>
-                  </th>
+                  <th className="th-option" />
                 </tr>
               )}
             </thead>
