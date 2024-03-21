@@ -11,7 +11,6 @@ import leftIcon from "../../../public/assets/chevron_left.svg";
 import rightIcon from "../../../public/assets/chevron_right.svg";
 import downIcon from "../../../public/assets/arrow-down-icon.svg";
 import filterIcon from "../../../public/assets/filter-options-icon.svg";
-import approveIcon from "../../../public/assets/approve-icon.svg";
 import admirationIcon from "../../../public/assets/admiration-icon.svg";
 
 export interface IHeaderObject {
@@ -169,12 +168,14 @@ export const Table = ({
                           <DropDown
                             placeholder={filter.label}
                             options={filter.options}
+                            onChange={() => updateData()}
                           />
                         ) : filter.type === "date" ? (
                           <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <MobileDatePicker
                               name={filter.label}
                               className="imput-calendar"
+                              onAccept={() => updateData()}
                             />
                           </LocalizationProvider>
                         ) : (
@@ -182,22 +183,13 @@ export const Table = ({
                             name={filter.label}
                             placeholder={filter.label}
                             className="input-filter"
+                            onChange={() => updateData()}
                           />
                         )}
                       </div>
                     </th>
                   ))}
-                  <th className="th-option">
-                    <div className="center-element">
-                      <Button
-                        onClick={() => updateData()}
-                        fontFamily={fontFamily}
-                        icon={approveIcon}
-                        variant="text"
-                        externalStyles="button-style"
-                      />
-                    </div>
-                  </th>
+                  <th className="th-option" />
                 </tr>
               )}
             </thead>

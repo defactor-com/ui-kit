@@ -1,6 +1,5 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
@@ -10,6 +9,7 @@ import Checkbox from "@mui/material/Checkbox";
 export interface IDropDownObject {
   placeholder: string;
   options: Array<string>;
+  onChange?(): void;
 }
 
 const ITEM_HEIGHT = 37;
@@ -23,8 +23,12 @@ const MenuProps = {
   },
 };
 
-export const DropDown = ({ placeholder, options }: IDropDownObject) => {
-  const [personName, setPersonName] = React.useState<Array<string>>([]);
+export const DropDown = ({
+  placeholder,
+  options,
+  onChange,
+}: IDropDownObject) => {
+  const [personName, setPersonName] = useState<Array<string>>([]);
 
   const handleChange = (event: SelectChangeEvent<typeof personName>) => {
     const {
@@ -32,6 +36,10 @@ export const DropDown = ({ placeholder, options }: IDropDownObject) => {
     } = event;
     setPersonName(typeof value === "string" ? value.split(",") : value);
   };
+
+  useEffect(() => {
+    if (onChange) onChange();
+  }, [personName]);
 
   return (
     <div>
