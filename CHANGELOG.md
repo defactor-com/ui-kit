@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.0.49
+
+### Patch Changes
+
+- eb57079: Add CardComponent, allow to use string value, and refactor Dashboard and Graphic component
+
 ## 0.0.48
 
 ### Patch Changes
