@@ -12,7 +12,7 @@ import clsx from "clsx";
 
 import { Point } from "../Point";
 import { Container } from "../Container";
-import { CustomTooltipProps, IChart } from "../Graphic";
+import { CustomTooltipProps, IChart } from "../LineChart";
 
 export interface ChartSeriesType {
   name: string;

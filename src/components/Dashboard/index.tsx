@@ -1,25 +1,18 @@
 import React from "react";
 import clsx from "clsx";
 
-import { Point } from "../Point";
 import { Container } from "../Container";
-import { CardContainer } from "../CardContainer";
 import lendIcon from "../../../public/assets/lending.svg";
 import dolarIcon from "../../../public/assets/dolar-icon.svg";
-import { FluctuationComponent } from "../FluctuationComponent";
+import { CardComponent } from "../CardComponent";
 
-export type RightContainerItem = {
+export type CardItem = {
   label: string;
   value: number | string;
+  fluctuation?: string;
+  fluctuationValue?: string;
+  color?: string;
 };
-
-export type BottomContainerItem = {
-  label: string;
-  value: number;
-  fluctuation: string;
-};
-
-export type formatValueType = (value: number, options?: Intl.NumberFormatOptions) => string;
 
 export type IDashboard = {
   content: React.ReactNode;
@@ -28,24 +21,21 @@ export type IDashboard = {
   fontFamily?: string;
   rightLabel: string;
   titleGraphic: string;
-  totalValueLocked: number;
+  totalValueLocked: number | string;
   bottomLabel: string;
-  bottomContainerItems: BottomContainerItem[];
-  rightContainerItems: RightContainerItem[];
-  formatValue: formatValueType;
+  bottomContainerItems: CardItem[];
+  rightContainerItems: CardItem[];
 };
 
 const BottomContainer = ({
   bottomLabel,
   bottomContainerItems,
-  colors,
-  formatValue,
+  colors = [],
   fontFamily,
 }: {
   bottomLabel: string;
-  bottomContainerItems: BottomContainerItem[];
+  bottomContainerItems: CardItem[];
   colors: string[];
-  formatValue: formatValueType;
   fontFamily?: string;
 }) => {
   return (
@@ -60,27 +50,15 @@ const BottomContainer = ({
       </div>
       <div className="footer-container-dashboard">
         {(bottomContainerItems || []).map((item, index) => (
-          <CardContainer
+          <CardComponent
             key={`bottom-item-${index}`}
             externalStyles="dashboard-bottom-flat-containers"
-            content={
-              <div className="flex-column-direction">
-                <span
-                  className={clsx("flex-center", "variant-body1")}
-                  style={{ fontFamily }}
-                >
-                  <Point color={colors[index % colors.length]} /> {item.label}
-                </span>
-                <div className="flat-body-container">
-                  <div className="flex-column-direction">
-                    <span className="variant-h3" style={{ fontFamily }}>
-                      {formatValue(item.value)}
-                    </span>
-                  </div>
-                  <FluctuationComponent label={item.fluctuation} />
-                </div>
-              </div>
-            }
+            value={item.value}
+            label={item.label}
+            fluctuation={item.fluctuation}
+            fluctuationValue={item.fluctuationValue}
+            fontFamily={fontFamily}
+            color={item.color || colors[index % colors.length]}
           />
         ))}
       </div>
@@ -91,12 +69,10 @@ const BottomContainer = ({
 const RightContainer = ({
   rightLabel,
   rightContainerItems,
-  formatValue,
   fontFamily,
 }: {
   rightLabel: string;
-  rightContainerItems: RightContainerItem[];
-  formatValue: formatValueType;
+  rightContainerItems: CardItem[];
   fontFamily?: string;
 }) => {
   return (
@@ -111,23 +87,15 @@ const RightContainer = ({
       </div>
       <div className="pools-body-container">
         {(rightContainerItems || []).map((item, index) => (
-          <CardContainer
+          <CardComponent
             key={`right-item-${index}`}
             externalStyles="dashboard-right-flat-containers"
-            content={
-              <div>
-                <span className="variant-body1" style={{ fontFamily }}>
-                  {item.label}
-                </span>
-                <div className="margin-top">
-                  <span className="variant-h3" style={{ fontFamily }}>
-                    {typeof item.value === "string"
-                      ? item.value
-                      : formatValue(item.value)}
-                  </span>
-                </div>
-              </div>
-            }
+            value={item.value}
+            label={item.label}
+            fontFamily={fontFamily}
+            fluctuation={item.fluctuation}
+            fluctuationValue={item.fluctuationValue}
+            color={item.color}
           />
         ))}
       </div>
@@ -146,7 +114,6 @@ export const Dashboard = ({
   titleGraphic,
   totalValueLocked,
   content,
-  formatValue = (value) => value.toLocaleString("en-US"),
 }: IDashboard) => (
   <Container
     content={
@@ -167,7 +134,7 @@ export const Dashboard = ({
             {totalValueLocked && (
               <div className="total-value-container">
                 <span className="variant-h1" style={{ fontFamily }}>
-                  {formatValue(totalValueLocked, { style: "decimal" })}
+                  {totalValueLocked}
                 </span>
                 <span
                   className={clsx("variant-body2", "padding-bottom-medium")}
@@ -182,7 +149,6 @@ export const Dashboard = ({
               <BottomContainer
                 bottomContainerItems={bottomContainerItems}
                 bottomLabel={bottomLabel}
-                formatValue={formatValue}
                 colors={colors}
                 fontFamily={fontFamily}
               />
@@ -192,7 +158,6 @@ export const Dashboard = ({
         <RightContainer
           rightContainerItems={rightContainerItems}
           rightLabel={rightLabel}
-          formatValue={formatValue}
           fontFamily={fontFamily}
         />
       </div>

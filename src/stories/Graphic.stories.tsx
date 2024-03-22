@@ -1,14 +1,14 @@
 import React from "react";
 import { Story } from "@storybook/react";
 
-import { Graphic, GraphicDataType, IGraphic, SeriesDataType } from "../components/Graphic";
+import { LineChart, LineChartDataType, ILineChart, SeriesDataType } from "../components/LineChart";
 
 export default {
-  title: "Charts/Graphic",
-  component: Graphic,
+  title: "Charts/LineChart",
+  component: LineChart,
 };
 
-const formatValue = (value: number, options?: Intl.NumberFormatOptions) => {
+const formatValue = (value: number | string, options?: Intl.NumberFormatOptions) => {
   return value.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
@@ -50,7 +50,7 @@ const series: SeriesDataType[] = [
   },
 ];
 
-const data: GraphicDataType[] = [
+const data: LineChartDataType[] = [
     {
       date: "25 July 00:00",
     },
@@ -68,12 +68,12 @@ const data: GraphicDataType[] = [
     },
   ];
 
-const Template: Story<IGraphic> = (args) => {
-  return <Graphic {...args} />;
+const Template: Story<ILineChart> = (args) => {
+  return <LineChart {...args} />;
 };
 
-export const GraphicItem = Template.bind({});
-GraphicItem.args = {
+export const LineChartItem = Template.bind({});
+LineChartItem.args = {
   formatValue,
   series,
   data,

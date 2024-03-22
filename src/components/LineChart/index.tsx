@@ -19,14 +19,15 @@ import { Container } from "../Container";
 import { FluctuationComponent } from "../FluctuationComponent";
 import { Point } from "../Point";
 
-import useGraphicState from "./useGraphicState";
+import useLineChartState from "./useLineChartState";
 
-export interface GraphicDataType {
+export interface LineChartDataType {
   date: string;
 }
 
 export interface DataArrayType {
   fluctuation: string;
+  fluctuationValue?: string;
   value: number;
 }
 
@@ -35,24 +36,26 @@ export interface SeriesDataType {
   name: string;
 }
 
+export type FormatValueType = (value: number | string, options?: Intl.NumberFormatOptions) => string;
+
 export interface IChart {
   fontFamily?: string;
   colors: string[];
-  formatValue: (value: number, options?: Intl.NumberFormatOptions) => string;
+  formatValue?: FormatValueType;
 }
 
-export interface IGraphic extends IChart {
-  data: GraphicDataType[] | undefined;
+export interface ILineChart extends IChart {
+  data: LineChartDataType[] | undefined;
   series: SeriesDataType[];
 }
 
 export interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
   fontFamily?: string;
   colors: string[];
-  formatValue: (value: number, options?: Intl.NumberFormatOptions) => string;
+  formatValue: FormatValueType;
 }
 
-export interface GraphicTooltipProps extends CustomTooltipProps {
+export interface LineChartTooltipProps extends CustomTooltipProps {
   keyName?: string;
 }
 
@@ -62,11 +65,13 @@ export const CustomTooltip = ({
   active,
   keyName,
   formatValue,
-}: GraphicTooltipProps) => {
+}: LineChartTooltipProps) => {
   if (active && payload && payload.length && keyName) {
     const item = payload.find((item) => item.name === keyName);
 
     if (!item) return <></>;
+
+    const fluctuation = item?.payload?.fluctuation?.[keyName || ""]
 
     return (
       <Container
@@ -74,12 +79,13 @@ export const CustomTooltip = ({
         content={
           <>
             <span className="date-label" style={{ fontFamily }}>{item.payload.date}</span>
-            <div className={clsx("display-flex", "margin-top")}>
+            <div className={clsx("flex-center", "margin-top")}>
               <span className="value-label" style={{ fontFamily }}>
                 {formatValue(Number(item.value))}
               </span>
               <FluctuationComponent
-                label={item?.payload.fluctuation[keyName || ""]}
+                label={fluctuation?.percentage}
+                value={fluctuation?.value}
               />
             </div>
           </>
@@ -91,17 +97,17 @@ export const CustomTooltip = ({
   return null;
 };
 
-export const Graphic = ({
+export const LineChart = ({
   colors,
   data,
   series,
   fontFamily,
-  formatValue,
-}: IGraphic) => {
+  formatValue = (value) => value.toLocaleString("en-US"),
+}: ILineChart) => {
   const [
     { chartData, keyName, keyNames, tooltipActive },
     { isHide, setHide, handleOpenTooltip, handleCloseTooltip },
-  ] = useGraphicState({ data, series });
+  ] = useLineChartState({ data, series });
   const getColorId = (color: string) =>
     color.toLocaleLowerCase().replace(" ", "-");
   return (

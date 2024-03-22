@@ -1,20 +1,23 @@
 import { useState } from "react";
 
-import { GraphicDataType, SeriesDataType } from ".";
+import { LineChartDataType, SeriesDataType } from ".";
 
-const useGraphicState = ({
+const useLineChartState = ({
   data,
   series,
 }: {
-  data: GraphicDataType[] | undefined;
+  data: LineChartDataType[] | undefined;
   series: SeriesDataType[];
 }) => {
   const getInitialData = (
-    data: GraphicDataType[] | undefined,
+    data: LineChartDataType[] | undefined,
     series: SeriesDataType[]
   ) => {
     const chartData: any =
-      data?.map((item) => ({ ...item, fluctuation: {} })) || [];
+      data?.map((item) => ({
+        ...item,
+        fluctuation: { percentage: "", value: "" },
+      })) || [];
     const keyNames: string[] = [];
     const hideInitialStatus: Record<string, boolean> = {};
 
@@ -24,7 +27,10 @@ const useGraphicState = ({
       element.data.forEach((item, index) => {
         if (chartData[index]) {
           chartData[index][element.name] = item.value;
-          chartData[index].fluctuation[element.name] = item.fluctuation;
+          chartData[index].fluctuation[element.name] = {
+            value: item.fluctuationValue,
+            percentage: item.fluctuation,
+          };
         }
       });
     });
@@ -49,7 +55,7 @@ const useGraphicState = ({
     setTooltipActive(false);
   };
 
-  const isHide = (keyName: string) => hide[keyName]
+  const isHide = (keyName: string) => hide[keyName];
 
   return [
     { chartData, keyNames, keyName, tooltipActive },
@@ -57,4 +63,4 @@ const useGraphicState = ({
   ];
 };
 
-export default useGraphicState;
+export default useLineChartState;
