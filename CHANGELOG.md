@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.0.50
+
+### Patch Changes
+
+- 0aa1e52: Update LendBorrow
+
 ## 0.0.49
 
 ### Patch Changes
