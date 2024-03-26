@@ -41,7 +41,7 @@ export const Input = ({
     formattedValue = e.target.value.replace(/[^0-9.]/g, "");
     formattedValue = addPrecision(formattedValue, precision);
     formattedValue = validateNumber(formattedValue);
-    setInputValue(formattedValue ? formattedValue : "0");
+    setInputValue(formattedValue);
     onChange(e);
   };
 
