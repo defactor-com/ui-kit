@@ -21,7 +21,8 @@ export const Input = ({
 
   const addPrecision = (value: string, precision: number): string => {
     if (precision < 0) return value;
-    const number = parseFloat(value.replace(/[^0-9]/g, ""));
+    const stringValue = value.replace(/[^0-9]/g, "");
+    const number = parseFloat(stringValue === "" ? "0" : stringValue);
     const valuePrecision = number / Math.pow(10, precision);
     return valuePrecision.toString();
   };

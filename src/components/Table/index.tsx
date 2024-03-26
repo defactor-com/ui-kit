@@ -208,7 +208,7 @@ export const Table = ({
                   </tr>
                 ))}
                 {!rows.length && (
-                  <tr style={{ border: "2px solid red" }}>
+                  <tr>
                     {headers.map((item) => (
                       <td key={item.label}>{loaderComponent}</td>
                     ))}
