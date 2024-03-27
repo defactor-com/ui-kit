@@ -23,8 +23,8 @@ const Template: Story<IBarChart> = (args) => {
 const poolNames = ["POOL A", "POOL B", "POOL C"];
 const barChartColors = ["#5A5BEB", "#26A66B80"];
 const barChatSeries: ChartSeriesType[] = [
-  { name: "Lending", data: [3, 2.2, 9.5] },
-  { name: "Borrowing", data: [4.5, 5.2, 2.3] },
+  { name: "Lending", data: [3000, 200, 1000] },
+  { name: "Borrowing", data: [1500, 500, 800] },
 ];
 
 export const BarChartItem = Template.bind({});
