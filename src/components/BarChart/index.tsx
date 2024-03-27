@@ -97,10 +97,7 @@ export const BarChart = ({
 
   return (
     <div className="bar-chart-container">
-      <ResponsiveContainer
-        width="100%"
-        height={100 * data.length}
-      >
+      <ResponsiveContainer width="100%" height={100 * data.length}>
         <RechartsBarChart data={chartData} layout="vertical" barGap={8}>
           <CartesianGrid
             strokeDasharray="12 12"
@@ -111,9 +108,20 @@ export const BarChart = ({
           <XAxis
             type="number"
             axisLine={false}
-            fontSize={12}
-            fontWeight={500}
             fontFamily={fontFamily}
+            tick={(props) => (
+              <text
+                x={props.x + 10}
+                y={props.y + 15}
+                fontSize={12}
+                fill="#7C7D7E"
+                textAnchor="end"
+                fontWeight={500}
+                fontFamily={fontFamily}
+              >
+                {formatValue(props.payload.value)}
+              </text>
+            )}
           />
           <YAxis
             type="category"
