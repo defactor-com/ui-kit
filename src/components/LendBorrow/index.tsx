@@ -30,12 +30,8 @@ export const LendBorrow = ({
   onChange,
   disabled,
   collateralSection,
-  precision,
 }: ILendBorrow) => {
   const [activeTab, setActiveTab] = useState("lendTab");
-  const [newValue, setNewValue] = useState<InputValue>(
-    typeof value === "bigint" ? value.toString() : value
-  );
 
   const openTab = (tabName: React.SetStateAction<string>) => {
     setActiveTab(tabName);
@@ -75,10 +71,9 @@ export const LendBorrow = ({
             {activeTab === "lendTab" && (
               <div>
                 <Input
-                  value={newValue}
+                  value={value?.toString()}
                   onChange={onChange}
                   setFormat={true}
-                  precision={precision}
                 />
                 <div className="containerButtonLendBorrow">
                   <Button
@@ -96,10 +91,9 @@ export const LendBorrow = ({
             {activeTab === "borrowTab" && (
               <div>
                 <Input
-                  value={newValue}
+                  value={value?.toString()}
                   onChange={onChange}
                   setFormat={true}
-                  precision={precision}
                 />
                 {collateralSection}
                 <div className="containerButtonLendBorrow">
