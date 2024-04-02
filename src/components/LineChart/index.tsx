@@ -36,7 +36,10 @@ export interface SeriesDataType {
   name: string;
 }
 
-export type FormatValueType = (value: number | string, options?: Intl.NumberFormatOptions) => string;
+export type FormatValueType = (
+  value: number | string,
+  options?: Intl.NumberFormatOptions
+) => string;
 
 export interface IChart {
   fontFamily?: string;
@@ -71,14 +74,16 @@ export const CustomTooltip = ({
 
     if (!item) return <></>;
 
-    const fluctuation = item?.payload?.fluctuation?.[keyName || ""]
+    const fluctuation = item?.payload?.fluctuation?.[keyName || ""];
 
     return (
       <Container
         externalStyles="tooltip-container"
         content={
           <>
-            <span className="date-label" style={{ fontFamily }}>{item.payload.date}</span>
+            <span className="date-label" style={{ fontFamily }}>
+              {item.payload.date}
+            </span>
             <div className={clsx("flex-center", "margin-top")}>
               <span className="value-label" style={{ fontFamily }}>
                 {formatValue(Number(item.value))}
@@ -151,7 +156,7 @@ export const LineChart = ({
                 fontWeight={500}
                 fontFamily={fontFamily}
               >
-                {props.payload.value}
+                {formatValue(props.payload.value)}
               </text>
             )}
           />
@@ -161,9 +166,9 @@ export const LineChart = ({
               tooltipActive ? (
                 <CustomTooltip
                   colors={colors}
+                  keyName={keyName}
                   fontFamily={fontFamily}
                   formatValue={formatValue}
-                  keyName={keyName}
                 />
               ) : (
                 <></>

@@ -13,3 +13,11 @@
   gap: 8px;
   margin-bottom: 8px;
 }
+
+.bar-chart-graphic-container {
+  overflow: auto;
+  height: 306px;
+  & .recharts-responsive-container {
+    float: right;
+  }
+}

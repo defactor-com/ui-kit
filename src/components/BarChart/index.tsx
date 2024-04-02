@@ -97,70 +97,75 @@ export const BarChart = ({
 
   return (
     <div className="bar-chart-container">
-      <ResponsiveContainer width="100%" height={100 * data.length}>
-        <RechartsBarChart data={chartData} layout="vertical" barGap={8}>
-          <CartesianGrid
-            strokeDasharray="12 12"
-            horizontalCoordinatesGenerator={(props) =>
-              getHorizontalCoordinates(props.yAxis.height, props.yAxis.bandSize)
-            }
-          />
-          <XAxis
-            type="number"
-            axisLine={false}
-            fontFamily={fontFamily}
-            tick={(props) => (
-              <text
-                x={props.x + 10}
-                y={props.y + 15}
-                fontSize={12}
-                fill="#7C7D7E"
-                textAnchor="end"
-                fontWeight={500}
-                fontFamily={fontFamily}
-              >
-                {formatValue(props.payload.value)}
-              </text>
-            )}
-          />
-          <YAxis
-            type="category"
-            axisLine={false}
-            tick={(props) => (
-              <text
-                x={props.x}
-                y={props.y}
-                fontSize={12}
-                fill="#7C7D7E"
-                textAnchor="end"
-                fontWeight={500}
-                fontFamily={fontFamily}
-              >
-                {chartData[props.payload.index].name}
-              </text>
-            )}
-          />
-          {keyNames.map((name, index) => (
-            <Bar
-              key={`bar-${name}-${index}`}
-              dataKey={name}
-              fill={colors[index % colors.length]}
-              barSize={25}
-              fontFamily={fontFamily}
+      <div className="bar-chart-graphic-container">
+        <ResponsiveContainer width="94%" height={100 * data.length}>
+          <RechartsBarChart data={chartData} layout="vertical" barGap={8}>
+            <CartesianGrid
+              strokeDasharray="12 12"
+              horizontalCoordinatesGenerator={(props) =>
+                getHorizontalCoordinates(
+                  props.yAxis.height,
+                  props.yAxis.bandSize
+                )
+              }
             />
-          ))}
-          <Tooltip
-            cursor={{ fill: "transparent" }}
-            content={
-              <CustomTooltip
-                colors={colors}
+            <XAxis
+              type="number"
+              axisLine={false}
+              fontFamily={fontFamily}
+              tick={(props) => (
+                <text
+                  x={props.x + 10}
+                  y={props.y + 15}
+                  fontSize={12}
+                  fill="#7C7D7E"
+                  textAnchor="end"
+                  fontWeight={500}
+                  fontFamily={fontFamily}
+                >
+                  {formatValue(props.payload.value)}
+                </text>
+              )}
+            />
+            <YAxis
+              type="category"
+              axisLine={false}
+              tick={(props) => (
+                <text
+                  x={props.x}
+                  y={props.y}
+                  fontSize={12}
+                  fill="#7C7D7E"
+                  textAnchor="end"
+                  fontWeight={500}
+                  fontFamily={fontFamily}
+                >
+                  {chartData[props.payload.index].name}
+                </text>
+              )}
+            />
+            {keyNames.map((name, index) => (
+              <Bar
+                key={`bar-${name}-${index}`}
+                dataKey={name}
+                fill={colors[index % colors.length]}
+                barSize={25}
                 fontFamily={fontFamily}
-                formatValue={formatValue}
               />
-            }
-          />
-        </RechartsBarChart>
-      </ResponsiveContainer>
+            ))}
+            <Tooltip
+              cursor={{ fill: "transparent" }}
+              content={
+                <CustomTooltip
+                  colors={colors}
+                  fontFamily={fontFamily}
+                  formatValue={formatValue}
+                />
+              }
+            />
+          </RechartsBarChart>
+        </ResponsiveContainer>
+      </div>
       <div className={clsx("flex-center", "bar-chart-legend-container")}>
         {keyNames.map((name, index) => (
           <span
