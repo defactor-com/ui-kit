@@ -4,20 +4,22 @@ import clsx from "clsx";
 import { Container } from "../Container";
 
 export interface IChartContainer {
-  content: React.ReactNode;
-  fontFamily?: string;
-  chartSubtitle?: string;
   chartDescription?: string;
+  content: React.ReactNode;
+  externalStyles?: string;
+  chartSubtitle?: string;
+  fontFamily?: string;
 }
 
 export const ChartContainer = ({
-  chartSubtitle,
   chartDescription,
+  externalStyles,
+  chartSubtitle,
   fontFamily,
   content,
 }: IChartContainer) => (
   <Container
-    externalStyles="chart-container"
+    externalStyles={clsx(externalStyles, "chart-container")}
     content={
       <>
         <div className={clsx("flex-column-direction", "margin-bottom-high")}>
