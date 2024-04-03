@@ -16,8 +16,11 @@
 
 .bar-chart-graphic-container {
   overflow: auto;
-  height: 306px;
+  min-height: 140px;
+  max-height: 306px;
   & .recharts-responsive-container {
     float: right;
+    padding-left: 16px;
+    padding-right: 8px;
   }
 }

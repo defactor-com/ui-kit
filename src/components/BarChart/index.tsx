@@ -98,7 +98,7 @@ export const BarChart = ({
   return (
     <div className="bar-chart-container">
       <div className="bar-chart-graphic-container">
-        <ResponsiveContainer width="94%" height={100 * data.length}>
+        <ResponsiveContainer width="100%" height={120 * data.length}>
           <RechartsBarChart data={chartData} layout="vertical" barGap={8}>
             <CartesianGrid
               strokeDasharray="12 12"
