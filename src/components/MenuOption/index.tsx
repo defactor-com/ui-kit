@@ -3,10 +3,10 @@ import React from "react";
 
 export interface IMenuOption extends React.HTMLAttributes<HTMLButtonElement> {
   text?: string;
-  icon?: string;
   color?: string;
   fontFamily?: string;
   isSelected: Boolean;
+  icon?: string | React.ReactNode;
 }
 
 export const MenuOption: React.FC<IMenuOption> = React.memo(
@@ -20,7 +20,11 @@ export const MenuOption: React.FC<IMenuOption> = React.memo(
       }}
       {...props}
     >
-      {icon && <img src={icon} alt={text} className="menu-option-icon" />}
+      {icon && typeof icon === "string" ? (
+        <img src={icon} alt={text} className="menu-option-icon" />
+      ) : (
+        icon
+      )}
       {text}
     </button>
   )

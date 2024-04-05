@@ -7,11 +7,11 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { Button } from "../Button";
 import { Container } from "../Container";
 import { DropDown } from "../DropDown";
+import AdmirationIcon from "../Icons/admirationIcon";
 import leftIcon from "../../../public/assets/chevron_left.svg";
 import rightIcon from "../../../public/assets/chevron_right.svg";
 import downIcon from "../../../public/assets/arrow-down-icon.svg";
 import filterIcon from "../../../public/assets/filter-options-icon.svg";
-import admirationIcon from "../../../public/assets/admiration-icon.svg";
 
 export interface IHeaderObject {
   label: string;
@@ -39,8 +39,10 @@ export interface ITable {
   fontFamily?: string;
   emptyTitle?: string;
   visiblePage?: number;
+  primaryColor?: string;
   haveOptions?: boolean;
   headerbgColor?: string;
+  rowsHoverColor?: string;
   totalRowsNumber: number;
   rowsNumberLabel?: string;
   rows: Array<IRowsObject>;
@@ -66,8 +68,10 @@ export const Table = ({
   nextPage,
   emptyTitle,
   fontFamily,
+  setFilters,
   haveOptions,
   visiblePage,
+  primaryColor,
   headerbgColor,
   loaderComponent,
   rowsNumberLabel,
@@ -75,9 +79,11 @@ export const Table = ({
   emptyDescription,
   rowsPageSelected,
   handleSelectedRowsPage,
-  setFilters,
+  rowsHoverColor = "rgba(38, 166, 107, 0.1)",
 }: ITable) => {
   const [activeFilter, setActiveFilter] = useState(false);
+  const [hoverItem, setHoverItem] = useState<number>(-1);
+  const [isHovered, setIsHovered] = useState(false);
   const buildPaginationArray = (): Array<number> => {
     const paginationArray = [];
     let amountElements = totalRowsNumber / rowsPageSelected;
@@ -90,6 +96,17 @@ export const Table = ({
     }
 
     return paginationArray;
+  };
+
+  const handleMouseEnter = (key: number) => {
+    setHoverItem(key);
+
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHoverItem(-1);
+    setIsHovered(false);
   };
 
   const updateData = () => {
@@ -199,7 +216,15 @@ export const Table = ({
                   <tr
                     key={index}
                     onClick={row.onClickRow}
-                    className={row.onClickRow ? "tr-action" : "tr-hightlight"}
+                    onMouseLeave={handleMouseLeave}
+                    onMouseEnter={() => handleMouseEnter(index)}
+                    className={row.onClickRow ? "tr-action" : undefined}
+                    style={{
+                      backgroundColor:
+                        isHovered && hoverItem === index
+                          ? rowsHoverColor
+                          : "initial",
+                    }}
                   >
                     {row.items.map((itemRow, indexRow) => (
                       <td key={indexRow}>{itemRow}</td>
@@ -219,7 +244,9 @@ export const Table = ({
           </table>
           {!rows?.length && !loading && (
             <div className="empt-state-container">
-              <img src={admirationIcon} className="img-empty" />
+              <div className="img-empty">
+                <AdmirationIcon color={primaryColor} />
+              </div>
               <span
                 className={clsx("variant-h3", "small-margin-button")}
                 style={{ fontFamily: fontFamily }}
