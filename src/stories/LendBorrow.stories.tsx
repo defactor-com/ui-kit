@@ -15,7 +15,14 @@ const Template: Story<ILendBorrow> = (args) => {
   };
 
   return (
-    <LendBorrow {...args} value={value} onChange={handleChange} precision={5} />
+    <LendBorrow
+      {...args}
+      value={value}
+      precision={5}
+      labelLend="Lend"
+      labelBorrow="Borrow"
+      onChange={handleChange}
+    />
   );
 };
 

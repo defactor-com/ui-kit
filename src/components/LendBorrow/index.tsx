@@ -13,12 +13,14 @@ export interface ILendBorrow {
   color?: string;
   onLend(): void;
   onBorrow(): void;
+  labelLend: string;
   disabled?: boolean;
+  precision?: number;
+  labelBorrow: string;
+  value: InputValue | bigint;
   loader?: React.ReactElement;
   collateralSection: React.ReactElement;
   onChange(e: ChangeEvent<HTMLInputElement>): void;
-  value: InputValue | bigint;
-  precision?: number;
 }
 
 export const LendBorrow = ({
@@ -29,6 +31,8 @@ export const LendBorrow = ({
   onBorrow,
   onChange,
   disabled,
+  labelLend,
+  labelBorrow,
   collateralSection,
 }: ILendBorrow) => {
   const [activeTab, setActiveTab] = useState("lendTab");
@@ -50,8 +54,8 @@ export const LendBorrow = ({
               ])}
               onClick={() => openTab("lendTab")}
               icon={lendingIcon}
+              label={labelLend}
               variant="text"
-              label="Lend"
               fullWidth
             />
             <Button
@@ -62,7 +66,7 @@ export const LendBorrow = ({
               onClick={() => openTab("borrowTab")}
               style={{ borderColor: color }}
               icon={borrowingIcon}
-              label="Borrow"
+              label={labelBorrow}
               variant="text"
               fullWidth
             />
@@ -80,10 +84,10 @@ export const LendBorrow = ({
                     icon={lendingWhiteIcon}
                     variant="contained"
                     disabled={disabled}
+                    label={labelLend}
                     onClick={onLend}
                     loader={loader}
                     bgColor={color}
-                    label="Lend"
                   />
                 </div>
               </div>
@@ -99,12 +103,12 @@ export const LendBorrow = ({
                 <div className="containerButtonLendBorrow">
                   <Button
                     icon={borrowingWhiteIcon}
+                    label={labelBorrow}
                     variant="contained"
                     disabled={disabled}
                     onClick={onBorrow}
                     loader={loader}
                     bgColor={color}
-                    label="Borrow"
                   />
                 </div>
               </div>
