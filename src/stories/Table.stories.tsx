@@ -142,28 +142,60 @@ const Template: Story<ITable> = (args) => {
 const dynamicRows = tableData.map((item) => {
   const row: IRowsObject = {
     items: [
-      <div>
-        <span>{item.position}</span>
-      </div>,
-      <div>
-        <span>{item.amount}</span>
-      </div>,
-      <div>
-        <span>{item.rewards}</span>
-      </div>,
-      <div>
-        <span>{item.lock}</span>
-      </div>,
-      <div>
-        <span>{item.unLock}</span>
-      </div>,
-      <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-        <Pill
-          label={item.status}
-          bgColor={item.backgroundPill}
-          color={item.colorPill}
-        />
-      </div>,
+      {
+        activeAction: true,
+        component: (
+          <div>
+            <span>{item.position}</span>
+          </div>
+        ),
+      },
+      {
+        activeAction: true,
+        component: (
+          <div>
+            <span>{item.amount}</span>
+          </div>
+        ),
+      },
+      {
+        activeAction: true,
+        component: (
+          <div>
+            <span>{item.rewards}</span>
+          </div>
+        ),
+      },
+      {
+        activeAction: true,
+        component: (
+          <div>
+            <span>{item.lock}</span>
+          </div>
+        ),
+      },
+      {
+        activeAction: true,
+        component: (
+          <div>
+            <span>{item.unLock}</span>
+          </div>
+        ),
+      },
+      {
+        activeAction: false,
+        component: (
+          <div
+            style={{ width: "100%", display: "flex", justifyContent: "center" }}
+          >
+            <Pill
+              label={item.status}
+              bgColor={item.backgroundPill}
+              color={item.colorPill}
+            />
+          </div>
+        ),
+      },
     ],
   };
 

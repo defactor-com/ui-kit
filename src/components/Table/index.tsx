@@ -29,9 +29,14 @@ export interface IFilterSelectedObject {
   options?: Array<string> | string;
 }
 
+export interface IitemRow {
+  activeAction: boolean;
+  component: React.ReactNode;
+}
+
 export interface IRowsObject {
   onClickRow?(): void;
-  items: Array<React.ReactNode>;
+  items: Array<IitemRow>;
 }
 
 export interface ITable {
@@ -215,7 +220,6 @@ export const Table = ({
                 {rows?.map((row, index) => (
                   <tr
                     key={index}
-                    onClick={row.onClickRow}
                     onMouseLeave={handleMouseLeave}
                     onMouseEnter={() => handleMouseEnter(index)}
                     className={row.onClickRow ? "tr-action" : undefined}
@@ -227,7 +231,14 @@ export const Table = ({
                     }}
                   >
                     {row.items.map((itemRow, indexRow) => (
-                      <td key={indexRow}>{itemRow}</td>
+                      <td
+                        onClick={
+                          itemRow.activeAction ? row.onClickRow : undefined
+                        }
+                        key={indexRow}
+                      >
+                        {itemRow.component}
+                      </td>
                     ))}
                     <td className="td-void"></td>
                   </tr>
