@@ -1,7 +1,6 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { TabContext, TabPanel, TabList } from "@mui/lab";
 import { Tab } from "@mui/material";
-import clsx from "clsx";
 
 import borrowingWhiteIcon from "../../../public/assets/borrowing-white-icon.svg";
 import lendingWhiteIcon from "../../../public/assets/lending-white-icon.svg";
@@ -54,41 +53,25 @@ export const LendBorrow = ({
       content={
         <TabContext value={currentTab}>
           <div className="headerLendBorrow">
-            {/* <Button
-              externalStyles={clsx([
-                "buttonsStyles",
-                activeTab !== "lendTab" && "buttonsStylesSelected",
-              ])}
-              onClick={() => openTab("lendTab")}
-              icon={lendingIcon}
-              label={labelLend}
-              variant="text"
-              fullWidth
-            />
-            <Button
-              externalStyles={clsx([
-                "buttonsStyles",
-                activeTab !== "borrowTab" && "buttonsStylesSelected",
-              ])}
-              onClick={() => openTab("borrowTab")}
-              style={{ borderColor: color }}
-              icon={borrowingIcon}
-              label={labelBorrow}
-              variant="text"
-              fullWidth
-            /> */}
-            <TabList onChange={handleChange}>
+            <TabList
+              onChange={handleChange}
+              className="tabListCustom"
+              classes={{ indicator: "customIndicator" }}
+              centered
+            >
               <Tab
                 icon={lendingIcon}
                 iconPosition="start"
                 label={labelLend}
                 value={labelLend}
+                className="tabCustom"
               />
               <Tab
                 icon={borrowingIcon}
                 iconPosition="start"
                 label={labelBorrow}
                 value={labelBorrow}
+                className="tabCustom"
               />
             </TabList>
           </div>

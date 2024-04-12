@@ -17,6 +17,25 @@
 
 .headerLendBorrow {
   display: flex;
+  width: 100%;
+}
+
+.tabListCustom {
+  width: 100%;
+}
+
+.customIndicator {
+  background-color: #26a66b !important;
+}
+
+.tabCustom {
+  width: 50%;
+  color: rgba(124, 125, 126, 0.5) !important;
+  font-weight: bold !important;
+  border-bottom: 2px solid rgba(124, 125, 126, 0.5) !important;
+  &.Mui-selected {
+    color: #000 !important;
+  }
 }
 
 .bodyLendBorrow {
