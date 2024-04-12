@@ -8,6 +8,7 @@ import lendingIcon from "../../../public/assets/lending.svg";
 import { Container } from "../Container";
 import { Button } from "../Button";
 import { Input, InputValue } from "../Input";
+import { CollateralSection } from "../CollateralSection";
 
 export interface ILendBorrow {
   color?: string;
@@ -19,7 +20,6 @@ export interface ILendBorrow {
   labelBorrow: string;
   value: InputValue | bigint;
   loader?: React.ReactElement;
-  collateralSection: React.ReactElement;
   onChange(e: ChangeEvent<HTMLInputElement>): void;
 }
 
@@ -33,7 +33,6 @@ export const LendBorrow = ({
   disabled,
   labelLend,
   labelBorrow,
-  collateralSection,
 }: ILendBorrow) => {
   const [activeTab, setActiveTab] = useState("lendTab");
 
@@ -79,6 +78,12 @@ export const LendBorrow = ({
                   onChange={onChange}
                   setFormat={true}
                 />
+                <CollateralSection
+                  numberCollateral="100,000.00"
+                  numberWallet="100,000.00"
+                  requiredSection={true}
+                  symbolToken={"FACTR"}
+                />
                 <div className="containerButtonLendBorrow">
                   <Button
                     icon={lendingWhiteIcon}
@@ -99,7 +104,12 @@ export const LendBorrow = ({
                   onChange={onChange}
                   setFormat={true}
                 />
-                {collateralSection}
+                <CollateralSection
+                  numberCollateral="100,000.00"
+                  numberWallet="100,000.00"
+                  requiredSection={true}
+                  symbolToken={"FACTR"}
+                />
                 <div className="containerButtonLendBorrow">
                   <Button
                     icon={borrowingWhiteIcon}
