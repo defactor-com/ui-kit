@@ -103,9 +103,9 @@ export const CustomTooltip = ({
 };
 
 export const LineChart = ({
-  colors,
   data,
   series,
+  colors,
   fontFamily,
   formatValue = (value) => value.toLocaleString("en-US"),
 }: ILineChart) => {
@@ -115,6 +115,7 @@ export const LineChart = ({
   ] = useLineChartState({ data, series });
   const getColorId = (color: string) =>
     color.toLocaleLowerCase().replace(" ", "-");
+
   return (
     <>
       <ResponsiveContainer width="100%" height="55%" minHeight="200px">
@@ -142,10 +143,11 @@ export const LineChart = ({
               </linearGradient>
             ))}
           </defs>
-
           <CartesianGrid strokeDasharray="12 12" />
           <YAxis
+            scale="log"
             axisLine={false}
+            domain={["auto", "auto"]}
             tick={(props) => (
               <text
                 x={props.x}
@@ -160,7 +162,6 @@ export const LineChart = ({
               </text>
             )}
           />
-
           <Tooltip
             content={
               tooltipActive ? (
@@ -175,7 +176,6 @@ export const LineChart = ({
               )
             }
           />
-
           {(keyNames || []).map((name, index) => (
             <Area
               key={`area-${name}`}
@@ -190,7 +190,6 @@ export const LineChart = ({
               fill={`url(#color-${getColorId(name)})`}
             />
           ))}
-
           {(keyNames || []).map((name, index) => (
             <Line
               key={`line-${name}`}
