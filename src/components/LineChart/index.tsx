@@ -118,7 +118,12 @@ export const LineChart = ({
 
   return (
     <>
-      <ResponsiveContainer width="100%" height="55%" minHeight="200px">
+      <ResponsiveContainer
+        width="97%"
+        height="55%"
+        minHeight="200px"
+        className="line-chart-container"
+      >
         <ComposedChart data={chartData}>
           <defs>
             {(keyNames || []).map((name, index) => (
