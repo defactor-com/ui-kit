@@ -3,6 +3,12 @@ import { Story } from "@storybook/react";
 
 import { LendBorrow, ILendBorrow } from "../components/LendBorrow";
 
+import borrowingIconSvg from "../../public/assets/borrowing.svg";
+import lendingIconSvg from "../../public/assets/lending.svg";
+import activeBorrowingIconSvg from "../../public/assets/activeBorrowing-icon.svg";
+import activeLendingIconSvg from "../../public/assets/activeLending-icon.svg";
+import WalletIcon from "../../public/assets/wallet-icon.svg";
+
 export default {
   title: "LendBorrow",
   component: LendBorrow,
@@ -22,6 +28,11 @@ const Template: Story<ILendBorrow> = (args) => {
       labelLend="Lend"
       labelBorrow="Borrow"
       onChange={handleChange}
+      activeBorrowingSvg={activeBorrowingIconSvg}
+      activeLendingSvg={activeLendingIconSvg}
+      borrowingSvg={borrowingIconSvg}
+      lendingSvg={lendingIconSvg}
+      walletSvg={WalletIcon}
     />
   );
 };

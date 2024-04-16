@@ -4,8 +4,6 @@ import { Tab } from "@mui/material";
 
 import borrowingWhiteIcon from "../../../public/assets/borrowing-white-icon.svg";
 import lendingWhiteIcon from "../../../public/assets/lending-white-icon.svg";
-import borrowingIconSvg from "../../../public/assets/borrowing.svg";
-import lendingIconSvg from "../../../public/assets/lending.svg";
 import { Container } from "../Container";
 import { Button } from "../Button";
 import { Input, InputValue } from "../Input";
@@ -24,10 +22,12 @@ export interface ILendBorrow {
   value: InputValue | bigint;
   loader?: React.ReactElement;
   onChange(e: ChangeEvent<HTMLInputElement>): void;
+  activeBorrowingSvg: string;
+  activeLendingSvg: string;
+  borrowingSvg: string;
+  lendingSvg: string;
+  walletSvg: string;
 }
-
-const borrowingIcon = <img src={borrowingIconSvg} width={24} height={24} />;
-const lendingIcon = <img src={lendingIconSvg} width={24} height={24} />;
 
 export const LendBorrow = ({
   color,
@@ -39,12 +39,34 @@ export const LendBorrow = ({
   disabled,
   labelLend,
   labelBorrow,
+  activeBorrowingSvg,
+  activeLendingSvg,
+  borrowingSvg,
+  lendingSvg,
+  walletSvg,
 }: ILendBorrow) => {
-  const [{ currentTab }, { setCurrentTab, handleChange }] =
-    useLendBorrowState();
+  const [
+    { currentTab, borrowingIcon, lendingIcon },
+    {
+      setCurrentTab,
+      setLendLabel,
+      setBorrowLabel,
+      setActiveBorrowingSvg,
+      setActiveLendingSvg,
+      setBorrowingSvg,
+      setLendingSvg,
+      handleChange,
+    },
+  ] = useLendBorrowState();
 
   useEffect(() => {
     setCurrentTab(labelLend);
+    setBorrowLabel(labelBorrow);
+    setLendLabel(labelLend);
+    setActiveBorrowingSvg(activeBorrowingSvg);
+    setActiveLendingSvg(activeLendingSvg);
+    setBorrowingSvg(borrowingSvg);
+    setLendingSvg(lendingSvg);
   }, []);
 
   return (
@@ -111,6 +133,7 @@ export const LendBorrow = ({
                 numberWallet="100,000.00"
                 requiredSection={true}
                 symbolToken={"FACTR"}
+                walletIcon={walletSvg}
               />
               <div className="containerButtonLendBorrow">
                 <Button
