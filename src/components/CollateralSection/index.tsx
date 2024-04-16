@@ -9,7 +9,7 @@ export interface ICollateralSection {
   numberCollateral?: string;
   textWallet?: string;
   numberWallet?: string;
-  symbolToken?: React.ReactNode | string;
+  symbolToken?: React.ReactElement | string;
   requiredSection: boolean;
   backgroundColor?: string;
   symbolWallet?: string;
@@ -50,12 +50,21 @@ export const CollateralSection = ({
             walletIcon
           )}
           <Typography variant="body1">{textWallet}</Typography>
-          <div>
-            <PreviewProfile
+          <div className="walletDetail">
+            {/* <PreviewProfile
               label={`${numberWallet} ${symbolToken}`}
               image={symbolWallet}
               imageSize="16px"
-            />
+            /> */}
+            {symbolWallet && typeof symbolWallet === "string" ? (
+              <img src={symbolWallet} width={16} height={16} />
+            ) : (
+              symbolWallet
+            )}
+            <div className="walletAmount">
+              <Typography variant="body1">{numberWallet}</Typography>
+              <Typography variant="body1">{symbolToken}</Typography>
+            </div>
           </div>
         </div>
       )}

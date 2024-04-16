@@ -9,66 +9,41 @@ import { Button } from "../Button";
 import { Input, InputValue } from "../Input";
 import { CollateralSection } from "../CollateralSection";
 
-import { useLendBorrowState } from "./useLendBorrowState";
-
 export interface ILendBorrow {
   color?: string;
-  onLend(): void;
-  onBorrow(): void;
+  bgColor?: string;
+  currentTab: string;
   labelLend: string;
-  disabled?: boolean;
-  precision?: number;
   labelBorrow: string;
+  disabled?: boolean;
   value: InputValue | bigint;
   loader?: React.ReactElement;
-  onChange(e: ChangeEvent<HTMLInputElement>): void;
-  activeBorrowingSvg: string;
-  activeLendingSvg: string;
   borrowingSvg: string;
   lendingSvg: string;
   walletSvg: string;
+  onLend(): void;
+  onBorrow(): void;
+  onChange(e: ChangeEvent<HTMLInputElement>): void;
+  onChangeTab: (event: React.SyntheticEvent, newValue: string) => void;
 }
 
 export const LendBorrow = ({
   color,
-  value,
-  onLend,
-  loader,
-  onBorrow,
-  onChange,
-  disabled,
+  bgColor,
+  currentTab,
   labelLend,
+  disabled,
   labelBorrow,
-  activeBorrowingSvg,
-  activeLendingSvg,
+  value,
+  loader,
   borrowingSvg,
   lendingSvg,
   walletSvg,
+  onBorrow,
+  onChange,
+  onLend,
+  onChangeTab,
 }: ILendBorrow) => {
-  const [
-    { currentTab, borrowingIcon, lendingIcon },
-    {
-      setCurrentTab,
-      setLendLabel,
-      setBorrowLabel,
-      setActiveBorrowingSvg,
-      setActiveLendingSvg,
-      setBorrowingSvg,
-      setLendingSvg,
-      handleChange,
-    },
-  ] = useLendBorrowState();
-
-  useEffect(() => {
-    setCurrentTab(labelLend);
-    setBorrowLabel(labelBorrow);
-    setLendLabel(labelLend);
-    setActiveBorrowingSvg(activeBorrowingSvg);
-    setActiveLendingSvg(activeLendingSvg);
-    setBorrowingSvg(borrowingSvg);
-    setLendingSvg(lendingSvg);
-  }, []);
-
   return (
     <Container
       externalStyles="componentContainer"
@@ -76,20 +51,32 @@ export const LendBorrow = ({
         <TabContext value={currentTab}>
           <div className="headerLendBorrow">
             <TabList
-              onChange={handleChange}
+              onChange={onChangeTab}
               className="tabListCustom"
               classes={{ indicator: "customIndicator" }}
               centered
             >
               <Tab
-                icon={lendingIcon}
+                icon={
+                  lendingSvg && typeof lendingSvg === "string" ? (
+                    <img src={lendingSvg} width={24} height={24} />
+                  ) : (
+                    lendingSvg
+                  )
+                }
                 iconPosition="start"
                 label={labelLend}
                 value={labelLend}
                 className="tabCustom"
               />
               <Tab
-                icon={borrowingIcon}
+                icon={
+                  borrowingSvg && typeof borrowingSvg === "string" ? (
+                    <img src={borrowingSvg} width={24} height={24} />
+                  ) : (
+                    borrowingSvg
+                  )
+                }
                 iconPosition="start"
                 label={labelBorrow}
                 value={labelBorrow}
@@ -105,10 +92,14 @@ export const LendBorrow = ({
                 setFormat={true}
               />
               <CollateralSection
+                textCollateral="Collateral Required"
                 numberCollateral="100,000.00"
+                textWallet="My Collateral Balance"
                 numberWallet="100,000.00"
                 requiredSection={true}
                 symbolToken={"FACTR"}
+                walletIcon={walletSvg}
+                backgroundColor={bgColor}
               />
               <div className="containerButtonLendBorrow">
                 <Button
@@ -129,11 +120,14 @@ export const LendBorrow = ({
                 setFormat={true}
               />
               <CollateralSection
+                textCollateral="Collateral Required"
                 numberCollateral="100,000.00"
+                textWallet="My Collateral Balance"
                 numberWallet="100,000.00"
                 requiredSection={true}
                 symbolToken={"FACTR"}
                 walletIcon={walletSvg}
+                backgroundColor={bgColor}
               />
               <div className="containerButtonLendBorrow">
                 <Button

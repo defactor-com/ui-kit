@@ -15,24 +15,37 @@ export default {
 };
 
 const Template: Story<ILendBorrow> = (args) => {
+  const [borrowIcon, setBorrowIcon] = useState(borrowingIconSvg);
+  const [lendIcon, setLendIcon] = useState(activeBorrowingIconSvg);
+  const [currentTab, setCurrentTab] = useState("Lend");
   const [value, setValue] = useState<string | number>(0);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
+  const changeTab = (event: React.SyntheticEvent, newValue: string) => {
+    setCurrentTab(newValue);
+    if (newValue === "Lend") {
+      setLendIcon(activeLendingIconSvg);
+      setBorrowIcon(borrowingIconSvg);
+    } else {
+      setBorrowIcon(activeBorrowingIconSvg);
+      setLendIcon(lendingIconSvg);
+    }
+  };
+
   return (
     <LendBorrow
       {...args}
-      value={value}
-      precision={5}
+      currentTab={currentTab}
       labelLend="Lend"
       labelBorrow="Borrow"
-      onChange={handleChange}
-      activeBorrowingSvg={activeBorrowingIconSvg}
-      activeLendingSvg={activeLendingIconSvg}
-      borrowingSvg={borrowingIconSvg}
-      lendingSvg={lendingIconSvg}
+      value={value}
+      borrowingSvg={borrowIcon}
+      lendingSvg={lendIcon}
       walletSvg={WalletIcon}
+      onChange={handleChange}
+      onChangeTab={changeTab}
     />
   );
 };
