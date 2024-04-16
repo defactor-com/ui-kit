@@ -10,6 +10,12 @@ import { Input, InputValue } from "../Input";
 import { CollateralSection } from "../CollateralSection";
 
 export interface ILendBorrow {
+  textCollateral?: string;
+  numberCollateral?: string;
+  textWallet?: string;
+  numberWallet?: string;
+  symbolToken?: React.ReactElement | string;
+  symbolWallet?: string;
   color?: string;
   bgColor?: string;
   currentTab: string;
@@ -28,6 +34,12 @@ export interface ILendBorrow {
 }
 
 export const LendBorrow = ({
+  textCollateral,
+  numberCollateral,
+  textWallet,
+  numberWallet,
+  symbolToken,
+  symbolWallet,
   color,
   bgColor,
   currentTab,
@@ -92,12 +104,13 @@ export const LendBorrow = ({
                 setFormat={true}
               />
               <CollateralSection
-                textCollateral="Collateral Required"
-                numberCollateral="100,000.00"
-                textWallet="My Collateral Balance"
-                numberWallet="100,000.00"
-                requiredSection={true}
-                symbolToken={"FACTR"}
+                textCollateral={textCollateral}
+                numberCollateral={numberCollateral}
+                textWallet={textWallet}
+                numberWallet={numberWallet}
+                requiredSection={false}
+                symbolToken={symbolToken}
+                symbolWallet={symbolWallet}
                 walletIcon={walletSvg}
                 backgroundColor={bgColor}
               />
@@ -120,12 +133,13 @@ export const LendBorrow = ({
                 setFormat={true}
               />
               <CollateralSection
-                textCollateral="Collateral Required"
-                numberCollateral="100,000.00"
-                textWallet="My Collateral Balance"
-                numberWallet="100,000.00"
-                requiredSection={true}
-                symbolToken={"FACTR"}
+                textCollateral={textCollateral}
+                numberCollateral={numberCollateral}
+                textWallet={textWallet}
+                numberWallet={numberWallet}
+                requiredSection={false}
+                symbolToken={symbolToken}
+                symbolWallet={symbolWallet}
                 walletIcon={walletSvg}
                 backgroundColor={bgColor}
               />

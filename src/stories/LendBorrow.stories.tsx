@@ -37,6 +37,11 @@ const Template: Story<ILendBorrow> = (args) => {
   return (
     <LendBorrow
       {...args}
+      textCollateral="Collateral Required"
+      numberCollateral="100,000.00"
+      textWallet="My Collateral Balance"
+      numberWallet="100,000.00"
+      symbolToken={"FACTR"}
       currentTab={currentTab}
       labelLend="Lend"
       labelBorrow="Borrow"

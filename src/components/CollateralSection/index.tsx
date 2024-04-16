@@ -51,11 +51,6 @@ export const CollateralSection = ({
           )}
           <Typography variant="body1">{textWallet}</Typography>
           <div className="walletDetail">
-            {/* <PreviewProfile
-              label={`${numberWallet} ${symbolToken}`}
-              image={symbolWallet}
-              imageSize="16px"
-            /> */}
             {symbolWallet && typeof symbolWallet === "string" ? (
               <img src={symbolWallet} width={16} height={16} />
             ) : (
