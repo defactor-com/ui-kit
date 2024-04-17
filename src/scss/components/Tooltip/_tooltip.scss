@@ -1,0 +1,31 @@
+.popper {
+  &.MuiTooltip-tooltip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px !important;
+    height: 20px !important;
+    font-size: 13px;
+    background-color: #26a66b !important;
+    color: white;
+  }
+  &.MuiTooltip-arrow {
+    color: #26a66b;
+  }
+}
+
+.popperWhite {
+  &.MuiTooltip-tooltip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px !important;
+    height: 20px !important;
+    font-size: 13px;
+    background-color: white !important;
+    color: #26a66b;
+  }
+  &.MuiTooltip-arrow {
+    color: white;
+  }
+}

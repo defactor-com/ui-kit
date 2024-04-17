@@ -22,3 +22,4 @@ export * from "./components/FlatContainer";
 export * from "./components/PreviewProfile";
 export * from "./components/SmallProfileImage";
 export * from "./components/FluctuationComponent";
+export * from "./components/Tooltip";
