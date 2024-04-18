@@ -1,6 +1,5 @@
 import React from "react";
 import { Story } from "@storybook/react";
-
 import WalletIcon from "../../public/assets/wallet-icon.svg";
 
 import {

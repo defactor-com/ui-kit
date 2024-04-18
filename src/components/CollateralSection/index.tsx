@@ -1,7 +1,5 @@
 import React from "react";
 import { Typography } from "@mui/material";
-import { PreviewProfile } from "../PreviewProfile";
-
 import factrIcon from "../../../public/assets/factr-icon.svg";
 
 export interface ICollateralSection {
