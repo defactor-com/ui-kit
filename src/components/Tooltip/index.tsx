@@ -4,9 +4,9 @@ import { Tooltip as MuiTooltip, IconButton } from "@mui/material";
 export interface ITooltip {
   icon: React.ReactElement | string;
   sizeIcon?: number;
-  style: "white" | "green";
+  style?: "white" | "green";
   text: string;
-  position: "top" | "left" | "bottom" | "right";
+  position?: "top" | "left" | "bottom" | "right";
 }
 
 export const Tooltip: React.FC<ITooltip> = ({

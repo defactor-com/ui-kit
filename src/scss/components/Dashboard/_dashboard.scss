@@ -63,7 +63,7 @@ $breakpoint-mobile: 600px;
   font-weight: 700;
   line-height: 11px;
   letter-spacing: 0.02em;
-  color: #7C7D7E;
+  color: #7c7d7e;
 }
 
 .dashboard-bottom-flat-containers {
@@ -171,6 +171,18 @@ $breakpoint-mobile: 600px;
   align-items: center;
 }
 
+.flex-description {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flex-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .flat-body-container {
   display: flex;
   margin-top: 8px;
@@ -263,11 +275,11 @@ $breakpoint-mobile: 600px;
   }
 }
 
-.horizontal-line{
+.horizontal-line {
   display: none;
   @media (max-width: $breakpoint-mobile) {
     display: block;
-    border: 0.5px solid #BDBDBD80;
+    border: 0.5px solid #bdbdbd80;
     margin-top: 24px;
   }
 }
