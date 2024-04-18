@@ -4,7 +4,8 @@ import { Tooltip as MuiTooltip, IconButton } from "@mui/material";
 export interface ITooltip {
   icon: React.ReactElement | string;
   sizeIcon?: number;
-  style?: "white" | "green";
+  bgColor?: string;
+  color?: string;
   text: string;
   position?: "top" | "left" | "bottom" | "right";
 }
@@ -12,18 +13,42 @@ export interface ITooltip {
 export const Tooltip: React.FC<ITooltip> = ({
   icon,
   sizeIcon = 16,
-  style = "green",
+  color = "white",
+  bgColor = "#26a66b",
   text,
   position = "top",
 }) => {
+  const getTooltipStyle = () => {
+    return {
+      backgroundColor: bgColor,
+      color: color,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      width: "100px",
+      height: "20px",
+      fontSize: "13px",
+    };
+  };
+
+  const getArrowStyle = () => {
+    return {
+      color: bgColor,
+    };
+  };
+
   return (
     <MuiTooltip
       title={text}
       arrow
       placement={position}
-      classes={{
-        tooltip: style === "green" ? "popper" : "popperWhite",
-        arrow: style === "green" ? "popper" : "popperWhite",
+      componentsProps={{
+        tooltip: {
+          style: getTooltipStyle(),
+        },
+        arrow: {
+          style: getArrowStyle(),
+        },
       }}
     >
       <IconButton>
