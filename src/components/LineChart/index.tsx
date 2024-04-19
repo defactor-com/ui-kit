@@ -150,7 +150,6 @@ export const LineChart = ({
           </defs>
           <CartesianGrid strokeDasharray="12 12" />
           <YAxis
-            scale="log"
             axisLine={false}
             domain={["auto", "auto"]}
             tick={(props) => (
