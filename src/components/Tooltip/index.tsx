@@ -1,6 +1,8 @@
 import React from "react";
 import { Tooltip as MuiTooltip, IconButton } from "@mui/material";
 
+import { useTooltip } from "./useTooltipState";
+
 export interface ITooltip {
   icon: React.ReactElement | string;
   sizeIcon?: number;
@@ -18,24 +20,7 @@ export const Tooltip: React.FC<ITooltip> = ({
   text,
   position = "top",
 }) => {
-  const getTooltipStyle = () => {
-    return {
-      backgroundColor: bgColor,
-      color: color,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      width: "100px",
-      height: "20px",
-      fontSize: "13px",
-    };
-  };
-
-  const getArrowStyle = () => {
-    return {
-      color: bgColor,
-    };
-  };
+  const { getTooltipStyle, getArrowStyle } = useTooltip();
 
   return (
     <MuiTooltip
@@ -44,10 +29,10 @@ export const Tooltip: React.FC<ITooltip> = ({
       placement={position}
       componentsProps={{
         tooltip: {
-          style: getTooltipStyle(),
+          style: getTooltipStyle(bgColor, color),
         },
         arrow: {
-          style: getArrowStyle(),
+          style: getArrowStyle(bgColor),
         },
       }}
     >
