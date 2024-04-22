@@ -3,7 +3,6 @@ import { Story } from "@storybook/react";
 
 import { CardComponent, ICardComponent } from "../components/CardComponent";
 import { Tooltip } from "../components/Tooltip";
-
 import InfoIcon from "../../public/assets/info-icon.svg";
 
 export default {
