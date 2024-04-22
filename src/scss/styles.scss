@@ -10,8 +10,11 @@
 @import "./components/Input/input";
 @import "./components/Button/button";
 @import "./components/Sidebar/sidebar";
-@import "./components/Dashboard/dashboard";
 @import "./components/DropDown/dropdown";
+@import "./components/BarChart/barChart";
+@import "./components/PieChart/pieChart";
+@import "./components/LineChart/lineChart";
+@import "./components/Dashboard/dashboard";
 @import "./components/Container/container";
 @import "./components/CollateralSection/collateralSection";
 @import "./components/LendBorrow/lendBorrow";
@@ -20,5 +23,3 @@
 @import "./components/CardContainer/cardContainer";
 @import "./components/PreviewProfile/previewProfile";
 @import "./components/SmallProfileImage/smallProfileImage";
-@import "./components/PieChart/pieChart";
-@import "./components/BarChart/barChart";
