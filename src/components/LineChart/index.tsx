@@ -114,7 +114,7 @@ export const LineChart = ({
     { isHide, setHide, handleOpenTooltip, handleCloseTooltip },
   ] = useLineChartState({ data, series });
   const getColorId = (color: string) =>
-    color.toLocaleLowerCase().replace(" ", "-");
+    color.toLocaleLowerCase().replace(/ /g, "-");
 
   return (
     <>
@@ -150,7 +150,6 @@ export const LineChart = ({
           </defs>
           <CartesianGrid strokeDasharray="12 12" />
           <YAxis
-            scale="log"
             axisLine={false}
             domain={["auto", "auto"]}
             tick={(props) => (
