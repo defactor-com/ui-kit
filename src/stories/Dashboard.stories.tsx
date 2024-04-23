@@ -8,13 +8,18 @@ import {
 } from "../components/LineChart";
 import { CardItem, Dashboard, IDashboard } from "../components/Dashboard";
 import { ChartContainer } from "../components/ChartContainer";
+import { Tooltip } from "../components/Tooltip";
 import { BarChart } from "../components/BarChart";
 import { PieChart } from "../components/PieChart";
+
+import InfoIcon from "../../public/assets/info-icon.svg";
 
 export default {
   title: "Dashboard",
   component: Dashboard,
 };
+
+const exampleTooltip = <Tooltip icon={InfoIcon} text="This is a tooltip" />;
 
 const colors: string[] = ["#26A66B", "#5A5BEB", "#D21A4D"];
 const series: SeriesDataType[] = [
@@ -74,12 +79,14 @@ const bottomContainerItems: CardItem[] = [
     value: "$20,000.00",
     fluctuation: "+3.4%",
     fluctuationValue: "+$2,400",
+    tooltip: exampleTooltip,
   },
   {
     label: "Total Borrowed",
     value: "$20,000.00",
     fluctuation: "-3.4%",
     fluctuationValue: "-$2,400",
+    tooltip: exampleTooltip,
   },
   {
     label: "Total Lent",
@@ -90,14 +97,15 @@ const bottomContainerItems: CardItem[] = [
 ];
 
 const rightContainerItems: CardItem[] = [
-  { label: "Active Loans", value: "$12,00.00" },
+  { label: "Active Loans", value: "$12,00.00", tooltip: exampleTooltip },
   { label: "All Repaid Loans", value: "$2,500.00" },
-  { label: "Interest Paid", value: "$200.00" },
+  { label: "Interest Paid", value: "$200.00", tooltip: exampleTooltip },
   {
     label: "Loan to Value Ratio",
     value: "75%",
     color: colors[0],
     fluctuation: "+3.4%",
+    tooltip: exampleTooltip,
   },
 ];
 
@@ -134,6 +142,7 @@ DashboardItem.args = {
     <ChartContainer
       chartSubtitle={"Pool Utilization"}
       chartDescription={"Optional Description"}
+      tooltip={exampleTooltip}
       content={
         <LineChart
           formatValue={formatValue}
@@ -159,11 +168,11 @@ const pieChartData = [
 ];
 const pieChartColors = ["#26A66B", "#5A5BEB", "#D21A4D"];
 const rightContainerItems1: CardItem[] = [
-  { label: "Total Active Loans", value: "1,200" },
+  { label: "Total Active Loans", value: "1,200", tooltip: exampleTooltip },
   { label: "Loans Ready to Claim", value: "2,500" },
-  { label: "Total Claimed Loans", value: "200" },
+  { label: "Total Claimed Loans", value: "200", tooltip: exampleTooltip },
   { label: "Total Interest Earned", value: "800" },
-  { label: "Total Amount Lent", value: "$7,000.00" },
+  { label: "Total Amount Lent", value: "$7,000.00", tooltip: exampleTooltip },
 ];
 
 const Charts = () => (
@@ -171,6 +180,7 @@ const Charts = () => (
     <ChartContainer
       chartSubtitle="Pool Utilization"
       chartDescription="Optional Description"
+      tooltip={exampleTooltip}
       content={
         <BarChart
           formatValue={formatValue}
@@ -183,12 +193,7 @@ const Charts = () => (
     <ChartContainer
       chartSubtitle="Pools by Status"
       chartDescription="Optional Description"
-      content={
-        <PieChart
-          colors={pieChartColors}
-          data={pieChartData}
-        />
-      }
+      content={<PieChart colors={pieChartColors} data={pieChartData} />}
     />
   </>
 );
@@ -208,9 +213,9 @@ DashboardLendingItem.args = {
 };
 
 const rightContainerItems2: CardItem[] = [
-  { label: "Funds Available", value: "$2500.00" },
+  { label: "Funds Available", value: "$2500.00", tooltip: exampleTooltip },
   { label: "Total Loans Repaid", value: 200 },
-  { label: "Total Loans", value: 800 },
+  { label: "Total Loans", value: 800, tooltip: exampleTooltip },
   { label: "Next Loan to Reach Maturity", value: "Pool B" },
 ];
 
