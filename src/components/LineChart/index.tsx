@@ -114,7 +114,7 @@ export const LineChart = ({
     { isHide, setHide, handleOpenTooltip, handleCloseTooltip },
   ] = useLineChartState({ data, series });
   const getColorId = (color: string) =>
-    color.toLocaleLowerCase().replace(" ", "-");
+    color.toLocaleLowerCase().replace(/ /g, "-");
 
   return (
     <>
