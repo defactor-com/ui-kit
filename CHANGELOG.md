@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.1.0
+
+### Minor Changes
+
+- 13c0a1d: add tooltip component
+
 ## 0.0.50
 
 ### Patch Changes
