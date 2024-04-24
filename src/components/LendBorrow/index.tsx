@@ -11,6 +11,7 @@ import { CollateralSection } from "../CollateralSection";
 
 export interface ILendBorrow {
   textCollateral?: string;
+  fontFamily?: string;
   numberCollateral?: string;
   textWallet?: string;
   numberWallet?: string;
@@ -35,6 +36,7 @@ export interface ILendBorrow {
 
 export const LendBorrow = ({
   textCollateral,
+  fontFamily,
   numberCollateral,
   textWallet,
   numberWallet,
@@ -76,6 +78,7 @@ export const LendBorrow = ({
                     lendingSvg
                   )
                 }
+                style={{ fontFamily: fontFamily }}
                 iconPosition="start"
                 label={labelLend}
                 value={labelLend}
@@ -89,6 +92,7 @@ export const LendBorrow = ({
                     borrowingSvg
                   )
                 }
+                style={{ fontFamily: fontFamily }}
                 iconPosition="start"
                 label={labelBorrow}
                 value={labelBorrow}
@@ -105,6 +109,7 @@ export const LendBorrow = ({
               />
               <CollateralSection
                 textCollateral={textCollateral}
+                fontFamily={fontFamily}
                 numberCollateral={numberCollateral}
                 textWallet={textWallet}
                 numberWallet={numberWallet}
@@ -116,6 +121,7 @@ export const LendBorrow = ({
               />
               <div className="containerButtonLendBorrow">
                 <Button
+                  fontFamily={fontFamily}
                   icon={lendingWhiteIcon}
                   variant="contained"
                   disabled={disabled}
@@ -134,6 +140,7 @@ export const LendBorrow = ({
               />
               <CollateralSection
                 textCollateral={textCollateral}
+                fontFamily={fontFamily}
                 numberCollateral={numberCollateral}
                 textWallet={textWallet}
                 numberWallet={numberWallet}
@@ -145,6 +152,7 @@ export const LendBorrow = ({
               />
               <div className="containerButtonLendBorrow">
                 <Button
+                  fontFamily={fontFamily}
                   icon={borrowingWhiteIcon}
                   label={labelBorrow}
                   variant="contained"

@@ -5,6 +5,7 @@ import factrIcon from "../../../public/assets/factr-icon.svg";
 
 export interface ICollateralSection {
   textCollateral?: string;
+  fontFamily?: string;
   numberCollateral?: string;
   textWallet?: string;
   numberWallet?: string;
@@ -17,6 +18,7 @@ export interface ICollateralSection {
 
 export const CollateralSection = ({
   textCollateral,
+  fontFamily,
   numberCollateral,
   textWallet,
   numberWallet,
@@ -30,8 +32,14 @@ export const CollateralSection = ({
     <div>
       {requiredSection && textCollateral && (
         <div className="requiredSection">
-          <Typography variant="body1">{textCollateral}:</Typography>
-          <Typography variant="body1" textAlign={"end"}>
+          <Typography variant="body1" style={{ fontFamily: fontFamily }}>
+            {textCollateral}:
+          </Typography>
+          <Typography
+            variant="body1"
+            textAlign={"end"}
+            style={{ fontFamily: fontFamily }}
+          >
             <strong>{numberCollateral}</strong>
             <br />
             {symbolToken}
@@ -48,7 +56,9 @@ export const CollateralSection = ({
           ) : (
             walletIcon
           )}
-          <Typography variant="body1">{textWallet}</Typography>
+          <Typography variant="body1" style={{ fontFamily: fontFamily }}>
+            {textWallet}
+          </Typography>
           <div className="walletDetail">
             {symbolWallet && typeof symbolWallet === "string" ? (
               <img src={symbolWallet} width={16} height={16} />
@@ -56,8 +66,12 @@ export const CollateralSection = ({
               symbolWallet
             )}
             <div className="walletAmount">
-              <Typography variant="body1">{numberWallet}</Typography>
-              <Typography variant="body1">{symbolToken}</Typography>
+              <Typography variant="body1" style={{ fontFamily: fontFamily }}>
+                {numberWallet}
+              </Typography>
+              <Typography variant="body1" style={{ fontFamily: fontFamily }}>
+                {symbolToken}
+              </Typography>
             </div>
           </div>
         </div>

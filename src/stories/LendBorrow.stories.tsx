@@ -38,6 +38,7 @@ const Template: Story<ILendBorrow> = (args) => {
     <LendBorrow
       {...args}
       textCollateral="Collateral Required"
+      fontFamily="cursive"
       numberCollateral="100,000.00"
       textWallet="My Collateral Balance"
       numberWallet="100,000.00"
