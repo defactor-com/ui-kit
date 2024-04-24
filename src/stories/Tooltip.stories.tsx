@@ -15,4 +15,5 @@ export const TooltipItem = Template.bind({});
 TooltipItem.args = {
   icon: InfoIcon,
   text: "This is a tooltip",
+  fontFamily: "cursive",
 };
