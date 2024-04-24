@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.2.1
+
+### Patch Changes
+
+- 2081cfc: Add responsive behavior to Tooltip
+
 ## 0.2.0
 
 ### Minor Changes
