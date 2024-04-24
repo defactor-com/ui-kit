@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.2.0
+
+### Minor Changes
+
+- 50f3416: add font family parameter
+
 ## 0.1.1
 
 ### Patch Changes
