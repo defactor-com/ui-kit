@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.1.1
+
+### Patch Changes
+
+- c07a3b2: update yarn version
+
 ## 0.1.0
 
 ### Minor Changes
