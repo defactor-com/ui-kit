@@ -5,7 +5,7 @@ interface useTooltipState {
     bgColor: string,
     color: string,
     fontFamily?: string
-  ) => CSSProperties | undefined;
+  ) => CSSProperties;
   getArrowStyle: (bgColor: string) => CSSProperties | undefined;
 }
 
@@ -14,7 +14,7 @@ export const useTooltip = (): useTooltipState => {
     bgColor: string,
     color: string,
     fontFamily?: string
-  ) => {
+  ): CSSProperties => {
     return {
       backgroundColor: bgColor,
       fontFamily: fontFamily,
@@ -22,8 +22,10 @@ export const useTooltip = (): useTooltipState => {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      width: "100px",
-      height: "20px",
+      maxWidth: "120px",
+      height: "auto",
+      overflowWrap: "anywhere",
+      padding: "8px",
       fontSize: "13px",
     };
   };
