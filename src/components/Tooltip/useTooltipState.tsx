@@ -3,15 +3,21 @@ import { CSSProperties } from "react";
 interface useTooltipState {
   getTooltipStyle: (
     bgColor: string,
-    color: string
+    color: string,
+    fontFamily?: string
   ) => CSSProperties | undefined;
   getArrowStyle: (bgColor: string) => CSSProperties | undefined;
 }
 
 export const useTooltip = (): useTooltipState => {
-  const getTooltipStyle = (bgColor: string, color: string) => {
+  const getTooltipStyle = (
+    bgColor: string,
+    color: string,
+    fontFamily?: string
+  ) => {
     return {
       backgroundColor: bgColor,
+      fontFamily: fontFamily,
       color: color,
       display: "flex",
       alignItems: "center",
