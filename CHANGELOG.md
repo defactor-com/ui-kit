@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.2.2
+
+### Patch Changes
+
+- a2c6a7c: Add open parameter
+
 ## 0.2.1
 
 ### Patch Changes
