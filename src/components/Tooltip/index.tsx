@@ -10,6 +10,7 @@ export interface ITooltip {
   fontFamily?: string;
   color?: string;
   text: string;
+  open?: boolean;
   position?: "top" | "left" | "bottom" | "right";
 }
 
@@ -21,6 +22,7 @@ export const Tooltip: React.FC<ITooltip> = ({
   text,
   position = "top",
   fontFamily,
+  open,
 }) => {
   const { getTooltipStyle, getArrowStyle } = useTooltip();
 
@@ -28,6 +30,7 @@ export const Tooltip: React.FC<ITooltip> = ({
     <MuiTooltip
       title={text}
       arrow
+      open={open}
       placement={position}
       componentsProps={{
         tooltip: {
