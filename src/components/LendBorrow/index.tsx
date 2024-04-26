@@ -1,120 +1,170 @@
-import React, { ChangeEvent, useState } from "react";
-import clsx from "clsx";
+import React, { ChangeEvent, useEffect, useState } from "react";
+import { TabContext, TabPanel, TabList } from "@mui/lab";
+import { Tab } from "@mui/material";
 
 import borrowingWhiteIcon from "../../../public/assets/borrowing-white-icon.svg";
 import lendingWhiteIcon from "../../../public/assets/lending-white-icon.svg";
-import borrowingIcon from "../../../public/assets/borrowing.svg";
-import lendingIcon from "../../../public/assets/lending.svg";
 import { Container } from "../Container";
 import { Button } from "../Button";
 import { Input, InputValue } from "../Input";
+import { CollateralSection } from "../CollateralSection";
 
 export interface ILendBorrow {
+  textCollateral?: string;
+  fontFamily?: string;
+  numberCollateral?: string;
+  textWallet?: string;
+  numberWallet?: string;
+  symbolToken?: React.ReactElement | string;
+  symbolWallet?: string;
   color?: string;
-  onLend(): void;
-  onBorrow(): void;
+  bgColor?: string;
+  currentTab: string;
   labelLend: string;
-  disabled?: boolean;
-  precision?: number;
   labelBorrow: string;
+  disabled?: boolean;
   value: InputValue | bigint;
   loader?: React.ReactElement;
-  collateralSection: React.ReactElement;
+  borrowingSvg: string;
+  lendingSvg: string;
+  walletSvg: string;
+  onLend(): void;
+  onBorrow(): void;
   onChange(e: ChangeEvent<HTMLInputElement>): void;
+  onChangeTab: (event: React.SyntheticEvent, newValue: string) => void;
 }
 
 export const LendBorrow = ({
+  textCollateral,
+  fontFamily,
+  numberCollateral,
+  textWallet,
+  numberWallet,
+  symbolToken,
+  symbolWallet,
   color,
+  bgColor,
+  currentTab,
+  labelLend,
+  disabled,
+  labelBorrow,
   value,
-  onLend,
   loader,
+  borrowingSvg,
+  lendingSvg,
+  walletSvg,
   onBorrow,
   onChange,
-  disabled,
-  labelLend,
-  labelBorrow,
-  collateralSection,
+  onLend,
+  onChangeTab,
 }: ILendBorrow) => {
-  const [activeTab, setActiveTab] = useState("lendTab");
-
-  const openTab = (tabName: React.SetStateAction<string>) => {
-    setActiveTab(tabName);
-  };
-
   return (
     <Container
       externalStyles="componentContainer"
       content={
-        <>
+        <TabContext value={currentTab}>
           <div className="headerLendBorrow">
-            <Button
-              externalStyles={clsx([
-                "buttonsStyles",
-                activeTab !== "lendTab" && "buttonsStylesSelected",
-              ])}
-              onClick={() => openTab("lendTab")}
-              icon={lendingIcon}
-              label={labelLend}
-              variant="text"
-              fullWidth
-            />
-            <Button
-              externalStyles={clsx([
-                "buttonsStyles",
-                activeTab !== "borrowTab" && "buttonsStylesSelected",
-              ])}
-              onClick={() => openTab("borrowTab")}
-              style={{ borderColor: color }}
-              icon={borrowingIcon}
-              label={labelBorrow}
-              variant="text"
-              fullWidth
-            />
+            <TabList
+              onChange={onChangeTab}
+              className="tabListCustom"
+              classes={{ indicator: "customIndicator" }}
+              centered
+            >
+              <Tab
+                icon={
+                  lendingSvg && typeof lendingSvg === "string" ? (
+                    <img src={lendingSvg} width={24} height={24} />
+                  ) : (
+                    lendingSvg
+                  )
+                }
+                style={{ fontFamily: fontFamily }}
+                iconPosition="start"
+                label={labelLend}
+                value={labelLend}
+                className="tabCustom"
+              />
+              <Tab
+                icon={
+                  borrowingSvg && typeof borrowingSvg === "string" ? (
+                    <img src={borrowingSvg} width={24} height={24} />
+                  ) : (
+                    borrowingSvg
+                  )
+                }
+                style={{ fontFamily: fontFamily }}
+                iconPosition="start"
+                label={labelBorrow}
+                value={labelBorrow}
+                className="tabCustom"
+              />
+            </TabList>
           </div>
           <div className="bodyLendBorrow">
-            {activeTab === "lendTab" && (
-              <div>
-                <Input
-                  value={value?.toString()}
-                  onChange={onChange}
-                  setFormat={true}
+            <TabPanel value={labelLend} className="tabPanelCustom">
+              <Input
+                value={value?.toString()}
+                onChange={onChange}
+                setFormat={true}
+              />
+              <CollateralSection
+                textCollateral={textCollateral}
+                fontFamily={fontFamily}
+                numberCollateral={numberCollateral}
+                textWallet={textWallet}
+                numberWallet={numberWallet}
+                requiredSection={false}
+                symbolToken={symbolToken}
+                symbolWallet={symbolWallet}
+                walletIcon={walletSvg}
+                backgroundColor={bgColor}
+              />
+              <div className="containerButtonLendBorrow">
+                <Button
+                  fontFamily={fontFamily}
+                  icon={lendingWhiteIcon}
+                  variant="contained"
+                  disabled={disabled}
+                  label={labelLend}
+                  onClick={onLend}
+                  loader={loader}
+                  bgColor={color}
                 />
-                <div className="containerButtonLendBorrow">
-                  <Button
-                    icon={lendingWhiteIcon}
-                    variant="contained"
-                    disabled={disabled}
-                    label={labelLend}
-                    onClick={onLend}
-                    loader={loader}
-                    bgColor={color}
-                  />
-                </div>
               </div>
-            )}
-            {activeTab === "borrowTab" && (
-              <div>
-                <Input
-                  value={value?.toString()}
-                  onChange={onChange}
-                  setFormat={true}
+            </TabPanel>
+            <TabPanel value={labelBorrow} className="tabPanelCustom">
+              <Input
+                value={value?.toString()}
+                onChange={onChange}
+                setFormat={true}
+              />
+              <CollateralSection
+                textCollateral={textCollateral}
+                fontFamily={fontFamily}
+                numberCollateral={numberCollateral}
+                textWallet={textWallet}
+                numberWallet={numberWallet}
+                requiredSection={false}
+                symbolToken={symbolToken}
+                symbolWallet={symbolWallet}
+                walletIcon={walletSvg}
+                backgroundColor={bgColor}
+              />
+              <div className="containerButtonLendBorrow">
+                <Button
+                  fontFamily={fontFamily}
+                  icon={borrowingWhiteIcon}
+                  label={labelBorrow}
+                  variant="contained"
+                  disabled={disabled}
+                  onClick={onBorrow}
+                  loader={loader}
+                  bgColor={color}
                 />
-                {collateralSection}
-                <div className="containerButtonLendBorrow">
-                  <Button
-                    icon={borrowingWhiteIcon}
-                    label={labelBorrow}
-                    variant="contained"
-                    disabled={disabled}
-                    onClick={onBorrow}
-                    loader={loader}
-                    bgColor={color}
-                  />
-                </div>
               </div>
-            )}
+            </TabPanel>
           </div>
-        </>
+        </TabContext>
       }
     />
   );

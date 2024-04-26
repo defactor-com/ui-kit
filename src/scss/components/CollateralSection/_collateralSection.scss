@@ -1,0 +1,35 @@
+.requiredSection {
+  display: flex;
+  margin-top: 16px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.walletSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  height: 100px;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.walletDetail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 16px;
+}
+
+.walletAmount {
+  display: flex;
+  align-items: center;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  gap: 8px;
+}
