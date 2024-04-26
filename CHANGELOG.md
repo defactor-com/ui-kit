@@ -1,5 +1,35 @@
 # @defactor/ui-kit
 
+## 0.2.2
+
+### Patch Changes
+
+- a2c6a7c: Add open parameter
+
+## 0.2.1
+
+### Patch Changes
+
+- 2081cfc: Add responsive behavior to Tooltip
+
+## 0.2.0
+
+### Minor Changes
+
+- 50f3416: add font family parameter
+
+## 0.1.1
+
+### Patch Changes
+
+- c07a3b2: update yarn version
+
+## 0.1.0
+
+### Minor Changes
+
+- 13c0a1d: add tooltip component
+
 ## 0.0.50
 
 ### Patch Changes

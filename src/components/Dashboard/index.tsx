@@ -12,6 +12,7 @@ export type CardItem = {
   fluctuation?: string;
   fluctuationValue?: string;
   color?: string;
+  tooltip?: React.ReactNode;
 };
 
 export type IDashboard = {
@@ -59,6 +60,7 @@ const BottomContainer = ({
             fluctuationValue={item.fluctuationValue}
             fontFamily={fontFamily}
             color={item.color || colors[index % colors.length]}
+            tooltip={item.tooltip}
           />
         ))}
       </div>
@@ -96,6 +98,7 @@ const RightContainer = ({
             fluctuation={item.fluctuation}
             fluctuationValue={item.fluctuationValue}
             color={item.color}
+            tooltip={item.tooltip}
           />
         ))}
       </div>
