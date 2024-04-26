@@ -22,7 +22,7 @@ export const useTooltip = (): useTooltipState => {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      maxWidth: "120px",
+      maxWidth: "220px",
       height: "auto",
       overflowWrap: "anywhere",
       padding: "8px",
