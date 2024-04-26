@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.2.3
+
+### Patch Changes
+
+- edda487: Update lendBorrow component styles
+
 ## 0.2.2
 
 ### Patch Changes
