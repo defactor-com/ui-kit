@@ -37,21 +37,22 @@ const Template: Story<ILendBorrow> = (args) => {
   return (
     <LendBorrow
       {...args}
-      textCollateral="Collateral Required"
-      fontFamily="cursive"
-      numberCollateral="100,000.00"
-      textWallet="My Collateral Balance"
-      numberWallet="100,000.00"
-      symbolToken={"FACTR"}
+      // textCollateral="Collateral Required"
+      // fontFamily="cursive"
+      // collateralBalance="100,000.00"
+      // textWallet="My Collateral Balance"
+      // collateralRequired="100,000.00"
+      // showRequiredCollateral
+      // tokenSymbol={"FACTR"}
       currentTab={currentTab}
       labelLend="Lend"
       labelBorrow="Borrow"
-      value={value}
-      borrowingSvg={borrowIcon}
-      lendingSvg={lendIcon}
-      walletSvg={WalletIcon}
-      onChange={handleChange}
-      onChangeTab={changeTab}
+      // value={value}
+      // borrowingSvg={borrowIcon}
+      // lendingSvg={lendIcon}
+      // walletSvg={WalletIcon}
+      // onChange={handleChange}
+      // onChangeTab={changeTab}
     />
   );
 };

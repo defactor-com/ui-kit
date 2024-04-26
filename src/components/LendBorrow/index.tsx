@@ -11,12 +11,13 @@ import { CollateralSection } from "../CollateralSection";
 
 export interface ILendBorrow {
   textCollateral?: string;
+  showRequiredCollateral?: boolean;
   fontFamily?: string;
-  numberCollateral?: string;
+  collateralRequired?: string;
   textWallet?: string;
-  numberWallet?: string;
-  symbolToken?: React.ReactElement | string;
-  symbolWallet?: string;
+  collateralBalance?: string;
+  tokenIcon?: React.ReactElement | string;
+  tokenSymbol?: string;
   color?: string;
   bgColor?: string;
   currentTab: string;
@@ -37,11 +38,12 @@ export interface ILendBorrow {
 export const LendBorrow = ({
   textCollateral,
   fontFamily,
-  numberCollateral,
+  collateralRequired,
+  showRequiredCollateral = false,
   textWallet,
-  numberWallet,
-  symbolToken,
-  symbolWallet,
+  collateralBalance,
+  tokenIcon,
+  tokenSymbol,
   color,
   bgColor,
   currentTab,
@@ -108,16 +110,16 @@ export const LendBorrow = ({
                 setFormat={true}
               />
               <CollateralSection
-                textCollateral={textCollateral}
-                fontFamily={fontFamily}
-                numberCollateral={numberCollateral}
-                textWallet={textWallet}
-                numberWallet={numberWallet}
-                requiredSection={false}
-                symbolToken={symbolToken}
-                symbolWallet={symbolWallet}
                 walletIcon={walletSvg}
+                fontFamily={fontFamily}
+                textWallet={textWallet}
                 backgroundColor={bgColor}
+                tokenIcon={tokenIcon}
+                tokenSymbol={tokenSymbol}
+                textCollateral={textCollateral}
+                numberWallet={collateralBalance}
+                numberCollateral={collateralRequired}
+                requiredSection={showRequiredCollateral}
               />
               <div className="containerButtonLendBorrow">
                 <Button
@@ -139,16 +141,16 @@ export const LendBorrow = ({
                 setFormat={true}
               />
               <CollateralSection
-                textCollateral={textCollateral}
-                fontFamily={fontFamily}
-                numberCollateral={numberCollateral}
-                textWallet={textWallet}
-                numberWallet={numberWallet}
-                requiredSection={false}
-                symbolToken={symbolToken}
-                symbolWallet={symbolWallet}
+                tokenIcon={tokenIcon}
                 walletIcon={walletSvg}
+                fontFamily={fontFamily}
+                textWallet={textWallet}
                 backgroundColor={bgColor}
+                tokenSymbol={tokenSymbol}
+                textCollateral={textCollateral}
+                numberWallet={collateralBalance}
+                numberCollateral={collateralRequired}
+                requiredSection={showRequiredCollateral}
               />
               <div className="containerButtonLendBorrow">
                 <Button
