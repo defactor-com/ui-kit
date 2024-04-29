@@ -1,5 +1,12 @@
 # @defactor/ui-kit
 
+## 0.2.8
+
+### Patch Changes
+
+- d60c228: update pie chart type to associate colors
+- a9cc93c: Add checkbox filter
+
 ## 0.2.3
 
 ### Patch Changes
