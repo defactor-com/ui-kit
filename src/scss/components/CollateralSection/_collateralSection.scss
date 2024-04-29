@@ -22,14 +22,18 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  gap: 16px;
+  gap: 8px;
 }
 
 .walletAmount {
   display: flex;
+  width: max-content;
   align-items: center;
   align-items: center;
   justify-content: center;
-  width: max-content;
-  gap: 8px;
+  gap: 4px;
+}
+
+.breakText {
+  word-wrap: break-word;
 }
