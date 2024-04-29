@@ -14,6 +14,8 @@ import { Point } from "../Point";
 import { Container } from "../Container";
 import { CustomTooltipProps, IChart } from "../LineChart";
 
+import useBarChartState from "./useBarChartState";
+
 export interface ChartSeriesType {
   name: string;
   data: number[];
@@ -83,16 +85,9 @@ export const BarChart = ({
   fontFamily,
   formatValue = (value) => value.toLocaleString("en-US"),
 }: IBarChart) => {
-  const chartData: any = data.map((name) => ({ name }));
-  const keyNames: string[] = [];
-
-  series.forEach((element) => {
-    keyNames.push(element.name);
-    element.data.forEach((item, index) => {
-      if (chartData[index]) {
-        chartData[index][element.name] = item;
-      }
-    });
+  const [{ chartData, keyNames }, { isHide, setHide }] = useBarChartState({
+    data,
+    series,
   });
 
   return (
@@ -144,8 +139,9 @@ export const BarChart = ({
                 </text>
               )}
             />
-            {keyNames.map((name, index) => (
+            {keyNames?.map((name, index) => (
               <Bar
+                hide={isHide?.(name)}
                 key={`bar-${name}-${index}`}
                 dataKey={name}
                 fill={colors[index % colors.length]}
@@ -167,12 +163,21 @@ export const BarChart = ({
         </ResponsiveContainer>
       </div>
       <div className={clsx("flex-center", "bar-chart-legend-container")}>
-        {keyNames.map((name, index) => (
+        {keyNames?.map((name, index) => (
           <span
             key={`bar-char-legend-${index}`}
             className={clsx("flex-center", "variant-body1")}
             style={{ fontFamily }}
           >
+            <input
+              className="checkbox"
+              type="checkbox"
+              checked={!isHide?.(name)}
+              onChange={(e) => {
+                setHide?.((prev) => ({ ...prev, [name]: !e.target.checked }));
+              }}
+              style={{ accentColor: colors[index % colors.length] }}
+            />
             <Point color={colors[index % colors.length]} /> {name}{" "}
           </span>
         ))}
