@@ -12,7 +12,7 @@ export type CardItem = {
   fluctuation?: string;
   fluctuationValue?: string;
   color?: string;
-  tooltip?: React.ReactNode;
+  tooltip?: React.ReactElement;
 };
 
 export type IDashboard = {
