@@ -1,6 +1,6 @@
 {
   "name": "@defactor/ui-kit",
-  "version": "0.2.5",
+  "version": "0.2.7",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -30,6 +30,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/lab": "^5.0.0-alpha.170",
     "@mui/material": "^5.15.13",
+    "@mui/styles": "^5.15.15",
     "@mui/x-date-pickers": "^6.0.4",
     "@rollup/plugin-image": "^3.0.3",
     "@svgr/webpack": "^8.1.0",

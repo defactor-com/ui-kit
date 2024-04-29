@@ -4,29 +4,31 @@ import { Box, Typography } from "@mui/material";
 import factrIcon from "../../../public/assets/factr-icon.svg";
 
 export interface ICollateralSection {
-  textCollateral?: string;
   fontFamily?: string;
-  numberCollateral?: string;
   textWallet?: string;
-  numberWallet?: string;
   tokenSymbol?: string;
+  numberWallet?: string;
+  textCollateral?: string;
   requiredSection: boolean;
   backgroundColor?: string;
+  numberCollateral?: string;
+  loader?: React.ReactElement;
   tokenIcon?: React.ReactElement | string;
   walletIcon?: React.ReactElement | string;
 }
 
 export const CollateralSection = ({
-  textCollateral,
+  loader,
   fontFamily,
-  numberCollateral,
   textWallet,
-  numberWallet,
-  tokenSymbol,
-  tokenIcon = factrIcon,
-  requiredSection,
-  backgroundColor = "#26A66B1A",
   walletIcon,
+  tokenSymbol,
+  numberWallet,
+  textCollateral,
+  requiredSection,
+  numberCollateral,
+  tokenIcon = factrIcon,
+  backgroundColor = "#26A66B1A",
 }: ICollateralSection) => {
   return (
     <div>
@@ -43,7 +45,7 @@ export const CollateralSection = ({
               className="breakText"
               style={{ fontFamily: fontFamily }}
             >
-              {numberCollateral}
+              {loader ? loader : numberCollateral}
             </Typography>
             <Typography
               variant="body1"
