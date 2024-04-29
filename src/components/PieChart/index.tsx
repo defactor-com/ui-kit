@@ -39,14 +39,14 @@ const CustomTooltip = ({
   );
 };
 
-export type PieDataType = { value: number; name: string }[];
+export type PieDataType = { value: number; name: string; color: string }[];
 
-export interface IPieChart extends IChart {
+export interface IPieChart extends Omit<IChart, "colors"> {
   data: PieDataType;
 }
 
 const groupData = (data: PieDataType) => {
-  const groupSize = 5
+  const groupSize = 5;
   return data.reduce((result: PieDataType[], curr, index) => {
     const newIndex = Math.floor(index / groupSize);
     if (!result[newIndex]) {
@@ -90,11 +90,12 @@ const renderCustomizedLabel = ({
 };
 
 export const PieChart = ({
-  colors,
   data,
   fontFamily,
   formatValue = (value) => value.toLocaleString("en-US"),
 }: IPieChart) => {
+  const colors: string[] = data.map((item) => item.color);
+
   return (
     <div className="pie-chart-container">
       <ResponsiveContainer width="" height="50%" minHeight="250px">
@@ -110,7 +111,7 @@ export const PieChart = ({
             {data.map((_entry, index) => (
               <Cell
                 key={`cell-item-${index}`}
-                fill={colors[index % colors.length]}
+                fill={_entry.color}
                 fontFamily={fontFamily}
                 fontWeight={700}
               />
@@ -129,13 +130,13 @@ export const PieChart = ({
       </ResponsiveContainer>
       {groupData(data).map((data, index) => (
         <div className="pie-chart-legend-container" key={`subgroup-${index}`}>
-          {(data || []).map(({ name }, index) => (
+          {(data || []).map(({ name, color }, index) => (
             <span
               className={clsx("flex-center", "variant-body1")}
               style={{ fontFamily }}
               key={`pie-chart-legend-${name}`}
             >
-              <Point color={colors[index % colors.length]} /> {name}
+              <Point color={color} /> {name}
             </span>
           ))}
         </div>
