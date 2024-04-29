@@ -24,6 +24,6 @@ ContainerItem.args = {
   textWallet: "My Collateral Balance",
   numberWallet: "100,000.00",
   requiredSection: true,
-  symbolToken: "FACTR",
+  tokenSymbol: "FACTR",
   walletIcon: WalletIcon,
 };
