@@ -85,7 +85,7 @@ export const BarChart = ({
   colors,
   fontFamily,
   formatValue = (value) => value.toLocaleString("en-US"),
-  displayDirection = "vertical",
+  displayDirection = "horizontal",
 }: IBarChart) => {
   const [{ chartData, keyNames }, { isHide, setHide }] = useBarChartState({
     data,
@@ -98,10 +98,10 @@ export const BarChart = ({
         <ResponsiveContainer width="100%" height={120 * data.length}>
           <RechartsBarChart
             data={chartData}
-            layout={displayDirection}
+            layout={displayDirection === "vertical" ? "horizontal" : "vertical"}
             barGap={8}
           >
-            {displayDirection === "vertical" ? (
+            {displayDirection === "horizontal" ? (
               <CartesianGrid
                 strokeDasharray="12 12"
                 horizontalCoordinatesGenerator={(props) =>
@@ -116,82 +116,44 @@ export const BarChart = ({
                 }
               />
             )}
-
-            {displayDirection === "vertical" ? (
-              <>
-                <XAxis
-                  type="number"
-                  axisLine={false}
-                  tick={(props) => (
-                    <text
-                      x={props.x + 10}
-                      y={props.y + 15}
-                      fontSize={12}
-                      fill="#7C7D7E"
-                      textAnchor="end"
-                      fontWeight={500}
-                      fontFamily={fontFamily}
-                    >
-                      {formatValue(props.payload.value)}
-                    </text>
-                  )}
-                />
-                <YAxis
-                  type="category"
-                  axisLine={false}
-                  tick={(props) => (
-                    <text
-                      x={props.x}
-                      y={props.y}
-                      fontSize={12}
-                      fill="#7C7D7E"
-                      textAnchor="end"
-                      fontWeight={500}
-                      fontFamily={fontFamily}
-                    >
-                      {chartData[props.payload.index].name}
-                    </text>
-                  )}
-                />
-              </>
-            ) : (
-              <>
-                <XAxis
-                  type="category"
-                  axisLine={false}
-                  tick={(props) => (
-                    <text
-                      x={props.x + 15}
-                      y={props.y + 10}
-                      fontSize={12}
-                      fill="#7C7D7E"
-                      textAnchor="end"
-                      fontWeight={500}
-                      fontFamily={fontFamily}
-                    >
-                      {chartData[props.payload.index].name}
-                    </text>
-                  )}
-                />
-                <YAxis
-                  type="number"
-                  axisLine={false}
-                  tick={(props) => (
-                    <text
-                      x={props.x}
-                      y={props.y}
-                      fontSize={12}
-                      fill="#7C7D7E"
-                      textAnchor="end"
-                      fontWeight={500}
-                      fontFamily={fontFamily}
-                    >
-                      {formatValue(props.payload.value)}
-                    </text>
-                  )}
-                />
-              </>
-            )}
+            <XAxis
+              type={displayDirection === "vertical" ? "category" : "number"}
+              axisLine={false}
+              tick={(props) => (
+                <text
+                  x={props.x + 10}
+                  y={props.y + 15}
+                  fontSize={12}
+                  fill="#7C7D7E"
+                  textAnchor="end"
+                  fontWeight={500}
+                  fontFamily={fontFamily}
+                >
+                  {displayDirection === "horizontal"
+                    ? formatValue(props.payload.value)
+                    : chartData[props.payload.index].name}
+                </text>
+              )}
+            />
+            <YAxis
+              type={displayDirection === "vertical" ? "number" : "category"}
+              axisLine={false}
+              tick={(props) => (
+                <text
+                  x={props.x}
+                  y={props.y}
+                  fontSize={12}
+                  fill="#7C7D7E"
+                  textAnchor="end"
+                  fontWeight={500}
+                  fontFamily={fontFamily}
+                >
+                  {displayDirection === "horizontal"
+                    ? chartData[props.payload.index].name
+                    : formatValue(props.payload.value)}
+                </text>
+              )}
+            />
             {keyNames?.map((name, index) => (
               <Bar
                 hide={isHide?.(name)}
