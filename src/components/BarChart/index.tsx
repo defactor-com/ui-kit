@@ -24,7 +24,7 @@ export interface ChartSeriesType {
 export interface IBarChart extends IChart {
   data: string[];
   series: ChartSeriesType[];
-  displayDirection: "vertical" | "horizontal";
+  displayDirection?: "vertical" | "horizontal";
 }
 
 const CustomTooltip = ({
