@@ -24,6 +24,7 @@ export interface ChartSeriesType {
 export interface IBarChart extends IChart {
   data: string[];
   series: ChartSeriesType[];
+  displayDirection: "vertical" | "horizontal";
 }
 
 const CustomTooltip = ({
@@ -68,7 +69,7 @@ const CustomTooltip = ({
   );
 };
 
-const getHorizontalCoordinates = (max: number, gap: number) => {
+const getCoordinates = (max: number, gap: number) => {
   const horizontalLines = [];
 
   for (let index = 0; gap * index <= max; index++) {
@@ -84,6 +85,7 @@ export const BarChart = ({
   colors,
   fontFamily,
   formatValue = (value) => value.toLocaleString("en-US"),
+  displayDirection = "vertical",
 }: IBarChart) => {
   const [{ chartData, keyNames }, { isHide, setHide }] = useBarChartState({
     data,
@@ -94,51 +96,102 @@ export const BarChart = ({
     <div className="bar-chart-container">
       <div className="bar-chart-graphic-container">
         <ResponsiveContainer width="100%" height={120 * data.length}>
-          <RechartsBarChart data={chartData} layout="vertical" barGap={8}>
-            <CartesianGrid
-              strokeDasharray="12 12"
-              horizontalCoordinatesGenerator={(props) =>
-                getHorizontalCoordinates(
-                  props.yAxis.height,
-                  props.yAxis.bandSize
-                )
-              }
-            />
-            <XAxis
-              type="number"
-              axisLine={false}
-              fontFamily={fontFamily}
-              tick={(props) => (
-                <text
-                  x={props.x + 10}
-                  y={props.y + 15}
-                  fontSize={12}
-                  fill="#7C7D7E"
-                  textAnchor="end"
-                  fontWeight={500}
-                  fontFamily={fontFamily}
-                >
-                  {formatValue(props.payload.value)}
-                </text>
-              )}
-            />
-            <YAxis
-              type="category"
-              axisLine={false}
-              tick={(props) => (
-                <text
-                  x={props.x}
-                  y={props.y}
-                  fontSize={12}
-                  fill="#7C7D7E"
-                  textAnchor="end"
-                  fontWeight={500}
-                  fontFamily={fontFamily}
-                >
-                  {chartData[props.payload.index].name}
-                </text>
-              )}
-            />
+          <RechartsBarChart
+            data={chartData}
+            layout={displayDirection}
+            barGap={8}
+          >
+            {displayDirection === "vertical" ? (
+              <CartesianGrid
+                strokeDasharray="12 12"
+                horizontalCoordinatesGenerator={(props) =>
+                  getCoordinates(props.yAxis.height, props.yAxis.bandSize)
+                }
+              />
+            ) : (
+              <CartesianGrid
+                strokeDasharray="12 12"
+                verticalCoordinatesGenerator={(props) =>
+                  getCoordinates(props.xAxis.width, props.xAxis.bandSize)
+                }
+              />
+            )}
+
+            {displayDirection === "vertical" ? (
+              <>
+                <XAxis
+                  type="number"
+                  axisLine={false}
+                  tick={(props) => (
+                    <text
+                      x={props.x + 10}
+                      y={props.y + 15}
+                      fontSize={12}
+                      fill="#7C7D7E"
+                      textAnchor="end"
+                      fontWeight={500}
+                      fontFamily={fontFamily}
+                    >
+                      {formatValue(props.payload.value)}
+                    </text>
+                  )}
+                />
+                <YAxis
+                  type="category"
+                  axisLine={false}
+                  tick={(props) => (
+                    <text
+                      x={props.x}
+                      y={props.y}
+                      fontSize={12}
+                      fill="#7C7D7E"
+                      textAnchor="end"
+                      fontWeight={500}
+                      fontFamily={fontFamily}
+                    >
+                      {chartData[props.payload.index].name}
+                    </text>
+                  )}
+                />
+              </>
+            ) : (
+              <>
+                <XAxis
+                  type="category"
+                  axisLine={false}
+                  tick={(props) => (
+                    <text
+                      x={props.x + 15}
+                      y={props.y + 10}
+                      fontSize={12}
+                      fill="#7C7D7E"
+                      textAnchor="end"
+                      fontWeight={500}
+                      fontFamily={fontFamily}
+                    >
+                      {chartData[props.payload.index].name}
+                    </text>
+                  )}
+                />
+                <YAxis
+                  type="number"
+                  axisLine={false}
+                  tick={(props) => (
+                    <text
+                      x={props.x}
+                      y={props.y}
+                      fontSize={12}
+                      fill="#7C7D7E"
+                      textAnchor="end"
+                      fontWeight={500}
+                      fontFamily={fontFamily}
+                    >
+                      {formatValue(props.payload.value)}
+                    </text>
+                  )}
+                />
+              </>
+            )}
             {keyNames?.map((name, index) => (
               <Bar
                 hide={isHide?.(name)}
