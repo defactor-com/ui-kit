@@ -13,6 +13,7 @@ import clsx from "clsx";
 import { Point } from "../Point";
 import { Container } from "../Container";
 import { CustomTooltipProps, IChart } from "../LineChart";
+import { EmptyChart } from "../EmptyChart";
 
 import useBarChartState from "./useBarChartState";
 
@@ -99,28 +100,12 @@ export const BarChart = ({
   return (
     <div className="bar-chart-container">
       {missingData && !loading ? (
-        <div className="empt-state-container">
-          <div className="img-empty">
-            {emptyIcon && typeof emptyIcon === "string" ? (
-              <img
-                src={emptyIcon}
-                alt={emptyTitle}
-                className="menu-option-icon"
-              />
-            ) : (
-              emptyIcon
-            )}
-          </div>
-          <span
-            className={clsx("variant-h3", "small-margin-button")}
-            style={{ fontFamily: fontFamily }}
-          >
-            {emptyTitle}
-          </span>
-          <span style={{ fontFamily: fontFamily }} className="variant-body1">
-            {emptyDescription}
-          </span>
-        </div>
+        <EmptyChart
+          icon={emptyIcon}
+          title={emptyTitle}
+          description={emptyDescription}
+          fontFamily={fontFamily}
+        />
       ) : (
         <>
           <div className="bar-chart-graphic-container">

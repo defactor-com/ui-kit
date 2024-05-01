@@ -11,6 +11,7 @@ import clsx from "clsx";
 import { Point } from "../Point";
 import { Container } from "../Container";
 import { CustomTooltipProps, IChart } from "../LineChart";
+import { EmptyChart } from "../EmptyChart";
 
 const CustomTooltip = ({
   fontFamily,
@@ -103,28 +104,12 @@ export const PieChart = ({
   return (
     <div className="pie-chart-container">
       {!data?.length && !loading ? (
-        <div className="empt-state-container">
-          <div className="img-empty">
-            {emptyIcon && typeof emptyIcon === "string" ? (
-              <img
-                src={emptyIcon}
-                alt={emptyTitle}
-                className="menu-option-icon"
-              />
-            ) : (
-              emptyIcon
-            )}
-          </div>
-          <span
-            className={clsx("variant-h3", "small-margin-button")}
-            style={{ fontFamily: fontFamily }}
-          >
-            {emptyTitle}
-          </span>
-          <span style={{ fontFamily: fontFamily }} className="variant-body1">
-            {emptyDescription}
-          </span>
-        </div>
+        <EmptyChart
+          icon={emptyIcon}
+          title={emptyTitle}
+          description={emptyDescription}
+          fontFamily={fontFamily}
+        />
       ) : (
         <>
           <ResponsiveContainer width="" height="50%" minHeight="250px">

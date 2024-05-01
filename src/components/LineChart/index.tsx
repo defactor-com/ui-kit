@@ -17,6 +17,7 @@ import {
 
 import { Container } from "../Container";
 import { FluctuationComponent } from "../FluctuationComponent";
+import { EmptyChart } from "../EmptyChart";
 import { Point } from "../Point";
 
 import useLineChartState from "./useLineChartState";
@@ -128,28 +129,12 @@ export const LineChart = ({
   return (
     <>
       {missingData && !loading ? (
-        <div className="empt-state-container">
-          <div className="img-empty">
-            {emptyIcon && typeof emptyIcon === "string" ? (
-              <img
-                src={emptyIcon}
-                alt={emptyTitle}
-                className="menu-option-icon"
-              />
-            ) : (
-              emptyIcon
-            )}
-          </div>
-          <span
-            className={clsx("variant-h3", "small-margin-button")}
-            style={{ fontFamily: fontFamily }}
-          >
-            {emptyTitle}
-          </span>
-          <span style={{ fontFamily: fontFamily }} className="variant-body1">
-            {emptyDescription}
-          </span>
-        </div>
+        <EmptyChart
+          icon={emptyIcon}
+          title={emptyTitle}
+          description={emptyDescription}
+          fontFamily={fontFamily}
+        />
       ) : (
         <>
           <ResponsiveContainer
