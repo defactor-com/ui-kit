@@ -93,54 +93,88 @@ export const PieChart = ({
   data,
   fontFamily,
   formatValue = (value) => value.toLocaleString("en-US"),
+  loading,
+  emptyIcon,
+  emptyTitle,
+  emptyDescription,
 }: IPieChart) => {
   const colors: string[] = data.map((item) => item.color);
 
   return (
     <div className="pie-chart-container">
-      <ResponsiveContainer width="" height="50%" minHeight="250px">
-        <RechartsPieChart>
-          <Pie
-            data={data}
-            label={renderCustomizedLabel}
-            strokeWidth={0}
-            dataKey="value"
-            fontFamily={fontFamily}
-            outerRadius={120}
+      {!data?.length && !loading ? (
+        <div className="empt-state-container">
+          <div className="img-empty">
+            {emptyIcon && typeof emptyIcon === "string" ? (
+              <img
+                src={emptyIcon}
+                alt={emptyTitle}
+                className="menu-option-icon"
+              />
+            ) : (
+              emptyIcon
+            )}
+          </div>
+          <span
+            className={clsx("variant-h3", "small-margin-button")}
+            style={{ fontFamily: fontFamily }}
           >
-            {data.map((_entry, index) => (
-              <Cell
-                key={`cell-item-${index}`}
-                fill={_entry.color}
-                fontFamily={fontFamily}
-                fontWeight={700}
-              />
-            ))}
-          </Pie>
-          <Tooltip
-            content={
-              <CustomTooltip
-                colors={colors}
-                fontFamily={fontFamily}
-                formatValue={formatValue}
-              />
-            }
-          />
-        </RechartsPieChart>
-      </ResponsiveContainer>
-      {groupData(data).map((data, index) => (
-        <div className="pie-chart-legend-container" key={`subgroup-${index}`}>
-          {(data || []).map(({ name, color }, index) => (
-            <span
-              className={clsx("flex-center", "variant-body1")}
-              style={{ fontFamily }}
-              key={`pie-chart-legend-${name}`}
-            >
-              <Point color={color} /> {name}
-            </span>
-          ))}
+            {emptyTitle}
+          </span>
+          <span style={{ fontFamily: fontFamily }} className="variant-body1">
+            {emptyDescription}
+          </span>
         </div>
-      ))}
+      ) : (
+        <>
+          <ResponsiveContainer width="" height="50%" minHeight="250px">
+            <RechartsPieChart>
+              <Pie
+                data={data}
+                label={renderCustomizedLabel}
+                strokeWidth={0}
+                dataKey="value"
+                fontFamily={fontFamily}
+                outerRadius={120}
+              >
+                {data.map((_entry, index) => (
+                  <Cell
+                    key={`cell-item-${index}`}
+                    fill={_entry.color}
+                    fontFamily={fontFamily}
+                    fontWeight={700}
+                  />
+                ))}
+              </Pie>
+              <Tooltip
+                content={
+                  <CustomTooltip
+                    colors={colors}
+                    fontFamily={fontFamily}
+                    formatValue={formatValue}
+                  />
+                }
+              />
+            </RechartsPieChart>
+          </ResponsiveContainer>
+          {groupData(data).map((data, index) => (
+            <div
+              className="pie-chart-legend-container"
+              key={`subgroup-${index}`}
+            >
+              {(data || []).map(({ name, color }, index) => (
+                <span
+                  className={clsx("flex-center", "variant-body1")}
+                  style={{ fontFamily }}
+                  key={`pie-chart-legend-${name}`}
+                >
+                  <Point color={color} /> {name}
+                </span>
+              ))}
+            </div>
+          ))}
+        </>
+      )}
     </div>
   );
 };

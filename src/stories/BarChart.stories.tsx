@@ -8,7 +8,10 @@ export default {
   component: BarChart,
 };
 
-const formatValue = (value: number | string, options?: Intl.NumberFormatOptions) => {
+const formatValue = (
+  value: number | string,
+  options?: Intl.NumberFormatOptions
+) => {
   return value.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",

@@ -45,6 +45,10 @@ export interface IChart {
   fontFamily?: string;
   colors: string[];
   formatValue?: FormatValueType;
+  loading?: boolean;
+  emptyIcon?: React.ReactElement | string;
+  emptyTitle?: string;
+  emptyDescription?: string;
 }
 
 export interface ILineChart extends IChart {
@@ -108,6 +112,10 @@ export const LineChart = ({
   colors,
   fontFamily,
   formatValue = (value) => value.toLocaleString("en-US"),
+  loading,
+  emptyIcon,
+  emptyTitle,
+  emptyDescription,
 }: ILineChart) => {
   const [
     { chartData, keyName, keyNames, tooltipActive },
@@ -115,134 +123,167 @@ export const LineChart = ({
   ] = useLineChartState({ data, series });
   const getColorId = (color: string) =>
     color.toLocaleLowerCase().replace(/ /g, "-");
+  const missingData = !data?.length || !series.length;
 
   return (
     <>
-      <ResponsiveContainer
-        width="97%"
-        height="55%"
-        minHeight="200px"
-        className="line-chart-container"
-      >
-        <ComposedChart data={chartData}>
-          <defs>
-            {(keyNames || []).map((name, index) => (
-              <linearGradient
-                key={`gradient-${name}-${index}`}
-                id={`color-${getColorId(name)}`}
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="1"
-              >
-                <stop
-                  offset="5%"
-                  stopColor={colors[index % colors.length]}
-                  stopOpacity={0.2}
-                />
-                <stop
-                  offset="95%"
-                  stopColor={colors[index % colors.length]}
-                  stopOpacity={0.1}
-                />
-              </linearGradient>
-            ))}
-          </defs>
-          <CartesianGrid strokeDasharray="12 12" />
-          <YAxis
-            axisLine={false}
-            domain={["auto", "auto"]}
-            tick={(props) => (
-              <text
-                x={props.x}
-                y={props.y}
-                fontSize={12}
-                fill="#7C7D7E"
-                textAnchor="end"
-                fontWeight={500}
-                fontFamily={fontFamily}
-              >
-                {formatValue(props.payload.value)}
-              </text>
+      {missingData && !loading ? (
+        <div className="empt-state-container">
+          <div className="img-empty">
+            {emptyIcon && typeof emptyIcon === "string" ? (
+              <img
+                src={emptyIcon}
+                alt={emptyTitle}
+                className="menu-option-icon"
+              />
+            ) : (
+              emptyIcon
             )}
-          />
-          <Tooltip
-            content={
-              tooltipActive ? (
-                <CustomTooltip
-                  colors={colors}
-                  keyName={keyName}
-                  fontFamily={fontFamily}
-                  formatValue={formatValue}
-                />
-              ) : (
-                <></>
-              )
-            }
-          />
-          {(keyNames || []).map((name, index) => (
-            <Area
-              key={`area-${name}`}
-              hide={isHide?.(name)}
-              dot={false}
-              activeDot={false}
-              dataKey={name}
-              stroke={colors[index % colors.length]}
-              type="monotone"
-              strokeWidth={2}
-              fillOpacity={1}
-              fill={`url(#color-${getColorId(name)})`}
-            />
-          ))}
-          {(keyNames || []).map((name, index) => (
-            <Line
-              key={`line-${name}`}
-              hide={isHide?.(name)}
-              dot={{
-                stroke: colors[index % colors.length],
-                strokeWidth: 2,
-                r: 5,
-                opacity: 1,
-                fill: colors[index % colors.length],
-              }}
-              activeDot={{
-                strokeWidth: 2,
-                stroke: colors[index % colors.length],
-                fill:
-                  keyName === name ? "white" : colors[index % colors.length],
-                onMouseOver: handleOpenTooltip,
-                onClick: handleOpenTooltip,
-              }}
-              onMouseLeave={handleCloseTooltip}
-              dataKey={name}
-              stroke={colors[index % colors.length]}
-              type="monotone"
-              strokeWidth={2}
-              fillOpacity={1}
-            />
-          ))}
-        </ComposedChart>
-      </ResponsiveContainer>
-      <div className={clsx("display-flex", "hide-bars-container")}>
-        {(keyNames || []).map((name, index) => (
+          </div>
           <span
-            className={clsx("flex-center", "variant-body1")}
+            className={clsx("variant-h3", "small-margin-button")}
             style={{ fontFamily: fontFamily }}
-            key={`checkbox-${name}`}
           >
-            <input
-              className="checkbox"
-              type="checkbox"
-              checked={!isHide?.(name)}
-              onChange={(e) => {
-                setHide?.((prev) => ({ ...prev, [name]: !e.target.checked }));
-              }}
-              style={{ accentColor: colors[index % colors.length] }}
-            />
-            <Point color={colors[index % colors.length]} /> {name}
+            {emptyTitle}
           </span>
-        ))}
-      </div>
+          <span style={{ fontFamily: fontFamily }} className="variant-body1">
+            {emptyDescription}
+          </span>
+        </div>
+      ) : (
+        <>
+          <ResponsiveContainer
+            width="97%"
+            height="55%"
+            minHeight="200px"
+            className="line-chart-container"
+          >
+            <ComposedChart data={chartData}>
+              <defs>
+                {(keyNames || []).map((name, index) => (
+                  <linearGradient
+                    key={`gradient-${name}-${index}`}
+                    id={`color-${getColorId(name)}`}
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1"
+                  >
+                    <stop
+                      offset="5%"
+                      stopColor={colors[index % colors.length]}
+                      stopOpacity={0.2}
+                    />
+                    <stop
+                      offset="95%"
+                      stopColor={colors[index % colors.length]}
+                      stopOpacity={0.1}
+                    />
+                  </linearGradient>
+                ))}
+              </defs>
+              <CartesianGrid strokeDasharray="12 12" />
+              <YAxis
+                axisLine={false}
+                domain={["auto", "auto"]}
+                tick={(props) => (
+                  <text
+                    x={props.x}
+                    y={props.y}
+                    fontSize={12}
+                    fill="#7C7D7E"
+                    textAnchor="end"
+                    fontWeight={500}
+                    fontFamily={fontFamily}
+                  >
+                    {formatValue(props.payload.value)}
+                  </text>
+                )}
+              />
+              <Tooltip
+                content={
+                  tooltipActive ? (
+                    <CustomTooltip
+                      colors={colors}
+                      keyName={keyName}
+                      fontFamily={fontFamily}
+                      formatValue={formatValue}
+                    />
+                  ) : (
+                    <></>
+                  )
+                }
+              />
+              {(keyNames || []).map((name, index) => (
+                <Area
+                  key={`area-${name}`}
+                  hide={isHide?.(name)}
+                  dot={false}
+                  activeDot={false}
+                  dataKey={name}
+                  stroke={colors[index % colors.length]}
+                  type="monotone"
+                  strokeWidth={2}
+                  fillOpacity={1}
+                  fill={`url(#color-${getColorId(name)})`}
+                />
+              ))}
+              {(keyNames || []).map((name, index) => (
+                <Line
+                  key={`line-${name}`}
+                  hide={isHide?.(name)}
+                  dot={{
+                    stroke: colors[index % colors.length],
+                    strokeWidth: 2,
+                    r: 5,
+                    opacity: 1,
+                    fill: colors[index % colors.length],
+                  }}
+                  activeDot={{
+                    strokeWidth: 2,
+                    stroke: colors[index % colors.length],
+                    fill:
+                      keyName === name
+                        ? "white"
+                        : colors[index % colors.length],
+                    onMouseOver: handleOpenTooltip,
+                    onClick: handleOpenTooltip,
+                  }}
+                  onMouseLeave={handleCloseTooltip}
+                  dataKey={name}
+                  stroke={colors[index % colors.length]}
+                  type="monotone"
+                  strokeWidth={2}
+                  fillOpacity={1}
+                />
+              ))}
+            </ComposedChart>
+          </ResponsiveContainer>
+          <div className={clsx("display-flex", "hide-bars-container")}>
+            {(keyNames || []).map((name, index) => (
+              <span
+                className={clsx("flex-center", "variant-body1")}
+                style={{ fontFamily: fontFamily }}
+                key={`checkbox-${name}`}
+              >
+                <input
+                  className="checkbox"
+                  type="checkbox"
+                  checked={!isHide?.(name)}
+                  onChange={(e) => {
+                    setHide?.((prev) => ({
+                      ...prev,
+                      [name]: !e.target.checked,
+                    }));
+                  }}
+                  style={{ accentColor: colors[index % colors.length] }}
+                />
+                <Point color={colors[index % colors.length]} /> {name}
+              </span>
+            ))}
+          </div>
+        </>
+      )}
     </>
   );
 };
