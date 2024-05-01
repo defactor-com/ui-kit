@@ -1,6 +1,7 @@
 import React from "react";
 import { Story } from "@storybook/react";
 
+import AdmirationIcon from "../components/Icons/admirationIcon";
 import { BarChart, IBarChart, ChartSeriesType } from "../components/BarChart";
 
 export default {
@@ -36,4 +37,8 @@ BarChartItem.args = {
   series: barChatSeries,
   colors: barChartColors,
   data: poolNames,
+  loading: false,
+  emptyIcon: <AdmirationIcon />,
+  emptyTitle: "No data to show",
+  emptyDescription: "Data will be listed here when available. ",
 };

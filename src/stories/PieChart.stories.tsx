@@ -1,6 +1,7 @@
 import React from "react";
 import { Story } from "@storybook/react";
 
+import AdmirationIcon from "../components/Icons/admirationIcon";
 import { PieChart, IPieChart, PieDataType } from "../components/PieChart";
 
 export default {
@@ -21,4 +22,8 @@ const pieChartData: PieDataType = [
 export const PieChartItem = Template.bind({});
 PieChartItem.args = {
   data: pieChartData,
+  loading: false,
+  emptyIcon: <AdmirationIcon />,
+  emptyTitle: "No data to show",
+  emptyDescription: "Data will be listed here when available. ",
 };

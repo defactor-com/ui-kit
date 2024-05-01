@@ -13,6 +13,7 @@ import { BarChart } from "../components/BarChart";
 import { PieChart } from "../components/PieChart";
 
 import InfoIcon from "../../public/assets/info-icon.svg";
+import AdmirationIcon from "../components/Icons/admirationIcon";
 
 export default {
   title: "Dashboard",
@@ -149,6 +150,10 @@ DashboardItem.args = {
           colors={colors}
           data={data}
           series={series}
+          loading={false}
+          emptyIcon={<AdmirationIcon />}
+          emptyTitle="No data to show"
+          emptyDescription="Data will be listed here when available. "
         />
       }
     />
@@ -186,13 +191,25 @@ const Charts = () => (
           series={barChatSeries}
           colors={barChartColors}
           data={poolNames}
+          loading={false}
+          emptyIcon={<AdmirationIcon />}
+          emptyTitle="No data to show"
+          emptyDescription="Data will be listed here when available. "
         />
       }
     />
     <ChartContainer
       chartSubtitle="Pools by Status"
       chartDescription="Optional Description"
-      content={<PieChart data={pieChartData} />}
+      content={
+        <PieChart
+          data={pieChartData}
+          loading={false}
+          emptyIcon={<AdmirationIcon />}
+          emptyTitle="No data to show"
+          emptyDescription="Data will be listed here when available. "
+        />
+      }
     />
   </>
 );
