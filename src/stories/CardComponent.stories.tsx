@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Story } from "@storybook/react";
 
 import { CardComponent, ICardComponent } from "../components/CardComponent";
@@ -10,9 +10,29 @@ export default {
   component: CardComponent,
 };
 
-const exampleTooltip = <Tooltip icon={InfoIcon} text="This is a tooltip" />;
+const Template: Story<ICardComponent> = (args) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleChange = (newValue: boolean) => {
+    setIsOpen(newValue);
+  };
 
-const Template: Story<ICardComponent> = (args) => <CardComponent {...args} />;
+  const exampleTooltip = (
+    <Tooltip
+      icon={InfoIcon}
+      text="This is a tooltip"
+      handleChange={handleChange}
+      isOpen={isOpen}
+    />
+  );
+
+  return (
+    <CardComponent
+      {...args}
+      tooltip={exampleTooltip}
+      handleChange={handleChange}
+    />
+  );
+};
 
 export const CardComponentItem = Template.bind({});
 CardComponentItem.args = {
@@ -21,5 +41,5 @@ CardComponentItem.args = {
   value: "$2,000",
   fluctuation: "+3.5",
   fluctuationValue: "+$2,400",
-  tooltip: exampleTooltip,
+  hoverBehavior: true,
 };
