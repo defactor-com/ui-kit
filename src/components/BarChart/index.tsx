@@ -69,16 +69,6 @@ const CustomTooltip = ({
   );
 };
 
-const getCoordinates = (max: number, gap: number) => {
-  const horizontalLines = [];
-
-  for (let index = 0; gap * index <= max; index++) {
-    horizontalLines.push(gap * index + 5);
-  }
-
-  return horizontalLines;
-};
-
 export const BarChart = ({
   data,
   series,
@@ -87,10 +77,11 @@ export const BarChart = ({
   formatValue = (value) => value.toLocaleString("en-US"),
   displayDirection = "horizontal",
 }: IBarChart) => {
-  const [{ chartData, keyNames }, { isHide, setHide }] = useBarChartState({
-    data,
-    series,
-  });
+  const [{ chartData, keyNames }, { isHide, setHide, getCoordinates }] =
+    useBarChartState({
+      data,
+      series,
+    });
 
   return (
     <div className="bar-chart-container">
