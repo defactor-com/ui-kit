@@ -2,11 +2,12 @@ import React from "react";
 import clsx from "clsx";
 
 export interface IPill {
-  label: string;
+  label: string | React.ReactElement;
   color: string;
   bgColor: string;
   fontFamily?: string;
   externalStyles?: string;
+  customBorder?: string;
 }
 
 export const Pill = ({
@@ -15,13 +16,18 @@ export const Pill = ({
   bgColor,
   externalStyles,
   fontFamily,
+  customBorder,
 }: IPill) => {
   return (
     <div
       className={clsx(externalStyles, "container-pill")}
-      style={{ backgroundColor: bgColor }}
+      style={{ backgroundColor: bgColor, border: customBorder }}
     >
-      <span style={{ color: color, fontFamily: fontFamily }}>{label}</span>
+      {label && typeof label === "string" ? (
+        <span style={{ color: color, fontFamily: fontFamily }}>{label}</span>
+      ) : (
+        label
+      )}
     </div>
   );
 };
