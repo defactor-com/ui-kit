@@ -265,13 +265,14 @@ $breakpoint-mobile: 600px;
     gap: 8px;
     margin-bottom: 0;
   }
-  & .checkbox {
-    width: 18px;
-    height: 18px;
-    margin-right: 8px;
-    &:hover {
-      cursor: pointer;
-    }
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  &:hover {
+    cursor: pointer;
   }
 }
 

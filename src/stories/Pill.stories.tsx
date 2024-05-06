@@ -13,4 +13,5 @@ const Template: Story<IPill> = (args) => <Pill {...args} />;
 export const PillItem = Template.bind({});
 PillItem.args = {
   label: "Pill example",
+  customBorder: "3px solid green",
 };

@@ -13,14 +13,12 @@ const Template: Story<IPieChart> = (args) => {
 };
 
 const pieChartData: PieDataType = [
-  { name: "Active", value: 135 },
-  { name: "Claimed", value: 50 },
-  { name: "Available", value: 65 },
+  { name: "Active", value: 135, color: "#26A66B" },
+  { name: "Claimed", value: 50, color: "#5A5BEB" },
+  { name: "Available", value: 65, color: "#D21A4D" },
 ];
-const pieChartColors = ["#26A66B", "#5A5BEB", "#D21A4D"];
 
 export const PieChartItem = Template.bind({});
 PieChartItem.args = {
   data: pieChartData,
-  colors: pieChartColors,
 };

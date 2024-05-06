@@ -1,32 +1,34 @@
 import React from "react";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import factrIcon from "../../../public/assets/factr-icon.svg";
 
 export interface ICollateralSection {
-  textCollateral?: string;
   fontFamily?: string;
-  numberCollateral?: string;
   textWallet?: string;
+  tokenSymbol?: string;
   numberWallet?: string;
-  symbolToken?: React.ReactElement | string;
+  textCollateral?: string;
   requiredSection: boolean;
   backgroundColor?: string;
-  symbolWallet?: string;
+  numberCollateral?: string;
+  loader?: React.ReactElement;
+  tokenIcon?: React.ReactElement | string;
   walletIcon?: React.ReactElement | string;
 }
 
 export const CollateralSection = ({
-  textCollateral,
+  loader,
   fontFamily,
-  numberCollateral,
   textWallet,
-  numberWallet,
-  symbolToken,
-  symbolWallet = factrIcon,
-  requiredSection,
-  backgroundColor = "#26A66B1A",
   walletIcon,
+  tokenSymbol,
+  numberWallet,
+  textCollateral,
+  requiredSection,
+  numberCollateral,
+  tokenIcon = factrIcon,
+  backgroundColor = "#26A66B1A",
 }: ICollateralSection) => {
   return (
     <div>
@@ -35,15 +37,24 @@ export const CollateralSection = ({
           <Typography variant="body1" style={{ fontFamily: fontFamily }}>
             {textCollateral}:
           </Typography>
-          <Typography
-            variant="body1"
-            textAlign={"end"}
-            style={{ fontFamily: fontFamily }}
-          >
-            <strong>{numberCollateral}</strong>
-            <br />
-            {symbolToken}
-          </Typography>
+          <Box maxWidth="170px">
+            <Typography
+              variant="body1"
+              textAlign="end"
+              fontWeight="bold"
+              className="breakText"
+              style={{ fontFamily: fontFamily }}
+            >
+              {loader ? loader : numberCollateral}
+            </Typography>
+            <Typography
+              variant="body1"
+              textAlign="end"
+              style={{ fontFamily: fontFamily, color: "#7C7D7E" }}
+            >
+              {tokenSymbol}
+            </Typography>
+          </Box>
         </div>
       )}
       {textWallet && numberWallet && (
@@ -60,17 +71,29 @@ export const CollateralSection = ({
             {textWallet}
           </Typography>
           <div className="walletDetail">
-            {symbolWallet && typeof symbolWallet === "string" ? (
-              <img src={symbolWallet} width={16} height={16} />
+            {tokenIcon && typeof tokenIcon === "string" ? (
+              <img src={tokenIcon} width={16} height={16} />
             ) : (
-              symbolWallet
+              tokenIcon
             )}
             <div className="walletAmount">
-              <Typography variant="body1" style={{ fontFamily: fontFamily }}>
-                {numberWallet}
-              </Typography>
-              <Typography variant="body1" style={{ fontFamily: fontFamily }}>
-                {symbolToken}
+              <Box maxWidth="160px">
+                <Typography
+                  variant="body1"
+                  fontWeight="bold"
+                  textAlign="center"
+                  className="breakText"
+                  style={{ fontFamily: fontFamily }}
+                >
+                  {numberWallet}
+                </Typography>
+              </Box>
+              <Typography
+                variant="body1"
+                fontWeight="bold"
+                style={{ fontFamily: fontFamily }}
+              >
+                {tokenSymbol}
               </Typography>
             </div>
           </div>

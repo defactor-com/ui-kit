@@ -204,7 +204,7 @@ const TemplateLending: Story<IDashboard> = (args) => {
       <ChartContainer
         chartSubtitle="Pools by Status"
         chartDescription="Optional Description"
-        content={<PieChart colors={pieChartColors} data={pieChartData} />}
+        content={<PieChart data={pieChartData} />}
       />
     </>
   );
@@ -235,11 +235,10 @@ const barChatSeries = [
   { name: "Borrowing", data: [4.5, 5.2, 2.3] },
 ];
 const pieChartData = [
-  { name: "Active", value: 135 },
-  { name: "Claimed", value: 50 },
-  { name: "Available", value: 65 },
+  { name: "Active", value: 135, color: "#26A66B" },
+  { name: "Claimed", value: 50, color: "#5A5BEB" },
+  { name: "Available", value: 65, color: "#D21A4D" },
 ];
-const pieChartColors = ["#26A66B", "#5A5BEB", "#D21A4D"];
 const rightContainerItems1: CardItem[] = [
   { label: "Total Active Loans", value: "1,200", infoTooltip: infoTooltip },
   { label: "Loans Ready to Claim", value: "2,500" },
@@ -301,7 +300,7 @@ const TemplateBorrowing: Story<IDashboard> = (args) => {
       <ChartContainer
         chartSubtitle="Pools by Status"
         chartDescription="Optional Description"
-        content={<PieChart colors={pieChartColors} data={pieChartData} />}
+        content={<PieChart data={pieChartData} />}
       />
     </>
   );
