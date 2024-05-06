@@ -2,6 +2,7 @@ import React from "react";
 import clsx from "clsx";
 
 import { Container } from "../Container";
+import { ITooltip } from "../Tooltip";
 import lendIcon from "../../../public/assets/lending.svg";
 import dolarIcon from "../../../public/assets/dolar-icon.svg";
 import { CardComponent } from "../CardComponent";
@@ -12,7 +13,8 @@ export type CardItem = {
   fluctuation?: string;
   fluctuationValue?: string;
   color?: string;
-  tooltip?: React.ReactElement;
+  infoTooltip?: Omit<ITooltip, "handleChange">;
+  hoverBehavior?: boolean;
 };
 
 export type IDashboard = {
@@ -60,7 +62,8 @@ const BottomContainer = ({
             fluctuationValue={item.fluctuationValue}
             fontFamily={fontFamily}
             color={item.color || colors[index % colors.length]}
-            tooltip={item.tooltip}
+            infoTooltip={item.infoTooltip}
+            hoverBehavior={item.hoverBehavior}
           />
         ))}
       </div>
@@ -98,7 +101,8 @@ const RightContainer = ({
             fluctuation={item.fluctuation}
             fluctuationValue={item.fluctuationValue}
             color={item.color}
-            tooltip={item.tooltip}
+            infoTooltip={item.infoTooltip}
+            hoverBehavior={item.hoverBehavior}
           />
         ))}
       </div>

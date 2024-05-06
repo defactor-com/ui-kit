@@ -3,7 +3,10 @@ import clsx from "clsx";
 
 import { CardContainer } from "../CardContainer";
 import { FluctuationComponent } from "../FluctuationComponent";
+import { ITooltip } from "../Tooltip";
 import { Point } from "../Point";
+
+import { useCardState } from "./useCardState";
 
 export interface ICardComponent {
   label: string;
@@ -13,9 +16,8 @@ export interface ICardComponent {
   color?: string;
   fontFamily?: string;
   externalStyles?: string;
-  tooltip?: React.ReactElement;
   hoverBehavior?: boolean;
-  handleChange: (newValue: boolean) => void;
+  infoTooltip?: Omit<ITooltip, "handleChange">;
 }
 
 export const CardComponent = ({
@@ -26,48 +28,46 @@ export const CardComponent = ({
   color,
   fontFamily,
   externalStyles,
-  tooltip,
   hoverBehavior = false,
-  handleChange,
+  infoTooltip,
 }: ICardComponent) => {
+  const [{ tooltip }, { handleChange }] = useCardState(infoTooltip);
+
+  const isPonter = tooltip && hoverBehavior;
+
   return (
-    <div
-      style={{
-        cursor: tooltip && hoverBehavior ? "pointer" : "text",
-        width: "max-content",
-      }}
-      onMouseEnter={() => handleChange(true && hoverBehavior)}
-      onMouseLeave={() => handleChange(false)}
-    >
-      <CardContainer
-        externalStyles={externalStyles}
-        content={
-          <div className="flex-card-column-direction">
-            <div className="flex-card">
-              <span
-                className={clsx("flex-center", "variant-body1")}
-                style={{ fontFamily }}
-              >
-                {color && <Point color={color} />} {label}
-              </span>
-              {tooltip && <div>{tooltip}</div>}
-            </div>
-            <div className="flat-body-container">
-              <div className="flex-column-direction">
-                <span className="variant-h3" style={{ fontFamily }}>
-                  {value}
-                </span>
-              </div>
-              {fluctuation && (
-                <FluctuationComponent
-                  label={fluctuation}
-                  value={fluctuationValue}
-                />
-              )}
-            </div>
+    <CardContainer
+      isPointer={isPonter}
+      hoverBehavior={hoverBehavior}
+      handleMouseEnter={handleChange}
+      handleMouseLeave={handleChange}
+      externalStyles={externalStyles}
+      content={
+        <div className="flex-card-column-direction">
+          <div className="flex-card">
+            <span
+              className={clsx("flex-center", "variant-body1")}
+              style={{ fontFamily }}
+            >
+              {color && <Point color={color} />} {label}
+            </span>
+            {tooltip && <div>{tooltip}</div>}
           </div>
-        }
-      />
-    </div>
+          <div className="flat-body-container">
+            <div className="flex-column-direction">
+              <span className="variant-h3" style={{ fontFamily }}>
+                {value}
+              </span>
+            </div>
+            {fluctuation && (
+              <FluctuationComponent
+                label={fluctuation}
+                value={fluctuationValue}
+              />
+            )}
+          </div>
+        </div>
+      }
+    />
   );
 };

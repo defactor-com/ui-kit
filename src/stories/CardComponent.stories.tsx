@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Story } from "@storybook/react";
 
 import { CardComponent, ICardComponent } from "../components/CardComponent";
-import { Tooltip } from "../components/Tooltip";
 import InfoIcon from "../../public/assets/info-icon.svg";
 
 export default {
@@ -11,27 +10,12 @@ export default {
 };
 
 const Template: Story<ICardComponent> = (args) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const handleChange = (newValue: boolean) => {
-    setIsOpen(newValue);
+  const infoTooltip = {
+    icon: InfoIcon,
+    text: "This is a tooltip",
   };
 
-  const exampleTooltip = (
-    <Tooltip
-      icon={InfoIcon}
-      text="This is a tooltip"
-      handleChange={handleChange}
-      isOpen={isOpen}
-    />
-  );
-
-  return (
-    <CardComponent
-      {...args}
-      tooltip={exampleTooltip}
-      handleChange={handleChange}
-    />
-  );
+  return <CardComponent {...args} infoTooltip={infoTooltip} />;
 };
 
 export const CardComponentItem = Template.bind({});
