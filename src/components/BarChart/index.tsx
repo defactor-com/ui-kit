@@ -90,12 +90,11 @@ export const BarChart = ({
   emptyTitle,
   emptyDescription,
 }: IBarChart) => {
-  const [{ chartData, keyNames }, { isHide, setHide }] = useBarChartState({
-    data,
-    series,
-  });
-
-  const missingData = !data.length || !series.length;
+  const [{ chartData, keyNames, missingData }, { isHide, setHide }] =
+    useBarChartState({
+      data,
+      series,
+    });
 
   return (
     <div className="bar-chart-container">

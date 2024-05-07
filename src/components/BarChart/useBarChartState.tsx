@@ -27,6 +27,8 @@ const useBarChartState = ({
     return { chartData, keyNames, hideInitialStatus };
   };
 
+  const missingData = !data.length || !series.length;
+
   const { chartData, hideInitialStatus, keyNames } = getInitialData(
     data,
     series
@@ -36,7 +38,7 @@ const useBarChartState = ({
   const isHide = (keyName: string) => hide[keyName];
 
   return [
-    { chartData, keyNames },
+    { chartData, keyNames, missingData },
     { isHide, setHide },
   ];
 };

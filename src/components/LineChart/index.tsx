@@ -119,12 +119,11 @@ export const LineChart = ({
   emptyDescription,
 }: ILineChart) => {
   const [
-    { chartData, keyName, keyNames, tooltipActive },
+    { chartData, keyName, keyNames, tooltipActive, missingData },
     { isHide, setHide, handleOpenTooltip, handleCloseTooltip },
   ] = useLineChartState({ data, series });
   const getColorId = (color: string) =>
     color.toLocaleLowerCase().replace(/ /g, "-");
-  const missingData = !data?.length || !series.length;
 
   return (
     <>

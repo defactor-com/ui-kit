@@ -36,7 +36,7 @@ BarChartItem.args = {
   formatValue,
   series: barChatSeries,
   colors: barChartColors,
-  data: poolNames,
+  data: [],
   loading: false,
   emptyIcon: <AdmirationIcon />,
   emptyTitle: "No data to show",

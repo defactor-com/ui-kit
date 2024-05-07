@@ -38,6 +38,8 @@ const useLineChartState = ({
     return { chartData, keyNames, hideInitialStatus };
   };
 
+  const missingData = !data?.length || !series.length;
+
   const { chartData, hideInitialStatus, keyNames } = getInitialData(
     data,
     series
@@ -58,7 +60,7 @@ const useLineChartState = ({
   const isHide = (keyName: string) => hide[keyName];
 
   return [
-    { chartData, keyNames, keyName, tooltipActive },
+    { chartData, keyNames, keyName, tooltipActive, missingData },
     { isHide, setHide, handleOpenTooltip, handleCloseTooltip },
   ];
 };
