@@ -132,7 +132,11 @@ export const PieChart = ({
         <div className="pie-chart-legend-container" key={`subgroup-${index}`}>
           {(data || []).map(({ name, color }, index) => (
             <span
-              className={clsx("flex-center", "variant-body1")}
+              className={clsx(
+                "flex-center",
+                "variant-body1",
+                "piechart-label-styles"
+              )}
               style={{ fontFamily }}
               key={`pie-chart-legend-${name}`}
             >
