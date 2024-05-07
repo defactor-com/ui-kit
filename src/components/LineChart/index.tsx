@@ -10,6 +10,7 @@ import {
   ComposedChart,
 } from "recharts";
 import clsx from "clsx";
+import { Tabs, Tab } from "@mui/material";
 import {
   NameType,
   ValueType,
@@ -50,6 +51,11 @@ export interface IChart {
 export interface ILineChart extends IChart {
   data: LineChartDataType[] | undefined;
   series: SeriesDataType[];
+  dateFilter?: string[];
+  color?: string;
+  filterBgColor?: string;
+  currentFilter?: string;
+  handleChangeFilter?(filter: string): void;
 }
 
 export interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
@@ -107,17 +113,67 @@ export const LineChart = ({
   series,
   colors,
   fontFamily,
+  dateFilter,
+  currentFilter,
+  color = "white",
+  filterBgColor = "#26a66b",
+  handleChangeFilter,
   formatValue = (value) => value.toLocaleString("en-US"),
 }: ILineChart) => {
   const [
     { chartData, keyName, keyNames, tooltipActive },
-    { isHide, setHide, handleOpenTooltip, handleCloseTooltip },
+    { isHide, setHide, handleOpenTooltip, handleCloseTooltip, getColorId },
   ] = useLineChartState({ data, series });
-  const getColorId = (color: string) =>
-    color.toLocaleLowerCase().replace(/ /g, "-");
 
   return (
     <>
+      {dateFilter && (
+        <div
+          className="display-flex"
+          style={{
+            width: "100%",
+            justifyContent: "end",
+          }}
+        >
+          <div
+            className="display-flex"
+            style={{
+              alignItems: "end",
+              width: "40%",
+              justifyContent: "center",
+            }}
+          >
+            <Tabs
+              value={currentFilter}
+              centered
+              variant="scrollable"
+              scrollButtons="auto"
+              classes={{
+                root: "tabs-filter",
+                indicator: "tabs-indicator",
+                flexContainer: "tabs-flex-container",
+              }}
+            >
+              {dateFilter.map((item) => (
+                <Tab
+                  classes={{
+                    root: "tab-filter",
+                  }}
+                  value={item}
+                  label={item}
+                  onClick={() => handleChangeFilter && handleChangeFilter(item)}
+                  style={{
+                    fontFamily: fontFamily,
+                    color: item === currentFilter ? color : "#00000099",
+                    background:
+                      item === currentFilter ? filterBgColor : "#eff2f5",
+                  }}
+                />
+              ))}
+            </Tabs>
+          </div>
+        </div>
+      )}
       <ResponsiveContainer
         width="97%"
         height="55%"
@@ -129,7 +185,7 @@ export const LineChart = ({
             {(keyNames || []).map((name, index) => (
               <linearGradient
                 key={`gradient-${name}-${index}`}
-                id={`color-${getColorId(name)}`}
+                id={`color-${getColorId ? getColorId(name) : ""}`}
                 x1="0"
                 y1="0"
                 x2="0"
@@ -191,7 +247,7 @@ export const LineChart = ({
               type="monotone"
               strokeWidth={2}
               fillOpacity={1}
-              fill={`url(#color-${getColorId(name)})`}
+              fill={`url(#color-${getColorId ? getColorId(name) : ""})`}
             />
           ))}
           {(keyNames || []).map((name, index) => (
@@ -224,24 +280,26 @@ export const LineChart = ({
         </ComposedChart>
       </ResponsiveContainer>
       <div className={clsx("display-flex", "hide-bars-container")}>
-        {(keyNames || []).map((name, index) => (
-          <span
-            className={clsx("flex-center", "variant-body1")}
-            style={{ fontFamily: fontFamily }}
-            key={`checkbox-${name}`}
-          >
-            <input
-              className="checkbox"
-              type="checkbox"
-              checked={!isHide?.(name)}
-              onChange={(e) => {
-                setHide?.((prev) => ({ ...prev, [name]: !e.target.checked }));
-              }}
-              style={{ accentColor: colors[index % colors.length] }}
-            />
-            <Point color={colors[index % colors.length]} /> {name}
-          </span>
-        ))}
+        <div className="display-flex" style={{ gap: "16px" }}>
+          {(keyNames || []).map((name, index) => (
+            <span
+              className={clsx("flex-center", "variant-body1")}
+              style={{ fontFamily: fontFamily }}
+              key={`checkbox-${name}`}
+            >
+              <input
+                className="checkbox"
+                type="checkbox"
+                checked={!isHide?.(name)}
+                onChange={(e) => {
+                  setHide?.((prev) => ({ ...prev, [name]: !e.target.checked }));
+                }}
+                style={{ accentColor: colors[index % colors.length] }}
+              />
+              <Point color={colors[index % colors.length]} /> {name}
+            </span>
+          ))}
+        </div>
       </div>
     </>
   );

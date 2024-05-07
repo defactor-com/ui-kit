@@ -284,3 +284,29 @@ $breakpoint-mobile: 600px;
     margin-top: 24px;
   }
 }
+
+.tabs-filter {
+  padding: 8px;
+  min-height: auto !important;
+  width: 100%;
+}
+
+.tabs-flex-container {
+  justify-content: space-evenly;
+}
+
+.tabs-indicator {
+  display: none;
+}
+
+.tab-filter {
+  width: auto !important;
+  min-width: auto !important;
+  border-radius: 100px !important;
+  height: 32px !important;
+  min-height: auto !important;
+}
+
+.tab-filter-selected {
+  background: white !important;
+}

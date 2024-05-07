@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Story } from "@storybook/react";
 
 import { BarChart, IBarChart, ChartSeriesType } from "../components/BarChart";
@@ -8,7 +8,10 @@ export default {
   component: BarChart,
 };
 
-const formatValue = (value: number | string, options?: Intl.NumberFormatOptions) => {
+const formatValue = (
+  value: number | string,
+  options?: Intl.NumberFormatOptions
+) => {
   return value.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
@@ -17,7 +20,19 @@ const formatValue = (value: number | string, options?: Intl.NumberFormatOptions)
 };
 
 const Template: Story<IBarChart> = (args) => {
-  return <BarChart {...args} />;
+  const [currentFilter, setCurrentFilter] = useState("ALL");
+
+  const handleChangeFilter = (newValue: string) => {
+    setCurrentFilter(newValue);
+  };
+
+  return (
+    <BarChart
+      {...args}
+      currentFilter={currentFilter}
+      handleChangeFilter={handleChangeFilter}
+    />
+  );
 };
 
 const poolNames = ["POOL A", "POOL B", "POOL C"];
@@ -33,4 +48,5 @@ BarChartItem.args = {
   series: barChatSeries,
   colors: barChartColors,
   data: poolNames,
+  dateFilter: ["5D", "7M", "2Y", "ALL"],
 };
