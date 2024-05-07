@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Story } from "@storybook/react";
 
 import { BarChart, IBarChart, ChartSeriesType } from "../components/BarChart";
@@ -20,7 +20,19 @@ const formatValue = (
 };
 
 const Template: Story<IBarChart> = (args) => {
-  return <BarChart {...args} />;
+  const [currentFilter, setCurrentFilter] = useState("ALL");
+
+  const handleChangeFilter = (newValue: string) => {
+    setCurrentFilter(newValue);
+  };
+
+  return (
+    <BarChart
+      {...args}
+      currentFilter={currentFilter}
+      handleChangeFilter={handleChangeFilter}
+    />
+  );
 };
 
 const poolNames = ["POOL A", "POOL B", "POOL C"];

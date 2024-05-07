@@ -286,10 +286,13 @@ $breakpoint-mobile: 600px;
 }
 
 .tabs-filter {
-  background: #eff2f5;
-  border-radius: 8px;
   padding: 8px;
   min-height: auto !important;
+  width: 100%;
+}
+
+.tabs-flex-container {
+  justify-content: space-evenly;
 }
 
 .tabs-indicator {
@@ -299,8 +302,8 @@ $breakpoint-mobile: 600px;
 .tab-filter {
   width: auto !important;
   min-width: auto !important;
-  border-radius: 4px !important;
-  height: 25px !important;
+  border-radius: 100px !important;
+  height: 32px !important;
   min-height: auto !important;
 }
 

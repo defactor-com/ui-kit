@@ -28,7 +28,9 @@ export interface IBarChart extends IChart {
   displayDirection?: "vertical" | "horizontal";
   dateFilter?: string[];
   color?: string;
-  filterFuntion?(filter: string): void;
+  filterBgColor?: string;
+  currentFilter?: string;
+  handleChangeFilter?(filter: string): void;
 }
 
 const CustomTooltip = ({
@@ -79,24 +81,71 @@ export const BarChart = ({
   colors,
   fontFamily,
   dateFilter,
-  color = "#1976d2",
-  filterFuntion,
+  color = "white",
+  currentFilter,
+  filterBgColor = "#26a66b",
+  handleChangeFilter,
   formatValue = (value) => value.toLocaleString("en-US"),
   displayDirection = "horizontal",
 }: IBarChart) => {
-  const [
-    { chartData, keyNames, currentFilter },
-    { isHide, setHide, getCoordinates, handleChangeFilter },
-  ] = useBarChartState({
-    data,
-    series,
-    dateFilter,
-    filterFuntion,
-  });
+  const [{ chartData, keyNames }, { isHide, setHide, getCoordinates }] =
+    useBarChartState({
+      data,
+      series,
+    });
 
   return (
     <div className="bar-chart-container">
       <div className="bar-chart-graphic-container">
+        {dateFilter && (
+          <div
+            className="display-flex"
+            style={{
+              width: "100%",
+              justifyContent: "end",
+            }}
+          >
+            <div
+              className="display-flex"
+              style={{
+                alignItems: "end",
+                width: "40%",
+                justifyContent: "center",
+              }}
+            >
+              <Tabs
+                value={currentFilter}
+                centered
+                variant="scrollable"
+                scrollButtons="auto"
+                classes={{
+                  root: "tabs-filter",
+                  indicator: "tabs-indicator",
+                  flexContainer: "tabs-flex-container",
+                }}
+              >
+                {dateFilter.map((item) => (
+                  <Tab
+                    classes={{
+                      root: "tab-filter",
+                    }}
+                    value={item}
+                    label={item}
+                    onClick={() =>
+                      handleChangeFilter && handleChangeFilter(item)
+                    }
+                    style={{
+                      fontFamily: fontFamily,
+                      color: item === currentFilter ? color : "#00000099",
+                      background:
+                        item === currentFilter ? filterBgColor : "#eff2f5",
+                    }}
+                  />
+                ))}
+              </Tabs>
+            </div>
+          </div>
+        )}
         <ResponsiveContainer width="100%" height={120 * data.length}>
           <RechartsBarChart
             data={chartData}
@@ -179,18 +228,13 @@ export const BarChart = ({
           </RechartsBarChart>
         </ResponsiveContainer>
       </div>
-      <div
-        className={clsx("flex-center", "bar-chart-legend-container")}
-        style={{
-          justifyContent: "space-between",
-        }}
-      >
+      <div className={clsx("display-flex", "hide-bars-container")}>
         <div className="display-flex" style={{ gap: "16px" }}>
-          {keyNames?.map((name, index) => (
+          {(keyNames || []).map((name, index) => (
             <span
-              key={`bar-char-legend-${index}`}
               className={clsx("flex-center", "variant-body1")}
-              style={{ fontFamily }}
+              style={{ fontFamily: fontFamily }}
+              key={`checkbox-${name}`}
             >
               <input
                 className="checkbox"
@@ -201,37 +245,10 @@ export const BarChart = ({
                 }}
                 style={{ accentColor: colors[index % colors.length] }}
               />
-              <Point color={colors[index % colors.length]} /> {name}{" "}
+              <Point color={colors[index % colors.length]} /> {name}
             </span>
           ))}
         </div>
-        {dateFilter && (
-          <div style={{ width: "max-content " }}>
-            <Tabs
-              value={currentFilter}
-              centered
-              onChange={handleChangeFilter}
-              variant="scrollable"
-              scrollButtons="auto"
-              classes={{ root: "tabs-filter", indicator: "tabs-indicator" }}
-            >
-              {dateFilter.map((item) => (
-                <Tab
-                  classes={{
-                    root: "tab-filter",
-                  }}
-                  value={item}
-                  label={item}
-                  style={{
-                    fontFamily: fontFamily,
-                    color: item === currentFilter ? color : "#00000099",
-                    background: item === currentFilter ? "white" : "",
-                  }}
-                />
-              ))}
-            </Tabs>
-          </div>
-        )}
       </div>
     </div>
   );

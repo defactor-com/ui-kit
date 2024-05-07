@@ -5,19 +5,12 @@ import { LineChartDataType, SeriesDataType } from ".";
 const useLineChartState = ({
   data,
   series,
-  dateFilter,
-  filterFuntion,
 }: {
   data: LineChartDataType[] | undefined;
   series: SeriesDataType[];
-  dateFilter: string[] | undefined;
-  filterFuntion?(filter: string): void;
 }) => {
   const [keyName, setKeyName] = useState("");
   const [tooltipActive, setTooltipActive] = useState(false);
-  const [currentFilter, setCurrentFilter] = useState(
-    dateFilter?.slice(-1)[0] || ""
-  );
 
   const getInitialData = (
     data: LineChartDataType[] | undefined,
@@ -68,23 +61,14 @@ const useLineChartState = ({
   const getColorId = (color: string) =>
     color.toLocaleLowerCase().replace(/ /g, "-");
 
-  const handleChangeFilter = (
-    event: React.SyntheticEvent,
-    newValue: string
-  ) => {
-    setCurrentFilter(newValue);
-    filterFuntion && filterFuntion(newValue);
-  };
-
   return [
-    { chartData, keyNames, keyName, tooltipActive, currentFilter },
+    { chartData, keyNames, keyName, tooltipActive },
     {
       isHide,
       setHide,
       handleOpenTooltip,
       handleCloseTooltip,
       getColorId,
-      handleChangeFilter,
     },
   ];
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Story } from "@storybook/react";
 
 import {
@@ -77,14 +77,48 @@ const data: LineChartDataType[] = [
 ];
 
 const Template: Story<ILineChart> = (args) => {
-  return <LineChart {...args} />;
+  const [currentData, setCurrentData] = useState(data);
+  const [currentFilter, setCurrentFilter] = useState("ALL");
+
+  const agregarUnaHora = (fecha: string) => {
+    var nuevaFecha = new Date(fecha);
+    nuevaFecha.setHours(nuevaFecha.getHours() + 1);
+    return nuevaFecha.toLocaleString("en-US", {
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    });
+  };
+
+  const filterFunction = (newValue: string) => {
+    const newData: LineChartDataType[] = [];
+    currentData.forEach((item) => {
+      newData.push({ date: agregarUnaHora(item.date) });
+    });
+    setCurrentData(newData);
+  };
+
+  const handleChangeFilter = (newValue: string) => {
+    setCurrentFilter(newValue);
+    filterFunction(newValue);
+  };
+
+  return (
+    <LineChart
+      {...args}
+      data={currentData}
+      currentFilter={currentFilter}
+      handleChangeFilter={handleChangeFilter}
+    />
+  );
 };
 
 export const LineChartItem = Template.bind({});
 LineChartItem.args = {
   formatValue,
   series,
-  data,
   colors,
   dateFilter: ["1D", "7D", "1M", "ALL"],
 };

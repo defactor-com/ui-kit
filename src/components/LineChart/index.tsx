@@ -53,7 +53,9 @@ export interface ILineChart extends IChart {
   series: SeriesDataType[];
   dateFilter?: string[];
   color?: string;
-  filterFuntion?(filter: string): void;
+  filterBgColor?: string;
+  currentFilter?: string;
+  handleChangeFilter?(filter: string): void;
 }
 
 export interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
@@ -112,24 +114,66 @@ export const LineChart = ({
   colors,
   fontFamily,
   dateFilter,
-  color = "#1976d2",
-  filterFuntion,
+  currentFilter,
+  color = "white",
+  filterBgColor = "#26a66b",
+  handleChangeFilter,
   formatValue = (value) => value.toLocaleString("en-US"),
 }: ILineChart) => {
   const [
-    { chartData, keyName, keyNames, tooltipActive, currentFilter },
-    {
-      isHide,
-      setHide,
-      handleOpenTooltip,
-      handleCloseTooltip,
-      getColorId,
-      handleChangeFilter,
-    },
-  ] = useLineChartState({ data, series, dateFilter, filterFuntion });
+    { chartData, keyName, keyNames, tooltipActive },
+    { isHide, setHide, handleOpenTooltip, handleCloseTooltip, getColorId },
+  ] = useLineChartState({ data, series });
 
   return (
     <>
+      {dateFilter && (
+        <div
+          className="display-flex"
+          style={{
+            width: "100%",
+            justifyContent: "end",
+          }}
+        >
+          <div
+            className="display-flex"
+            style={{
+              alignItems: "end",
+              width: "40%",
+              justifyContent: "center",
+            }}
+          >
+            <Tabs
+              value={currentFilter}
+              centered
+              variant="scrollable"
+              scrollButtons="auto"
+              classes={{
+                root: "tabs-filter",
+                indicator: "tabs-indicator",
+                flexContainer: "tabs-flex-container",
+              }}
+            >
+              {dateFilter.map((item) => (
+                <Tab
+                  classes={{
+                    root: "tab-filter",
+                  }}
+                  value={item}
+                  label={item}
+                  onClick={() => handleChangeFilter && handleChangeFilter(item)}
+                  style={{
+                    fontFamily: fontFamily,
+                    color: item === currentFilter ? color : "#00000099",
+                    background:
+                      item === currentFilter ? filterBgColor : "#eff2f5",
+                  }}
+                />
+              ))}
+            </Tabs>
+          </div>
+        </div>
+      )}
       <ResponsiveContainer
         width="97%"
         height="55%"
@@ -235,12 +279,7 @@ export const LineChart = ({
           ))}
         </ComposedChart>
       </ResponsiveContainer>
-      <div
-        className={clsx("display-flex", "hide-bars-container")}
-        style={{
-          justifyContent: "space-between",
-        }}
-      >
+      <div className={clsx("display-flex", "hide-bars-container")}>
         <div className="display-flex" style={{ gap: "16px" }}>
           {(keyNames || []).map((name, index) => (
             <span
@@ -261,33 +300,6 @@ export const LineChart = ({
             </span>
           ))}
         </div>
-        {dateFilter && (
-          <div style={{ width: "max-content " }}>
-            <Tabs
-              value={currentFilter}
-              centered
-              onChange={handleChangeFilter}
-              variant="scrollable"
-              scrollButtons="auto"
-              classes={{ root: "tabs-filter", indicator: "tabs-indicator" }}
-            >
-              {dateFilter.map((item) => (
-                <Tab
-                  classes={{
-                    root: "tab-filter",
-                  }}
-                  value={item}
-                  label={item}
-                  style={{
-                    fontFamily: fontFamily,
-                    color: item === currentFilter ? color : "#00000099",
-                    background: item === currentFilter ? "white" : "",
-                  }}
-                />
-              ))}
-            </Tabs>
-          </div>
-        )}
       </div>
     </>
   );
