@@ -284,3 +284,26 @@ $breakpoint-mobile: 600px;
     margin-top: 24px;
   }
 }
+
+.tabs-filter {
+  background: #eff2f5;
+  border-radius: 8px;
+  padding: 8px;
+  min-height: auto !important;
+}
+
+.tabs-indicator {
+  display: none;
+}
+
+.tab-filter {
+  width: auto !important;
+  min-width: auto !important;
+  border-radius: 4px !important;
+  height: 25px !important;
+  min-height: auto !important;
+}
+
+.tab-filter-selected {
+  background: white !important;
+}

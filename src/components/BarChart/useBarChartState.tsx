@@ -5,21 +5,31 @@ import { ChartSeriesType } from ".";
 type BarChartHookData = {
   chartData: any;
   keyNames: string[];
+  currentFilter: string;
 };
 
 type BarChartHookCallbacks = {
   isHide: (keyName: string) => boolean;
   setHide: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
   getCoordinates: (max: number, gap: number) => number[];
+  handleChangeFilter: (event: React.SyntheticEvent, newValue: string) => void;
 };
 
 const useBarChartState = ({
   data,
   series,
+  dateFilter,
+  filterFuntion,
 }: {
   data: string[];
   series: ChartSeriesType[];
+  dateFilter: string[] | undefined;
+  filterFuntion?(filter: string): void;
 }): [BarChartHookData, BarChartHookCallbacks] => {
+  const [currentFilter, setCurrentFilter] = useState(
+    dateFilter?.slice(-1)[0] || ""
+  );
+
   const getInitialData = (data: string[], series: ChartSeriesType[]) => {
     const chartData: any = data.map((name) => ({ name }));
     const keyNames: string[] = [];
@@ -56,9 +66,17 @@ const useBarChartState = ({
 
   const isHide = (keyName: string) => hide[keyName];
 
+  const handleChangeFilter = (
+    event: React.SyntheticEvent,
+    newValue: string
+  ) => {
+    setCurrentFilter(newValue);
+    filterFuntion && filterFuntion(newValue);
+  };
+
   return [
-    { chartData, keyNames },
-    { isHide, setHide, getCoordinates },
+    { chartData, keyNames, currentFilter },
+    { isHide, setHide, getCoordinates, handleChangeFilter },
   ];
 };
 

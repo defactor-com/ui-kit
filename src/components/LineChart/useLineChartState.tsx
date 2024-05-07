@@ -5,10 +5,20 @@ import { LineChartDataType, SeriesDataType } from ".";
 const useLineChartState = ({
   data,
   series,
+  dateFilter,
+  filterFuntion,
 }: {
   data: LineChartDataType[] | undefined;
   series: SeriesDataType[];
+  dateFilter: string[] | undefined;
+  filterFuntion?(filter: string): void;
 }) => {
+  const [keyName, setKeyName] = useState("");
+  const [tooltipActive, setTooltipActive] = useState(false);
+  const [currentFilter, setCurrentFilter] = useState(
+    dateFilter?.slice(-1)[0] || ""
+  );
+
   const getInitialData = (
     data: LineChartDataType[] | undefined,
     series: SeriesDataType[]
@@ -43,8 +53,6 @@ const useLineChartState = ({
     series
   );
   const [hide, setHide] = useState(hideInitialStatus);
-  const [keyName, setKeyName] = useState("");
-  const [tooltipActive, setTooltipActive] = useState(false);
 
   const handleOpenTooltip = (_dotProps: any, payload: any) => {
     setKeyName(payload.dataKey);
@@ -57,9 +65,27 @@ const useLineChartState = ({
 
   const isHide = (keyName: string) => hide[keyName];
 
+  const getColorId = (color: string) =>
+    color.toLocaleLowerCase().replace(/ /g, "-");
+
+  const handleChangeFilter = (
+    event: React.SyntheticEvent,
+    newValue: string
+  ) => {
+    setCurrentFilter(newValue);
+    filterFuntion && filterFuntion(newValue);
+  };
+
   return [
-    { chartData, keyNames, keyName, tooltipActive },
-    { isHide, setHide, handleOpenTooltip, handleCloseTooltip },
+    { chartData, keyNames, keyName, tooltipActive, currentFilter },
+    {
+      isHide,
+      setHide,
+      handleOpenTooltip,
+      handleCloseTooltip,
+      getColorId,
+      handleChangeFilter,
+    },
   ];
 };
 

@@ -8,6 +8,7 @@ import {
   YAxis,
   CartesianGrid,
 } from "recharts";
+import { Tabs, Tab } from "@mui/material";
 import clsx from "clsx";
 
 import { Point } from "../Point";
@@ -25,6 +26,9 @@ export interface IBarChart extends IChart {
   data: string[];
   series: ChartSeriesType[];
   displayDirection?: "vertical" | "horizontal";
+  dateFilter?: string[];
+  color?: string;
+  filterFuntion?(filter: string): void;
 }
 
 const CustomTooltip = ({
@@ -74,14 +78,21 @@ export const BarChart = ({
   series,
   colors,
   fontFamily,
+  dateFilter,
+  color = "#1976d2",
+  filterFuntion,
   formatValue = (value) => value.toLocaleString("en-US"),
   displayDirection = "horizontal",
 }: IBarChart) => {
-  const [{ chartData, keyNames }, { isHide, setHide, getCoordinates }] =
-    useBarChartState({
-      data,
-      series,
-    });
+  const [
+    { chartData, keyNames, currentFilter },
+    { isHide, setHide, getCoordinates, handleChangeFilter },
+  ] = useBarChartState({
+    data,
+    series,
+    dateFilter,
+    filterFuntion,
+  });
 
   return (
     <div className="bar-chart-container">
@@ -168,25 +179,59 @@ export const BarChart = ({
           </RechartsBarChart>
         </ResponsiveContainer>
       </div>
-      <div className={clsx("flex-center", "bar-chart-legend-container")}>
-        {keyNames?.map((name, index) => (
-          <span
-            key={`bar-char-legend-${index}`}
-            className={clsx("flex-center", "variant-body1")}
-            style={{ fontFamily }}
-          >
-            <input
-              className="checkbox"
-              type="checkbox"
-              checked={!isHide?.(name)}
-              onChange={(e) => {
-                setHide?.((prev) => ({ ...prev, [name]: !e.target.checked }));
-              }}
-              style={{ accentColor: colors[index % colors.length] }}
-            />
-            <Point color={colors[index % colors.length]} /> {name}{" "}
-          </span>
-        ))}
+      <div
+        className={clsx("flex-center", "bar-chart-legend-container")}
+        style={{
+          justifyContent: "space-between",
+        }}
+      >
+        <div className="display-flex" style={{ gap: "16px" }}>
+          {keyNames?.map((name, index) => (
+            <span
+              key={`bar-char-legend-${index}`}
+              className={clsx("flex-center", "variant-body1")}
+              style={{ fontFamily }}
+            >
+              <input
+                className="checkbox"
+                type="checkbox"
+                checked={!isHide?.(name)}
+                onChange={(e) => {
+                  setHide?.((prev) => ({ ...prev, [name]: !e.target.checked }));
+                }}
+                style={{ accentColor: colors[index % colors.length] }}
+              />
+              <Point color={colors[index % colors.length]} /> {name}{" "}
+            </span>
+          ))}
+        </div>
+        {dateFilter && (
+          <div style={{ width: "max-content " }}>
+            <Tabs
+              value={currentFilter}
+              centered
+              onChange={handleChangeFilter}
+              variant="scrollable"
+              scrollButtons="auto"
+              classes={{ root: "tabs-filter", indicator: "tabs-indicator" }}
+            >
+              {dateFilter.map((item) => (
+                <Tab
+                  classes={{
+                    root: "tab-filter",
+                  }}
+                  value={item}
+                  label={item}
+                  style={{
+                    fontFamily: fontFamily,
+                    color: item === currentFilter ? color : "#00000099",
+                    background: item === currentFilter ? "white" : "",
+                  }}
+                />
+              ))}
+            </Tabs>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,14 +1,22 @@
 import React from "react";
 import { Story } from "@storybook/react";
 
-import { LineChart, LineChartDataType, ILineChart, SeriesDataType } from "../components/LineChart";
+import {
+  LineChart,
+  LineChartDataType,
+  ILineChart,
+  SeriesDataType,
+} from "../components/LineChart";
 
 export default {
   title: "Charts/LineChart",
   component: LineChart,
 };
 
-const formatValue = (value: number | string, options?: Intl.NumberFormatOptions) => {
+const formatValue = (
+  value: number | string,
+  options?: Intl.NumberFormatOptions
+) => {
   return value.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
@@ -51,22 +59,22 @@ const series: SeriesDataType[] = [
 ];
 
 const data: LineChartDataType[] = [
-    {
-      date: "25 July 00:00",
-    },
-    {
-      date: "26 July 00:00",
-    },
-    {
-      date: "27 July 00:00",
-    },
-    {
-      date: "28 July 00:00",
-    },
-    {
-      date: "29 July 00:00",
-    },
-  ];
+  {
+    date: "25 July 00:00",
+  },
+  {
+    date: "26 July 00:00",
+  },
+  {
+    date: "27 July 00:00",
+  },
+  {
+    date: "28 July 00:00",
+  },
+  {
+    date: "29 July 00:00",
+  },
+];
 
 const Template: Story<ILineChart> = (args) => {
   return <LineChart {...args} />;
@@ -78,4 +86,5 @@ LineChartItem.args = {
   series,
   data,
   colors,
+  dateFilter: ["1D", "7D", "1M", "ALL"],
 };
