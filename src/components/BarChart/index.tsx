@@ -25,6 +25,7 @@ export interface ChartSeriesType {
 export interface IBarChart extends IChart {
   data: string[];
   series: ChartSeriesType[];
+  displayDirection?: "vertical" | "horizontal";
 }
 
 const CustomTooltip = ({
@@ -69,16 +70,6 @@ const CustomTooltip = ({
   );
 };
 
-const getHorizontalCoordinates = (max: number, gap: number) => {
-  const horizontalLines = [];
-
-  for (let index = 0; gap * index <= max; index++) {
-    horizontalLines.push(gap * index + 5);
-  }
-
-  return horizontalLines;
-};
-
 export const BarChart = ({
   data,
   series,
@@ -89,12 +80,15 @@ export const BarChart = ({
   emptyIcon,
   emptyTitle,
   emptyDescription,
+  displayDirection = "horizontal",
 }: IBarChart) => {
-  const [{ chartData, keyNames, missingData }, { isHide, setHide }] =
-    useBarChartState({
-      data,
-      series,
-    });
+  const [
+    { chartData, keyNames, missingData },
+    { isHide, setHide, getCoordinates },
+  ] = useBarChartState({
+    data,
+    series,
+  });
 
   return (
     <div className="bar-chart-container">
@@ -109,20 +103,31 @@ export const BarChart = ({
         <>
           <div className="bar-chart-graphic-container">
             <ResponsiveContainer width="100%" height={120 * data.length}>
-              <RechartsBarChart data={chartData} layout="vertical" barGap={8}>
-                <CartesianGrid
-                  strokeDasharray="12 12"
-                  horizontalCoordinatesGenerator={(props) =>
-                    getHorizontalCoordinates(
-                      props.yAxis.height,
-                      props.yAxis.bandSize
-                    )
-                  }
-                />
+              <RechartsBarChart
+                data={chartData}
+                layout={
+                  displayDirection === "vertical" ? "horizontal" : "vertical"
+                }
+                barGap={8}
+              >
+                {displayDirection === "horizontal" ? (
+                  <CartesianGrid
+                    strokeDasharray="12 12"
+                    horizontalCoordinatesGenerator={(props) =>
+                      getCoordinates(props.yAxis.height, props.yAxis.bandSize)
+                    }
+                  />
+                ) : (
+                  <CartesianGrid
+                    strokeDasharray="12 12"
+                    verticalCoordinatesGenerator={(props) =>
+                      getCoordinates(props.xAxis.width, props.xAxis.bandSize)
+                    }
+                  />
+                )}
                 <XAxis
-                  type="number"
+                  type={displayDirection === "vertical" ? "category" : "number"}
                   axisLine={false}
-                  fontFamily={fontFamily}
                   tick={(props) => (
                     <text
                       x={props.x + 10}
@@ -133,12 +138,14 @@ export const BarChart = ({
                       fontWeight={500}
                       fontFamily={fontFamily}
                     >
-                      {formatValue(props.payload.value)}
+                      {displayDirection === "horizontal"
+                        ? formatValue(props.payload.value)
+                        : chartData[props.payload.index].name}
                     </text>
                   )}
                 />
                 <YAxis
-                  type="category"
+                  type={displayDirection === "vertical" ? "number" : "category"}
                   axisLine={false}
                   tick={(props) => (
                     <text
@@ -150,7 +157,9 @@ export const BarChart = ({
                       fontWeight={500}
                       fontFamily={fontFamily}
                     >
-                      {chartData[props.payload.index].name}
+                      {displayDirection === "horizontal"
+                        ? chartData[props.payload.index].name
+                        : formatValue(props.payload.value)}
                     </text>
                   )}
                 />
