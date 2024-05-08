@@ -16,10 +16,10 @@ import {
   ValueType,
 } from "recharts/types/component/DefaultTooltipContent";
 
-import { Container } from "../Container";
-import { FluctuationComponent } from "../FluctuationComponent";
 import { Point } from "../Point";
+import { Container } from "../Container";
 import { EmptyChart } from "../EmptyChart";
+import { FluctuationComponent } from "../FluctuationComponent";
 
 import useLineChartState from "./useLineChartState";
 
@@ -55,13 +55,31 @@ export interface IChart {
 }
 
 export interface ILineChart extends IChart {
+  handleChangeFilter?(filter: string): void;
+  emptyIcon?: React.ReactElement | string;
   data: LineChartDataType[] | undefined;
+  loaderComponent?: React.ReactNode;
+  missingData?: boolean | undefined;
+  emptyDescription?: string;
   series: SeriesDataType[];
-  dateFilter?: string[];
-  color?: string;
   filterBgColor?: string;
   currentFilter?: string;
-  handleChangeFilter?(filter: string): void;
+  dateFilter?: string[];
+  emptyTitle?: string;
+  loading?: boolean;
+  color?: string;
+}
+
+export interface IRenderComponent extends IChart {
+  handleOpenTooltip: ((_dotProps: any, payload: any) => void) | undefined;
+  getColorId: ((color: string) => string) | undefined;
+  isHide: ((keyName: string) => boolean) | undefined;
+  handleCloseTooltip: (() => void) | undefined;
+  tooltipActive: boolean | undefined;
+  missingData: boolean | undefined;
+  keyNames: string[] | undefined;
+  keyName: string | undefined;
+  chartData: any;
 }
 
 export interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
@@ -114,72 +132,38 @@ export const CustomTooltip = ({
   return null;
 };
 
-const Chart = ({
-  data,
-  series,
-  colors,
-  fontFamily,
-  dateFilter,
-  currentFilter,
-  color = "white",
-  filterBgColor = "#26a66b",
-  handleChangeFilter,
+const RenderComponent = ({
   formatValue = (value) => value.toLocaleString("en-US"),
-}: ILineChart) => {
-  const [
-    { chartData, keyName, keyNames, tooltipActive },
-    { isHide, setHide, handleOpenTooltip, handleCloseTooltip, getColorId },
-  ] = useLineChartState({ data, series });
-
-  return (
-    <>
-      {dateFilter && (
-        <div
-          className="display-flex"
-          style={{
-            width: "100%",
-            justifyContent: "end",
-          }}
-        >
-          <div
-            className="display-flex"
-            style={{
-              alignItems: "end",
-              width: "40%",
-              justifyContent: "center",
-            }}
-          >
-            <Tabs
-              value={currentFilter}
-              centered
-              variant="scrollable"
-              scrollButtons="auto"
-              classes={{
-                root: "tabs-filter",
-                indicator: "tabs-indicator",
-                flexContainer: "tabs-flex-container",
-              }}
-            >
-              {dateFilter.map((item) => (
-                <Tab
-                  classes={{
-                    root: "tab-filter",
-                  }}
-                  value={item}
-                  label={item}
-                  onClick={() => handleChangeFilter && handleChangeFilter(item)}
-                  style={{
-                    fontFamily: fontFamily,
-                    color: item === currentFilter ? color : "#00000099",
-                    background:
-                      item === currentFilter ? filterBgColor : "#eff2f5",
-                  }}
-                />
-              ))}
-            </Tabs>
-          </div>
-        </div>
-      )}
+  handleCloseTooltip,
+  handleOpenTooltip,
+  emptyDescription,
+  loaderComponent,
+  tooltipActive,
+  missingData,
+  getColorId,
+  fontFamily,
+  emptyTitle,
+  emptyIcon,
+  chartData,
+  keyNames,
+  loading,
+  keyName,
+  isHide,
+  colors,
+}: IRenderComponent) => {
+  if (missingData && !loading) {
+    return (
+      <EmptyChart
+        icon={emptyIcon}
+        title={emptyTitle}
+        fontFamily={fontFamily}
+        description={emptyDescription}
+      />
+    );
+  } else if (loading) {
+    return <div>{loaderComponent}</div>;
+  } else {
+    return (
       <ResponsiveContainer
         width="97%"
         height="55%"
@@ -285,6 +269,103 @@ const Chart = ({
           ))}
         </ComposedChart>
       </ResponsiveContainer>
+    );
+  }
+};
+
+const Chart = ({
+  data,
+  series,
+  colors,
+  loading,
+  emptyIcon,
+  emptyTitle,
+  fontFamily,
+  dateFilter,
+  missingData,
+  currentFilter,
+  color = "white",
+  loaderComponent,
+  emptyDescription,
+  handleChangeFilter,
+  filterBgColor = "#26a66b",
+  formatValue = (value) => value.toLocaleString("en-US"),
+}: ILineChart) => {
+  const [
+    { chartData, keyName, keyNames, tooltipActive },
+    { isHide, setHide, handleOpenTooltip, handleCloseTooltip, getColorId },
+  ] = useLineChartState({ data, series });
+
+  return (
+    <>
+      {dateFilter && (
+        <div
+          className="display-flex"
+          style={{
+            width: "100%",
+            height: "58px",
+            alignItems: "start",
+            justifyContent: "end",
+          }}
+        >
+          <div
+            className="display-flex"
+            style={{
+              alignItems: "end",
+              justifyContent: "center",
+            }}
+          >
+            <Tabs
+              value={currentFilter}
+              centered
+              variant="scrollable"
+              scrollButtons="auto"
+              classes={{
+                root: "tabs-filter",
+                indicator: "tabs-indicator",
+                flexContainer: "tabs-flex-container",
+              }}
+            >
+              {dateFilter.map((item) => (
+                <Tab
+                  classes={{
+                    root: "tab-filter",
+                  }}
+                  value={item}
+                  label={item}
+                  style={{
+                    marginLeft: '16px',
+                    fontFamily: fontFamily,
+                    color: item === currentFilter ? color : "#00000099",
+                    background:
+                      item === currentFilter ? filterBgColor : "#eff2f5",
+                  }}
+                  onClick={() => handleChangeFilter && handleChangeFilter(item)}
+                />
+              ))}
+            </Tabs>
+          </div>
+        </div>
+      )}
+      <RenderComponent
+        colors={colors}
+        isHide={isHide}
+        keyName={keyName}
+        loading={loading}
+        keyNames={keyNames}
+        emptyIcon={emptyIcon}
+        chartData={chartData}
+        emptyTitle={emptyTitle}
+        fontFamily={emptyTitle}
+        getColorId={getColorId}
+        formatValue={formatValue}
+        missingData={missingData}
+        tooltipActive={tooltipActive}
+        loaderComponent={loaderComponent}
+        emptyDescription={emptyDescription}
+        handleOpenTooltip={handleOpenTooltip}
+        handleCloseTooltip={handleCloseTooltip}
+      />
       <div className={clsx("display-flex", "hide-bars-container")}>
         <div className="display-flex" style={{ gap: "16px" }}>
           {(keyNames || []).map((name, index) => (
@@ -318,54 +399,39 @@ export const LineChart = ({
   data,
   series,
   colors,
-  fontFamily,
-  dateFilter,
-  currentFilter,
-  color = "white",
-  filterBgColor = "#26a66b",
-  handleChangeFilter,
   loading,
   emptyIcon,
+  fontFamily,
+  dateFilter,
   emptyTitle,
-  emptyDescription,
+  currentFilter,
+  color = "white",
   loaderComponent,
+  emptyDescription,
+  handleChangeFilter,
+  filterBgColor = "#26a66b",
   formatValue = (value) => value.toLocaleString("en-US"),
 }: ILineChart) => {
   const [{ missingData }, {}] = useLineChartState({ data, series });
 
-  const RenderComponent = () => {
-    if (missingData && !loading) {
-      return (
-        <EmptyChart
-          icon={emptyIcon}
-          title={emptyTitle}
-          description={emptyDescription}
-          fontFamily={fontFamily}
-        />
-      );
-    } else if (loading) {
-      return <div>{loaderComponent}</div>;
-    } else {
-      return (
-        <Chart
-          data={data}
-          series={series}
-          colors={colors}
-          fontFamily={fontFamily}
-          dateFilter={dateFilter}
-          currentFilter={currentFilter}
-          color={color}
-          filterBgColor={filterBgColor}
-          handleChangeFilter={handleChangeFilter}
-          formatValue={formatValue}
-        />
-      );
-    }
-  };
-
   return (
-    <>
-      <RenderComponent />
-    </>
+    <Chart
+      data={data}
+      color={color}
+      series={series}
+      colors={colors}
+      loading={loading}
+      emptyIcon={emptyIcon}
+      emptyTitle={emptyTitle}
+      fontFamily={fontFamily}
+      dateFilter={dateFilter}
+      formatValue={formatValue}
+      missingData={missingData}
+      currentFilter={currentFilter}
+      filterBgColor={filterBgColor}
+      loaderComponent={loaderComponent}
+      emptyDescription={emptyDescription}
+      handleChangeFilter={handleChangeFilter}
+    />
   );
 };

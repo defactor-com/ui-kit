@@ -172,8 +172,9 @@ $breakpoint-mobile: 600px;
 }
 
 .flex-description {
-  display: flex;
   align-items: center;
+  display: flex;
+  height: 100%;
   gap: 8px;
 }
 
@@ -238,7 +239,13 @@ $breakpoint-mobile: 600px;
 }
 
 .margin-bottom-high {
-  margin-bottom: 24px;
+  position: absolute;
+  height: 58px;
+  @media (max-width: $breakpoint-mobile) {
+    position: relative;
+    margin-bottom: 0;
+    height: 40px;
+  }
 }
 
 .margin-top-high {
@@ -256,9 +263,8 @@ $breakpoint-mobile: 600px;
 }
 
 .hide-bars-container {
-  margin-top: 24px;
   margin-bottom: 16px;
-  padding: 0 24px 0;
+  padding: 16px 24px 0;
   flex-wrap: wrap;
   gap: 24px;
   @media (max-width: $breakpoint-mobile) {

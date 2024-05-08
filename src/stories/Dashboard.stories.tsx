@@ -11,8 +11,8 @@ import { ChartContainer } from "../components/ChartContainer";
 import { Tooltip } from "../components/Tooltip";
 import { BarChart } from "../components/BarChart";
 import { PieChart } from "../components/PieChart";
-
 import InfoIcon from "../../public/assets/info-icon.svg";
+import AdmirationIcon from "../components/Icons/admirationIcon";
 
 export default {
   title: "Dashboard",
@@ -140,15 +140,20 @@ DashboardItem.args = {
   rightContainerItems,
   content: (
     <ChartContainer
-      chartSubtitle={"Pool Utilization"}
       chartDescription={"Optional Description"}
+      chartSubtitle={"Pool Utilization"}
       tooltip={exampleTooltip}
       content={
         <LineChart
+          emptyDescription="Data will be listed here when available."
+          dateFilter={["1D", "7D", "1M", "ALL"]}
+          emptyIcon={<AdmirationIcon />}
+          emptyTitle="No data to show"
           formatValue={formatValue}
+          loading={false}
           colors={colors}
-          data={data}
           series={series}
+          data={data}
         />
       }
     />
