@@ -19,6 +19,7 @@ import {
 import { Container } from "../Container";
 import { FluctuationComponent } from "../FluctuationComponent";
 import { Point } from "../Point";
+import { EmptyChart } from "../EmptyChart";
 
 import useLineChartState from "./useLineChartState";
 
@@ -46,6 +47,11 @@ export interface IChart {
   fontFamily?: string;
   colors: string[];
   formatValue?: FormatValueType;
+  loading?: boolean;
+  emptyIcon?: React.ReactElement | string;
+  emptyTitle?: string;
+  emptyDescription?: string;
+  loaderComponent?: React.ReactNode;
 }
 
 export interface ILineChart extends IChart {
@@ -108,7 +114,7 @@ export const CustomTooltip = ({
   return null;
 };
 
-export const LineChart = ({
+const Chart = ({
   data,
   series,
   colors,
@@ -292,7 +298,10 @@ export const LineChart = ({
                 type="checkbox"
                 checked={!isHide?.(name)}
                 onChange={(e) => {
-                  setHide?.((prev) => ({ ...prev, [name]: !e.target.checked }));
+                  setHide?.((prev) => ({
+                    ...prev,
+                    [name]: !e.target.checked,
+                  }));
                 }}
                 style={{ accentColor: colors[index % colors.length] }}
               />
@@ -301,6 +310,62 @@ export const LineChart = ({
           ))}
         </div>
       </div>
+    </>
+  );
+};
+
+export const LineChart = ({
+  data,
+  series,
+  colors,
+  fontFamily,
+  dateFilter,
+  currentFilter,
+  color = "white",
+  filterBgColor = "#26a66b",
+  handleChangeFilter,
+  loading,
+  emptyIcon,
+  emptyTitle,
+  emptyDescription,
+  loaderComponent,
+  formatValue = (value) => value.toLocaleString("en-US"),
+}: ILineChart) => {
+  const [{ missingData }, {}] = useLineChartState({ data, series });
+
+  const RenderComponent = () => {
+    if (missingData && !loading) {
+      return (
+        <EmptyChart
+          icon={emptyIcon}
+          title={emptyTitle}
+          description={emptyDescription}
+          fontFamily={fontFamily}
+        />
+      );
+    } else if (loading) {
+      return <div>{loaderComponent}</div>;
+    } else {
+      return (
+        <Chart
+          data={data}
+          series={series}
+          colors={colors}
+          fontFamily={fontFamily}
+          dateFilter={dateFilter}
+          currentFilter={currentFilter}
+          color={color}
+          filterBgColor={filterBgColor}
+          handleChangeFilter={handleChangeFilter}
+          formatValue={formatValue}
+        />
+      );
+    }
+  };
+
+  return (
+    <>
+      <RenderComponent />
     </>
   );
 };

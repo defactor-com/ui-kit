@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Story } from "@storybook/react";
 
 import { BarChart, IBarChart, ChartSeriesType } from "../components/BarChart";
+import AdmirationIcon from "../components/Icons/admirationIcon";
 
 export default {
   title: "Charts/BarChart",
@@ -31,6 +32,13 @@ const Template: Story<IBarChart> = (args) => {
       {...args}
       currentFilter={currentFilter}
       handleChangeFilter={handleChangeFilter}
+      loaderComponent={
+        <div
+          style={{ width: "100%", display: "flex", justifyContent: "center" }}
+        >
+          <span>Loading...</span>
+        </div>
+      }
     />
   );
 };
@@ -49,4 +57,8 @@ BarChartItem.args = {
   colors: barChartColors,
   data: poolNames,
   dateFilter: ["5D", "7M", "2Y", "ALL"],
+  loading: false,
+  emptyIcon: <AdmirationIcon />,
+  emptyTitle: "No data to show",
+  emptyDescription: "Data will be listed here when available. ",
 };

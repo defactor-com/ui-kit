@@ -13,6 +13,7 @@ import clsx from "clsx";
 
 import { Point } from "../Point";
 import { Container } from "../Container";
+import { EmptyChart } from "../EmptyChart";
 import { CustomTooltipProps, IChart } from "../LineChart";
 
 import useBarChartState from "./useBarChartState";
@@ -75,7 +76,7 @@ const CustomTooltip = ({
   );
 };
 
-export const BarChart = ({
+const Chart = ({
   data,
   series,
   colors,
@@ -95,7 +96,7 @@ export const BarChart = ({
     });
 
   return (
-    <div className="bar-chart-container">
+    <>
       <div className="bar-chart-graphic-container">
         {dateFilter && (
           <div
@@ -241,7 +242,10 @@ export const BarChart = ({
                 type="checkbox"
                 checked={!isHide?.(name)}
                 onChange={(e) => {
-                  setHide?.((prev) => ({ ...prev, [name]: !e.target.checked }));
+                  setHide?.((prev) => ({
+                    ...prev,
+                    [name]: !e.target.checked,
+                  }));
                 }}
                 style={{ accentColor: colors[index % colors.length] }}
               />
@@ -250,6 +254,67 @@ export const BarChart = ({
           ))}
         </div>
       </div>
+    </>
+  );
+};
+
+export const BarChart = ({
+  data,
+  series,
+  colors,
+  fontFamily,
+  dateFilter,
+  color = "white",
+  currentFilter,
+  filterBgColor = "#26a66b",
+  handleChangeFilter,
+  formatValue = (value) => value.toLocaleString("en-US"),
+  displayDirection = "horizontal",
+  loading,
+  emptyIcon,
+  emptyTitle,
+  emptyDescription,
+  loaderComponent,
+}: IBarChart) => {
+  const [{ missingData }, {}] = useBarChartState({
+    data,
+    series,
+  });
+
+  const RenderComponent = () => {
+    if (missingData && !loading) {
+      return (
+        <EmptyChart
+          icon={emptyIcon}
+          title={emptyTitle}
+          description={emptyDescription}
+          fontFamily={fontFamily}
+        />
+      );
+    } else if (loading) {
+      return <div>{loaderComponent}</div>;
+    } else {
+      return (
+        <Chart
+          data={data}
+          series={series}
+          colors={colors}
+          fontFamily={fontFamily}
+          dateFilter={dateFilter}
+          currentFilter={currentFilter}
+          color={color}
+          filterBgColor={filterBgColor}
+          handleChangeFilter={handleChangeFilter}
+          formatValue={formatValue}
+          displayDirection={displayDirection}
+        />
+      );
+    }
+  };
+
+  return (
+    <div className="bar-chart-container">
+      <RenderComponent />
     </div>
   );
 };

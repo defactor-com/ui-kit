@@ -11,6 +11,7 @@ import clsx from "clsx";
 import { Point } from "../Point";
 import { Container } from "../Container";
 import { CustomTooltipProps, IChart } from "../LineChart";
+import { EmptyChart } from "../EmptyChart";
 
 const CustomTooltip = ({
   fontFamily,
@@ -89,7 +90,7 @@ const renderCustomizedLabel = ({
   );
 };
 
-export const PieChart = ({
+const Chart = ({
   data,
   fontFamily,
   formatValue = (value) => value.toLocaleString("en-US"),
@@ -97,7 +98,7 @@ export const PieChart = ({
   const colors: string[] = data.map((item) => item.color);
 
   return (
-    <div className="pie-chart-container">
+    <>
       <ResponsiveContainer width="" height="50%" minHeight="250px">
         <RechartsPieChart>
           <Pie
@@ -145,6 +146,42 @@ export const PieChart = ({
           ))}
         </div>
       ))}
+    </>
+  );
+};
+
+export const PieChart = ({
+  data,
+  fontFamily,
+  loading,
+  emptyIcon,
+  emptyTitle,
+  emptyDescription,
+  formatValue = (value) => value.toLocaleString("en-US"),
+  loaderComponent,
+}: IPieChart) => {
+  const RenderComponent = () => {
+    if (!data?.length && !loading) {
+      return (
+        <EmptyChart
+          icon={emptyIcon}
+          title={emptyTitle}
+          description={emptyDescription}
+          fontFamily={fontFamily}
+        />
+      );
+    } else if (loading) {
+      return <div>{loaderComponent}</div>;
+    } else {
+      return (
+        <Chart data={data} fontFamily={fontFamily} formatValue={formatValue} />
+      );
+    }
+  };
+
+  return (
+    <div className="pie-chart-container">
+      <RenderComponent />
     </div>
   );
 };

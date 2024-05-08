@@ -61,8 +61,10 @@ const useLineChartState = ({
   const getColorId = (color: string) =>
     color.toLocaleLowerCase().replace(/ /g, "-");
 
+  const missingData = !data?.length || !series.length;
+
   return [
-    { chartData, keyNames, keyName, tooltipActive },
+    { chartData, keyNames, keyName, tooltipActive, missingData },
     {
       isHide,
       setHide,
