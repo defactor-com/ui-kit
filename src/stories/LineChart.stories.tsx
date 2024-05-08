@@ -112,6 +112,13 @@ const Template: Story<ILineChart> = (args) => {
       data={currentData}
       currentFilter={currentFilter}
       handleChangeFilter={handleChangeFilter}
+      loaderComponent={
+        <div
+          style={{ width: "100%", display: "flex", justifyContent: "center" }}
+        >
+          <span>Loading...</span>
+        </div>
+      }
     />
   );
 };

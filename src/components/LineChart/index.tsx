@@ -51,6 +51,7 @@ export interface IChart {
   emptyIcon?: React.ReactElement | string;
   emptyTitle?: string;
   emptyDescription?: string;
+  loaderComponent?: React.ReactNode;
 }
 
 export interface ILineChart extends IChart {
@@ -113,6 +114,206 @@ export const CustomTooltip = ({
   return null;
 };
 
+const Chart = ({
+  data,
+  series,
+  colors,
+  fontFamily,
+  dateFilter,
+  currentFilter,
+  color = "white",
+  filterBgColor = "#26a66b",
+  handleChangeFilter,
+  formatValue = (value) => value.toLocaleString("en-US"),
+}: ILineChart) => {
+  const [
+    { chartData, keyName, keyNames, tooltipActive },
+    { isHide, setHide, handleOpenTooltip, handleCloseTooltip, getColorId },
+  ] = useLineChartState({ data, series });
+
+  return (
+    <>
+      {dateFilter && (
+        <div
+          className="display-flex"
+          style={{
+            width: "100%",
+            justifyContent: "end",
+          }}
+        >
+          <div
+            className="display-flex"
+            style={{
+              alignItems: "end",
+              width: "40%",
+              justifyContent: "center",
+            }}
+          >
+            <Tabs
+              value={currentFilter}
+              centered
+              variant="scrollable"
+              scrollButtons="auto"
+              classes={{
+                root: "tabs-filter",
+                indicator: "tabs-indicator",
+                flexContainer: "tabs-flex-container",
+              }}
+            >
+              {dateFilter.map((item) => (
+                <Tab
+                  classes={{
+                    root: "tab-filter",
+                  }}
+                  value={item}
+                  label={item}
+                  onClick={() => handleChangeFilter && handleChangeFilter(item)}
+                  style={{
+                    fontFamily: fontFamily,
+                    color: item === currentFilter ? color : "#00000099",
+                    background:
+                      item === currentFilter ? filterBgColor : "#eff2f5",
+                  }}
+                />
+              ))}
+            </Tabs>
+          </div>
+        </div>
+      )}
+      <ResponsiveContainer
+        width="97%"
+        height="55%"
+        minHeight="200px"
+        className="line-chart-container"
+      >
+        <ComposedChart data={chartData}>
+          <defs>
+            {(keyNames || []).map((name, index) => (
+              <linearGradient
+                key={`gradient-${name}-${index}`}
+                id={`color-${getColorId ? getColorId(name) : ""}`}
+                x1="0"
+                y1="0"
+                x2="0"
+                y2="1"
+              >
+                <stop
+                  offset="5%"
+                  stopColor={colors[index % colors.length]}
+                  stopOpacity={0.2}
+                />
+                <stop
+                  offset="95%"
+                  stopColor={colors[index % colors.length]}
+                  stopOpacity={0.1}
+                />
+              </linearGradient>
+            ))}
+          </defs>
+          <CartesianGrid strokeDasharray="12 12" />
+          <YAxis
+            axisLine={false}
+            domain={["auto", "auto"]}
+            tick={(props) => (
+              <text
+                x={props.x}
+                y={props.y}
+                fontSize={12}
+                fill="#7C7D7E"
+                textAnchor="end"
+                fontWeight={500}
+                fontFamily={fontFamily}
+              >
+                {formatValue(props.payload.value)}
+              </text>
+            )}
+          />
+          <Tooltip
+            content={
+              tooltipActive ? (
+                <CustomTooltip
+                  colors={colors}
+                  keyName={keyName}
+                  fontFamily={fontFamily}
+                  formatValue={formatValue}
+                />
+              ) : (
+                <></>
+              )
+            }
+          />
+          {(keyNames || []).map((name, index) => (
+            <Area
+              key={`area-${name}`}
+              hide={isHide?.(name)}
+              dot={false}
+              activeDot={false}
+              dataKey={name}
+              stroke={colors[index % colors.length]}
+              type="monotone"
+              strokeWidth={2}
+              fillOpacity={1}
+              fill={`url(#color-${getColorId ? getColorId(name) : ""})`}
+            />
+          ))}
+          {(keyNames || []).map((name, index) => (
+            <Line
+              key={`line-${name}`}
+              hide={isHide?.(name)}
+              dot={{
+                stroke: colors[index % colors.length],
+                strokeWidth: 2,
+                r: 5,
+                opacity: 1,
+                fill: colors[index % colors.length],
+              }}
+              activeDot={{
+                strokeWidth: 2,
+                stroke: colors[index % colors.length],
+                fill:
+                  keyName === name ? "white" : colors[index % colors.length],
+                onMouseOver: handleOpenTooltip,
+                onClick: handleOpenTooltip,
+              }}
+              onMouseLeave={handleCloseTooltip}
+              dataKey={name}
+              stroke={colors[index % colors.length]}
+              type="monotone"
+              strokeWidth={2}
+              fillOpacity={1}
+            />
+          ))}
+        </ComposedChart>
+      </ResponsiveContainer>
+      <div className={clsx("display-flex", "hide-bars-container")}>
+        <div className="display-flex" style={{ gap: "16px" }}>
+          {(keyNames || []).map((name, index) => (
+            <span
+              className={clsx("flex-center", "variant-body1")}
+              style={{ fontFamily: fontFamily }}
+              key={`checkbox-${name}`}
+            >
+              <input
+                className="checkbox"
+                type="checkbox"
+                checked={!isHide?.(name)}
+                onChange={(e) => {
+                  setHide?.((prev) => ({
+                    ...prev,
+                    [name]: !e.target.checked,
+                  }));
+                }}
+                style={{ accentColor: colors[index % colors.length] }}
+              />
+              <Point color={colors[index % colors.length]} /> {name}
+            </span>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
 export const LineChart = ({
   data,
   series,
@@ -127,207 +328,44 @@ export const LineChart = ({
   emptyIcon,
   emptyTitle,
   emptyDescription,
+  loaderComponent,
   formatValue = (value) => value.toLocaleString("en-US"),
 }: ILineChart) => {
-  const [
-    { chartData, keyName, keyNames, tooltipActive, missingData },
-    { isHide, setHide, handleOpenTooltip, handleCloseTooltip, getColorId },
-  ] = useLineChartState({ data, series });
+  const [{ missingData }, {}] = useLineChartState({ data, series });
 
-  return (
-    <>
-      {missingData && !loading ? (
+  const RenderComponent = () => {
+    if (missingData && !loading) {
+      return (
         <EmptyChart
           icon={emptyIcon}
           title={emptyTitle}
           description={emptyDescription}
           fontFamily={fontFamily}
         />
-      ) : (
-        <>
-          {dateFilter && (
-            <div
-              className="display-flex"
-              style={{
-                width: "100%",
-                justifyContent: "end",
-              }}
-            >
-              <div
-                className="display-flex"
-                style={{
-                  alignItems: "end",
-                  width: "40%",
-                  justifyContent: "center",
-                }}
-              >
-                <Tabs
-                  value={currentFilter}
-                  centered
-                  variant="scrollable"
-                  scrollButtons="auto"
-                  classes={{
-                    root: "tabs-filter",
-                    indicator: "tabs-indicator",
-                    flexContainer: "tabs-flex-container",
-                  }}
-                >
-                  {dateFilter.map((item) => (
-                    <Tab
-                      classes={{
-                        root: "tab-filter",
-                      }}
-                      value={item}
-                      label={item}
-                      onClick={() =>
-                        handleChangeFilter && handleChangeFilter(item)
-                      }
-                      style={{
-                        fontFamily: fontFamily,
-                        color: item === currentFilter ? color : "#00000099",
-                        background:
-                          item === currentFilter ? filterBgColor : "#eff2f5",
-                      }}
-                    />
-                  ))}
-                </Tabs>
-              </div>
-            </div>
-          )}
-          <ResponsiveContainer
-            width="97%"
-            height="55%"
-            minHeight="200px"
-            className="line-chart-container"
-          >
-            <ComposedChart data={chartData}>
-              <defs>
-                {(keyNames || []).map((name, index) => (
-                  <linearGradient
-                    key={`gradient-${name}-${index}`}
-                    id={`color-${getColorId ? getColorId(name) : ""}`}
-                    x1="0"
-                    y1="0"
-                    x2="0"
-                    y2="1"
-                  >
-                    <stop
-                      offset="5%"
-                      stopColor={colors[index % colors.length]}
-                      stopOpacity={0.2}
-                    />
-                    <stop
-                      offset="95%"
-                      stopColor={colors[index % colors.length]}
-                      stopOpacity={0.1}
-                    />
-                  </linearGradient>
-                ))}
-              </defs>
-              <CartesianGrid strokeDasharray="12 12" />
-              <YAxis
-                axisLine={false}
-                domain={["auto", "auto"]}
-                tick={(props) => (
-                  <text
-                    x={props.x}
-                    y={props.y}
-                    fontSize={12}
-                    fill="#7C7D7E"
-                    textAnchor="end"
-                    fontWeight={500}
-                    fontFamily={fontFamily}
-                  >
-                    {formatValue(props.payload.value)}
-                  </text>
-                )}
-              />
-              <Tooltip
-                content={
-                  tooltipActive ? (
-                    <CustomTooltip
-                      colors={colors}
-                      keyName={keyName}
-                      fontFamily={fontFamily}
-                      formatValue={formatValue}
-                    />
-                  ) : (
-                    <></>
-                  )
-                }
-              />
-              {(keyNames || []).map((name, index) => (
-                <Area
-                  key={`area-${name}`}
-                  hide={isHide?.(name)}
-                  dot={false}
-                  activeDot={false}
-                  dataKey={name}
-                  stroke={colors[index % colors.length]}
-                  type="monotone"
-                  strokeWidth={2}
-                  fillOpacity={1}
-                  fill={`url(#color-${getColorId ? getColorId(name) : ""})`}
-                />
-              ))}
-              {(keyNames || []).map((name, index) => (
-                <Line
-                  key={`line-${name}`}
-                  hide={isHide?.(name)}
-                  dot={{
-                    stroke: colors[index % colors.length],
-                    strokeWidth: 2,
-                    r: 5,
-                    opacity: 1,
-                    fill: colors[index % colors.length],
-                  }}
-                  activeDot={{
-                    strokeWidth: 2,
-                    stroke: colors[index % colors.length],
-                    fill:
-                      keyName === name
-                        ? "white"
-                        : colors[index % colors.length],
-                    onMouseOver: handleOpenTooltip,
-                    onClick: handleOpenTooltip,
-                  }}
-                  onMouseLeave={handleCloseTooltip}
-                  dataKey={name}
-                  stroke={colors[index % colors.length]}
-                  type="monotone"
-                  strokeWidth={2}
-                  fillOpacity={1}
-                />
-              ))}
-            </ComposedChart>
-          </ResponsiveContainer>
-          <div className={clsx("display-flex", "hide-bars-container")}>
-            <div className="display-flex" style={{ gap: "16px" }}>
-              {(keyNames || []).map((name, index) => (
-                <span
-                  className={clsx("flex-center", "variant-body1")}
-                  style={{ fontFamily: fontFamily }}
-                  key={`checkbox-${name}`}
-                >
-                  <input
-                    className="checkbox"
-                    type="checkbox"
-                    checked={!isHide?.(name)}
-                    onChange={(e) => {
-                      setHide?.((prev) => ({
-                        ...prev,
-                        [name]: !e.target.checked,
-                      }));
-                    }}
-                    style={{ accentColor: colors[index % colors.length] }}
-                  />
-                  <Point color={colors[index % colors.length]} /> {name}
-                </span>
-              ))}
-            </div>
-          </div>
-        </>
-      )}
+      );
+    } else if (loading) {
+      return <div>{loaderComponent}</div>;
+    } else {
+      return (
+        <Chart
+          data={data}
+          series={series}
+          colors={colors}
+          fontFamily={fontFamily}
+          dateFilter={dateFilter}
+          currentFilter={currentFilter}
+          color={color}
+          filterBgColor={filterBgColor}
+          handleChangeFilter={handleChangeFilter}
+          formatValue={formatValue}
+        />
+      );
+    }
+  };
+
+  return (
+    <>
+      <RenderComponent />
     </>
   );
 };

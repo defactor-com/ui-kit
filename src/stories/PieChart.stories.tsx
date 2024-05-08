@@ -10,7 +10,18 @@ export default {
 };
 
 const Template: Story<IPieChart> = (args) => {
-  return <PieChart {...args} />;
+  return (
+    <PieChart
+      {...args}
+      loaderComponent={
+        <div
+          style={{ width: "100%", display: "flex", justifyContent: "center" }}
+        >
+          <span>Loading...</span>
+        </div>
+      }
+    />
+  );
 };
 
 const pieChartData: PieDataType = [

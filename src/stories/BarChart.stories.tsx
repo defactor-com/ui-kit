@@ -32,6 +32,13 @@ const Template: Story<IBarChart> = (args) => {
       {...args}
       currentFilter={currentFilter}
       handleChangeFilter={handleChangeFilter}
+      loaderComponent={
+        <div
+          style={{ width: "100%", display: "flex", justifyContent: "center" }}
+        >
+          <span>Loading...</span>
+        </div>
+      }
     />
   );
 };
