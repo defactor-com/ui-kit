@@ -7,6 +7,7 @@ import {
   ILineChart,
   SeriesDataType,
 } from "../components/LineChart";
+import AdmirationIcon from "../components/Icons/admirationIcon";
 
 export default {
   title: "Charts/LineChart",
@@ -121,4 +122,8 @@ LineChartItem.args = {
   series,
   colors,
   dateFilter: ["1D", "7D", "1M", "ALL"],
+  loading: false,
+  emptyIcon: <AdmirationIcon />,
+  emptyTitle: "No data to show",
+  emptyDescription: "Data will be listed here when available. ",
 };

@@ -11,6 +11,7 @@ import clsx from "clsx";
 import { Point } from "../Point";
 import { Container } from "../Container";
 import { CustomTooltipProps, IChart } from "../LineChart";
+import { EmptyChart } from "../EmptyChart";
 
 const CustomTooltip = ({
   fontFamily,
@@ -92,59 +93,77 @@ const renderCustomizedLabel = ({
 export const PieChart = ({
   data,
   fontFamily,
+  loading,
+  emptyIcon,
+  emptyTitle,
+  emptyDescription,
   formatValue = (value) => value.toLocaleString("en-US"),
 }: IPieChart) => {
   const colors: string[] = data.map((item) => item.color);
 
   return (
     <div className="pie-chart-container">
-      <ResponsiveContainer width="" height="50%" minHeight="250px">
-        <RechartsPieChart>
-          <Pie
-            data={data}
-            label={renderCustomizedLabel}
-            strokeWidth={0}
-            dataKey="value"
-            fontFamily={fontFamily}
-            outerRadius={120}
-          >
-            {data.map((_entry, index) => (
-              <Cell
-                key={`cell-item-${index}`}
-                fill={_entry.color}
+      {!data?.length && !loading ? (
+        <EmptyChart
+          icon={emptyIcon}
+          title={emptyTitle}
+          description={emptyDescription}
+          fontFamily={fontFamily}
+        />
+      ) : (
+        <>
+          <ResponsiveContainer width="" height="50%" minHeight="250px">
+            <RechartsPieChart>
+              <Pie
+                data={data}
+                label={renderCustomizedLabel}
+                strokeWidth={0}
+                dataKey="value"
                 fontFamily={fontFamily}
-                fontWeight={700}
+                outerRadius={120}
+              >
+                {data.map((_entry, index) => (
+                  <Cell
+                    key={`cell-item-${index}`}
+                    fill={_entry.color}
+                    fontFamily={fontFamily}
+                    fontWeight={700}
+                  />
+                ))}
+              </Pie>
+              <Tooltip
+                content={
+                  <CustomTooltip
+                    colors={colors}
+                    fontFamily={fontFamily}
+                    formatValue={formatValue}
+                  />
+                }
               />
-            ))}
-          </Pie>
-          <Tooltip
-            content={
-              <CustomTooltip
-                colors={colors}
-                fontFamily={fontFamily}
-                formatValue={formatValue}
-              />
-            }
-          />
-        </RechartsPieChart>
-      </ResponsiveContainer>
-      {groupData(data).map((data, index) => (
-        <div className="pie-chart-legend-container" key={`subgroup-${index}`}>
-          {(data || []).map(({ name, color }, index) => (
-            <span
-              className={clsx(
-                "flex-center",
-                "variant-body1",
-                "piechart-label-styles"
-              )}
-              style={{ fontFamily }}
-              key={`pie-chart-legend-${name}`}
+            </RechartsPieChart>
+          </ResponsiveContainer>
+          {groupData(data).map((data, index) => (
+            <div
+              className="pie-chart-legend-container"
+              key={`subgroup-${index}`}
             >
-              <Point color={color} /> {name}
-            </span>
+              {(data || []).map(({ name, color }, index) => (
+                <span
+                  className={clsx(
+                    "flex-center",
+                    "variant-body1",
+                    "piechart-label-styles"
+                  )}
+                  style={{ fontFamily }}
+                  key={`pie-chart-legend-${name}`}
+                >
+                  <Point color={color} /> {name}
+                </span>
+              ))}
+            </div>
           ))}
-        </div>
-      ))}
+        </>
+      )}
     </div>
   );
 };

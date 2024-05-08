@@ -5,6 +5,7 @@ import { ChartSeriesType } from ".";
 type BarChartHookData = {
   chartData: any;
   keyNames: string[];
+  missingData: boolean;
 };
 
 type BarChartHookCallbacks = {
@@ -38,6 +39,8 @@ const useBarChartState = ({
     return { chartData, keyNames, hideInitialStatus };
   };
 
+  const missingData = !data.length || !series.length;
+
   const getCoordinates = (max: number, gap: number) => {
     const horizontalLines = [];
 
@@ -57,7 +60,7 @@ const useBarChartState = ({
   const isHide = (keyName: string) => hide[keyName];
 
   return [
-    { chartData, keyNames },
+    { chartData, keyNames, missingData },
     { isHide, setHide, getCoordinates },
   ];
 };
