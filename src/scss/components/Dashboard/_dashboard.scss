@@ -238,7 +238,7 @@ $breakpoint-mobile: 600px;
   }
 }
 
-.margin-bottom-high {
+.margin-bottom-high-filter {
   position: absolute;
   height: 58px;
   @media (max-width: $breakpoint-mobile) {
@@ -246,6 +246,10 @@ $breakpoint-mobile: 600px;
     margin-bottom: 0;
     height: 40px;
   }
+}
+
+.margin-bottom-high {
+  height: 58px;
 }
 
 .margin-top-high {

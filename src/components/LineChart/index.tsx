@@ -2,15 +2,16 @@ import React from "react";
 import {
   Area,
   Line,
+  XAxis,
   YAxis,
   Tooltip,
   TooltipProps,
   CartesianGrid,
-  ResponsiveContainer,
   ComposedChart,
+  ResponsiveContainer,
 } from "recharts";
 import clsx from "clsx";
-import { Tabs, Tab } from "@mui/material";
+import { Tabs, Tab, Box } from "@mui/material";
 import {
   NameType,
   ValueType,
@@ -161,7 +162,7 @@ const RenderComponent = ({
       />
     );
   } else if (loading) {
-    return <div>{loaderComponent}</div>;
+    return <>{loaderComponent}</>;
   } else {
     return (
       <ResponsiveContainer
@@ -195,6 +196,23 @@ const RenderComponent = ({
             ))}
           </defs>
           <CartesianGrid strokeDasharray="12 12" />
+          <XAxis
+            dataKey="date"
+            axisLine={false}
+            tick={(props) => (
+              <text
+                fontSize={12}
+                fill="#7C7D7E"
+                textAnchor="end"
+                fontWeight={700}
+                x={props.x + 35}
+                y={props.y + 15}
+                fontFamily={fontFamily}
+              >
+                {props.payload.value}
+              </text>
+            )}
+          />
           <YAxis
             axisLine={false}
             domain={["auto", "auto"]}
@@ -334,7 +352,7 @@ const Chart = ({
                   value={item}
                   label={item}
                   style={{
-                    marginLeft: '16px',
+                    marginLeft: "16px",
                     fontFamily: fontFamily,
                     color: item === currentFilter ? color : "#00000099",
                     background:
@@ -347,25 +365,27 @@ const Chart = ({
           </div>
         </div>
       )}
-      <RenderComponent
-        colors={colors}
-        isHide={isHide}
-        keyName={keyName}
-        loading={loading}
-        keyNames={keyNames}
-        emptyIcon={emptyIcon}
-        chartData={chartData}
-        emptyTitle={emptyTitle}
-        fontFamily={emptyTitle}
-        getColorId={getColorId}
-        formatValue={formatValue}
-        missingData={missingData}
-        tooltipActive={tooltipActive}
-        loaderComponent={loaderComponent}
-        emptyDescription={emptyDescription}
-        handleOpenTooltip={handleOpenTooltip}
-        handleCloseTooltip={handleCloseTooltip}
-      />
+      <Box minHeight={200}>
+        <RenderComponent
+          colors={colors}
+          isHide={isHide}
+          keyName={keyName}
+          loading={loading}
+          keyNames={keyNames}
+          emptyIcon={emptyIcon}
+          chartData={chartData}
+          emptyTitle={emptyTitle}
+          fontFamily={fontFamily}
+          getColorId={getColorId}
+          formatValue={formatValue}
+          missingData={missingData}
+          tooltipActive={tooltipActive}
+          loaderComponent={loaderComponent}
+          emptyDescription={emptyDescription}
+          handleOpenTooltip={handleOpenTooltip}
+          handleCloseTooltip={handleCloseTooltip}
+        />
+      </Box>
       <div className={clsx("display-flex", "hide-bars-container")}>
         <div className="display-flex" style={{ gap: "16px" }}>
           {(keyNames || []).map((name, index) => (
