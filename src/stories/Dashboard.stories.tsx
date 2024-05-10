@@ -1,18 +1,19 @@
 import React from "react";
+import { Box } from "@mui/material";
 import { Story } from "@storybook/react";
 
 import {
   LineChart,
-  LineChartDataType,
   SeriesDataType,
+  LineChartDataType,
 } from "../components/LineChart";
-import { CardItem, Dashboard, IDashboard } from "../components/Dashboard";
-import { ChartContainer } from "../components/ChartContainer";
 import { Tooltip } from "../components/Tooltip";
 import { BarChart } from "../components/BarChart";
 import { PieChart } from "../components/PieChart";
-
 import InfoIcon from "../../public/assets/info-icon.svg";
+import { ChartContainer } from "../components/ChartContainer";
+import AdmirationIcon from "../components/Icons/admirationIcon";
+import { CardItem, Dashboard, IDashboard } from "../components/Dashboard";
 
 export default {
   title: "Dashboard",
@@ -140,15 +141,32 @@ DashboardItem.args = {
   rightContainerItems,
   content: (
     <ChartContainer
-      chartSubtitle={"Pool Utilization"}
       chartDescription={"Optional Description"}
+      chartSubtitle={"Pool Utilization"}
       tooltip={exampleTooltip}
+      haveFilter
       content={
         <LineChart
+          emptyDescription="Data will be listed here when available."
+          loaderComponent={
+            <Box
+              height="100%"
+              width="100%"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <span>Loading...</span>
+            </Box>
+          }
+          dateFilter={["1D", "7D", "1M", "ALL"]}
+          emptyIcon={<AdmirationIcon />}
+          emptyTitle="No data to show"
           formatValue={formatValue}
+          loading={false}
           colors={colors}
-          data={data}
           series={series}
+          data={data}
         />
       }
     />
@@ -177,8 +195,8 @@ const rightContainerItems1: CardItem[] = [
 const Charts = () => (
   <>
     <ChartContainer
-      chartSubtitle="Pool Utilization"
       chartDescription="Optional Description"
+      chartSubtitle="Pool Utilization"
       tooltip={exampleTooltip}
       content={
         <BarChart
