@@ -163,10 +163,10 @@ DashboardItem.args = {
           emptyIcon={<AdmirationIcon />}
           emptyTitle="No data to show"
           formatValue={formatValue}
-          loading={true}
+          loading={false}
           colors={colors}
           series={series}
-          data={[]}
+          data={data}
         />
       }
     />

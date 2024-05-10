@@ -45,14 +45,17 @@ export type FormatValueType = (
 ) => string;
 
 export interface IChart {
-  fontFamily?: string;
-  colors: string[];
-  formatValue?: FormatValueType;
-  loading?: boolean;
   emptyIcon?: React.ReactElement | string;
-  emptyTitle?: string;
-  emptyDescription?: string;
+  formatValueAxisY?: FormatValueType;
+  formatValueAxisX?: FormatValueType;
   loaderComponent?: React.ReactNode;
+  formatValue?: FormatValueType;
+  formatDate?: FormatValueType;
+  emptyDescription?: string;
+  fontFamily?: string;
+  emptyTitle?: string;
+  colors: string[];
+  loading?: boolean;
 }
 
 export interface ILineChart extends IChart {
@@ -84,9 +87,10 @@ export interface IRenderComponent extends IChart {
 }
 
 export interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
+  formatValue: FormatValueType;
+  formatDate?: FormatValueType;
   fontFamily?: string;
   colors: string[];
-  formatValue: FormatValueType;
 }
 
 export interface LineChartTooltipProps extends CustomTooltipProps {
@@ -94,11 +98,12 @@ export interface LineChartTooltipProps extends CustomTooltipProps {
 }
 
 export const CustomTooltip = ({
+  formatValue,
+  formatDate,
   fontFamily,
+  keyName,
   payload,
   active,
-  keyName,
-  formatValue,
 }: LineChartTooltipProps) => {
   if (active && payload && payload.length && keyName) {
     const item = payload.find((item) => item.name === keyName);
@@ -113,7 +118,7 @@ export const CustomTooltip = ({
         content={
           <>
             <span className="date-label" style={{ fontFamily }}>
-              {item.payload.date}
+              {formatDate ? formatDate(item.payload.date) : item.payload.date}
             </span>
             <div className={clsx("flex-center", "margin-top")}>
               <span className="value-label" style={{ fontFamily }}>
@@ -134,6 +139,9 @@ export const CustomTooltip = ({
 };
 
 const RenderComponent = ({
+  formatValueAxisX = (value) => new Date(value).toLocaleString(),
+  formatValueAxisY = (value) => value.toLocaleString("en-US"),
+  formatDate = (value) => new Date(value).toLocaleString(),
   formatValue = (value) => value.toLocaleString("en-US"),
   handleCloseTooltip,
   handleOpenTooltip,
@@ -166,7 +174,7 @@ const RenderComponent = ({
   } else {
     return (
       <ResponsiveContainer
-        width="97%"
+        width="98%"
         height="55%"
         minHeight="200px"
         className="line-chart-container"
@@ -201,15 +209,15 @@ const RenderComponent = ({
             axisLine={false}
             tick={(props) => (
               <text
-                fontSize={12}
+                fontSize={11}
                 fill="#7C7D7E"
                 textAnchor="end"
                 fontWeight={700}
-                x={props.x + 35}
+                x={props.x + 20}
                 y={props.y + 15}
                 fontFamily={fontFamily}
               >
-                {props.payload.value}
+                {formatValueAxisX(props.payload.value)}
               </text>
             )}
           />
@@ -220,13 +228,13 @@ const RenderComponent = ({
               <text
                 x={props.x}
                 y={props.y}
-                fontSize={12}
+                fontSize={11}
                 fill="#7C7D7E"
                 textAnchor="end"
-                fontWeight={500}
+                fontWeight={700}
                 fontFamily={fontFamily}
               >
-                {formatValue(props.payload.value)}
+                {formatValueAxisY(props.payload.value)}
               </text>
             )}
           />
@@ -236,6 +244,7 @@ const RenderComponent = ({
                 <CustomTooltip
                   colors={colors}
                   keyName={keyName}
+                  formatDate={formatDate}
                   fontFamily={fontFamily}
                   formatValue={formatValue}
                 />
@@ -308,6 +317,9 @@ const Chart = ({
   handleChangeFilter,
   filterBgColor = "#26a66b",
   formatValue = (value) => value.toLocaleString("en-US"),
+  formatDate = (value) => new Date(value).toLocaleString(),
+  formatValueAxisY = (value) => value.toLocaleString("en-US"),
+  formatValueAxisX = (value) => new Date(value).toLocaleString(),
 }: ILineChart) => {
   const [
     { chartData, keyName, keyNames, tooltipActive },
@@ -377,10 +389,13 @@ const Chart = ({
           emptyTitle={emptyTitle}
           fontFamily={fontFamily}
           getColorId={getColorId}
+          formatDate={formatDate}
           formatValue={formatValue}
           missingData={missingData}
           tooltipActive={tooltipActive}
           loaderComponent={loaderComponent}
+          formatValueAxisY={formatValueAxisY}
+          formatValueAxisX={formatValueAxisX}
           emptyDescription={emptyDescription}
           handleOpenTooltip={handleOpenTooltip}
           handleCloseTooltip={handleCloseTooltip}
@@ -431,6 +446,9 @@ export const LineChart = ({
   handleChangeFilter,
   filterBgColor = "#26a66b",
   formatValue = (value) => value.toLocaleString("en-US"),
+  formatDate = (value) => new Date(value).toLocaleString(),
+  formatValueAxisY = (value) => value.toLocaleString("en-US"),
+  formatValueAxisX = (value) => new Date(value).toLocaleString(),
 }: ILineChart) => {
   const [{ missingData }, {}] = useLineChartState({ data, series });
 
@@ -445,11 +463,14 @@ export const LineChart = ({
       emptyTitle={emptyTitle}
       fontFamily={fontFamily}
       dateFilter={dateFilter}
+      formatDate={formatDate}
       formatValue={formatValue}
       missingData={missingData}
       currentFilter={currentFilter}
       filterBgColor={filterBgColor}
       loaderComponent={loaderComponent}
+      formatValueAxisY={formatValueAxisY}
+      formatValueAxisX={formatValueAxisX}
       emptyDescription={emptyDescription}
       handleChangeFilter={handleChangeFilter}
     />
