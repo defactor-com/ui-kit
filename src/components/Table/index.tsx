@@ -303,22 +303,17 @@ export const Table = ({
                   fontFamily={fontFamily}
                   icon={leftIcon}
                   variant="text"
-                  externalStyles={clsx(
-                    "button-style",
-                    "arrow-button",
-                    "left-arrow-button"
-                  )}
+                  externalStyles={clsx("button-style", "left-arrow-button")}
                 />
                 {buildPaginationArray().map((item) => (
                   <span
-                    className="variant-body1"
+                    className={clsx("variant-body1", "number-page-button")}
                     style={{
                       margin: "8px",
                       fontFamily: fontFamily,
-                      textDecoration:
-                        visiblePage === item ? "underline" : "none",
                       color: visiblePage === item ? "#26A66B" : "none",
                       fontWeight: visiblePage === item ? "bold" : "normal",
+                      background: visiblePage === item ? "#EAF7F1" : "white",
                       cursor: "pointer",
                     }}
                     key={item}
@@ -332,11 +327,7 @@ export const Table = ({
                   fontFamily={fontFamily}
                   icon={rightIcon}
                   variant="text"
-                  externalStyles={clsx(
-                    "button-style",
-                    "arrow-button",
-                    "right-arrow-button"
-                  )}
+                  externalStyles={clsx("button-style", "right-arrow-button")}
                 />
               </div>
             ) : (
