@@ -14,6 +14,7 @@ const useDropDownState = ({ onChange }: { onChange?(): void }) => {
   useEffect(() => {
     if (onChange) onChange();
   }, [selectedOptions]);
+
   return [{ selectedOptions }, { handleChange }];
 };
 
