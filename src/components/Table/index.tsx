@@ -89,6 +89,7 @@ export const Table = ({
   const [activeFilter, setActiveFilter] = useState(false);
   const [hoverItem, setHoverItem] = useState<number>(-1);
   const [isHovered, setIsHovered] = useState(false);
+
   const buildPaginationArray = (): Array<number> => {
     const paginationArray = [];
     let amountElements = totalRowsNumber / rowsPageSelected;
@@ -98,6 +99,30 @@ export const Table = ({
       paginationArray.push(count);
       count++;
       amountElements--;
+    }
+
+    return paginationArray;
+  };
+
+  const buildPaginationArrayMobile = (pages: Array<number>) => {
+    const paginationArray = [];
+    const isVisible = (element: number) => element === visiblePage;
+    const baseIndex = pages.findIndex(isVisible);
+
+    if (pages[baseIndex - 1]) {
+      if (pages[baseIndex + 1]) {
+        paginationArray.push(pages[baseIndex - 1]);
+        pages[baseIndex] && paginationArray.push(pages[baseIndex]);
+        paginationArray.push(pages[baseIndex + 1]);
+      } else {
+        pages[baseIndex - 2] && paginationArray.push(pages[baseIndex - 2]);
+        paginationArray.push(pages[baseIndex - 1]);
+        pages[baseIndex] && paginationArray.push(pages[baseIndex]);
+      }
+    } else {
+      pages[baseIndex] && paginationArray.push(pages[baseIndex]);
+      pages[baseIndex + 1] && paginationArray.push(pages[baseIndex + 1]);
+      pages[baseIndex + 2] && paginationArray.push(pages[baseIndex + 2]);
     }
 
     return paginationArray;
@@ -134,10 +159,13 @@ export const Table = ({
   };
 
   const RenderPagination = () => {
+    const pages = buildPaginationArray();
+    const pagesMobile = buildPaginationArrayMobile(pages);
+
     if (window.innerWidth > 600) {
       return (
         <>
-          {buildPaginationArray().map((item) => (
+          {pages.map((item) => (
             <span
               className={clsx("variant-body1", "number-page-button")}
               style={{
@@ -159,21 +187,23 @@ export const Table = ({
     } else {
       return (
         <>
-          <span
-            className={clsx("variant-body1", "number-page-button")}
-            style={{
-              margin: "8px",
-              fontFamily: fontFamily,
-              color: "#26A66B",
-              fontWeight: "bold",
-              background: "#EAF7F1",
-              cursor: "pointer",
-            }}
-            key={visiblePage}
-            onClick={() => {}}
-          >
-            {visiblePage}
-          </span>
+          {pagesMobile.map((item) => (
+            <span
+              className={clsx("variant-body1", "number-page-button")}
+              style={{
+                margin: "8px",
+                fontFamily: fontFamily,
+                color: visiblePage === item ? "#26A66B" : "none",
+                fontWeight: visiblePage === item ? "bold" : "normal",
+                background: visiblePage === item ? "#EAF7F1" : "white",
+                cursor: "pointer",
+              }}
+              key={item}
+              onClick={() => {}}
+            >
+              {item}
+            </span>
+          ))}
         </>
       );
     }
