@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.2.30
+
+### Patch Changes
+
+- 841717c: Refactor Code
+
 ## 0.2.28
 
 ### Patch Changes
