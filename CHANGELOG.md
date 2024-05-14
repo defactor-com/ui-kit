@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.2.28
+
+### Patch Changes
+
+- 5d833c7: Update table styles
+
 ## 0.2.19
 
 ### Patch Changes
