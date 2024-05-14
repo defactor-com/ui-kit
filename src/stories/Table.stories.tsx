@@ -208,5 +208,5 @@ const dynamicRows = tableData.map((item) => {
 
 export const TableItem = Template.bind({});
 TableItem.args = {
-  rows: [],
+  rows: dynamicRows,
 };

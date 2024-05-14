@@ -133,6 +133,52 @@ export const Table = ({
     }
   };
 
+  const RenderPagination = () => {
+    if (window.innerWidth > 600) {
+      return (
+        <>
+          {buildPaginationArray().map((item) => (
+            <span
+              className={clsx("variant-body1", "number-page-button")}
+              style={{
+                margin: "8px",
+                fontFamily: fontFamily,
+                color: visiblePage === item ? "#26A66B" : "none",
+                fontWeight: visiblePage === item ? "bold" : "normal",
+                background: visiblePage === item ? "#EAF7F1" : "white",
+                cursor: "pointer",
+              }}
+              key={item}
+              onClick={() => {}}
+            >
+              {item}
+            </span>
+          ))}
+        </>
+      );
+    } else {
+      return (
+        <>
+          <span
+            className={clsx("variant-body1", "number-page-button")}
+            style={{
+              margin: "8px",
+              fontFamily: fontFamily,
+              color: "#26A66B",
+              fontWeight: "bold",
+              background: "#EAF7F1",
+              cursor: "pointer",
+            }}
+            key={visiblePage}
+            onClick={() => {}}
+          >
+            {visiblePage}
+          </span>
+        </>
+      );
+    }
+  };
+
   return (
     <Container
       externalStyles="remove-padding"
@@ -303,31 +349,15 @@ export const Table = ({
                   fontFamily={fontFamily}
                   icon={leftIcon}
                   variant="text"
-                  externalStyles={clsx("button-style", "left-arrow-button")}
+                  externalStyles={clsx("button-style", "padding-button")}
                 />
-                {buildPaginationArray().map((item) => (
-                  <span
-                    className={clsx("variant-body1", "number-page-button")}
-                    style={{
-                      margin: "8px",
-                      fontFamily: fontFamily,
-                      color: visiblePage === item ? "#26A66B" : "none",
-                      fontWeight: visiblePage === item ? "bold" : "normal",
-                      background: visiblePage === item ? "#EAF7F1" : "white",
-                      cursor: "pointer",
-                    }}
-                    key={item}
-                    onClick={() => {}}
-                  >
-                    {item}
-                  </span>
-                ))}
+                <RenderPagination />
                 <Button
                   onClick={() => nextPage("+")}
                   fontFamily={fontFamily}
                   icon={rightIcon}
                   variant="text"
-                  externalStyles={clsx("button-style", "right-arrow-button")}
+                  externalStyles={clsx("button-style", "padding-button")}
                 />
               </div>
             ) : (

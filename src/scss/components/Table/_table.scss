@@ -1,3 +1,5 @@
+$breakpoint-mobile: 600px;
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -32,12 +34,8 @@ tr {
   border-top: 1px solid #eaecf0;
 }
 
-.right-arrow-button {
-  margin-left: 16px;
-}
-
-.left-arrow-button {
-  margin-right: 16px;
+.padding-button {
+  padding: 14px 16px !important;
 }
 
 .button-style:hover {
@@ -132,10 +130,19 @@ tr {
   padding: 8px 40px;
   display: flex;
   height: 64px;
+  @media (max-width: $breakpoint-mobile) {
+    flex-direction: column;
+    justify-content: center;
+    padding: 8px;
+    gap: 8px;
+  }
 }
 
 .container-rows-per-page {
   position: absolute;
+  @media (max-width: $breakpoint-mobile) {
+    position: relative;
+  }
 }
 
 .select-item {
@@ -154,10 +161,8 @@ tr {
 .number-page-button {
   text-align: center;
   box-shadow: 0px 1.33px 4px 1.33px #00000026;
-
   box-shadow: 0px 1.33px 2.67px 0px #0000004d;
-
-  padding: 14px;
+  padding: 9px;
   width: 14px;
   height: 14px;
   border-radius: 133px;
