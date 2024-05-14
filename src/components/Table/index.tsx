@@ -112,15 +112,15 @@ export const Table = ({
     if (pages[baseIndex - 1]) {
       if (pages[baseIndex + 1]) {
         paginationArray.push(pages[baseIndex - 1]);
-        pages[baseIndex] && paginationArray.push(pages[baseIndex]);
+        paginationArray.push(pages[baseIndex]);
         paginationArray.push(pages[baseIndex + 1]);
       } else {
         pages[baseIndex - 2] && paginationArray.push(pages[baseIndex - 2]);
         paginationArray.push(pages[baseIndex - 1]);
-        pages[baseIndex] && paginationArray.push(pages[baseIndex]);
+        paginationArray.push(pages[baseIndex]);
       }
     } else {
-      pages[baseIndex] && paginationArray.push(pages[baseIndex]);
+      paginationArray.push(pages[baseIndex]);
       pages[baseIndex + 1] && paginationArray.push(pages[baseIndex + 1]);
       pages[baseIndex + 2] && paginationArray.push(pages[baseIndex + 2]);
     }
