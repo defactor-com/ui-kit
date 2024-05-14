@@ -91,7 +91,7 @@ const Template: Story<ITable> = (args) => {
       {...args}
       loading
       haveOptions
-      visiblePage={3}
+      visiblePage={1}
       nextPage={() => {}}
       totalRowsNumber={22}
       rowsPageSelected={5}
@@ -208,5 +208,5 @@ const dynamicRows = tableData.map((item) => {
 
 export const TableItem = Template.bind({});
 TableItem.args = {
-  rows: [],
+  rows: dynamicRows,
 };
