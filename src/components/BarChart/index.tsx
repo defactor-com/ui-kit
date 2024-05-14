@@ -14,25 +14,10 @@ import clsx from "clsx";
 import { Point } from "../Point";
 import { Container } from "../Container";
 import { EmptyChart } from "../EmptyChart";
-import { CustomTooltipProps, IChart } from "../LineChart";
+import { CustomTooltipProps } from "../LineChart/ChartsTypes";
 
+import { IBarChart } from "./BarChartTypes";
 import useBarChartState from "./useBarChartState";
-
-export interface ChartSeriesType {
-  name: string;
-  data: number[];
-}
-
-export interface IBarChart extends IChart {
-  data: string[];
-  series: ChartSeriesType[];
-  displayDirection?: "vertical" | "horizontal";
-  dateFilter?: string[];
-  color?: string;
-  filterBgColor?: string;
-  currentFilter?: string;
-  handleChangeFilter?(filter: string): void;
-}
 
 const CustomTooltip = ({
   fontFamily,
@@ -99,21 +84,8 @@ const Chart = ({
     <>
       <div className="bar-chart-graphic-container">
         {dateFilter && (
-          <div
-            className="display-flex"
-            style={{
-              width: "100%",
-              justifyContent: "end",
-            }}
-          >
-            <div
-              className="display-flex"
-              style={{
-                alignItems: "end",
-                width: "40%",
-                justifyContent: "center",
-              }}
-            >
+          <div className={clsx("display-flex", "filter-container")}>
+            <div className={clsx("display-flex", "filter-card")}>
               <Tabs
                 value={currentFilter}
                 centered
@@ -230,7 +202,7 @@ const Chart = ({
         </ResponsiveContainer>
       </div>
       <div className={clsx("display-flex", "hide-bars-container")}>
-        <div className="display-flex" style={{ gap: "16px" }}>
+        <div className={clsx("display-flex", "checkbox-container")}>
           {(keyNames || []).map((name, index) => (
             <span
               className={clsx("flex-center", "variant-body1")}

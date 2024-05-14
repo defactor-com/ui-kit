@@ -1,7 +1,8 @@
 import React, { ChangeEvent, useState } from "react";
 import { Story } from "@storybook/react";
 
-import { LendBorrow, ILendBorrow } from "../components/LendBorrow";
+import { LendBorrow } from "../components/LendBorrow";
+import { ILendBorrow } from "../components/LendBorrow/LendBorrowTypes";
 
 import borrowingIconSvg from "../../public/assets/borrowing.svg";
 import lendingIconSvg from "../../public/assets/lending.svg";

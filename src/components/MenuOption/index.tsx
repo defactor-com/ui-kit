@@ -1,13 +1,7 @@
 import clsx from "clsx";
 import React from "react";
 
-export interface IMenuOption extends React.HTMLAttributes<HTMLButtonElement> {
-  text?: string;
-  color?: string;
-  fontFamily?: string;
-  isSelected: Boolean;
-  icon?: string | React.ReactNode;
-}
+import { IMenuOption } from "./MenuOptionTypes";
 
 export const MenuOption: React.FC<IMenuOption> = React.memo(
   ({ icon, text, color, isSelected, fontFamily, ...props }: IMenuOption) => (

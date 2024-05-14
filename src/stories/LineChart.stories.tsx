@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Story } from "@storybook/react";
 
+import { LineChart } from "../components/LineChart";
 import {
-  LineChart,
   LineChartDataType,
   ILineChart,
   SeriesDataType,
-} from "../components/LineChart";
+} from "../components/LineChart/ChartsTypes";
 import AdmirationIcon from "../components/Icons/admirationIcon";
 
 export default {

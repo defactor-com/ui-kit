@@ -1,18 +1,10 @@
 import { useState } from "react";
 
-import { ChartSeriesType } from ".";
-
-type BarChartHookData = {
-  chartData: any;
-  keyNames: string[];
-  missingData: boolean;
-};
-
-type BarChartHookCallbacks = {
-  isHide: (keyName: string) => boolean;
-  setHide: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
-  getCoordinates: (max: number, gap: number) => number[];
-};
+import {
+  ChartSeriesType,
+  BarChartHookData,
+  BarChartHookCallbacks,
+} from "./BarChartTypes";
 
 const useBarChartState = ({
   data,

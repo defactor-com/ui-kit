@@ -1,10 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-export interface IFlatContainer {
-  content: React.ReactNode;
-  externalStyles?: string;
-}
+import { IFlatContainer } from "./FlatContainerTypes";
 
 export const FlatContainer = ({
   externalStyles,

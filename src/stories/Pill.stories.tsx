@@ -1,7 +1,8 @@
 import React from "react";
 import { Story } from "@storybook/react";
 
-import { Pill, IPill } from "../components/Pill";
+import { Pill } from "../components/Pill";
+import { IPill } from "../components/Pill/PillTypes";
 
 export default {
   title: "Pill",

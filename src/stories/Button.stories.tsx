@@ -1,7 +1,8 @@
 import React from "react";
 import { Story } from "@storybook/react";
 
-import { Button, IButton } from "../components/Button";
+import { Button } from "../components/Button";
+import { IButton } from "../components/Button/ButtonTypes";
 import lendingIcon from "../../public/assets/lending-white.svg";
 
 export default {

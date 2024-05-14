@@ -2,17 +2,7 @@ import React from "react";
 import { Tooltip as MuiTooltip, IconButton } from "@mui/material";
 
 import { useTooltip } from "./useTooltipState";
-
-export interface ITooltip {
-  icon: React.ReactElement | string;
-  sizeIcon?: number;
-  bgColor?: string;
-  fontFamily?: string;
-  color?: string;
-  text: string;
-  open?: boolean;
-  position?: "top" | "left" | "bottom" | "right";
-}
+import { ITooltip } from "./TooltipTypes";
 
 export const Tooltip: React.FC<ITooltip> = ({
   icon,

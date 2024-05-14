@@ -1,7 +1,8 @@
 import React from "react";
 import { Story } from "@storybook/react";
 
-import { Container, IContainer } from "../components/Container";
+import { Container } from "../components/Container";
+import { IContainer } from "../components/Container/ContainerTypes";
 
 export default {
   title: "Container",

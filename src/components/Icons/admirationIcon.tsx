@@ -1,10 +1,6 @@
 import React from "react";
 
-export type IconsType = {
-  height?: number;
-  width?: number;
-  color?: string;
-};
+import { IconsType } from "./IconsTypes";
 
 const AdmirationIcon: React.FC<IconsType> = ({
   width = 32,

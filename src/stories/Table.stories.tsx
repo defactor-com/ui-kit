@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Story } from "@storybook/react";
 
 import { Pill } from "../components/Pill";
+import { Table } from "../components/Table";
 import {
-  Table,
   ITable,
   IRowsObject,
   IFilterSelectedObject,
-} from "../components/Table";
+} from "../components/Table/TableTypes";
 
 export default {
   title: "Table",

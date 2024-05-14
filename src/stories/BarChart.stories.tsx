@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Story } from "@storybook/react";
 
-import { BarChart, IBarChart, ChartSeriesType } from "../components/BarChart";
+import { BarChart } from "../components/BarChart";
+import {
+  IBarChart,
+  ChartSeriesType,
+} from "../components/BarChart/BarChartTypes";
 import AdmirationIcon from "../components/Icons/admirationIcon";
 
 export default {

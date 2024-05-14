@@ -5,16 +5,7 @@ import { CardContainer } from "../CardContainer";
 import { FluctuationComponent } from "../FluctuationComponent";
 import { Point } from "../Point";
 
-export interface ICardComponent {
-  label: string;
-  value: number | string;
-  fluctuation?: string;
-  fluctuationValue?: string;
-  color?: string;
-  fontFamily?: string;
-  externalStyles?: string;
-  tooltip?: React.ReactNode;
-}
+import { ICardComponent } from "./CardComponentTypes";
 
 export const CardComponent = ({
   label,

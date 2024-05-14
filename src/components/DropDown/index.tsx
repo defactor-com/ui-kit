@@ -6,11 +6,8 @@ import ListItemText from "@mui/material/ListItemText";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 
-export interface IDropDownObject {
-  placeholder: string;
-  options: Array<string>;
-  onChange?(): void;
-}
+import { IDropDownObject } from "./DropDownTypes";
+import useDropDownState from "./useDropDownState";
 
 const ITEM_HEIGHT = 37;
 const ITEM_PADDING_TOP = 0;
@@ -28,18 +25,9 @@ export const DropDown = ({
   options,
   onChange,
 }: IDropDownObject) => {
-  const [selectedOptions, setSelectedOptions] = useState<Array<string>>([]);
-
-  const handleChange = (event: SelectChangeEvent<typeof selectedOptions>) => {
-    const {
-      target: { value },
-    } = event;
-    setSelectedOptions(typeof value === "string" ? value.split(",") : value);
-  };
-
-  useEffect(() => {
-    if (onChange) onChange();
-  }, [selectedOptions]);
+  const [{ selectedOptions }, { handleChange }] = useDropDownState({
+    onChange,
+  });
 
   return (
     <div>
@@ -53,7 +41,7 @@ export const DropDown = ({
           input={<OutlinedInput />}
           renderValue={(selected) => {
             if (selected.length === 0) {
-              return <em style={{ color: "#7c7d7e" }}>{placeholder}</em>;
+              return <em className="help-text">{placeholder}</em>;
             }
 
             return selected.join(", ");
@@ -67,7 +55,9 @@ export const DropDown = ({
           </MenuItem>
           {options.map((name) => (
             <MenuItem key={name} value={name} className="checkBox">
-              <Checkbox checked={selectedOptions.indexOf(name) > -1} />
+              <Checkbox
+                checked={selectedOptions && selectedOptions.indexOf(name) > -1}
+              />
               <ListItemText primary={name} />
             </MenuItem>
           ))}

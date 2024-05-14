@@ -1,15 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-export interface IPill {
-  label: string | React.ReactElement;
-  color: string;
-  bgColor: string;
-  fontFamily?: string;
-  externalStyles?: string;
-  customBorder?: string;
-}
-
+import { IPill } from "./PillTypes";
 export const Pill = ({
   label,
   color,

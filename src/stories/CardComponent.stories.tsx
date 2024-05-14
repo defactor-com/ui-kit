@@ -1,7 +1,8 @@
 import React from "react";
 import { Story } from "@storybook/react";
 
-import { CardComponent, ICardComponent } from "../components/CardComponent";
+import { CardComponent } from "../components/CardComponent";
+import { ICardComponent } from "../components/CardComponent/CardComponentTypes";
 import { Tooltip } from "../components/Tooltip";
 import InfoIcon from "../../public/assets/info-icon.svg";
 
