@@ -48,3 +48,13 @@ export interface ITable {
     React.SetStateAction<Array<IFilterSelectedObject>>
   >;
 }
+
+export interface IUseTableState {
+  totalRowsNumber: number;
+  rowsPageSelected: number;
+  visiblePage: number | undefined;
+  filters: IFilterObject[] | undefined;
+  setFilters: React.Dispatch<
+    React.SetStateAction<Array<IFilterSelectedObject>>
+  >;
+}

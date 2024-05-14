@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import React, { useState } from "react";
+import React from "react";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -13,12 +13,8 @@ import rightIcon from "../../../public/assets/chevron_right.svg";
 import downIcon from "../../../public/assets/arrow-down-icon.svg";
 import filterIcon from "../../../public/assets/filter-options-icon.svg";
 
-import {
-  ITable,
-  IFilterObject,
-  IFilterSelectedObject,
-  IHeaderObject,
-} from "./TableTypes";
+import { ITable, IFilterObject, IHeaderObject } from "./TableTypes";
+import useTableState from "./useTableState";
 
 export const Table = ({
   rows,
@@ -42,95 +38,41 @@ export const Table = ({
   handleSelectedRowsPage,
   rowsHoverColor = "rgba(38, 166, 107, 0.1)",
 }: ITable) => {
-  const [activeFilter, setActiveFilter] = useState(false);
-  const [hoverItem, setHoverItem] = useState<number>(-1);
-  const [isHovered, setIsHovered] = useState(false);
-
-  const buildPaginationArray = (): Array<number> => {
-    const paginationArray = [];
-    let amountElements = totalRowsNumber / rowsPageSelected;
-    let count = 1;
-
-    while (amountElements > 0) {
-      paginationArray.push(count);
-      count++;
-      amountElements--;
-    }
-
-    return paginationArray;
-  };
-
-  const buildPaginationArrayMobile = (pages: Array<number>) => {
-    const paginationArray = [];
-    const isVisible = (element: number) => element === visiblePage;
-    const baseIndex = pages.findIndex(isVisible);
-
-    if (pages[baseIndex - 1]) {
-      if (pages[baseIndex + 1]) {
-        paginationArray.push(pages[baseIndex - 1]);
-        paginationArray.push(pages[baseIndex]);
-        paginationArray.push(pages[baseIndex + 1]);
-      } else {
-        pages[baseIndex - 2] && paginationArray.push(pages[baseIndex - 2]);
-        paginationArray.push(pages[baseIndex - 1]);
-        paginationArray.push(pages[baseIndex]);
-      }
-    } else {
-      paginationArray.push(pages[baseIndex]);
-      pages[baseIndex + 1] && paginationArray.push(pages[baseIndex + 1]);
-      pages[baseIndex + 2] && paginationArray.push(pages[baseIndex + 2]);
-    }
-
-    return paginationArray;
-  };
-
-  const handleMouseEnter = (key: number) => {
-    setHoverItem(key);
-
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setHoverItem(-1);
-    setIsHovered(false);
-  };
-
-  const updateData = () => {
-    if (filters) {
-      const data: Array<IFilterSelectedObject> = [];
-      filters.forEach((filter) => {
-        const element = document.getElementsByName(
-          filter.label
-        )[0] as HTMLInputElement;
-        let selectFilter: IFilterSelectedObject = {
-          label: filter.label,
-          options: [],
-        };
-        if (filter.options) selectFilter.options = element.value.split(",");
-        else selectFilter.options = element?.value || "";
-        data.push(selectFilter);
-      });
-      setFilters(data);
-    }
-  };
+  const [
+    { activeFilter, hoverItem, isHovered },
+    {
+      setActiveFilter,
+      buildPaginationArray,
+      buildPaginationArrayMobile,
+      handleMouseEnter,
+      handleMouseLeave,
+      updateData,
+    },
+  ] = useTableState({
+    totalRowsNumber,
+    rowsPageSelected,
+    visiblePage,
+    filters,
+    setFilters,
+  });
 
   const RenderPagination = () => {
-    const pages = buildPaginationArray();
-    const pagesMobile = buildPaginationArrayMobile(pages);
+    const pages = buildPaginationArray && buildPaginationArray();
+    let pagesMobile: number[] = [];
+    if (buildPaginationArrayMobile && pages)
+      pagesMobile = buildPaginationArrayMobile(pages);
 
     if (window.innerWidth > 600) {
       return (
         <>
-          {pages.map((item) => (
+          {pages?.map((item) => (
             <span
               className={clsx("variant-body1", "number-page-button")}
               style={{
-                margin: "8px",
                 fontFamily: fontFamily,
                 color: visiblePage === item ? "#26A66B" : "none",
                 fontWeight: visiblePage === item ? "bold" : "normal",
                 background: visiblePage === item ? "#EAF7F1" : "white",
-                cursor: "pointer",
               }}
               key={item}
               onClick={() => {}}
@@ -147,12 +89,10 @@ export const Table = ({
             <span
               className={clsx("variant-body1", "number-page-button")}
               style={{
-                margin: "8px",
                 fontFamily: fontFamily,
                 color: visiblePage === item ? "#26A66B" : "none",
                 fontWeight: visiblePage === item ? "bold" : "normal",
                 background: visiblePage === item ? "#EAF7F1" : "white",
-                cursor: "pointer",
               }}
               key={item}
               onClick={() => {}}
@@ -189,10 +129,7 @@ export const Table = ({
                           fontFamily={fontFamily}
                           icon={downIcon}
                           variant="text"
-                          style={{
-                            padding: "14px 18px 14px 8px",
-                          }}
-                          externalStyles="button-style"
+                          externalStyles={clsx("button-style", "sort-button")}
                         />
                       )}
                     </div>
@@ -202,12 +139,13 @@ export const Table = ({
                   <th className="th-option">
                     <div className="center-element">
                       <Button
-                        onClick={() => setActiveFilter(!activeFilter)}
+                        onClick={() =>
+                          setActiveFilter && setActiveFilter(!activeFilter)
+                        }
                         fontFamily={fontFamily}
                         icon={filterIcon}
                         variant="text"
-                        style={{ padding: "8px 16px 8px 0px" }}
-                        externalStyles="button-style"
+                        externalStyles={clsx("button-style", "filter-button")}
                       />
                     </div>
                   </th>
@@ -222,14 +160,14 @@ export const Table = ({
                           <DropDown
                             placeholder={filter.label}
                             options={filter.options}
-                            onChange={() => updateData()}
+                            onChange={() => updateData && updateData()}
                           />
                         ) : filter.type === "date" ? (
                           <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <MobileDatePicker
                               name={filter.label}
                               className="imput-calendar"
-                              onAccept={() => updateData()}
+                              onAccept={() => updateData && updateData()}
                             />
                           </LocalizationProvider>
                         ) : (
@@ -237,7 +175,7 @@ export const Table = ({
                             name={filter.label}
                             placeholder={filter.label}
                             className="input-filter"
-                            onChange={() => updateData()}
+                            onChange={() => updateData && updateData()}
                           />
                         )}
                       </div>
@@ -253,7 +191,9 @@ export const Table = ({
                   <tr
                     key={index}
                     onMouseLeave={handleMouseLeave}
-                    onMouseEnter={() => handleMouseEnter(index)}
+                    onMouseEnter={() =>
+                      handleMouseEnter && handleMouseEnter(index)
+                    }
                     className={row.onClickRow ? "tr-action" : undefined}
                     style={{
                       backgroundColor:

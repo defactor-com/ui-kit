@@ -257,22 +257,8 @@ const Chart = ({
   return (
     <>
       {dateFilter && (
-        <div
-          className="display-flex"
-          style={{
-            width: "100%",
-            height: "58px",
-            alignItems: "start",
-            justifyContent: "end",
-          }}
-        >
-          <div
-            className="display-flex"
-            style={{
-              alignItems: "end",
-              justifyContent: "center",
-            }}
-          >
+        <div className={clsx("display-flex", "filter-container")}>
+          <div className={clsx("display-flex", "filter-card")}>
             <Tabs
               value={currentFilter}
               centered
@@ -292,7 +278,6 @@ const Chart = ({
                   value={item}
                   label={item}
                   style={{
-                    marginLeft: "16px",
                     fontFamily: fontFamily,
                     color: item === currentFilter ? color : "#00000099",
                     background:
@@ -330,7 +315,7 @@ const Chart = ({
         />
       </Box>
       <div className={clsx("display-flex", "hide-bars-container")}>
-        <div className="display-flex" style={{ gap: "16px" }}>
+        <div className={clsx("display-flex", "checkbox-container")}>
           {(keyNames || []).map((name, index) => (
             <span
               className={clsx("flex-center", "variant-body1")}

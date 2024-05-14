@@ -278,6 +278,10 @@ $breakpoint-mobile: 600px;
   }
 }
 
+.checkbox-container {
+  gap: 16px;
+}
+
 .checkbox {
   width: 18px;
   height: 18px;
@@ -294,6 +298,18 @@ $breakpoint-mobile: 600px;
     border: 0.5px solid #bdbdbd80;
     margin-top: 24px;
   }
+}
+
+.filter-container {
+  width: 100%;
+  height: 58px;
+  align-items: start;
+  justify-content: end;
+}
+
+.filter-card {
+  align-items: end;
+  justify-content: center;
 }
 
 .tabs-filter {
@@ -316,6 +332,7 @@ $breakpoint-mobile: 600px;
   border-radius: 100px !important;
   height: 32px !important;
   min-height: auto !important;
+  margin-left: 16px !important;
 }
 
 .tab-filter-selected {

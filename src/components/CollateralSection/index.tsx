@@ -38,7 +38,8 @@ export const CollateralSection = ({
             <Typography
               variant="body1"
               textAlign="end"
-              style={{ fontFamily: fontFamily, color: "#7C7D7E" }}
+              color={"#7C7D7E"}
+              style={{ fontFamily: fontFamily }}
             >
               {tokenSymbol}
             </Typography>

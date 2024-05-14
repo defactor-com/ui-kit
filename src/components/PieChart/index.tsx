@@ -13,7 +13,8 @@ import { Container } from "../Container";
 import { CustomTooltipProps } from "../LineChart/ChartsTypes";
 import { EmptyChart } from "../EmptyChart";
 
-import { IPieChart, PieDataType } from "./PieChartTypes";
+import { IPieChart } from "./PieChartTypes";
+import usePieChartState from "./usePieChartState";
 const CustomTooltip = ({
   fontFamily,
   payload,
@@ -39,20 +40,6 @@ const CustomTooltip = ({
       }
     />
   );
-};
-
-const groupData = (data: PieDataType) => {
-  const groupSize = 5;
-  return data.reduce((result: PieDataType[], curr, index) => {
-    const newIndex = Math.floor(index / groupSize);
-    if (!result[newIndex]) {
-      result[newIndex] = [];
-    }
-
-    result[newIndex].push(curr);
-
-    return result;
-  }, []);
 };
 
 const RADIAN = Math.PI / 180;
@@ -90,7 +77,7 @@ const Chart = ({
   fontFamily,
   formatValue = (value) => value.toLocaleString("en-US"),
 }: IPieChart) => {
-  const colors: string[] = data.map((item) => item.color);
+  const [{ colors }, { groupData }] = usePieChartState({ data });
 
   return (
     <>
@@ -116,7 +103,7 @@ const Chart = ({
           <Tooltip
             content={
               <CustomTooltip
-                colors={colors}
+                colors={colors || []}
                 fontFamily={fontFamily}
                 formatValue={formatValue}
               />
@@ -124,23 +111,24 @@ const Chart = ({
           />
         </RechartsPieChart>
       </ResponsiveContainer>
-      {groupData(data).map((data, index) => (
-        <div className="pie-chart-legend-container" key={`subgroup-${index}`}>
-          {(data || []).map(({ name, color }, index) => (
-            <span
-              className={clsx(
-                "flex-center",
-                "variant-body1",
-                "piechart-label-styles"
-              )}
-              style={{ fontFamily }}
-              key={`pie-chart-legend-${name}`}
-            >
-              <Point color={color} /> {name}
-            </span>
-          ))}
-        </div>
-      ))}
+      {groupData &&
+        groupData(data).map((data, index) => (
+          <div className="pie-chart-legend-container" key={`subgroup-${index}`}>
+            {(data || []).map(({ name, color }, index) => (
+              <span
+                className={clsx(
+                  "flex-center",
+                  "variant-body1",
+                  "piechart-label-styles"
+                )}
+                style={{ fontFamily }}
+                key={`pie-chart-legend-${name}`}
+              >
+                <Point color={color} /> {name}
+              </span>
+            ))}
+          </div>
+        ))}
     </>
   );
 };

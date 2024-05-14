@@ -38,6 +38,14 @@ tr {
   padding: 14px 16px !important;
 }
 
+.filter-button {
+  padding: 8px 16px 8px 0px !important;
+}
+
+.sort-button {
+  padding: 14px 18px 14px 8px !important;
+}
+
 .button-style:hover {
   background-color: transparent !important;
 }
@@ -159,6 +167,8 @@ tr {
 }
 
 .number-page-button {
+  margin: 8px;
+  cursor: pointer;
   text-align: center;
   box-shadow: 0px 1.33px 4px 1.33px #00000026;
   box-shadow: 0px 1.33px 2.67px 0px #0000004d;
