@@ -1,12 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-export interface IEmptyChart {
-  icon?: React.ReactElement | string;
-  title?: string;
-  description?: string;
-  fontFamily?: string;
-}
+import { IEmptyChart } from "./EmptyChartTypes";
 
 export const EmptyChart = ({
   icon,

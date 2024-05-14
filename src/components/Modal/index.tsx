@@ -3,12 +3,7 @@ import clsx from "clsx";
 
 import closeIcon from "../../../public/assets/close-icon.svg";
 
-export interface IModal {
-  close(): void;
-  isOpen: boolean;
-  externalStyles: string;
-  content: React.ReactNode;
-}
+import { IModal } from "./ModalTypes";
 
 export const Modal = ({ isOpen, content, close, externalStyles }: IModal) => {
   return (

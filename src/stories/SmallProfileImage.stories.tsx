@@ -1,10 +1,8 @@
 import React from "react";
 import { Story } from "@storybook/react";
 
-import {
-  SmallProfileImage,
-  ISmallProfileImage,
-} from "../components/SmallProfileImage";
+import { SmallProfileImage } from "../components/SmallProfileImage";
+import { ISmallProfileImage } from "../components/SmallProfileImage/SmallProfileImageTypes";
 import factrIcon from "../../public/assets/factr-icon.svg";
 
 export default {

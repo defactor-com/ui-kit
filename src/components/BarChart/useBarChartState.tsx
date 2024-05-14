@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { ChartSeriesType } from ".";
+import { ChartSeriesType } from "./BarChartTypes";
 
 type BarChartHookData = {
   chartData: any;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { LineChartDataType, SeriesDataType } from ".";
+import { LineChartDataType, SeriesDataType } from "./ChartsTypes";
 
 const useLineChartState = ({
   data,

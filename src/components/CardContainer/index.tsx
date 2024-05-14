@@ -1,10 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-export interface ICardContainer {
-  content: React.ReactNode;
-  externalStyles?: string;
-}
+import { ICardContainer } from "./CardContainerTypes";
 
 export const CardContainer = ({
   externalStyles,

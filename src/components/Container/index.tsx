@@ -1,10 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-export interface IContainer {
-  content: React.ReactNode;
-  externalStyles?: string;
-}
+import { IContainer } from "./ContainerTypes";
 
 export const Container = ({
   externalStyles,

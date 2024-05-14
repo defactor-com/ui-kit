@@ -6,11 +6,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 
-export interface IDropDownObject {
-  placeholder: string;
-  options: Array<string>;
-  onChange?(): void;
-}
+import { IDropDownObject } from "./DropDownTypes";
 
 const ITEM_HEIGHT = 37;
 const ITEM_PADDING_TOP = 0;

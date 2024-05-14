@@ -1,7 +1,8 @@
 import React from "react";
 import { Story } from "@storybook/react";
 
-import { PieChart, IPieChart, PieDataType } from "../components/PieChart";
+import { PieChart } from "../components/PieChart";
+import { IPieChart, PieDataType } from "../components/PieChart/PieChartTypes";
 import AdmirationIcon from "../components/Icons/admirationIcon";
 
 export default {

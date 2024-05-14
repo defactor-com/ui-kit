@@ -3,15 +3,7 @@ import clsx from "clsx";
 
 import { Container } from "../Container";
 
-export interface IChartContainer {
-  tooltip?: React.ReactElement;
-  chartDescription?: string;
-  content: React.ReactNode;
-  externalStyles?: string;
-  chartSubtitle?: string;
-  fontFamily?: string;
-  haveFilter?: boolean;
-}
+import { IChartContainer } from "./ChartContainerTypes";
 
 export const ChartContainer = ({
   chartDescription,

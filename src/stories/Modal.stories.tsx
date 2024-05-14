@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Story } from "@storybook/react";
 
-import { Modal, IModal } from "../components/Modal";
+import { Modal } from "../components/Modal";
+import { IModal } from "../components/Modal/ModalTypes";
 
 export default {
   title: "Modal",

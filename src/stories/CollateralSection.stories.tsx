@@ -3,10 +3,8 @@ import { Story } from "@storybook/react";
 
 import WalletIcon from "../../public/assets/wallet-icon.svg";
 
-import {
-  CollateralSection,
-  ICollateralSection,
-} from "../components/CollateralSection";
+import { CollateralSection } from "../components/CollateralSection";
+import { ICollateralSection } from "../components/CollateralSection/CollateralSectionTypes";
 
 export default {
   title: "CollateralSection",

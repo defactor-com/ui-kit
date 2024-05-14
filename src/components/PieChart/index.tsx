@@ -10,9 +10,10 @@ import clsx from "clsx";
 
 import { Point } from "../Point";
 import { Container } from "../Container";
-import { CustomTooltipProps, IChart } from "../LineChart";
+import { CustomTooltipProps } from "../LineChart/ChartsTypes";
 import { EmptyChart } from "../EmptyChart";
 
+import { IPieChart, PieDataType } from "./PieChartTypes";
 const CustomTooltip = ({
   fontFamily,
   payload,
@@ -39,12 +40,6 @@ const CustomTooltip = ({
     />
   );
 };
-
-export type PieDataType = { value: number; name: string; color: string }[];
-
-export interface IPieChart extends Omit<IChart, "colors"> {
-  data: PieDataType;
-}
 
 const groupData = (data: PieDataType) => {
   const groupSize = 5;

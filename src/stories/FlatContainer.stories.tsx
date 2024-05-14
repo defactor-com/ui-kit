@@ -1,7 +1,8 @@
 import React from "react";
 import { Story } from "@storybook/react";
 
-import { FlatContainer, IFlatContainer } from "../components/FlatContainer";
+import { FlatContainer } from "../components/FlatContainer";
+import { IFlatContainer } from "../components/FlatContainer/FlatContainerTypes";
 
 export default {
   title: "Flat Container",

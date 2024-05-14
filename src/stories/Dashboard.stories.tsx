@@ -2,18 +2,19 @@ import React from "react";
 import { Box } from "@mui/material";
 import { Story } from "@storybook/react";
 
+import { LineChart } from "../components/LineChart";
 import {
-  LineChart,
   SeriesDataType,
   LineChartDataType,
-} from "../components/LineChart";
+} from "../components/LineChart/ChartsTypes";
 import { Tooltip } from "../components/Tooltip";
 import { BarChart } from "../components/BarChart";
 import { PieChart } from "../components/PieChart";
 import InfoIcon from "../../public/assets/info-icon.svg";
 import { ChartContainer } from "../components/ChartContainer";
 import AdmirationIcon from "../components/Icons/admirationIcon";
-import { CardItem, Dashboard, IDashboard } from "../components/Dashboard";
+import { Dashboard } from "../components/Dashboard";
+import { CardItem, IDashboard } from "../components/Dashboard/DashboardTypes";
 
 export default {
   title: "Dashboard",

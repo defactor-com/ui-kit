@@ -1,7 +1,8 @@
 import React from "react";
 import { Story } from "@storybook/react";
 
-import { CardContainer, ICardContainer } from "../components/CardContainer";
+import { CardContainer } from "../components/CardContainer";
+import { ICardContainer } from "../components/CardContainer/CardContainerTypes";
 
 export default {
   title: "Card Container",

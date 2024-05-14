@@ -5,97 +5,25 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  TooltipProps,
   CartesianGrid,
   ComposedChart,
   ResponsiveContainer,
 } from "recharts";
 import clsx from "clsx";
 import { Tabs, Tab, Box } from "@mui/material";
-import {
-  NameType,
-  ValueType,
-} from "recharts/types/component/DefaultTooltipContent";
 
 import { Point } from "../Point";
 import { Container } from "../Container";
 import { EmptyChart } from "../EmptyChart";
 import { FluctuationComponent } from "../FluctuationComponent";
 
+import {
+  ILineChart,
+  IRenderComponent,
+  LineChartTooltipProps,
+} from "./ChartsTypes";
+
 import useLineChartState from "./useLineChartState";
-
-export interface LineChartDataType {
-  date: string;
-}
-
-export interface DataArrayType {
-  fluctuation: string;
-  fluctuationValue?: string;
-  value: number;
-}
-
-export interface SeriesDataType {
-  data: DataArrayType[];
-  name: string;
-}
-
-export type FormatValueType = (
-  value: number | string,
-  options?: Intl.NumberFormatOptions
-) => string;
-
-export interface IChart {
-  emptyIcon?: React.ReactElement | string;
-  formatValueAxisY?: FormatValueType;
-  formatValueAxisX?: FormatValueType;
-  loaderComponent?: React.ReactNode;
-  formatValue?: FormatValueType;
-  formatDate?: FormatValueType;
-  emptyDescription?: string;
-  fontFamily?: string;
-  emptyTitle?: string;
-  colors: string[];
-  loading?: boolean;
-}
-
-export interface ILineChart extends IChart {
-  handleChangeFilter?(filter: string): void;
-  emptyIcon?: React.ReactElement | string;
-  data: LineChartDataType[] | undefined;
-  loaderComponent?: React.ReactNode;
-  missingData?: boolean | undefined;
-  emptyDescription?: string;
-  series: SeriesDataType[];
-  filterBgColor?: string;
-  currentFilter?: string;
-  dateFilter?: string[];
-  emptyTitle?: string;
-  loading?: boolean;
-  color?: string;
-}
-
-export interface IRenderComponent extends IChart {
-  handleOpenTooltip: ((_dotProps: any, payload: any) => void) | undefined;
-  getColorId: ((color: string) => string) | undefined;
-  isHide: ((keyName: string) => boolean) | undefined;
-  handleCloseTooltip: (() => void) | undefined;
-  tooltipActive: boolean | undefined;
-  missingData: boolean | undefined;
-  keyNames: string[] | undefined;
-  keyName: string | undefined;
-  chartData: any;
-}
-
-export interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
-  formatValue: FormatValueType;
-  formatDate?: FormatValueType;
-  fontFamily?: string;
-  colors: string[];
-}
-
-export interface LineChartTooltipProps extends CustomTooltipProps {
-  keyName?: string;
-}
 
 export const CustomTooltip = ({
   formatValue,
