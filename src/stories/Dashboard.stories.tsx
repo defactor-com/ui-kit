@@ -166,7 +166,7 @@ DashboardItem.args = {
           formatValue={formatValue}
           formatDate={(value) => new Date(value).toLocaleString()}
           formatValueAxisX={(value) => value.toLocaleString("en-US")}
-          formatValueAxisY={(value) => new Date(value).toLocaleString()}
+          formatValueAxisY={(value) => formatValue(value)}
           loading={false}
           colors={colors}
           series={series}
