@@ -8,6 +8,7 @@ import {
   IRowsObject,
   IFilterSelectedObject,
 } from "../components/Table/TableTypes";
+import AdmirationIcon from "../components/Icons/admirationIcon";
 
 export default {
   title: "Table",
@@ -106,6 +107,7 @@ const Template: Story<ITable> = (args) => {
           <span>Loading...</span>
         </div>
       }
+      emptyIcon={<AdmirationIcon />}
       emptyTitle="No pools to show"
       emptyDescription="Pools will be listed here when available. "
       headers={[
