@@ -1,13 +1,6 @@
-import React, { ChangeEvent } from "react";
+import React from "react";
 
-export type InputValue = string | number | readonly string[] | undefined;
-
-export type IInput = {
-  value: InputValue;
-  setFormat?: boolean;
-  type?: React.HTMLInputTypeAttribute | undefined;
-  onChange(e: ChangeEvent<HTMLInputElement>): void;
-};
+import { IInput } from "./InputTypes";
 
 export const Input = ({ value, type, onChange, setFormat }: IInput) => {
   return (

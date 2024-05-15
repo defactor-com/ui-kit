@@ -1,12 +1,6 @@
 import React from "react";
 
-export interface ISmallProfileImage {
-  icon?: string;
-  size?: string;
-  image?: string;
-  bgColor?: string;
-  imgChild?: React.ReactElement;
-}
+import { ISmallProfileImage } from "./SmallProfileImageTypes";
 
 export const SmallProfileImage = ({
   size,

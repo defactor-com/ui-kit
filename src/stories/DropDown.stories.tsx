@@ -1,7 +1,8 @@
 import React from "react";
 import { Story } from "@storybook/react";
 
-import { DropDown, IDropDownObject } from "../components/DropDown";
+import { DropDown } from "../components/DropDown";
+import { IDropDownObject } from "../components/DropDown/DropDownTypes";
 
 export default {
   title: "DropDown",

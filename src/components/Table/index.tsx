@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import React, { useState } from "react";
+import React from "react";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -13,56 +13,8 @@ import rightIcon from "../../../public/assets/chevron_right.svg";
 import downIcon from "../../../public/assets/arrow-down-icon.svg";
 import filterIcon from "../../../public/assets/filter-options-icon.svg";
 
-export interface IHeaderObject {
-  label: string;
-  sortFunction?(): void;
-}
-
-export interface IFilterObject {
-  label: string;
-  options?: Array<string>;
-  type?: "multiple" | "date";
-}
-
-export interface IFilterSelectedObject {
-  label: string;
-  options?: Array<string> | string;
-}
-
-export interface IitemRow {
-  activeAction: boolean;
-  component: React.ReactNode;
-}
-
-export interface IRowsObject {
-  onClickRow?(): void;
-  items: Array<IitemRow>;
-}
-
-export interface ITable {
-  loading?: boolean;
-  fontFamily?: string;
-  emptyTitle?: string;
-  visiblePage?: number;
-  primaryColor?: string;
-  haveOptions?: boolean;
-  headerbgColor?: string;
-  rowsHoverColor?: string;
-  totalRowsNumber: number;
-  rowsNumberLabel?: string;
-  rows: Array<IRowsObject>;
-  rowsPage?: Array<number>;
-  emptyDescription: string;
-  rowsPageSelected: number;
-  headers: Array<IHeaderObject>;
-  filters?: Array<IFilterObject>;
-  nextPage?(motion: string): void;
-  loaderComponent?: React.ReactNode;
-  handleSelectedRowsPage(selectedValue: string): void;
-  setFilters: React.Dispatch<
-    React.SetStateAction<Array<IFilterSelectedObject>>
-  >;
-}
+import { ITable, IFilterObject, IHeaderObject } from "./TableTypes";
+import useTableState from "./useTableState";
 
 export const Table = ({
   rows,
@@ -86,50 +38,70 @@ export const Table = ({
   handleSelectedRowsPage,
   rowsHoverColor = "rgba(38, 166, 107, 0.1)",
 }: ITable) => {
-  const [activeFilter, setActiveFilter] = useState(false);
-  const [hoverItem, setHoverItem] = useState<number>(-1);
-  const [isHovered, setIsHovered] = useState(false);
-  const buildPaginationArray = (): Array<number> => {
-    const paginationArray = [];
-    let amountElements = totalRowsNumber / rowsPageSelected;
-    let count = 1;
+  const [
+    { activeFilter, hoverItem, isHovered },
+    {
+      setActiveFilter,
+      buildPaginationArray,
+      buildPaginationArrayMobile,
+      handleMouseEnter,
+      handleMouseLeave,
+      updateData,
+    },
+  ] = useTableState({
+    totalRowsNumber,
+    rowsPageSelected,
+    visiblePage,
+    filters,
+    setFilters,
+  });
 
-    while (amountElements > 0) {
-      paginationArray.push(count);
-      count++;
-      amountElements--;
-    }
+  const RenderPagination = () => {
+    const pages = buildPaginationArray && buildPaginationArray();
+    let pagesMobile: number[] = [];
+    if (buildPaginationArrayMobile && pages)
+      pagesMobile = buildPaginationArrayMobile(pages);
 
-    return paginationArray;
-  };
-
-  const handleMouseEnter = (key: number) => {
-    setHoverItem(key);
-
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setHoverItem(-1);
-    setIsHovered(false);
-  };
-
-  const updateData = () => {
-    if (filters) {
-      const data: Array<IFilterSelectedObject> = [];
-      filters.forEach((filter) => {
-        const element = document.getElementsByName(
-          filter.label
-        )[0] as HTMLInputElement;
-        let selectFilter: IFilterSelectedObject = {
-          label: filter.label,
-          options: [],
-        };
-        if (filter.options) selectFilter.options = element.value.split(",");
-        else selectFilter.options = element?.value || "";
-        data.push(selectFilter);
-      });
-      setFilters(data);
+    if (window.innerWidth > 600) {
+      return (
+        <>
+          {pages?.map((item) => (
+            <span
+              className={clsx("variant-body1", "number-page-button")}
+              style={{
+                fontFamily: fontFamily,
+                color: visiblePage === item ? "#26A66B" : "none",
+                fontWeight: visiblePage === item ? "bold" : "normal",
+                background: visiblePage === item ? "#EAF7F1" : "white",
+              }}
+              key={item}
+              onClick={() => {}}
+            >
+              {item}
+            </span>
+          ))}
+        </>
+      );
+    } else {
+      return (
+        <>
+          {pagesMobile.map((item) => (
+            <span
+              className={clsx("variant-body1", "number-page-button")}
+              style={{
+                fontFamily: fontFamily,
+                color: visiblePage === item ? "#26A66B" : "none",
+                fontWeight: visiblePage === item ? "bold" : "normal",
+                background: visiblePage === item ? "#EAF7F1" : "white",
+              }}
+              key={item}
+              onClick={() => {}}
+            >
+              {item}
+            </span>
+          ))}
+        </>
+      );
     }
   };
 
@@ -157,10 +129,7 @@ export const Table = ({
                           fontFamily={fontFamily}
                           icon={downIcon}
                           variant="text"
-                          style={{
-                            padding: "14px 18px 14px 8px",
-                          }}
-                          externalStyles="button-style"
+                          externalStyles={clsx("button-style", "sort-button")}
                         />
                       )}
                     </div>
@@ -170,12 +139,13 @@ export const Table = ({
                   <th className="th-option">
                     <div className="center-element">
                       <Button
-                        onClick={() => setActiveFilter(!activeFilter)}
+                        onClick={() =>
+                          setActiveFilter && setActiveFilter(!activeFilter)
+                        }
                         fontFamily={fontFamily}
                         icon={filterIcon}
                         variant="text"
-                        style={{ padding: "8px 16px 8px 0px" }}
-                        externalStyles="button-style"
+                        externalStyles={clsx("button-style", "filter-button")}
                       />
                     </div>
                   </th>
@@ -190,14 +160,14 @@ export const Table = ({
                           <DropDown
                             placeholder={filter.label}
                             options={filter.options}
-                            onChange={() => updateData()}
+                            onChange={() => updateData && updateData()}
                           />
                         ) : filter.type === "date" ? (
                           <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <MobileDatePicker
                               name={filter.label}
                               className="imput-calendar"
-                              onAccept={() => updateData()}
+                              onAccept={() => updateData && updateData()}
                             />
                           </LocalizationProvider>
                         ) : (
@@ -205,7 +175,7 @@ export const Table = ({
                             name={filter.label}
                             placeholder={filter.label}
                             className="input-filter"
-                            onChange={() => updateData()}
+                            onChange={() => updateData && updateData()}
                           />
                         )}
                       </div>
@@ -221,7 +191,9 @@ export const Table = ({
                   <tr
                     key={index}
                     onMouseLeave={handleMouseLeave}
-                    onMouseEnter={() => handleMouseEnter(index)}
+                    onMouseEnter={() =>
+                      handleMouseEnter && handleMouseEnter(index)
+                    }
                     className={row.onClickRow ? "tr-action" : undefined}
                     style={{
                       backgroundColor:
@@ -303,40 +275,15 @@ export const Table = ({
                   fontFamily={fontFamily}
                   icon={leftIcon}
                   variant="text"
-                  externalStyles={clsx(
-                    "button-style",
-                    "arrow-button",
-                    "left-arrow-button"
-                  )}
+                  externalStyles={clsx("button-style", "padding-button")}
                 />
-                {buildPaginationArray().map((item) => (
-                  <span
-                    className="variant-body1"
-                    style={{
-                      margin: "8px",
-                      fontFamily: fontFamily,
-                      textDecoration:
-                        visiblePage === item ? "underline" : "none",
-                      color: visiblePage === item ? "#26A66B" : "none",
-                      fontWeight: visiblePage === item ? "bold" : "normal",
-                      cursor: "pointer",
-                    }}
-                    key={item}
-                    onClick={() => {}}
-                  >
-                    {item}
-                  </span>
-                ))}
+                <RenderPagination />
                 <Button
                   onClick={() => nextPage("+")}
                   fontFamily={fontFamily}
                   icon={rightIcon}
                   variant="text"
-                  externalStyles={clsx(
-                    "button-style",
-                    "arrow-button",
-                    "right-arrow-button"
-                  )}
+                  externalStyles={clsx("button-style", "padding-button")}
                 />
               </div>
             ) : (

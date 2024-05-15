@@ -3,7 +3,8 @@ import { Story } from "@storybook/react";
 
 import { MenuOption } from "../components/MenuOption";
 import adminIcon from "../../public/assets/admin-icon.svg";
-import { Sidebar, ISidebar } from "../components/Sidebar";
+import { Sidebar } from "../components/Sidebar";
+import { ISidebar } from "../components/Sidebar/SidebarTypes";
 import lendingIcon from "../../public/assets/lending.svg";
 import dashboardIcon from "../../public/assets/dashboard.svg";
 import borrowingIcon from "../../public/assets/borrowing.svg";

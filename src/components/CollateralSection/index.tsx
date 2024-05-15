@@ -3,19 +3,7 @@ import { Box, Typography } from "@mui/material";
 
 import factrIcon from "../../../public/assets/factr-icon.svg";
 
-export interface ICollateralSection {
-  fontFamily?: string;
-  textWallet?: string;
-  tokenSymbol?: string;
-  numberWallet?: string;
-  textCollateral?: string;
-  requiredSection: boolean;
-  backgroundColor?: string;
-  numberCollateral?: string;
-  loader?: React.ReactElement;
-  tokenIcon?: React.ReactElement | string;
-  walletIcon?: React.ReactElement | string;
-}
+import { ICollateralSection } from "./CollateralSectionTypes";
 
 export const CollateralSection = ({
   loader,
@@ -50,7 +38,8 @@ export const CollateralSection = ({
             <Typography
               variant="body1"
               textAlign="end"
-              style={{ fontFamily: fontFamily, color: "#7C7D7E" }}
+              color={"#7C7D7E"}
+              style={{ fontFamily: fontFamily }}
             >
               {tokenSymbol}
             </Typography>

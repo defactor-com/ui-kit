@@ -1,8 +1,6 @@
 import React from "react";
 
-export interface IPoint {
-  color: string;
-}
+import { IPoint } from "./PointTypes";
 
 export const Point = ({ color }: IPoint) => (
   <div className="point" style={{ backgroundColor: color }} />

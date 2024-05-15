@@ -1,41 +1,16 @@
-import React, { ChangeEvent } from "react";
+import React from "react";
 import { Tab } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { TabContext, TabPanel, TabList } from "@mui/lab";
 
 import { Button } from "../Button";
 import { Container } from "../Container";
-import { Input, InputValue } from "../Input";
+import { Input } from "../Input";
 import { CollateralSection } from "../CollateralSection";
 import lendingWhiteIcon from "../../../public/assets/lending-white-icon.svg";
 import borrowingWhiteIcon from "../../../public/assets/borrowing-white-icon.svg";
 
-export interface ILendBorrow {
-  color?: string;
-  onLend(): void;
-  onBorrow(): void;
-  bgColor?: string;
-  walletSvg: string;
-  labelLend: string;
-  currentTab: string;
-  disabled?: boolean;
-  lendingSvg: string;
-  labelBorrow: string;
-  textWallet?: string;
-  fontFamily?: string;
-  tokenSymbol?: string;
-  borrowingSvg: string;
-  textCollateral?: string;
-  value: InputValue | bigint;
-  collateralBalance?: string;
-  loader?: React.ReactElement;
-  collateralRequired?: string;
-  showRequiredCollateral?: boolean;
-  loaderCollateral?: React.ReactElement;
-  tokenIcon?: React.ReactElement | string;
-  onChange(e: ChangeEvent<HTMLInputElement>): void;
-  onChangeTab: (event: React.SyntheticEvent, newValue: string) => void;
-}
+import { ILendBorrow } from "./LendBorrowTypes";
 
 const useStyles = makeStyles(() => ({
   customIndicator: (props: { indicatorColor: string }) => ({
@@ -77,41 +52,43 @@ export const LendBorrow = ({
       content={
         <TabContext value={currentTab}>
           <div className="headerLendBorrow">
-            <TabList
-              centered
-              onChange={onChangeTab}
-              className="tabListCustom"
-              classes={{ indicator: classes.customIndicator }}
-            >
-              <Tab
-                label={labelLend}
-                value={labelLend}
-                iconPosition="start"
-                className="tabCustom"
-                style={{ fontFamily: fontFamily }}
-                icon={
-                  lendingSvg && typeof lendingSvg === "string" ? (
-                    <img src={lendingSvg} width={24} height={24} />
-                  ) : (
-                    lendingSvg
-                  )
-                }
-              />
-              <Tab
-                label={labelBorrow}
-                value={labelBorrow}
-                iconPosition="start"
-                className="tabCustom"
-                style={{ fontFamily: fontFamily }}
-                icon={
-                  borrowingSvg && typeof borrowingSvg === "string" ? (
-                    <img src={borrowingSvg} width={24} height={24} />
-                  ) : (
-                    borrowingSvg
-                  )
-                }
-              />
-            </TabList>
+            {classes && (
+              <TabList
+                centered
+                onChange={onChangeTab}
+                className="tabListCustom"
+                classes={{ indicator: classes.customIndicator }}
+              >
+                <Tab
+                  label={labelLend}
+                  value={labelLend}
+                  iconPosition="start"
+                  className="tabCustom"
+                  style={{ fontFamily: fontFamily }}
+                  icon={
+                    lendingSvg && typeof lendingSvg === "string" ? (
+                      <img src={lendingSvg} width={24} height={24} />
+                    ) : (
+                      lendingSvg
+                    )
+                  }
+                />
+                <Tab
+                  label={labelBorrow}
+                  value={labelBorrow}
+                  iconPosition="start"
+                  className="tabCustom"
+                  style={{ fontFamily: fontFamily }}
+                  icon={
+                    borrowingSvg && typeof borrowingSvg === "string" ? (
+                      <img src={borrowingSvg} width={24} height={24} />
+                    ) : (
+                      borrowingSvg
+                    )
+                  }
+                />
+              </TabList>
+            )}
           </div>
           <div className="bodyLendBorrow">
             <TabPanel value={labelLend} className="tabPanelCustom">

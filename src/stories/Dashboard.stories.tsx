@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { Story } from "@storybook/react";
+import { Box } from "@mui/material";
 
+import { LineChart } from "../components/LineChart";
 import {
-  LineChart,
-  LineChartDataType,
   SeriesDataType,
-} from "../components/LineChart";
-import { CardItem, Dashboard, IDashboard } from "../components/Dashboard";
-import { ChartContainer } from "../components/ChartContainer";
+  LineChartDataType,
+} from "../components/LineChart/ChartsTypes";
 import { Tooltip } from "../components/Tooltip";
 import { BarChart } from "../components/BarChart";
 import { PieChart } from "../components/PieChart";
-
 import InfoIcon from "../../public/assets/info-icon.svg";
+import { ChartContainer } from "../components/ChartContainer";
+import AdmirationIcon from "../components/Icons/admirationIcon";
+import { Dashboard } from "../components/Dashboard";
+import { CardItem, IDashboard } from "../components/Dashboard/DashboardTypes";
 
 export default {
   title: "Dashboard",
@@ -159,10 +161,26 @@ const Template: Story<IDashboard> = (args) => {
           tooltip={exampleTooltip}
           content={
             <LineChart
+              emptyDescription="Data will be listed here when available."
+              loaderComponent={
+                <Box
+                  height="100%"
+                  width="100%"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <span>Loading...</span>
+                </Box>
+              }
+              dateFilter={["1D", "7D", "1M", "ALL"]}
+              emptyIcon={<AdmirationIcon />}
+              emptyTitle="No data to show"
               formatValue={formatValue}
+              loading={false}
               colors={colors}
-              data={data}
               series={series}
+              data={data}
             />
           }
         />

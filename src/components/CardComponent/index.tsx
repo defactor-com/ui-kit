@@ -3,22 +3,10 @@ import clsx from "clsx";
 
 import { CardContainer } from "../CardContainer";
 import { FluctuationComponent } from "../FluctuationComponent";
-import { ITooltip } from "../Tooltip";
 import { Point } from "../Point";
 
 import { useCardState } from "./useCardState";
-
-export interface ICardComponent {
-  label: string;
-  value: number | string;
-  fluctuation?: string;
-  fluctuationValue?: string;
-  color?: string;
-  fontFamily?: string;
-  externalStyles?: string;
-  hoverBehavior?: boolean;
-  infoTooltip?: Omit<ITooltip, "handleChange">;
-}
+import { ICardComponent } from "./CardComponentTypes";
 
 export const CardComponent = ({
   label,

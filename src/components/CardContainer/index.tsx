@@ -1,14 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-export interface ICardContainer {
-  content: React.ReactNode;
-  externalStyles?: string;
-  handleMouseEnter?: (newValue: boolean) => void;
-  handleMouseLeave?: (newValue: boolean) => void;
-  isPointer?: boolean;
-  hoverBehavior?: boolean;
-}
+import { ICardContainer } from "./CardContainerTypes";
 
 export const CardContainer = ({
   externalStyles,

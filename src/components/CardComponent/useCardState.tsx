@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-import { Tooltip, ITooltip } from "../Tooltip";
+import { Tooltip } from "../Tooltip";
+import { ITooltip } from "../Tooltip/TooltipTypes";
 
 interface useCardData {
   tooltip: React.ReactElement | undefined;

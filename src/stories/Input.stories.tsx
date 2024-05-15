@@ -1,7 +1,8 @@
 import React, { ChangeEvent, useState } from "react";
 import { Story } from "@storybook/react";
 
-import { Input, IInput } from "../components/Input";
+import { Input } from "../components/Input";
+import { IInput } from "../components/Input/InputTypes";
 
 export default {
   title: "Input",

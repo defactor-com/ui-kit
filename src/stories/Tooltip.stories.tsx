@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Story } from "@storybook/react";
 
 import InfoIcon from "../../public/assets/info-icon.svg";
-import { Tooltip, ITooltip } from "../components/Tooltip";
+import { Tooltip } from "../components/Tooltip";
+import { ITooltip } from "../components/Tooltip/TooltipTypes";
 
 export default {
   title: "Tooltip",
@@ -14,6 +15,7 @@ const Template: Story<ITooltip> = (args) => {
   const handleChange = (newValue: boolean) => {
     setIsOpen(newValue);
   };
+
   return <Tooltip {...args} isOpen={isOpen} handleChange={handleChange} />;
 };
 

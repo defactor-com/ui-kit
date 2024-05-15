@@ -8,24 +8,16 @@ import {
   YAxis,
   CartesianGrid,
 } from "recharts";
+import { Tabs, Tab } from "@mui/material";
 import clsx from "clsx";
 
 import { Point } from "../Point";
 import { Container } from "../Container";
-import { CustomTooltipProps, IChart } from "../LineChart";
+import { EmptyChart } from "../EmptyChart";
+import { CustomTooltipProps } from "../LineChart/ChartsTypes";
 
+import { IBarChart } from "./BarChartTypes";
 import useBarChartState from "./useBarChartState";
-
-export interface ChartSeriesType {
-  name: string;
-  data: number[];
-}
-
-export interface IBarChart extends IChart {
-  data: string[];
-  series: ChartSeriesType[];
-  displayDirection?: "vertical" | "horizontal";
-}
 
 const CustomTooltip = ({
   fontFamily,
@@ -69,11 +61,16 @@ const CustomTooltip = ({
   );
 };
 
-export const BarChart = ({
+const Chart = ({
   data,
   series,
   colors,
   fontFamily,
+  dateFilter,
+  color = "white",
+  currentFilter,
+  filterBgColor = "#26a66b",
+  handleChangeFilter,
   formatValue = (value) => value.toLocaleString("en-US"),
   displayDirection = "horizontal",
 }: IBarChart) => {
@@ -84,8 +81,44 @@ export const BarChart = ({
     });
 
   return (
-    <div className="bar-chart-container">
+    <>
       <div className="bar-chart-graphic-container">
+        {dateFilter && (
+          <div className={clsx("display-flex", "filter-container")}>
+            <div className={clsx("display-flex", "filter-card")}>
+              <Tabs
+                value={currentFilter}
+                centered
+                variant="scrollable"
+                scrollButtons="auto"
+                classes={{
+                  root: "tabs-filter",
+                  indicator: "tabs-indicator",
+                  flexContainer: "tabs-flex-container",
+                }}
+              >
+                {dateFilter.map((item) => (
+                  <Tab
+                    classes={{
+                      root: "tab-filter",
+                    }}
+                    value={item}
+                    label={item}
+                    onClick={() =>
+                      handleChangeFilter && handleChangeFilter(item)
+                    }
+                    style={{
+                      fontFamily: fontFamily,
+                      color: item === currentFilter ? color : "#00000099",
+                      background:
+                        item === currentFilter ? filterBgColor : "#eff2f5",
+                    }}
+                  />
+                ))}
+              </Tabs>
+            </div>
+          </div>
+        )}
         <ResponsiveContainer width="100%" height={120 * data.length}>
           <RechartsBarChart
             data={chartData}
@@ -168,26 +201,92 @@ export const BarChart = ({
           </RechartsBarChart>
         </ResponsiveContainer>
       </div>
-      <div className={clsx("flex-center", "bar-chart-legend-container")}>
-        {keyNames?.map((name, index) => (
-          <span
-            key={`bar-char-legend-${index}`}
-            className={clsx("flex-center", "variant-body1")}
-            style={{ fontFamily }}
-          >
-            <input
-              className="checkbox"
-              type="checkbox"
-              checked={!isHide?.(name)}
-              onChange={(e) => {
-                setHide?.((prev) => ({ ...prev, [name]: !e.target.checked }));
-              }}
-              style={{ accentColor: colors[index % colors.length] }}
-            />
-            <Point color={colors[index % colors.length]} /> {name}{" "}
-          </span>
-        ))}
+      <div className={clsx("display-flex", "hide-bars-container")}>
+        <div className={clsx("display-flex", "checkbox-container")}>
+          {(keyNames || []).map((name, index) => (
+            <span
+              className={clsx("flex-center", "variant-body1")}
+              style={{ fontFamily: fontFamily }}
+              key={`checkbox-${name}`}
+            >
+              <input
+                className="checkbox"
+                type="checkbox"
+                checked={!isHide?.(name)}
+                onChange={(e) => {
+                  setHide?.((prev) => ({
+                    ...prev,
+                    [name]: !e.target.checked,
+                  }));
+                }}
+                style={{ accentColor: colors[index % colors.length] }}
+              />
+              <Point color={colors[index % colors.length]} /> {name}
+            </span>
+          ))}
+        </div>
       </div>
+    </>
+  );
+};
+
+export const BarChart = ({
+  data,
+  series,
+  colors,
+  fontFamily,
+  dateFilter,
+  color = "white",
+  currentFilter,
+  filterBgColor = "#26a66b",
+  handleChangeFilter,
+  formatValue = (value) => value.toLocaleString("en-US"),
+  displayDirection = "horizontal",
+  loading,
+  emptyIcon,
+  emptyTitle,
+  emptyDescription,
+  loaderComponent,
+}: IBarChart) => {
+  const [{ missingData }, {}] = useBarChartState({
+    data,
+    series,
+  });
+
+  const RenderComponent = () => {
+    if (missingData && !loading) {
+      return (
+        <EmptyChart
+          icon={emptyIcon}
+          title={emptyTitle}
+          description={emptyDescription}
+          fontFamily={fontFamily}
+        />
+      );
+    } else if (loading) {
+      return <div>{loaderComponent}</div>;
+    } else {
+      return (
+        <Chart
+          data={data}
+          series={series}
+          colors={colors}
+          fontFamily={fontFamily}
+          dateFilter={dateFilter}
+          currentFilter={currentFilter}
+          color={color}
+          filterBgColor={filterBgColor}
+          handleChangeFilter={handleChangeFilter}
+          formatValue={formatValue}
+          displayDirection={displayDirection}
+        />
+      );
+    }
+  };
+
+  return (
+    <div className="bar-chart-container">
+      <RenderComponent />
     </div>
   );
 };

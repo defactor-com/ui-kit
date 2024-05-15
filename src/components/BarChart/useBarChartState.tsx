@@ -1,17 +1,10 @@
 import { useState } from "react";
 
-import { ChartSeriesType } from ".";
-
-type BarChartHookData = {
-  chartData: any;
-  keyNames: string[];
-};
-
-type BarChartHookCallbacks = {
-  isHide: (keyName: string) => boolean;
-  setHide: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
-  getCoordinates: (max: number, gap: number) => number[];
-};
+import {
+  ChartSeriesType,
+  BarChartHookData,
+  BarChartHookCallbacks,
+} from "./BarChartTypes";
 
 const useBarChartState = ({
   data,
@@ -38,6 +31,8 @@ const useBarChartState = ({
     return { chartData, keyNames, hideInitialStatus };
   };
 
+  const missingData = !data.length || !series.length;
+
   const getCoordinates = (max: number, gap: number) => {
     const horizontalLines = [];
 
@@ -57,7 +52,7 @@ const useBarChartState = ({
   const isHide = (keyName: string) => hide[keyName];
 
   return [
-    { chartData, keyNames },
+    { chartData, keyNames, missingData },
     { isHide, setHide, getCoordinates },
   ];
 };

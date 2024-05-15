@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Story } from "@storybook/react";
 
 import { Pill } from "../components/Pill";
+import { Table } from "../components/Table";
 import {
-  Table,
   ITable,
   IRowsObject,
   IFilterSelectedObject,
-} from "../components/Table";
+} from "../components/Table/TableTypes";
 
 export default {
   title: "Table",
@@ -91,7 +91,7 @@ const Template: Story<ITable> = (args) => {
       {...args}
       loading
       haveOptions
-      visiblePage={3}
+      visiblePage={1}
       nextPage={() => {}}
       totalRowsNumber={22}
       rowsPageSelected={5}

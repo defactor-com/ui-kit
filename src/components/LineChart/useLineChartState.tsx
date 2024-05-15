@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { LineChartDataType, SeriesDataType } from ".";
+import { LineChartDataType, SeriesDataType } from "./ChartsTypes";
 
 const useLineChartState = ({
   data,
@@ -9,6 +9,9 @@ const useLineChartState = ({
   data: LineChartDataType[] | undefined;
   series: SeriesDataType[];
 }) => {
+  const [keyName, setKeyName] = useState("");
+  const [tooltipActive, setTooltipActive] = useState(false);
+
   const getInitialData = (
     data: LineChartDataType[] | undefined,
     series: SeriesDataType[]
@@ -43,8 +46,6 @@ const useLineChartState = ({
     series
   );
   const [hide, setHide] = useState(hideInitialStatus);
-  const [keyName, setKeyName] = useState("");
-  const [tooltipActive, setTooltipActive] = useState(false);
 
   const handleOpenTooltip = (_dotProps: any, payload: any) => {
     setKeyName(payload.dataKey);
@@ -57,9 +58,20 @@ const useLineChartState = ({
 
   const isHide = (keyName: string) => hide[keyName];
 
+  const getColorId = (color: string) =>
+    color.toLocaleLowerCase().replace(/ /g, "-");
+
+  const missingData = !data?.length || !series.length;
+
   return [
-    { chartData, keyNames, keyName, tooltipActive },
-    { isHide, setHide, handleOpenTooltip, handleCloseTooltip },
+    { chartData, keyNames, keyName, tooltipActive, missingData },
+    {
+      isHide,
+      setHide,
+      handleOpenTooltip,
+      handleCloseTooltip,
+      getColorId,
+    },
   ];
 };
 

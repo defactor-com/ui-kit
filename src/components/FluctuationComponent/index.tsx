@@ -1,12 +1,12 @@
 import React from "react";
 import clsx from "clsx";
 
-export interface IFluctuationComponent {
-  label: string;
-  value?: string;
-}
+import { IFluctuationComponent } from "./FluctiationComponentTypes";
 
-export const FluctuationComponent = ({ label, value }: IFluctuationComponent) => (
+export const FluctuationComponent = ({
+  label,
+  value,
+}: IFluctuationComponent) => (
   <div className="fluctuation-container">
     {value && <span className="fluctuation-change-value">{value}</span>}
     <div

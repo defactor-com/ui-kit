@@ -2,33 +2,11 @@ import React from "react";
 import clsx from "clsx";
 
 import { Container } from "../Container";
-import { ITooltip } from "../Tooltip";
 import lendIcon from "../../../public/assets/lending.svg";
 import dolarIcon from "../../../public/assets/dolar-icon.svg";
 import { CardComponent } from "../CardComponent";
 
-export type CardItem = {
-  label: string;
-  value: number | string;
-  fluctuation?: string;
-  fluctuationValue?: string;
-  color?: string;
-  infoTooltip?: Omit<ITooltip, "handleChange">;
-  hoverBehavior?: boolean;
-};
-
-export type IDashboard = {
-  content: React.ReactNode;
-  colors: string[];
-  currency: string;
-  fontFamily?: string;
-  rightLabel: string;
-  titleGraphic: string;
-  totalValueLocked: number | string;
-  bottomLabel: string;
-  bottomContainerItems: CardItem[];
-  rightContainerItems: CardItem[];
-};
+import { CardItem, IDashboard } from "./DashboardTypes";
 
 const BottomContainer = ({
   bottomLabel,

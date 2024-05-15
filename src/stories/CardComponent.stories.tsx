@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Story } from "@storybook/react";
 
-import { CardComponent, ICardComponent } from "../components/CardComponent";
+import { CardComponent } from "../components/CardComponent";
+import { ICardComponent } from "../components/CardComponent/CardComponentTypes";
 import InfoIcon from "../../public/assets/info-icon.svg";
 
 export default {
