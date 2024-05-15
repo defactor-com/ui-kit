@@ -164,6 +164,9 @@ DashboardItem.args = {
           emptyIcon={<AdmirationIcon />}
           emptyTitle="No data to show"
           formatValue={formatValue}
+          formatDate={(value) => new Date(value).toLocaleString()}
+          formatValueAxisX={(value) => value.toLocaleString("en-US")}
+          formatValueAxisY={(value) => formatValue(value)}
           loading={false}
           colors={colors}
           series={series}
