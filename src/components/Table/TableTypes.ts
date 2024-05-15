@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface IHeaderObject {
   label: string;
   sortFunction?(): void;
@@ -27,9 +29,10 @@ export interface IRowsObject {
 export interface ITable {
   loading?: boolean;
   fontFamily?: string;
+  emptyIcon?: React.ReactNode | string;
   emptyTitle?: string;
+  emptyDescription: string;
   visiblePage?: number;
-  primaryColor?: string;
   haveOptions?: boolean;
   headerbgColor?: string;
   rowsHoverColor?: string;
@@ -37,7 +40,6 @@ export interface ITable {
   rowsNumberLabel?: string;
   rows: Array<IRowsObject>;
   rowsPage?: Array<number>;
-  emptyDescription: string;
   rowsPageSelected: number;
   headers: Array<IHeaderObject>;
   filters?: Array<IFilterObject>;
