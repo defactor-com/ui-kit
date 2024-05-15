@@ -133,4 +133,7 @@ LineChartItem.args = {
   emptyIcon: <AdmirationIcon />,
   emptyTitle: "No data to show",
   emptyDescription: "Data will be listed here when available. ",
+  formatDate: (value) => new Date(value).toLocaleString(),
+  formatValueAxisX: (value) => value.toLocaleString("en-US"),
+  formatValueAxisY: (value) => new Date(value).toLocaleString(),
 };
