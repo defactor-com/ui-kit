@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.2.33
+
+### Patch Changes
+
+- 8edd31b: add hover tooltip effect to card component
+
 ## 0.2.32
 
 ### Patch Changes
