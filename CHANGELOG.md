@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.2.32
+
+### Patch Changes
+
+- 8c175f5: update table pagination styles
+
 ## 0.2.31
 
 ### Patch Changes
