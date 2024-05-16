@@ -1,15 +1,8 @@
 import { CSSProperties } from "react";
 
-interface useTooltipState {
-  getTooltipStyle: (
-    bgColor: string,
-    color: string,
-    fontFamily?: string
-  ) => CSSProperties;
-  getArrowStyle: (bgColor: string) => CSSProperties | undefined;
-}
+import { useTooltipCallbacks } from "./TooltipTypes";
 
-export const useTooltip = (): useTooltipState => {
+export const useTooltip = (): useTooltipCallbacks => {
   const getTooltipStyle = (
     bgColor: string,
     color: string,

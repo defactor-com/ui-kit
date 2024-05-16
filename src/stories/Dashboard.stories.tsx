@@ -11,6 +11,7 @@ import { Tooltip } from "../components/Tooltip";
 import { BarChart } from "../components/BarChart";
 import { PieChart } from "../components/PieChart";
 import InfoIcon from "../../public/assets/info-icon.svg";
+import InfoActiveIcon from "../../public/assets/info-active-icon.svg";
 import { ChartContainer } from "../components/ChartContainer";
 import AdmirationIcon from "../components/Icons/admirationIcon";
 import { Dashboard } from "../components/Dashboard";
@@ -23,6 +24,7 @@ export default {
 
 const infoTooltip = {
   icon: InfoIcon,
+  activeIcon: InfoActiveIcon,
   text: "This is a tooltip",
 };
 
@@ -93,12 +95,15 @@ const bottomContainerItems: CardItem[] = [
     fluctuation: "-3.4%",
     fluctuationValue: "-$2,400",
     infoTooltip: infoTooltip,
+    hoverBehavior: true,
   },
   {
     label: "Total Lent",
     value: "$20,000.00",
     fluctuation: "+3.4%",
     fluctuationValue: "+$2,400",
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
   },
 ];
 
@@ -109,7 +114,12 @@ const rightContainerItems: CardItem[] = [
     infoTooltip: infoTooltip,
     hoverBehavior: true,
   },
-  { label: "All Repaid Loans", value: "$2,500.00" },
+  {
+    label: "All Repaid Loans",
+    value: "$2,500.00",
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
   {
     label: "Interest Paid",
     value: "$200.00",
@@ -122,6 +132,7 @@ const rightContainerItems: CardItem[] = [
     color: colors[0],
     fluctuation: "+3.4%",
     infoTooltip: infoTooltip,
+    hoverBehavior: true,
   },
 ];
 
@@ -137,14 +148,19 @@ const formatValue = (
 };
 
 const Template: Story<IDashboard> = (args) => {
+  const [currentIcon, setCurrentIcon] =
+    useState<string | React.ReactElement>(InfoIcon);
   const [isOpen, setIsOpen] = useState(false);
   const handleChange = (newValue: boolean) => {
+    if (newValue) setCurrentIcon(InfoActiveIcon ? InfoActiveIcon : InfoIcon);
+    else setCurrentIcon(InfoIcon);
     setIsOpen(newValue);
   };
 
   const exampleTooltip = (
     <Tooltip
-      icon={InfoIcon}
+      sizeIcon={24}
+      icon={currentIcon}
       text={"This is a tooltip"}
       isOpen={isOpen}
       handleChange={handleChange}
@@ -190,14 +206,19 @@ const Template: Story<IDashboard> = (args) => {
 };
 
 const TemplateLending: Story<IDashboard> = (args) => {
+  const [currentIcon, setCurrentIcon] =
+    useState<string | React.ReactElement>(InfoIcon);
   const [isOpen, setIsOpen] = useState(false);
   const handleChange = (newValue: boolean) => {
+    if (newValue) setCurrentIcon(InfoActiveIcon ? InfoActiveIcon : InfoIcon);
+    else setCurrentIcon(InfoIcon);
     setIsOpen(newValue);
   };
 
   const exampleTooltip = (
     <Tooltip
-      icon={InfoIcon}
+      sizeIcon={24}
+      icon={currentIcon}
       text={"This is a tooltip"}
       isOpen={isOpen}
       handleChange={handleChange}
@@ -258,11 +279,36 @@ const pieChartData = [
   { name: "Available", value: 65, color: "#D21A4D" },
 ];
 const rightContainerItems1: CardItem[] = [
-  { label: "Total Active Loans", value: "1,200", infoTooltip: infoTooltip },
-  { label: "Loans Ready to Claim", value: "2,500" },
-  { label: "Total Claimed Loans", value: "200", infoTooltip: infoTooltip },
-  { label: "Total Interest Earned", value: "800" },
-  { label: "Total Amount Lent", value: "$7,000.00", infoTooltip: infoTooltip },
+  {
+    label: "Total Active Loans",
+    value: "1,200",
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
+  {
+    label: "Loans Ready to Claim",
+    value: "2,500",
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
+  {
+    label: "Total Claimed Loans",
+    value: "200",
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
+  {
+    label: "Total Interest Earned",
+    value: "800",
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
+  {
+    label: "Total Amount Lent",
+    value: "$7,000.00",
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
 ];
 
 export const DashboardLendingItem = TemplateLending.bind({});
@@ -279,21 +325,46 @@ DashboardLendingItem.args = {
 };
 
 const rightContainerItems2: CardItem[] = [
-  { label: "Funds Available", value: "$2500.00", infoTooltip: infoTooltip },
-  { label: "Total Loans Repaid", value: 200 },
-  { label: "Total Loans", value: 800, infoTooltip: infoTooltip },
-  { label: "Next Loan to Reach Maturity", value: "Pool B" },
+  {
+    label: "Funds Available",
+    value: "$2500.00",
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
+  {
+    label: "Total Loans Repaid",
+    value: 200,
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
+  {
+    label: "Total Loans",
+    value: 800,
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
+  {
+    label: "Next Loan to Reach Maturity",
+    value: "Pool B",
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
 ];
 
 const TemplateBorrowing: Story<IDashboard> = (args) => {
+  const [currentIcon, setCurrentIcon] =
+    useState<string | React.ReactElement>(InfoIcon);
   const [isOpen, setIsOpen] = useState(false);
   const handleChange = (newValue: boolean) => {
+    if (newValue) setCurrentIcon(InfoActiveIcon ? InfoActiveIcon : InfoIcon);
+    else setCurrentIcon(InfoIcon);
     setIsOpen(newValue);
   };
 
   const exampleTooltip = (
     <Tooltip
-      icon={InfoIcon}
+      sizeIcon={24}
+      icon={currentIcon}
       text={"This is a tooltip"}
       isOpen={isOpen}
       handleChange={handleChange}
