@@ -18,6 +18,7 @@ const Template: Story<ITooltip> = (args) => {
   const handleChange = (newValue: boolean) => {
     if (newValue) setCurrentIcon(InfoActiveIcon ? InfoActiveIcon : InfoIcon);
     else setCurrentIcon(InfoIcon);
+
     setIsOpen(newValue);
   };
 

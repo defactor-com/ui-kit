@@ -22,6 +22,7 @@ export const useCardState = (
   const handleChange = (newValue: boolean) => {
     if (newValue) setCurrentIcon(activeIcon ? activeIcon : icon);
     else setCurrentIcon(infoTooltip?.icon);
+
     setIsOpen(newValue);
   };
 
