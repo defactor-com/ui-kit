@@ -1,6 +1,6 @@
-import React from "react";
-import { Box } from "@mui/material";
+import React, { useState } from "react";
 import { Story } from "@storybook/react";
+import { Box } from "@mui/material";
 
 import { LineChart } from "../components/LineChart";
 import {
@@ -11,6 +11,7 @@ import { Tooltip } from "../components/Tooltip";
 import { BarChart } from "../components/BarChart";
 import { PieChart } from "../components/PieChart";
 import InfoIcon from "../../public/assets/info-icon.svg";
+import InfoActiveIcon from "../../public/assets/info-active-icon.svg";
 import { ChartContainer } from "../components/ChartContainer";
 import AdmirationIcon from "../components/Icons/admirationIcon";
 import { Dashboard } from "../components/Dashboard";
@@ -21,7 +22,11 @@ export default {
   component: Dashboard,
 };
 
-const exampleTooltip = <Tooltip icon={InfoIcon} text="This is a tooltip" />;
+const infoTooltip = {
+  icon: InfoIcon,
+  activeIcon: InfoActiveIcon,
+  text: "This is a tooltip",
+};
 
 const colors: string[] = ["#26A66B", "#5A5BEB", "#D21A4D"];
 const series: SeriesDataType[] = [
@@ -81,33 +86,53 @@ const bottomContainerItems: CardItem[] = [
     value: "$20,000.00",
     fluctuation: "+3.4%",
     fluctuationValue: "+$2,400",
-    tooltip: exampleTooltip,
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
   },
   {
     label: "Total Borrowed",
     value: "$20,000.00",
     fluctuation: "-3.4%",
     fluctuationValue: "-$2,400",
-    tooltip: exampleTooltip,
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
   },
   {
     label: "Total Lent",
     value: "$20,000.00",
     fluctuation: "+3.4%",
     fluctuationValue: "+$2,400",
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
   },
 ];
 
 const rightContainerItems: CardItem[] = [
-  { label: "Active Loans", value: "$12,00.00", tooltip: exampleTooltip },
-  { label: "All Repaid Loans", value: "$2,500.00" },
-  { label: "Interest Paid", value: "$200.00", tooltip: exampleTooltip },
+  {
+    label: "Active Loans",
+    value: "$12,00.00",
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
+  {
+    label: "All Repaid Loans",
+    value: "$2,500.00",
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
+  {
+    label: "Interest Paid",
+    value: "$200.00",
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
   {
     label: "Loan to Value Ratio",
     value: "75%",
     color: colors[0],
     fluctuation: "+3.4%",
-    tooltip: exampleTooltip,
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
   },
 ];
 
@@ -123,7 +148,109 @@ const formatValue = (
 };
 
 const Template: Story<IDashboard> = (args) => {
-  return <Dashboard {...args} />;
+  const [currentIcon, setCurrentIcon] =
+    useState<string | React.ReactElement>(InfoIcon);
+  const [isOpen, setIsOpen] = useState(false);
+  const handleChange = (newValue: boolean) => {
+    if (newValue) setCurrentIcon(InfoActiveIcon ? InfoActiveIcon : InfoIcon);
+    else setCurrentIcon(InfoIcon);
+
+    setIsOpen(newValue);
+  };
+
+  const exampleTooltip = (
+    <Tooltip
+      sizeIcon={24}
+      icon={currentIcon}
+      text={"This is a tooltip"}
+      isOpen={isOpen}
+      handleChange={handleChange}
+    />
+  );
+
+  return (
+    <Dashboard
+      {...args}
+      content={
+        <ChartContainer
+          chartSubtitle={"Pool Utilization"}
+          chartDescription={"Optional Description"}
+          tooltip={exampleTooltip}
+          content={
+            <LineChart
+              emptyDescription="Data will be listed here when available."
+              loaderComponent={
+                <Box
+                  height="100%"
+                  width="100%"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <span>Loading...</span>
+                </Box>
+              }
+              dateFilter={["1D", "7D", "1M", "ALL"]}
+              emptyIcon={<AdmirationIcon />}
+              emptyTitle="No data to show"
+              formatValue={formatValue}
+              loading={false}
+              colors={colors}
+              series={series}
+              data={data}
+            />
+          }
+        />
+      }
+    />
+  );
+};
+
+const TemplateLending: Story<IDashboard> = (args) => {
+  const [currentIcon, setCurrentIcon] =
+    useState<string | React.ReactElement>(InfoIcon);
+  const [isOpen, setIsOpen] = useState(false);
+  const handleChange = (newValue: boolean) => {
+    if (newValue) setCurrentIcon(InfoActiveIcon ? InfoActiveIcon : InfoIcon);
+    else setCurrentIcon(InfoIcon);
+
+    setIsOpen(newValue);
+  };
+
+  const exampleTooltip = (
+    <Tooltip
+      sizeIcon={24}
+      icon={currentIcon}
+      text={"This is a tooltip"}
+      isOpen={isOpen}
+      handleChange={handleChange}
+    />
+  );
+
+  const Charts = () => (
+    <>
+      <ChartContainer
+        chartSubtitle="Pool Utilization"
+        chartDescription="Optional Description"
+        tooltip={exampleTooltip}
+        content={
+          <BarChart
+            formatValue={formatValue}
+            series={barChatSeries}
+            colors={barChartColors}
+            data={poolNames}
+          />
+        }
+      />
+      <ChartContainer
+        chartSubtitle="Pools by Status"
+        chartDescription="Optional Description"
+        content={<PieChart data={pieChartData} />}
+      />
+    </>
+  );
+
+  return <Dashboard {...args} content={<Charts />} />;
 };
 
 export const DashboardItem = Template.bind({});
@@ -140,41 +267,6 @@ DashboardItem.args = {
   bottomContainerItems,
   rightLabel: "Pools",
   rightContainerItems,
-  content: (
-    <ChartContainer
-      chartDescription={"Optional Description"}
-      chartSubtitle={"Pool Utilization"}
-      tooltip={exampleTooltip}
-      haveFilter
-      content={
-        <LineChart
-          emptyDescription="Data will be listed here when available."
-          loaderComponent={
-            <Box
-              height="100%"
-              width="100%"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-            >
-              <span>Loading...</span>
-            </Box>
-          }
-          dateFilter={["1D", "7D", "1M", "ALL"]}
-          emptyIcon={<AdmirationIcon />}
-          emptyTitle="No data to show"
-          formatValue={formatValue}
-          formatDate={(value) => new Date(value).toLocaleString()}
-          formatValueAxisX={(value) => value.toLocaleString("en-US")}
-          formatValueAxisY={(value) => formatValue(value)}
-          loading={false}
-          colors={colors}
-          series={series}
-          data={data}
-        />
-      }
-    />
-  ),
 };
 
 const poolNames = ["POOL A", "POOL B", "POOL C"];
@@ -189,37 +281,39 @@ const pieChartData = [
   { name: "Available", value: 65, color: "#D21A4D" },
 ];
 const rightContainerItems1: CardItem[] = [
-  { label: "Total Active Loans", value: "1,200", tooltip: exampleTooltip },
-  { label: "Loans Ready to Claim", value: "2,500" },
-  { label: "Total Claimed Loans", value: "200", tooltip: exampleTooltip },
-  { label: "Total Interest Earned", value: "800" },
-  { label: "Total Amount Lent", value: "$7,000.00", tooltip: exampleTooltip },
+  {
+    label: "Total Active Loans",
+    value: "1,200",
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
+  {
+    label: "Loans Ready to Claim",
+    value: "2,500",
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
+  {
+    label: "Total Claimed Loans",
+    value: "200",
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
+  {
+    label: "Total Interest Earned",
+    value: "800",
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
+  {
+    label: "Total Amount Lent",
+    value: "$7,000.00",
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
 ];
 
-const Charts = () => (
-  <>
-    <ChartContainer
-      chartDescription="Optional Description"
-      chartSubtitle="Pool Utilization"
-      tooltip={exampleTooltip}
-      content={
-        <BarChart
-          formatValue={formatValue}
-          series={barChatSeries}
-          colors={barChartColors}
-          data={poolNames}
-        />
-      }
-    />
-    <ChartContainer
-      chartSubtitle="Pools by Status"
-      chartDescription="Optional Description"
-      content={<PieChart data={pieChartData} />}
-    />
-  </>
-);
-
-export const DashboardLendingItem = Template.bind({});
+export const DashboardLendingItem = TemplateLending.bind({});
 DashboardLendingItem.args = {
   currency: "USDC",
   totalValueLocked: formatValue(888888888888, {
@@ -230,19 +324,84 @@ DashboardLendingItem.args = {
   titleGraphic: "Total Value Locked",
   rightLabel: "Stats",
   rightContainerItems: rightContainerItems1,
-  content: <Charts />,
 };
 
 const rightContainerItems2: CardItem[] = [
-  { label: "Funds Available", value: "$2500.00", tooltip: exampleTooltip },
-  { label: "Total Loans Repaid", value: 200 },
-  { label: "Total Loans", value: 800, tooltip: exampleTooltip },
-  { label: "Next Loan to Reach Maturity", value: "Pool B" },
+  {
+    label: "Funds Available",
+    value: "$2500.00",
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
+  {
+    label: "Total Loans Repaid",
+    value: 200,
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
+  {
+    label: "Total Loans",
+    value: 800,
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
+  {
+    label: "Next Loan to Reach Maturity",
+    value: "Pool B",
+    infoTooltip: infoTooltip,
+    hoverBehavior: true,
+  },
 ];
 
-export const DashboardBorrowingItem = Template.bind({});
+const TemplateBorrowing: Story<IDashboard> = (args) => {
+  const [currentIcon, setCurrentIcon] =
+    useState<string | React.ReactElement>(InfoIcon);
+  const [isOpen, setIsOpen] = useState(false);
+  const handleChange = (newValue: boolean) => {
+    if (newValue) setCurrentIcon(InfoActiveIcon ? InfoActiveIcon : InfoIcon);
+    else setCurrentIcon(InfoIcon);
+
+    setIsOpen(newValue);
+  };
+
+  const exampleTooltip = (
+    <Tooltip
+      sizeIcon={24}
+      icon={currentIcon}
+      text={"This is a tooltip"}
+      isOpen={isOpen}
+      handleChange={handleChange}
+    />
+  );
+
+  const Charts = () => (
+    <>
+      <ChartContainer
+        chartSubtitle="Pool Utilization"
+        chartDescription="Optional Description"
+        tooltip={exampleTooltip}
+        content={
+          <BarChart
+            formatValue={formatValue}
+            series={barChatSeries}
+            colors={barChartColors}
+            data={poolNames}
+          />
+        }
+      />
+      <ChartContainer
+        chartSubtitle="Pools by Status"
+        chartDescription="Optional Description"
+        content={<PieChart data={pieChartData} />}
+      />
+    </>
+  );
+
+  return <Dashboard {...args} content={<Charts />} />;
+};
+
+export const DashboardBorrowingItem = TemplateBorrowing.bind({});
 DashboardBorrowingItem.args = {
   rightLabel: "Stats",
   rightContainerItems: rightContainerItems2,
-  content: <Charts />,
 };

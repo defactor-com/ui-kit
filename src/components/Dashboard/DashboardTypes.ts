@@ -1,10 +1,13 @@
+import { ITooltip } from "../Tooltip/TooltipTypes";
+
 export type CardItem = {
   label: string;
   value: number | string;
   fluctuation?: string;
   fluctuationValue?: string;
   color?: string;
-  tooltip?: React.ReactNode;
+  infoTooltip?: Omit<ITooltip, "handleChange">;
+  hoverBehavior?: boolean;
 };
 
 export type IDashboard = {

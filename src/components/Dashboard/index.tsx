@@ -40,7 +40,8 @@ const BottomContainer = ({
             fluctuationValue={item.fluctuationValue}
             fontFamily={fontFamily}
             color={item.color || colors[index % colors.length]}
-            tooltip={item.tooltip}
+            infoTooltip={item.infoTooltip}
+            hoverBehavior={item.hoverBehavior}
           />
         ))}
       </div>
@@ -78,7 +79,8 @@ const RightContainer = ({
             fluctuation={item.fluctuation}
             fluctuationValue={item.fluctuationValue}
             color={item.color}
-            tooltip={item.tooltip}
+            infoTooltip={item.infoTooltip}
+            hoverBehavior={item.hoverBehavior}
           />
         ))}
       </div>

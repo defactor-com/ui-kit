@@ -4,6 +4,7 @@ import { Tooltip as MuiTooltip, IconButton } from "@mui/material";
 import InfoIcon from "../../../public/assets/info-icon.svg";
 
 import { useTooltip } from "./useTooltipState";
+
 import { ITooltip } from "./TooltipTypes";
 
 export const Tooltip: React.FC<ITooltip> = ({
@@ -14,7 +15,9 @@ export const Tooltip: React.FC<ITooltip> = ({
   text,
   position = "top",
   fontFamily,
-  open,
+  open = false,
+  isOpen,
+  handleChange,
 }) => {
   const { getTooltipStyle, getArrowStyle } = useTooltip();
 
@@ -22,7 +25,9 @@ export const Tooltip: React.FC<ITooltip> = ({
     <MuiTooltip
       title={text}
       arrow
-      open={open}
+      open={isOpen || open}
+      onMouseEnter={() => handleChange(true)}
+      onMouseLeave={() => handleChange(false)}
       placement={position}
       componentsProps={{
         tooltip: {
