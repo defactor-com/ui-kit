@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.2.31
+
+### Patch Changes
+
+- d4a81ac: add default icon to tooltip
+
 ## 0.2.30
 
 ### Patch Changes
