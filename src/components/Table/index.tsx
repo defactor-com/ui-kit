@@ -23,17 +23,17 @@ export const Table = ({
   filters,
   rowsPage,
   nextPage,
+  emptyIcon = <AdmirationIcon />,
   emptyTitle,
+  emptyDescription,
   fontFamily,
   setFilters,
   haveOptions,
   visiblePage,
-  primaryColor,
   headerbgColor,
   loaderComponent,
   rowsNumberLabel,
   totalRowsNumber,
-  emptyDescription,
   rowsPageSelected,
   handleSelectedRowsPage,
   rowsHoverColor = "rgba(38, 166, 107, 0.1)",
@@ -228,7 +228,11 @@ export const Table = ({
           {!rows?.length && !loading && (
             <div className="empt-state-container">
               <div className="img-empty">
-                <AdmirationIcon color={primaryColor} />
+                {typeof emptyIcon === "string" ? (
+                  <img src={emptyIcon} width={32} height={32} />
+                ) : (
+                  emptyIcon
+                )}
               </div>
               <span
                 className={clsx("variant-h3", "small-margin-button")}

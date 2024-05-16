@@ -1,5 +1,5 @@
 export interface ITooltip {
-  icon: React.ReactElement | string;
+  icon?: React.ReactElement | string;
   sizeIcon?: number;
   bgColor?: string;
   fontFamily?: string;

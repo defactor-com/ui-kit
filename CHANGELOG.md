@@ -1,5 +1,23 @@
 # @defactor/ui-kit
 
+## 0.2.32
+
+### Patch Changes
+
+- 8c175f5: update table pagination styles
+
+## 0.2.31
+
+### Patch Changes
+
+- d4a81ac: add default icon to tooltip
+
+## 0.2.30
+
+### Patch Changes
+
+- 841717c: Refactor Code
+
 ## 0.2.28
 
 ### Patch Changes
