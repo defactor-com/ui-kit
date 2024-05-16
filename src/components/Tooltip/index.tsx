@@ -8,7 +8,7 @@ import { useTooltip } from "./useTooltipState";
 import { ITooltip } from "./TooltipTypes";
 
 export const Tooltip: React.FC<ITooltip> = ({
-  icon,
+  icon = InfoIcon,
   sizeIcon = 16,
   color = "white",
   bgColor = "#26a66b",
