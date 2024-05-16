@@ -1,11 +1,13 @@
 import React from "react";
 import { Tooltip as MuiTooltip, IconButton } from "@mui/material";
 
+import InfoIcon from "../../../public/assets/info-icon.svg";
+
 import { useTooltip } from "./useTooltipState";
 import { ITooltip } from "./TooltipTypes";
 
 export const Tooltip: React.FC<ITooltip> = ({
-  icon,
+  icon = InfoIcon,
   sizeIcon = 16,
   color = "white",
   bgColor = "#26a66b",
