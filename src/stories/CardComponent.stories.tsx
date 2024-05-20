@@ -23,7 +23,6 @@ const Template: Story<ICardComponent> = (args) => {
 
 export const CardComponentItem = Template.bind({});
 CardComponentItem.args = {
-  color: "#26A66B",
   label: "Total",
   value: "$2,000",
   fluctuation: "+3.5",

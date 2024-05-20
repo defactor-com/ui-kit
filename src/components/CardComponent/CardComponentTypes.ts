@@ -6,7 +6,6 @@ export interface ICardComponent {
   value: number | string;
   fluctuation?: string;
   fluctuationValue?: string;
-  color?: string;
   fontFamily?: string;
   externalStyles?: string;
   hoverBehavior?: boolean;

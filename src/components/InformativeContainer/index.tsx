@@ -1,9 +1,9 @@
 import React from "react";
 import clsx from "clsx";
 
-import { ICardContainer } from "./CardContainerTypes";
+import { IInformativeContainer } from "./InformativeContainerTypes";
 
-export const CardContainer = ({
+export const InformativeContainer = ({
   externalStyles,
   content,
   handleMouseEnter,
@@ -11,9 +11,9 @@ export const CardContainer = ({
   hoverBehavior,
   isPointer,
   ...props
-}: ICardContainer) => (
+}: IInformativeContainer) => (
   <div
-    className={clsx(externalStyles, "card-container")}
+    className={clsx(externalStyles, "informative-container")}
     {...props}
     style={{
       cursor: isPointer ? "pointer" : "text",

@@ -14,6 +14,7 @@ export * from "./components/Container";
 export * from "./components/LendBorrow";
 export * from "./components/MenuOption";
 export * from "./components/CardContainer";
+export * from "./components/InformativeContainer";
 export * from "./components/CardComponent";
 export * from "./components/BarChart";
 export * from "./components/PieChart";
