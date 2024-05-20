@@ -3,6 +3,7 @@ import clsx from "clsx";
 
 import { CardContainer } from "../CardContainer";
 import { FluctuationComponent } from "../FluctuationComponent";
+import { Point } from "../Point";
 
 import { useCardState } from "./useCardState";
 import { ICardComponent } from "./CardComponentTypes";
@@ -12,6 +13,7 @@ export const CardComponent = ({
   value,
   fluctuation,
   fluctuationValue,
+  color,
   fontFamily,
   externalStyles,
   hoverBehavior = false,
@@ -35,7 +37,7 @@ export const CardComponent = ({
               className={clsx("flex-center", "variant-body1")}
               style={{ fontFamily }}
             >
-              {label}
+              {color && <Point color={color} />} {label}
             </span>
             {tooltip && <div>{tooltip}</div>}
           </div>
