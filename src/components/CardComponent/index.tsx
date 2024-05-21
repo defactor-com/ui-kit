@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-import { CardContainer } from "../CardContainer";
+import { InformativeContainer } from "../InformativeContainer";
 import { FluctuationComponent } from "../FluctuationComponent";
 import { Point } from "../Point";
 
@@ -24,7 +24,7 @@ export const CardComponent = ({
   const isPonter = tooltip && hoverBehavior;
 
   return (
-    <CardContainer
+    <InformativeContainer
       isPointer={isPonter}
       hoverBehavior={hoverBehavior}
       handleMouseEnter={handleChange}

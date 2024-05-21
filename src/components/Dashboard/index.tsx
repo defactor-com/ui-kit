@@ -33,7 +33,10 @@ const BottomContainer = ({
         {(bottomContainerItems || []).map((item, index) => (
           <CardComponent
             key={`bottom-item-${index}`}
-            externalStyles="dashboard-bottom-flat-containers"
+            externalStyles={clsx(
+              "dashboard-bottom-flat-containers",
+              item.externalStyles
+            )}
             value={item.value}
             label={item.label}
             fluctuation={item.fluctuation}
@@ -72,7 +75,10 @@ const RightContainer = ({
         {(rightContainerItems || []).map((item, index) => (
           <CardComponent
             key={`right-item-${index}`}
-            externalStyles="dashboard-right-flat-containers"
+            externalStyles={clsx(
+              "dashboard-right-flat-containers",
+              item.externalStyles
+            )}
             value={item.value}
             label={item.label}
             fontFamily={fontFamily}

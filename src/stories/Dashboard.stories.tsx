@@ -88,6 +88,7 @@ const bottomContainerItems: CardItem[] = [
     fluctuationValue: "+$2,400",
     infoTooltip: infoTooltip,
     hoverBehavior: true,
+    externalStyles: "right-border",
   },
   {
     label: "Total Borrowed",
@@ -96,6 +97,7 @@ const bottomContainerItems: CardItem[] = [
     fluctuationValue: "-$2,400",
     infoTooltip: infoTooltip,
     hoverBehavior: true,
+    externalStyles: "right-border",
   },
   {
     label: "Total Lent",
@@ -113,18 +115,21 @@ const rightContainerItems: CardItem[] = [
     value: "$12,00.00",
     infoTooltip: infoTooltip,
     hoverBehavior: true,
+    externalStyles: "bottom-border",
   },
   {
     label: "All Repaid Loans",
     value: "$2,500.00",
     infoTooltip: infoTooltip,
     hoverBehavior: true,
+    externalStyles: "bottom-border",
   },
   {
     label: "Interest Paid",
     value: "$200.00",
     infoTooltip: infoTooltip,
     hoverBehavior: true,
+    externalStyles: "bottom-border",
   },
   {
     label: "Loan to Value Ratio",
@@ -285,24 +290,28 @@ const rightContainerItems1: CardItem[] = [
     value: "1,200",
     infoTooltip: infoTooltip,
     hoverBehavior: true,
+    externalStyles: "bottom-border",
   },
   {
     label: "Loans Ready to Claim",
     value: "2,500",
     infoTooltip: infoTooltip,
     hoverBehavior: true,
+    externalStyles: "bottom-border",
   },
   {
     label: "Total Claimed Loans",
     value: "200",
     infoTooltip: infoTooltip,
     hoverBehavior: true,
+    externalStyles: "bottom-border",
   },
   {
     label: "Total Interest Earned",
     value: "800",
     infoTooltip: infoTooltip,
     hoverBehavior: true,
+    externalStyles: "bottom-border",
   },
   {
     label: "Total Amount Lent",
@@ -331,24 +340,28 @@ const rightContainerItems2: CardItem[] = [
     value: "$2500.00",
     infoTooltip: infoTooltip,
     hoverBehavior: true,
+    externalStyles: "bottom-border",
   },
   {
     label: "Total Loans Repaid",
     value: 200,
     infoTooltip: infoTooltip,
     hoverBehavior: true,
+    externalStyles: "bottom-border",
   },
   {
     label: "Total Loans",
     value: 800,
     infoTooltip: infoTooltip,
     hoverBehavior: true,
+    externalStyles: "bottom-border",
   },
   {
     label: "Next Loan to Reach Maturity",
     value: "Pool B",
     infoTooltip: infoTooltip,
     hoverBehavior: true,
+    externalStyles: "bottom-border",
   },
 ];
 
