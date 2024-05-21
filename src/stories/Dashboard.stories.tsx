@@ -129,7 +129,6 @@ const rightContainerItems: CardItem[] = [
   {
     label: "Loan to Value Ratio",
     value: "75%",
-    color: colors[0],
     fluctuation: "+3.4%",
     infoTooltip: infoTooltip,
     hoverBehavior: true,
