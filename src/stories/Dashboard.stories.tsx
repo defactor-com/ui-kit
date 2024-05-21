@@ -361,7 +361,6 @@ const rightContainerItems2: CardItem[] = [
     value: "Pool B",
     infoTooltip: infoTooltip,
     hoverBehavior: true,
-    externalStyles: "bottom-border",
   },
 ];
 
