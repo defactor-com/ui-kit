@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.2.34
+
+### Patch Changes
+
+- c92cfb3: Add Informative Container
+
 ## 0.2.33
 
 ### Patch Changes
