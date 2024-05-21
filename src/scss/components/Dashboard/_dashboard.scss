@@ -280,6 +280,9 @@ $breakpoint-mobile: 600px;
 
 .checkbox-container {
   gap: 16px;
+  @media (max-width: $breakpoint-mobile) {
+    flex-direction: column;
+  }
 }
 
 .checkbox {
