@@ -6,8 +6,10 @@ export type CardItem = {
   fluctuation?: string;
   fluctuationValue?: string;
   color?: string;
-  infoTooltip?: Omit<ITooltip, "handleChange">;
+  fontFamily?: string;
+  externalStyles?: string;
   hoverBehavior?: boolean;
+  infoTooltip?: Omit<ITooltip, "handleChange">;
 };
 
 export type IDashboard = {
