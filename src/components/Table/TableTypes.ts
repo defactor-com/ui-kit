@@ -46,6 +46,7 @@ export interface ITable {
   nextPage?(motion: string): void;
   loaderComponent?: React.ReactNode;
   handleSelectedRowsPage(selectedValue: string): void;
+  handleSelectedPage?(selectedValue: number): void;
   setFilters: React.Dispatch<
     React.SetStateAction<Array<IFilterSelectedObject>>
   >;
