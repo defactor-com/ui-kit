@@ -48,12 +48,12 @@ const BottomContainer = ({
             )}
             value={item.value}
             label={item.label}
-            fluctuation={item.fluctuation}
-            fluctuationValue={item.fluctuationValue}
             fontFamily={fontFamily}
-            color={item.color || colors[index % colors.length]}
+            fluctuation={item.fluctuation}
             infoTooltip={item.infoTooltip}
             hoverBehavior={item.hoverBehavior}
+            fluctuationValue={item.fluctuationValue}
+            color={item.color || colors[index % colors.length]}
           />
         ))}
       </div>
@@ -100,12 +100,12 @@ const RightContainer = ({
             )}
             value={item.value}
             label={item.label}
+            color={item.color}
             fontFamily={fontFamily}
             fluctuation={item.fluctuation}
-            fluctuationValue={item.fluctuationValue}
-            color={item.color}
             infoTooltip={item.infoTooltip}
             hoverBehavior={item.hoverBehavior}
+            fluctuationValue={item.fluctuationValue}
           />
         ))}
       </div>
