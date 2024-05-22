@@ -1,5 +1,12 @@
 # @defactor/ui-kit
 
+## 0.2.35
+
+### Patch Changes
+
+- 68b57bd: Update mobile styles
+- dab6c55: Update styles and stories on dashboard
+
 ## 0.2.34
 
 ### Patch Changes
