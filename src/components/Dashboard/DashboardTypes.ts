@@ -13,14 +13,16 @@ export type CardItem = {
 };
 
 export type IDashboard = {
-  content: React.ReactNode;
   colors: string[];
   currency: string;
-  fontFamily?: string;
   rightLabel: string;
-  titleGraphic: string;
-  totalValueLocked: number | string;
+  fontFamily?: string;
   bottomLabel: string;
-  bottomContainerItems: CardItem[];
+  titleGraphic: string;
+  content: React.ReactNode;
   rightContainerItems: CardItem[];
+  bottomContainerItems: CardItem[];
+  totalValueLocked: number | string;
+  rightIcon?: React.ReactElement | string;
+  bottomIcon?: React.ReactElement | string;
 };

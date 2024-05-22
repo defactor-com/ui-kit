@@ -1,29 +1,38 @@
 import React from "react";
 import clsx from "clsx";
 
-import { Container } from "../Container";
-import lendIcon from "../../../public/assets/lending.svg";
 import dolarIcon from "../../../public/assets/dolar-icon.svg";
 import { CardComponent } from "../CardComponent";
+import { Container } from "../Container";
 
 import { CardItem, IDashboard } from "./DashboardTypes";
 
 const BottomContainer = ({
-  bottomLabel,
   bottomContainerItems,
+  bottomLabel,
   colors = [],
   fontFamily,
+  icon,
 }: {
-  bottomLabel: string;
+  icon?: React.ReactElement | string;
   bottomContainerItems: CardItem[];
-  colors: string[];
+  bottomLabel: string;
   fontFamily?: string;
+  colors: string[];
 }) => {
   return (
     <>
       <div className={clsx("flex-center", "margin-top-high")}>
         <div className="pools-icon-container">
-          <img width={20} src={lendIcon} alt="lend icon" />
+          {icon && typeof icon === "string" ? (
+            <img
+              src={icon}
+              alt={`${bottomLabel} icon`}
+              className="menu-option-icon"
+            />
+          ) : (
+            icon
+          )}
         </div>
         <span className="variant-h3" style={{ fontFamily }}>
           {bottomLabel}
@@ -39,12 +48,12 @@ const BottomContainer = ({
             )}
             value={item.value}
             label={item.label}
-            fluctuation={item.fluctuation}
-            fluctuationValue={item.fluctuationValue}
             fontFamily={fontFamily}
-            color={item.color || colors[index % colors.length]}
+            fluctuation={item.fluctuation}
             infoTooltip={item.infoTooltip}
             hoverBehavior={item.hoverBehavior}
+            fluctuationValue={item.fluctuationValue}
+            color={item.color || colors[index % colors.length]}
           />
         ))}
       </div>
@@ -53,19 +62,29 @@ const BottomContainer = ({
 };
 
 const RightContainer = ({
-  rightLabel,
   rightContainerItems,
+  rightLabel,
   fontFamily,
+  icon,
 }: {
-  rightLabel: string;
+  icon?: React.ReactElement | string;
   rightContainerItems: CardItem[];
   fontFamily?: string;
+  rightLabel: string;
 }) => {
   return (
     <div className="pools-container">
       <div className="flex-center">
         <div className="pools-icon-container">
-          <img width={20} src={lendIcon} alt="lend icon" />
+          {icon && typeof icon === "string" ? (
+            <img
+              src={icon}
+              alt={`${rightLabel} icon`}
+              className="menu-option-icon"
+            />
+          ) : (
+            icon
+          )}
         </div>
         <span className="variant-h3" style={{ fontFamily }}>
           {rightLabel}
@@ -81,12 +100,12 @@ const RightContainer = ({
             )}
             value={item.value}
             label={item.label}
+            color={item.color}
             fontFamily={fontFamily}
             fluctuation={item.fluctuation}
-            fluctuationValue={item.fluctuationValue}
-            color={item.color}
             infoTooltip={item.infoTooltip}
             hoverBehavior={item.hoverBehavior}
+            fluctuationValue={item.fluctuationValue}
           />
         ))}
       </div>
@@ -95,16 +114,18 @@ const RightContainer = ({
 };
 
 export const Dashboard = ({
-  bottomLabel,
   bottomContainerItems = [],
   rightContainerItems = [],
-  colors,
-  currency,
+  totalValueLocked,
+  titleGraphic,
+  bottomLabel,
   fontFamily,
   rightLabel,
-  titleGraphic,
-  totalValueLocked,
+  bottomIcon,
+  rightIcon,
+  currency,
   content,
+  colors,
 }: IDashboard) => (
   <Container
     content={
@@ -140,8 +161,9 @@ export const Dashboard = ({
               <BottomContainer
                 bottomContainerItems={bottomContainerItems}
                 bottomLabel={bottomLabel}
-                colors={colors}
                 fontFamily={fontFamily}
+                icon={bottomIcon}
+                colors={colors}
               />
             )}
           </div>
@@ -150,6 +172,7 @@ export const Dashboard = ({
           rightContainerItems={rightContainerItems}
           rightLabel={rightLabel}
           fontFamily={fontFamily}
+          icon={rightIcon}
         />
       </div>
     }
