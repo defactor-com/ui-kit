@@ -86,19 +86,25 @@ const tableData = [
 
 const Template: Story<ITable> = (args) => {
   const [filters, setFilters] = useState<Array<IFilterSelectedObject>>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handleSelectedPage = (value: number) => {
+    setCurrentPage(value);
+  };
 
   return (
     <Table
       {...args}
       loading
       haveOptions
-      visiblePage={1}
+      visiblePage={currentPage}
       nextPage={() => {}}
       totalRowsNumber={22}
       rowsPageSelected={5}
       rowsPage={[5, 10, 15]}
       rowsNumberLabel="Rows per page:"
       handleSelectedRowsPage={() => {}}
+      handleSelectedPage={handleSelectedPage}
       setFilters={setFilters}
       loaderComponent={
         <div

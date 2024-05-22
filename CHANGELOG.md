@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.2.36
+
+### Patch Changes
+
+- 6abc0dc: add handle on click page to table
+
 ## 0.2.35
 
 ### Patch Changes

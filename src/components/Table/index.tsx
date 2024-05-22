@@ -36,6 +36,7 @@ export const Table = ({
   totalRowsNumber,
   rowsPageSelected,
   handleSelectedRowsPage,
+  handleSelectedPage,
   rowsHoverColor = "rgba(38, 166, 107, 0.1)",
 }: ITable) => {
   const [
@@ -75,7 +76,7 @@ export const Table = ({
                 background: visiblePage === item ? "#EAF7F1" : "white",
               }}
               key={item}
-              onClick={() => {}}
+              onClick={() => handleSelectedPage && handleSelectedPage(item)}
             >
               {item}
             </span>
@@ -95,7 +96,7 @@ export const Table = ({
                 background: visiblePage === item ? "#EAF7F1" : "white",
               }}
               key={item}
-              onClick={() => {}}
+              onClick={() => handleSelectedPage && handleSelectedPage(item)}
             >
               {item}
             </span>
