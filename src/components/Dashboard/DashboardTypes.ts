@@ -1,3 +1,4 @@
+import React from "react";
 import { ITooltip } from "../Tooltip/TooltipTypes";
 
 export type CardItem = {
@@ -15,6 +16,7 @@ export type CardItem = {
 export type IDashboard = {
   colors: string[];
   currency: string;
+  currencyIcon?: React.ReactElement | string;
   rightLabel: string;
   fontFamily?: string;
   bottomLabel: string;

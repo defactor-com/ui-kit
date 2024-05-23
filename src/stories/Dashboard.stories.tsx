@@ -12,6 +12,7 @@ import { BarChart } from "../components/BarChart";
 import { PieChart } from "../components/PieChart";
 import InfoIcon from "../../public/assets/info-icon.svg";
 import InfoActiveIcon from "../../public/assets/info-active-icon.svg";
+import DolarIcon from "../../public/assets/dolar-icon.svg";
 import { ChartContainer } from "../components/ChartContainer";
 import AdmirationIcon from "../components/Icons/admirationIcon";
 import { Dashboard } from "../components/Dashboard";
@@ -261,6 +262,7 @@ export const DashboardItem = Template.bind({});
 DashboardItem.args = {
   colors,
   currency: "USDC",
+  currencyIcon: DolarIcon,
   totalValueLocked: formatValue(888888888888, {
     style: "decimal",
     minimumFractionDigits: 2,
@@ -324,6 +326,7 @@ const rightContainerItems1: CardItem[] = [
 export const DashboardLendingItem = TemplateLending.bind({});
 DashboardLendingItem.args = {
   currency: "USDC",
+  currencyIcon: DolarIcon,
   totalValueLocked: formatValue(888888888888, {
     style: "decimal",
     minimumFractionDigits: 2,
@@ -413,6 +416,14 @@ const TemplateBorrowing: Story<IDashboard> = (args) => {
 
 export const DashboardBorrowingItem = TemplateBorrowing.bind({});
 DashboardBorrowingItem.args = {
+  currency: "USDC",
+  currencyIcon: DolarIcon,
+  totalValueLocked: formatValue(888888888888, {
+    style: "decimal",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }),
+  titleGraphic: "Total Value Locked",
   rightLabel: "Stats",
   rightContainerItems: rightContainerItems2,
 };

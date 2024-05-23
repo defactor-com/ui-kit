@@ -124,6 +124,7 @@ export const Dashboard = ({
   bottomIcon,
   rightIcon,
   currency,
+  currencyIcon = dolarIcon,
   content,
   colors,
 }: IDashboard) => (
@@ -134,7 +135,11 @@ export const Dashboard = ({
           <div className="graphic-container-internal">
             {titleGraphic && (
               <div className="graphic-header">
-                <img src={dolarIcon} alt="currency icon" />
+                {currencyIcon && typeof currencyIcon === "string" ? (
+                  <img src={currencyIcon} alt="currency icon" />
+                ) : (
+                  currencyIcon
+                )}
                 <span
                   className={clsx("variant-h3", "margin-left")}
                   style={{ fontFamily }}
