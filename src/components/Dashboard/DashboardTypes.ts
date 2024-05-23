@@ -28,3 +28,18 @@ export type IDashboard = {
   rightIcon?: React.ReactElement | string;
   bottomIcon?: React.ReactElement | string;
 };
+
+export interface IBottomContainer {
+  icon?: React.ReactElement | string;
+  bottomContainerItems: CardItem[];
+  bottomLabel: string;
+  fontFamily?: string;
+  colors: string[];
+}
+
+export interface IRightContainer {
+  icon?: React.ReactElement | string;
+  rightContainerItems: CardItem[];
+  fontFamily?: string;
+  rightLabel: string;
+}

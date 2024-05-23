@@ -4,15 +4,13 @@ import {
   ChartSeriesType,
   BarChartHookData,
   BarChartHookCallbacks,
+  IBarChartState,
 } from "./BarChartTypes";
 
 const useBarChartState = ({
   data,
   series,
-}: {
-  data: string[];
-  series: ChartSeriesType[];
-}): [BarChartHookData, BarChartHookCallbacks] => {
+}: IBarChartState): [BarChartHookData, BarChartHookCallbacks] => {
   const getInitialData = (data: string[], series: ChartSeriesType[]) => {
     const chartData: any = data.map((name) => ({ name }));
     const keyNames: string[] = [];

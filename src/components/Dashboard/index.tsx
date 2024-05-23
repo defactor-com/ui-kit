@@ -5,7 +5,11 @@ import dolarIcon from "../../../public/assets/dolar-icon.svg";
 import { CardComponent } from "../CardComponent";
 import { Container } from "../Container";
 
-import { CardItem, IDashboard } from "./DashboardTypes";
+import {
+  IDashboard,
+  IBottomContainer,
+  IRightContainer,
+} from "./DashboardTypes";
 
 const BottomContainer = ({
   bottomContainerItems,
@@ -13,13 +17,7 @@ const BottomContainer = ({
   colors = [],
   fontFamily,
   icon,
-}: {
-  icon?: React.ReactElement | string;
-  bottomContainerItems: CardItem[];
-  bottomLabel: string;
-  fontFamily?: string;
-  colors: string[];
-}) => {
+}: IBottomContainer) => {
   return (
     <>
       <div className={clsx("flex-center", "margin-top-high")}>
@@ -66,12 +64,7 @@ const RightContainer = ({
   rightLabel,
   fontFamily,
   icon,
-}: {
-  icon?: React.ReactElement | string;
-  rightContainerItems: CardItem[];
-  fontFamily?: string;
-  rightLabel: string;
-}) => {
+}: IRightContainer) => {
   return (
     <div className="pools-container">
       <div className="flex-center">

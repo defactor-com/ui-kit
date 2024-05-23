@@ -27,3 +27,8 @@ export type BarChartHookCallbacks = {
   setHide: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
   getCoordinates: (max: number, gap: number) => number[];
 };
+
+export interface IBarChartState {
+  data: string[];
+  series: ChartSeriesType[];
+}
