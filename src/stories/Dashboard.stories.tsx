@@ -13,6 +13,8 @@ import { PieChart } from "../components/PieChart";
 import InfoIcon from "../../public/assets/info-icon.svg";
 import InfoActiveIcon from "../../public/assets/info-active-icon.svg";
 import DolarIcon from "../../public/assets/dolar-icon.svg";
+import LendingIcon from "../../public/assets/lending.svg";
+import BorrowingIcon from "../../public/assets/borrowing.svg";
 import { ChartContainer } from "../components/ChartContainer";
 import AdmirationIcon from "../components/Icons/admirationIcon";
 import { Dashboard } from "../components/Dashboard";
@@ -270,8 +272,10 @@ DashboardItem.args = {
   }),
   titleGraphic: "Total Value Locked",
   bottomLabel: "General",
+  bottomIcon: BorrowingIcon,
   bottomContainerItems,
   rightLabel: "Pools",
+  rightIcon: LendingIcon,
   rightContainerItems,
 };
 
@@ -334,6 +338,7 @@ DashboardLendingItem.args = {
   }),
   titleGraphic: "Total Value Locked",
   rightLabel: "Stats",
+  rightIcon: LendingIcon,
   rightContainerItems: rightContainerItems1,
 };
 
@@ -425,5 +430,6 @@ DashboardBorrowingItem.args = {
   }),
   titleGraphic: "Total Value Locked",
   rightLabel: "Stats",
+  rightIcon: BorrowingIcon,
   rightContainerItems: rightContainerItems2,
 };
