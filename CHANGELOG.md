@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.2.40
+
+### Patch Changes
+
+- 81ef103: Requested changes minor improves
+
 ## 0.2.36
 
 ### Patch Changes
