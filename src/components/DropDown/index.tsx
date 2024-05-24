@@ -22,6 +22,7 @@ const MenuProps = {
 
 export const DropDown = ({
   placeholder,
+  fontFamily,
   options,
   onChange,
 }: IDropDownObject) => {
@@ -36,6 +37,7 @@ export const DropDown = ({
           name={placeholder}
           multiple
           displayEmpty
+          style={{ fontFamily: fontFamily }}
           value={selectedOptions}
           onChange={handleChange}
           input={<OutlinedInput />}
@@ -51,7 +53,7 @@ export const DropDown = ({
           className="dropdown-container"
         >
           <MenuItem disabled value="">
-            <em>{placeholder}</em>
+            <em style={{ fontFamily: fontFamily }}>{placeholder}</em>
           </MenuItem>
           {options.map((name) => (
             <MenuItem key={name} value={name} className="checkBox">

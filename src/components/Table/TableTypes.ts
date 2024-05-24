@@ -16,14 +16,14 @@ export interface IFilterSelectedObject {
   options?: Array<string> | string;
 }
 
-export interface IitemRow {
+export interface IItemRow {
   activeAction: boolean;
   component: React.ReactNode;
 }
 
 export interface IRowsObject {
   onClickRow?(): void;
-  items: Array<IitemRow>;
+  items: Array<IItemRow>;
 }
 
 export interface ITable {
