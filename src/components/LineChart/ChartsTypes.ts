@@ -71,3 +71,8 @@ export interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
 export interface LineChartTooltipProps extends CustomTooltipProps {
   keyName?: string;
 }
+
+export interface ILineChartState {
+  data: LineChartDataType[] | undefined;
+  series: SeriesDataType[];
+}

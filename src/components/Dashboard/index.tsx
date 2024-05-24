@@ -1,11 +1,15 @@
 import React from "react";
 import clsx from "clsx";
 
-import dolarIcon from "../../../public/assets/dolar-icon.svg";
+import DollarIcon from "../../../public/assets/dollar-icon.svg";
 import { CardComponent } from "../CardComponent";
 import { Container } from "../Container";
 
-import { CardItem, IDashboard } from "./DashboardTypes";
+import {
+  IDashboard,
+  IBottomContainer,
+  IRightContainer,
+} from "./DashboardTypes";
 
 const BottomContainer = ({
   bottomContainerItems,
@@ -13,13 +17,7 @@ const BottomContainer = ({
   colors = [],
   fontFamily,
   icon,
-}: {
-  icon?: React.ReactElement | string;
-  bottomContainerItems: CardItem[];
-  bottomLabel: string;
-  fontFamily?: string;
-  colors: string[];
-}) => {
+}: IBottomContainer) => {
   return (
     <>
       <div className={clsx("flex-center", "margin-top-high")}>
@@ -66,12 +64,7 @@ const RightContainer = ({
   rightLabel,
   fontFamily,
   icon,
-}: {
-  icon?: React.ReactElement | string;
-  rightContainerItems: CardItem[];
-  fontFamily?: string;
-  rightLabel: string;
-}) => {
+}: IRightContainer) => {
   return (
     <div className="pools-container">
       <div className="flex-center">
@@ -124,6 +117,7 @@ export const Dashboard = ({
   bottomIcon,
   rightIcon,
   currency,
+  currencyIcon = DollarIcon,
   content,
   colors,
 }: IDashboard) => (
@@ -134,7 +128,11 @@ export const Dashboard = ({
           <div className="graphic-container-internal">
             {titleGraphic && (
               <div className="graphic-header">
-                <img src={dolarIcon} alt="currency icon" />
+                {currencyIcon && typeof currencyIcon === "string" ? (
+                  <img src={currencyIcon} alt="currency icon" />
+                ) : (
+                  currencyIcon
+                )}
                 <span
                   className={clsx("variant-h3", "margin-left")}
                   style={{ fontFamily }}

@@ -12,6 +12,9 @@ import { BarChart } from "../components/BarChart";
 import { PieChart } from "../components/PieChart";
 import InfoIcon from "../../public/assets/info-icon.svg";
 import InfoActiveIcon from "../../public/assets/info-active-icon.svg";
+import DollarIcon from "../../public/assets/dollar-icon.svg";
+import LendingIcon from "../../public/assets/lending.svg";
+import BorrowingIcon from "../../public/assets/borrowing.svg";
 import { ChartContainer } from "../components/ChartContainer";
 import AdmirationIcon from "../components/Icons/admirationIcon";
 import { Dashboard } from "../components/Dashboard";
@@ -87,7 +90,6 @@ const bottomContainerItems: CardItem[] = [
     fluctuation: "+3.4%",
     fluctuationValue: "+$2,400",
     infoTooltip: infoTooltip,
-    hoverBehavior: true,
     externalStyles: "right-border",
   },
   {
@@ -96,7 +98,6 @@ const bottomContainerItems: CardItem[] = [
     fluctuation: "-3.4%",
     fluctuationValue: "-$2,400",
     infoTooltip: infoTooltip,
-    hoverBehavior: true,
     externalStyles: "right-border",
   },
   {
@@ -105,7 +106,6 @@ const bottomContainerItems: CardItem[] = [
     fluctuation: "+3.4%",
     fluctuationValue: "+$2,400",
     infoTooltip: infoTooltip,
-    hoverBehavior: true,
   },
 ];
 
@@ -114,21 +114,18 @@ const rightContainerItems: CardItem[] = [
     label: "Active Loans",
     value: "$12,00.00",
     infoTooltip: infoTooltip,
-    hoverBehavior: true,
     externalStyles: "bottom-border",
   },
   {
     label: "All Repaid Loans",
     value: "$2,500.00",
     infoTooltip: infoTooltip,
-    hoverBehavior: true,
     externalStyles: "bottom-border",
   },
   {
     label: "Interest Paid",
     value: "$200.00",
     infoTooltip: infoTooltip,
-    hoverBehavior: true,
     externalStyles: "bottom-border",
   },
   {
@@ -136,7 +133,6 @@ const rightContainerItems: CardItem[] = [
     value: "75%",
     fluctuation: "+3.4%",
     infoTooltip: infoTooltip,
-    hoverBehavior: true,
   },
 ];
 
@@ -261,6 +257,7 @@ export const DashboardItem = Template.bind({});
 DashboardItem.args = {
   colors,
   currency: "USDC",
+  currencyIcon: DollarIcon,
   totalValueLocked: formatValue(888888888888, {
     style: "decimal",
     minimumFractionDigits: 2,
@@ -268,8 +265,10 @@ DashboardItem.args = {
   }),
   titleGraphic: "Total Value Locked",
   bottomLabel: "General",
+  bottomIcon: BorrowingIcon,
   bottomContainerItems,
   rightLabel: "Pools",
+  rightIcon: LendingIcon,
   rightContainerItems,
 };
 
@@ -289,41 +288,37 @@ const rightContainerItems1: CardItem[] = [
     label: "Total Active Loans",
     value: "1,200",
     infoTooltip: infoTooltip,
-    hoverBehavior: true,
     externalStyles: "bottom-border",
   },
   {
     label: "Loans Ready to Claim",
     value: "2,500",
     infoTooltip: infoTooltip,
-    hoverBehavior: true,
     externalStyles: "bottom-border",
   },
   {
     label: "Total Claimed Loans",
     value: "200",
     infoTooltip: infoTooltip,
-    hoverBehavior: true,
     externalStyles: "bottom-border",
   },
   {
     label: "Total Interest Earned",
     value: "800",
     infoTooltip: infoTooltip,
-    hoverBehavior: true,
     externalStyles: "bottom-border",
   },
   {
     label: "Total Amount Lent",
     value: "$7,000.00",
     infoTooltip: infoTooltip,
-    hoverBehavior: true,
   },
 ];
 
 export const DashboardLendingItem = TemplateLending.bind({});
 DashboardLendingItem.args = {
   currency: "USDC",
+  currencyIcon: DollarIcon,
   totalValueLocked: formatValue(888888888888, {
     style: "decimal",
     minimumFractionDigits: 2,
@@ -331,6 +326,7 @@ DashboardLendingItem.args = {
   }),
   titleGraphic: "Total Value Locked",
   rightLabel: "Stats",
+  rightIcon: LendingIcon,
   rightContainerItems: rightContainerItems1,
 };
 
@@ -339,28 +335,24 @@ const rightContainerItems2: CardItem[] = [
     label: "Funds Available",
     value: "$2500.00",
     infoTooltip: infoTooltip,
-    hoverBehavior: true,
     externalStyles: "bottom-border",
   },
   {
     label: "Total Loans Repaid",
     value: 200,
     infoTooltip: infoTooltip,
-    hoverBehavior: true,
     externalStyles: "bottom-border",
   },
   {
     label: "Total Loans",
     value: 800,
     infoTooltip: infoTooltip,
-    hoverBehavior: true,
     externalStyles: "bottom-border",
   },
   {
     label: "Next Loan to Reach Maturity",
     value: "Pool B",
     infoTooltip: infoTooltip,
-    hoverBehavior: true,
   },
 ];
 
@@ -413,6 +405,15 @@ const TemplateBorrowing: Story<IDashboard> = (args) => {
 
 export const DashboardBorrowingItem = TemplateBorrowing.bind({});
 DashboardBorrowingItem.args = {
+  currency: "USDC",
+  currencyIcon: DollarIcon,
+  totalValueLocked: formatValue(888888888888, {
+    style: "decimal",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }),
+  titleGraphic: "Total Value Locked",
   rightLabel: "Stats",
+  rightIcon: BorrowingIcon,
   rightContainerItems: rightContainerItems2,
 };

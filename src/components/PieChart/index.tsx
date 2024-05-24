@@ -15,6 +15,7 @@ import { EmptyChart } from "../EmptyChart";
 
 import { IPieChart } from "./PieChartTypes";
 import usePieChartState from "./usePieChartState";
+
 const CustomTooltip = ({
   fontFamily,
   payload,
@@ -43,6 +44,7 @@ const CustomTooltip = ({
 };
 
 const RADIAN = Math.PI / 180;
+
 const renderCustomizedLabel = ({
   cx,
   cy,

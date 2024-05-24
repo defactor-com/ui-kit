@@ -1,14 +1,12 @@
 import { useState } from "react";
 
-import { LineChartDataType, SeriesDataType } from "./ChartsTypes";
+import {
+  LineChartDataType,
+  SeriesDataType,
+  ILineChartState,
+} from "./ChartsTypes";
 
-const useLineChartState = ({
-  data,
-  series,
-}: {
-  data: LineChartDataType[] | undefined;
-  series: SeriesDataType[];
-}) => {
+const useLineChartState = ({ data, series }: ILineChartState) => {
   const [keyName, setKeyName] = useState("");
   const [tooltipActive, setTooltipActive] = useState(false);
 
