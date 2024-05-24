@@ -3,9 +3,16 @@ $breakpoint-tablet: 911px;
 $breakpoint-mobile: 600px;
 
 .tooltip-container {
-  padding: 8px 16px 16px 16px !important;
   background-color: #f8f9fc !important;
   border: solid 1.27px #f9f9f9 !important;
+}
+
+.vertical-padding {
+  padding: 8px 8px 16px 8px !important
+}
+
+.horizontal-padding {
+  padding: 8px 16px 16px 16px !important;
 }
 
 .date-label {
@@ -24,6 +31,14 @@ $breakpoint-mobile: 600px;
 .value-label {
   font-weight: 700;
   font-size: 20px;
+  color: #242424;
+  line-height: 100%;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+
+.value-label-bartchart {
+  font-weight: 700;
   color: #242424;
   line-height: 100%;
   letter-spacing: 0.2px;

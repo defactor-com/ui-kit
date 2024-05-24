@@ -20,6 +20,7 @@ import { IBarChart } from "./BarChartTypes";
 import useBarChartState from "./useBarChartState";
 
 const CustomTooltip = ({
+  displayDirection,
   fontFamily,
   payload,
   colors,
@@ -32,24 +33,43 @@ const CustomTooltip = ({
 
   return (
     <Container
-      externalStyles="tooltip-container"
+      externalStyles={clsx(
+        "tooltip-container",
+        displayDirection === "vertical"
+          ? "vertical-padding"
+          : "horizontal-padding"
+      )}
       content={
         <span>
           <span className="date-label" style={{ fontFamily }}>
             {" "}
             {name}
           </span>
-          <div className={clsx("flex-column-direction", "margin-top")}>
+          <div className="flex-column-direction">
             {payload.map((item, index) => (
               <div
                 key={`bar-chart-tooltip-${index}`}
-                className="bar-chart-tooltip-item"
+                className={clsx("bar-chart-tooltip-item", "margin-top")}
               >
-                <span style={{ fontFamily }} className="flex-center">
+                <span
+                  style={{ fontFamily }}
+                  className={clsx(
+                    "flex-center",
+                    displayDirection === "vertical" ? "variant-caption" : ""
+                  )}
+                >
                   <Point color={colors[index % colors.length]} />{" "}
                   {`${item.name}: `}
                 </span>
-                <span className="value-label" style={{ fontFamily }}>
+                <span
+                  className={clsx(
+                    displayDirection === "vertical"
+                      ? "variant-caption"
+                      : "variant-h3",
+                    "value-label-bartchart"
+                  )}
+                  style={{ fontFamily }}
+                >
                   {formatValue(Number(item.value))}
                 </span>
               </div>
@@ -82,7 +102,11 @@ const Chart = ({
 
   return (
     <>
-      <div className="bar-chart-graphic-container">
+      <div
+        className={
+          displayDirection === "vertical" ? "" : "bar-chart-graphic-container"
+        }
+      >
         {dateFilter && (
           <div className={clsx("display-flex", "filter-container")}>
             <div className={clsx("display-flex", "filter-card")}>
@@ -195,13 +219,19 @@ const Chart = ({
                   colors={colors}
                   fontFamily={fontFamily}
                   formatValue={formatValue}
+                  displayDirection={displayDirection}
                 />
               }
             />
           </RechartsBarChart>
         </ResponsiveContainer>
       </div>
-      <div className={clsx("display-flex", "hide-bars-container")}>
+      <div
+        className={clsx(
+          "display-flex",
+          displayDirection === "vertical" ? "" : "hide-bars-container"
+        )}
+      >
         <div className={clsx("display-flex", "checkbox-container")}>
           {(keyNames || []).map((name, index) => (
             <span
@@ -269,16 +299,16 @@ export const BarChart = ({
       return (
         <Chart
           data={data}
+          color={color}
           series={series}
           colors={colors}
           fontFamily={fontFamily}
           dateFilter={dateFilter}
-          currentFilter={currentFilter}
-          color={color}
-          filterBgColor={filterBgColor}
-          handleChangeFilter={handleChangeFilter}
           formatValue={formatValue}
+          currentFilter={currentFilter}
+          filterBgColor={filterBgColor}
           displayDirection={displayDirection}
+          handleChangeFilter={handleChangeFilter}
         />
       );
     }

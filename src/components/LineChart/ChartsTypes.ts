@@ -62,6 +62,7 @@ export interface IRenderComponent extends IChart {
 }
 
 export interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
+  displayDirection?: "vertical" | "horizontal";
   formatValue: FormatValueType;
   formatDate?: FormatValueType;
   fontFamily?: string;
