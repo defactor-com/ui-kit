@@ -121,7 +121,7 @@ export const Table = ({
             >
               <tr>
                 {headers.map((item: IHeaderObject) => (
-                  <th key={item.label}>
+                  <th style={{ fontFamily: fontFamily }} key={item.label}>
                     <div className="center-element">
                       {item.label}
                       {item.sortFunction && (
@@ -154,11 +154,12 @@ export const Table = ({
               </tr>
               {activeFilter && filters && (
                 <tr className="tr-head">
-                  {filters.map((filter: IFilterObject) => (
+                  {filters?.map((filter: IFilterObject) => (
                     <th key={filter.label} className="th-filter">
-                      <div className="filter-container">
+                      <div className="table-filter-container">
                         {filter.options ? (
                           <DropDown
+                            fontFamily={fontFamily}
                             placeholder={filter.label}
                             options={filter.options}
                             onChange={() => updateData && updateData()}
@@ -167,6 +168,7 @@ export const Table = ({
                           <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <MobileDatePicker
                               name={filter.label}
+                              sx={{ fontFamily: fontFamily }}
                               className="imput-calendar"
                               onAccept={() => updateData && updateData()}
                             />
@@ -176,6 +178,7 @@ export const Table = ({
                             name={filter.label}
                             placeholder={filter.label}
                             className="input-filter"
+                            style={{ fontFamily: fontFamily }}
                             onChange={() => updateData && updateData()}
                           />
                         )}
