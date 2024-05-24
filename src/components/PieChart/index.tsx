@@ -116,19 +116,21 @@ const Chart = ({
       {groupData &&
         groupData(data).map((data, index) => (
           <div className="pie-chart-legend-container" key={`subgroup-${index}`}>
-            {(data || []).map(({ name, color }, index) => (
-              <span
-                className={clsx(
-                  "flex-center",
-                  "variant-body1",
-                  "piechart-label-styles"
-                )}
-                style={{ fontFamily }}
-                key={`pie-chart-legend-${name}`}
-              >
-                <Point color={color} /> {name}
-              </span>
-            ))}
+            <div>
+              {(data || []).map(({ name, color }, index) => (
+                <span
+                  className={clsx(
+                    "flex-center",
+                    "variant-body1",
+                    "piechart-label-styles"
+                  )}
+                  style={{ fontFamily }}
+                  key={`pie-chart-legend-${name}`}
+                >
+                  <Point color={color} /> {name}
+                </span>
+              ))}
+            </div>
           </div>
         ))}
     </>
