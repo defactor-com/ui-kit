@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-import dolarIcon from "../../../public/assets/dolar-icon.svg";
+import DollarIcon from "../../../public/assets/dollar-icon.svg";
 import { CardComponent } from "../CardComponent";
 import { Container } from "../Container";
 
@@ -117,7 +117,7 @@ export const Dashboard = ({
   bottomIcon,
   rightIcon,
   currency,
-  currencyIcon = dolarIcon,
+  currencyIcon = DollarIcon,
   content,
   colors,
 }: IDashboard) => (
