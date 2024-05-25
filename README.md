@@ -4,8 +4,8 @@
 
 </span>
 
-
 # Defactor UI Starter Kit
+
 A frontend UI template for new projects to get started building on Defactor quickly while maintaining consistency in visual design and styles with other Defactor tools.
 
 For more information on how to use the defactor UI Kit please refer to our [developer documentation site](https://defactor.dev/docs/front-end-ui/react-components).
@@ -20,36 +20,45 @@ Some things you need before getting started:
 
 - [git](https://git-scm.com/)
 - [node.js](https://nodejs.org/es/)
-- [docker](https://www.docker.com/)
+- [yarn](https://yarnpkg.com/)
 
 ### Running for the first time
 
 1.  Clone this repo using `git clone --depth=1 git@github.com:defactor-com/ui-kit.git <YOUR_PROJECT_NAME>`
 2.  Move to the appropriate directory: `cd <YOUR_PROJECT_NAME>`.
-3.  Copy and rename the `.env.example` to `.env` then update the environment variables according to your needs
 
 ### Quick start
 
-At this point you can execute `make run` to execute distribute action locally.
+At this point you can execute `yarn storybook` to execute distribute action locally.
 
 ## File Structure
+
+We use the following technologies:
+
+- [React](https://es.react.dev/) Library to create components
+- [Scss](https://sass-lang.com/) Allow improve styles by component
+- [Rollup](https://rollupjs.org/) API for fast compilation of code changes
 
 Within the project repository you will find the following directories and files:
 
 ```
 ui-kit/
+├── public ..................... Public Sources Assets
 ├── src ..................... Project Source Code
-| ├── config ................ Configuration Parameters
-├── package.json ............ NPM Project Metadata
-├── yarn-lock.json .......... NPM Packages Lock File
-├── .env.example ............ Environmental Variables Example File
+| ├── components ................ Components of Defactor Tools
+| ├── scss ................ Customs styles by Component
+| ├── stories ................ Use example by Component
 ├── .gitignore .............. Files Ignored by Git
-├── Dockerfile .............. Docker Build 
+├── CHANGELOG.md .............. Change log
+├── package.json ............ NPM Project Metadata
+├── yarn.lock .......... NPM Packages Lock File
 ├── LICENSE ................. MIT License Terms
 └── README.md ............... Project Documentation
 ```
 
 ## Contributing
+
+To contribute, please run `yarn changeset` to make a request to improve the version
 
 Please report bugs big and small by [opening an issue](https://github.com/defactor-com/ui-kit/issues)
 
