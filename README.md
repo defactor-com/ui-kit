@@ -14,7 +14,7 @@ For more information on how to use the defactor UI Kit please refer to our [deve
 
 Basic knowledge about React and Storybook
 
-### Getting started
+### Getting Started
 
 Some things you need before getting started:
 
@@ -22,13 +22,13 @@ Some things you need before getting started:
 - [node.js](https://nodejs.org/es/)
 - [yarn](https://yarnpkg.com/)
 
-### Running for the first time
+### Running for the First Time
 
 1. Clone this repo using `git clone --depth=1 git@github.com:defactor-com/ui-kit.git <YOUR_PROJECT_NAME>`
 2. Move to the appropriate directory: `cd <YOUR_PROJECT_NAME>`.
 3. Run `yarn` to install all the dependencies
 
-### Quick start
+### Quick Start
 
 At this point you can execute `yarn storybook` to execute distribute action locally.
 
@@ -44,17 +44,17 @@ Within the project repository you will find the following directories and files:
 
 ```
 ui-kit/
-├── public ..................... Public Sources Assets
-├── src ..................... Project Source Code
-| ├── components ................ Components of Defactor Tools
-| ├── scss ................ Customs styles by Component
-| ├── stories ................ Use example by Component
-├── .gitignore .............. Files Ignored by Git
-├── CHANGELOG.md .............. Change log
-├── package.json ............ NPM Project Metadata
-├── yarn.lock .......... NPM Packages Lock File
-├── LICENSE ................. MIT License Terms
-└── README.md ............... Project Documentation
+├── public/ ..................... Public Source Assets
+├── src/ ........................ Project Source Code
+│   ├── components/ ............. Defactor Tools Components
+│   ├── scss/ ................... Custom Styles per Component
+│   ├── stories/ ................ Usage Examples per Component
+├── .gitignore .................. Files Ignored by Git
+├── CHANGELOG.md ................ Change Log
+├── package.json ................ NPM Project Metadata
+├── yarn.lock ................... Yarn Packages Lock File
+├── LICENSE ..................... MIT License Terms
+└── README.md ................... Project Documentation
 ```
 
 ## Contributing
