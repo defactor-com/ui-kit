@@ -12,7 +12,7 @@ For more information on how to use the defactor UI Kit please refer to our [deve
 
 ## Installation
 
-Basic knowledge about Docker and NodeJS is required.
+Basic knowledge about React and Storybook
 
 ### Getting started
 
@@ -24,8 +24,9 @@ Some things you need before getting started:
 
 ### Running for the first time
 
-1.  Clone this repo using `git clone --depth=1 git@github.com:defactor-com/ui-kit.git <YOUR_PROJECT_NAME>`
-2.  Move to the appropriate directory: `cd <YOUR_PROJECT_NAME>`.
+1. Clone this repo using `git clone --depth=1 git@github.com:defactor-com/ui-kit.git <YOUR_PROJECT_NAME>`
+2. Move to the appropriate directory: `cd <YOUR_PROJECT_NAME>`.
+3. Run `yarn` to install all the dependencies
 
 ### Quick start
 
@@ -59,6 +60,8 @@ ui-kit/
 ## Contributing
 
 To contribute, please run `yarn changeset` to make a request to improve the version
+
+If the PR is approved, the next release package is automatically created.
 
 Please report bugs big and small by [opening an issue](https://github.com/defactor-com/ui-kit/issues)
 
