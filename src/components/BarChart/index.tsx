@@ -85,14 +85,16 @@ const Chart = ({
   data,
   series,
   colors,
+  showXAxis,
   fontFamily,
   dateFilter,
-  color = "white",
   currentFilter,
-  filterBgColor = "#26a66b",
+  color = "white",
   handleChangeFilter,
-  formatValue = (value) => value.toLocaleString("en-US"),
+  filterBgColor = "#26a66b",
   displayDirection = "horizontal",
+  formatValue = (value) => value.toLocaleString("en-US"),
+  formatValueVertical = (value) => value.toLocaleString("en-US"),
 }: IBarChart) => {
   const [{ chartData, keyNames }, { isHide, setHide, getCoordinates }] =
     useBarChartState({
@@ -143,11 +145,11 @@ const Chart = ({
             </div>
           </div>
         )}
-        <ResponsiveContainer width="100%" height={120 * data.length}>
+        <ResponsiveContainer width="100%" height={125 * data.length}>
           <RechartsBarChart
+            barGap={8}
             data={chartData}
             layout={displayDirection === "vertical" ? "horizontal" : "vertical"}
-            barGap={8}
           >
             {displayDirection === "horizontal" ? (
               <CartesianGrid
@@ -160,31 +162,35 @@ const Chart = ({
               <CartesianGrid
                 strokeDasharray="12 12"
                 verticalCoordinatesGenerator={(props) =>
-                  getCoordinates(props.xAxis.width, props.xAxis.bandSize)
+                  getCoordinates(props.xAxis.width, props.xAxis.bandSize, 65)
                 }
               />
             )}
-            <XAxis
-              type={displayDirection === "vertical" ? "category" : "number"}
-              axisLine={false}
-              tick={(props) => (
-                <text
-                  x={props.x + 10}
-                  y={props.y + 15}
-                  fontSize={12}
-                  fill="#7C7D7E"
-                  textAnchor="end"
-                  fontWeight={500}
-                  fontFamily={fontFamily}
-                >
-                  {displayDirection === "horizontal"
-                    ? formatValue(props.payload.value)
-                    : chartData[props.payload.index].name}
-                </text>
-              )}
-            />
+            {showXAxis && (
+              <XAxis
+                type={displayDirection === "vertical" ? "category" : "number"}
+                stroke="transparent"
+                axisLine={false}
+                tick={(props) => (
+                  <text
+                    x={props.x + 10}
+                    y={props.y + 15}
+                    fontSize={12}
+                    fill="#7C7D7E"
+                    textAnchor="end"
+                    fontWeight={500}
+                    fontFamily={fontFamily}
+                  >
+                    {displayDirection === "horizontal"
+                      ? formatValue(props.payload.value)
+                      : chartData[props.payload.index].name}
+                  </text>
+                )}
+              />
+            )}
             <YAxis
               type={displayDirection === "vertical" ? "number" : "category"}
+              stroke="#transparent"
               axisLine={false}
               tick={(props) => (
                 <text
@@ -198,7 +204,7 @@ const Chart = ({
                 >
                   {displayDirection === "horizontal"
                     ? chartData[props.payload.index].name
-                    : formatValue(props.payload.value)}
+                    : formatValueVertical(props.payload.value)}
                 </text>
               )}
             />
@@ -229,7 +235,9 @@ const Chart = ({
       <div
         className={clsx(
           "display-flex",
-          displayDirection === "vertical" ? "" : "hide-bars-container"
+          displayDirection === "vertical"
+            ? "hide-bars-container-vertical"
+            : "hide-bars-container"
         )}
       >
         <div className={clsx("display-flex", "checkbox-container")}>
@@ -264,19 +272,21 @@ export const BarChart = ({
   data,
   series,
   colors,
-  fontFamily,
-  dateFilter,
-  color = "white",
-  currentFilter,
-  filterBgColor = "#26a66b",
-  handleChangeFilter,
-  formatValue = (value) => value.toLocaleString("en-US"),
-  displayDirection = "horizontal",
   loading,
   emptyIcon,
+  dateFilter,
+  fontFamily,
   emptyTitle,
-  emptyDescription,
+  currentFilter,
+  color = "white",
   loaderComponent,
+  emptyDescription,
+  showXAxis = true,
+  handleChangeFilter,
+  filterBgColor = "#26a66b",
+  displayDirection = "horizontal",
+  formatValue = (value) => value.toLocaleString("en-US"),
+  formatValueVertical = (value) => value.toLocaleString("en-US"),
 }: IBarChart) => {
   const [{ missingData }, {}] = useBarChartState({
     data,
@@ -302,6 +312,7 @@ export const BarChart = ({
           color={color}
           series={series}
           colors={colors}
+          showXAxis={showXAxis}
           fontFamily={fontFamily}
           dateFilter={dateFilter}
           formatValue={formatValue}
@@ -309,6 +320,7 @@ export const BarChart = ({
           filterBgColor={filterBgColor}
           displayDirection={displayDirection}
           handleChangeFilter={handleChangeFilter}
+          formatValueVertical={formatValueVertical}
         />
       );
     }
