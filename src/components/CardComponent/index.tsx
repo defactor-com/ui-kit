@@ -11,13 +11,13 @@ import { ICardComponent } from "./CardComponentTypes";
 export const CardComponent = ({
   label,
   value,
-  fluctuation,
-  fluctuationValue,
   color,
   fontFamily,
-  externalStyles,
-  hoverBehavior = false,
+  fluctuation,
   infoTooltip,
+  externalStyles,
+  fluctuationValue,
+  hoverBehavior = false,
 }: ICardComponent) => {
   const [{ tooltip }, { handleChange }] = useCardState(infoTooltip);
 
