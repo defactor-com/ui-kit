@@ -1,0 +1,56 @@
+.containerIcon {
+  display: flex;
+  margin-right: 8px;
+  @media (max-width: $breakpoint-mobile) {
+    padding: 16px 8px;
+  }
+}
+
+.languageLabel {
+  font-size: 16px;
+  color: black !important;
+  text-transform: uppercase;
+  @media (min-width: $breakpoint-mobile) {
+    color: white;
+    display: block;
+  }
+  @media (max-width: $breakpoint-mobile) {
+    color: white;
+    display: none;
+  }
+}
+
+.buttonMui {
+  &.MuiIconButton-root:hover {
+    background-color: transparent;
+  }
+}
+
+.button {
+  margin-right: 8px;
+  @media (max-width: $breakpoint-mobile) {
+    margin: 0;
+  }
+  &.MuiButton-root {
+    min-width: 30px;
+  }
+}
+
+.menu {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.selectedOption {
+  padding: 8px 16px !important;
+  color: black;
+  display: flex;
+  gap: 8px;
+}
+
+.menuOption {
+  display: flex;
+  padding: 8px 16px !important;
+  gap: 8px;
+  border-left: 2px solid transparent !important;
+}
