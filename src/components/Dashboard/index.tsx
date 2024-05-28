@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import { Box, Divider } from "@mui/material";
 
 import DollarIcon from "../../../public/assets/dollar-icon.svg";
 import { CardComponent } from "../CardComponent";
@@ -11,51 +12,31 @@ import {
   IRightContainer,
 } from "./DashboardTypes";
 
-const BottomContainer = ({
+const HeaderContainer = ({
   bottomContainerItems,
-  bottomLabel,
   colors = [],
   fontFamily,
-  icon,
 }: IBottomContainer) => {
   return (
-    <>
-      <div className={clsx("flex-center", "margin-top-high")}>
-        <div className="pools-icon-container">
-          {icon && typeof icon === "string" ? (
-            <img
-              src={icon}
-              alt={`${bottomLabel} icon`}
-              className="menu-option-icon"
-            />
-          ) : (
-            icon
+    <div className="header-container-dashboard">
+      {(bottomContainerItems || []).map((item, index) => (
+        <CardComponent
+          key={`bottom-item-${index}`}
+          externalStyles={clsx(
+            "dashboard-bottom-flat-containers",
+            item.externalStyles
           )}
-        </div>
-        <span className="variant-h3" style={{ fontFamily }}>
-          {bottomLabel}
-        </span>
-      </div>
-      <div className="footer-container-dashboard">
-        {(bottomContainerItems || []).map((item, index) => (
-          <CardComponent
-            key={`bottom-item-${index}`}
-            externalStyles={clsx(
-              "dashboard-bottom-flat-containers",
-              item.externalStyles
-            )}
-            value={item.value}
-            label={item.label}
-            fontFamily={fontFamily}
-            fluctuation={item.fluctuation}
-            infoTooltip={item.infoTooltip}
-            hoverBehavior={item.hoverBehavior}
-            fluctuationValue={item.fluctuationValue}
-            color={item.color || colors[index % colors.length]}
-          />
-        ))}
-      </div>
-    </>
+          value={item.value}
+          label={item.label}
+          fontFamily={fontFamily}
+          fluctuation={item.fluctuation}
+          infoTooltip={item.infoTooltip}
+          hoverBehavior={item.hoverBehavior}
+          fluctuationValue={item.fluctuationValue}
+          color={item.color || colors[index % colors.length]}
+        />
+      ))}
+    </div>
   );
 };
 
@@ -108,6 +89,7 @@ const RightContainer = ({
 
 export const Dashboard = ({
   bottomContainerItems = [],
+  currencyIcon = DollarIcon,
   rightContainerItems = [],
   totalValueLocked,
   titleGraphic,
@@ -117,7 +99,6 @@ export const Dashboard = ({
   bottomIcon,
   rightIcon,
   currency,
-  currencyIcon = DollarIcon,
   content,
   colors,
 }: IDashboard) => (
@@ -126,44 +107,51 @@ export const Dashboard = ({
       <div className="dashboard-container">
         <div className="graphic-container">
           <div className="graphic-container-internal">
-            {titleGraphic && (
-              <div className="graphic-header">
-                {currencyIcon && typeof currencyIcon === "string" ? (
-                  <img src={currencyIcon} alt="currency icon" />
-                ) : (
-                  currencyIcon
+            <div className="header-dashboard-component">
+              <div className="dashboard-title-styles">
+                {titleGraphic && (
+                  <div className="graphic-header">
+                    {currencyIcon && typeof currencyIcon === "string" ? (
+                      <img src={currencyIcon} alt="currency icon" />
+                    ) : (
+                      currencyIcon
+                    )}
+                    <span
+                      className={clsx("variant-h3", "margin-left")}
+                      style={{ fontFamily }}
+                    >
+                      {titleGraphic}
+                    </span>
+                  </div>
                 )}
-                <span
-                  className={clsx("variant-h3", "margin-left")}
-                  style={{ fontFamily }}
-                >
-                  {titleGraphic}
-                </span>
+                {totalValueLocked && (
+                  <div className="total-value-container">
+                    <span className="variant-h1" style={{ fontFamily }}>
+                      {totalValueLocked}
+                    </span>
+                    <span
+                      className={clsx("variant-body2", "padding-bottom-medium")}
+                      style={{ fontFamily }}
+                    >
+                      {currency}
+                    </span>
+                  </div>
+                )}
               </div>
-            )}
-            {totalValueLocked && (
-              <div className="total-value-container">
-                <span className="variant-h1" style={{ fontFamily }}>
-                  {totalValueLocked}
-                </span>
-                <span
-                  className={clsx("variant-body2", "padding-bottom-medium")}
-                  style={{ fontFamily }}
-                >
-                  {currency}
-                </span>
-              </div>
-            )}
+              {bottomLabel && bottomContainerItems.length > 0 && (
+                <>
+                  <HeaderContainer
+                    bottomContainerItems={bottomContainerItems}
+                    bottomLabel={bottomLabel}
+                    fontFamily={fontFamily}
+                    icon={bottomIcon}
+                    colors={colors}
+                  />
+                  <Divider className={"divider-color"} />
+                </>
+              )}
+            </div>
             {content}
-            {bottomLabel && bottomContainerItems.length > 0 && (
-              <BottomContainer
-                bottomContainerItems={bottomContainerItems}
-                bottomLabel={bottomLabel}
-                fontFamily={fontFamily}
-                icon={bottomIcon}
-                colors={colors}
-              />
-            )}
           </div>
         </div>
         <RightContainer
