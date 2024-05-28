@@ -8,7 +8,7 @@
 
 A frontend UI template for new projects to get started building on Defactor quickly while maintaining consistency in visual design and styles with other Defactor tools.
 
-For more information on how to use the defactor UI Kit please refer to our [developer documentation site](https://defactor.dev/docs/front-end-ui/react-components).
+For more information on how to use the defactor UI Kit please refer to our [developer documentation site](https://defactor.dev/docs/front-end-ui/react-components) or our [NPM Package](https://www.npmjs.com/package/@defactor/ui-kit).
 
 ## Installation
 
