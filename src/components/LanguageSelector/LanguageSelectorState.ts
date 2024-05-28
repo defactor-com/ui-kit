@@ -1,6 +1,4 @@
-import { useTheme } from "@mui/styles";
-// import { useTranslations } from "next-intl";
-import { ReactElement, useState, useTransition } from "react";
+import { useState, useTransition } from "react";
 
 import {
   ILanguageSelectorState,
