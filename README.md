@@ -61,6 +61,8 @@ ui-kit/
 
 To contribute, please run `yarn changeset` to make a request to improve the version
 
+Take this [PR](https://github.com/defactor-com/ui-kit/pull/6/files) as an example of how to create components.
+
 If the PR is approved, the next release package is automatically created.
 
 Please report bugs big and small by [opening an issue](https://github.com/defactor-com/ui-kit/issues)
