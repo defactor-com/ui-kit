@@ -8,7 +8,7 @@ $breakpoint-mobile: 600px;
 }
 
 .vertical-padding {
-  padding: 8px 8px 16px 8px !important
+  padding: 8px 8px 16px 8px !important;
 }
 
 .horizontal-padding {
@@ -291,6 +291,10 @@ $breakpoint-mobile: 600px;
     margin-bottom: 0;
     padding: 16px 0 0;
   }
+}
+
+.hide-bars-container-vertical {
+  margin-top: 16px;
 }
 
 .checkbox-container {
