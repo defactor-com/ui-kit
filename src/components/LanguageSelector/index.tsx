@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
@@ -22,7 +23,7 @@ const LanguageSelector = ({
   t,
 }: ILanguageSelector) => {
   const [
-    { isOpen, anchorEl, currentIcon },
+    { visible, isOpen, anchorEl, currentIcon },
     { handleClick, handleClose, handleHover },
   ] = LanguageSelectorState({ router, pathname, icon, activeIcon });
 
@@ -39,7 +40,15 @@ const LanguageSelector = ({
           onMouseEnter={() => handleHover(true)}
           onMouseLeave={() => handleHover(false)}
         >
-          <div className={"containerIcon"}>{currentIcon}</div>
+          <div
+            className={clsx("containerIcon", visible ? "fade-in" : "fade-out")}
+          >
+            {typeof currentIcon === "string" ? (
+              <img src={currentIcon} alt="icon" />
+            ) : (
+              currentIcon
+            )}
+          </div>
           <Typography
             variant="body1"
             fontWeight={"bold"}

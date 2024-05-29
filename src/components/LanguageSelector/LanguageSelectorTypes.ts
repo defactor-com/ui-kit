@@ -25,6 +25,7 @@ export interface ILanguageSelectorState {
 
 export type LanguageData = {
   isOpen: boolean;
+  visible: boolean;
   anchorEl: HTMLElement | null;
   currentIcon?: string | React.ReactElement;
 };

@@ -1,4 +1,4 @@
-import { useState, useTransition } from "react";
+import { useState, useTransition, useEffect } from "react";
 
 import {
   ILanguageSelectorState,
@@ -16,9 +16,20 @@ const LanguageSelectorState = ({
   const [, startTransition] = useTransition();
   const open = Boolean(anchorEl);
   const [currentIcon, setCurrentIcon] = useState(icon);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    setCurrentIcon(open ? activeIcon : icon);
+  }, [anchorEl]);
 
   const handleHover = (value: boolean) => {
-    setCurrentIcon(value ? activeIcon : icon);
+    setVisible(false);
+    const timer = setTimeout(() => {
+      const validation = open || value;
+      setCurrentIcon(validation ? activeIcon : icon);
+      setVisible(true);
+    }, 200);
+    return () => clearTimeout(timer);
   };
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -39,6 +50,7 @@ const LanguageSelectorState = ({
 
   return [
     {
+      visible,
       isOpen: open,
       anchorEl,
       currentIcon,
