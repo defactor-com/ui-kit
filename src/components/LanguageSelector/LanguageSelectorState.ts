@@ -18,10 +18,6 @@ const LanguageSelectorState = ({
   const [currentIcon, setCurrentIcon] = useState(icon);
   const [visible, setVisible] = useState(true);
 
-  useEffect(() => {
-    setCurrentIcon(open ? activeIcon : icon);
-  }, [anchorEl]);
-
   const handleHover = (value: boolean) => {
     setVisible(false);
     const timer = setTimeout(() => {
@@ -47,6 +43,10 @@ const LanguageSelectorState = ({
       router.replace(pathname, { locale: lng });
     });
   };
+
+  useEffect(() => {
+    setCurrentIcon(open ? activeIcon : icon);
+  }, [anchorEl]);
 
   return [
     {
