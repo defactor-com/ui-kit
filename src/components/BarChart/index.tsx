@@ -8,7 +8,7 @@ import {
   YAxis,
   CartesianGrid,
 } from "recharts";
-import { Tabs, Tab } from "@mui/material";
+import { Tabs, Tab, Checkbox } from "@mui/material";
 import clsx from "clsx";
 
 import { Point } from "../Point";
@@ -239,9 +239,8 @@ const Chart = ({
               style={{ fontFamily: fontFamily }}
               key={`checkbox-${name}`}
             >
-              <input
+              <Checkbox
                 className="checkbox"
-                type="checkbox"
                 checked={!isHide?.(name)}
                 onChange={(e) => {
                   setHide?.((prev) => ({
@@ -249,7 +248,12 @@ const Chart = ({
                     [name]: !e.target.checked,
                   }));
                 }}
-                style={{ accentColor: colors[index % colors.length] }}
+                sx={{
+                  color: colors[index % colors.length],
+                  "&.Mui-checked": {
+                    color: colors[index % colors.length],
+                  },
+                }}
               />
               <Point color={colors[index % colors.length]} /> {name}
             </span>
