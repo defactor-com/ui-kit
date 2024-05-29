@@ -2,6 +2,15 @@ $breakpoint-tablet: 911px;
 
 $breakpoint-mobile: 600px;
 
+$breakpoint-labtop: 1400px;
+
+.dashboard-container-styles {
+  padding: 40px !important;
+  @media (max-width: $breakpoint-mobile) {
+    padding: 24px 16px !important;
+  }
+}
+
 .tooltip-container {
   background-color: #f8f9fc !important;
   border: solid 1.27px #f9f9f9 !important;
@@ -81,14 +90,39 @@ $breakpoint-mobile: 600px;
   color: #7c7d7e;
 }
 
-.dashboard-bottom-flat-containers {
+.dashboard-header-containers-start {
   width: 100% !important;
-  padding: 4px 24px !important;
-  @media (max-width: $breakpoint-mobile) {
-    margin-top: 8px;
+  padding: 0px 24px 0px 0px !important;
+  @media (min-width: $breakpoint-labtop) {
+    height: fit-content !important;
   }
-  @media (min-width: $breakpoint-xl) {
-    padding: 0px 24px !important;
+  @media (max-width: $breakpoint-mobile) {
+    padding: 16px 0px 8px 0px !important;
+    width: 100% !important;
+  }
+}
+
+.dashboard-header-containers-end {
+  width: 100% !important;
+  padding: 0px 0px 0px 24px !important;
+  @media (min-width: $breakpoint-labtop) {
+    height: fit-content !important;
+  }
+  @media (max-width: $breakpoint-mobile) {
+    padding: 16px 0px 32px 0px !important;
+    width: 100% !important;
+  }
+}
+
+.dasbohard-header-containers-padding {
+  width: 100% !important;
+  padding: 0px 24px !important;
+  @media (min-width: $breakpoint-labtop) {
+    height: fit-content !important;
+  }
+  @media (max-width: $breakpoint-mobile) {
+    padding: 16px 0px 8px 0px !important;
+    width: 100% !important;
   }
 }
 
@@ -100,18 +134,23 @@ $breakpoint-mobile: 600px;
 }
 
 .dashboard-right-flat-containers {
-  margin-top: 16px;
-  min-width: 260px;
   width: 90% !important;
   @media (max-width: $breakpoint-tablet) {
+    margin: 0;
     flex-grow: 1;
     width: 27% !important;
-    min-width: 100px;
-    margin: 0;
+    border-bottom: 1px solid rgba(189, 189, 189, 0.5) !important;
   }
   @media (max-width: $breakpoint-mobile) {
+    padding: 16px !important;
     width: 100% !important;
-    margin-top: 8px;
+    margin-top: 0px;
+  }
+}
+
+.border-botton-last-container {
+  @media (max-width: $breakpoint-mobile) {
+    border-bottom: none !important;
   }
 }
 
@@ -125,7 +164,7 @@ $breakpoint-mobile: 600px;
 
 .graphic-container {
   width: 100%;
-  padding: 8px 24px 8px 8px;
+  padding-right: 16px;
   border-right: solid 1px rgba(0, 0, 0, 0.2);
   @media (max-width: $breakpoint-tablet) {
     border-right: none;
@@ -169,25 +208,29 @@ $breakpoint-mobile: 600px;
 .header-container-dashboard {
   width: 100%;
   display: flex;
-  margin: 32px 0px;
+  margin-bottom: 24px;
   justify-content: space-between;
   @media (max-width: $breakpoint-mobile) {
     flex-wrap: wrap;
     margin-top: 8px;
   }
-  @media (min-width: $breakpoint-xl) {
+  @media (min-width: $breakpoint-labtop) {
     margin: 0px;
   }
 }
 
 .header-dashboard-component {
-  @media (min-width: $breakpoint-xl) {
+  @media (min-width: $breakpoint-labtop) {
     display: flex;
     justify-content: space-between;
   }
 }
 
 .dashboard-title-styles {
+  @media (min-width: $breakpoint-labtop) {
+    margin-top: 8px;
+    width: 50%;
+  }
   @media (min-width: $breakpoint-xl) {
     margin-top: 8px;
     width: 66%;
@@ -248,25 +291,23 @@ $breakpoint-mobile: 600px;
 }
 
 .pools-body-container {
+  margin-top: 24px;
   @media (max-width: $breakpoint-tablet) {
     width: 100%;
     display: flex;
-    gap: 16px;
-    margin-top: 16px;
-    justify-content: start;
     flex-wrap: wrap;
+    justify-content: start;
   }
   @media (max-width: $breakpoint-mobile) {
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 16px;
+    margin-top: 0px;
   }
 }
 
 .pools-container {
+  min-width: 260px;
   padding-left: 16px;
   @media (max-width: $breakpoint-tablet) {
-    margin-top: 16px;
+    margin-top: 32px;
     padding-left: 0;
   }
 }
@@ -290,8 +331,7 @@ $breakpoint-mobile: 600px;
 }
 
 .chart-container {
-  margin-bottom: 24px;
-  margin-top: 32px;
+  margin-top: 24px;
   @media (max-width: $breakpoint-mobile) {
     box-shadow: none !important;
   }

@@ -1,5 +1,4 @@
 export interface IButton extends React.HTMLAttributes<HTMLButtonElement> {
-  icon?: string;
   label?: string;
   color?: string;
   bgColor?: string;
@@ -9,5 +8,6 @@ export interface IButton extends React.HTMLAttributes<HTMLButtonElement> {
   borderColor?: string;
   externalStyles?: string;
   loader?: React.ReactElement;
+  icon?: React.ReactElement | string;
   variant: "contained" | "outlined" | "text";
 }
