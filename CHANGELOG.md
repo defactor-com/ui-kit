@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.2.51
+
+### Patch Changes
+
+- db472b2: Create language selector component
+
 ## 0.2.40
 
 ### Patch Changes
