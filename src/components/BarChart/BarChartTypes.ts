@@ -1,4 +1,4 @@
-import { IChart } from "../LineChart/ChartsTypes";
+import { FormatValueType, IChart } from "../LineChart/ChartsTypes";
 
 export interface ChartSeriesType {
   name: string;
@@ -7,13 +7,15 @@ export interface ChartSeriesType {
 
 export interface IBarChart extends IChart {
   data: string[];
-  series: ChartSeriesType[];
-  displayDirection?: "vertical" | "horizontal";
-  dateFilter?: string[];
   color?: string;
+  showXAxis?: boolean;
+  dateFilter?: string[];
   filterBgColor?: string;
   currentFilter?: string;
+  series: ChartSeriesType[];
+  formatValueVertical?: FormatValueType;
   handleChangeFilter?(filter: string): void;
+  displayDirection?: "vertical" | "horizontal";
 }
 
 export type BarChartHookData = {
@@ -24,8 +26,8 @@ export type BarChartHookData = {
 
 export type BarChartHookCallbacks = {
   isHide: (keyName: string) => boolean;
+  getCoordinates: (max: number, gap: number, space?: number) => number[];
   setHide: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
-  getCoordinates: (max: number, gap: number) => number[];
 };
 
 export interface IBarChartState {

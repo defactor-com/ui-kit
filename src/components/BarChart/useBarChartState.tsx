@@ -31,11 +31,11 @@ const useBarChartState = ({
 
   const missingData = !data.length || !series.length;
 
-  const getCoordinates = (max: number, gap: number) => {
+  const getCoordinates = (max: number, gap: number, space = 5) => {
     const horizontalLines = [];
 
     for (let index = 0; gap * index <= max; index++) {
-      horizontalLines.push(gap * index + 5);
+      horizontalLines.push(gap * index + space);
     }
 
     return horizontalLines;

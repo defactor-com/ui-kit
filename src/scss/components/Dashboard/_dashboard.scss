@@ -54,7 +54,7 @@ $breakpoint-mobile: 600px;
 .fluctuation-percentage-container {
   border-radius: 5px;
   width: fit-content;
-  margin-top: 8px;
+  margin-top: 4px;
   padding: 4px;
 }
 
@@ -82,11 +82,13 @@ $breakpoint-mobile: 600px;
 }
 
 .dashboard-bottom-flat-containers {
-  width: 28% !important;
-  padding: 16px !important;
+  width: 100% !important;
+  padding: 4px 24px !important;
   @media (max-width: $breakpoint-mobile) {
-    width: 100% !important;
     margin-top: 8px;
+  }
+  @media (min-width: $breakpoint-xl) {
+    padding: 0px 24px !important;
   }
 }
 
@@ -164,15 +166,31 @@ $breakpoint-mobile: 600px;
   padding-bottom: 4px;
 }
 
-.footer-container-dashboard {
+.header-container-dashboard {
   width: 100%;
   display: flex;
-  margin-top: 16px;
+  margin: 32px 0px;
   justify-content: space-between;
-  gap: 8px;
   @media (max-width: $breakpoint-mobile) {
     flex-wrap: wrap;
     margin-top: 8px;
+  }
+  @media (min-width: $breakpoint-xl) {
+    margin: 0px;
+  }
+}
+
+.header-dashboard-component {
+  @media (min-width: $breakpoint-xl) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.dashboard-title-styles {
+  @media (min-width: $breakpoint-xl) {
+    margin-top: 8px;
+    width: 66%;
   }
 }
 
@@ -273,11 +291,19 @@ $breakpoint-mobile: 600px;
 
 .chart-container {
   margin-bottom: 24px;
+  margin-top: 32px;
   @media (max-width: $breakpoint-mobile) {
     box-shadow: none !important;
   }
   & .recharts-surface {
     overflow: visible;
+  }
+}
+
+.divider-color {
+  border-color: rgba(189, 189, 189, 0.5) !important;
+  @media (max-width: $breakpoint-mobile) {
+    display: none;
   }
 }
 
@@ -291,6 +317,10 @@ $breakpoint-mobile: 600px;
     margin-bottom: 0;
     padding: 16px 0 0;
   }
+}
+
+.hide-bars-container-vertical {
+  margin-top: 16px;
 }
 
 .checkbox-container {
