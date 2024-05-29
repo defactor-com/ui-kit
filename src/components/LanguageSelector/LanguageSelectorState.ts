@@ -28,7 +28,7 @@ const LanguageSelectorState = ({
       const validation = open || value;
       setCurrentIcon(validation ? activeIcon : icon);
       setVisible(true);
-    }, 200);
+    }, 250);
     return () => clearTimeout(timer);
   };
 

@@ -3,13 +3,13 @@
 }
 
 .fade-out {
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .containerIcon {
   display: flex;
   margin-right: 8px;
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
   @media (max-width: $breakpoint-mobile) {
     padding: 16px 8px;
   }
