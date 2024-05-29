@@ -200,11 +200,7 @@ const RenderComponent = ({
               key={`line-${name}`}
               hide={isHide?.(name)}
               dot={{
-                stroke: colors[index % colors.length],
-                strokeWidth: 2,
-                r: 5,
-                opacity: 1,
-                fill: colors[index % colors.length],
+                r: 0,
               }}
               activeDot={{
                 strokeWidth: 2,
