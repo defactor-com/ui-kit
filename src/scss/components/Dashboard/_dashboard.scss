@@ -333,7 +333,7 @@ $breakpoint-mobile: 600px;
 .checkbox {
   width: 18px;
   height: 18px;
-  margin-right: 8px;
+  margin-right: 8px !important;
   &:hover {
     cursor: pointer;
   }

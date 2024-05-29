@@ -10,7 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import clsx from "clsx";
-import { Tabs, Tab, Box } from "@mui/material";
+import { Tabs, Tab, Box, Checkbox } from "@mui/material";
 
 import { Point } from "../Point";
 import { Container } from "../Container";
@@ -318,9 +318,8 @@ const Chart = ({
               style={{ fontFamily: fontFamily }}
               key={`checkbox-${name}`}
             >
-              <input
+              <Checkbox
                 className="checkbox"
-                type="checkbox"
                 checked={!isHide?.(name)}
                 onChange={(e) => {
                   setHide?.((prev) => ({
@@ -328,7 +327,12 @@ const Chart = ({
                     [name]: !e.target.checked,
                   }));
                 }}
-                style={{ accentColor: colors[index % colors.length] }}
+                sx={{
+                  color: colors[index % colors.length],
+                  "&.Mui-checked": {
+                    color: colors[index % colors.length],
+                  },
+                }}
               />
               <Point color={colors[index % colors.length]} /> {name}
             </span>

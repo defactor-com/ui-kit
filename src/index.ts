@@ -12,6 +12,7 @@ export * from "./components/Dashboard";
 export * from "./components/DropDown";
 export * from "./components/Container";
 export * from "./components/LendBorrow";
+export * from "./components/LanguageSelector";
 export * from "./components/MenuOption";
 export * from "./components/CardContainer";
 export * from "./components/InformativeContainer";
