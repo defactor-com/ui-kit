@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { Box, Divider } from "@mui/material";
+import { Divider } from "@mui/material";
 
 import DollarIcon from "../../../public/assets/dollar-icon.svg";
 import { CardComponent } from "../CardComponent";
@@ -8,7 +8,7 @@ import { Container } from "../Container";
 
 import {
   IDashboard,
-  IBottomContainer,
+  IHeaderContainer,
   IRightContainer,
 } from "./DashboardTypes";
 
@@ -16,16 +16,21 @@ const HeaderContainer = ({
   bottomContainerItems,
   colors = [],
   fontFamily,
-}: IBottomContainer) => {
+}: IHeaderContainer) => {
+  const getPaddingComponent = (index: number): string => {
+    if (index === 0) return "dashboard-header-containers-start";
+    else if (index === bottomContainerItems.length - 1)
+      return "dashboard-header-containers-end";
+
+    return "dasbohard-header-containers-padding";
+  };
+
   return (
     <div className="header-container-dashboard">
       {(bottomContainerItems || []).map((item, index) => (
         <CardComponent
           key={`bottom-item-${index}`}
-          externalStyles={clsx(
-            "dashboard-bottom-flat-containers",
-            item.externalStyles
-          )}
+          externalStyles={clsx(getPaddingComponent(index), item.externalStyles)}
           value={item.value}
           label={item.label}
           fontFamily={fontFamily}
@@ -69,6 +74,9 @@ const RightContainer = ({
           <CardComponent
             key={`right-item-${index}`}
             externalStyles={clsx(
+              index === rightContainerItems.length - 1
+                ? "border-botton-last-container"
+                : "",
               "dashboard-right-flat-containers",
               item.externalStyles
             )}
@@ -103,6 +111,7 @@ export const Dashboard = ({
   colors,
 }: IDashboard) => (
   <Container
+    externalStyles="dashboard-container-styles"
     content={
       <div className="dashboard-container">
         <div className="graphic-container">

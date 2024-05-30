@@ -33,7 +33,11 @@ export const Button = ({
       disabled={disabled}
       {...props}
     >
-      {icon && <img src={icon} alt="icon button" />}
+      {icon && typeof icon === "string" ? (
+        <img src={icon} alt="icon button" />
+      ) : (
+        icon
+      )}
       {label}
       {loader}
     </button>

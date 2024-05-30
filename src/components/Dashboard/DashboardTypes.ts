@@ -29,7 +29,7 @@ export type IDashboard = {
   bottomIcon?: React.ReactElement | string;
 };
 
-export interface IBottomContainer {
+export interface IHeaderContainer {
   icon?: React.ReactElement | string;
   bottomContainerItems: CardItem[];
   bottomLabel: string;

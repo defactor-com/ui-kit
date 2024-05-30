@@ -1,9 +1,10 @@
 .container-pill {
-  width: 116px;
   display: flex;
+  min-width: 116px;
   padding: 8px 16px;
+  width: max-content;
   align-items: center;
   border-radius: 100px;
   justify-content: center;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
 }

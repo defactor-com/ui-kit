@@ -41,19 +41,21 @@ export const CardComponent = ({
             </span>
             {tooltip && <div>{tooltip}</div>}
           </div>
-          <div className="flat-body-container">
-            <div className="flex-column-direction">
-              <span className="variant-h3" style={{ fontFamily }}>
-                {value}
-              </span>
+          {value && (
+            <div className="flat-body-container">
+              <div className="flex-column-direction">
+                <span className="variant-h3" style={{ fontFamily }}>
+                  {value}
+                </span>
+              </div>
+              {fluctuation && (
+                <FluctuationComponent
+                  label={fluctuation}
+                  value={fluctuationValue}
+                />
+              )}
             </div>
-            {fluctuation && (
-              <FluctuationComponent
-                label={fluctuation}
-                value={fluctuationValue}
-              />
-            )}
-          </div>
+          )}
         </div>
       }
     />
