@@ -3,6 +3,7 @@ import React from "react";
 export interface IHeaderObject {
   label: string;
   sortFunction?(): void;
+  externalStyles?: string;
 }
 
 export interface IFilterObject {
@@ -18,6 +19,7 @@ export interface IFilterSelectedObject {
 
 export interface IItemRow {
   activeAction: boolean;
+  externalStyles?: string;
   component: React.ReactNode;
 }
 
@@ -29,9 +31,7 @@ export interface IRowsObject {
 export interface ITable {
   loading?: boolean;
   fontFamily?: string;
-  emptyIcon?: React.ReactNode | string;
   emptyTitle?: string;
-  emptyDescription: string;
   visiblePage?: number;
   haveOptions?: boolean;
   headerbgColor?: string;
@@ -40,16 +40,18 @@ export interface ITable {
   rowsNumberLabel?: string;
   rows: Array<IRowsObject>;
   rowsPage?: Array<number>;
+  emptyDescription: string;
   rowsPageSelected: number;
   headers: Array<IHeaderObject>;
   filters?: Array<IFilterObject>;
   nextPage?(motion: string): void;
   loaderComponent?: React.ReactNode;
-  handleSelectedRowsPage(selectedValue: string): void;
+  emptyIcon?: React.ReactNode | string;
   handleSelectedPage?(selectedValue: number): void;
   setFilters: React.Dispatch<
     React.SetStateAction<Array<IFilterSelectedObject>>
   >;
+  handleSelectedRowsPage(selectedValue: string): void;
 }
 
 export interface IUseTableState {

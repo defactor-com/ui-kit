@@ -1,20 +1,20 @@
 import clsx from "clsx";
 import React from "react";
-import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
 import { Button } from "../Button";
-import { Container } from "../Container";
 import { DropDown } from "../DropDown";
+import { Container } from "../Container";
 import AdmirationIcon from "../Icons/admirationIcon";
 import leftIcon from "../../../public/assets/chevron_left.svg";
 import rightIcon from "../../../public/assets/chevron_right.svg";
 import downIcon from "../../../public/assets/arrow-down-icon.svg";
 import filterIcon from "../../../public/assets/filter-options-icon.svg";
 
-import { ITable, IFilterObject, IHeaderObject } from "./TableTypes";
 import useTableState from "./useTableState";
+import { ITable, IFilterObject, IHeaderObject } from "./TableTypes";
 
 export const Table = ({
   rows,
@@ -23,9 +23,7 @@ export const Table = ({
   filters,
   rowsPage,
   nextPage,
-  emptyIcon = <AdmirationIcon />,
   emptyTitle,
-  emptyDescription,
   fontFamily,
   setFilters,
   haveOptions,
@@ -35,8 +33,10 @@ export const Table = ({
   rowsNumberLabel,
   totalRowsNumber,
   rowsPageSelected,
-  handleSelectedRowsPage,
+  emptyDescription,
   handleSelectedPage,
+  handleSelectedRowsPage,
+  emptyIcon = <AdmirationIcon />,
   rowsHoverColor = "rgba(38, 166, 107, 0.1)",
 }: ITable) => {
   const [
@@ -122,14 +122,16 @@ export const Table = ({
               <tr>
                 {headers.map((item: IHeaderObject) => (
                   <th style={{ fontFamily: fontFamily }} key={item.label}>
-                    <div className="center-element">
+                    <div
+                      className={clsx("center-element", item.externalStyles)}
+                    >
                       {item.label}
                       {item.sortFunction && (
                         <Button
-                          onClick={item.sortFunction}
-                          fontFamily={fontFamily}
-                          icon={downIcon}
                           variant="text"
+                          icon={downIcon}
+                          fontFamily={fontFamily}
+                          onClick={item.sortFunction}
                           externalStyles={clsx("button-style", "sort-button")}
                         />
                       )}
@@ -208,6 +210,7 @@ export const Table = ({
                   >
                     {row.items.map((itemRow, indexRow) => (
                       <td
+                        className={itemRow.externalStyles}
                         onClick={
                           itemRow.activeAction ? row.onClickRow : undefined
                         }
