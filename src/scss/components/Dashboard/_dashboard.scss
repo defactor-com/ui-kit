@@ -2,7 +2,7 @@ $breakpoint-tablet: 911px;
 
 $breakpoint-mobile: 600px;
 
-$breakpoint-labtop: 1400px;
+$breakpoint-laptop: 1400px;
 
 .dashboard-container-styles {
   padding: 40px !important;
@@ -93,7 +93,7 @@ $breakpoint-labtop: 1400px;
 .dashboard-header-containers-start {
   width: 100% !important;
   padding: 0px 24px 0px 0px !important;
-  @media (min-width: $breakpoint-labtop) {
+  @media (min-width: $breakpoint-laptop) {
     height: fit-content !important;
   }
   @media (max-width: $breakpoint-mobile) {
@@ -105,7 +105,7 @@ $breakpoint-labtop: 1400px;
 .dashboard-header-containers-end {
   width: 100% !important;
   padding: 0px 0px 0px 24px !important;
-  @media (min-width: $breakpoint-labtop) {
+  @media (min-width: $breakpoint-laptop) {
     height: fit-content !important;
   }
   @media (max-width: $breakpoint-mobile) {
@@ -117,7 +117,7 @@ $breakpoint-labtop: 1400px;
 .dasbohard-header-containers-padding {
   width: 100% !important;
   padding: 0px 24px !important;
-  @media (min-width: $breakpoint-labtop) {
+  @media (min-width: $breakpoint-laptop) {
     height: fit-content !important;
   }
   @media (max-width: $breakpoint-mobile) {
@@ -214,20 +214,20 @@ $breakpoint-labtop: 1400px;
     flex-wrap: wrap;
     margin-top: 8px;
   }
-  @media (min-width: $breakpoint-labtop) {
+  @media (min-width: $breakpoint-laptop) {
     margin: 0px;
   }
 }
 
 .header-dashboard-component {
-  @media (min-width: $breakpoint-labtop) {
+  @media (min-width: $breakpoint-laptop) {
     display: flex;
     justify-content: space-between;
   }
 }
 
 .dashboard-title-styles {
-  @media (min-width: $breakpoint-labtop) {
+  @media (min-width: $breakpoint-laptop) {
     margin-top: 8px;
     width: 50%;
   }
