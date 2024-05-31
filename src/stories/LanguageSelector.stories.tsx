@@ -4,7 +4,7 @@ import { Story } from "@storybook/react";
 import EnglishFlag from "../../public/assets/english-flag.svg";
 import SpanishFlag from "../../public/assets/spanish-flag.svg";
 
-import LanguageSelector from "../components/LanguageSelector";
+import { LanguageSelector } from "../components/LanguageSelector";
 import { ILanguageSelector } from "../components/LanguageSelector/LanguageSelectorTypes";
 
 export default {
