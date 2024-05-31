@@ -248,7 +248,6 @@ const Chart = ({
               key={`checkbox-${name}`}
             >
               <Checkbox
-                className="checkbox"
                 checked={!isHide?.(name)}
                 onChange={(e) => {
                   setHide?.((prev) => ({

@@ -372,15 +372,6 @@ $breakpoint-laptop: 1400px;
   }
 }
 
-.checkbox {
-  width: 18px;
-  height: 18px;
-  margin-right: 8px !important;
-  &:hover {
-    cursor: pointer;
-  }
-}
-
 .horizontal-line {
   display: none;
   @media (max-width: $breakpoint-mobile) {

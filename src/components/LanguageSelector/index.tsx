@@ -12,7 +12,7 @@ import LanguageIcon from "../Icons/LanguageIcon";
 import LanguageSelectorState from "./LanguageSelectorState";
 import { ILanguageSelector } from "./LanguageSelectorTypes";
 
-const LanguageSelector = ({
+export const LanguageSelector = ({
   icon = <LanguageIcon />,
   activeIcon = <LanguageIcon color="#64a3e5" />,
   router,
@@ -90,5 +90,3 @@ const LanguageSelector = ({
     </div>
   );
 };
-
-export default LanguageSelector;
