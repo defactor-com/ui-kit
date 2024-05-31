@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.2.68
+
+### Patch Changes
+
+- c65da23: update styles on mobile
+
 ## 0.2.67
 
 ### Patch Changes
