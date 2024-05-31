@@ -170,8 +170,14 @@ export const Table = ({
                           <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <MobileDatePicker
                               name={filter.label}
-                              sx={{ fontFamily: fontFamily }}
-                              className="imput-calendar"
+                              slotProps={{
+                                textField: {
+                                  InputProps: {
+                                    style: { fontFamily: fontFamily },
+                                  },
+                                },
+                              }}
+                              className="input-calendar"
                               onAccept={() => updateData && updateData()}
                             />
                           </LocalizationProvider>
