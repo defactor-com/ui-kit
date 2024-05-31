@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.2.67
+
+### Patch Changes
+
+- d87ad7e: remove unnecesarry styles
+
 ## 0.2.64
 
 ### Patch Changes
