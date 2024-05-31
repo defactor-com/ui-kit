@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.2.64
+
+### Patch Changes
+
+- 660065a: Update styles
+
 ## 0.2.51
 
 ### Patch Changes
