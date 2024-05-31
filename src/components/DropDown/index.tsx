@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 
 import { IDropDownObject } from "./DropDownTypes";
@@ -43,7 +43,14 @@ export const DropDown = ({
           input={<OutlinedInput />}
           renderValue={(selected) => {
             if (selected.length === 0) {
-              return <em className="help-text">{placeholder}</em>;
+              return (
+                <ListItemText
+                  primaryTypographyProps={{
+                    fontFamily: fontFamily,
+                  }}
+                  primary={placeholder}
+                />
+              );
             }
 
             return selected.join(", ");
@@ -52,15 +59,17 @@ export const DropDown = ({
           inputProps={{ "aria-label": "Without label" }}
           className="dropdown-container"
         >
-          <MenuItem disabled value="">
-            <em style={{ fontFamily: fontFamily }}>{placeholder}</em>
-          </MenuItem>
           {options.map((name) => (
             <MenuItem key={name} value={name} className="checkBox">
               <Checkbox
                 checked={selectedOptions && selectedOptions.indexOf(name) > -1}
               />
-              <ListItemText primary={name} />
+              <ListItemText
+                primary={name}
+                primaryTypographyProps={{
+                  fontFamily: fontFamily,
+                }}
+              />
             </MenuItem>
           ))}
         </Select>
