@@ -1,6 +1,7 @@
 .componentContainer {
   padding: 0px;
   max-width: 310px;
+  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.15), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
 }
 
 .buttonsStyles {
@@ -17,6 +18,7 @@
 
 .headerLendBorrow {
   display: flex;
+  height: 48px;
   width: 100%;
 }
 
@@ -26,8 +28,11 @@
 
 .tabCustom {
   width: 50%;
-  color: rgba(124, 125, 126, 0.5) !important;
+  height: 48px;
+  min-height: 0px !important;
   font-weight: bold !important;
+  text-transform: capitalize !important;
+  color: rgba(124, 125, 126, 0.5) !important;
   border-bottom: 2px solid rgba(124, 125, 126, 0.5) !important;
   &.Mui-selected {
     color: #000 !important;
