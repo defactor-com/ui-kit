@@ -12,6 +12,16 @@
   transition: opacity 0.25s ease-in-out;
   @media (max-width: $breakpoint-mobile) {
     padding: 16px 8px;
+    margin-right: 0;
+  }
+}
+
+.arrowContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: $breakpoint-mobile) {
+    display: none;
   }
 }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -56,7 +56,9 @@ export const LanguageSelector = ({
           >
             {locale}
           </Typography>
-          <KeyboardArrowDownIcon />
+          <div className="arrowContainer">
+            <ArrowDropDown />
+          </div>
         </IconButton>
       </div>
       <Menu
