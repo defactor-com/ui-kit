@@ -5,7 +5,13 @@ import closeIcon from "../../../public/assets/close-icon.svg";
 
 import { IModal } from "./ModalTypes";
 
-export const Modal = ({ isOpen, content, close, externalStyles }: IModal) => {
+export const Modal = ({
+  close,
+  isOpen,
+  content,
+  externalStyles,
+  showDrawer = true,
+}: IModal) => {
   return (
     <div>
       {isOpen && (
@@ -21,7 +27,9 @@ export const Modal = ({ isOpen, content, close, externalStyles }: IModal) => {
           {content}
         </div>
       )}
-      {isOpen && <div onClick={close} className="drawer-container" />}
+      {isOpen && showDrawer && (
+        <div onClick={close} className="drawer-container" />
+      )}
     </div>
   );
 };
