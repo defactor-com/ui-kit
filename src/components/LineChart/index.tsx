@@ -151,6 +151,7 @@ const RenderComponent = ({
           />
           <YAxis
             axisLine={false}
+            allowDataOverflow={true}
             domain={["auto", "auto"]}
             tick={(props) => (
               <text
@@ -193,7 +194,6 @@ const RenderComponent = ({
               strokeWidth={2}
               fillOpacity={1}
               fill={`url(#color-${getColorId ? getColorId(name) : ""})`}
-              isAnimationActive={false}
             />
           ))}
           {(keyNames || []).map((name, index) => (
@@ -217,7 +217,6 @@ const RenderComponent = ({
               type="monotone"
               strokeWidth={2}
               fillOpacity={1}
-              isAnimationActive={false}
             />
           ))}
         </ComposedChart>
