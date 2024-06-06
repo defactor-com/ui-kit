@@ -152,7 +152,6 @@ const RenderComponent = ({
           <YAxis
             axisLine={false}
             domain={["auto", "auto"]}
-            className="compose-container"
             tick={(props) => (
               <text
                 x={props.x}
