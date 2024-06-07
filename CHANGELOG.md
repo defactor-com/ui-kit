@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.2.70
+
+### Patch Changes
+
+- dcf4d54: remove animation line chart
+
 ## 0.2.68
 
 ### Patch Changes
