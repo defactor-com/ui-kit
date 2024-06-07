@@ -151,6 +151,7 @@ const RenderComponent = ({
           />
           <YAxis
             axisLine={false}
+            allowDataOverflow={true}
             domain={["auto", "auto"]}
             tick={(props) => (
               <text
