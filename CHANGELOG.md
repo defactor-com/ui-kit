@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.2.71
+
+### Patch Changes
+
+- 079df13: Update lend borrow component
+
 ## 0.2.70
 
 ### Patch Changes
