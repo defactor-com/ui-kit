@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import clsx from "clsx";
+import { Box } from "@mui/material";
 
 import factrIcon from "../../../public/assets/factr-icon.svg";
 
@@ -22,27 +23,30 @@ export const CollateralSection = ({
     <div>
       {requiredSection && textCollateral && (
         <div className="requiredSection">
-          <Typography variant="body1" style={{ fontFamily: fontFamily }}>
+          <span className="variant-body1" style={{ fontFamily: fontFamily }}>
             {textCollateral}:
-          </Typography>
-          <Box maxWidth="170px">
-            <Typography
-              variant="body1"
-              textAlign="end"
-              fontWeight="bold"
-              className="breakText"
-              style={{ fontFamily: fontFamily }}
+          </span>
+          <Box maxWidth="170px" display={"flex"} flexDirection={"column"}>
+            <span
+              className={clsx("breakText", "variant-body1")}
+              style={{
+                fontFamily: fontFamily,
+                textAlign: "end",
+                fontWeight: "bold",
+              }}
             >
               {loader ? loader : numberCollateral}
-            </Typography>
-            <Typography
-              variant="body1"
-              textAlign="end"
-              color={"#7C7D7E"}
-              style={{ fontFamily: fontFamily }}
+            </span>
+            <span
+              className="variant-body1"
+              style={{
+                fontFamily: fontFamily,
+                textAlign: "end",
+                color: "#7C7D7E",
+              }}
             >
               {tokenSymbol}
-            </Typography>
+            </span>
           </Box>
         </div>
       )}
@@ -56,9 +60,9 @@ export const CollateralSection = ({
           ) : (
             walletIcon
           )}
-          <Typography variant="body1" style={{ fontFamily: fontFamily }}>
+          <span className="variant-body1" style={{ fontFamily: fontFamily }}>
             {textWallet}
-          </Typography>
+          </span>
           <div className="walletDetail">
             {tokenIcon && typeof tokenIcon === "string" ? (
               <img src={tokenIcon} width={16} height={16} />
@@ -67,23 +71,23 @@ export const CollateralSection = ({
             )}
             <div className="walletAmount">
               <Box maxWidth="160px">
-                <Typography
-                  variant="body1"
-                  fontWeight="bold"
-                  textAlign="center"
-                  className="breakText"
-                  style={{ fontFamily: fontFamily }}
+                <span
+                  className={clsx("breakText", "variant-body1")}
+                  style={{
+                    fontFamily: fontFamily,
+                    textAlign: "end",
+                    fontWeight: "bold",
+                  }}
                 >
                   {numberWallet}
-                </Typography>
+                </span>
               </Box>
-              <Typography
-                variant="body1"
-                fontWeight="bold"
-                style={{ fontFamily: fontFamily }}
+              <span
+                className="variant-body1"
+                style={{ fontFamily: fontFamily, fontWeight: "bold" }}
               >
                 {tokenSymbol}
-              </Typography>
+              </span>
             </div>
           </div>
         </div>

@@ -9,6 +9,8 @@ import lendingIconSvg from "../../public/assets/lending.svg";
 import activeBorrowingIconSvg from "../../public/assets/activeBorrowing-icon.svg";
 import activeLendingIconSvg from "../../public/assets/activeLending-icon.svg";
 import WalletIcon from "../../public/assets/wallet-icon.svg";
+import GoldAvatar from "../../public/assets/gold-image.svg";
+import PolygonChain from "../../public/assets/polygon-chain.svg";
 
 export default {
   title: "LendBorrow",
@@ -35,6 +37,40 @@ const Template: Story<ILendBorrow> = (args) => {
     }
   };
 
+  const SelectedPool = (
+    <div
+      style={{
+        width: "auto",
+        height: "80px",
+        padding: "8px 16px",
+        backgroundColor: "#F8F9FC",
+      }}
+    >
+      <span style={{ fontWeight: "bold" }}>Pool:</span>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "100%",
+          marginTop: "8px",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <img src={GoldAvatar} alt={"Avatar"} />
+          <span> GOLD Pool 1</span>
+        </div>
+        <img src={PolygonChain} alt={"Chain Avatar"} />
+      </div>
+    </div>
+  );
+
   return (
     <LendBorrow
       {...args}
@@ -54,6 +90,7 @@ const Template: Story<ILendBorrow> = (args) => {
       labelBorrow="Borrow"
       labelLend="Lend"
       value={value}
+      SelectedPool={SelectedPool}
     />
   );
 };
