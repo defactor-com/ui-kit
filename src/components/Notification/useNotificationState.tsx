@@ -1,36 +1,36 @@
-import { CSSProperties } from "react";
+import { useState } from "react";
 
-import { useNotificationCallbacks } from "./NotificationTypes";
+import {
+  IUseNotification,
+  useNotificationData,
+  useNotificationCallbacks,
+} from "./NotificationTypes";
 
-export const useNotification = (): useNotificationCallbacks => {
-  const getTooltipStyle = (
-    bgColor: string,
-    color: string,
-    fontFamily?: string
-  ): CSSProperties => {
-    return {
-      backgroundColor: bgColor,
-      fontFamily: fontFamily,
-      color: color,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      maxWidth: "220px",
-      height: "auto",
-      overflowWrap: "anywhere",
-      padding: "8px",
-      fontSize: "13px",
-    };
+export const useNotification = ({
+  icon,
+  activeIcon,
+}: IUseNotification): [useNotificationData, useNotificationCallbacks] => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [currentIcon, setCurrentIcon] = useState(icon);
+  const [visible, setVisible] = useState(true);
+  const open = Boolean(anchorEl);
+
+  const handleHover = (value: boolean) => {
+    setVisible(false);
+    const timer = setTimeout(() => {
+      const validation = open || value;
+      setCurrentIcon(validation ? activeIcon : icon);
+      setVisible(true);
+    }, 250);
+    return () => clearTimeout(timer);
   };
 
-  const getArrowStyle = (bgColor: string) => {
-    return {
-      color: bgColor,
-    };
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
   };
 
-  return {
-    getTooltipStyle,
-    getArrowStyle,
-  };
+  return [
+    { visible, currentIcon, anchorEl },
+    { handleClick, handleHover },
+  ];
 };

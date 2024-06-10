@@ -1,28 +1,41 @@
 import React from "react";
-import { Badge, IconButton } from "@mui/material";
+import clsx from "clsx";
+import { Badge, IconButton, alpha } from "@mui/material";
 
-import InfoIcon from "../../../public/assets/info-icon.svg";
+import NotificationIcon from "../../../public/assets/notification-icon.svg";
+import NotificationActiveIcon from "../../../public/assets/notification-active-icon.svg";
 
 import { useNotification } from "./useNotificationState";
 
 import { INotification } from "./NotificationTypes";
 
 export const Notification: React.FC<INotification> = ({
-  icon = InfoIcon,
+  icon = NotificationIcon,
+  activeIcon = NotificationActiveIcon,
   sizeIcon = 26,
   color = "white",
   bgColor = "#26a66b",
   text,
-  position = "top",
   fontFamily,
   open = false,
   isOpen,
   handleChange,
 }) => {
-  const { getTooltipStyle, getArrowStyle } = useNotification();
+  const [{ currentIcon, visible }, { handleHover }] = useNotification({
+    icon,
+    activeIcon,
+  });
 
   return (
-    <IconButton>
+    <IconButton
+      onMouseEnter={() => handleHover(true)}
+      onMouseLeave={() => handleHover(false)}
+      sx={{
+        "&:hover": {
+          backgroundColor: `${alpha(bgColor, 0.1)}`,
+        },
+      }}
+    >
       <Badge
         variant="dot"
         classes={{
@@ -34,11 +47,20 @@ export const Notification: React.FC<INotification> = ({
           },
         }}
       >
-        {icon && typeof icon === "string" ? (
-          <img src={icon} alt={text} width={sizeIcon} height={sizeIcon} />
-        ) : (
-          icon
-        )}
+        <div
+          className={clsx("containerIcon", visible ? "fade-in" : "fade-out")}
+        >
+          {icon && typeof currentIcon === "string" ? (
+            <img
+              src={currentIcon}
+              alt={text}
+              width={sizeIcon}
+              height={sizeIcon}
+            />
+          ) : (
+            currentIcon
+          )}
+        </div>
       </Badge>
     </IconButton>
   );

@@ -12,10 +12,13 @@ export default {
 };
 
 const Template: Story<INotification> = (args) => {
-  const [currentIcon, setCurrentIcon] =
-    useState<string | React.ReactElement>(NotificationIcon);
-
-  return <Notification {...args} icon={currentIcon} />;
+  return (
+    <Notification
+      {...args}
+      icon={NotificationIcon}
+      activeIcon={NotificationActiveIcon}
+    />
+  );
 };
 
 export const NotificationItem = Template.bind({});

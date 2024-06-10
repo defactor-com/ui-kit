@@ -1,4 +1,5 @@
 import React, { CSSProperties } from "react";
+
 export interface INotification {
   icon?: React.ReactElement | string;
   activeIcon?: React.ReactElement | string;
@@ -13,11 +14,18 @@ export interface INotification {
   handleChange: (newValue: boolean) => void;
 }
 
+export interface IUseNotification {
+  icon?: React.ReactElement | string;
+  activeIcon?: React.ReactElement | string;
+}
+
+export interface useNotificationData {
+  visible: boolean;
+  currentIcon?: string | React.ReactElement;
+  anchorEl: HTMLElement | null;
+}
+
 export interface useNotificationCallbacks {
-  getTooltipStyle: (
-    bgColor: string,
-    color: string,
-    fontFamily?: string
-  ) => CSSProperties;
-  getArrowStyle: (bgColor: string) => CSSProperties | undefined;
+  handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  handleHover: (value: boolean) => void;
 }
