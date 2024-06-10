@@ -72,11 +72,13 @@ const RenderComponent = ({
   formatDate = (value) => new Date(value).toLocaleString(),
   formatValue = (value) => value.toLocaleString("en-US"),
   handleCloseTooltip,
+  formatDefaultValue = (value) => value.toLocaleString("en-US"),
   handleOpenTooltip,
   emptyDescription,
   loaderComponent,
   tooltipActive,
   missingData,
+  isDuplicate,
   getColorId,
   fontFamily,
   emptyTitle,
@@ -163,7 +165,9 @@ const RenderComponent = ({
                 fontWeight={700}
                 fontFamily={fontFamily}
               >
-                {formatValueAxisY(props.payload.value)}
+                {isDuplicate
+                  ? formatDefaultValue(props.payload.value)
+                  : formatValueAxisY(props.payload.value)}
               </text>
             )}
           />
@@ -247,9 +251,18 @@ const Chart = ({
   formatValueAxisX = (value) => new Date(value).toLocaleString(),
 }: ILineChart) => {
   const [
-    { chartData, keyName, keyNames, tooltipActive },
-    { isHide, setHide, handleOpenTooltip, handleCloseTooltip, getColorId },
+    { chartData, keyName, keyNames, tooltipActive, isDuplicate },
+    {
+      isHide,
+      setHide,
+      handleOpenTooltip,
+      handleCloseTooltip,
+      getColorId,
+      formatDefaultValue,
+    },
   ] = useLineChartState({ data, series });
+
+  console.log(isDuplicate);
 
   return (
     <>
@@ -302,6 +315,7 @@ const Chart = ({
           formatDate={formatDate}
           formatValue={formatValue}
           missingData={missingData}
+          isDuplicate={isDuplicate ? isDuplicate : false}
           tooltipActive={tooltipActive}
           loaderComponent={loaderComponent}
           formatValueAxisY={formatValueAxisY}
@@ -309,6 +323,7 @@ const Chart = ({
           emptyDescription={emptyDescription}
           handleOpenTooltip={handleOpenTooltip}
           handleCloseTooltip={handleCloseTooltip}
+          formatDefaultValue={formatDefaultValue}
         />
       </Box>
       <div className={clsx("display-flex", "hide-bars-container")}>
@@ -363,7 +378,10 @@ export const LineChart = ({
   formatValueAxisY = (value) => value.toLocaleString("en-US"),
   formatValueAxisX = (value) => new Date(value).toLocaleString(),
 }: ILineChart) => {
-  const [{ missingData }, {}] = useLineChartState({ data, series });
+  const [{ missingData }, {}] = useLineChartState({
+    data,
+    series,
+  });
 
   return (
     <Chart

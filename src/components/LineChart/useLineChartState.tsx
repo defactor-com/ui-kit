@@ -4,11 +4,29 @@ import {
   LineChartDataType,
   SeriesDataType,
   ILineChartState,
+  DataArrayType,
 } from "./ChartsTypes";
+
+const validateData = (data: DataArrayType[]) => {
+  const values = data.map((item) => item.value);
+  const allEqual = values.every((value) => value === values[0]);
+  return allEqual;
+};
+
+const validateSeries = (series: SeriesDataType[]) => {
+  return series.some((serie) => {
+    console.log({ test: validateData(serie.data) });
+    return validateData(serie.data);
+  });
+  return false;
+};
 
 const useLineChartState = ({ data, series }: ILineChartState) => {
   const [keyName, setKeyName] = useState("");
   const [tooltipActive, setTooltipActive] = useState(false);
+  const isDuplicate = validateSeries(series);
+
+  console.log({ isDuplicate });
 
   const getInitialData = (
     data: LineChartDataType[] | undefined,
@@ -61,14 +79,24 @@ const useLineChartState = ({ data, series }: ILineChartState) => {
 
   const missingData = !data?.length || !series.length;
 
+  const formatDefaultValue = (value: number | string) => {
+    return value
+      .toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+      })
+      .split(".")[0];
+  };
+
   return [
-    { chartData, keyNames, keyName, tooltipActive, missingData },
+    { chartData, keyNames, keyName, tooltipActive, missingData, isDuplicate },
     {
       isHide,
       setHide,
       handleOpenTooltip,
       handleCloseTooltip,
       getColorId,
+      formatDefaultValue,
     },
   ];
 };

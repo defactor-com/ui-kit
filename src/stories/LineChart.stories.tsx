@@ -18,43 +18,50 @@ const formatValue = (
   value: number | string,
   options?: Intl.NumberFormatOptions
 ) => {
-  return value.toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD",
-    ...options,
-  });
+  let numeroStr = value.toString();
+
+  let primerosDosDigitos = numeroStr.slice(0, 2);
+
+  let restoDeLosDigitos = numeroStr.slice(2);
+
+  let numeroDecimal = Number(primerosDosDigitos + "." + restoDeLosDigitos);
+
+  let numeroRedondeado = Math.round(numeroDecimal / 5) * 5;
+
+  return numeroRedondeado;
 };
 
 const colors: string[] = ["#26A66B", "#5A5BEB", "#D21A4D"];
+
 const series: SeriesDataType[] = [
   {
     name: "Total Available",
     data: [
-      { value: 40, fluctuation: "+1.4%" },
-      { value: 60, fluctuation: "-0.2%" },
-      { value: 90, fluctuation: "+5.3%" },
-      { value: 50, fluctuation: "+5.3%" },
-      { value: 30, fluctuation: "+5.3%" },
+      { value: 409999, fluctuation: "0%" },
+      { value: 123, fluctuation: "0%" },
+      { value: 65243, fluctuation: "0%" },
+      { value: 1234, fluctuation: "0%" },
+      { value: 6534, fluctuation: "0%" },
     ],
   },
   {
     name: "Total Borrowed",
     data: [
-      { value: 50, fluctuation: "+3.5%" },
-      { value: 40, fluctuation: "-0.8%" },
-      { value: 20, fluctuation: "+1.8%" },
-      { value: 30, fluctuation: "+1.8%" },
-      { value: 60, fluctuation: "+1.8%" },
+      { value: 1, fluctuation: "+3.5%" },
+      { value: 23, fluctuation: "-0.8%" },
+      { value: 3, fluctuation: "+1.8%" },
+      { value: 32, fluctuation: "+1.8%" },
+      { value: 4, fluctuation: "+1.8%" },
     ],
   },
   {
     name: "Total Lent",
     data: [
-      { value: 10, fluctuation: "-0.5%" },
-      { value: 20, fluctuation: "+1.2%" },
-      { value: 40, fluctuation: "-1.1%" },
-      { value: 80, fluctuation: "-1.1%" },
-      { value: 40, fluctuation: "-1.1%" },
+      { value: 1, fluctuation: "-0.5%" },
+      { value: 3, fluctuation: "+1.2%" },
+      { value: 5, fluctuation: "-1.1%" },
+      { value: 6, fluctuation: "-1.1%" },
+      { value: 7, fluctuation: "-1.1%" },
     ],
   },
 ];
@@ -64,16 +71,16 @@ const data: LineChartDataType[] = [
     date: "25 July 00:00",
   },
   {
-    date: "26 July 00:00",
+    date: "25 July 00:00",
   },
   {
-    date: "27 July 00:00",
+    date: "25 July 00:00",
   },
   {
-    date: "28 July 00:00",
+    date: "25 July 00:00",
   },
   {
-    date: "29 July 00:00",
+    date: "25 July 00:00",
   },
 ];
 
@@ -125,7 +132,7 @@ const Template: Story<ILineChart> = (args) => {
 
 export const LineChartItem = Template.bind({});
 LineChartItem.args = {
-  formatValue,
+  // formatValue,
   series,
   colors,
   dateFilter: ["1D", "7D", "1M", "ALL"],

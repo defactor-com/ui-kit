@@ -59,6 +59,8 @@ export interface IRenderComponent extends IChart {
   keyNames: string[] | undefined;
   keyName: string | undefined;
   chartData: any;
+  isDuplicate: boolean;
+  formatDefaultValue?: (value: number | string) => string;
 }
 
 export interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
