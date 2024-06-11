@@ -27,5 +27,5 @@ export interface ILendBorrow {
   tokenIcon?: React.ReactElement | string;
   onChange(e: ChangeEvent<HTMLInputElement>): void;
   onChangeTab: (event: React.SyntheticEvent, newValue: string) => void;
-  SelectedPool?: React.ReactNode;
+  selectedPool?: React.ReactNode;
 }

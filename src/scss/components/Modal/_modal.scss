@@ -10,8 +10,9 @@
 }
 
 .header-container {
-  display: flex;
-  justify-content: flex-end;
+  position: absolute;
+  right: 16px;
+  top: 16px;
 }
 
 .drawer-container {

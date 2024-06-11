@@ -6,8 +6,11 @@
 
 .componentSelectedPool {
   padding: 0px;
-  max-width: 310px;
+  width: 370px;
   box-shadow: none;
+  @media (max-width: $breakpoint-mobile) {
+    width: 100%;
+  }
 }
 
 .buttonsStyles {

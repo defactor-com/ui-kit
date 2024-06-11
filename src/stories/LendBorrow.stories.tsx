@@ -90,7 +90,7 @@ const Template: Story<ILendBorrow> = (args) => {
       labelBorrow="Borrow"
       labelLend="Lend"
       value={value}
-      SelectedPool={SelectedPool}
+      selectedPool={SelectedPool}
     />
   );
 };
