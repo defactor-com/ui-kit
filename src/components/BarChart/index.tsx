@@ -145,7 +145,11 @@ const Chart = ({
             </div>
           </div>
         )}
-        <ResponsiveContainer width="100%" height={125 * data.length}>
+        <ResponsiveContainer
+          height={125 * data.length}
+          width={displayDirection === "vertical" ? "98%" : "100%"}
+          style={{ marginLeft: displayDirection === "vertical" ? "2%" : 0 }}
+        >
           <RechartsBarChart
             barGap={8}
             data={chartData}
@@ -160,9 +164,9 @@ const Chart = ({
               />
             ) : (
               <CartesianGrid
-                strokeDasharray="12 12"
+                strokeDasharray="6 4"
                 verticalCoordinatesGenerator={(props) =>
-                  getCoordinates(props.xAxis.width, props.xAxis.bandSize, 65)
+                  getCoordinates(props.xAxis.width, props.xAxis.bandSize, 68)
                 }
               />
             )}
@@ -173,10 +177,10 @@ const Chart = ({
                 axisLine={false}
                 tick={(props) => (
                   <text
+                    fontSize={11}
+                    fill="#7C7D7E"
                     x={props.x + 10}
                     y={props.y + 15}
-                    fontSize={12}
-                    fill="#7C7D7E"
                     textAnchor="end"
                     fontWeight={500}
                     fontFamily={fontFamily}
@@ -192,21 +196,43 @@ const Chart = ({
               type={displayDirection === "vertical" ? "number" : "category"}
               stroke="#transparent"
               axisLine={false}
-              tick={(props) => (
-                <text
-                  x={props.x}
-                  y={props.y}
-                  fontSize={12}
-                  fill="#7C7D7E"
-                  textAnchor="end"
-                  fontWeight={500}
-                  fontFamily={fontFamily}
-                >
-                  {displayDirection === "horizontal"
-                    ? chartData[props.payload.index].name
-                    : formatValueVertical(props.payload.value)}
-                </text>
-              )}
+              tick={(props) => {
+                return displayDirection === "horizontal" ? (
+                  <text
+                    x={props.x}
+                    y={props.y}
+                    fontSize={11}
+                    fill="#7C7D7E"
+                    textAnchor="end"
+                    fontWeight={500}
+                    fontFamily={fontFamily}
+                  >
+                    {chartData[props.payload.index].name}
+                  </text>
+                ) : (
+                  <foreignObject
+                    x={props.x - 61}
+                    y={props.y - 14}
+                    height="20"
+                    width="66"
+                  >
+                    <div
+                      style={{
+                        fontSize: "11px",
+                        color: "#7C7D7E",
+                        fontWeight: "500",
+                        fontFamily: fontFamily,
+                        textOverflow: "ellipsis",
+                        overflow: "hidden",
+                        whiteSpace: "nowrap",
+                        textAlign: "end",
+                      }}
+                    >
+                      {formatValueVertical(props.payload.value)}
+                    </div>
+                  </foreignObject>
+                );
+              }}
             />
             {keyNames?.map((name, index) => (
               <Bar

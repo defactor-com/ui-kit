@@ -6,8 +6,8 @@ export interface ICollateralSection {
   textCollateral?: string;
   requiredSection: boolean;
   backgroundColor?: string;
-  numberCollateral?: string;
   loader?: React.ReactElement;
   tokenIcon?: React.ReactElement | string;
   walletIcon?: React.ReactElement | string;
+  numberCollateral?: React.ReactElement | string;
 }

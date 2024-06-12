@@ -21,11 +21,11 @@ export interface ILendBorrow {
   value: InputValue | bigint;
   collateralBalance?: string;
   loader?: React.ReactElement;
-  collateralRequired?: string;
+  selectedPool?: React.ReactNode;
   showRequiredCollateral?: boolean;
   loaderCollateral?: React.ReactElement;
   tokenIcon?: React.ReactElement | string;
   onChange(e: ChangeEvent<HTMLInputElement>): void;
+  collateralRequired?: React.ReactElement | string;
   onChangeTab: (event: React.SyntheticEvent, newValue: string) => void;
-  selectedPool?: React.ReactNode;
 }
