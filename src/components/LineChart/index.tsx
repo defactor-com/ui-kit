@@ -139,11 +139,11 @@ const RenderComponent = ({
               <text
                 fontSize={11}
                 fill="#7C7D7E"
-                textAnchor="end"
                 fontWeight={700}
-                x={props.x + 20}
                 y={props.y + 15}
+                textAnchor="end"
                 fontFamily={fontFamily}
+                x={props.payload.coordinate}
               >
                 {formatValueAxisX(props.payload.value)}
               </text>
@@ -184,15 +184,15 @@ const RenderComponent = ({
           />
           {(keyNames || []).map((name, index) => (
             <Area
-              key={`area-${name}`}
-              hide={isHide?.(name)}
               dot={false}
-              activeDot={false}
               dataKey={name}
-              stroke={colors[index % colors.length]}
               type="monotone"
               strokeWidth={2}
               fillOpacity={1}
+              activeDot={false}
+              key={`area-${name}`}
+              hide={isHide?.(name)}
+              stroke={colors[index % colors.length]}
               fill={`url(#color-${getColorId ? getColorId(name) : ""})`}
             />
           ))}

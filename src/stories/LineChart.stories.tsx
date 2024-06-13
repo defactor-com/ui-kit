@@ -61,19 +61,19 @@ const series: SeriesDataType[] = [
 
 const data: LineChartDataType[] = [
   {
-    date: "25 July 00:00",
+    date: "May 19",
   },
   {
-    date: "26 July 00:00",
+    date: "May 22",
   },
   {
-    date: "27 July 00:00",
+    date: "May 26",
   },
   {
-    date: "28 July 00:00",
+    date: "Jun 02",
   },
   {
-    date: "29 July 00:00",
+    date: "Jun 11",
   },
 ];
 
