@@ -6,6 +6,7 @@ import {
   LineChartDataType,
   ILineChart,
   SeriesDataType,
+  FormatValueType,
 } from "../components/LineChart/ChartsTypes";
 import AdmirationIcon from "../components/Icons/admirationIcon";
 
@@ -14,7 +15,7 @@ export default {
   component: LineChart,
 };
 
-const formatValue = (
+const formatValue: FormatValueType = (
   value: number | string,
   options?: Intl.NumberFormatOptions
 ) => {
@@ -28,7 +29,7 @@ const formatValue = (
 
   let numeroRedondeado = Math.round(numeroDecimal / 5) * 5;
 
-  return numeroRedondeado;
+  return numeroRedondeado.toLocaleString();
 };
 
 const colors: string[] = ["#26A66B", "#5A5BEB", "#D21A4D"];
@@ -37,11 +38,11 @@ const series: SeriesDataType[] = [
   {
     name: "Total Available",
     data: [
-      { value: 409999, fluctuation: "0%" },
-      { value: 123, fluctuation: "0%" },
-      { value: 65243, fluctuation: "0%" },
-      { value: 1234, fluctuation: "0%" },
-      { value: 6534, fluctuation: "0%" },
+      { value: 49, fluctuation: "0%" },
+      { value: 49, fluctuation: "0%" },
+      { value: 49, fluctuation: "0%" },
+      { value: 49, fluctuation: "0%" },
+      { value: 49, fluctuation: "0%" },
     ],
   },
   {
@@ -57,11 +58,11 @@ const series: SeriesDataType[] = [
   {
     name: "Total Lent",
     data: [
-      { value: 1, fluctuation: "-0.5%" },
-      { value: 3, fluctuation: "+1.2%" },
-      { value: 5, fluctuation: "-1.1%" },
-      { value: 6, fluctuation: "-1.1%" },
-      { value: 7, fluctuation: "-1.1%" },
+      { value: 12, fluctuation: "-0.5%" },
+      { value: 63, fluctuation: "+1.2%" },
+      { value: 65, fluctuation: "-1.1%" },
+      { value: 66, fluctuation: "-1.1%" },
+      { value: 67, fluctuation: "-1.1%" },
     ],
   },
 ];

@@ -1,32 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   LineChartDataType,
   SeriesDataType,
   ILineChartState,
   DataArrayType,
+  ValidatedSerie,
+  FormatValueType,
 } from "./ChartsTypes";
 
-const validateData = (data: DataArrayType[]) => {
+const validateData = (data: DataArrayType[], formatValue: FormatValueType) => {
   const values = data.map((item) => item.value);
-  const allEqual = values.every((value) => value === values[0]);
+  const allEqual = values.every(
+    (value) => formatValue(value) === formatValue(values[0])
+  );
   return allEqual;
 };
 
-const validateSeries = (series: SeriesDataType[]) => {
-  return series.some((serie) => {
-    console.log({ test: validateData(serie.data) });
-    return validateData(serie.data);
+const validateSeries = (
+  series: SeriesDataType[],
+  formatValue: FormatValueType
+) => {
+  const validatedSeries: ValidatedSerie[] = [];
+
+  series.map((serie) => {
+    validatedSeries.push({
+      name: serie.name,
+      isSameData: validateData(serie.data, formatValue),
+    });
   });
-  return false;
+  return validatedSeries;
 };
 
-const useLineChartState = ({ data, series }: ILineChartState) => {
+const useLineChartState = ({
+  data,
+  series,
+  formatValueAxisY,
+}: ILineChartState) => {
   const [keyName, setKeyName] = useState("");
   const [tooltipActive, setTooltipActive] = useState(false);
-  const isDuplicate = validateSeries(series);
-
-  console.log({ isDuplicate });
+  const validatedSeries = validateSeries(series, formatValueAxisY);
+  const [tickCount, setTickCount] = useState(5);
 
   const getInitialData = (
     data: LineChartDataType[] | undefined,
@@ -79,24 +93,34 @@ const useLineChartState = ({ data, series }: ILineChartState) => {
 
   const missingData = !data?.length || !series.length;
 
-  const formatDefaultValue = (value: number | string) => {
-    return value
-      .toLocaleString("en-US", {
-        style: "currency",
-        currency: "USD",
-      })
-      .split(".")[0];
-  };
+  useEffect(() => {
+    const hideSeries = Object.keys(hide).filter((clave) => hide[clave]);
+    if (series.length - hideSeries.length === 1) {
+      const value = series.filter((serie) => !isHide(serie.name))[0];
+      const isSameData = validatedSeries.filter(
+        (vSerie) => vSerie.name === value.name
+      )[0].isSameData;
+      if (isSameData) setTickCount(1);
+    } else {
+      setTickCount(5);
+    }
+  }, [hide]);
 
   return [
-    { chartData, keyNames, keyName, tooltipActive, missingData, isDuplicate },
+    {
+      chartData,
+      keyNames,
+      keyName,
+      tooltipActive,
+      missingData,
+      tickCount,
+    },
     {
       isHide,
       setHide,
       handleOpenTooltip,
       handleCloseTooltip,
       getColorId,
-      formatDefaultValue,
     },
   ];
 };
