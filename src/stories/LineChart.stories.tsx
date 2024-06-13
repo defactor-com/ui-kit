@@ -19,7 +19,6 @@ const formatValue: FormatValueType = (
   value: number | string,
   options?: Intl.NumberFormatOptions
 ) => {
-  console.log(value);
   let numeroStr = value.toString();
 
   let primerosDosDigitos = numeroStr.slice(0, 2);
