@@ -24,11 +24,6 @@ export type FormatValueType = (
   options?: Intl.NumberFormatOptions
 ) => string;
 
-export type ValidatedSerie = {
-  name: string;
-  isSameData: boolean;
-};
-
 export interface IChart {
   emptyIcon?: React.ReactElement | string;
   formatValueAxisY?: FormatValueType;
@@ -64,7 +59,6 @@ export interface IRenderComponent extends IChart {
   keyNames: string[] | undefined;
   keyName: string | undefined;
   chartData: any;
-  tickCount: number;
 }
 
 export interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
@@ -82,5 +76,4 @@ export interface LineChartTooltipProps extends CustomTooltipProps {
 export interface ILineChartState {
   data: LineChartDataType[] | undefined;
   series: SeriesDataType[];
-  formatValueAxisY: FormatValueType;
 }

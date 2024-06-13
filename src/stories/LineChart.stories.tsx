@@ -38,31 +38,31 @@ const series: SeriesDataType[] = [
   {
     name: "Total Available",
     data: [
-      { value: 49, fluctuation: "0%" },
-      { value: 49, fluctuation: "0%" },
-      { value: 49, fluctuation: "0%" },
-      { value: 49, fluctuation: "0%" },
-      { value: 49, fluctuation: "0%" },
+      { value: 7000, fluctuation: "0%" },
+      { value: 7000, fluctuation: "0%" },
+      { value: 7000, fluctuation: "0%" },
+      { value: 7000, fluctuation: "0%" },
+      { value: 7000, fluctuation: "0%" },
     ],
   },
   {
     name: "Total Borrowed",
     data: [
-      { value: 1, fluctuation: "+3.5%" },
-      { value: 23, fluctuation: "-0.8%" },
-      { value: 3, fluctuation: "+1.8%" },
-      { value: 32, fluctuation: "+1.8%" },
-      { value: 4, fluctuation: "+1.8%" },
+      { value: 100, fluctuation: "+3.5%" },
+      { value: 2300, fluctuation: "-0.8%" },
+      { value: 300, fluctuation: "+1.8%" },
+      { value: 3200, fluctuation: "+1.8%" },
+      { value: 400, fluctuation: "+1.8%" },
     ],
   },
   {
     name: "Total Lent",
     data: [
-      { value: 12, fluctuation: "-0.5%" },
-      { value: 63, fluctuation: "+1.2%" },
-      { value: 65, fluctuation: "-1.1%" },
-      { value: 66, fluctuation: "-1.1%" },
-      { value: 67, fluctuation: "-1.1%" },
+      { value: 1200, fluctuation: "-0.5%" },
+      { value: 6300, fluctuation: "+1.2%" },
+      { value: 6500, fluctuation: "-1.1%" },
+      { value: 6600, fluctuation: "-1.1%" },
+      { value: 6700, fluctuation: "-1.1%" },
     ],
   },
 ];
@@ -133,7 +133,7 @@ const Template: Story<ILineChart> = (args) => {
 
 export const LineChartItem = Template.bind({});
 LineChartItem.args = {
-  // formatValue,
+  formatValue,
   series,
   colors,
   dateFilter: ["1D", "7D", "1M", "ALL"],

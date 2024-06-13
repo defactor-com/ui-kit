@@ -77,7 +77,6 @@ const RenderComponent = ({
   loaderComponent,
   tooltipActive,
   missingData,
-  tickCount,
   getColorId,
   fontFamily,
   emptyTitle,
@@ -151,10 +150,10 @@ const RenderComponent = ({
             )}
           />
           <YAxis
-            tickCount={tickCount}
             axisLine={false}
+            type="number"
             allowDataOverflow={true}
-            domain={["auto", "auto"]}
+            domain={[0, "auto"]}
             tick={(props) => (
               <text
                 x={props.x}
@@ -249,9 +248,9 @@ const Chart = ({
   formatValueAxisX = (value) => new Date(value).toLocaleString(),
 }: ILineChart) => {
   const [
-    { chartData, keyName, keyNames, tooltipActive, tickCount },
+    { chartData, keyName, keyNames, tooltipActive },
     { isHide, setHide, handleOpenTooltip, handleCloseTooltip, getColorId },
-  ] = useLineChartState({ data, series, formatValueAxisY });
+  ] = useLineChartState({ data, series });
 
   return (
     <>
@@ -304,7 +303,6 @@ const Chart = ({
           formatDate={formatDate}
           formatValue={formatValue}
           missingData={missingData}
-          tickCount={tickCount || 1}
           tooltipActive={tooltipActive}
           loaderComponent={loaderComponent}
           formatValueAxisY={formatValueAxisY}
@@ -369,7 +367,6 @@ export const LineChart = ({
   const [{ missingData }, {}] = useLineChartState({
     data,
     series,
-    formatValueAxisY,
   });
 
   return (
