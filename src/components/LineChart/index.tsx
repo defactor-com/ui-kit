@@ -151,7 +151,6 @@ const RenderComponent = ({
           />
           <YAxis
             axisLine={false}
-            type="number"
             allowDataOverflow={true}
             domain={[0, "auto"]}
             tick={(props) => (
@@ -164,7 +163,7 @@ const RenderComponent = ({
                 fontWeight={700}
                 fontFamily={fontFamily}
               >
-                {formatValueAxisY(props.payload.value)}{" "}
+                {formatValueAxisY(props.payload.value)}
               </text>
             )}
           />

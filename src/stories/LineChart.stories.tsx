@@ -19,6 +19,7 @@ const formatValue: FormatValueType = (
   value: number | string,
   options?: Intl.NumberFormatOptions
 ) => {
+  console.log(value);
   let numeroStr = value.toString();
 
   let primerosDosDigitos = numeroStr.slice(0, 2);
@@ -38,11 +39,11 @@ const series: SeriesDataType[] = [
   {
     name: "Total Available",
     data: [
-      { value: 7000, fluctuation: "0%" },
-      { value: 7000, fluctuation: "0%" },
-      { value: 7000, fluctuation: "0%" },
-      { value: 7000, fluctuation: "0%" },
-      { value: 7000, fluctuation: "0%" },
+      { value: 700000, fluctuation: "0%" },
+      { value: 700000, fluctuation: "0%" },
+      { value: 700000, fluctuation: "0%" },
+      { value: 700000, fluctuation: "0%" },
+      { value: 700000, fluctuation: "0%" },
     ],
   },
   {
@@ -72,16 +73,16 @@ const data: LineChartDataType[] = [
     date: "May 19",
   },
   {
-    date: "May 22",
+    date: "May 19",
   },
   {
-    date: "May 26",
+    date: "May 19",
   },
   {
-    date: "Jun 02",
+    date: "May 19",
   },
   {
-    date: "Jun 11",
+    date: "May 19",
   },
 ];
 
