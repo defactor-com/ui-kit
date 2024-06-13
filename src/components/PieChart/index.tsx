@@ -55,7 +55,7 @@ const renderCustomizedLabel = ({
   fontFamily,
   fontWeight,
 }: any) => {
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const radius = innerRadius + (outerRadius - innerRadius) * -2.5;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
@@ -63,9 +63,8 @@ const renderCustomizedLabel = ({
     <text
       x={x}
       y={y}
-      fill="white"
-      textAnchor={x > cx ? "start" : "end"}
-      dominantBaseline="central"
+      fill="black"
+      textAnchor="middle"
       fontFamily={fontFamily}
       fontWeight={fontWeight}
     >
@@ -86,18 +85,22 @@ const Chart = ({
       <ResponsiveContainer width="" height="50%" minHeight="250px">
         <RechartsPieChart>
           <Pie
+            cx={120}
             data={data}
-            label={renderCustomizedLabel}
+            fill="#8884d8"
             strokeWidth={0}
             dataKey="value"
-            fontFamily={fontFamily}
+            paddingAngle={5}
+            innerRadius={110}
             outerRadius={120}
+            fontFamily={fontFamily}
+            label={renderCustomizedLabel}
           >
             {data.map((_entry, index) => (
               <Cell
                 key={`cell-item-${index}`}
-                fill={_entry.color}
                 fontFamily={fontFamily}
+                fill={_entry.color}
                 fontWeight={700}
               />
             ))}

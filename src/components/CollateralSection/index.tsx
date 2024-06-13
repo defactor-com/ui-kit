@@ -26,7 +26,7 @@ export const CollateralSection = ({
           <span className="variant-body1" style={{ fontFamily: fontFamily }}>
             {textCollateral}:
           </span>
-          <Box maxWidth="170px" display={"flex"} flexDirection={"column"}>
+          <Box maxWidth="150px" display="flex" flexDirection="column">
             <span
               className={clsx("breakText", "variant-body1")}
               style={{

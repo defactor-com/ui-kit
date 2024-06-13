@@ -43,18 +43,18 @@ export const LendBorrow = ({
   color = "#26a66b",
   collateralRequired,
   showRequiredCollateral = false,
-  SelectedPool,
+  selectedPool,
 }: ILendBorrow) => {
   const classes = useStyles({ indicatorColor: color });
 
   return (
     <Container
       externalStyles={
-        SelectedPool ? "componentSelectedPool" : "componentContainer"
+        selectedPool ? "componentSelectedPool" : "componentContainer"
       }
       content={
         <>
-          {SelectedPool && SelectedPool}
+          {selectedPool && selectedPool}
           <TabContext value={currentTab}>
             <div className="headerLendBorrow">
               {classes && (
@@ -97,7 +97,7 @@ export const LendBorrow = ({
             </div>
             <div
               className={
-                SelectedPool ? "bodyLendBorrowSelectedPool" : "bodyLendBorrow"
+                selectedPool ? "bodyLendBorrowSelectedPool" : "bodyLendBorrow"
               }
             >
               <TabPanel value={labelLend} className="tabPanelCustom">
@@ -122,7 +122,7 @@ export const LendBorrow = ({
                 <div
                   className="containerButtonLendBorrow"
                   style={{
-                    marginTop: SelectedPool ? "24px" : "40px",
+                    marginTop: selectedPool ? "24px" : "40px",
                   }}
                 >
                   <Button
@@ -134,7 +134,7 @@ export const LendBorrow = ({
                     variant="contained"
                     icon={lendingWhiteIcon}
                     fontFamily={fontFamily}
-                    fullWidth={SelectedPool ? true : false}
+                    fullWidth={selectedPool ? true : false}
                   />
                 </div>
               </TabPanel>
@@ -160,7 +160,7 @@ export const LendBorrow = ({
                 <div
                   className="containerButtonLendBorrow"
                   style={{
-                    marginTop: SelectedPool ? "24px" : "40px",
+                    marginTop: selectedPool ? "24px" : "40px",
                   }}
                 >
                   <Button
@@ -172,7 +172,7 @@ export const LendBorrow = ({
                     label={labelBorrow}
                     fontFamily={fontFamily}
                     icon={borrowingWhiteIcon}
-                    fullWidth={SelectedPool ? true : false}
+                    fullWidth={selectedPool ? true : false}
                   />
                 </div>
               </TabPanel>
