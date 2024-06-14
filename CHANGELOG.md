@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.2.86
+
+### Patch Changes
+
+- eed4ff2: Update tick count by data on Line Chart
+
 ## 0.2.71
 
 ### Patch Changes
