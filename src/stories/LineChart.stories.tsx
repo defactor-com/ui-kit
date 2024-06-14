@@ -19,17 +19,17 @@ const formatValue: FormatValueType = (
   value: number | string,
   options?: Intl.NumberFormatOptions
 ) => {
-  let numeroStr = value.toString();
+  let numberStr = value.toString();
 
-  let primerosDosDigitos = numeroStr.slice(0, 2);
+  let firtsDigits = numberStr.slice(0, 2);
 
-  let restoDeLosDigitos = numeroStr.slice(2);
+  let remainingDigits = numberStr.slice(2);
 
-  let numeroDecimal = Number(primerosDosDigitos + "." + restoDeLosDigitos);
+  let decimalNumber = Number(firtsDigits + "." + remainingDigits);
 
-  let numeroRedondeado = Math.round(numeroDecimal / 5) * 5;
+  let roundNumber = Math.round(decimalNumber / 5) * 5;
 
-  return numeroRedondeado.toLocaleString();
+  return roundNumber.toLocaleString();
 };
 
 const colors: string[] = ["#26A66B", "#5A5BEB", "#D21A4D"];
