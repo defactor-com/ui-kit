@@ -152,7 +152,7 @@ const RenderComponent = ({
           <YAxis
             axisLine={false}
             allowDataOverflow={true}
-            domain={["auto", "auto"]}
+            domain={[0, "auto"]}
             tick={(props) => (
               <text
                 x={props.x}
@@ -363,7 +363,10 @@ export const LineChart = ({
   formatValueAxisY = (value) => value.toLocaleString("en-US"),
   formatValueAxisX = (value) => new Date(value).toLocaleString(),
 }: ILineChart) => {
-  const [{ missingData }, {}] = useLineChartState({ data, series });
+  const [{ missingData }, {}] = useLineChartState({
+    data,
+    series,
+  });
 
   return (
     <Chart

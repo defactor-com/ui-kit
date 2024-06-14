@@ -62,7 +62,13 @@ const useLineChartState = ({ data, series }: ILineChartState) => {
   const missingData = !data?.length || !series.length;
 
   return [
-    { chartData, keyNames, keyName, tooltipActive, missingData },
+    {
+      chartData,
+      keyNames,
+      keyName,
+      tooltipActive,
+      missingData,
+    },
     {
       isHide,
       setHide,

@@ -6,6 +6,7 @@ import {
   LineChartDataType,
   ILineChart,
   SeriesDataType,
+  FormatValueType,
 } from "../components/LineChart/ChartsTypes";
 import AdmirationIcon from "../components/Icons/admirationIcon";
 
@@ -14,47 +15,54 @@ export default {
   component: LineChart,
 };
 
-const formatValue = (
+const formatValue: FormatValueType = (
   value: number | string,
   options?: Intl.NumberFormatOptions
 ) => {
-  return value.toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD",
-    ...options,
-  });
+  let numberStr = value.toString();
+
+  let firtsDigits = numberStr.slice(0, 2);
+
+  let remainingDigits = numberStr.slice(2);
+
+  let decimalNumber = Number(firtsDigits + "." + remainingDigits);
+
+  let roundNumber = Math.round(decimalNumber / 5) * 5;
+
+  return roundNumber.toLocaleString();
 };
 
 const colors: string[] = ["#26A66B", "#5A5BEB", "#D21A4D"];
+
 const series: SeriesDataType[] = [
   {
     name: "Total Available",
     data: [
-      { value: 40, fluctuation: "+1.4%" },
-      { value: 60, fluctuation: "-0.2%" },
-      { value: 90, fluctuation: "+5.3%" },
-      { value: 50, fluctuation: "+5.3%" },
-      { value: 30, fluctuation: "+5.3%" },
+      { value: 700000, fluctuation: "0%" },
+      { value: 700000, fluctuation: "0%" },
+      { value: 700000, fluctuation: "0%" },
+      { value: 700000, fluctuation: "0%" },
+      { value: 700000, fluctuation: "0%" },
     ],
   },
   {
     name: "Total Borrowed",
     data: [
-      { value: 50, fluctuation: "+3.5%" },
-      { value: 40, fluctuation: "-0.8%" },
-      { value: 20, fluctuation: "+1.8%" },
-      { value: 30, fluctuation: "+1.8%" },
-      { value: 60, fluctuation: "+1.8%" },
+      { value: 100, fluctuation: "+3.5%" },
+      { value: 2300, fluctuation: "-0.8%" },
+      { value: 300, fluctuation: "+1.8%" },
+      { value: 3200, fluctuation: "+1.8%" },
+      { value: 400, fluctuation: "+1.8%" },
     ],
   },
   {
     name: "Total Lent",
     data: [
-      { value: 10, fluctuation: "-0.5%" },
-      { value: 20, fluctuation: "+1.2%" },
-      { value: 40, fluctuation: "-1.1%" },
-      { value: 80, fluctuation: "-1.1%" },
-      { value: 40, fluctuation: "-1.1%" },
+      { value: 1200, fluctuation: "-0.5%" },
+      { value: 6300, fluctuation: "+1.2%" },
+      { value: 6500, fluctuation: "-1.1%" },
+      { value: 6600, fluctuation: "-1.1%" },
+      { value: 6700, fluctuation: "-1.1%" },
     ],
   },
 ];
@@ -64,16 +72,16 @@ const data: LineChartDataType[] = [
     date: "May 19",
   },
   {
-    date: "May 22",
+    date: "May 19",
   },
   {
-    date: "May 26",
+    date: "May 19",
   },
   {
-    date: "Jun 02",
+    date: "May 19",
   },
   {
-    date: "Jun 11",
+    date: "May 19",
   },
 ];
 
