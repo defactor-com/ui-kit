@@ -6,14 +6,20 @@ export const Pill = ({
   label,
   color,
   bgColor,
+  optionalStyles,
   externalStyles,
   fontFamily,
   customBorder,
 }: IPill) => {
+  const defaultStyles: React.CSSProperties = {
+    backgroundColor: bgColor,
+    border: customBorder,
+  };
+
   return (
     <div
       className={clsx(externalStyles, "container-pill")}
-      style={{ backgroundColor: bgColor, border: customBorder }}
+      style={{ ...defaultStyles, ...optionalStyles }}
     >
       {label && typeof label === "string" ? (
         <span style={{ color: color, fontFamily: fontFamily }}>{label}</span>

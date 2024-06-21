@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { Story } from "@storybook/react";
 
 import { CardComponent } from "../components/CardComponent";
 import { ICardComponent } from "../components/CardComponent/CardComponentTypes";
 import InfoIcon from "../../public/assets/info-icon.svg";
 import InfoActiveIcon from "../../public/assets/info-active-icon.svg";
+
+const additionalStyles: React.CSSProperties = {
+  border: "2px solid #00a965",
+  borderRadius: "12px",
+};
 
 export default {
   title: "Card Component",
@@ -28,4 +33,5 @@ CardComponentItem.args = {
   fluctuation: "+3.5",
   fluctuationValue: "+$2,400",
   hoverBehavior: true,
+  optionalStyles: additionalStyles,
 };

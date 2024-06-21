@@ -5,6 +5,10 @@ import { Button } from "../components/Button";
 import { IButton } from "../components/Button/ButtonTypes";
 import lendingIcon from "../../public/assets/lending-white.svg";
 
+const additionalStyles: React.CSSProperties = {
+  border: "4px solid #7cd7ad",
+};
+
 export default {
   title: "Button",
   component: Button,
@@ -17,6 +21,7 @@ Contained.args = {
   variant: "contained",
   bgColor: "#26A66B",
   label: "Contained",
+  optionalStyles: additionalStyles,
 };
 
 export const Outlined = Template.bind({});

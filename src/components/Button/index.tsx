@@ -14,6 +14,7 @@ export const Button = ({
   fontFamily,
   borderColor,
   externalStyles,
+  optionalStyles,
   disabled = false,
   ...props
 }: IButton) => {
@@ -21,15 +22,17 @@ export const Button = ({
     fullWidth ? "full-width" : undefined
   } ${disabled || loader ? "btn-desabled" : undefined}`;
 
+  const defaultStyles: React.CSSProperties = {
+    borderColor: borderColor,
+    backgroundColor: bgColor,
+    fontFamily: fontFamily,
+    color: color,
+  };
+
   return (
     <button
       className={clsx(externalStyles, classNames)}
-      style={{
-        borderColor: borderColor,
-        backgroundColor: bgColor,
-        fontFamily: fontFamily,
-        color: color,
-      }}
+      style={{ ...defaultStyles, ...optionalStyles }}
       disabled={disabled}
       {...props}
     >

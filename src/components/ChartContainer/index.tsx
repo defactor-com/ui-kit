@@ -6,13 +6,17 @@ import { IChartContainer } from "./ChartContainerTypes";
 export const ChartContainer = ({
   chartDescription,
   externalStyles,
+  optionalStyles,
   chartSubtitle,
   fontFamily,
   haveFilter,
   content,
   tooltip,
 }: IChartContainer) => (
-  <div className={clsx(externalStyles, "chart-container")}>
+  <div
+    className={clsx(externalStyles, "chart-container")}
+    style={{ ...optionalStyles }}
+  >
     <div
       className={clsx(
         "flex-column-direction",

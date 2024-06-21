@@ -31,6 +31,7 @@ const HeaderContainer = ({
         <CardComponent
           key={`bottom-item-${index}`}
           externalStyles={clsx(getPaddingComponent(index), item.externalStyles)}
+          optionalStyles={item.optionalStyles}
           value={item.value}
           label={item.label}
           fontFamily={fontFamily}
@@ -80,6 +81,7 @@ const RightContainer = ({
               "dashboard-right-flat-containers",
               item.externalStyles
             )}
+            optionalStyles={item.optionalStyles}
             value={item.value}
             label={item.label}
             color={item.color}

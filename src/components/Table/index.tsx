@@ -124,6 +124,7 @@ export const Table = ({
                   <th style={{ fontFamily: fontFamily }} key={item.label}>
                     <div
                       className={clsx("center-element", item.externalStyles)}
+                      style={{ ...item.optionalStyles }}
                     >
                       {item.label}
                       {item.sortFunction && (
@@ -216,7 +217,8 @@ export const Table = ({
                   >
                     {row.items.map((itemRow, indexRow) => (
                       <td
-                        className={itemRow.externalStyles}
+                        className={clsx(itemRow.externalStyles)}
+                        style={{ ...itemRow.optionalStyles }}
                         onClick={
                           itemRow.activeAction ? row.onClickRow : undefined
                         }

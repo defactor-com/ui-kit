@@ -117,12 +117,16 @@ const Template: Story<ITable> = (args) => {
       emptyTitle="No pools to show"
       emptyDescription="Pools will be listed here when available. "
       headers={[
-        { label: "Position", sortFunction: () => {} },
-        { label: "Amount" },
-        { label: "Rewards" },
-        { label: "Lock" },
-        { label: "Unlocks" },
-        { label: "Status" },
+        {
+          label: "Position",
+          sortFunction: () => {},
+          optionalStyles: { background: "#E9F6F0" },
+        },
+        { label: "Amount", optionalStyles: { background: "#E9F6F0" } },
+        { label: "Rewards", optionalStyles: { background: "#E9F6F0" } },
+        { label: "Lock", optionalStyles: { background: "#E9F6F0" } },
+        { label: "Unlocks", optionalStyles: { background: "#E9F6F0" } },
+        { label: "Status", optionalStyles: { background: "#E9F6F0" } },
       ]}
       filters={[
         {
