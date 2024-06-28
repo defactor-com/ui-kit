@@ -20,6 +20,10 @@ import AdmirationIcon from "../components/Icons/admirationIcon";
 import { Dashboard } from "../components/Dashboard";
 import { CardItem, IDashboard } from "../components/Dashboard/DashboardTypes";
 
+const additionalStyles: React.CSSProperties = {
+  padding: "8px",
+};
+
 export default {
   title: "Dashboard",
   component: Dashboard,
@@ -173,6 +177,7 @@ const Template: Story<IDashboard> = (args) => {
       {...args}
       content={
         <ChartContainer
+          optionalStyles={additionalStyles}
           chartSubtitle={"Pool Utilization"}
           chartDescription={"Optional Description"}
           tooltip={exampleTooltip}

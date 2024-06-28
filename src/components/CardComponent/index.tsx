@@ -16,6 +16,7 @@ export const CardComponent = ({
   fluctuation,
   infoTooltip,
   externalStyles,
+  optionalStyles,
   fluctuationValue,
   hoverBehavior = false,
 }: ICardComponent) => {
@@ -30,6 +31,7 @@ export const CardComponent = ({
       handleMouseEnter={handleChange}
       handleMouseLeave={handleChange}
       externalStyles={externalStyles}
+      optionalStyles={optionalStyles}
       content={
         <div className="flex-card-column-direction">
           <div className="flex-card">

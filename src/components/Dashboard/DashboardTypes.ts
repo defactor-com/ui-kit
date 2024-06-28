@@ -8,6 +8,7 @@ export type CardItem = {
   fluctuationValue?: string;
   color?: string;
   fontFamily?: string;
+  optionalStyles?: React.CSSProperties;
   externalStyles?: string;
   hoverBehavior?: boolean;
   infoTooltip?: Omit<ITooltip, "handleChange">;

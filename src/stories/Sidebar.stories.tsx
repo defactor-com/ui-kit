@@ -9,6 +9,10 @@ import lendingIcon from "../../public/assets/lending.svg";
 import dashboardIcon from "../../public/assets/dashboard.svg";
 import borrowingIcon from "../../public/assets/borrowing.svg";
 
+const additionalStyles: React.CSSProperties = {
+  backgroundColor: "#fff",
+};
+
 export default {
   title: "Sidebar",
   component: Sidebar,
@@ -41,6 +45,7 @@ const Template: Story<ISidebar> = (args) => <Sidebar {...args} />;
 
 export const SidebarItem = Template.bind({});
 SidebarItem.args = {
+  optionalStyles: additionalStyles,
   menuOptions: (
     <div className="flex-sidebar-story">
       {sideBarItems.map((data) => (

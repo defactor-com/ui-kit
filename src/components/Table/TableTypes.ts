@@ -3,6 +3,7 @@ import React from "react";
 export interface IHeaderObject {
   label: string;
   sortFunction?(): void;
+  optionalStyles?: React.CSSProperties;
   externalStyles?: string;
 }
 
@@ -19,6 +20,7 @@ export interface IFilterSelectedObject {
 
 export interface IItemRow {
   activeAction: boolean;
+  optionalStyles?: React.CSSProperties;
   externalStyles?: string;
   component: React.ReactNode;
 }
