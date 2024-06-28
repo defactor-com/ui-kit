@@ -1,8 +1,9 @@
 import React from "react";
 import clsx from "clsx";
-import { Divider } from "@mui/material";
+import { Box, Divider } from "@mui/material";
 
 import DollarIcon from "../../../public/assets/dollar-icon.svg";
+import { MultichainSelector } from "../MultichainSelector";
 import { CardComponent } from "../CardComponent";
 import { Container } from "../Container";
 
@@ -120,34 +121,47 @@ export const Dashboard = ({
           <div className="graphic-container-internal">
             <div className="header-dashboard-component">
               <div className="dashboard-title-styles">
-                {titleGraphic && (
-                  <div className="graphic-header">
-                    {currencyIcon && typeof currencyIcon === "string" ? (
-                      <img src={currencyIcon} alt="currency icon" />
-                    ) : (
-                      currencyIcon
-                    )}
-                    <span
-                      className={clsx("variant-h3", "margin-left")}
-                      style={{ fontFamily }}
-                    >
-                      {titleGraphic}
-                    </span>
-                  </div>
-                )}
-                {totalValueLocked && (
-                  <div className="total-value-container">
-                    <span className="variant-h1" style={{ fontFamily }}>
-                      {totalValueLocked}
-                    </span>
-                    <span
-                      className={clsx("variant-body2", "padding-bottom-medium")}
-                      style={{ fontFamily }}
-                    >
-                      {currency}
-                    </span>
-                  </div>
-                )}
+                <Box>
+                  {titleGraphic && (
+                    <div className="graphic-header">
+                      {currencyIcon && typeof currencyIcon === "string" ? (
+                        <img src={currencyIcon} alt="currency icon" />
+                      ) : (
+                        currencyIcon
+                      )}
+                      <span
+                        className={clsx("variant-h3", "margin-left")}
+                        style={{ fontFamily }}
+                      >
+                        {titleGraphic}
+                      </span>
+                    </div>
+                  )}
+                  {totalValueLocked && (
+                    <div className="total-value-container">
+                      <span className="variant-h1" style={{ fontFamily }}>
+                        {totalValueLocked}
+                      </span>
+                      <span
+                        className={clsx(
+                          "variant-body2",
+                          "padding-bottom-medium"
+                        )}
+                        style={{ fontFamily }}
+                      >
+                        {currency}
+                      </span>
+                    </div>
+                  )}
+                </Box>
+                <Box>
+                  <MultichainSelector
+                    networkSelected={[]}
+                    networksList={[]}
+                    networksAssets={{}}
+                    textFieldLabel="TEST"
+                  />
+                </Box>
               </div>
               {bottomLabel && bottomContainerItems.length > 0 && (
                 <>

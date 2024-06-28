@@ -229,6 +229,9 @@ $breakpoint-laptop: 1400px;
 }
 
 .dashboard-title-styles {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   @media (min-width: $breakpoint-laptop) {
     margin-top: 8px;
     width: 50%;
