@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Story } from "@storybook/react";
 import { Box } from "@mui/material";
 
-import { LineChart } from "../components/LineChart";
 import {
   SeriesDataType,
   LineChartDataType,
@@ -10,14 +9,15 @@ import {
 import { Tooltip } from "../components/Tooltip";
 import { BarChart } from "../components/BarChart";
 import { PieChart } from "../components/PieChart";
+import { Dashboard } from "../components/Dashboard";
+import { LineChart } from "../components/LineChart";
 import InfoIcon from "../../public/assets/info-icon.svg";
-import InfoActiveIcon from "../../public/assets/info-active-icon.svg";
-import DollarIcon from "../../public/assets/dollar-icon.svg";
 import LendingIcon from "../../public/assets/lending.svg";
+import DollarIcon from "../../public/assets/dollar-icon.svg";
 import BorrowingIcon from "../../public/assets/borrowing.svg";
 import { ChartContainer } from "../components/ChartContainer";
 import AdmirationIcon from "../components/Icons/admirationIcon";
-import { Dashboard } from "../components/Dashboard";
+import InfoActiveIcon from "../../public/assets/info-active-icon.svg";
 import { CardItem, IDashboard } from "../components/Dashboard/DashboardTypes";
 
 const additionalStyles: React.CSSProperties = {

@@ -1,9 +1,8 @@
 import React from "react";
 import clsx from "clsx";
-import { Box, Divider } from "@mui/material";
+import { Box } from "@mui/material";
 
 import DollarIcon from "../../../public/assets/dollar-icon.svg";
-import { MultichainSelector } from "../MultichainSelector";
 import { CardComponent } from "../CardComponent";
 import { Container } from "../Container";
 
@@ -102,6 +101,7 @@ export const Dashboard = ({
   bottomContainerItems = [],
   currencyIcon = DollarIcon,
   rightContainerItems = [],
+  multichainSelector,
   totalValueLocked,
   titleGraphic,
   bottomLabel,
@@ -119,7 +119,10 @@ export const Dashboard = ({
       <div className="dashboard-container">
         <div className="graphic-container">
           <div className="graphic-container-internal">
-            <div className="header-dashboard-component">
+            <div>
+              <Box mb={2} sx={{ display: { sm: "none" } }}>
+                {multichainSelector}
+              </Box>
               <div className="dashboard-title-styles">
                 <Box>
                   {titleGraphic && (
@@ -154,13 +157,8 @@ export const Dashboard = ({
                     </div>
                   )}
                 </Box>
-                <Box>
-                  <MultichainSelector
-                    networkSelected={[]}
-                    networksList={[]}
-                    networksAssets={{}}
-                    textFieldLabel="TEST"
-                  />
+                <Box mb={2} sx={{ display: { xs: "none", sm: "block" } }}>
+                  {multichainSelector}
                 </Box>
               </div>
               {bottomLabel && bottomContainerItems.length > 0 && (
@@ -172,7 +170,7 @@ export const Dashboard = ({
                     icon={bottomIcon}
                     colors={colors}
                   />
-                  <Divider className={"divider-color"} />
+                  {/* <Divider className={"divider-color"} /> */}
                 </>
               )}
             </div>

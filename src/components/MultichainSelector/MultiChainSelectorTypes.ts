@@ -5,16 +5,19 @@ export type NetworksDataType = {
   chainId: number;
   explorerUrl: string;
   baseTokenAddress: string;
-  currency: "MATIC" | "ETH";
   collateralAddress: string;
   poolContractAddress: string;
+  currency: "MATIC" | "ETH" | "BNB";
 };
 
 export type IMultiChainSelector = {
+  color: string;
+  fontFamily?: string;
   networksAssets: any;
   textFieldLabel: string;
-  onClick: (event: any) => void;
   networksList: Array<NetworksDataType>;
   networkSelected: Array<NetworksDataType>;
-  onChange: (_: any, selectedValue: any) => void;
+  variant?: "filled" | "outlined" | "standard";
+  onClick: (state: NetworksDataType, selected: boolean) => void;
+  onChange: (_: any, selectedValue: Array<NetworksDataType>) => void;
 };

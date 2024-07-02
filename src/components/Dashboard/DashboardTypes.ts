@@ -25,6 +25,7 @@ export type IDashboard = {
   rightContainerItems: CardItem[];
   bottomContainerItems: CardItem[];
   totalValueLocked: number | string;
+  multichainSelector?: React.ReactNode;
   rightIcon?: React.ReactElement | string;
   bottomIcon?: React.ReactElement | string;
   currencyIcon?: React.ReactElement | string;
