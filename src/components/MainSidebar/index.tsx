@@ -1,5 +1,7 @@
 import React from 'react';
-import { Drawer, List, ListItemButton, ListItemText, Divider, useTheme } from '@mui/material';
+import { Box, Drawer, useTheme } from '@mui/material';
+import routes from './routes';
+import MainMenuItem from './MenuItem';
 
 const MainSidebar: React.FC = () => {
   const theme = useTheme();
@@ -7,31 +9,35 @@ const MainSidebar: React.FC = () => {
   return (
     <Drawer
       variant="permanent"
-      anchor="left"
       sx={{
-        width: 240,
+        width: '180px',
         flexShrink: 0,
         [`& .MuiDrawer-paper`]: {
-          width: 240,
+          width: '180px',
           boxSizing: 'border-box',
-          backgroundColor: theme.palette.background.default,
-          color: theme.palette.text.primary,
+          backgroundColor: theme.palette.primary.light,
         },
       }}
     >
-      <List>
-        <ListItemButton sx={{ color: theme.palette.primary.main }}>
-          <ListItemText primary="Home" />
-        </ListItemButton>
-        <Divider />
-        <ListItemButton sx={{ color: theme.palette.primary.main }}>
-          <ListItemText primary="About" />
-        </ListItemButton>
-        <Divider />
-        <ListItemButton sx={{ color: theme.palette.primary.main }}>
-          <ListItemText primary="Contact" />
-        </ListItemButton>
-      </List>
+      {/* box to align with Appbar */}
+      <Box sx={{ height: 60 }} />
+      <Box
+        sx={{
+          overflow: 'auto',
+          color: theme.palette.primary.main,
+        }}
+      >
+        {routes.mainRoutes.map((route, index) => (
+          <MainMenuItem
+            icon='sth' // Replace with icon
+            key={index}
+            text={route.text}
+            path={route.path}
+            isSelected={route.isSelected} // Pass the correct isSelected value
+            textColor={theme.palette.text.secondary} 
+          />
+        ))}
+      </Box>
     </Drawer>
   );
 };

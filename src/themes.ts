@@ -8,7 +8,7 @@ declare module '@mui/styles/defaultTheme' {
 const palette: ThemeOptions['palette'] = {
   primary: {
     main: '#5A5BEB',
-    light: '#5A5BEB'
+    light: '#ffffff'
   },
   secondary: {
     main: '#E0A225',
@@ -23,7 +23,7 @@ const palette: ThemeOptions['palette'] = {
   },
   text: {
     primary: '#211F23',
-    secondary: '#7C7D7E'
+    secondary: '#000000',
   },
   background: {
     default: '#F8F9FC'
