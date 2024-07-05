@@ -6,10 +6,10 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
+    "@storybook/addon-backgrounds",
   ],
   framework: "@storybook/react",
-  webpackFinal: async (config, { configType }) => {
-    // Make whatever fine-grained changes you need
+  webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.scss$/,
       use: ["style-loader", "css-loader", "sass-loader"],
@@ -21,7 +21,6 @@ module.exports = {
       "node_modules",
     ];
 
-    // Return the altered config
     return config;
   },
 };

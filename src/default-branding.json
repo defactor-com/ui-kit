@@ -1,0 +1,39 @@
+{
+    "color": {
+      "primary": {
+        "light": "#5A5BEB",
+        "main": "#5A5BEB"
+      },
+      "secondary": {
+        "light": "#E0A225",
+        "main": "#E0A225"
+      },
+      "success": {
+        "light": "#26A66B",
+        "main": "#26A66B"
+      },
+      "background": {
+        "default": "#F8F9FC"
+      },
+      "charts": {
+        "pieChartColors": {
+          "paid": "#5A5BEB",
+          "active": "#26A66B",
+          "claimed": "#D21A4D",
+          "available": "#5A5BEB",
+          "liquidated": "#D21A4D",
+          "awaitingLiquidation": "#E0A225"
+        },
+        "barChartColors": ["#5A5BEB", "#26A66B80"],
+        "lineChartColors": ["#26A66B", "#5A5BEB", "#D21A4D"]
+      }
+    },
+    "metadata": {
+      "siteName": "FACTR Finance",
+      "siteDescription": {
+        "en": "Explore and participate in lending and borrowing pools with ease",
+        "es": "Explore y participe en fondos de préstamos y depósitos con facilidad."
+      }
+    }
+  }
+  
