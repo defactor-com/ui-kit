@@ -20,7 +20,7 @@ const MainSidebar: React.FC = () => {
         },
       }}
     >
-      {/* box to align with Appbar */}
+      {/* Box to align with Appbar */}
       <Box sx={{ height: 60 }} />
       <Box
         sx={{
@@ -30,12 +30,12 @@ const MainSidebar: React.FC = () => {
       >
         {routes.mainRoutes.map((route, index) => (
           <MainMenuItem
-            icon='sth' // Replace with icon
+            icon={route.icon}
             key={index}
             text={route.text}
             path={route.path}
-            isSelected={isSelected(route.path)} 
-            textColor={theme.palette.text.secondary} 
+            isSelected={isSelected(route.path)}
+            textColor={theme.palette.text.secondary}
           />
         ))}
       </Box>

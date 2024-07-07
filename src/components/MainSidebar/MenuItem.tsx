@@ -1,5 +1,7 @@
 import React from 'react';
 import { Box, Button } from '@mui/material';
+import { SvgIconProps } from '@mui/material/SvgIcon';
+import { ElementType } from 'react';
 
 // temp
 const primaryMain = '#5A5BEB';
@@ -9,14 +11,15 @@ const blackColor = 'black';
 interface MenuItemProps {
   text: string;
   path: string;
-  icon: string;
+  icon: ElementType<SvgIconProps>;
   isSelected: boolean;
-  textColor?: string; 
+  textColor?: string;
 }
 
 const MainMenuItem: React.FC<MenuItemProps> = ({
   text,
   path,
+  icon: Icon,
   isSelected,
   textColor = blackColor,
 }) => {
@@ -35,6 +38,7 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
         justifyContent: 'flex-start',
         fontWeight: isSelected ? 700 : 400,
       }}
+      startIcon={<Icon />} // Render the icon component here
     >
       {text}
       {path === '#notifications' && (
