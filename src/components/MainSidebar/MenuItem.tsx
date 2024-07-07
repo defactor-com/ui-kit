@@ -14,6 +14,7 @@ interface MenuItemProps {
   icon: ElementType;
   isSelected: boolean;
   textColor?: string;
+  notificationsCount?: number;
 }
 
 const MainMenuItem: React.FC<MenuItemProps> = ({
@@ -22,6 +23,7 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
   icon: Icon,
   isSelected,
   textColor = blackColor,
+  notificationsCount = 0,
 }) => {
   return (
     <Link href={path} passHref>
@@ -40,13 +42,13 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
           justifyContent: 'flex-start',
           fontWeight: isSelected ? 700 : 400,
         }}
-        startIcon={<Icon />} 
+        startIcon={<Icon />}
       >
         {text}
-        {path === '/notifications' && (
+        {path === '/notifications' && notificationsCount > 0 && (
           <Box
             sx={{
-              backgroundColor: primaryMain,
+              backgroundColor: secondaryMain,
               width: '6px',
               height: '6px',
               borderRadius: '50%',

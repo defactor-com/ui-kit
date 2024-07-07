@@ -6,6 +6,7 @@ import MainMenuItem from './MenuItem';
 
 const MainSidebar: React.FC = () => {
   const { theme, isSelected } = useSidebarHook();
+  const notificationsCount = 5; // TODO: Replace with actual logic to get the count
 
   return (
     <Drawer
@@ -36,6 +37,7 @@ const MainSidebar: React.FC = () => {
             path={route.path}
             isSelected={isSelected(route.path)}
             textColor={theme.palette.text.secondary}
+            notificationsCount={route.path === '/notifications' ? notificationsCount : 0}
           />
         ))}
       </Box>
