@@ -1,15 +1,13 @@
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-import LibraryBooksIcon from '@mui/icons-material/LibraryBooks'; // Use an appropriate icon
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import ContactsIcon from '@mui/icons-material/Contacts';
-import { SvgIconProps } from '@mui/material/SvgIcon';
-import { ElementType } from 'react';
+import DashboardIcon from '../Icons/v2/dashboardIcon';
+import MyWalletIcon from '../Icons/v2/myWalletIcon';
+import MyTemplateIcon from '../Icons/v2/myTemplateIcon';
+import NotificationsIcon from '../Icons/v2/notificationsIcon';
+import ContactsIcon from '../Icons/v2/contactsIcon';
 
 type Route = {
   text: string;
   path: string;
-  icon: ElementType<SvgIconProps>;
+  icon: React.ElementType;
   isSelected: boolean;
 };
 
@@ -28,13 +26,13 @@ const routes: Routes = {
     {
       text: 'MyWallet',
       path: '#wallet',
-      icon: AccountBalanceWalletIcon,
+      icon: MyWalletIcon,
       isSelected: false,
     },
     {
       text: 'MyTemplates',
       path: '#templates',
-      icon: LibraryBooksIcon,
+      icon: MyTemplateIcon,
       isSelected: false,
     },
     {

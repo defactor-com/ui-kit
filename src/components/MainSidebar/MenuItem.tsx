@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Button } from '@mui/material';
-import { SvgIconProps } from '@mui/material/SvgIcon';
 import { ElementType } from 'react';
 
 // temp
@@ -11,7 +10,7 @@ const blackColor = 'black';
 interface MenuItemProps {
   text: string;
   path: string;
-  icon: ElementType<SvgIconProps>;
+  icon: ElementType;
   isSelected: boolean;
   textColor?: string;
 }
