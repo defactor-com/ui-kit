@@ -19,31 +19,31 @@ const routes: Routes = {
   mainRoutes: [
     {
       text: 'Dashboard',
-      path: '#',
+      path: '/dashboard',
       icon: DashboardIcon,
       isSelected: true,
     },
     {
       text: 'MyWallet',
-      path: '#wallet',
+      path: '/wallet',
       icon: MyWalletIcon,
       isSelected: false,
     },
     {
       text: 'MyTemplates',
-      path: '#templates',
+      path: '/templates',
       icon: MyTemplateIcon,
       isSelected: false,
     },
     {
       text: 'Notifications',
-      path: '#notifications',
+      path: '/notifications',
       icon: NotificationsIcon,
       isSelected: false,
     },
     {
       text: 'Contacts',
-      path: '#contacts',
+      path: '/contacts',
       icon: ContactsIcon,
       isSelected: false,
     }
