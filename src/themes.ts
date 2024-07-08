@@ -36,7 +36,7 @@ const palette: PaletteOptions = {
     900: '#7C7D7E'
   },
   text: {
-    primary: '#211F23',
+    primary: '#000000',
     secondary: '#000000',
   },
   background: {

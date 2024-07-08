@@ -6,14 +6,16 @@ import MyWalletIcon from '../components/Icons/v2/myWalletIcon';
 import MyTemplateIcon from '../components/Icons/v2/myTemplateIcon';
 import NotificationsIcon from '../components/Icons/v2/notificationsIcon';
 import ContactsIcon from '../components/Icons/v2/contactsIcon';
+import themes from '../themes';
 
+const theme = themes.lightTheme; 
 
 export default {
   title: 'V2/MainSidebar',
   component: MainSidebar,
   argTypes: {
-    navLinkTextColor: { control: 'color' }, // Add control for navLinkTextColor
-    iconsColor: { control: 'color' }, // Add control for iconsColor
+    navLinkTextColor: { control: 'color' }, 
+    iconsColor: { control: 'color' }, 
   },
 } as ComponentMeta<typeof MainSidebar>;
 
@@ -48,6 +50,6 @@ Default.args = {
       icon: ContactsIcon,
     },
   ],
-  navLinkTextColor: '#000000', 
-  iconsColor: '#000000', 
+  navLinkTextColor: theme.palette.text.primary, 
+  iconsColor: theme.palette.text.primary, 
 };
