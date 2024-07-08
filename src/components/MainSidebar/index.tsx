@@ -1,10 +1,19 @@
 import React from 'react';
 import { Box, Drawer } from '@mui/material';
 import useSidebarHook from './useSidebarHook';
-import routes from './routes';
 import MainMenuItem from './MenuItem';
 
-const MainSidebar: React.FC = () => {
+type Route = {
+  text: string;
+  path: string;
+  icon: React.ElementType;
+};
+
+type MainSidebarProps = {
+  routes: Route[];
+};
+
+const MainSidebar: React.FC<MainSidebarProps> = ({ routes }) => {
   const { theme, isSelected } = useSidebarHook();
   const notificationsCount = 5; // TODO: Replace with actual logic to get the count
 
@@ -29,7 +38,7 @@ const MainSidebar: React.FC = () => {
           color: theme.palette.primary.main,
         }}
       >
-        {routes.mainRoutes.map((route, index) => (
+        {routes.map((route, index) => (
           <MainMenuItem
             icon={route.icon}
             key={index}
