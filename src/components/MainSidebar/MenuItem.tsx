@@ -37,7 +37,11 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
           justifyContent: 'flex-start',
           fontWeight: isSelected ? 700 : 400,
         }}
-        startIcon={<Icon />}
+        startIcon={
+          <Icon
+            color={isSelected ? theme.palette.secondary.main : theme.palette.text.primary}
+          />
+        }
       >
         {text}
         {path === '/notifications' && notificationsCount > 0 && (
