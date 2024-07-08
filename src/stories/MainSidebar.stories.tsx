@@ -10,6 +10,9 @@ import ContactsIcon from '../components/Icons/v2/contactsIcon';
 export default {
   title: 'V2/MainSidebar',
   component: MainSidebar,
+  argTypes: {
+    navLinkTextColor: { control: 'color' }, // Update control name
+  },
 } as ComponentMeta<typeof MainSidebar>;
 
 const Template: ComponentStory<typeof MainSidebar> = (args) => <MainSidebar {...args} />;
@@ -43,4 +46,5 @@ Default.args = {
       icon: ContactsIcon,
     },
   ],
+  navLinkTextColor: '#000000', // Default text color
 };

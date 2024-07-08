@@ -9,6 +9,7 @@ interface MenuItemProps {
   icon: ElementType;
   isSelected: boolean;
   notificationsCount?: number;
+  navLinkTextColor?: string; // Update prop name
 }
 
 const MainMenuItem: React.FC<MenuItemProps> = ({
@@ -17,6 +18,7 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
   icon: Icon,
   isSelected,
   notificationsCount = 0,
+  navLinkTextColor, // Update prop name
 }) => {
   const theme = useTheme();
 
@@ -36,14 +38,20 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
           alignItems: 'center',
           justifyContent: 'flex-start',
           fontWeight: isSelected ? 700 : 400,
+          '& .MuiButton-startIcon': {
+            color: isSelected ? theme.palette.secondary.main : theme.palette.text.primary,
+          },
         }}
-        startIcon={
-          <Icon
-            color={isSelected ? theme.palette.secondary.main : theme.palette.text.primary} backgroundColor={isSelected ? theme.palette.secondary.main : 'transparent'}
-          />
-        }
+        startIcon={<Icon />}
       >
-        {text}
+        <Box
+          component="span"
+          sx={{
+            color: navLinkTextColor || (isSelected ? theme.palette.secondary.main : theme.palette.text.primary),
+          }}
+        >
+          {text}
+        </Box>
         {path === '/notifications' && notificationsCount > 0 && (
           <Box
             sx={{
