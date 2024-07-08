@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Drawer, useTheme } from '@mui/material';
+import { Box, Drawer } from '@mui/material';
 import useSidebarHook from './useSidebarHook';
 import routes from './routes';
 import MainMenuItem from './MenuItem';

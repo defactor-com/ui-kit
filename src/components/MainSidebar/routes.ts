@@ -8,7 +8,6 @@ type Route = {
   text: string;
   path: string;
   icon: React.ElementType;
-  isSelected: boolean;
 };
 
 type Routes = {
@@ -20,32 +19,27 @@ const routes: Routes = {
     {
       text: 'Dashboard',
       path: '/dashboard',
-      icon: DashboardIcon,
-      isSelected: true,
+      icon: DashboardIcon
     },
     {
       text: 'MyWallet',
       path: '/wallet',
-      icon: MyWalletIcon,
-      isSelected: false,
+      icon: MyWalletIcon
     },
     {
       text: 'MyTemplates',
       path: '/templates',
-      icon: MyTemplateIcon,
-      isSelected: false,
+      icon: MyTemplateIcon
     },
     {
       text: 'Notifications',
       path: '/notifications',
-      icon: NotificationsIcon,
-      isSelected: false,
+      icon: NotificationsIcon
     },
     {
       text: 'Contacts',
       path: '/contacts',
-      icon: ContactsIcon,
-      isSelected: false,
+      icon: ContactsIcon
     }
   ]
 };
