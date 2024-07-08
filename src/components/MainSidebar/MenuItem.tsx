@@ -11,6 +11,8 @@ interface MenuItemProps {
   notificationsCount?: number;
   navLinkTextColor?: string;
   iconsColor?: string;
+  activeTextColor?: string;
+  activeIconColor?: string;
 }
 
 const MainMenuItem: React.FC<MenuItemProps> = ({
@@ -21,6 +23,8 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
   notificationsCount = 0,
   navLinkTextColor,
   iconsColor,
+  activeTextColor,
+  activeIconColor,
 }) => {
   const theme = useTheme();
 
@@ -35,7 +39,7 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
           borderRadius: 0,
           padding: 2,
           paddingLeft: 4,
-          color: isSelected ? theme.palette.text.secondary : theme.palette.text.primary,
+          color: isSelected ? (activeTextColor || theme.palette.text.secondary) : (navLinkTextColor || theme.palette.text.primary),
           fontSize: 14,
           alignItems: 'center',
           justifyContent: 'flex-start',
@@ -43,14 +47,14 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
         }}
         startIcon={
           <Icon
-            color={iconsColor || (isSelected ? theme.palette.secondary.main : theme.palette.text.primary)}
+            color={isSelected ? (activeIconColor || theme.palette.secondary.main) : (iconsColor || theme.palette.text.primary)}
           />
         }
       >
         <Box
           component="span"
           sx={{
-            color: navLinkTextColor || (isSelected ? theme.palette.secondary.main : theme.palette.text.primary),
+            color: isSelected ? (activeTextColor || theme.palette.secondary.main) : (navLinkTextColor || theme.palette.text.primary),
           }}
         >
           {text}

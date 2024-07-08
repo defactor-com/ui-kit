@@ -14,8 +14,13 @@ export default {
   title: 'V2/MainSidebar',
   component: MainSidebar,
   argTypes: {
-    navLinkTextColor: { control: 'color' }, 
-    iconsColor: { control: 'color' }, 
+    routes: {
+      control: 'object',
+    },
+    navLinkTextColor: { control: 'color' },
+    iconsColor: { control: 'color' },
+    activeTextColor: { control: 'color' },
+    activeIconColor: { control: 'color' },
   },
 } as ComponentMeta<typeof MainSidebar>;
 
@@ -50,6 +55,8 @@ Default.args = {
       icon: ContactsIcon,
     },
   ],
-  navLinkTextColor: theme.palette.text.primary, 
-  iconsColor: theme.palette.text.primary, 
+  navLinkTextColor: theme.palette.text.primary,
+  iconsColor: theme.palette.text.primary,
+  activeTextColor: theme.palette.secondary.main,
+  activeIconColor: theme.palette.secondary.main,
 };
