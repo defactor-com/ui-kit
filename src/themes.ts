@@ -1,5 +1,5 @@
 import { Theme, ThemeOptions, createTheme } from '@mui/material/styles';
-import { Palette, PaletteOptions } from '@mui/material/styles/createPalette';
+import { PaletteOptions } from '@mui/material/styles/createPalette';
 import '@mui/styles';
 
 declare module '@mui/material/styles/createPalette' {
