@@ -47,7 +47,7 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
         {path === '/notifications' && notificationsCount > 0 && (
           <Box
             sx={{
-              backgroundColor: theme.palette.secondary.main,
+              backgroundColor: theme.palette.notification.main,
               width: '6px',
               height: '6px',
               borderRadius: '50%',
