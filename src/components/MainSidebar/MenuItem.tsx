@@ -39,7 +39,7 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
         }}
         startIcon={
           <Icon
-            color={isSelected ? theme.palette.secondary.main : theme.palette.text.primary}
+            color={isSelected ? theme.palette.secondary.main : theme.palette.text.primary} backgroundColor={isSelected ? theme.palette.secondary.main : 'transparent'}
           />
         }
       >
