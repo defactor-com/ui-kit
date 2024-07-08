@@ -22,7 +22,7 @@ type MainSidebarProps = {
   hideOnBreakpoint?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'; 
 };
 
-const MainSidebar: React.FC<MainSidebarProps> = ({ routes, navLinkTextColor, iconsColor, activeTextColor, activeIconColor, notificationColor, notificationsCount, hideOnBreakpoint = 'sm' }) => {
+export const MainSidebar: React.FC<MainSidebarProps> = ({ routes, navLinkTextColor, iconsColor, activeTextColor, activeIconColor, notificationColor, notificationsCount, hideOnBreakpoint = 'sm' }) => {
   const { theme, isSelected } = useSidebarHook();
   const defaultNotificationsCount = 0; 
   const isHidden = useMediaQuery(theme.breakpoints.down(hideOnBreakpoint));
@@ -72,4 +72,3 @@ const MainSidebar: React.FC<MainSidebarProps> = ({ routes, navLinkTextColor, ico
   );
 };
 
-export default MainSidebar;

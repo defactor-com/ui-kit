@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import MainSidebar from '../components/MainSidebar';
+import { MainSidebar } from '../components/MainSidebar';
 import DashboardIcon from '../components/Icons/v2/dashboardIcon';
 import MyWalletIcon from '../components/Icons/v2/myWalletIcon';
 import MyTemplateIcon from '../components/Icons/v2/myTemplateIcon';
