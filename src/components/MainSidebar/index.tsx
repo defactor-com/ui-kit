@@ -7,15 +7,17 @@ type Route = {
   text: string;
   path: string;
   icon: React.ElementType;
-  navLinkTextColor?: string; // Update prop name
+  navLinkTextColor?: string;
+  iconsColor?: string;
 };
 
 type MainSidebarProps = {
   routes: Route[];
-  navLinkTextColor?: string; // Update prop name
+  navLinkTextColor?: string;
+  iconsColor?: string;
 };
 
-const MainSidebar: React.FC<MainSidebarProps> = ({ routes, navLinkTextColor }) => {
+const MainSidebar: React.FC<MainSidebarProps> = ({ routes, navLinkTextColor, iconsColor }) => {
   const { theme, isSelected } = useSidebarHook();
   const notificationsCount = 5; // TODO: Replace with actual logic to get the count
 
@@ -48,7 +50,8 @@ const MainSidebar: React.FC<MainSidebarProps> = ({ routes, navLinkTextColor }) =
             path={route.path}
             isSelected={isSelected(route.path)}
             notificationsCount={route.path === '/notifications' ? notificationsCount : 0}
-            navLinkTextColor={navLinkTextColor} // Pass navLinkTextColor
+            navLinkTextColor={navLinkTextColor}
+            iconsColor={iconsColor}
           />
         ))}
       </Box>

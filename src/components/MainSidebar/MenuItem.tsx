@@ -9,7 +9,8 @@ interface MenuItemProps {
   icon: ElementType;
   isSelected: boolean;
   notificationsCount?: number;
-  navLinkTextColor?: string; // Update prop name
+  navLinkTextColor?: string;
+  iconsColor?: string;
 }
 
 const MainMenuItem: React.FC<MenuItemProps> = ({
@@ -18,7 +19,8 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
   icon: Icon,
   isSelected,
   notificationsCount = 0,
-  navLinkTextColor, // Update prop name
+  navLinkTextColor,
+  iconsColor,
 }) => {
   const theme = useTheme();
 
@@ -38,11 +40,12 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
           alignItems: 'center',
           justifyContent: 'flex-start',
           fontWeight: isSelected ? 700 : 400,
-          '& .MuiButton-startIcon': {
-            color: isSelected ? theme.palette.secondary.main : theme.palette.text.primary,
-          },
         }}
-        startIcon={<Icon />}
+        startIcon={
+          <Icon
+            color={iconsColor || (isSelected ? theme.palette.secondary.main : theme.palette.text.primary)}
+          />
+        }
       >
         <Box
           component="span"

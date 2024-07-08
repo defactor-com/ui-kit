@@ -7,11 +7,13 @@ import MyTemplateIcon from '../components/Icons/v2/myTemplateIcon';
 import NotificationsIcon from '../components/Icons/v2/notificationsIcon';
 import ContactsIcon from '../components/Icons/v2/contactsIcon';
 
+
 export default {
   title: 'V2/MainSidebar',
   component: MainSidebar,
   argTypes: {
-    navLinkTextColor: { control: 'color' }, // Update control name
+    navLinkTextColor: { control: 'color' }, // Add control for navLinkTextColor
+    iconsColor: { control: 'color' }, // Add control for iconsColor
   },
 } as ComponentMeta<typeof MainSidebar>;
 
@@ -46,5 +48,6 @@ Default.args = {
       icon: ContactsIcon,
     },
   ],
-  navLinkTextColor: '#000000', // Default text color
+  navLinkTextColor: '#000000', 
+  iconsColor: '#000000', 
 };
