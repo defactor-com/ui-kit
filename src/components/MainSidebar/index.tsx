@@ -18,11 +18,12 @@ type MainSidebarProps = {
   activeTextColor?: string;
   activeIconColor?: string;
   notificationColor?: string;
+  notificationsCount?: number; 
 };
 
-const MainSidebar: React.FC<MainSidebarProps> = ({ routes, navLinkTextColor, iconsColor, activeTextColor, activeIconColor, notificationColor }) => {
+const MainSidebar: React.FC<MainSidebarProps> = ({ routes, navLinkTextColor, iconsColor, activeTextColor, activeIconColor, notificationColor, notificationsCount }) => {
   const { theme, isSelected } = useSidebarHook();
-  const notificationsCount = 5; // TODO: Replace with actual logic to get the count
+  const defaultNotificationsCount = 0; 
 
   return (
     <Drawer
@@ -52,7 +53,7 @@ const MainSidebar: React.FC<MainSidebarProps> = ({ routes, navLinkTextColor, ico
             text={route.text}
             path={route.path}
             isSelected={isSelected(route.path)}
-            notificationsCount={route.path === '/notifications' ? notificationsCount : 0}
+            notificationsCount={route.path === '/notifications' ? notificationsCount ?? defaultNotificationsCount : 0}
             navLinkTextColor={navLinkTextColor}
             iconsColor={iconsColor}
             activeTextColor={activeTextColor}

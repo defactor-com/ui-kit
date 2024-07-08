@@ -22,6 +22,7 @@ export default {
     activeTextColor: { control: 'color' },
     activeIconColor: { control: 'color' },
     notificationColor: { control: 'color' },
+    notificationsCount: { control: 'number' }, // Add notificationsCount control
   },
 } as ComponentMeta<typeof MainSidebar>;
 
@@ -61,4 +62,5 @@ Default.args = {
   activeTextColor: theme.palette.secondary.main,
   activeIconColor: theme.palette.secondary.main,
   notificationColor: theme.palette.notification.main,
+  notificationsCount: 1
 };
