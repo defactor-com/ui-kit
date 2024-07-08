@@ -1,19 +1,13 @@
 import React from 'react';
-import { Box, Button } from '@mui/material';
+import { Box, Button, useTheme } from '@mui/material';
 import { ElementType } from 'react';
 import Link from 'next/link';
-
-// temp
-const primaryMain = '#5A5BEB';
-const secondaryMain = "#E0A225";
-const blackColor = 'black';
 
 interface MenuItemProps {
   text: string;
   path: string;
   icon: ElementType;
   isSelected: boolean;
-  textColor?: string;
   notificationsCount?: number;
 }
 
@@ -22,9 +16,10 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
   path,
   icon: Icon,
   isSelected,
-  textColor = blackColor,
   notificationsCount = 0,
 }) => {
+  const theme = useTheme();
+
   return (
     <Link href={path} passHref>
       <Button
@@ -32,11 +27,11 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
         variant="text"
         sx={{
           width: '100%',
-          borderRight: isSelected ? `2px solid ${secondaryMain}` : '',
+          borderRight: isSelected ? `2px solid ${theme.palette.secondary.main}` : '',
           borderRadius: 0,
           padding: 2,
           paddingLeft: 4,
-          color: textColor,
+          color: isSelected ? theme.palette.text.secondary : theme.palette.text.primary,
           fontSize: 14,
           alignItems: 'center',
           justifyContent: 'flex-start',
@@ -48,7 +43,7 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
         {path === '/notifications' && notificationsCount > 0 && (
           <Box
             sx={{
-              backgroundColor: secondaryMain,
+              backgroundColor: theme.palette.secondary.main,
               width: '6px',
               height: '6px',
               borderRadius: '50%',

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Drawer } from '@mui/material';
+import { Box, Drawer, useTheme } from '@mui/material';
 import useSidebarHook from './useSidebarHook';
 import routes from './routes';
 import MainMenuItem from './MenuItem';
@@ -36,7 +36,6 @@ const MainSidebar: React.FC = () => {
             text={route.text}
             path={route.path}
             isSelected={isSelected(route.path)}
-            textColor={theme.palette.text.secondary}
             notificationsCount={route.path === '/notifications' ? notificationsCount : 0}
           />
         ))}
