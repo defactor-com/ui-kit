@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Drawer } from '@mui/material';
+import { Box, Drawer, useMediaQuery, useTheme } from '@mui/material';
 import useSidebarHook from './useSidebarHook';
 import MainMenuItem from './MenuItem';
 
@@ -18,12 +18,18 @@ type MainSidebarProps = {
   activeTextColor?: string;
   activeIconColor?: string;
   notificationColor?: string;
-  notificationsCount?: number; 
+  notificationsCount?: number;
+  hideOnBreakpoint?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'; 
 };
 
-const MainSidebar: React.FC<MainSidebarProps> = ({ routes, navLinkTextColor, iconsColor, activeTextColor, activeIconColor, notificationColor, notificationsCount }) => {
+const MainSidebar: React.FC<MainSidebarProps> = ({ routes, navLinkTextColor, iconsColor, activeTextColor, activeIconColor, notificationColor, notificationsCount, hideOnBreakpoint = 'sm' }) => {
   const { theme, isSelected } = useSidebarHook();
   const defaultNotificationsCount = 0; 
+  const isHidden = useMediaQuery(theme.breakpoints.down(hideOnBreakpoint));
+
+  if (isHidden) {
+    return null; 
+  }
 
   return (
     <Drawer

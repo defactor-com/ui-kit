@@ -22,7 +22,13 @@ export default {
     activeTextColor: { control: 'color' },
     activeIconColor: { control: 'color' },
     notificationColor: { control: 'color' },
-    notificationsCount: { control: 'number' }, // Add notificationsCount control
+    notificationsCount: { control: 'number' },
+    hideOnBreakpoint: { 
+      control: { 
+        type: 'select',
+        options: ['xs', 'sm', 'md', 'lg', 'xl'], 
+      }, 
+    }, 
   },
 } as ComponentMeta<typeof MainSidebar>;
 
@@ -62,5 +68,6 @@ Default.args = {
   activeTextColor: theme.palette.secondary.main,
   activeIconColor: theme.palette.secondary.main,
   notificationColor: theme.palette.notification.main,
-  notificationsCount: 1
+  notificationsCount: 1, 
+  hideOnBreakpoint: 'sm', 
 };
