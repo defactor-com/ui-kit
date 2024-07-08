@@ -13,6 +13,7 @@ interface MenuItemProps {
   iconsColor?: string;
   activeTextColor?: string;
   activeIconColor?: string;
+  notificationColor?: string;
 }
 
 const MainMenuItem: React.FC<MenuItemProps> = ({
@@ -25,6 +26,7 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
   iconsColor,
   activeTextColor,
   activeIconColor,
+  notificationColor,
 }) => {
   const theme = useTheme();
 
@@ -62,7 +64,7 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
         {path === '/notifications' && notificationsCount > 0 && (
           <Box
             sx={{
-              backgroundColor: theme.palette.notification.main,
+              backgroundColor: notificationColor || theme.palette.notification.main,
               width: '6px',
               height: '6px',
               borderRadius: '50%',

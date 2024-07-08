@@ -8,7 +8,7 @@ import NotificationsIcon from '../components/Icons/v2/notificationsIcon';
 import ContactsIcon from '../components/Icons/v2/contactsIcon';
 import themes from '../themes';
 
-const theme = themes.lightTheme; 
+const theme = themes.lightTheme;
 
 export default {
   title: 'V2/MainSidebar',
@@ -21,6 +21,7 @@ export default {
     iconsColor: { control: 'color' },
     activeTextColor: { control: 'color' },
     activeIconColor: { control: 'color' },
+    notificationColor: { control: 'color' },
   },
 } as ComponentMeta<typeof MainSidebar>;
 
@@ -59,4 +60,5 @@ Default.args = {
   iconsColor: theme.palette.text.primary,
   activeTextColor: theme.palette.secondary.main,
   activeIconColor: theme.palette.secondary.main,
+  notificationColor: theme.palette.notification.main,
 };

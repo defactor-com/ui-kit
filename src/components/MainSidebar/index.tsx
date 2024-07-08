@@ -17,9 +17,10 @@ type MainSidebarProps = {
   iconsColor?: string;
   activeTextColor?: string;
   activeIconColor?: string;
+  notificationColor?: string;
 };
 
-const MainSidebar: React.FC<MainSidebarProps> = ({ routes, navLinkTextColor, iconsColor, activeTextColor, activeIconColor }) => {
+const MainSidebar: React.FC<MainSidebarProps> = ({ routes, navLinkTextColor, iconsColor, activeTextColor, activeIconColor, notificationColor }) => {
   const { theme, isSelected } = useSidebarHook();
   const notificationsCount = 5; // TODO: Replace with actual logic to get the count
 
@@ -56,6 +57,7 @@ const MainSidebar: React.FC<MainSidebarProps> = ({ routes, navLinkTextColor, ico
             iconsColor={iconsColor}
             activeTextColor={activeTextColor}
             activeIconColor={activeIconColor}
+            notificationColor={notificationColor}
           />
         ))}
       </Box>
