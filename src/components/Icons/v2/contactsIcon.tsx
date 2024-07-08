@@ -1,11 +1,15 @@
 import React from "react";
-
 import { IconsType } from "../IconsTypes";
 
-const ContactsIcon: React.FC<IconsType> = ({
+interface ContactsIconProps extends IconsType {
+  backgroundColor?: string;
+}
+
+const ContactsIcon: React.FC<ContactsIconProps> = ({
   width = 16,
   height = 16,
-  color = '#000000'
+  color = '#000000',
+  backgroundColor = 'transparent' 
 }) => (
   <svg
     width={width}
@@ -23,9 +27,11 @@ const ContactsIcon: React.FC<IconsType> = ({
     <path
       d='M4.33366 1.61328H13.3337V14.9466H4.33366C3.89163 14.9466 3.46771 14.771 3.15515 14.4585C2.84259 14.1459 2.66699 13.722 2.66699 13.2799V3.27995C2.66699 2.83792 2.84259 2.414 3.15515 2.10144C3.46771 1.78888 3.89163 1.61328 4.33366 1.61328Z'
       stroke={color}
+      fill={backgroundColor}
       strokeLinecap='round'
       strokeLinejoin='round'
     />
   </svg>
 )
-export default ContactsIcon
+
+export default ContactsIcon;

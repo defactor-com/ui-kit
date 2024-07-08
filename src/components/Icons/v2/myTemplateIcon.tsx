@@ -1,11 +1,15 @@
 import React from "react";
-
 import { IconsType } from "../IconsTypes";
 
-const MyTemplateIcon: React.FC<IconsType> = ({
+interface MyTemplateIconProps extends IconsType {
+  backgroundColor?: string;
+}
+
+const MyTemplateIcon: React.FC<MyTemplateIconProps> = ({
   width = 16,
   height = 16,
-  color = '#000000'
+  color = '#000000',
+  backgroundColor = 'transparent'
 }) => (
   <svg
     width={width}
@@ -25,6 +29,27 @@ const MyTemplateIcon: React.FC<IconsType> = ({
     <path
       d='M13.8333 8.2819V14.1152H7.99992V8.2819H13.8333ZM13.8333 7.11523H7.99992C7.35534 7.11523 6.83325 7.63732 6.83325 8.2819V14.1152C6.83325 14.4244 6.95648 14.7212 7.17523 14.9399C7.39397 15.1587 7.69074 15.2819 7.99992 15.2819H13.8333C14.1424 15.2819 14.4392 15.1587 14.6579 14.9399C14.8767 14.7212 14.9999 14.4244 14.9999 14.1152V8.2819C14.9999 7.97274 14.8767 7.67596 14.6579 7.45721C14.4392 7.23845 14.1424 7.11523 13.8333 7.11523Z'
       fill={color}
+    />
+    <rect
+      x="2.16667"
+      y="2.44792"
+      width="11.6667"
+      height="2.33333"
+      fill={backgroundColor}
+    />
+    <rect
+      x="2.16667"
+      y="8.2819"
+      width="2.33333"
+      height="5.83333"
+      fill={backgroundColor}
+    />
+    <rect
+      x="7.99992"
+      y="8.2819"
+      width="5.83333"
+      height="5.83333"
+      fill={backgroundColor}
     />
   </svg>
 )
