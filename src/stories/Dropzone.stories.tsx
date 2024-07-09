@@ -1,7 +1,7 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react";
 import { ThemeProvider } from "@mui/material/styles";
-import Dropzone, { DropzoneProps } from "../components/Dropzone/Dropzone";
+import { Dropzone, DropzoneProps } from "../components/Dropzone";
 import themes from '../themes';
 
 const theme = themes.lightTheme;

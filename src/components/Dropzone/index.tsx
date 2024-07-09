@@ -12,10 +12,10 @@ export interface DropzoneProps {
   textColor?: string;
   iconColor?: string;
   fileSizeLimitText?: string;
-  label?: string; // Added label prop
+  label?: string;
 }
 
-const Dropzone: React.FC<DropzoneProps> = ({
+export const Dropzone: React.FC<DropzoneProps> = ({
   uploadText = "Upload a file",
   dragText = "or drag and drop",
   fileTypesText = "PDF, DOC, JPG up to ",
@@ -23,7 +23,7 @@ const Dropzone: React.FC<DropzoneProps> = ({
   textColor,
   iconColor,
   fileSizeLimitText = "10MB",
-  label = "Label", // Default label value
+  label = "Label",
 }) => {
   const theme = useTheme();
 
@@ -77,5 +77,3 @@ const Dropzone: React.FC<DropzoneProps> = ({
     </>
   );
 };
-
-export default Dropzone;

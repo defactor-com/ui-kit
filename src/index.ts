@@ -1,3 +1,4 @@
+import Dropzone from "react-dropzone";
 import "./scss/styles.scss";
 
 export * from "./components/Pill";
@@ -27,3 +28,4 @@ export * from "./components/FluctuationComponent";
 export * from "./components/CollateralSection";
 export * from "./components/Tooltip";
 export { MainSidebar } from "./components/MainSidebar";
+export { Dropzone } from "./components/Dropzone";
