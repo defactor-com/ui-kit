@@ -6,32 +6,27 @@ interface AddFilesIconProps extends IconsType {
 }
 
 const AddFilesIcon: React.FC<AddFilesIconProps> = ({
-  width = 16,
-  height = 16,
-  color = '#000000',
+  width = 48,
+  height = 48,
+  color = '#9CA3AF',
   backgroundColor = 'transparent' 
 }) => (
   <svg
     width={width}
     height={height}
-    viewBox='0 0 16 16'
+    viewBox='0 0 49 48'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
   >
     <path
-      d='M2.66699 13.2799C2.66699 12.8379 2.84259 12.414 3.15515 12.1014C3.46771 11.7889 3.89163 11.6133 4.33366 11.6133H13.3337'
+      d='M28.5 8H12.5C11.4391 8 10.4217 8.42143 9.67157 9.17157C8.92143 9.92172 8.5 10.9391 8.5 12V32M8.5 32V36C8.5 37.0609 8.92143 38.0783 9.67157 38.8284C10.4217 39.5786 11.4391 40 12.5 40H36.5C37.5609 40 38.5783 39.5786 39.3284 38.8284C40.0786 38.0783 40.5 37.0609 40.5 36V28M8.5 32L17.672 22.828C18.4221 22.0781 19.4393 21.6569 20.5 21.6569C21.5607 21.6569 22.5779 22.0781 23.328 22.828L28.5 28M40.5 20V28M40.5 28L37.328 24.828C36.5779 24.0781 35.5607 23.6569 34.5 23.6569C33.4393 23.6569 32.4221 24.0781 31.672 24.828L28.5 28M28.5 28L32.5 32M36.5 8H44.5M40.5 4V12M28.5 16H28.52'
       stroke={color}
+      strokeWidth='2'
       strokeLinecap='round'
       strokeLinejoin='round'
-    />
-    <path
-      d='M4.33366 1.61328H13.3337V14.9466H4.33366C3.89163 14.9466 3.46771 14.771 3.15515 14.4585C2.84259 14.1459 2.66699 13.722 2.66699 13.2799V3.27995C2.66699 2.83792 2.84259 2.414 3.15515 2.10144C3.46771 1.78888 3.89163 1.61328 4.33366 1.61328Z'
-      stroke={color}
       fill={backgroundColor}
-      strokeLinecap='round'
-      strokeLinejoin='round'
     />
   </svg>
-)
+);
 
 export default AddFilesIcon;
