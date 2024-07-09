@@ -23,9 +23,12 @@ type MainSidebarProps = {
 };
 
 export const MainSidebar: React.FC<MainSidebarProps> = ({ routes, navLinkTextColor, iconsColor, activeTextColor, activeIconColor, notificationColor, notificationsCount, hideOnBreakpoint = 'sm' }) => {
-  const { theme, isSelected } = useSidebarHook();
+  const theme = useTheme(); 
+  console.log('MainSidebar Theme:', theme); 
+
+  const { isSelected } = useSidebarHook();
   const defaultNotificationsCount = 0; 
-  const isHidden = useMediaQuery(theme.breakpoints.down(hideOnBreakpoint));
+  const isHidden = useMediaQuery(theme.breakpoints.down(hideOnBreakpoint)); // Ensure theme has breakpoints
 
   if (isHidden) {
     return null; 
