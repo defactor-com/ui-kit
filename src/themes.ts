@@ -1,14 +1,28 @@
 import { Theme, ThemeOptions, createTheme } from '@mui/material/styles';
+import { PaletteOptions } from '@mui/material/styles/createPalette';
 import '@mui/styles';
+
+declare module '@mui/material/styles/createPalette' {
+  interface Palette {
+    notification: {
+      main: string;
+    };
+  }
+  interface PaletteOptions {
+    notification?: {
+      main?: string;
+    };
+  }
+}
 
 declare module '@mui/styles/defaultTheme' {
   interface DefaultTheme extends Theme {}
 }
 
-const palette: ThemeOptions['palette'] = {
+const palette: PaletteOptions = {
   primary: {
     main: '#5A5BEB',
-    light: '#5A5BEB'
+    light: '#ffffff'
   },
   secondary: {
     main: '#E0A225',
@@ -22,11 +36,14 @@ const palette: ThemeOptions['palette'] = {
     900: '#7C7D7E'
   },
   text: {
-    primary: '#211F23',
-    secondary: '#7C7D7E'
+    primary: '#000000',
+    secondary: '#000000',
   },
   background: {
     default: '#F8F9FC'
+  },
+  notification: {
+    main: '#D21A4D'
   }
 };
 

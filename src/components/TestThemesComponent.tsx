@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, Typography, Container } from '@mui/material';
+import AdmirationIcon from './Icons/admirationIcon';
+import DashboardIcon from './Icons/v2/dashboardIcon';
 
 export interface TestThemesComponentProps {
   title: string;
@@ -23,6 +25,8 @@ const TestThemesComponent: React.FC<TestThemesComponentProps> = ({
     >
       <Typography variant="h1">{title}</Typography>
       <Typography variant="body1" sx={{ my: 3 }}>
+        <AdmirationIcon />
+        <DashboardIcon />
         This component demonstrates the application of MUI themes using different styles and colors.
       </Typography>
       <Button

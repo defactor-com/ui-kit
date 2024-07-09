@@ -1,0 +1,48 @@
+import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
+import { MainSidebar } from '../components/MainSidebar';
+import DashboardIcon from '../components/Icons/v2/dashboardIcon';
+import MyWalletIcon from '../components/Icons/v2/myWalletIcon';
+import MyTemplateIcon from '../components/Icons/v2/myTemplateIcon';
+import NotificationsIcon from '../components/Icons/v2/notificationsIcon';
+import ContactsIcon from '../components/Icons/v2/contactsIcon';
+
+<Meta title="V2/MainSidebar/Documentation" component={MainSidebar} />
+
+# MainSidebar
+
+The MainSidebar component is a navigational sidebar that includes links and icons for various sections of the application.
+
+## Default Usage
+
+```jsx
+<MainSidebar
+  hideOnBreakpoint='sm'
+  notificationsCount={1}
+  routes={[
+    {
+      icon: DashboardIcon,
+      path: '/dashboard',
+      text: 'Dashboard'
+    },
+    {
+      icon: MyWalletIcon,
+      path: '/wallet',
+      text: 'MyWallet'
+    },
+    {
+      icon: MyTemplateIcon,
+      path: '/templates',
+      text: 'MyTemplates'
+    },
+    {
+      icon: NotificationsIcon,
+      path: '/notifications',
+      text: 'Notifications'
+    },
+    {
+      icon: ContactsIcon,
+      path: '/contacts',
+      text: 'Contacts'
+    }
+  ]}
+/>
