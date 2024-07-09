@@ -38,8 +38,8 @@ Default.args = {
   dragText: "or drag and drop",
   fileTypesText: "PDF, DOC, JPG up to ",
   fileSizeLimitText: "10MB",
-  borderColor: "#d1d4d6",
-  textColor: "#4B5563",
-  iconColor: "#9CA3AF",
+  borderColor: theme.palette.grey[300],
+  textColor: theme.palette.text.secondary,
+  iconColor: theme.palette.grey[500],
   label: "Label",
 };

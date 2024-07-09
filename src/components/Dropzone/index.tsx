@@ -5,9 +5,9 @@ import { useDropzone, FileWithPath } from "react-dropzone";
 import AddFilesIcon from "../Icons/v2/addFilesIcon";
 
 export interface DropzoneProps {
-  uploadText?: string;
-  dragText?: string;
-  fileTypesText?: string;
+  uploadText: string;
+  dragText: string;
+  fileTypesText: string;
   borderColor?: string;
   textColor?: string;
   iconColor?: string;
@@ -15,17 +15,19 @@ export interface DropzoneProps {
   label?: string;
 }
 
-export const Dropzone: React.FC<DropzoneProps> = ({
-  uploadText = "Upload a file",
-  dragText = "or drag and drop",
-  fileTypesText = "PDF, DOC, JPG up to ",
-  borderColor,
-  textColor,
-  iconColor,
-  fileSizeLimitText = "10MB",
-  label = "Label",
-}) => {
+export const Dropzone: React.FC<DropzoneProps>  = (props) => {
   const theme = useTheme();
+
+  const {
+    uploadText = "Upload a file",
+    dragText = "or drag and drop",
+    fileTypesText = "PDF, DOC, JPG up to ",
+    borderColor = theme.palette.grey[300],
+    textColor = theme.palette.text.secondary,
+    iconColor = theme.palette.grey[500],
+    fileSizeLimitText = "10MB",
+    label = "Label",
+  } = props;
 
   const onDrop = useCallback((acceptedFiles: FileWithPath[]) => {
     console.log(acceptedFiles);
