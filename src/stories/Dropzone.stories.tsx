@@ -20,6 +20,7 @@ const meta: Meta = {
     textColor: { control: 'color' },
     iconColor: { control: 'color' },
     fileSizeLimitText: { control: 'text' },
+    label: { control: 'text' },  
   },
 };
 
@@ -40,4 +41,5 @@ Default.args = {
   borderColor: theme.palette.grey[300],
   textColor: theme.palette.text.secondary,
   iconColor: theme.palette.grey[500],
+  label: "Label",  
 };

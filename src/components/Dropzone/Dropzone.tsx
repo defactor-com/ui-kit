@@ -12,6 +12,7 @@ export interface DropzoneProps {
   textColor?: string;
   iconColor?: string;
   fileSizeLimitText?: string;
+  label?: string; // Added label prop
 }
 
 const Dropzone: React.FC<DropzoneProps> = ({
@@ -22,6 +23,7 @@ const Dropzone: React.FC<DropzoneProps> = ({
   textColor,
   iconColor,
   fileSizeLimitText = "10MB",
+  label = "Label", // Default label value
 }) => {
   const theme = useTheme();
 
@@ -32,42 +34,47 @@ const Dropzone: React.FC<DropzoneProps> = ({
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   return (
-    <Box
-      {...getRootProps()}
-      sx={{
-        border: `2px dashed ${borderColor}`,
-        textAlign: "center",
-        cursor: "pointer",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        p: 4,
-        color: theme.palette.grey[800],
-      }}
-    >
-      <input {...getInputProps()} />
-      <AddFilesIcon
-        width={48}
-        height={48}
-        color={theme.palette.grey[500]}
-      />
-      <Typography variant="body2" fontWeight="500" color={theme.palette.grey[800]}>
-        <Typography
-          component="span"
-          variant="body2"
-          fontWeight="500"
-          color={theme.palette.primary.main}
-          marginRight={0.5}
-        >
-          {uploadText}
+    <>
+      <Typography variant="caption" sx={{ opacity: 0.5, color: theme.palette.text.primary }}>
+        {label}
+      </Typography>
+      <Box
+        {...getRootProps()}
+        sx={{
+          border: `2px dashed ${borderColor || theme.palette.grey[300]}`,
+          textAlign: "center",
+          cursor: "pointer",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          p: 4,
+          color: textColor || theme.palette.text.secondary,
+        }}
+      >
+        <input {...getInputProps()} />
+        <AddFilesIcon
+          width={48}
+          height={48}
+          color={iconColor || theme.palette.grey[500]}
+        />
+        <Typography variant="body2" fontWeight="500" color={textColor || theme.palette.text.secondary}>
+          <Typography
+            component="span"
+            variant="body2"
+            fontWeight="500"
+            color={theme.palette.primary.main}
+            marginRight={0.5}
+          >
+            {uploadText}
+          </Typography>
+          {dragText}
         </Typography>
-        {dragText}
-      </Typography>
-      <Typography variant="caption" color={theme.palette.grey[800]}>
-        {`${fileTypesText} ${fileSizeLimitText}`}
-      </Typography>
-    </Box>
+        <Typography variant="caption" color={textColor || theme.palette.text.secondary}>
+          {`${fileTypesText} ${fileSizeLimitText}`}
+        </Typography>
+      </Box>
+    </>
   );
 };
 
