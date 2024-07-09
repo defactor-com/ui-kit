@@ -28,7 +28,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = ({ routes, navLinkTextCol
 
   const { isSelected } = useSidebarHook();
   const defaultNotificationsCount = 0; 
-  const isHidden = useMediaQuery(theme.breakpoints.down(hideOnBreakpoint)); // Ensure theme has breakpoints
+  const isHidden = useMediaQuery(theme.breakpoints.down(hideOnBreakpoint)); 
 
   if (isHidden) {
     return null; 
