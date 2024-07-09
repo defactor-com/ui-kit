@@ -22,16 +22,25 @@ type MainSidebarProps = {
   hideOnBreakpoint?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'; 
 };
 
-export const MainSidebar: React.FC<MainSidebarProps> = ({ routes, navLinkTextColor, iconsColor, activeTextColor, activeIconColor, notificationColor, notificationsCount, hideOnBreakpoint = 'sm' }) => {
-  const theme = useTheme(); 
-  console.log('MainSidebar Theme:', theme); 
+export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
+  const theme = useTheme();
+
+  const {
+    routes,
+    navLinkTextColor = theme.palette.text.primary,
+    iconsColor = theme.palette.text.primary,
+    activeTextColor = theme.palette.secondary.main,
+    activeIconColor = theme.palette.secondary.main,
+    notificationColor = '#D21A4D',
+    notificationsCount = 0,
+    hideOnBreakpoint = 'sm'
+  } = props;
 
   const { isSelected } = useSidebarHook();
-  const defaultNotificationsCount = 0; 
-  const isHidden = useMediaQuery(theme.breakpoints.down(hideOnBreakpoint)); 
+  const isHidden = useMediaQuery(theme.breakpoints.down(hideOnBreakpoint));
 
   if (isHidden) {
-    return null; 
+    return null;
   }
 
   return (
@@ -62,7 +71,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = ({ routes, navLinkTextCol
             text={route.text}
             path={route.path}
             isSelected={isSelected(route.path)}
-            notificationsCount={route.path === '/notifications' ? notificationsCount ?? defaultNotificationsCount : 0}
+            notificationsCount={route.path === '/notifications' ? notificationsCount : 0}
             navLinkTextColor={navLinkTextColor}
             iconsColor={iconsColor}
             activeTextColor={activeTextColor}
@@ -74,4 +83,3 @@ export const MainSidebar: React.FC<MainSidebarProps> = ({ routes, navLinkTextCol
     </Drawer>
   );
 };
-
