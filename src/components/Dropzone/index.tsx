@@ -5,9 +5,9 @@ import { useDropzone, FileWithPath } from "react-dropzone";
 import AddFilesIcon from "../Icons/v2/addFilesIcon";
 
 export interface DropzoneProps {
-  uploadText: string;
-  dragText: string;
-  fileTypesText: string;
+  uploadText?: string;
+  dragText?: string;
+  fileTypesText?: string;
   borderColor?: string;
   textColor?: string;
   iconColor?: string;
