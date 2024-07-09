@@ -1,0 +1,55 @@
+import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
+import { MainSidebar } from '../components/MainSidebar';
+import DashboardIcon from '../components/Icons/v2/dashboardIcon';
+import MyWalletIcon from '../components/Icons/v2/myWalletIcon';
+import MyTemplateIcon from '../components/Icons/v2/myTemplateIcon';
+import NotificationsIcon from '../components/Icons/v2/notificationsIcon';
+import ContactsIcon from '../components/Icons/v2/contactsIcon';
+
+<Meta title="V2/FormElements/Dropzone/Documentation" component={MainSidebar} />
+
+## Example
+
+Below is an example of how to use the `Dropzone` component with custom properties:
+
+```jsx
+import React from 'react';
+import { ThemeProvider } from '@mui/material/styles';
+import Dropzone from '../components/Dropzone/Dropzone';
+import themes from '../themes';
+
+const theme = themes.lightTheme;
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <Dropzone 
+        uploadText="Upload your document"
+        dragText="or drag and drop here"
+        fileTypesText="Supported formats: PDF, DOCX, JPG up to"
+        borderColor="#4CAF50"
+        textColor="#333"
+        iconColor="#4CAF50"
+        fileSizeLimitText="20MB"
+        label="Upload Document"
+      />
+    </ThemeProvider>
+  );
+}
+
+export default App;
+```
+## Props
+
+| Name             | Type     | Default         | Description                                              |
+| ---------------- | -------- | --------------- | -------------------------------------------------------- |
+| `uploadText`     | `string` | `"Upload a file"` | Text displayed for the upload action.                     |
+| `dragText`       | `string` | `"or drag and drop"` | Text displayed for the drag-and-drop action.             |
+| `fileTypesText`  | `string` | `"PDF, DOC, JPG up to "` | Text displayed for supported file types.                 |
+| `borderColor`    | `string` | `theme.palette.grey[300]` | Border color of the dropzone area.                       |
+| `textColor`      | `string` | `theme.palette.text.secondary` | Text color inside the dropzone area.                   |
+| `iconColor`      | `string` | `theme.palette.grey[500]` | Color of the upload icon.                                |
+| `fileSizeLimitText` | `string` | `"10MB"`     | Text displayed for the file size limit.                  |
+| `label`          | `string` | `"Label"`        | Label displayed above the dropzone area.                 |
+
+
