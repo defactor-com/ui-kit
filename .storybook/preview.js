@@ -1,17 +1,32 @@
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import themes from '../src/themes';
-import "../src/scss/styles.scss";  
+import "../src/scss/styles.scss";
+import "./global.css";
+import React from 'react';
 
 const theme = themes.lightTheme;
 
 export const decorators = [
-  (Story) => (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Story />
-    </ThemeProvider>
-  ),
+  (Story, context) => {
+    React.useEffect(() => {
+      const rootElement = document.getElementById('root');
+      if (rootElement) {
+        if (context.kind === 'v2/FormElements/Dropzone') {
+          rootElement.classList.add('width100');
+        } else {
+          rootElement.classList.remove('width100');
+        }
+      }
+    }, [context.kind]);
+
+    return (
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Story />
+      </ThemeProvider>
+    );
+  },
 ];
 
 export const parameters = {
