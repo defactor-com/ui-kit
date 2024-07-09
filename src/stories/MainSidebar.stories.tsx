@@ -28,7 +28,8 @@ export default {
         type: 'select',
         options: ['xs', 'sm', 'md', 'lg', 'xl'], 
       }, 
-    }, 
+    },
+    mainSidebarBgColor: { control: 'color' }, 
   },
 } as ComponentMeta<typeof MainSidebar>;
 
@@ -68,6 +69,7 @@ Default.args = {
   activeTextColor: theme.palette.secondary.main,
   activeIconColor: theme.palette.secondary.main,
   notificationColor: theme.palette.notification.main,
-  notificationsCount: 1, 
-  hideOnBreakpoint: 'sm', 
+  notificationsCount: 1,
+  hideOnBreakpoint: 'sm',
+  mainSidebarBgColor: theme.palette.primary.light, 
 };

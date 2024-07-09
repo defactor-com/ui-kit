@@ -13,6 +13,7 @@ type Route = {
 
 type MainSidebarProps = {
   routes: Route[];
+  mainSidebarBgColor?: string;
   navLinkTextColor?: string;
   iconsColor?: string;
   activeTextColor?: string;
@@ -27,6 +28,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
 
   const {
     routes,
+    mainSidebarBgColor = theme.palette.primary.light,
     navLinkTextColor = theme.palette.text.primary,
     iconsColor = theme.palette.text.primary,
     activeTextColor = theme.palette.secondary.main,
@@ -52,7 +54,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
         [`& .MuiDrawer-paper`]: {
           width: '180px',
           boxSizing: 'border-box',
-          backgroundColor: theme.palette.primary.light,
+          backgroundColor: mainSidebarBgColor, 
         },
       }}
     >
