@@ -1,18 +1,14 @@
-import { useState } from "react";
+import { IFilterSelectedObject } from "../Table/TableTypes";
 
-import { IUseTableState, IFilterSelectedObject } from "./TableTypes";
+import { IUsePaginatioState } from "./PaginationTypes";
 
-const useTableState = ({
+const usePaginationState = ({
   rowsPageSelected,
   totalRowsNumber,
   visiblePage,
   setFilters,
   filters,
-}: IUseTableState) => {
-  const [activeFilter, setActiveFilter] = useState(false);
-  const [hoverItem, setHoverItem] = useState<number>(-1);
-  const [isHovered, setIsHovered] = useState(false);
-
+}: IUsePaginatioState) => {
   const buildPaginationArray = (): Array<number> => {
     const paginationArray = [];
     let amountElements = totalRowsNumber / rowsPageSelected;
@@ -51,49 +47,12 @@ const useTableState = ({
     return paginationArray;
   };
 
-  const handleMouseEnter = (key: number) => {
-    setHoverItem(key);
-
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setHoverItem(-1);
-    setIsHovered(false);
-  };
-
-  const updateData = () => {
-    if (filters) {
-      const data: Array<IFilterSelectedObject> = [];
-
-      filters.forEach((filter) => {
-        const element = document.getElementsByName(
-          filter.label
-        )[0] as HTMLInputElement;
-        let selectFilter: IFilterSelectedObject = {
-          label: filter.label,
-          options: [],
-        };
-
-        if (filter.options) selectFilter.options = element.value.split(",");
-        else selectFilter.options = element?.value || "";
-
-        data.push(selectFilter);
-      });
-      setFilters(data);
-    }
-  };
   return [
-    { activeFilter, hoverItem, isHovered },
     {
       buildPaginationArrayMobile,
       buildPaginationArray,
-      handleMouseEnter,
-      handleMouseLeave,
-      setActiveFilter,
-      updateData,
     },
   ];
 };
 
-export default useTableState;
+export default usePaginationState;

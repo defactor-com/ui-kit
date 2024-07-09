@@ -7,9 +7,8 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { Button } from "../Button";
 import { DropDown } from "../DropDown";
 import { Container } from "../Container";
+import { Pagination } from "../Pagination";
 import AdmirationIcon from "../Icons/admirationIcon";
-import leftIcon from "../../../public/assets/chevron_left.svg";
-import rightIcon from "../../../public/assets/chevron_right.svg";
 import downIcon from "../../../public/assets/arrow-down-icon.svg";
 import filterIcon from "../../../public/assets/filter-options-icon.svg";
 
@@ -41,70 +40,14 @@ export const Table = ({
 }: ITable) => {
   const [
     { activeFilter, hoverItem, isHovered },
-    {
-      setActiveFilter,
-      buildPaginationArray,
-      buildPaginationArrayMobile,
-      handleMouseEnter,
-      handleMouseLeave,
-      updateData,
-    },
+    { setActiveFilter, handleMouseEnter, handleMouseLeave, updateData },
   ] = useTableState({
-    totalRowsNumber,
     rowsPageSelected,
+    totalRowsNumber,
     visiblePage,
-    filters,
     setFilters,
+    filters,
   });
-
-  const RenderPagination = () => {
-    const pages = buildPaginationArray && buildPaginationArray();
-    let pagesMobile: number[] = [];
-    if (buildPaginationArrayMobile && pages)
-      pagesMobile = buildPaginationArrayMobile(pages);
-
-    if (window.innerWidth > 600) {
-      return (
-        <>
-          {pages?.map((item) => (
-            <span
-              className={clsx("variant-body1", "number-page-button")}
-              style={{
-                fontFamily: fontFamily,
-                color: visiblePage === item ? "#26A66B" : "none",
-                fontWeight: visiblePage === item ? "bold" : "normal",
-                background: visiblePage === item ? "#EAF7F1" : "white",
-              }}
-              key={item}
-              onClick={() => handleSelectedPage && handleSelectedPage(item)}
-            >
-              {item}
-            </span>
-          ))}
-        </>
-      );
-    } else {
-      return (
-        <>
-          {pagesMobile.map((item) => (
-            <span
-              className={clsx("variant-body1", "number-page-button")}
-              style={{
-                fontFamily: fontFamily,
-                color: visiblePage === item ? "#26A66B" : "none",
-                fontWeight: visiblePage === item ? "bold" : "normal",
-                background: visiblePage === item ? "#EAF7F1" : "white",
-              }}
-              key={item}
-              onClick={() => handleSelectedPage && handleSelectedPage(item)}
-            >
-              {item}
-            </span>
-          ))}
-        </>
-      );
-    }
-  };
 
   return (
     <Container
@@ -263,52 +206,19 @@ export const Table = ({
               </span>
             </div>
           )}
-          <div className="pagination-container">
-            <div className="container-rows-per-page">
-              <span
-                className="variant-body1"
-                style={{ fontFamily: fontFamily }}
-              >
-                {rowsNumberLabel}
-              </span>
-              <select
-                className="select-item"
-                onChange={(e) => handleSelectedRowsPage(e.target.value)}
-              >
-                {rowsPage?.map((item) => (
-                  <option
-                    style={{ fontFamily: fontFamily }}
-                    className="variant-body1"
-                    value={item}
-                    key={item}
-                  >
-                    {item}
-                  </option>
-                ))}
-              </select>
-            </div>
-            {totalRowsNumber > rowsPageSelected && nextPage ? (
-              <div className="page-selector-container">
-                <Button
-                  onClick={() => nextPage("-")}
-                  fontFamily={fontFamily}
-                  icon={leftIcon}
-                  variant="text"
-                  externalStyles={clsx("button-style", "padding-button")}
-                />
-                <RenderPagination />
-                <Button
-                  onClick={() => nextPage("+")}
-                  fontFamily={fontFamily}
-                  icon={rightIcon}
-                  variant="text"
-                  externalStyles={clsx("button-style", "padding-button")}
-                />
-              </div>
-            ) : (
-              <></>
-            )}
-          </div>
+          <Pagination
+            handleSelectedRowsPage={handleSelectedRowsPage}
+            handleSelectedPage={handleSelectedPage}
+            rowsPageSelected={rowsPageSelected}
+            totalRowsNumber={totalRowsNumber}
+            rowsNumberLabel={rowsNumberLabel}
+            visiblePage={visiblePage}
+            setFilters={setFilters}
+            fontFamily={fontFamily}
+            nextPage={nextPage}
+            rowsPage={rowsPage}
+            filters={filters}
+          />
         </>
       }
     />

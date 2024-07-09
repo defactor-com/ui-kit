@@ -85,14 +85,14 @@ const Chart = ({
       <ResponsiveContainer width="" height="50%" minHeight="250px">
         <RechartsPieChart>
           <Pie
-            cx={120}
+            cx="50%"
             data={data}
             fill="#8884d8"
             strokeWidth={0}
             dataKey="value"
             paddingAngle={5}
             innerRadius={110}
-            outerRadius={120}
+            outerRadius={122}
             fontFamily={fontFamily}
             label={renderCustomizedLabel}
           >
@@ -119,21 +119,19 @@ const Chart = ({
       {groupData &&
         groupData(data).map((data, index) => (
           <div className="pie-chart-legend-container" key={`subgroup-${index}`}>
-            <div>
-              {(data || []).map(({ name, color }, index) => (
-                <span
-                  className={clsx(
-                    "flex-center",
-                    "variant-body1",
-                    "piechart-label-styles"
-                  )}
-                  style={{ fontFamily }}
-                  key={`pie-chart-legend-${name}`}
-                >
-                  <Point color={color} /> {name}
-                </span>
-              ))}
-            </div>
+            {(data || []).map(({ name, color }, index) => (
+              <span
+                className={clsx(
+                  "flex-center",
+                  "variant-body1",
+                  "piechart-label-styles"
+                )}
+                style={{ fontFamily }}
+                key={`pie-chart-legend-${name}`}
+              >
+                <Point color={color} /> {name}
+              </span>
+            ))}
           </div>
         ))}
     </>
