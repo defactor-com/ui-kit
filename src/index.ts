@@ -1,4 +1,3 @@
-import Dropzone from "react-dropzone";
 import "./scss/styles.scss";
 
 export * from "./components/Pill";
