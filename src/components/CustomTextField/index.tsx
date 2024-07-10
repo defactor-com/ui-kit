@@ -27,7 +27,7 @@ import {
     label = 'Label',
     placeholder = 'Placeholder',
     value = '',
-    tooltip = 'This is a tooltip',
+    tooltip = '',
     suffix = 'Suffix',
     onChange,
     disabled = false,

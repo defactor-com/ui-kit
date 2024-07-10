@@ -26,7 +26,7 @@ Default.args = {
   label: 'Label',
   placeholder: 'Placeholder',
   value: '',
-  tooltip: 'This is a tooltip',
+  tooltip: '',
   suffix: 'Suffix',
   disabled: false,
   whiteBg: false,
