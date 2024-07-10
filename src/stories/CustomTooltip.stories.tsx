@@ -14,6 +14,7 @@ const meta: Meta = {
   },
   argTypes: {
     tooltipText: { control: 'text' },
+    iconColor: { control: 'color' },
   },
 };
 
@@ -28,4 +29,5 @@ const Template: Story<CustomTooltipProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   tooltipText: "This is a tooltip",
+  iconColor: theme.palette.grey[500],
 };
