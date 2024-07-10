@@ -28,6 +28,6 @@ const Template: Story<CustomTooltipProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  tooltipText: "Tooltip text",
+  tooltipText: "Storybook Tooltip text",
   iconColor: "#A8B0B6", //Temporarily until the designer updates the palette
 };

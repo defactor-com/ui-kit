@@ -5,6 +5,13 @@ import { CustomTooltip } from '../components/CustomTooltip';
 
 ## Example
 
+Below is an example that that demonstrates hiding the `CustomTooltip` component when the tooltip text is empty:
+
+```jsx
+<CustomTooltip 
+ />
+```
+
 Below is an example of how to use the `CustomTooltip` component with default properties:
 
 ```jsx
@@ -28,6 +35,6 @@ Props
 
 | Name          | Type     | Default                     | Description                              |
 | ------------- | -------- | --------------------------- | ---------------------------------------- |
-| `tooltipText` | `string` | `"This is a default tooltip"` | Text displayed inside the tooltip.        |
-| `iconColor`   | `string` | `theme.palette.grey[500]`   | Color of the tooltip icon.                |
+| `tooltipText` | `string` | `""` | Text displayed inside the tooltip.        |
+| `iconColor`   | `string` | #A8B0B6   | Color of the tooltip icon. (Temporarily until the designer updates the palette.)     |
 
