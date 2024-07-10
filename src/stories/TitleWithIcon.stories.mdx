@@ -1,0 +1,27 @@
+import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
+import TitleWithIcon from '../components/TitleWithIcon';
+import GlobalIcon from '../components/Icons/v2/globalIcon';
+
+<Meta title="V2/TitleWithIcon/Documentation" component={TitleWithIcon} />
+
+## Examples
+
+Below is an example of how to use the `TitleWithIcon` component with default properties:
+
+```jsx
+<TitleWithIcon 
+  label="Sample Title"
+  image={GlobalIcon}
+/>
+```
+Below is an example of how to use the TitleWithIcon component with custom properties:
+
+```jsx
+<TitleWithIcon 
+  label="Custom Title"
+  color="#4CAF50"
+  colorIcon="#FF5733"
+  image={GlobalIcon}
+/>
+
+```
