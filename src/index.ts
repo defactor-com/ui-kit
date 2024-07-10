@@ -16,6 +16,7 @@ export * from "./components/Dashboard";
 export * from "./components/LineChart";
 export * from "./components/LendBorrow";
 export * from "./components/MenuOption";
+export * from "./components/MobileList";
 export * from "./components/CardContainer";
 export * from "./components/CardComponent";
 export * from "./components/FlatContainer";
