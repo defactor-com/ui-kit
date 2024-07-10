@@ -28,3 +28,4 @@ export * from "./components/CollateralSection";
 export * from "./components/Tooltip";
 export { MainSidebar } from "./components/MainSidebar";
 export { Dropzone } from "./components/Dropzone";
+export { CustomTooltip } from "./components/CustomTooltip"
