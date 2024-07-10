@@ -10,7 +10,7 @@ import {
   
   import { CustomTooltip } from "../CustomTooltip";
   
-  export interface TextFieldProps {
+  export interface CustomTextFieldProps {
     label: string;
     placeholder: string;
     value?: string | number | boolean;
@@ -23,7 +23,7 @@ import {
     error?: boolean;
   }
   
-  export const TextField: React.FC<TextFieldProps> = ({
+  export const CustomTextField: React.FC<CustomTextFieldProps> = ({
     label = 'Label',
     placeholder = 'Placeholder',
     value = '',
@@ -68,5 +68,4 @@ import {
       </FormControl>
     );
   };
-
   

@@ -1,10 +1,10 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { TextField } from '../components/TextField';
+import { CustomTextField } from '../components/CustomTextField';
 
 export default {
-  title: 'V2/FormElements/TextField',
-  component: TextField,
+  title: 'V2/FormElements/CustomTextField',
+  component: CustomTextField,
   argTypes: {
     label: { control: 'text' },
     placeholder: { control: 'text' },
@@ -17,9 +17,9 @@ export default {
     required: { control: 'boolean' },
     error: { control: 'boolean' },
   },
-} as ComponentMeta<typeof TextField>;
+} as ComponentMeta<typeof CustomTextField>;
 
-const Template: ComponentStory<typeof TextField> = (args) => <TextField {...args} />;
+const Template: ComponentStory<typeof CustomTextField> = (args) => <CustomTextField {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

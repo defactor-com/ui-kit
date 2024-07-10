@@ -29,4 +29,4 @@ export * from "./components/Tooltip";
 export { MainSidebar } from "./components/MainSidebar";
 export { Dropzone } from "./components/Dropzone";
 export { CustomTooltip } from "./components/CustomTooltip";
-export { TextField } from "./components/TextField";
+export { CustomTextField } from "./components/CustomTextField";
