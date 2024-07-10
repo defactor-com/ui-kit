@@ -28,7 +28,7 @@ import {
     placeholder = '',
     value = '',
     tooltip = '',
-    suffix = 'Suffix',
+    suffix = '',
     onChange,
     disabled = false,
     whiteBg = false,

@@ -27,7 +27,7 @@ Default.args = {
   placeholder: '',
   value: '',
   tooltip: '',
-  suffix: 'Suffix',
+  suffix: '',
   disabled: false,
   whiteBg: false,
   required: false,
