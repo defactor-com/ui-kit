@@ -3,13 +3,16 @@ import { IconButton, Tooltip, useTheme } from "@mui/material";
 import TooltipIcon from "../Icons/v2/tooltipIcon";
 
 export interface CustomTooltipProps {
-  tooltipText: string;
+  tooltipText?: string;
   iconColor?: string;
 }
 
-export const CustomTooltip: React.FC<CustomTooltipProps> = ({ tooltipText, iconColor }) => {
+export const CustomTooltip: React.FC<CustomTooltipProps> = ({
+  tooltipText = "Required Tooltip Text.", 
+  iconColor,
+}) => {
   const theme = useTheme();
-  const defaultColor = iconColor || theme.palette.grey[500];
+  const defaultColor = iconColor || theme.palette.grey[500]; 
 
   return (
     <Tooltip
@@ -33,3 +36,5 @@ export const CustomTooltip: React.FC<CustomTooltipProps> = ({ tooltipText, iconC
     </Tooltip>
   );
 };
+
+export default CustomTooltip; 
