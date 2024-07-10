@@ -1,0 +1,39 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import { TextField, TextFieldProps } from '../components/TextField';
+
+<Meta title="V2/FormElements/TextField/Documentation" component={TextField} />
+
+# TextField
+
+The `TextField` component is a customizable input field that can be used in forms. It includes options for labels, placeholders, tooltips, suffixes, and more.
+
+## Props
+
+| Name       | Type                         | Default         | Description                                                       |
+|------------|------------------------------|-----------------|-------------------------------------------------------------------|
+| `label`    | `string`                     | `'Label'`       | The label for the text field.                                     |
+| `placeholder` | `string`                  | `'Placeholder'` | The placeholder text for the text field.                          |
+| `value`    | `string \| number \| boolean`| `''`            | The value of the text field.                                      |
+| `onChange` | `(event: React.ChangeEvent<HTMLInputElement>) => void` | `undefined` | Function to call when the text field value changes.               |
+| `tooltip`  | `string`                     | `'This is a tooltip'` | The text for the tooltip that appears next to the label.          |
+| `suffix`   | `string \| React.ReactNode`  | `'Suffix'`      | The suffix to display at the end of the input field.              |
+| `disabled` | `boolean`                    | `false`         | Whether the text field is disabled.                               |
+| `whiteBg`  | `boolean`                    | `false`         | Whether the text field has a white background.                    |
+| `required` | `boolean`                    | `false`         | Whether the text field is required.                               |
+| `error`    | `boolean`                    | `false`         | Whether the text field has an error.                              |
+
+## Example
+
+```jsx
+    <TextField
+      label="Label"
+      placeholder="Placeholder"
+      value=""
+      tooltip="This is a tooltip"
+      suffix="Suffix"
+      disabled={false}
+      whiteBg={false}
+      required={false}
+      error={false}
+    />
+```
