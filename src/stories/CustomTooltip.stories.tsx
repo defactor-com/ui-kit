@@ -2,7 +2,7 @@ import React from "react";
 import { Meta, Story } from "@storybook/react";
 import { ThemeProvider } from "@mui/material/styles";
 import { CustomTooltip, CustomTooltipProps } from "../components/CustomTooltip";
-import themes from '../themes';
+import themes from '../themes'; 
 
 const theme = themes.lightTheme;
 
@@ -28,6 +28,6 @@ const Template: Story<CustomTooltipProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  tooltipText: "This is a default tooltip",
-  iconColor: theme.palette.grey[500],
+  tooltipText: "Tooltip text",
+  iconColor: "#A8B0B6", //Temporarily until the designer updates the palette
 };
