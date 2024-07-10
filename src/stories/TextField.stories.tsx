@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { TextField } from '../components/TextField';
 
 export default {
-  title: 'V2/TextField',
+  title: 'V2/FormElements/TextField',
   component: TextField,
   argTypes: {
     label: { control: 'text' },

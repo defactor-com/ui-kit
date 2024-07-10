@@ -24,12 +24,12 @@ import {
   }
   
   export const TextField: React.FC<TextFieldProps> = ({
-    label,
-    placeholder,
-    value,
+    label = 'Label',
+    placeholder = 'Placeholder',
+    value = '',
+    tooltip = 'This is a tooltip',
+    suffix = 'Suffix',
     onChange,
-    tooltip,
-    suffix,
     disabled = false,
     whiteBg = false,
     required = false,
