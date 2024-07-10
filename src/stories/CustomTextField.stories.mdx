@@ -1,0 +1,276 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import { CustomTextField, CustomTextFieldProps } from '../components/CustomTextField';
+
+<Meta title="V2/FormElements/CustomTextField/Documentation" component={CustomTextField} />
+
+# CustomTextField
+
+The `TextField` component is a customizable input field that can be used in forms. It includes options for labels, placeholders, tooltips, suffixes, and more.
+
+## Props
+
+| Name       | Type                         | Default         | Description                                                       |
+|------------|------------------------------|-----------------|-------------------------------------------------------------------|
+| `label`    | `string`                     | `''`       | The label for the text field.                                     |
+| `placeholder` | `string`                  | `''` | The placeholder text for the text field.                          |
+| `value`    | `string \| number \| boolean`| `''`            | The value of the text field.                                      |
+| `onChange` | `(event: React.ChangeEvent<HTMLInputElement>) => void` | `undefined` | Function to call when the text field value changes.               |
+| `tooltip`  | `string`                     | `''` | The text for the tooltip that appears next to the label.          |
+| `suffix`   | `string \| React.ReactNode`  | `''`      | The suffix to display at the end of the input field.              |
+| `disabled` | `boolean`                    | `false`         | Whether the text field is disabled.                               |
+| `whiteBg`  | `boolean`                    | `false`         | Whether the text field has a white background.                    |
+| `required` | `boolean`                    | `false`         | Whether the text field is required.                               |
+| `error`    | `boolean`                    | `false`         | Whether the text field has an error.                              |
+
+## Example
+
+```jsx
+import React, { useState } from 'react';
+import { CustomTextField } from '@defactor/ui-kit';
+
+const YourComponent = () => {
+  const [value, setValue] = useState('');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  return (
+    <CustomTextField
+      label="Label"
+      placeholder="Placeholder"
+      value={value}
+      tooltip="This is a tooltip"
+      suffix="USDC"
+      disabled={false}
+      whiteBg={false}
+      required={false}
+      error={false}
+      onChange={handleChange}
+    />
+  );
+};
+
+export default YourComponent;
+
+```
+## Example without tooltip
+
+1.
+
+```jsx
+import React, { useState } from 'react';
+import { CustomTextField } from '@defactor/ui-kit';
+
+const YourComponent = () => {
+  const [value, setValue] = useState('');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  return (
+    <CustomTextField
+      label="Label"
+      placeholder="Placeholder"
+      value={value}
+      tooltip=""
+      suffix="Suffix"
+      disabled={false}
+      whiteBg={false}
+      required={false}
+      error={false}
+      onChange={handleChange}
+    />
+  );
+};
+
+export default YourComponent;
+
+```
+2. 
+
+
+```jsx
+import React, { useState } from 'react';
+import { CustomTextField } from '@defactor/ui-kit';
+
+const YourComponent = () => {
+  const [value, setValue] = useState('');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  return (
+    <CustomTextField
+      label="Label"
+      placeholder="Placeholder"
+      value={value}
+      suffix="Suffix"
+      disabled={false}
+      whiteBg={false}
+      required={false}
+      error={false}
+      onChange={handleChange}
+    />
+  );
+};
+
+export default YourComponent;
+
+```
+## Example without label
+
+1.
+
+```jsx
+import React, { useState } from 'react';
+import { CustomTextField } from '@defactor/ui-kit';
+
+const YourComponent = () => {
+  const [value, setValue] = useState('');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  return (
+    <CustomTextField
+      label=""
+      placeholder="Placeholder"
+      value={value}
+      tooltip=""
+      suffix="Suffix"
+      disabled={false}
+      whiteBg={false}
+      required={false}
+      error={false}
+      onChange={handleChange}
+    />
+  );
+};
+
+export default YourComponent;
+
+```
+2. 
+
+
+```jsx
+import React, { useState } from 'react';
+import { CustomTextField } from '@defactor/ui-kit';
+
+const YourComponent = () => {
+  const [value, setValue] = useState('');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  return (
+    <CustomTextField
+      placeholder="Placeholder"
+      value={value}
+      suffix="Suffix"
+      disabled={false}
+      whiteBg={false}
+      required={false}
+      error={false}
+      onChange={handleChange}
+    />
+  );
+};
+
+export default YourComponent;
+
+```
+## Example without placeholder
+
+1.
+
+```jsx
+import React, { useState } from 'react';
+import { CustomTextField } from '@defactor/ui-kit';
+
+const YourComponent = () => {
+  const [value, setValue] = useState('');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  return (
+    <CustomTextField
+      label=""
+      placeholder=""
+      value={value}
+      tooltip=""
+      suffix="Suffix"
+      disabled={false}
+      whiteBg={false}
+      required={false}
+      error={false}
+      onChange={handleChange}
+    />
+  );
+};
+
+export default YourComponent;
+
+```
+2. 
+
+
+```jsx
+import React, { useState } from 'react';
+import { CustomTextField } from '@defactor/ui-kit';
+
+const YourComponent = () => {
+  const [value, setValue] = useState('');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  return (
+    <CustomTextField
+      value={value}
+      suffix="Suffix"
+      disabled={false}
+      whiteBg={false}
+      required={false}
+      error={false}
+      onChange={handleChange}
+    />
+  );
+};
+
+export default YourComponent;
+
+```
+
+## Basic Example
+
+```jsx
+import React, { useState } from 'react';
+import { CustomTextField } from '@defactor/ui-kit';
+
+const YourComponent = () => {
+  const [value, setValue] = useState('');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  return (
+    <CustomTextField
+      value={value}
+      onChange={handleChange}
+    />
+  );
+};
+
+export default YourComponent;
+
+```
