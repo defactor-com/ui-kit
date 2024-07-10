@@ -1,0 +1,33 @@
+import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
+import { CustomTooltip } from '../components/CustomTooltip';
+
+<Meta title="V2/CustomTooltip/Documentation" component={CustomTooltip} />
+
+## Example
+
+Below is an example of how to use the `CustomTooltip` component with default properties:
+
+```jsx
+<CustomTooltip
+tooltipText="Custom tooltip text"
+ />
+```
+
+Below is an example of how to use the CustomTooltip component with custom properties:
+
+```jsx
+<CustomTooltip 
+  tooltipText="Custom tooltip text"
+  iconColor="#4CAF50"
+/>
+```
+
+Props
+
+## Props
+
+| Name          | Type     | Default                     | Description                              |
+| ------------- | -------- | --------------------------- | ---------------------------------------- |
+| `tooltipText` | `string` | `"This is a default tooltip"` | Text displayed inside the tooltip.        |
+| `iconColor`   | `string` | `theme.palette.grey[500]`   | Color of the tooltip icon.                |
+
