@@ -17,7 +17,7 @@ export interface CustomTextFieldProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   tooltip?: string;
   suffix?: string | React.ReactNode;
-  suffixColor?: string; // Add suffixColor prop
+  suffixColor?: string;
   disabled?: boolean;
   whiteBg?: boolean;
   required?: boolean;
@@ -61,11 +61,18 @@ export const CustomTextField: React.FC<CustomTextFieldProps> = ({
         {tooltip && <CustomTooltip tooltipText={tooltip} />}
       </Box>
       <OutlinedInput
-        endAdornment={<InputAdornment position="end" sx={{ color: suffixColor }}>{suffix}</InputAdornment>}
+        endAdornment={<InputAdornment position="end">
+          <Typography sx={{ color: suffixColor, fontSize: "12px", fontWeight: "400" }}> {/** Temporarily until the designer updates the palette */}
+            {suffix}
+          </Typography>
+        </InputAdornment>}
         placeholder={placeholder}
         value={value}
         sx={{ backgroundColor: whiteBg ? theme.palette.common.white : "transparent" }}
         onChange={onChange}
+        inputProps={{
+          style: { fontSize: "14px", color: "#838A96" } //Temporarily until the designer updates the palette 
+        }}
       />
     </FormControl>
   );
