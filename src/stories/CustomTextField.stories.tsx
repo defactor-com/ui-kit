@@ -12,6 +12,7 @@ export default {
     onChange: { action: 'changed' },
     tooltip: { control: 'text' },
     suffix: { control: 'text' },
+    suffixColor: { control: 'color' }, 
     disabled: { control: 'boolean' },
     whiteBg: { control: 'boolean' },
     required: { control: 'boolean' },
@@ -28,6 +29,7 @@ Default.args = {
   value: '',
   tooltip: 'Tooltip Text',
   suffix: 'USDC',
+  suffixColor: 'red',  //Temporarily until the designer updates the palette
   disabled: false,
   whiteBg: false,
   required: false,
