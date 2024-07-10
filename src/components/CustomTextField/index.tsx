@@ -25,7 +25,7 @@ import {
   
   export const CustomTextField: React.FC<CustomTextFieldProps> = ({
     label = '',
-    placeholder = 'Placeholder',
+    placeholder = '',
     value = '',
     tooltip = '',
     suffix = 'Suffix',

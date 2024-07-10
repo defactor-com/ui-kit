@@ -185,3 +185,67 @@ const YourComponent = () => {
 export default YourComponent;
 
 ```
+## Example without placeholder
+
+1.
+
+```jsx
+import React, { useState } from 'react';
+import { CustomTextField } from '@defactor/ui-kit';
+
+const YourComponent = () => {
+  const [value, setValue] = useState('');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  return (
+    <CustomTextField
+      label=""
+      placeholder=""
+      value={value}
+      tooltip=""
+      suffix="Suffix"
+      disabled={false}
+      whiteBg={false}
+      required={false}
+      error={false}
+      onChange={handleChange}
+    />
+  );
+};
+
+export default YourComponent;
+
+```
+2. 
+
+
+```jsx
+import React, { useState } from 'react';
+import { CustomTextField } from '@defactor/ui-kit';
+
+const YourComponent = () => {
+  const [value, setValue] = useState('');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  return (
+    <CustomTextField
+      value={value}
+      suffix="Suffix"
+      disabled={false}
+      whiteBg={false}
+      required={false}
+      error={false}
+      onChange={handleChange}
+    />
+  );
+};
+
+export default YourComponent;
+
+```

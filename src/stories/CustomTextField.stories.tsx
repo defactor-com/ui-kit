@@ -24,7 +24,7 @@ const Template: ComponentStory<typeof CustomTextField> = (args) => <CustomTextFi
 export const Default = Template.bind({});
 Default.args = {
   label: '',
-  placeholder: 'Placeholder',
+  placeholder: '',
   value: '',
   tooltip: '',
   suffix: 'Suffix',
