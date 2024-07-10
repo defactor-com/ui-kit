@@ -23,7 +23,7 @@ const Template: ComponentStory<typeof CustomTextField> = (args) => <CustomTextFi
 
 export const Default = Template.bind({});
 Default.args = {
-  label: 'Label',
+  label: '',
   placeholder: 'Placeholder',
   value: '',
   tooltip: '',
