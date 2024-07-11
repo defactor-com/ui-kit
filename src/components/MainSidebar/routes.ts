@@ -19,27 +19,27 @@ export const routes: Routes = {
     {
       text: 'Dashboard',
       path: '/dashboard',
-      icon: DashboardIcon
+      icon: DashboardIcon,
     },
     {
       text: 'MyWallet',
       path: '/wallet',
-      icon: MyWalletIcon
+      icon: MyWalletIcon,
     },
     {
       text: 'MyTemplates',
       path: '/templates',
-      icon: MyTemplateIcon
+      icon: MyTemplateIcon,
     },
     {
       text: 'Notifications',
       path: '/notifications',
-      icon: NotificationsIcon
+      icon: NotificationsIcon,
     },
     {
       text: 'Contacts',
       path: '/contacts',
-      icon: ContactsIcon
-    }
-  ]
+      icon: ContactsIcon,
+    },
+  ],
 };

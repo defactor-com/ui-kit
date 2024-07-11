@@ -28,14 +28,14 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
 
   const {
     routes,
-    mainSidebarBgColor = '#ffffff', //Temporarily until the designer updates the palette (theme.palette.primary.light)
-    navLinkTextColor = '#000000', //Temporarily until the designer updates the palette (theme.palette.text.primary)
-    iconsColor = theme.palette.text.primary, //Temporarily until the designer updates the palette
-    activeTextColor = theme.palette.secondary.main, //Temporarily until the designer updates the palette
-    activeIconColor = theme.palette.secondary.main, //Temporarily until the designer updates the palette
-    notificationColor = '#D21A4D', //Temporarily until the designer updates the palette
+    mainSidebarBgColor = '#ffffff', // Temporarily until the designer updates the palette (theme.palette.primary.light)
+    navLinkTextColor = '#000000', // Temporarily until the designer updates the palette (theme.palette.text.primary)
+    iconsColor = theme.palette.text.primary, // Temporarily until the designer updates the palette
+    activeTextColor = theme.palette.secondary.main, // Temporarily until the designer updates the palette
+    activeIconColor = theme.palette.secondary.main, // Temporarily until the designer updates the palette
+    notificationColor = '#D21A4D', // Temporarily until the designer updates the palette
     notificationsCount = 0,
-    hideOnBreakpoint = 'sm'
+    hideOnBreakpoint = 'sm',
   } = props;
 
   const { isSelected } = useSidebarHook();
