@@ -30,3 +30,4 @@ export { MainSidebar } from "./components/MainSidebar";
 export { Dropzone } from "./components/Dropzone";
 export { CustomTooltip } from "./components/CustomTooltip";
 export { CustomTextField } from "./components/CustomTextField";
+export { TitleWithIcon } from "./components/TitleWithIcon";

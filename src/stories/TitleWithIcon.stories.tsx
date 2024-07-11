@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import TitleWithIcon, { TitleWithIconProps } from '../components/TitleWithIcon';
+import { TitleWithIcon, TitleWithIconProps } from '../components/TitleWithIcon';
 import GlobalIcon from '../components/Icons/v2/globalIcon';
 
 export default {
