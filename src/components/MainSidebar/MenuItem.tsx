@@ -37,7 +37,7 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
         variant="text"
         sx={{
           width: '100%',
-          borderRight: isSelected ? `2px solid ${theme.palette.secondary.main}` : '',
+          borderRight: isSelected ? '2px solid #E0A225' : '', // Temporarily until the designer updates the palette (theme.palette.primary.light)
           borderRadius: 0,
           padding: 2,
           paddingLeft: 4,
