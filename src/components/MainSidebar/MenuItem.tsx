@@ -37,7 +37,7 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
         variant="text"
         sx={{
           width: '100%',
-          borderRight: isSelected ? `2px solid ${activeTextColor}` : '',
+          borderRight: isSelected ? `2px solid #E0A225` : '',
           borderRadius: 0,
           padding: 2,
           paddingLeft: 4,
