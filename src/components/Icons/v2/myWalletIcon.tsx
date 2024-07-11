@@ -1,15 +1,15 @@
 import React from "react";
 import { IconsType } from "../IconsTypes";
 
-interface MyWalletIconProps extends IconsType {
+export interface MyWalletIconProps extends IconsType {
   backgroundColor?: string;
 }
 
-const MyWalletIcon: React.FC<MyWalletIconProps> = ({
+export const MyWalletIcon: React.FC<MyWalletIconProps> = ({
   width = 16,
   height = 16,
   color = '#000000',
-  backgroundColor = 'transparent' 
+  backgroundColor = 'transparent'
 }) => (
   <svg
     width={width}

@@ -1,15 +1,15 @@
 import React from "react";
 import { IconsType } from "../IconsTypes";
 
-interface NotificationsIconProps extends IconsType {
+export interface NotificationsIconProps extends IconsType {
   backgroundColor?: string;
 }
 
-const NotificationsIcon: React.FC<NotificationsIconProps> = ({
+export const NotificationsIcon: React.FC<NotificationsIconProps> = ({
   width = 16,
   height = 16,
   color = '#000000',
-  backgroundColor = 'transparent' 
+  backgroundColor = 'transparent'
 }) => (
   <svg
     width={width}

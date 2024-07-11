@@ -10,7 +10,7 @@ const meta: Meta = {
   title: "v2/FormElements/Dropzone",
   component: Dropzone,
   parameters: {
-    layout: "centered",
+    layout: "",
   },
   argTypes: {
     uploadText: { control: 'text' },

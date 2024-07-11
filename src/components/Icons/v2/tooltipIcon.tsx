@@ -1,7 +1,7 @@
 import React from "react";
 import { IconsType } from "../IconsTypes";
 
-const TooltipIcon: React.FC<IconsType> = ({
+export const TooltipIcon: React.FC<IconsType> = ({
   width = 16,
   height = 16,
   color = "#A8B0B6",

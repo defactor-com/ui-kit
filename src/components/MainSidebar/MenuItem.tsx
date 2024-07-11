@@ -57,6 +57,7 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
           component="span"
           sx={{
             color: isSelected ? (activeTextColor || theme.palette.secondary.main) : (navLinkTextColor || theme.palette.text.primary),
+            textTransform: 'none'
           }}
         >
           {text}

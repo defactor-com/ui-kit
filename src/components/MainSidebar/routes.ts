@@ -4,17 +4,17 @@ import MyTemplateIcon from '../Icons/v2/myTemplateIcon';
 import NotificationsIcon from '../Icons/v2/notificationsIcon';
 import ContactsIcon from '../Icons/v2/contactsIcon';
 
-type Route = {
+export type Route = {
   text: string;
   path: string;
   icon: React.ElementType;
 };
 
-type Routes = {
+export type Routes = {
   mainRoutes: Route[];
 };
 
-const routes: Routes = {
+export const routes: Routes = {
   mainRoutes: [
     {
       text: 'Dashboard',
@@ -43,6 +43,3 @@ const routes: Routes = {
     }
   ]
 };
-
-export default routes;
-export type { Routes, Route };
