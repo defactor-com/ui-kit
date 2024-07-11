@@ -68,3 +68,22 @@ import {
   ]}
 />
 ```
+
+## Example for Assets:
+
+```jsx
+import { MainSidebar, routes } from '@defactor/ui-kit'
+import React from 'react'
+
+const Sidebar: React.FC = () => {
+  return (
+    <MainSidebar
+      hideOnBreakpoint='sm'
+      notificationsCount={1}
+      routes={routes.mainRoutes}
+    />
+  )
+}
+
+export default Sidebar
+```
