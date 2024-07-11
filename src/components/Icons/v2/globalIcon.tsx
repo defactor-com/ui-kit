@@ -1,12 +1,12 @@
 import React from 'react';
 import { IconsType } from '../IconsTypes';
 
-interface GlobalIconProps extends IconsType {
+export interface GlobalIconProps extends IconsType {
     backgroundColor?: string;
     color: string;
 }
 
-const GlobalIcon: React.FC<GlobalIconProps> = ({
+export const GlobalIcon: React.FC<GlobalIconProps> = ({
     width = 20,
     height = 20,
     color = 'black',
