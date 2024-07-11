@@ -84,3 +84,4 @@ Default.args = {
   hideOnBreakpoint: 'sm',
   mainSidebarBgColor: theme.palette.primary.light
 };
+

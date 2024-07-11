@@ -89,3 +89,27 @@ const Sidebar: React.FC = () => {
 
 export default Sidebar
 ```
+
+
+```jsx
+import { MainSidebar, PathProvider, routes } from '@defactor/ui-kit'
+import { useRouter } from 'next/router'
+import React from 'react'
+
+const Sidebar: React.FC = () => {
+  const router = useRouter() // Get the router object
+  const { pathname } = router // Extract the current pathname
+
+  return (
+    <PathProvider path={pathname}>
+      <MainSidebar
+        hideOnBreakpoint='sm'
+        notificationsCount={1}
+        routes={routes.mainRoutes}
+      />
+    </PathProvider>
+  )
+}
+
+export default Sidebar
+```

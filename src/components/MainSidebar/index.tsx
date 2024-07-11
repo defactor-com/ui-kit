@@ -30,7 +30,6 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
     mainSidebarBgColor = '#ffffff', // Temporarily until the designer updates the palette (theme.palette.primary.light)
     navLinkTextColor = '#000000', // Temporarily until the designer updates the palette (theme.palette.text.primary)
     iconsColor = theme.palette.text.primary, // Temporarily until the designer updates the palette
-    activeTextColor = '#000000', // Temporarily until the designer updates the palette
     activeIconColor = '#E0A225', // Temporarily until the designer updates the palette
     notificationColor = '#D21A4D', // Temporarily until the designer updates the palette
     notificationsCount = 0,
@@ -69,7 +68,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
             notificationsCount={route.path === '/notifications' ? notificationsCount : 0}
             navLinkTextColor={navLinkTextColor}
             iconsColor={iconsColor}
-            activeTextColor={activeTextColor}
+            activeTextColor='#000000' // Temporarily 
             activeIconColor={activeIconColor}
             notificationColor={notificationColor}
           />
