@@ -1,15 +1,15 @@
 import React from "react";
 import { IconsType } from "../IconsTypes";
 
-interface AddFilesIconProps extends IconsType {
+export interface AddFilesIconProps extends IconsType {
   backgroundColor?: string;
 }
 
-const AddFilesIcon: React.FC<AddFilesIconProps> = ({
+export const AddFilesIcon: React.FC<AddFilesIconProps> = ({
   width = 48,
   height = 48,
   color = '#9CA3AF',
-  backgroundColor = 'transparent' 
+  backgroundColor = 'transparent'
 }) => (
   <svg
     width={width}
