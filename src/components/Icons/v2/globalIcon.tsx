@@ -3,6 +3,7 @@ import { IconsType } from '../IconsTypes';
 
 interface GlobalIconProps extends IconsType {
     backgroundColor?: string;
+    color: string;
 }
 
 const GlobalIcon: React.FC<GlobalIconProps> = ({

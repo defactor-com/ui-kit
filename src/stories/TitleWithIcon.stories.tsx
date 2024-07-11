@@ -14,18 +14,18 @@ export default {
 
 const Template: Story<TitleWithIconProps> = (args) => <TitleWithIcon {...args} />;
 
-export const ActiveTab = Template.bind({});
-ActiveTab.args = {
+export const ActiveTitleWithIcon = Template.bind({});
+ActiveTitleWithIcon.args = {
     label: 'Global Stats',
-    color: '#000000', //Temporarily until the designer updates the palette
-    colorIcon: '#000000', //Temporarily until the designer updates the palette
+    color: '#000000', // Temporarily until the designer updates the palette
+    colorIcon: '#000000', // Temporarily until the designer updates the palette
     image: GlobalIcon,
 };
 
-export const UnselectedTab = Template.bind({});
-UnselectedTab.args = {
+export const InactiveTitleWithIcon = Template.bind({});
+InactiveTitleWithIcon.args = {
     label: 'Global Stats',
-    color: '#7c7c7e', //Temporarily until the designer updates the palette
-    colorIcon: '#7c7c7e', //Temporarily until the designer updates the palette
+    color: '#7c7c7e', // Temporarily until the designer updates the palette
+    colorIcon: '#7c7c7e', // Temporarily until the designer updates the palette
     image: GlobalIcon,
 };
