@@ -25,15 +25,14 @@ export type MainSidebarProps = {
 
 export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
   const theme = useTheme();
-
   const {
     routes,
-    mainSidebarBgColor = '#ffffff', // Temporarily until the designer updates the palette (theme.palette.primary.light)
-    navLinkTextColor = '#000000', // Temporarily until the designer updates the palette (theme.palette.text.primary)
-    iconsColor = theme.palette.text.primary, // Temporarily until the designer updates the palette
-    activeTextColor = '#E0A225', // Temporarily until the designer updates the palette
-    activeIconColor = '#E0A225', // Temporarily until the designer updates the palette
-    notificationColor = '#D21A4D', // Temporarily until the designer updates the palette
+    mainSidebarBgColor = theme.palette.background.paper,
+    navLinkTextColor = theme.palette.text.primary,
+    iconsColor = theme.palette.text.primary,
+    activeTextColor = theme.palette.secondary.main,
+    activeIconColor = theme.palette.secondary.main,
+    notificationColor = theme.palette.error.main,
     notificationsCount = 0,
     hideOnBreakpoint = 'sm',
   } = props;
@@ -58,14 +57,8 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
         },
       }}
     >
-      {/* Box to align with Appbar */}
       <Box sx={{ height: 60 }} />
-      <Box
-        sx={{
-          overflow: 'auto',
-          color: theme.palette.primary.main,
-        }}
-      >
+      <Box sx={{ overflow: 'auto' }}>
         {routes.map((route, index) => (
           <MainMenuItem
             icon={route.icon}

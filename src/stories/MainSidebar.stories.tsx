@@ -7,6 +7,7 @@ import MyTemplateIcon from '../components/Icons/v2/myTemplateIcon';
 import NotificationsIcon from '../components/Icons/v2/notificationsIcon';
 import ContactsIcon from '../components/Icons/v2/contactsIcon';
 import themes from '../themes';
+import { PathProvider } from '../components/MainSidebar/PathProvider';
 
 const theme = themes.lightTheme;
 
@@ -14,26 +15,36 @@ export default {
   title: 'V2/MainSidebar',
   component: MainSidebar,
   argTypes: {
-    routes: {
-      control: 'object',
-    },
+    routes: { control: 'object' },
     navLinkTextColor: { control: 'color' },
     iconsColor: { control: 'color' },
     activeTextColor: { control: 'color' },
     activeIconColor: { control: 'color' },
     notificationColor: { control: 'color' },
     notificationsCount: { control: 'number' },
-    hideOnBreakpoint: { 
-      control: { 
+    hideOnBreakpoint: {
+      control: {
         type: 'select',
-        options: ['xs', 'sm', 'md', 'lg', 'xl'], 
-      }, 
+        options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      },
     },
-    mainSidebarBgColor: { control: 'color' }, 
+    mainSidebarBgColor: { control: 'color' },
+    currentPath: { control: 'text' },
   },
 } as ComponentMeta<typeof MainSidebar>;
 
-const Template: ComponentStory<typeof MainSidebar> = (args) => <MainSidebar {...args} />;
+interface MainSidebarStoryArgs extends React.ComponentProps<typeof MainSidebar> {
+  currentPath?: string;
+}
+
+const Template: ComponentStory<typeof MainSidebar> = (args: MainSidebarStoryArgs) => {
+  const { currentPath, ...sidebarProps } = args;
+  return (
+    <PathProvider path={currentPath || '/dashboard'}>
+      <MainSidebar {...sidebarProps} />
+    </PathProvider>
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {
@@ -71,5 +82,5 @@ Default.args = {
   notificationColor: theme.palette.notification.main,
   notificationsCount: 1,
   hideOnBreakpoint: 'sm',
-  mainSidebarBgColor: theme.palette.primary.light, 
+  mainSidebarBgColor: theme.palette.primary.light
 };

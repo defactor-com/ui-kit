@@ -1,5 +1,5 @@
 import { useTheme } from '@mui/styles';
-import { usePathname } from 'next/navigation';
+import { usePathname } from './PathProvider';
 import { useCallback } from 'react';
 import { Routes } from './routes';
 
@@ -10,7 +10,11 @@ const useSidebarHook = () => {
   const pathName = usePathname();
 
   const isSelected = useCallback(
-    (path: string) => pathName === path,
+    (path: string) => {
+      console.log('Checking path:', path);
+      console.log('Current pathName:', pathName);
+      return pathName === path;
+    },
     [pathName]
   );
 
