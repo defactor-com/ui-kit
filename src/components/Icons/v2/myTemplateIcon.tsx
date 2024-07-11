@@ -1,11 +1,11 @@
 import React from "react";
 import { IconsType } from "../IconsTypes";
 
-interface MyTemplateIconProps extends IconsType {
+export interface MyTemplateIconProps extends IconsType {
   backgroundColor?: string;
 }
 
-const MyTemplateIcon: React.FC<MyTemplateIconProps> = ({
+export const MyTemplateIcon: React.FC<MyTemplateIconProps> = ({
   width = 16,
   height = 16,
   color = '#000000',

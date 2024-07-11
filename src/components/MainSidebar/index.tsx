@@ -3,7 +3,7 @@ import { Box, Drawer, useMediaQuery, useTheme } from '@mui/material';
 import useSidebarHook from './useSidebarHook';
 import MainMenuItem from './MenuItem';
 
-type Route = {
+export type Route = {
   text: string;
   path: string;
   icon: React.ElementType;
@@ -11,7 +11,7 @@ type Route = {
   iconsColor?: string;
 };
 
-type MainSidebarProps = {
+export type MainSidebarProps = {
   routes: Route[];
   mainSidebarBgColor?: string;
   navLinkTextColor?: string;
@@ -20,7 +20,7 @@ type MainSidebarProps = {
   activeIconColor?: string;
   notificationColor?: string;
   notificationsCount?: number;
-  hideOnBreakpoint?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'; 
+  hideOnBreakpoint?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 };
 
 export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
@@ -54,7 +54,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
         [`& .MuiDrawer-paper`]: {
           width: '180px',
           boxSizing: 'border-box',
-          backgroundColor: mainSidebarBgColor, 
+          backgroundColor: mainSidebarBgColor,
         },
       }}
     >

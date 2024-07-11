@@ -12,9 +12,30 @@ import ContactsIcon from '../components/Icons/v2/contactsIcon';
 
 The MainSidebar component is a navigational sidebar that includes links and icons for various sections of the application.
 
-## Default Usage
+## Default Usage with Default Routes
 
 ```jsx
+import { MainSidebar, routes } from '@defactor/ui-kit'
+
+<MainSidebar
+        hideOnBreakpoint='sm'
+        notificationsCount={1}
+        routes={routes.mainRoutes}
+      />
+```
+
+## Default Usage with Custom Routes
+
+```jsx
+import {
+  ContactsIcon,
+  DashboardIcon,
+  MainSidebar,
+  MyTemplateIcon,
+  MyWalletIcon,
+  NotificationsIcon
+} from '@defactor/ui-kit'
+
 <MainSidebar
   hideOnBreakpoint='sm'
   notificationsCount={1}

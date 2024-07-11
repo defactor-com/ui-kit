@@ -1,15 +1,15 @@
 import React from "react";
 import { IconsType } from "../IconsTypes";
 
-interface DashboardIconProps extends IconsType {
+export interface DashboardIconProps extends IconsType {
   backgroundColor?: string;
 }
 
-const DashboardIcon: React.FC<DashboardIconProps> = ({
+export const DashboardIcon: React.FC<DashboardIconProps> = ({
   width = 16,
   height = 16,
   color = '#000000',
-  backgroundColor = 'transparent' 
+  backgroundColor = 'transparent'
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
