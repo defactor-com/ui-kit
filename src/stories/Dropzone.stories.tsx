@@ -1,16 +1,12 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react";
-import { ThemeProvider } from "@mui/material/styles";
 import { Dropzone, DropzoneProps } from "../components/Dropzone";
-import themes from '../themes';
-
-const theme = themes.lightTheme;
 
 const meta: Meta = {
   title: "v2/FormElements/Dropzone",
   component: Dropzone,
   parameters: {
-    layout: "",
+    layout: "padded",
   },
   argTypes: {
     uploadText: { control: 'text' },
@@ -26,11 +22,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<DropzoneProps> = (args) => (
-  <ThemeProvider theme={theme}>
-    <Dropzone {...args} />
-  </ThemeProvider>
-);
+const Template: Story<DropzoneProps> = (args) => <Dropzone {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -38,8 +30,8 @@ Default.args = {
   dragText: "or drag and drop",
   fileTypesText: "PDF, DOC, JPG up to ",
   fileSizeLimitText: "10MB",
-  borderColor: theme.palette.grey[300],
-  textColor: theme.palette.text.secondary,
-  iconColor: theme.palette.grey[500],
-  label: "Label",
+  borderColor: "#EDF0F7", // Temporarily until the designer updates the palette
+  textColor: "#000000", // Temporarily until the designer updates the palette
+  iconColor: "#9e9e9e", // Temporarily until the designer updates the palette
+  label: "Label", // Temporarily until the designer updates the palette
 };
