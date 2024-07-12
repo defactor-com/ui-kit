@@ -69,7 +69,6 @@ export const CustomTextField: React.FC<CustomTextFieldProps> = ({
             <Typography
               sx={{ color: suffixColor, fontSize: "12px", fontWeight: "400" }}
             >
-              {" "}
               {/** Temporarily until the designer updates the palette */}
               {suffix}
             </Typography>
