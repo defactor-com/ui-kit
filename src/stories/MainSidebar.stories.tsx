@@ -76,9 +76,9 @@ Default.args = {
     },
   ],
   navLinkTextColor: theme.palette.text.primary,
-  iconsColor: theme.palette.text.primary,
-  activeTextColor: theme.palette.secondary.main,
-  activeIconColor: theme.palette.secondary.main,
+  iconsColor: "#000000", // Temporarily until the designer updates the palette
+  activeTextColor: '#000000', // Temporarily until the designer updates the palette
+  activeIconColor: '#E0A225', // Temporarily until the designer updates the palette 
   notificationColor: theme.palette.notification.main,
   notificationsCount: 1,
   hideOnBreakpoint: 'sm',
