@@ -1,7 +1,7 @@
-import React from 'react';
-import { Box, Button, useTheme } from '@mui/material';
-import { ElementType } from 'react';
-import Link from 'next/link';
+import React from "react";
+import { Box, Button, useTheme } from "@mui/material";
+import { ElementType } from "react";
+import Link from "next/link";
 
 interface MenuItemProps {
   text: string;
@@ -36,15 +36,15 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
         component="a"
         variant="text"
         sx={{
-          width: '100%',
-          borderRight: isSelected ? `2px solid #E0A225` : '',
+          width: "100%",
+          borderRight: isSelected ? `2px solid #E0A225` : "",
           borderRadius: 0,
           padding: 2,
           paddingLeft: 4,
           color: isSelected ? activeTextColor : navLinkTextColor,
           fontSize: 14,
-          alignItems: 'center',
-          justifyContent: 'flex-start',
+          alignItems: "center",
+          justifyContent: "flex-start",
           fontWeight: isSelected ? 700 : 400,
         }}
         startIcon={<Icon color={isSelected ? activeIconColor : iconsColor} />}
@@ -52,18 +52,18 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
         <Box
           component="span"
           sx={{
-            textTransform: 'none',
+            textTransform: "none",
           }}
         >
           {text}
         </Box>
-        {path === '/notifications' && notificationsCount > 0 && (
+        {path === "/notifications" && notificationsCount > 0 && (
           <Box
             sx={{
               backgroundColor: notificationColor,
-              width: '6px',
-              height: '6px',
-              borderRadius: '50%',
+              width: "6px",
+              height: "6px",
+              borderRadius: "50%",
               ml: 1,
             }}
           />

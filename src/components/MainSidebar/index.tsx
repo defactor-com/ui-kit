@@ -1,7 +1,7 @@
-import React from 'react';
-import { Box, Drawer, useMediaQuery, useTheme } from '@mui/material';
-import useSidebarHook from './useSidebarHook';
-import MainMenuItem from './MenuItem';
+import React from "react";
+import { Box, Drawer, useMediaQuery, useTheme } from "@mui/material";
+import useSidebarHook from "./useSidebarHook";
+import MainMenuItem from "./MenuItem";
 
 export type Route = {
   text: string;
@@ -20,20 +20,20 @@ export type MainSidebarProps = {
   activeIconColor?: string;
   notificationColor?: string;
   notificationsCount?: number;
-  hideOnBreakpoint?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  hideOnBreakpoint?: "xs" | "sm" | "md" | "lg" | "xl";
 };
 
 export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
   const theme = useTheme();
   const {
     routes,
-    mainSidebarBgColor = '#ffffff', // Temporarily until the designer updates the palette (theme.palette.primary.light)
-    navLinkTextColor = '#000000', // Temporarily until the designer updates the palette (theme.palette.text.primary)
+    mainSidebarBgColor = "#ffffff", // Temporarily until the designer updates the palette (theme.palette.primary.light)
+    navLinkTextColor = "#000000", // Temporarily until the designer updates the palette (theme.palette.text.primary)
     iconsColor = theme.palette.text.primary, // Temporarily until the designer updates the palette
-    activeIconColor = '#E0A225', // Temporarily until the designer updates the palette
-    notificationColor = '#D21A4D', // Temporarily until the designer updates the palette
+    activeIconColor = "#E0A225", // Temporarily until the designer updates the palette
+    notificationColor = "#D21A4D", // Temporarily until the designer updates the palette
     notificationsCount = 0,
-    hideOnBreakpoint = 'sm',
+    hideOnBreakpoint = "sm",
   } = props;
 
   const { isSelected } = useSidebarHook();
@@ -47,17 +47,17 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
     <Drawer
       variant="permanent"
       sx={{
-        width: '180px',
+        width: "180px",
         flexShrink: 0,
         [`& .MuiDrawer-paper`]: {
-          width: '180px',
-          boxSizing: 'border-box',
+          width: "180px",
+          boxSizing: "border-box",
           backgroundColor: mainSidebarBgColor,
         },
       }}
     >
       <Box sx={{ height: 60 }} />
-      <Box sx={{ overflow: 'auto' }}>
+      <Box sx={{ overflow: "auto" }}>
         {routes.map((route, index) => (
           <MainMenuItem
             icon={route.icon}
@@ -65,10 +65,12 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
             text={route.text}
             path={route.path}
             isSelected={isSelected(route.path)}
-            notificationsCount={route.path === '/notifications' ? notificationsCount : 0}
+            notificationsCount={
+              route.path === "/notifications" ? notificationsCount : 0
+            }
             navLinkTextColor={navLinkTextColor}
             iconsColor={iconsColor}
-            activeTextColor='#000000' // Temporarily 
+            activeTextColor="#000000" // Temporarily
             activeIconColor={activeIconColor}
             notificationColor={notificationColor}
           />

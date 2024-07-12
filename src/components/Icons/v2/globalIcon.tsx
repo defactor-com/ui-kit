@@ -1,5 +1,5 @@
-import React from 'react';
-import { IconsType } from '../IconsTypes';
+import React from "react";
+import { IconsType } from "../IconsTypes";
 
 export interface GlobalIconProps extends IconsType {
     backgroundColor?: string;
@@ -9,8 +9,8 @@ export interface GlobalIconProps extends IconsType {
 export const GlobalIcon: React.FC<GlobalIconProps> = ({
     width = 20,
     height = 20,
-    color = 'black',
-    backgroundColor = 'transparent',
+    color = "black",
+    backgroundColor = "transparent",
 }) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -9,14 +9,16 @@ const meta: Meta = {
     layout: "padded",
   },
   argTypes: {
-    tooltipText: { control: 'text' },
-    iconColor: { control: 'color' },
+    tooltipText: { control: "text" },
+    iconColor: { control: "color" },
   },
 };
 
 export default meta;
 
-const Template: Story<CustomTooltipProps> = (args) => <CustomTooltip {...args} />;
+const Template: Story<CustomTooltipProps> = (args) => (
+  <CustomTooltip {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {

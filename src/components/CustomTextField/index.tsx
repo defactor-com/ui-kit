@@ -4,7 +4,7 @@ import {
   InputAdornment,
   OutlinedInput,
   Typography,
-  useTheme
+  useTheme,
 } from "@mui/material";
 import React from "react";
 
@@ -25,12 +25,12 @@ export interface CustomTextFieldProps {
 }
 
 export const CustomTextField: React.FC<CustomTextFieldProps> = ({
-  label = '',
-  placeholder = '',
-  value = '',
-  tooltip = '',
-  suffix = '',
-  suffixColor = '#808080',  //Temporarily until the designer updates the palette
+  label = "",
+  placeholder = "",
+  value = "",
+  tooltip = "",
+  suffix = "",
+  suffixColor = "#808080", //Temporarily until the designer updates the palette
   onChange,
   disabled = false,
   whiteBg = false,
@@ -52,26 +52,37 @@ export const CustomTextField: React.FC<CustomTextFieldProps> = ({
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
-          mb: 0.5
+          mb: 0.5,
         }}
       >
-        <Typography variant="caption" sx={{ opacity: 0.5, color: theme.palette.text.primary }}>
+        <Typography
+          variant="caption"
+          sx={{ opacity: 0.5, color: theme.palette.text.primary }}
+        >
           {label}
         </Typography>
         {tooltip && <CustomTooltip tooltipText={tooltip} />}
       </Box>
       <OutlinedInput
-        endAdornment={<InputAdornment position="end">
-          <Typography sx={{ color: suffixColor, fontSize: "12px", fontWeight: "400" }}> {/** Temporarily until the designer updates the palette */}
-            {suffix}
-          </Typography>
-        </InputAdornment>}
+        endAdornment={
+          <InputAdornment position="end">
+            <Typography
+              sx={{ color: suffixColor, fontSize: "12px", fontWeight: "400" }}
+            >
+              {" "}
+              {/** Temporarily until the designer updates the palette */}
+              {suffix}
+            </Typography>
+          </InputAdornment>
+        }
         placeholder={placeholder}
         value={value}
-        sx={{ backgroundColor: whiteBg ? theme.palette.common.white : "transparent" }}
+        sx={{
+          backgroundColor: whiteBg ? theme.palette.common.white : "transparent",
+        }}
         onChange={onChange}
         inputProps={{
-          style: { fontSize: "14px", color: "#838A96" } //Temporarily until the designer updates the palette 
+          style: { fontSize: "14px", color: "#838A96" }, //Temporarily until the designer updates the palette
         }}
       />
     </FormControl>
