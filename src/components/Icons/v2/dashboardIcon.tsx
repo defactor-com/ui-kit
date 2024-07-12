@@ -9,9 +9,9 @@ export interface DashboardIconProps extends IconsType {
 export const DashboardIcon: React.FC<DashboardIconProps> = ({
   width = 16,
   height = 16,
-  color = '#000000',
-  backgroundColor = 'transparent',
-  activeIconColor
+  color = "#000000",
+  backgroundColor = "transparent",
+  activeIconColor,
 }) => {
   const finalColor = activeIconColor || color;
 

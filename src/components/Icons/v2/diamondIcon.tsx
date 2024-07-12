@@ -1,5 +1,5 @@
-import React from 'react';
-import { IconsType } from '../IconsTypes';
+import React from "react";
+import { IconsType } from "../IconsTypes";
 
 interface DiamondIconProps extends IconsType {
     backgroundColor?: string;
@@ -8,8 +8,8 @@ interface DiamondIconProps extends IconsType {
 const DiamondIcon: React.FC<DiamondIconProps> = ({
     width = 32,
     height = 33,
-    color = 'black',
-    backgroundColor = '#ECF1F5',
+    color = "black",
+    backgroundColor = "#ECF1F5",
 }) => (
     <svg
         width={width}
