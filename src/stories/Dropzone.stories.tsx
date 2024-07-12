@@ -9,14 +9,14 @@ const meta: Meta = {
     layout: "padded",
   },
   argTypes: {
-    uploadText: { control: 'text' },
-    dragText: { control: 'text' },
-    fileTypesText: { control: 'text' },
-    borderColor: { control: 'color' },
-    textColor: { control: 'color' },
-    iconColor: { control: 'color' },
-    fileSizeLimitText: { control: 'text' },
-    label: { control: 'text' },
+    uploadText: { control: "text" },
+    dragText: { control: "text" },
+    fileTypesText: { control: "text" },
+    borderColor: { control: "color" },
+    textColor: { control: "color" },
+    iconColor: { control: "color" },
+    fileSizeLimitText: { control: "text" },
+    label: { control: "text" },
   },
 };
 

@@ -15,7 +15,7 @@ export interface DropzoneProps {
   label?: string;
 }
 
-export const Dropzone: React.FC<DropzoneProps>  = (props) => {
+export const Dropzone: React.FC<DropzoneProps> = (props) => {
   const theme = useTheme();
 
   const {
@@ -37,7 +37,10 @@ export const Dropzone: React.FC<DropzoneProps>  = (props) => {
 
   return (
     <>
-      <Typography variant="caption" sx={{ opacity: 0.5, color: theme.palette.text.primary }}>
+      <Typography
+        variant="caption"
+        sx={{ opacity: 0.5, color: theme.palette.text.primary }}
+      >
         {label}
       </Typography>
       <Box
@@ -60,7 +63,11 @@ export const Dropzone: React.FC<DropzoneProps>  = (props) => {
           height={48}
           color={iconColor || theme.palette.grey[500]}
         />
-        <Typography variant="body2" fontWeight="500" color={textColor || theme.palette.text.secondary}>
+        <Typography
+          variant="body2"
+          fontWeight="500"
+          color={textColor || theme.palette.text.secondary}
+        >
           <Typography
             component="span"
             variant="body2"
@@ -72,7 +79,10 @@ export const Dropzone: React.FC<DropzoneProps>  = (props) => {
           </Typography>
           {dragText}
         </Typography>
-        <Typography variant="caption" color={textColor || theme.palette.text.secondary}>
+        <Typography
+          variant="caption"
+          color={textColor || theme.palette.text.secondary}
+        >
           {`${fileTypesText} ${fileSizeLimitText}`}
         </Typography>
       </Box>
