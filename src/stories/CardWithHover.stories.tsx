@@ -29,12 +29,3 @@ export const Default: StoryObj<CardWithHoverProps> = {
     }
 };
 
-export const CreateNewTemplate: StoryObj<CardWithHoverProps> = {
-    args: {
-        title: "Create New Template",
-        description: "Short Description",
-        onSelect: () => console.log('Card clicked'),
-        icon: <PlusIcon />,
-        backgroundColor: '#e8e9fa'
-    }
-};
