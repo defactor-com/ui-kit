@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Box, Typography, useTheme } from '@mui/material';
+import DocIcon from '../Icons/v2/docIcon';
 
 
 export interface MainCardProps {
@@ -14,8 +15,8 @@ export const MainCard: React.FC<MainCardProps> = ({
     title,
     description,
     onSelect,
-    icon,
-    backgroundColor
+    icon = <DocIcon />,
+    backgroundColor = '#ffffff'
 }) => {
     const theme = useTheme();
 
