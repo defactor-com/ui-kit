@@ -2,9 +2,9 @@ import React from "react";
 import clsx from "clsx";
 import { Box } from "@mui/material";
 
-import DollarIcon from "../../../public/assets/dollar-icon.svg";
-import { CardComponent } from "../CardComponent";
 import { Container } from "../Container";
+import { CardComponent } from "../CardComponent";
+import DollarIcon from "../../../public/assets/dollar-icon.svg";
 
 import {
   IDashboard,
@@ -157,7 +157,7 @@ export const Dashboard = ({
                     </div>
                   )}
                 </Box>
-                <Box mb={2} sx={{ display: { xs: "none", sm: "block" } }}>
+                <Box mb={3} sx={{ display: { xs: "none", sm: "block" } }}>
                   {multichainSelector}
                 </Box>
               </div>

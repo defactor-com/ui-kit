@@ -1,13 +1,12 @@
 export type NetworksDataType = {
-  logo: any;
   name: string;
   rpcUrl: string;
   chainId: number;
+  currency: string;
   explorerUrl: string;
   baseTokenAddress: string;
   collateralAddress: string;
   poolContractAddress: string;
-  currency: "MATIC" | "ETH" | "BNB";
 };
 
 export type IMultiChainSelector = {
@@ -17,7 +16,7 @@ export type IMultiChainSelector = {
   textFieldLabel: string;
   networksList: Array<NetworksDataType>;
   networkSelected: Array<NetworksDataType>;
+  onClick: (state: NetworksDataType) => void;
   variant?: "filled" | "outlined" | "standard";
-  onClick: (state: NetworksDataType, selected: boolean) => void;
-  onChange: (_: any, selectedValue: Array<NetworksDataType>) => void;
+  onChange: (selectedValue: string | Array<NetworksDataType>) => void;
 };
