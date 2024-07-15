@@ -41,3 +41,4 @@ export { ContactsIcon, ContactsIconProps } from './components/Icons/v2/contactsI
 export { routes, Routes } from './components/MainSidebar/routes';
 export { MainSidebar, MainSidebarProps, Route } from './components/MainSidebar';
 export { PathProvider } from './components/MainSidebar/PathProvider';
+export { CustomCheckBox, CustomCheckBoxProps } from './components/CustomCheckbox';
