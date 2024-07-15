@@ -1,0 +1,22 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import { CustomCheckBox, CustomCheckBoxProps } from "../components/CustomCheckbox";
+
+<Meta title="V2/CustomCheckBox/Documentation" component={CustomCheckBox} parameters={{ layout: 'padded' }}/>
+
+# Custom CheckBox
+
+This component provides a custom checkbox that can be toggled.
+
+## Basic Example
+
+```jsx
+
+    <CustomCheckBox
+    />
+
+```
+
+## Props
+
+- **checkState**: `boolean` - Whether the checkbox is checked. (dafault: false)
+- **completedState**: `boolean` - Whether the task associated with the checkbox is completed. (dafault: false)
