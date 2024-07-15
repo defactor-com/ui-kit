@@ -42,3 +42,4 @@ export { routes, Routes } from './components/MainSidebar/routes';
 export { MainSidebar, MainSidebarProps, Route } from './components/MainSidebar';
 export { PathProvider } from './components/MainSidebar/PathProvider';
 export { CustomCheckBox, CustomCheckBoxProps } from './components/CustomCheckbox';
+export { MainCard, MainCardProps } from './components/MainCard';
