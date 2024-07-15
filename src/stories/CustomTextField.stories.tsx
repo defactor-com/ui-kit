@@ -34,6 +34,6 @@ Default.args = {
   suffixColor: "#808080", //Temporarily until the designer updates the palette
   disabled: false,
   whiteBg: false,
-  required: false,
+  required: true,
   error: false,
 };
