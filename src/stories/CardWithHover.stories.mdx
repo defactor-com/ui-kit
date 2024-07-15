@@ -1,0 +1,29 @@
+import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
+import { CardWithHover } from '../components/CardWithHover';
+
+<Meta title="V2/Cards/CardWithHover/Documentation" component={CardWithHover} />
+
+# CardWithHover
+
+The CardWithHover component...
+
+## Default Usage 
+
+```jsx
+
+const onCardSelect = () => {
+    console.log('Perform additional actions on card select.')
+  }
+
+```
+
+```jsx
+
+   <CardWithHover
+        title='Test Card'
+        description='This is a test card.'
+        onSelect={onCardSelect}
+      />
+
+```
+
