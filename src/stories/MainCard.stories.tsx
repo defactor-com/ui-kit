@@ -2,6 +2,7 @@ import React from 'react';
 import type { Meta, StoryObj } from "@storybook/react";
 import { MainCard, MainCardProps } from "../components/MainCard";
 import PlusIcon from '../components/Icons/v2/plusIcon';
+import DocIcon from '../components/Icons/v2/docIcon';
 
 export default {
     title: 'V2/Cards/MainCard',
@@ -23,7 +24,7 @@ export const Default: StoryObj<MainCardProps> = {
         title: "Sample Title",
         description: "Sample Description",
         onSelect: () => console.log('Card clicked'),
-        icon: <PlusIcon />,
+        icon: <DocIcon />,
         backgroundColor: '#ffffff'
     }
 };
