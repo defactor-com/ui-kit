@@ -38,7 +38,7 @@ export const MainCard: React.FC<MainCardProps> = ({
                     <Typography variant="body1" fontWeight={500}>
                         {title}
                     </Typography>
-                    <Typography variant="caption" sx={{ color: theme.palette.text.secondary }}>
+                    <Typography variant="caption" sx={{ color: '#7c7c7e' }}>{/** Temporarily until the designer updates the palette */}
                         {description}
                     </Typography>
                 </Box>
