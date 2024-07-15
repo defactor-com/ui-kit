@@ -9,8 +9,8 @@ export interface CustomCheckBoxProps {
 }
 
 export const CustomCheckBox: React.FC<CustomCheckBoxProps> = ({
-    checkState,
-    completedState,
+    checkState = false,
+    completedState = false,
 }) => {
     const theme = useTheme();
 
