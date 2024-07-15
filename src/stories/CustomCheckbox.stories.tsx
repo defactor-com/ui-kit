@@ -1,21 +1,19 @@
-import React from "react";
-import { Meta, Story } from "@storybook/react";
-import { CustomCheckBox, CustomCheckBoxProps } from "../components/CustomCheckbox/index"
+import React from 'react';
+import { Meta, Story } from '@storybook/react';
+import { CustomCheckBox, CustomCheckBoxProps } from "../components/CustomCheckbox";
 
-const meta: Meta<CustomCheckBoxProps> = {
-    title: "V2/FormElements/CustomCheckBox",
+export default {
+    title: 'V2/CustomCheckBox',
     component: CustomCheckBox,
     parameters: {
-        layout: "padded",
+        layout: 'padded',
     },
     argTypes: {
-        checkState: { control: "boolean" },
-        completedState: { control: "boolean" },
-        handleChange: { action: "changed" },
+        checkState: { control: 'boolean' },
+        completedState: { control: 'boolean' },
+        handleChange: { action: 'changed' },
     } as Partial<Record<keyof CustomCheckBoxProps, any>>,
-};
-
-export default meta;
+} as Meta;
 
 const Template: Story<CustomCheckBoxProps> = (args) => <CustomCheckBox {...args} />;
 
