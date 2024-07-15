@@ -34,7 +34,7 @@ export const CustomTextField: React.FC<CustomTextFieldProps> = ({
   onChange,
   disabled = false,
   whiteBg = false,
-  required = false,
+  required = true,
   error = false,
 }) => {
   const theme = useTheme();
@@ -61,15 +61,22 @@ export const CustomTextField: React.FC<CustomTextFieldProps> = ({
         >
           {label}
         </Typography>
+        {required && (
+          <Typography
+            variant="caption"
+            sx={{ color: "red", fontWeight: "700", ml: 0.5 }}
+          >
+            *
+          </Typography>
+        )}
         {tooltip && <CustomTooltip tooltipText={tooltip} />}
       </Box>
       <OutlinedInput
         endAdornment={
           <InputAdornment position="end">
             <Typography
-              sx={{ color: suffixColor, fontSize: "12px", fontWeight: "400" }}
+              sx={{ color: suffixColor, fontSize: "12px", fontWeight: "400", textTransform: "uppercase" }}
             >
-              {" "}
               {/** Temporarily until the designer updates the palette */}
               {suffix}
             </Typography>
