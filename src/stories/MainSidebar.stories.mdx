@@ -60,11 +60,12 @@ const Sidebar: React.FC = () => {
     <PathProvider path={pathname}>
       <MainSidebar
         hideOnBreakpoint='sm'
-        notificationsCount={1}
+        notificationsCount={0}
+        activeIconColor='red'
         routes={[
           {
             icon: DashboardIcon,
-            path: '/dashboard',
+            path: '/',
             text: 'Dashboard'
           },
           {
