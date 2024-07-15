@@ -27,3 +27,13 @@ export const Default: StoryObj<MainCardProps> = {
         backgroundColor: '#ffffff'
     }
 };
+
+export const CreateNewTemplate: StoryObj<MainCardProps> = {
+    args: {
+        title: "Create New Template",
+        description: "Shrort Description",
+        onSelect: () => console.log('Card clicked'),
+        icon: <PlusIcon />,
+        backgroundColor: '#e8e9fa'
+    }
+};

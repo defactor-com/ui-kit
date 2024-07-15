@@ -30,7 +30,7 @@ export const MainCard: React.FC<MainCardProps> = ({
             }}
             onClick={onSelect}
         >
-            <Box display="flex" flexDirection="column" justifyContent="space-between" minHeight={170}>
+            <Box display="flex" flexDirection="column" justifyContent="space-between" height={154}>
                 <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
                     {icon}
                 </Box>
