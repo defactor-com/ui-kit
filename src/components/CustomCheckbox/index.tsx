@@ -15,7 +15,7 @@ export const CustomCheckBox: React.FC<CustomCheckBoxProps> = ({
     const theme = useTheme();
 
     return (
-        <Box sx={{ position: "relative", cursor: "pointer" }}>
+        <Box sx={{ position: "relative", cursor: "pointer", width: "40px" }}>
             <input
                 type="checkbox"
                 checked={checkState}
