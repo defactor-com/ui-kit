@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Typography, useTheme } from '@mui/material';
+import DocIcon from '../Icons/v2/docIcon';
 
 export interface ChainCardProps {
     title: string;
@@ -11,12 +12,12 @@ export interface ChainCardProps {
 }
 
 export const ChainCard: React.FC<ChainCardProps> = ({
-    title,
-    description,
-    mainBenefits,
-    customIcon,
+    title = '',
+    description = '',
+    mainBenefits = [],
+    customIcon = <DocIcon />,
     selected = false,
-    onClick
+    onClick = () => console.log('Clicked.')
 }) => {
     const theme = useTheme();
 
