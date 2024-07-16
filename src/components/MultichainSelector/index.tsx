@@ -21,14 +21,14 @@ export const MultichainSelector = ({
   textFieldLabel,
   networksList,
   fontFamily,
-  onChange,
   onClick,
   color,
 }: IMultiChainSelector) => (
   <FormControl
     sx={{
+      maxWidth: 240,
       fontFamily: fontFamily,
-      width: 90 * networksList.length,
+      width: 87 * networksList.length,
     }}
   >
     <Select
@@ -40,7 +40,6 @@ export const MultichainSelector = ({
       className="selector"
       value={networkSelected}
       id="multichain-selector"
-      onChange={(selectedValue) => onChange(selectedValue.target.value)}
       renderValue={(selected) => (
         <Box display="flex" flexWrap="wrap">
           {selected.map((value) => (
@@ -61,8 +60,10 @@ export const MultichainSelector = ({
       MenuProps={{
         PaperProps: {
           style: {
+            maxWidth: 240,
+            fontFamily: fontFamily,
             maxHeight: 48 * 4.5 + 8,
-            width: 90 * networksList.length,
+            width: 86 * networksList.length,
           },
         },
       }}

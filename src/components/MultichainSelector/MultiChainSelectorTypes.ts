@@ -17,6 +17,4 @@ export type IMultiChainSelector = {
   networksList: Array<NetworksDataType>;
   networkSelected: Array<NetworksDataType>;
   onClick: (state: NetworksDataType) => void;
-  variant?: "filled" | "outlined" | "standard";
-  onChange: (selectedValue: string | Array<NetworksDataType>) => void;
 };

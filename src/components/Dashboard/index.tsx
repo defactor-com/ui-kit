@@ -120,7 +120,13 @@ export const Dashboard = ({
         <div className="graphic-container">
           <div className="graphic-container-internal">
             <div>
-              <Box mb={2} sx={{ display: { sm: "none" } }}>
+              <Box
+                mb={2}
+                sx={{
+                  display: { xs: "flex", sm: "none" },
+                  justifyContent: "center",
+                }}
+              >
                 {multichainSelector}
               </Box>
               <div className="dashboard-title-styles">
@@ -157,7 +163,7 @@ export const Dashboard = ({
                     </div>
                   )}
                 </Box>
-                <Box mb={3} sx={{ display: { xs: "none", sm: "block" } }}>
+                <Box mb={2} sx={{ display: { xs: "none", sm: "block" } }}>
                   {multichainSelector}
                 </Box>
               </div>

@@ -2,8 +2,8 @@ import React from "react";
 import { Story } from "@storybook/react";
 
 import { MultichainSelector } from "../components/MultichainSelector";
-import { IPieChart, PieDataType } from "../components/PieChart/PieChartTypes";
 import AdmirationIcon from "../components/Icons/admirationIcon";
+import { IMultiChainSelector } from "../components/MultichainSelector/MultiChainSelectorTypes";
 
 export default {
   title: "MultichainSelector",
@@ -13,8 +13,7 @@ export default {
 const networksList = [
   {
     chainId: 80002,
-    rpcUrl:
-      "https://polygon-amoy.g.alchemy.com/v2",
+    rpcUrl: "https://polygon-amoy.g.alchemy.com/v2",
     name: "Amoy",
     currency: "MATIC",
     explorerUrl: "https://www.oklink.com/amoy",
@@ -24,8 +23,7 @@ const networksList = [
   },
   {
     chainId: 11155111,
-    rpcUrl:
-      "https://eth-sepolia.g.alchemy.com/v2",
+    rpcUrl: "https://eth-sepolia.g.alchemy.com/v2",
     name: "Sepolia",
     currency: "ETH",
     explorerUrl: "https://sepolia.otterscan.io",
@@ -51,7 +49,7 @@ const networksAssets = {
     dbName: "bsc",
   },
   "137": {
-    logo: "https://pools-dev.defactor.dev/logos/eth-color-logo.svg",
+    logo: "https://pools-dev.defactor.dev/logos/polygon-logo.svg",
     name: "Polygon",
     dbName: "polygon",
   },
@@ -61,7 +59,7 @@ const networksAssets = {
     dbName: "base",
   },
   "80002": {
-    logo: "https://pools-dev.defactor.dev/logos/eth-color-logo.svg",
+    logo: "https://pools-dev.defactor.dev/logos/polygon-logo.svg",
     name: "Amoy",
     dbName: "polygon",
   },
@@ -79,8 +77,7 @@ const networksAssets = {
 const networkSelected = [
   {
     chainId: 80002,
-    rpcUrl:
-      "https://polygon-amoy.g.alchemy.com/v2",
+    rpcUrl: "https://polygon-amoy.g.alchemy.com/v2",
     name: "Amoy",
     currency: "MATIC",
     explorerUrl: "https://www.oklink.com/amoy",
@@ -90,8 +87,7 @@ const networkSelected = [
   },
   {
     chainId: 11155111,
-    rpcUrl:
-      "https://eth-sepolia.g.alchemy.com/v2",
+    rpcUrl: "https://eth-sepolia.g.alchemy.com/v2",
     name: "Sepolia",
     currency: "ETH",
     explorerUrl: "https://sepolia.otterscan.io",
@@ -101,34 +97,17 @@ const networkSelected = [
   },
 ];
 
-const Template: Story<IPieChart> = (args) => {
+export const MultichainSelectorItem: Story<IMultiChainSelector> = (args) => {
   return (
     <MultichainSelector
       {...args}
       fontFamily=""
       color="#26A66B"
-      variant="outlined"
       onClick={() => {}}
-      onChange={() => {}}
       textFieldLabel="Chains"
       networksList={networksList}
       networksAssets={networksAssets}
       networkSelected={networkSelected}
     />
   );
-};
-
-const pieChartData: PieDataType = [
-  { name: "Active", value: 135, color: "#26A66B" },
-  { name: "Claimed", value: 50, color: "#5A5BEB" },
-  { name: "Available", value: 65, color: "#D21A4D" },
-];
-
-export const PieChartItem = Template.bind({});
-PieChartItem.args = {
-  data: pieChartData,
-  loading: false,
-  emptyIcon: <AdmirationIcon />,
-  emptyTitle: "No data to show",
-  emptyDescription: "Data will be listed here when available. ",
 };
