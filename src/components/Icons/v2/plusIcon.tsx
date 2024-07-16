@@ -1,11 +1,11 @@
 import React from "react";
 import { IconsType } from "../IconsTypes";
 
-interface PlusIconProps extends IconsType {
+export interface PlusIconProps extends IconsType {
     backgroundColor?: string;
 }
 
-const PlusIcon: React.FC<PlusIconProps> = ({
+export const PlusIcon: React.FC<PlusIconProps> = ({
     width = 40,
     height = 40,
     color = "white",

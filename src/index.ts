@@ -44,3 +44,6 @@ export { PathProvider } from './components/MainSidebar/PathProvider';
 export { CustomCheckBox, CustomCheckBoxProps } from './components/CustomCheckbox';
 export { MainCard, MainCardProps } from './components/MainCard';
 export { CardWithHover, CardWithHoverProps } from './components/CardWithHover';
+export { DocIcon, DocIconProps } from './components/Icons/v2/docIcon';
+export { PlusIcon, PlusIconProps } from './components/Icons/v2/plusIcon';
+
