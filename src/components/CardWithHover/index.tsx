@@ -6,7 +6,7 @@ import CopyTemplateIcon from "../Icons/v2/copyTemplateIcon";
 export interface CardWithHoverProps {
     title?: string;
     description?: string;
-    onSelect?: () => void;
+    onClickCopy?: () => void;
     icon?: React.ReactNode;
     backgroundColor?: string;
     onClickPreview?: () => void;
@@ -16,19 +16,13 @@ export interface CardWithHoverProps {
 export const CardWithHover: React.FC<CardWithHoverProps> = ({
     title = "Title",
     description = "Description",
-    onSelect = () => { },
+    onClickCopy = () => { },
     icon = <DocIcon />,
     backgroundColor = "#ffffff",
     onClickPreview = () => { },
     onClickUse = () => { },
 }) => {
     const theme = useTheme();
-    const [anchorEl, setAnchorEl] =
-        React.useState<HTMLButtonElement | null>(null);
-
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
 
     return (
         <Box
@@ -43,7 +37,6 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                 },
                 "&:hover": { boxShadow: theme.shadows[3] },
             }}
-            onClick={onSelect}
         >
             <Box
                 display="flex"
@@ -61,13 +54,12 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                     <IconButton
                         className="hover-it"
                         sx={{
-                            display: anchorEl ? "block" : "none",
                             p: 0,
                             width: "32px",
                             height: "32px",
                             borderRadius: "50%",
                         }}
-                        onClick={handleClick}
+                        onClick={onClickCopy}
                     >
                         <CopyTemplateIcon />
                     </IconButton>
@@ -97,7 +89,12 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                         <Button
                             fullWidth
                             variant="outlined"
-                            sx={{ borderRadius: "100px", textTransform: 'none', color: '#5a5beb', borderColor: '#5a5beb' }}
+                            sx={{
+                                borderRadius: "100px",
+                                textTransform: "none",
+                                color: "#5a5beb",
+                                borderColor: "#5a5beb",
+                            }}
                             onClick={onClickPreview}
                         >
                             Preview
@@ -107,7 +104,12 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                         <Button
                             fullWidth
                             variant="contained"
-                            sx={{ borderRadius: "100px", whiteSpace: "nowrap", textTransform: 'none', backgroundColor: '#5a5beb' }}
+                            sx={{
+                                borderRadius: "100px",
+                                whiteSpace: "nowrap",
+                                textTransform: "none",
+                                backgroundColor: "#5a5beb",
+                            }}
                             onClick={onClickUse}
                         >
                             Use Template

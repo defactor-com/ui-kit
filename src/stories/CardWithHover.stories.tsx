@@ -10,16 +10,18 @@ export default {
     argTypes: {
         title: { control: 'text', description: 'Title of the card' },
         description: { control: 'text', description: 'Description of the card' },
-        onSelect: { action: 'selected', description: 'Select action handler' },
+        onClickCopy: { action: 'copied', description: 'Copy handler' },
         backgroundColor: { control: 'color', description: 'Background color of the card' },
         icon: {
-            control: { type: 'select', options: ['Doc', 'Plus', 'CopyTemplate'] },
+            control: { type: 'select', options: ['Doc', 'Plus'] },
             description: 'Icon used in the card',
             mapping: {
                 Doc: <DocIcon />,
                 Plus: <PlusIcon />
             }
         },
+        onClickPreview: { action: 'previewed', description: 'Preview button click handler' },
+        onClickUse: { action: 'used', description: 'Use button click handler' }
     },
     parameters: {
         layout: 'padded'
@@ -30,8 +32,10 @@ export const Default: StoryObj<CardWithHoverProps> = {
     args: {
         title: "Sample Title",
         description: "Description",
-        onSelect: () => console.log('Card clicked'),
+        onClickCopy: () => console.log('Card copied'),
         icon: 'Doc',
-        backgroundColor: '#ffffff'
+        backgroundColor: '#ffffff',
+        onClickPreview: () => console.log('Preview clicked'), // Added action for preview
+        onClickUse: () => console.log('Use Template clicked'), // Added action for use template
     }
 };
