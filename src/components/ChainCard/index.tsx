@@ -25,7 +25,7 @@ export const ChainCard: React.FC<ChainCardProps> = ({
         <Box
             sx={{
                 width: "100%",
-                minWidth: "415px",
+                maxWidth: "415px",
                 borderRadius: 3,
                 display: "flex",
                 flexDirection: "column",
@@ -41,12 +41,13 @@ export const ChainCard: React.FC<ChainCardProps> = ({
                 sx={{
                     display: "flex",
                     flexDirection: "column",
+                    alignItems: "center",
                     textAlign: "center",
                     gap: 1.5,
                     p: 2,
                 }}
             >
-                <Box>{customIcon}</Box>
+                <Box paddingTop={3}>{customIcon}</Box>
                 <Typography variant="body2" fontWeight={700}>
                     {title}
                 </Typography>
@@ -54,9 +55,7 @@ export const ChainCard: React.FC<ChainCardProps> = ({
                     variant="body2"
                     sx={{
                         color: "#6B7280",
-                        pr: 3,
-                        pl: 3,
-                        mb: 2,
+                        maxWidth: "300px"
                     }}
                 >
                     {description}
@@ -65,20 +64,19 @@ export const ChainCard: React.FC<ChainCardProps> = ({
             <Box
                 sx={{
                     padding: 2,
-                    paddingBottom: 0,
                     margin: 1.5,
                     borderRadius: 3,
                     backgroundColor: theme.palette.background.default,
                 }}
             >
-                <Typography sx={{ fontSize: "12px", fontWeight: 700 }}>
+                <Typography sx={{ fontSize: "12px", fontWeight: 700, paddingBottom: 2 }}>
                     MAIN BENEFITS
                 </Typography>
                 <ul style={{ paddingLeft: "20px", margin: 0 }}>
                     {mainBenefits.map((benefit, index) => (
                         <li
                             key={index}
-                            style={{ fontSize: "14px", color: "#6B7280", fontWeight: 400 }}
+                            style={{ fontSize: "14px", color: "#6B7280", fontWeight: 400, lineHeight: 2 }}
                         >
                             {benefit}
                         </li>
