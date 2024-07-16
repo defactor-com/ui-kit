@@ -176,7 +176,6 @@ export const Dashboard = ({
                     icon={bottomIcon}
                     colors={colors}
                   />
-                  {/* <Divider className={"divider-color"} /> */}
                 </>
               )}
             </div>

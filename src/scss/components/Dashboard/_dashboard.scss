@@ -221,25 +221,10 @@ $breakpoint-laptop: 1400px;
   }
 }
 
-// .header-dashboard-component {
-//   @media (min-width: $breakpoint-laptop) {
-//     display: flex;
-//     justify-content: space-between;
-//   }
-// }
-
 .dashboard-title-styles {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // @media (min-width: $breakpoint-laptop) {
-  //   margin-top: 8px;
-  //   width: 50%;
-  // }
-  // @media (min-width: $breakpoint-xl) {
-  //   margin-top: 8px;
-  //   width: 66%;
-  // }
 }
 
 .flex-column-direction {
