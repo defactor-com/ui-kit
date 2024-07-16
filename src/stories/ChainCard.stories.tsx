@@ -20,9 +20,9 @@ const Template: Story<ChainCardProps> = (args) => <ChainCard {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    title: "Enter Your Title",
-    description: "Enter your description here.",
-    mainBenefits: ["Benefit One", "Benefit Two", "Benefit Three"],
+    title: "Ethereum (ERC-20)",
+    description: "Lorem ipsum dolor sit amet consectetur. Faucibus adipiscing phasellus.",
+    mainBenefits: ["Lorem ipsum dolor sit amet consectetur. ", "Amet consectetur faucibus adipiscing.", "Faucibus adipiscing phasellus."],
     customIcon: <DocIcon />,
     onClick: () => console.log('Card clicked'),
 };
