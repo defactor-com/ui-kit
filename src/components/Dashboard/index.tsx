@@ -1,10 +1,10 @@
 import React from "react";
 import clsx from "clsx";
-import { Divider } from "@mui/material";
+import { Box } from "@mui/material";
 
-import DollarIcon from "../../../public/assets/dollar-icon.svg";
-import { CardComponent } from "../CardComponent";
 import { Container } from "../Container";
+import { CardComponent } from "../CardComponent";
+import DollarIcon from "../../../public/assets/dollar-icon.svg";
 
 import {
   IDashboard,
@@ -101,6 +101,7 @@ export const Dashboard = ({
   bottomContainerItems = [],
   currencyIcon = DollarIcon,
   rightContainerItems = [],
+  multichainSelector,
   totalValueLocked,
   titleGraphic,
   bottomLabel,
@@ -118,36 +119,53 @@ export const Dashboard = ({
       <div className="dashboard-container">
         <div className="graphic-container">
           <div className="graphic-container-internal">
-            <div className="header-dashboard-component">
+            <div>
+              <Box
+                mb={2}
+                sx={{
+                  display: { xs: "flex", sm: "none" },
+                  justifyContent: "center",
+                }}
+              >
+                {multichainSelector}
+              </Box>
               <div className="dashboard-title-styles">
-                {titleGraphic && (
-                  <div className="graphic-header">
-                    {currencyIcon && typeof currencyIcon === "string" ? (
-                      <img src={currencyIcon} alt="currency icon" />
-                    ) : (
-                      currencyIcon
-                    )}
-                    <span
-                      className={clsx("variant-h3", "margin-left")}
-                      style={{ fontFamily }}
-                    >
-                      {titleGraphic}
-                    </span>
-                  </div>
-                )}
-                {totalValueLocked && (
-                  <div className="total-value-container">
-                    <span className="variant-h1" style={{ fontFamily }}>
-                      {totalValueLocked}
-                    </span>
-                    <span
-                      className={clsx("variant-body2", "padding-bottom-medium")}
-                      style={{ fontFamily }}
-                    >
-                      {currency}
-                    </span>
-                  </div>
-                )}
+                <Box>
+                  {titleGraphic && (
+                    <div className="graphic-header">
+                      {currencyIcon && typeof currencyIcon === "string" ? (
+                        <img src={currencyIcon} alt="currency icon" />
+                      ) : (
+                        currencyIcon
+                      )}
+                      <span
+                        className={clsx("variant-h3", "margin-left")}
+                        style={{ fontFamily }}
+                      >
+                        {titleGraphic}
+                      </span>
+                    </div>
+                  )}
+                  {totalValueLocked && (
+                    <div className="total-value-container">
+                      <span className="variant-h1" style={{ fontFamily }}>
+                        {totalValueLocked}
+                      </span>
+                      <span
+                        className={clsx(
+                          "variant-body2",
+                          "padding-bottom-medium"
+                        )}
+                        style={{ fontFamily }}
+                      >
+                        {currency}
+                      </span>
+                    </div>
+                  )}
+                </Box>
+                <Box mb={2} sx={{ display: { xs: "none", sm: "block" } }}>
+                  {multichainSelector}
+                </Box>
               </div>
               {bottomLabel && bottomContainerItems.length > 0 && (
                 <>
@@ -158,7 +176,6 @@ export const Dashboard = ({
                     icon={bottomIcon}
                     colors={colors}
                   />
-                  <Divider className={"divider-color"} />
                 </>
               )}
             </div>

@@ -7,7 +7,7 @@ $breakpoint-laptop: 1400px;
 .dashboard-container-styles {
   padding: 40px !important;
   @media (max-width: $breakpoint-mobile) {
-    padding: 24px 16px !important;
+    padding: 32px 16px !important;
   }
 }
 
@@ -221,22 +221,10 @@ $breakpoint-laptop: 1400px;
   }
 }
 
-.header-dashboard-component {
-  @media (min-width: $breakpoint-laptop) {
-    display: flex;
-    justify-content: space-between;
-  }
-}
-
 .dashboard-title-styles {
-  @media (min-width: $breakpoint-laptop) {
-    margin-top: 8px;
-    width: 50%;
-  }
-  @media (min-width: $breakpoint-xl) {
-    margin-top: 8px;
-    width: 66%;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .flex-column-direction {
