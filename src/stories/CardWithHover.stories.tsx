@@ -12,7 +12,14 @@ export default {
         description: { control: 'text', description: 'Description of the card' },
         onSelect: { action: 'selected', description: 'Select action handler' },
         backgroundColor: { control: 'color', description: 'Background color of the card' },
-        icon: { description: 'Icon used in the card' },
+        icon: {
+            control: { type: 'select', options: ['Doc', 'Plus', 'CopyTemplate'] },
+            description: 'Icon used in the card',
+            mapping: {
+                Doc: <DocIcon />,
+                Plus: <PlusIcon />
+            }
+        },
     },
     parameters: {
         layout: 'padded'
@@ -24,8 +31,7 @@ export const Default: StoryObj<CardWithHoverProps> = {
         title: "Sample Title",
         description: "Sample Description",
         onSelect: () => console.log('Card clicked'),
-        icon: <DocIcon />,
+        icon: 'Doc',
         backgroundColor: '#ffffff'
     }
 };
-
