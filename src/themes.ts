@@ -48,7 +48,8 @@ const palette: PaletteOptions = {
 };
 
 const typography: ThemeOptions['typography'] = {
-  fontFamily: 'DMSans, sans-serif', 
+  fontFamily: '"DM Sans", sans-serif',
+
   h1: {
     fontSize: 85,
     fontWeight: 700
