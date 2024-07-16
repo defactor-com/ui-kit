@@ -1,11 +1,11 @@
 import React from "react";
 import { IconsType } from "../IconsTypes";
 
-interface DocIconProps extends IconsType {
+export interface DocIconProps extends IconsType {
     backgroundColor?: string;
 }
 
-const DocIcon: React.FC<DocIconProps> = ({
+export const DocIcon: React.FC<DocIconProps> = ({
     width = 40,
     height = 40,
     color = "#151515",

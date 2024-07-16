@@ -1,29 +1,38 @@
-import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
-import { CardWithHover } from '../components/CardWithHover';
+import { Meta, Story, Props } from "@storybook/addon-docs/blocks";
+import { CardWithHover } from "../components/CardWithHover";
 
 <Meta title="V2/Cards/CardWithHover/Documentation" component={CardWithHover} />
 
-# CardWithHover
+## CardWithHover
 
-The CardWithHover component...
-
-## Default Usage 
+## Example
 
 ```jsx
-
-const onCardSelect = () => {
-    console.log('Perform additional actions on card select.')
-  }
-
+import { DocIcon } from "@defactor/ui-kit";
 ```
 
 ```jsx
+const onClickCopy = () => {
+  console.log("Copy Template.");
+};
 
-   <CardWithHover
-        title='Test Card'
-        description='This is a test card.'
-        onSelect={onCardSelect}
-      />
+const onClickPreview = () => {
+  console.log("Preview Template.");
+};
 
+const onClickUse = () => {
+  console.log("Use Template.");
+};
 ```
 
+```jsx
+<CardWithHover
+  title="Test Card"
+  description="This is a test card."
+  icon={<DocIcon />}
+  onClickCopy={onClickCopy}
+  onClickPreview={onClickPreview}
+  onClickUse={onClickUse}
+  backgroundColor="#ffffff"
+/>
+```

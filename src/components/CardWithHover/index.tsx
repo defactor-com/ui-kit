@@ -3,6 +3,7 @@ import { Box, Typography, useTheme, IconButton, Button } from "@mui/material";
 import DocIcon from "../Icons/v2/docIcon";
 import CopyTemplateIcon from "../Icons/v2/copyTemplateIcon";
 
+// Interface for props
 export interface CardWithHoverProps {
     title?: string;
     description?: string;
@@ -16,11 +17,11 @@ export interface CardWithHoverProps {
 export const CardWithHover: React.FC<CardWithHoverProps> = ({
     title = "Title",
     description = "Description",
-    onClickCopy = () => { },
+    onClickCopy = () => console.log('Copy Template.'),
     icon = <DocIcon />,
     backgroundColor = "#ffffff",
-    onClickPreview = () => { },
-    onClickUse = () => { },
+    onClickPreview = () => console.log('Preview Template.'),
+    onClickUse = () => console.log('Use Template.'),
 }) => {
     const theme = useTheme();
 
@@ -28,7 +29,7 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
         <Box
             sx={{
                 borderRadius: "16px",
-                background: backgroundColor || theme.palette.background.default,
+                backgroundColor: backgroundColor,
                 padding: 2,
                 cursor: "pointer",
                 maxWidth: "400px",
@@ -120,3 +121,4 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
         </Box>
     );
 };
+
