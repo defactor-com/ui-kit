@@ -1,6 +1,6 @@
-import React from 'react';
-import { Box, Typography, useTheme } from '@mui/material';
-import DocIcon from '../Icons/v2/docIcon';
+import React from "react";
+import { Box, Typography, useTheme } from "@mui/material";
+import DocIcon from "../Icons/v2/docIcon";
 
 export interface ChainCardProps {
     title: string;
@@ -12,51 +12,51 @@ export interface ChainCardProps {
 }
 
 export const ChainCard: React.FC<ChainCardProps> = ({
-    title = '',
-    description = '',
-    mainBenefits = [],
+    title = "Ethereum (ERC-20)",
+    description = "Lorem ipsum dolor sit amet consectetur. Faucibus adipiscing phasellus.",
+    mainBenefits = ["Benefit One", "Benefit Two", "Benefit Three"],
     customIcon = <DocIcon />,
     selected = false,
-    onClick = () => console.log('Clicked.')
+    onClick = () => console.log("Clicked."),
 }) => {
     const theme = useTheme();
 
     return (
         <Box
             sx={{
-                width: '100%',
-                minWidth: '415px',
+                width: "100%",
+                minWidth: "415px",
                 borderRadius: 3,
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                backgroundColor: 'white',
-                cursor: 'pointer',
-                border: selected ? `2px solid ${theme.palette.primary.main}` : '',
-                boxShadow: theme.shadows[1]
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                backgroundColor: "white",
+                cursor: "pointer",
+                border: selected ? `2px solid ${theme.palette.primary.main}` : "",
+                boxShadow: theme.shadows[1],
             }}
             onClick={onClick}
         >
             <Box
                 sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    textAlign: 'center',
+                    display: "flex",
+                    flexDirection: "column",
+                    textAlign: "center",
                     gap: 1.5,
-                    p: 2
+                    p: 2,
                 }}
             >
                 <Box>{customIcon}</Box>
-                <Typography variant='body2' fontWeight={700}>
+                <Typography variant="body2" fontWeight={700}>
                     {title}
                 </Typography>
                 <Typography
-                    variant='body2'
+                    variant="body2"
                     sx={{
-                        color: '#6B7280',
+                        color: "#6B7280",
                         pr: 3,
                         pl: 3,
-                        mb: 2
+                        mb: 2,
                     }}
                 >
                     {description}
@@ -68,15 +68,18 @@ export const ChainCard: React.FC<ChainCardProps> = ({
                     paddingBottom: 0,
                     margin: 1.5,
                     borderRadius: 3,
-                    backgroundColor: theme.palette.background.default
+                    backgroundColor: theme.palette.background.default,
                 }}
             >
-                <Typography sx={{ fontSize: '12px', fontWeight: 700 }}>
+                <Typography sx={{ fontSize: "12px", fontWeight: 700 }}>
                     MAIN BENEFITS
                 </Typography>
-                <ul style={{ paddingLeft: '20px', margin: 0 }}>
+                <ul style={{ paddingLeft: "20px", margin: 0 }}>
                     {mainBenefits.map((benefit, index) => (
-                        <li key={index} style={{ fontSize: '14px', color: '#6B7280', fontWeight: 400 }}>
+                        <li
+                            key={index}
+                            style={{ fontSize: "14px", color: "#6B7280", fontWeight: 400 }}
+                        >
                             {benefit}
                         </li>
                     ))}
@@ -84,4 +87,4 @@ export const ChainCard: React.FC<ChainCardProps> = ({
             </Box>
         </Box>
     );
-}
+};
