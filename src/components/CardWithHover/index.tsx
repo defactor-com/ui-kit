@@ -4,23 +4,23 @@ import DocIcon from '../Icons/v2/docIcon';
 import CopyTemplateIcon from '../Icons/v2/copyTemplateIcon';
 
 export interface CardWithHoverProps {
-    title: string;
-    description: string;
+    title?: string;
+    description?: string;
     onSelect?: () => void;
-    icon: React.ReactNode;
+    icon?: React.ReactNode;
     backgroundColor?: string;
     onClickPreview?: () => void;
     onClickUse?: () => void;
 }
 
 export const CardWithHover: React.FC<CardWithHoverProps> = ({
-    title,
-    description,
-    onSelect,
+    title = 'Title',
+    description = 'DescriptionredhHIUFEHWOHOS',
+    onSelect = () => { },
     icon = <DocIcon />,
     backgroundColor = '#ffffff',
-    onClickPreview,
-    onClickUse
+    onClickPreview = () => { },
+    onClickUse = () => { }
 }) => {
     const theme = useTheme();
     const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
@@ -66,10 +66,10 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                     </IconButton>
                 </Box>
                 <Box>
-                    <Typography variant="body1" fontWeight={500}>
+                    <Typography variant="body1" fontWeight={500} textTransform={'none'}>
                         {title}
                     </Typography>
-                    <Typography variant="caption" sx={{ color: '#7c7c7e' }}>
+                    <Typography variant="caption" textTransform={'none'} color={'#7c7c7e'}>
                         {description}
                     </Typography>
                 </Box>

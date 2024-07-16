@@ -29,7 +29,7 @@ export default {
 export const Default: StoryObj<CardWithHoverProps> = {
     args: {
         title: "Sample Title",
-        description: "Sample Description",
+        description: "Description",
         onSelect: () => console.log('Card clicked'),
         icon: 'Doc',
         backgroundColor: '#ffffff'
