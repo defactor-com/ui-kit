@@ -17,7 +17,7 @@ export const ChainCard: React.FC<ChainCardProps> = ({
     mainBenefits = ["Benefit One", "Benefit Two", "Benefit Three"],
     customIcon = <DocIcon />,
     selected = false,
-    onClick = () => console.log("Clicked."),
+    onClick
 }) => {
     const theme = useTheme();
 
