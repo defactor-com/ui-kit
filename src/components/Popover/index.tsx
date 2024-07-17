@@ -9,6 +9,9 @@ import {
     Popover as MuiPopover,
     type PopoverProps as MuiPopoverProps,
 } from "@mui/material";
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import React from "react";
 
 export interface ListItemProps {
@@ -50,8 +53,14 @@ export const PopoverWithArrow = (
     />
 );
 
+const defaultPopoverItems: ListItemProps[] = [
+    { text: 'Edit', icon: <EditIcon /> },
+    { text: 'Duplicate', icon: <ContentCopyIcon /> },
+    { text: 'Delete', icon: <DeleteIcon /> }
+]
+
 export const Popover: React.FC<PopoverProps> = ({
-    items,
+    items = defaultPopoverItems,
     anchorEl,
     onClose,
 }) => {
