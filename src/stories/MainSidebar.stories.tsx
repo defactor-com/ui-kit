@@ -30,6 +30,7 @@ export default {
     },
     mainSidebarBgColor: { control: "color" },
     currentPath: { control: "text" },
+    defaultPath: { control: "text" },
   },
 } as ComponentMeta<typeof MainSidebar>;
 
@@ -43,7 +44,7 @@ const Template: ComponentStory<typeof MainSidebar> = (
 ) => {
   const { currentPath, ...sidebarProps } = args;
   return (
-    <PathProvider path={currentPath || "/dashboard"}>
+    <PathProvider path={currentPath || sidebarProps.defaultPath || "/dashboard"}>
       <MainSidebar {...sidebarProps} />
     </PathProvider>
   );
@@ -79,11 +80,12 @@ Default.args = {
     },
   ],
   navLinkTextColor: theme.palette.text.primary,
-  iconsColor: "#000000", // Temporarily until the designer updates the palette
-  activeTextColor: "#000000", // Temporarily until the designer updates the palette
-  activeIconColor: "#E0A225", // Temporarily until the designer updates the palette
+  iconsColor: "#000000",
+  activeTextColor: "#000000",
+  activeIconColor: "#E0A225",
   notificationColor: theme.palette.notification.main,
   notificationsCount: 1,
   hideOnBreakpoint: "sm",
   mainSidebarBgColor: theme.palette.primary.light,
+  defaultPath: "/dashboard",
 };

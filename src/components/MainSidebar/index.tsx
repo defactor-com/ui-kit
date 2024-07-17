@@ -21,23 +21,31 @@ export type MainSidebarProps = {
   notificationColor?: string;
   notificationsCount?: number;
   hideOnBreakpoint?: "xs" | "sm" | "md" | "lg" | "xl";
+  defaultPath?: string;
 };
 
 export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
   const theme = useTheme();
   const {
     routes,
-    mainSidebarBgColor = "#ffffff", // Temporarily until the designer updates the palette (theme.palette.primary.light)
-    navLinkTextColor = "#000000", // Temporarily until the designer updates the palette (theme.palette.text.primary)
-    iconsColor = theme.palette.text.primary, // Temporarily until the designer updates the palette
-    activeIconColor = "#E0A225", // Temporarily until the designer updates the palette
-    notificationColor = "#D21A4D", // Temporarily until the designer updates the palette
+    mainSidebarBgColor = "#ffffff",
+    navLinkTextColor = "#000000",
+    iconsColor = theme.palette.text.primary,
+    activeTextColor = "#000000",
+    activeIconColor = "#E0A225",
+    notificationColor = "#D21A4D",
     notificationsCount = 0,
     hideOnBreakpoint = "sm",
+    defaultPath = "/dashboard",
   } = props;
+
 
   const { isSelected } = useSidebarHook();
   const isHidden = useMediaQuery(theme.breakpoints.down(hideOnBreakpoint));
+
+  const checkSelected = (path: string) => {
+    return isSelected(path) || (isSelected('/') && path === defaultPath);
+  };
 
   if (isHidden) {
     return null;
@@ -64,13 +72,13 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
             key={index}
             text={route.text}
             path={route.path}
-            isSelected={isSelected(route.path)}
+            isSelected={checkSelected(route.path)}
             notificationsCount={
               route.path === "/notifications" ? notificationsCount : 0
             }
             navLinkTextColor={navLinkTextColor}
             iconsColor={iconsColor}
-            activeTextColor="#000000" // Temporarily
+            activeTextColor={activeTextColor}
             activeIconColor={activeIconColor}
             notificationColor={notificationColor}
           />
