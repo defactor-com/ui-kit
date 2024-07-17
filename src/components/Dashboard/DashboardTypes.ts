@@ -3,21 +3,20 @@ import { ITooltip } from "../Tooltip/TooltipTypes";
 
 export type CardItem = {
   label: string;
-  value: number | string;
-  fluctuation?: string;
-  fluctuationValue?: string;
   color?: string;
   fontFamily?: string;
-  optionalStyles?: React.CSSProperties;
+  fluctuation?: string;
+  value: number | string;
   externalStyles?: string;
   hoverBehavior?: boolean;
+  fluctuationValue?: string;
+  optionalStyles?: React.CSSProperties;
   infoTooltip?: Omit<ITooltip, "handleChange">;
 };
 
 export type IDashboard = {
   colors: string[];
   currency: string;
-  currencyIcon?: React.ReactElement | string;
   rightLabel: string;
   fontFamily?: string;
   bottomLabel: string;
@@ -26,8 +25,10 @@ export type IDashboard = {
   rightContainerItems: CardItem[];
   bottomContainerItems: CardItem[];
   totalValueLocked: number | string;
+  multichainSelector?: React.ReactNode;
   rightIcon?: React.ReactElement | string;
   bottomIcon?: React.ReactElement | string;
+  currencyIcon?: React.ReactElement | string;
 };
 
 export interface IHeaderContainer {
