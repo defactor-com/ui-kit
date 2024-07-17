@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Popover, PopoverProps, ListItemProps } from "../components/Popover";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import Box from "@mui/material/Box";
 import { action } from "@storybook/addon-actions";
 
 const meta: Meta<typeof Popover> = {
@@ -25,10 +27,11 @@ const popoverItems: ListItemProps[] = [
 ];
 
 const PopoverTemplate: React.FC<PopoverProps> = (args) => {
-    const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+    const iconRef = useRef<HTMLDivElement>(null);
 
-    const handleOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
+    const handleOpen = () => {
+        setAnchorEl(iconRef.current);
     };
 
     const handleClose = () => {
@@ -38,7 +41,15 @@ const PopoverTemplate: React.FC<PopoverProps> = (args) => {
 
     return (
         <>
-            <button onClick={handleOpen}>Open Popover</button>
+            <Box
+                ref={iconRef}
+                onClick={handleOpen}
+                width={146}
+                textAlign={"right"}
+                sx={{ cursor: "pointer" }}
+            >
+                <MoreHorizIcon />
+            </Box>
             <Popover {...args} anchorEl={anchorEl} onClose={handleClose} />
         </>
     );

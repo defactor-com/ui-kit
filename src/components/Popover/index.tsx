@@ -21,7 +21,7 @@ export interface ListItemProps {
 
 export interface PopoverProps {
     items: ListItemProps[];
-    anchorEl: HTMLButtonElement | null;
+    anchorEl: HTMLElement | null;
     onClose: () => void;
 }
 
