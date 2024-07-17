@@ -7,6 +7,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Box from "@mui/material/Box";
 import { action } from "@storybook/addon-actions";
+import { Typography } from "@mui/material";
 
 const meta: Meta<typeof Popover> = {
     title: "V2/Popover",
@@ -44,18 +45,32 @@ const PopoverTemplate: React.FC<PopoverProps> = (args) => {
             <Box
                 ref={iconRef}
                 onClick={handleOpen}
-                width={146}
+                width={150}
                 textAlign={"right"}
                 sx={{ cursor: "pointer" }}
             >
-                <MoreHorizIcon />
+                <Box
+                    sx={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: 32,
+                        height: 32,
+                        borderRadius: '50%',
+                        backgroundColor: 'white',
+                        color: '#EAECF0',
+                        border: '1px solid #EAECF0',
+                    }}
+                >
+                    <MoreHorizIcon />
+                </Box>
             </Box>
             <Popover {...args} anchorEl={anchorEl} onClose={handleClose} />
         </>
     );
 };
 
-export const Default: Story = {
+export const IconClickOpensPopover: Story = {
     render: (args) => <PopoverTemplate {...args} />,
     args: {
         items: popoverItems,
