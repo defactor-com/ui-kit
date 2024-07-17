@@ -11,8 +11,6 @@ const useSidebarHook = () => {
 
   const isSelected = useCallback(
     (path: string) => {
-      console.log("Checking path:", path);
-      console.log("Current pathName:", pathName);
       return pathName === path;
     },
     [pathName]

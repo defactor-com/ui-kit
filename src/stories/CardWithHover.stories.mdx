@@ -8,31 +8,34 @@ import { CardWithHover } from "../components/CardWithHover";
 ## Example
 
 ```jsx
-import { DocIcon } from "@defactor/ui-kit";
-```
+import { CardWithHover, DocIcon } from "@defactor/ui-kit";
 
-```jsx
-const onClickCopy = () => {
-  console.log("Copy Template.");
+const Example: React.FC = () => {
+  const onClickCopy = () => {
+    console.log("Copy Template.");
+  };
+
+  const onClickPreview = () => {
+    console.log("Preview Template.");
+  };
+
+  const onClickUse = () => {
+    console.log("Use Template.");
+  };
+  return (
+    <>
+      <CardWithHover
+        title="Test Card"
+        description="This is a test card."
+        icon={<DocIcon />}
+        onClickCopy={onClickCopy}
+        onClickPreview={onClickPreview}
+        onClickUse={onClickUse}
+        backgroundColor="#ffffff"
+      />
+    </>
+  );
 };
 
-const onClickPreview = () => {
-  console.log("Preview Template.");
-};
-
-const onClickUse = () => {
-  console.log("Use Template.");
-};
-```
-
-```jsx
-<CardWithHover
-  title="Test Card"
-  description="This is a test card."
-  icon={<DocIcon />}
-  onClickCopy={onClickCopy}
-  onClickPreview={onClickPreview}
-  onClickUse={onClickUse}
-  backgroundColor="#ffffff"
-/>
+export default Example;
 ```

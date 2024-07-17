@@ -3,7 +3,6 @@ import { Box, Typography, useTheme, IconButton, Button } from "@mui/material";
 import DocIcon from "../Icons/v2/docIcon";
 import CopyTemplateIcon from "../Icons/v2/copyTemplateIcon";
 
-// Interface for props
 export interface CardWithHoverProps {
     title?: string;
     description?: string;
@@ -17,11 +16,11 @@ export interface CardWithHoverProps {
 export const CardWithHover: React.FC<CardWithHoverProps> = ({
     title = "Title",
     description = "Description",
-    onClickCopy = () => console.log('Copy Template.'),
+    onClickCopy,
     icon = <DocIcon />,
     backgroundColor = "#ffffff",
-    onClickPreview = () => console.log('Preview Template.'),
-    onClickUse = () => console.log('Use Template.'),
+    onClickPreview,
+    onClickUse,
 }) => {
     const theme = useTheme();
 
@@ -121,4 +120,3 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
         </Box>
     );
 };
-
