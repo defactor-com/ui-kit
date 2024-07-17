@@ -7,7 +7,6 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Box from "@mui/material/Box";
 import { action } from "@storybook/addon-actions";
-import { Typography } from "@mui/material";
 
 const meta: Meta<typeof Popover> = {
     title: "V2/Popover",
