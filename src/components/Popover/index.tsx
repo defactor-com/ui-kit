@@ -22,7 +22,7 @@ export interface PopoverProps {
     onClose: () => void;
 }
 
-const PopoverWithArrow = (
+export const PopoverWithArrow = (
     popoverProps: Omit<MuiPopoverProps, "anchorOrigin" | "transformOrigin"> & { children: React.ReactNode },
 ) => (
     <MuiPopover
@@ -50,7 +50,7 @@ const PopoverWithArrow = (
     />
 );
 
-const Popover: React.FC<PopoverProps> = ({
+export const Popover: React.FC<PopoverProps> = ({
     items,
     anchorEl,
     onClose,
@@ -93,5 +93,3 @@ const Popover: React.FC<PopoverProps> = ({
         </>
     );
 };
-
-export default Popover;
