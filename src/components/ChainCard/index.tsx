@@ -8,6 +8,7 @@ import {
     ListItemText
 } from "@mui/material";
 import EthIcon from "../Icons/v2/ethIcon";
+import { Scale } from "@mui/icons-material";
 
 export interface ChainCardProps {
     title: string;
@@ -86,10 +87,15 @@ export const ChainCard: React.FC<ChainCardProps> = ({
                         <ListItem
                             key={index}
                             sx={{
+                                color: "#6b7280",
                                 display: "list-item",
                                 listStyleType: "disc",
                                 margin: 0,
-                                padding: 0
+                                padding: 0,
+                                '&::marker': {
+                                    fontSize: "small",
+                                    lineHeight: "2em"
+                                },
                             }}
                         >
                             <ListItemText
@@ -105,6 +111,6 @@ export const ChainCard: React.FC<ChainCardProps> = ({
                 </List>
 
             </Box>
-        </Box>
+        </Box >
     );
 };
