@@ -8,20 +8,28 @@ import { ChainCard } from "../components/ChainCard";
 ## Example
 
 ```jsx
-import { DocIcon } from "@defactor/ui-kit";
-```
+import { ChainCard } from "@defactor/ui-kit";
 
-```jsx
-const onClick = () => {
-  console.log("Click.");
+const Example: React.FC = () => {
+  const onClick = () => {
+    console.log("Click.");
+  };
+
+  return (
+    <>
+      <ChainCard
+        title="Ethereum (ERC-20)"
+        description="Lorem ipsum dolor sit amet consectetur. Faucibus adipiscing phasellus."
+        mainBenefits={[
+          "Lorem ipsum dolor sit amet consectetur. ",
+          "Amet consectetur faucibus adipiscing.",
+          "Faucibus adipiscing phasellus.",
+        ]}
+        onClick={onClick}
+      />
+    </>
+  );
 };
-```
 
-```jsx
-<ChainCard
-  title="Ethereum (ERC-20)"
-  description="Lorem ipsum dolor sit amet consectetur. Faucibus adipiscing phasellus."
-  mainBenefits={["Benefit One", "Benefit Two", "Benefit Three"]}
-  onClick={onClick}
-/>
+export default Example;
 ```

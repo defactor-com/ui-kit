@@ -74,7 +74,7 @@ export const ChainCard: React.FC<ChainCardProps> = ({
                     padding: 2,
                     margin: 1.5,
                     borderRadius: 3,
-                    backgroundColor: theme.palette.background.default,
+                    backgroundColor: "#F8F9FC"
                 }}
             >
                 <Typography
