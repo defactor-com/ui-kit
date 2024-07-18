@@ -7,7 +7,7 @@ import {
     ListItem,
     ListItemText
 } from "@mui/material";
-import DocIcon from "../Icons/v2/docIcon";
+import EthIcon from "../Icons/v2/ethIcon";
 
 export interface ChainCardProps {
     title: string;
@@ -22,7 +22,7 @@ export const ChainCard: React.FC<ChainCardProps> = ({
     title = "Ethereum (ERC-20)",
     description = "Lorem ipsum dolor sit amet consectetur. Faucibus adipiscing phasellus.",
     mainBenefits = ["Benefit One", "Benefit Two", "Benefit Three"],
-    customIcon = <DocIcon />,
+    customIcon = <EthIcon />,
     selected = false,
     onClick,
 }) => {
