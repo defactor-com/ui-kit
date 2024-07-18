@@ -1,6 +1,14 @@
 import React from "react";
-import { Box, Typography, useTheme } from "@mui/material";
-import DocIcon from "../Icons/v2/docIcon";
+import {
+    Box,
+    Typography,
+    useTheme,
+    List,
+    ListItem,
+    ListItemText
+} from "@mui/material";
+import EthIcon from "../Icons/v2/ethIcon";
+import { Scale } from "@mui/icons-material";
 
 export interface ChainCardProps {
     title: string;
@@ -15,9 +23,9 @@ export const ChainCard: React.FC<ChainCardProps> = ({
     title = "Ethereum (ERC-20)",
     description = "Lorem ipsum dolor sit amet consectetur. Faucibus adipiscing phasellus.",
     mainBenefits = ["Benefit One", "Benefit Two", "Benefit Three"],
-    customIcon = <DocIcon />,
+    customIcon = <EthIcon />,
     selected = false,
-    onClick
+    onClick,
 }) => {
     const theme = useTheme();
 
@@ -55,7 +63,7 @@ export const ChainCard: React.FC<ChainCardProps> = ({
                     variant="body2"
                     sx={{
                         color: "#6B7280",
-                        maxWidth: "300px"
+                        maxWidth: "300px",
                     }}
                 >
                     {description}
@@ -66,23 +74,43 @@ export const ChainCard: React.FC<ChainCardProps> = ({
                     padding: 2,
                     margin: 1.5,
                     borderRadius: 3,
-                    backgroundColor: theme.palette.background.default,
+                    backgroundColor: "#F8F9FC"
                 }}
             >
-                <Typography sx={{ fontSize: "12px", fontWeight: 700, paddingBottom: 2 }}>
+                <Typography
+                    sx={{ fontSize: "12px", fontWeight: 700 }}
+                >
                     MAIN BENEFITS
                 </Typography>
-                <ul style={{ paddingLeft: "20px", margin: 0 }}>
+                <List sx={{ paddingLeft: 3.5, margin: 0, direction: "row" }}>
                     {mainBenefits.map((benefit, index) => (
-                        <li
+                        <ListItem
                             key={index}
-                            style={{ fontSize: "14px", color: "#6B7280", fontWeight: 400, lineHeight: 2 }}
+                            sx={{
+                                color: "#6b7280",
+                                display: "list-item",
+                                listStyleType: "disc",
+                                margin: 0,
+                                padding: 0,
+                                '&::marker': {
+                                    fontSize: "small",
+                                    lineHeight: "2em"
+                                },
+                            }}
                         >
-                            {benefit}
-                        </li>
+                            <ListItemText
+                                primaryTypographyProps={{
+                                    fontSize: "14px",
+                                    color: "#6B7280",
+                                    fontWeight: 400
+                                }}
+                                primary={benefit}
+                            />
+                        </ListItem>
                     ))}
-                </ul>
+                </List>
+
             </Box>
-        </Box>
+        </Box >
     );
 };

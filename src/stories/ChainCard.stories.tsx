@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { ChainCard, ChainCardProps } from '../components/ChainCard';
-import DocIcon from '../components/Icons/v2/docIcon';
+import EthIcon from '../components/Icons/v2/ethIcon';
 
 export default {
     title: 'V2/Cards/ChainCard',
@@ -23,7 +23,7 @@ Default.args = {
     title: "Ethereum (ERC-20)",
     description: "Lorem ipsum dolor sit amet consectetur. Faucibus adipiscing phasellus.",
     mainBenefits: ["Lorem ipsum dolor sit amet consectetur. ", "Amet consectetur faucibus adipiscing.", "Faucibus adipiscing phasellus."],
-    customIcon: <DocIcon />,
+    customIcon: <EthIcon />,
     onClick: () => console.log('Card clicked'),
 };
 
