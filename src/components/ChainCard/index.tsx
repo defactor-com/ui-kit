@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, Typography, useTheme } from "@mui/material";
+import {
+    Box,
+    Typography,
+    useTheme,
+    List,
+    ListItem,
+    ListItemText
+} from "@mui/material";
 import DocIcon from "../Icons/v2/docIcon";
 
 export interface ChainCardProps {
@@ -17,7 +24,7 @@ export const ChainCard: React.FC<ChainCardProps> = ({
     mainBenefits = ["Benefit One", "Benefit Two", "Benefit Three"],
     customIcon = <DocIcon />,
     selected = false,
-    onClick
+    onClick,
 }) => {
     const theme = useTheme();
 
@@ -55,7 +62,7 @@ export const ChainCard: React.FC<ChainCardProps> = ({
                     variant="body2"
                     sx={{
                         color: "#6B7280",
-                        maxWidth: "300px"
+                        maxWidth: "300px",
                     }}
                 >
                     {description}
@@ -69,19 +76,34 @@ export const ChainCard: React.FC<ChainCardProps> = ({
                     backgroundColor: theme.palette.background.default,
                 }}
             >
-                <Typography sx={{ fontSize: "12px", fontWeight: 700, paddingBottom: 2 }}>
+                <Typography
+                    sx={{ fontSize: "12px", fontWeight: 700 }}
+                >
                     MAIN BENEFITS
                 </Typography>
-                <ul style={{ paddingLeft: "20px", margin: 0 }}>
+                <List sx={{ paddingLeft: 3.5, margin: 0, direction: "row" }}>
                     {mainBenefits.map((benefit, index) => (
-                        <li
+                        <ListItem
                             key={index}
-                            style={{ fontSize: "14px", color: "#6B7280", fontWeight: 400, lineHeight: 2 }}
+                            sx={{
+                                display: "list-item",
+                                listStyleType: "disc",
+                                margin: 0,
+                                padding: 0
+                            }}
                         >
-                            {benefit}
-                        </li>
+                            <ListItemText
+                                primaryTypographyProps={{
+                                    fontSize: "14px",
+                                    color: "#6B7280",
+                                    fontWeight: 400
+                                }}
+                                primary={benefit}
+                            />
+                        </ListItem>
                     ))}
-                </ul>
+                </List>
+
             </Box>
         </Box>
     );
