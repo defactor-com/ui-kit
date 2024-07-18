@@ -30,6 +30,12 @@ export const Dropzone: React.FC<DropzoneProps> = (props) => {
   } = props;
 
   const onDrop = useCallback((acceptedFiles: FileWithPath[]) => {
+    // TODO - Implement file handling logic here
+    // 1. Validate file types and sizes
+    // 2. Update state or context with the accepted files
+    // 3. Upload files to a server or cloud storage
+    // 4. Display previews or feedback to the user
+    console.log("Accepted files: ", acceptedFiles);
   }, []);
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
