@@ -1,6 +1,6 @@
-import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
-import TitleWithIcon from '../components/TitleWithIcon';
-import GlobalIcon from '../components/Icons/v2/globalIcon';
+import { Meta, Story, Props } from "@storybook/addon-docs/blocks";
+import { TitleWithIcon } from "../components/TitleWithIcon";
+import GlobalIcon from "../components/Icons/v2/globalIcon";
 
 <Meta title="V2/TitleWithIcon/Documentation" component={TitleWithIcon} />
 
@@ -9,24 +9,20 @@ import GlobalIcon from '../components/Icons/v2/globalIcon';
 ## Usage With Default Properties:
 
 ```jsx
-import { TitleWithIcon, GlobalIcon } from '@defactor/ui-kit'
+import { TitleWithIcon, GlobalIcon } from "@defactor/ui-kit";
 
-<TitleWithIcon 
-  label="Sample Title"
-  image={GlobalIcon}
-/>
+<TitleWithIcon label="Sample Title" image={GlobalIcon} />;
 ```
 
 ## Usage With Custom Properties:
 
 ```jsx
-import { TitleWithIcon, GlobalIcon } from '@defactor/ui-kit'
+import { TitleWithIcon, GlobalIcon } from "@defactor/ui-kit";
 
-<TitleWithIcon 
+<TitleWithIcon
   label="Custom Title"
   color="#7c7c7e"
   colorIcon="#7c7c7e"
   image={GlobalIcon}
-/>
-
+/>;
 ```
