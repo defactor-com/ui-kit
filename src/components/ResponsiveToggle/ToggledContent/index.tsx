@@ -13,7 +13,8 @@ export interface ToggledContentProps {
 }
 
 export const ToggledContent: React.FC<ToggledContentProps> = ({
-    XsWidth, MdWidth
+    XsWidth = "100%",
+    MdWidth = "212px"
 }) => (
     <>
         {[myStatsInfo.slice(0, 2), myStatsInfo.slice(2)].map((group, groupIndex) => (
