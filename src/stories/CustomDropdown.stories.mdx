@@ -9,8 +9,34 @@ import {
   component={CustomDropdown}
 />
 
-# CustomTextField
+# CustomDropdown
 
-The `TextField` component is a customizable input field that can be used in forms. It includes options for labels, placeholders, tooltips, suffixes, and more.
+## Example with defaults
 
-## Basic Example
+```jsx
+<CustomDropdown />
+```
+
+## Example with custom props
+
+```jsx
+<CustomDropdown
+  label="Select Asset Type"
+  menuItems={[
+    {
+      label: "NFT",
+      value: "NFT",
+    },
+    {
+      label: "Token",
+      value: "Token",
+    },
+  ]}
+  onChange={() => {}}
+  placeholder="Choose..."
+  required
+  disabled={false}
+  tooltip="Select your asset type"
+  value=""
+/>
+```

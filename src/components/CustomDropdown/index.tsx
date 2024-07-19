@@ -21,23 +21,23 @@ export interface MenuItemsProps {
 }
 
 export interface CustomDropdownProps {
-    label: string;
+    label?: string;
     placeholder?: string;
     value?: string;
     onChange?: (value: string) => void;
-    menuItems: MenuItemsProps[];
+    menuItems?: MenuItemsProps[];
     tooltip?: string;
     disabled?: boolean;
     required?: boolean;
 }
 
 export const CustomDropdown: React.FC<CustomDropdownProps> = ({
-    label,
-    placeholder,
-    value,
-    onChange,
-    menuItems,
-    tooltip,
+    label = '',
+    placeholder = "Choose...",
+    value = "",
+    onChange = () => { },
+    menuItems = AssetTypes,
+    tooltip = '',
     disabled = false,
     required = false,
 }) => {
@@ -85,4 +85,3 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
         </FormControl>
     );
 };
-
