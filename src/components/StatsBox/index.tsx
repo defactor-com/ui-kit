@@ -13,8 +13,8 @@ export interface StatsBoxProps {
 }
 
 export const StatsBox: React.FC<StatsBoxProps> = ({
-    XsWidth,
-    MdWidth,
+    XsWidth = "100%",
+    MdWidth = "212px",
     title,
     value,
     tooltipText,
