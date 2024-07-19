@@ -4,7 +4,8 @@ import React from 'react'
 import { CustomTooltip } from '../CustomTooltip'
 
 export interface StatsBoxProps {
-    width?: string | number
+    XsWidth?: string | number
+    MdWidth?: string | number
     title: string
     value: string | number
     tooltipText: string
@@ -12,7 +13,8 @@ export interface StatsBoxProps {
 }
 
 export const StatsBox: React.FC<StatsBoxProps> = ({
-    width,
+    XsWidth,
+    MdWidth,
     title,
     value,
     tooltipText,
@@ -22,8 +24,8 @@ export const StatsBox: React.FC<StatsBoxProps> = ({
         <Box
             sx={{
                 width: {
-                    md: '100%',
-                    lg: width
+                    xs: XsWidth,
+                    md: MdWidth
                 }
             }}
         >
@@ -32,11 +34,7 @@ export const StatsBox: React.FC<StatsBoxProps> = ({
                     display: 'flex',
                     flexDirection: 'row',
                     alignItems: 'center',
-                    justifyContent: 'space-between',
-                    width: {
-                        md: '100%',
-                        lg: width
-                    }
+                    justifyContent: 'space-between'
                 }}
             >
                 <Typography variant='body2'>{title}</Typography>
@@ -47,7 +45,7 @@ export const StatsBox: React.FC<StatsBoxProps> = ({
                     display: 'flex',
                     flexDirection: 'row',
                     alignItems: 'baseline',
-                    mt: 0.5
+                    mt: 0.6
                 }}
             >
                 <Typography variant='subtitle1' fontWeight={700} sx={{ mr: 0.5 }}>
@@ -57,7 +55,7 @@ export const StatsBox: React.FC<StatsBoxProps> = ({
                     {unit}
                 </Typography>
             </Box>
-            <Divider sx={{ mt: 1.5 }} />
+            <Divider sx={{ mt: 2.5 }} />
         </Box>
     )
 }
