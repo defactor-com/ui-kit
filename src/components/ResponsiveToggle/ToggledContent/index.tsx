@@ -1,23 +1,27 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import { StatsBox } from '../StatsBox';
-import { myStatsInfo } from '../StatsBox/mock';
+
+export interface StatInfo {
+    title: string;
+    value: string;
+    tooltipText: string;
+    unit: string | null;
+}
 
 export interface ToggledContentProps {
     XsWidth?: string;
     MdWidth?: string;
-    title?: string;
-    value?: string;
-    tooltipText?: string;
-    unit?: string;
+    statsInfo: StatInfo[];
 }
 
 export const ToggledContent: React.FC<ToggledContentProps> = ({
     XsWidth = "100%",
-    MdWidth = "212px"
+    MdWidth = "212px",
+    statsInfo
 }) => (
     <>
-        {[myStatsInfo.slice(0, 2), myStatsInfo.slice(2)].map((group, groupIndex) => (
+        {[statsInfo.slice(0, 2), statsInfo.slice(2)].map((group, groupIndex) => (
             <Box
                 key={groupIndex}
                 sx={{
