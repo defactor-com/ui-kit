@@ -64,7 +64,7 @@ export const CustomTextField: React.FC<CustomTextFieldProps> = ({
         {required && (
           <Typography
             variant="caption"
-            sx={{ color: "red", fontWeight: "700", ml: 0.5 }}
+            sx={{ color: "red", fontWeight: "700", mx: 0.5 }}
           >
             *
           </Typography>
