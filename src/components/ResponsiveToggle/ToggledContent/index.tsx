@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import { StatsBox } from '../StatsBox';
+import { myStatsInfo } from '../StatsBox/mock';
 
 export interface StatInfo {
     title: string;
@@ -18,7 +19,7 @@ export interface ToggledContentProps {
 export const ToggledContent: React.FC<ToggledContentProps> = ({
     XsWidth = "100%",
     MdWidth = "212px",
-    statsInfo
+    statsInfo = myStatsInfo
 }) => (
     <>
         {[statsInfo.slice(0, 2), statsInfo.slice(2)].map((group, groupIndex) => (
