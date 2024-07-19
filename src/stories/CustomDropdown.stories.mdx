@@ -1,0 +1,42 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import {
+  CustomDropdown,
+  CustomDropdownProps,
+} from "../components/CustomDropdown";
+
+<Meta
+  title="V2/FormElements/CustomDropdown/Documentation"
+  component={CustomDropdown}
+/>
+
+# CustomDropdown
+
+## Example with defaults
+
+```jsx
+<CustomDropdown />
+```
+
+## Example with custom props
+
+```jsx
+<CustomDropdown
+  label="Select Asset Type"
+  menuItems={[
+    {
+      label: "NFT",
+      value: "NFT",
+    },
+    {
+      label: "Token",
+      value: "Token",
+    },
+  ]}
+  onChange={() => {}}
+  placeholder="Choose..."
+  required
+  disabled={false}
+  tooltip="Select your asset type"
+  value=""
+/>
+```

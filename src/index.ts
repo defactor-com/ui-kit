@@ -50,4 +50,5 @@ export { ChainCard, ChainCardProps }  from './components/ChainCard';
 export { Popover, PopoverProps, ListItemProps } from "./components/Popover";
 export { StatsBox, StatsBoxProps } from "./components/ResponsiveToggle/StatsBox";
 export { ToggledContent, ToggledContentProps } from "./components/ResponsiveToggle/ToggledContent";
+export { CustomDropdown, CustomDropdownProps } from "./components/CustomDropdown";
 
