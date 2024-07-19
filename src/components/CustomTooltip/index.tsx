@@ -34,7 +34,7 @@ export const CustomTooltip: React.FC<CustomTooltipProps> = ({
         },
       }}
     >
-      <IconButton sx={{ py: 0 }}>
+      <IconButton sx={{ p: 0 }}>
         <TooltipIcon color={defaultColor} />
       </IconButton>
     </Tooltip>
