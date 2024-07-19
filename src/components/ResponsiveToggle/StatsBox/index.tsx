@@ -1,7 +1,7 @@
 import { Box, Divider, Typography } from '@mui/material'
 import React from 'react'
 
-import { CustomTooltip } from '../CustomTooltip'
+import { CustomTooltip } from '../../CustomTooltip'
 
 export interface StatsBoxProps {
     XsWidth?: string | number

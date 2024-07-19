@@ -1,6 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import { StatsBox, StatsBoxProps } from "../components/StatsBox";
+import { StatsBox, StatsBoxProps } from "../components/ResponsiveToggle/StatsBox";
 
 export default {
     title: "V2/ResponsiveToggle/StatsBox",
