@@ -1,0 +1,39 @@
+import { Meta, Story, Props } from "@storybook/addon-docs/blocks";
+import { StatsBox } from "../components/ResponsiveToggle/StatsBox";
+import { CustomTooltip } from "../components/CustomTooltip";
+
+<Meta title="V2/ResponsiveToggle/StatsBox/Documentation" component={StatsBox} />
+
+## StatsBox
+
+## Example with default widths:
+
+```jsx
+import { StatsBox } from "@defactor/ui-kit";
+```
+
+```jsx
+<StatsBox
+  title="Minted Tokens"
+  tooltipText="This is a tooltip"
+  unit="FACTR"
+  value="15,000"
+/>
+```
+
+## Example with custom widths:
+
+```jsx
+import { StatsBox } from "@defactor/ui-kit";
+```
+
+```jsx
+<StatsBox
+  XsWidth="100%"
+  MdWidth="212px"
+  title="Minted Tokens"
+  tooltipText="This is a tooltip"
+  unit="FACTR"
+  value="15,000"
+/>
+```

@@ -48,3 +48,6 @@ export { DocIcon, DocIconProps } from './components/Icons/v2/docIcon';
 export { PlusIcon, PlusIconProps } from './components/Icons/v2/plusIcon';
 export { ChainCard, ChainCardProps }  from './components/ChainCard';
 export { Popover, PopoverProps, ListItemProps } from "./components/Popover";
+export { StatsBox, StatsBoxProps } from "./components/ResponsiveToggle/StatsBox";
+export { ToggledContent, ToggledContentProps } from "./components/ResponsiveToggle/ToggledContent";
+
