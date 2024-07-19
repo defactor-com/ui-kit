@@ -32,7 +32,7 @@ export const ToggledContent: React.FC<ToggledContentProps> = ({
                         lg: 'row'
                     },
                     gap: 2,
-                    pt: { xs: 3, lg: 0 },
+                    pt: 3,
                     width: '100%'
                 }}
             >
