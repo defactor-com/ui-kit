@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.3.3
+
+### Patch Changes
+
+- eea981c: v2
+
 ## 0.2.86
 
 ### Patch Changes
