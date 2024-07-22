@@ -28,7 +28,8 @@ export const Default = Template.bind({});
 Default.args = {
   uploadText: "Upload a file",
   dragText: "or drag and drop",
-  //fileTypesText: "PDF, DOC, JPG up to ",
+  fileTypes: "application/pdf, image/png",
+  fileTypesText: "PDF, PNG",
   fileSizeLimitText: "10MB",
   borderColor: "#EDF0F7", // Temporarily until the designer updates the palette
   textColor: "#000000", // Temporarily until the designer updates the palette

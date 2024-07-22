@@ -24,7 +24,7 @@ export const Dropzone: React.FC<DropzoneProps> = (props) => {
   const {
     uploadText = "Upload a file",
     dragText = "or drag and drop",
-    fileTypes = "application/pdf",
+    fileTypes = "application/pdf, image/png",
     fileTypesText = "PDF, DOC, JPG",
     fileTypesAdditionalText = " up to ",
     borderColor = theme.palette.grey[300],
