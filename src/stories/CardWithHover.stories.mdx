@@ -1,0 +1,41 @@
+import { Meta, Story, Props } from "@storybook/addon-docs/blocks";
+import { CardWithHover } from "../components/CardWithHover";
+
+<Meta title="V2/Cards/CardWithHover/Documentation" component={CardWithHover} />
+
+## CardWithHover
+
+## Example
+
+```jsx
+import { CardWithHover, DocIcon } from "@defactor/ui-kit";
+
+const Example: React.FC = () => {
+  const onClickCopy = () => {
+    console.log("Copy Template.");
+  };
+
+  const onClickPreview = () => {
+    console.log("Preview Template.");
+  };
+
+  const onClickUse = () => {
+    console.log("Use Template.");
+  };
+  return (
+    <>
+      <CardWithHover
+        title="Test Card"
+        description="This is a test card."
+        icon={<DocIcon />}
+        onClickCopy={onClickCopy}
+        onClickPreview={onClickPreview}
+        onClickUse={onClickUse}
+        backgroundColor="#ffffff"
+      />
+    </>
+  );
+};
+
+export default Example;
+```

@@ -1,0 +1,35 @@
+import { Meta, Story, Props } from "@storybook/addon-docs/blocks";
+import { ChainCard } from "../components/ChainCard";
+
+<Meta title="V2/Cards/ChainCard/Documentation" component={ChainCard} />
+
+## ChainCard
+
+## Example
+
+```jsx
+import { ChainCard } from "@defactor/ui-kit";
+
+const Example: React.FC = () => {
+  const onClick = () => {
+    console.log("Click.");
+  };
+
+  return (
+    <>
+      <ChainCard
+        title="Ethereum (ERC-20)"
+        description="Lorem ipsum dolor sit amet consectetur. Faucibus adipiscing phasellus."
+        mainBenefits={[
+          "Lorem ipsum dolor sit amet consectetur. ",
+          "Amet consectetur faucibus adipiscing.",
+          "Faucibus adipiscing phasellus.",
+        ]}
+        onClick={onClick}
+      />
+    </>
+  );
+};
+
+export default Example;
+```

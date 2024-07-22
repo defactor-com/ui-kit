@@ -1,0 +1,100 @@
+import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
+import { MainSidebar } from '../components/MainSidebar';
+import DashboardIcon from '../components/Icons/v2/dashboardIcon';
+import MyWalletIcon from '../components/Icons/v2/myWalletIcon';
+import MyTemplateIcon from '../components/Icons/v2/myTemplateIcon';
+import NotificationsIcon from '../components/Icons/v2/notificationsIcon';
+import ContactsIcon from '../components/Icons/v2/contactsIcon';
+
+<Meta title="V2/MainSidebar/Documentation" component={MainSidebar} />
+
+# MainSidebar
+
+The MainSidebar component is a navigational sidebar that includes links and icons for various sections of the application.
+
+## Default Usage with Default Routes
+
+```jsx
+import { MainSidebar, routes } from '@defactor/ui-kit'
+import { PathProvider } from '@defactor/ui-kit'
+import { usePathname } from 'next/navigation'
+import React from 'react'
+
+const Sidebar: React.FC = () => {
+  const pathname = usePathname()
+
+  return (
+    <PathProvider path={pathname}>
+      <MainSidebar
+        hideOnBreakpoint='sm'
+        notificationsCount={0}
+        routes={routes.mainRoutes}
+      />
+    </PathProvider>
+  )
+}
+
+export default Sidebar
+
+```
+
+## Default Usage with Custom Routes
+
+```jsx
+import {
+  ContactsIcon,
+  DashboardIcon,
+  MainSidebar,
+  MyTemplateIcon,
+  MyWalletIcon,
+  NotificationsIcon,
+  PathProvider
+} from '@defactor/ui-kit'
+import { usePathname } from 'next/navigation'
+import React from 'react'
+
+const Sidebar: React.FC = () => {
+  const pathname = usePathname()
+
+  return (
+    <PathProvider path={pathname}>
+      <MainSidebar
+        hideOnBreakpoint='sm'
+        notificationsCount={0}
+        activeIconColor='red'
+        routes={[
+          {
+            icon: DashboardIcon,
+            path: '/',
+            text: 'Dashboard'
+          },
+          {
+            icon: MyWalletIcon,
+            path: '/wallet',
+            text: 'MyWallet'
+          },
+          {
+            icon: MyTemplateIcon,
+            path: '/templates',
+            text: 'MyTemplates'
+          },
+          {
+            icon: NotificationsIcon,
+            path: '/notifications',
+            text: 'Notifications'
+          },
+          {
+            icon: ContactsIcon,
+            path: '/contacts',
+            text: 'Contacts'
+          }
+        ]}
+      />
+    </PathProvider>
+  )
+}
+
+export default Sidebar
+
+```
+

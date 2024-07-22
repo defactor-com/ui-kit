@@ -1,0 +1,45 @@
+import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
+import { CustomTooltip } from '../components/CustomTooltip';
+
+<Meta title="V2/CustomTooltip/Documentation" component={CustomTooltip} />
+
+## CustomTooltip
+
+## Usage With No Properties - Hiding the `CustomTooltip` component when the tooltip text is empty
+
+```jsx
+import { CustomTooltip } from '@defactor/ui-kit'
+
+<CustomTooltip 
+ />
+```
+
+## Usage With Default Properties
+
+```jsx
+import { CustomTooltip } from '@defactor/ui-kit'
+
+<CustomTooltip
+tooltipText="Custom tooltip text"
+ />
+```
+
+## Usage With Custom Properties
+
+```jsx
+import { CustomTooltip } from '@defactor/ui-kit'
+
+<CustomTooltip 
+  tooltipText="Custom tooltip text"
+  iconColor="#4CAF50"
+/>
+```
+
+
+## Props
+
+| Name          | Type     | Default                     | Description                              |
+| ------------- | -------- | --------------------------- | ---------------------------------------- |
+| `tooltipText` | `string` | `""` | Text displayed inside the tooltip.        |
+| `iconColor`   | `string` | #A8B0B6   | Color of the tooltip icon. (Temporarily until the designer updates the palette.)     |
+

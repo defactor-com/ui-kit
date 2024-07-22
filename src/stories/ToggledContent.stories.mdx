@@ -1,0 +1,58 @@
+import { Meta, Story, Props } from "@storybook/addon-docs/blocks";
+import { ToggledContent } from "../components/ResponsiveToggle/ToggledContent";
+
+<Meta
+  title="V2/ResponsiveToggle/ToggledContent/Documentation"
+  component={ToggledContent}
+/>
+
+## ToggledContent
+
+## Example with defaults:
+
+```jsx
+import { ToggledContent } from "@defactor/ui-kit";
+```
+
+```jsx
+<ToggledContent />
+```
+
+## Example with custom Props
+
+```jsx
+import { ToggledContent } from "@defactor/ui-kit";
+```
+
+```jsx
+<ToggledContent
+  XsWidth="100%"
+  MdWidth="212px"
+  statsInfo={[
+    {
+      title: "Minted Tokens",
+      tooltipText: "Lorem ipsum dolor sit amet, consectetur adipiscing",
+      unit: "FACTR",
+      value: "15,000",
+    },
+    {
+      title: "Est. Total Price (estimated)",
+      tooltipText: "Lorem ipsum dolor sit amet, consectetur adipiscing",
+      unit: "USD",
+      value: "15,000",
+    },
+    {
+      title: "My Wallet Tokens",
+      tooltipText: "Lorem ipsum dolor sit amet, consectetur adipiscing",
+      unit: null,
+      value: "15,000",
+    },
+    {
+      title: "Avg. Token Price (estimated)",
+      tooltipText: "Lorem ipsum dolor sit amet, consectetur adipiscing",
+      unit: "USD",
+      value: "10",
+    },
+  ]}
+/>
+```
