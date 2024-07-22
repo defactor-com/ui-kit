@@ -29,8 +29,8 @@ Default.args = {
   uploadText: "Upload a file",
   dragText: "or drag and drop",
   fileTypes: "application/pdf, image/png",
-  fileTypesText: "PDF, PNG",
-  fileSizeLimitText: "10MB",
+  //fileTypesText: "PDF, PNG",
+  //fileSizeLimitText: "10MB",
   borderColor: "#EDF0F7", // Temporarily until the designer updates the palette
   textColor: "#000000", // Temporarily until the designer updates the palette
   iconColor: "#9e9e9e", // Temporarily until the designer updates the palette

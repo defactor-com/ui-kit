@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useDropzone, FileWithPath } from "react-dropzone";
 import AddFilesIcon from "../Icons/v2/addFilesIcon";
+import parseSizeLimit from "./fileSizeUtils";
 
 export interface DropzoneProps {
   uploadText: string;
@@ -30,24 +31,32 @@ export const Dropzone: React.FC<DropzoneProps> = (props) => {
     borderColor = theme.palette.grey[300],
     textColor = theme.palette.text.secondary,
     iconColor = theme.palette.grey[500],
-    fileSizeLimitText = "10MB",
+    fileSizeLimitText = "3KB",
     label = "Label",
     onFileAccepted
   } = props;
+
+  const fileSizeLimit = parseSizeLimit(fileSizeLimitText);
+  console.log(fileSizeLimit);
 
   const onDrop = useCallback((acceptedFiles: FileWithPath[]) => {
     acceptedFiles.forEach(file => {
       console.log(`Accepted file: ${file.path}, ${file.name}, ${file.size}, ${file.type}`);
 
       if (file.type === fileTypes || (fileTypes.includes(',') && fileTypes.split(',').map(type => type.trim()).includes(file.type))) {
-        if (onFileAccepted) {
-          onFileAccepted(file);
+        if (file.size <= fileSizeLimit) {
+          if (onFileAccepted) {
+            onFileAccepted(file);
+          }
+        } else {
+          alert(`File size limit exceeded. Only files up to ${fileSizeLimitText} are accepted.`);
         }
       } else {
         alert(`Invalid file type. Only files of type ${fileTypes} are accepted.`);
       }
     });
-  }, [fileTypes, onFileAccepted]);
+  }, [fileTypes, onFileAccepted, fileSizeLimit, fileSizeLimitText]);
+
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
