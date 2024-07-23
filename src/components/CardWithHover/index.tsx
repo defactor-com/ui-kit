@@ -65,11 +65,17 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                     </IconButton>
                 </Box>
                 <Box>
-                    <Typography variant="body1" fontWeight={500} textTransform={"none"}>
+                    <Typography
+                        variant="body1"
+                        fontFamily="'DM Sans', sans-serif"
+                        fontWeight={500}
+                        textTransform={"none"}
+                    >
                         {title}
                     </Typography>
                     <Typography
                         variant="caption"
+                        fontFamily="'DM Sans', sans-serif"
                         textTransform={"none"}
                         color={"#7c7c7e"}
                     >
@@ -94,6 +100,7 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                                 textTransform: "none",
                                 color: "#5a5beb",
                                 borderColor: "#5a5beb",
+                                fontFamily: "'DM Sans', sans-serif"
                             }}
                             onClick={onClickPreview}
                         >
@@ -109,6 +116,7 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                                 whiteSpace: "nowrap",
                                 textTransform: "none",
                                 backgroundColor: "#5a5beb",
+                                fontFamily: "'DM Sans', sans-serif"
                             }}
                             onClick={onClickUse}
                         >

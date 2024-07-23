@@ -5,7 +5,7 @@ import {
     useTheme,
     List,
     ListItem,
-    ListItemText
+    ListItemText,
 } from "@mui/material";
 import EthIcon from "../Icons/v2/ethIcon";
 import { Scale } from "@mui/icons-material";
@@ -56,11 +56,16 @@ export const ChainCard: React.FC<ChainCardProps> = ({
                 }}
             >
                 <Box paddingTop={3}>{customIcon}</Box>
-                <Typography variant="body2" fontWeight={700}>
+                <Typography
+                    variant="body2"
+                    fontFamily="'DM Sans', sans-serif"
+                    fontWeight={700}
+                >
                     {title}
                 </Typography>
                 <Typography
                     variant="body2"
+                    fontFamily="'DM Sans', sans-serif"
                     sx={{
                         color: "#6B7280",
                         maxWidth: "300px",
@@ -74,12 +79,11 @@ export const ChainCard: React.FC<ChainCardProps> = ({
                     padding: 2,
                     margin: 1.5,
                     borderRadius: 3,
-                    backgroundColor: "#F8F9FC"
+                    backgroundColor: "#F8F9FC",
                 }}
             >
-                <Typography
-                    sx={{ fontSize: "12px", fontWeight: 700 }}
-                >
+                <Typography fontFamily="'DM Sans', sans-serif"
+                    sx={{ fontSize: "12px", fontWeight: 700 }}>
                     MAIN BENEFITS
                 </Typography>
                 <List sx={{ paddingLeft: 3.5, margin: 0, direction: "row" }}>
@@ -92,9 +96,9 @@ export const ChainCard: React.FC<ChainCardProps> = ({
                                 listStyleType: "disc",
                                 margin: 0,
                                 padding: 0,
-                                '&::marker': {
+                                "&::marker": {
                                     fontSize: "small",
-                                    lineHeight: "2em"
+                                    lineHeight: "2em",
                                 },
                             }}
                         >
@@ -102,15 +106,14 @@ export const ChainCard: React.FC<ChainCardProps> = ({
                                 primaryTypographyProps={{
                                     fontSize: "14px",
                                     color: "#6B7280",
-                                    fontWeight: 400
+                                    fontWeight: 400,
                                 }}
                                 primary={benefit}
                             />
                         </ListItem>
                     ))}
                 </List>
-
             </Box>
-        </Box >
+        </Box>
     );
 };
