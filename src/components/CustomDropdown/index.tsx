@@ -4,15 +4,15 @@ import {
     MenuItem,
     Select,
     SelectChangeEvent,
-    Typography
-} from '@mui/material';
-import React from 'react';
+    Typography,
+} from "@mui/material";
+import React from "react";
 
-import { CustomTooltip } from '../CustomTooltip';
+import { CustomTooltip } from "../CustomTooltip";
 
 export const AssetTypes = [
-    { label: 'NFT', value: 'NFT' },
-    { label: 'Token', value: 'Token' }
+    { label: "NFT", value: "NFT" },
+    { label: "Token", value: "Token" },
 ];
 
 export interface MenuItemsProps {
@@ -32,12 +32,12 @@ export interface CustomDropdownProps {
 }
 
 export const CustomDropdown: React.FC<CustomDropdownProps> = ({
-    label = '',
+    label = "",
     placeholder = "Choose...",
     value = "",
     onChange = () => { },
     menuItems = AssetTypes,
-    tooltip = '',
+    tooltip = "",
     disabled = false,
     required = false,
 }) => {
@@ -48,21 +48,26 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
     };
 
     return (
-        <FormControl variant='outlined' fullWidth disabled={disabled}>
+        <FormControl variant="outlined" fullWidth disabled={disabled}>
             <Box
                 sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    minHeight: '34px'
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    minHeight: "34px",
                 }}
             >
-                <Typography variant='caption' sx={{ opacity: 0.5 }}>
+                <Typography
+                    variant="caption"
+                    fontFamily="'DM Sans', sans-serif"
+                    sx={{ opacity: 0.5 }}
+                >
                     {label}
                 </Typography>
                 {required && (
                     <Typography
                         variant="caption"
+                        fontFamily="'DM Sans', sans-serif"
                         sx={{ color: "red", fontWeight: "700" }}
                     >
                         *
@@ -71,12 +76,16 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
                 {tooltip && <CustomTooltip tooltipText={tooltip} />}
             </Box>
             <Select
-                value={value || ''}
+                value={value || ""}
                 displayEmpty
-                renderValue={selected => selected || <Typography sx={{ opacity: 0.5 }}>{placeholder}</Typography>}
+                renderValue={(selected) =>
+                    selected || (
+                        <Typography fontFamily="'DM Sans', sans-serif" fontSize={14} sx={{ opacity: 0.5 }}>{placeholder}</Typography>
+                    )
+                }
                 onChange={handleChange}
             >
-                {menuItems.map(menuItem => (
+                {menuItems.map((menuItem) => (
                     <MenuItem key={menuItem.label} value={menuItem.value}>
                         {menuItem.label}
                     </MenuItem>
