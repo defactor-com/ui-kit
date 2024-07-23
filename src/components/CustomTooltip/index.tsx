@@ -26,6 +26,7 @@ export const CustomTooltip: React.FC<CustomTooltipProps> = ({
       componentsProps={{
         tooltip: {
           sx: {
+            fontFamily: "'DM Sans', sans-serif",
             bgcolor: theme.palette.primary.main,
             "& .MuiTooltip-arrow": {
               color: theme.palette.primary.main,
