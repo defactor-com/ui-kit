@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import themes from "../src/themes";
-import "../src/scss/styles.scss";
+import "./index.css";
 import "./global.css";
 import React from "react";
 

@@ -10,7 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build": "rollup -c"
+    "build": "node build-sass.js && rollup -c",
+    "sass": "sass --watch ./src/styles/_index.scss ./.storybook/main.css"
   },
   "publishConfig": {
     "access": "public"
@@ -20,7 +21,8 @@
     "url": "git@github.com:defactor-com/ui-kit.git"
   },
   "files": [
-    "dist"
+    "dist",
+    "dist/index.css"
   ],
   "keywords": [],
   "author": "Defactor Labs",
