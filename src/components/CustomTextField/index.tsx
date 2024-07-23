@@ -57,6 +57,7 @@ export const CustomTextField: React.FC<CustomTextFieldProps> = ({
       >
         <Typography
           variant="caption"
+          fontFamily="'DM Sans', sans-serif"
           sx={{ opacity: 0.5, color: theme.palette.text.primary }}
         >
           {label}
@@ -64,6 +65,7 @@ export const CustomTextField: React.FC<CustomTextFieldProps> = ({
         {required && (
           <Typography
             variant="caption"
+            fontFamily="'DM Sans', sans-serif"
             sx={{ color: "red", fontWeight: "700", mx: 0.5 }}
           >
             *
@@ -75,6 +77,7 @@ export const CustomTextField: React.FC<CustomTextFieldProps> = ({
         endAdornment={
           <InputAdornment position="end">
             <Typography
+              fontFamily="'DM Sans', sans-serif"
               sx={{ color: suffixColor, fontSize: "12px", fontWeight: "400", textTransform: "uppercase" }}
             >
               {/** Temporarily until the designer updates the palette */}
