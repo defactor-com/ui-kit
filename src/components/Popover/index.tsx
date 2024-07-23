@@ -35,6 +35,7 @@ export const PopoverWithArrow = (
         slotProps={{
             paper: {
                 sx: {
+                    fontFamily: "'DM Sans', sans-serif",
                     overflow: "visible",
                     "&:before": {
                         content: '""',
