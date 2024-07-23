@@ -53,6 +53,7 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
           component="span"
           sx={{
             textTransform: "none",
+            fontFamily: "'DM Sans', sans-serif"
           }}
         >
           {text}
