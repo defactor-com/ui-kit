@@ -20,6 +20,7 @@ export const TitleWithIcon: React.FC<TitleWithIconProps> = ({
             <Box sx={{ display: "flex", alignItems: "center", color: colorIcon }}>
                 <IconComponent color={colorIcon} />
                 <Typography
+                    fontFamily="'DM Sans', sans-serif"
                     variant="subtitle1"
                     fontSize={"16px"}
                     fontWeight={700}
