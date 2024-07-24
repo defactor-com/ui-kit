@@ -1,12 +1,3 @@
-import { generalConfig } from 'config'
+import { DMSans } from '../fonts/dm-sans-font';
 
-import { DMSans } from './dm-sans-font'
-
-export const getFont = () => {
-  switch (generalConfig.assets.fontFamily) {
-    case 'DMSans':
-      return DMSans
-    default:
-      return DMSans
-  }
-}
+export const getFont = () => DMSans;

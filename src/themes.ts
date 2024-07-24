@@ -1,60 +1,49 @@
-import { Theme } from "@mui/material";
-import { ThemeOptions, createTheme } from "@mui/material/styles";
-import "@mui/styles";
+import { createTheme, ThemeOptions } from '@mui/material/styles';
+import '@mui/styles';
 
-import { DMSans } from "../src/fonts/dm-sans-font";
-
-declare module "@mui/styles/defaultTheme" {
-  interface DefaultTheme extends Theme {}
-}
-
-const brandingTheme = JSON.parse(
-  process.env.NEXT_PUBLIC_THEMING_CONFIG || "{}"
-);
-
-const palette: ThemeOptions["palette"] = {
-  primary: brandingTheme.primary || {
-    main: "#5A5BEB",
-    light: "#ACADF5",
-    dark: "#4F4FC3",
+const palette = {
+  primary: {
+    main: '#5A5BEB',
+    light: '#ACADF5',
+    dark: '#4F4FC3',
   },
-  secondary: brandingTheme.secondary || {
-    main: "#E0A225",
-    light: "#EFD192",
-    dark: "#BA8825",
+  secondary: {
+    main: '#E0A225',
+    light: '#EFD192',
+    dark: '#BA8825',
   },
-  error: brandingTheme.error || {
-    main: "#D21A4D",
-    light: "#E98CA6",
-    dark: "#5A5BEB",
+  error: {
+    main: '#D21A4D',
+    light: '#E98CA6',
+    dark: '#911A4D',
   },
-  success: brandingTheme.success || {
-    main: "#26A66B",
-    light: "#92D3B5",
-    dark: "#258B5D",
+  success: {
+    main: '#26A66B',
+    light: '#92D3B5',
+    dark: '#258B5D',
   },
-  warning: brandingTheme.warning || {
-    main: "#E0A225",
-    light: "#EFD192",
-    dark: "#BA8825",
+  warning: {
+    main: '#E0A225',
+    light: '#EFD192',
+    dark: '#BA8825',
   },
-  grey: brandingTheme.grey || {
-    300: "#EDF0F7",
-    600: "#797a7a",
-    700: "#606060",
-    800: "#353535",
+  grey: {
+    300: '#EDF0F7',
+    600: '#797a7a',
+    700: '#606060',
+    800: '#353535',
   },
-  text: brandingTheme.text || {
-    primary: "#211F23",
-    secondary: "#7C7D7E",
+  text: {
+    primary: '#211F23',
+    secondary: '#7C7D7E',
   },
-  background: brandingTheme.background || {
-    default: "#F8F9FC",
+  background: {
+    default: '#F8F9FC',
   },
 };
 
-const typography: ThemeOptions["typography"] = {
-  fontFamily: DMSans.style.fontFamily,
+const typography = {
+  fontFamily: 'DM Sans, sans-serif',
   h1: {
     fontSize: 85,
     fontWeight: 700,
@@ -82,12 +71,12 @@ const typography: ThemeOptions["typography"] = {
   subtitle1: {
     fontSize: 20,
     fontWeight: 500,
-    lineHeight: "110%",
+    lineHeight: '110%',
   },
   subtitle2: {
     fontSize: 18,
     fontWeight: 400,
-    lineHeight: "160%",
+    lineHeight: '160%',
   },
   body1: {
     fontSize: 16,
@@ -96,34 +85,25 @@ const typography: ThemeOptions["typography"] = {
   body2: {
     fontSize: 14,
     fontWeight: 400,
-    lineHeight: "160%",
+    lineHeight: '160%',
   },
   caption: {
     fontSize: 12,
     fontWeight: 400,
   },
   button: {
-    textTransform: "none",
+    textTransform: 'none' as 'none',
   },
 };
 
-const darkThemeOptions: ThemeOptions = {
-  palette: {
-    mode: "dark",
-    ...palette,
-  },
+const themeOptions: ThemeOptions = {
+  palette,
   typography,
 };
 
-const lightThemeOptions: ThemeOptions = {
-  palette: {
-    mode: "light",
-    ...palette,
-  },
-  typography,
+const theme = {
+  darkTheme: createTheme({ ...themeOptions, palette: { ...themeOptions.palette, mode: 'dark' } }),
+  lightTheme: createTheme({ ...themeOptions, palette: { ...themeOptions.palette, mode: 'light' } }),
 };
 
-export default {
-  darkTheme: createTheme(darkThemeOptions),
-  lightTheme: createTheme(lightThemeOptions),
-};
+export default theme;
