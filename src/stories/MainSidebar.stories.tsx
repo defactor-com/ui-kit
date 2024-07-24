@@ -83,7 +83,7 @@ Default.args = {
   iconsColor: "#000000",
   activeTextColor: "#000000",
   activeIconColor: "#E0A225",
-  notificationColor: theme.palette.notification.main,
+  notificationColor: "#D21A4D",
   notificationsCount: 1,
   hideOnBreakpoint: "sm",
   mainSidebarBgColor: theme.palette.primary.light,
