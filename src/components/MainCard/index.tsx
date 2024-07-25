@@ -1,7 +1,6 @@
-import React, { ReactNode } from 'react';
-import { Box, Typography, useTheme } from '@mui/material';
-import DocIcon from '../Icons/v2/docIcon';
-
+import React, { ReactNode } from "react";
+import { Box, Typography, useTheme } from "@mui/material";
+import DocIcon from "../Icons/v2/docIcon";
 
 export interface MainCardProps {
     title: string;
@@ -16,30 +15,40 @@ export const MainCard: React.FC<MainCardProps> = ({
     description,
     onSelect,
     icon = <DocIcon />,
-    backgroundColor = '#ffffff'
+    backgroundColor,
 }) => {
     const theme = useTheme();
 
     return (
         <Box
             sx={{
-                borderRadius: '16px',
-                background: backgroundColor || theme.palette.background.default,
+                borderRadius: "16px",
+                background: backgroundColor || theme.palette.background.paper,
                 padding: 2,
-                cursor: 'pointer',
-                maxWidth: '400px'
+                cursor: "pointer",
+                maxWidth: "400px",
             }}
             onClick={onSelect}
         >
-            <Box display="flex" flexDirection="column" justifyContent="space-between" height={154}>
-                <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+            <Box
+                display="flex"
+                flexDirection="column"
+                justifyContent="space-between"
+                height={154}
+            >
+                <Box
+                    display="flex"
+                    justifyContent="space-between"
+                    alignItems="center"
+                    mb={2}
+                >
                     {icon}
                 </Box>
                 <Box>
                     <Typography variant="body1" fontWeight={500}>
                         {title}
                     </Typography>
-                    <Typography variant="caption" sx={{ color: '#7c7c7e' }}>{/** Temporarily until the designer updates the palette */}
+                    <Typography variant="caption" color={theme.palette.text.secondary}>
                         {description}
                     </Typography>
                 </Box>
