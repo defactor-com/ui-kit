@@ -34,7 +34,6 @@ export const Default: StoryObj<CardWithHoverProps> = {
         description: "Description",
         onClickCopy: () => console.log('Card copied'),
         icon: 'Doc',
-        backgroundColor: '#ffffff',
         onClickPreview: () => console.log('Preview clicked'),
         onClickUse: () => console.log('Use Template clicked'),
     }

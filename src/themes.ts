@@ -13,9 +13,9 @@ const palette = {
     dark: '#BA8825',
   },
   error: {
-    main: '#D21A4D',
+    main: '#D21A4D', 
     light: '#E98CA6',
-    dark: '#911A4D',
+    dark: '#5A5BEB',
   },
   success: {
     main: '#26A66B',
@@ -29,16 +29,17 @@ const palette = {
   },
   grey: {
     300: '#EDF0F7',
-    600: '#797a7a',
+    600: '#7C7D7E',
     700: '#606060',
     800: '#353535',
   },
   text: {
-    primary: '#000000',
+    primary: '#211F23',
     secondary: '#7C7D7E',
   },
   background: {
-    default: '#ffffff',
+    default: '#F8F9FC',
+    paper: '#FFFFFF', 
   },
 };
 

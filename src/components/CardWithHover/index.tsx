@@ -18,7 +18,7 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
     description = "Description",
     onClickCopy,
     icon = <DocIcon />,
-    backgroundColor = "#ffffff",
+    backgroundColor,
     onClickPreview,
     onClickUse,
 }) => {
@@ -28,7 +28,7 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
         <Box
             sx={{
                 borderRadius: "16px",
-                backgroundColor: backgroundColor,
+                backgroundColor: backgroundColor || theme.palette.background.paper,
                 padding: 2,
                 cursor: "pointer",
                 maxWidth: "400px",
@@ -65,13 +65,13 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                     </IconButton>
                 </Box>
                 <Box>
-                    <Typography variant="body1" fontWeight={500} textTransform={"none"}>
+                    <Typography variant="body1" fontWeight={500} textTransform={"none"} color={theme.palette.text.primary}>
                         {title}
                     </Typography>
                     <Typography
                         variant="caption"
                         textTransform={"none"}
-                        color={"#7c7c7e"}
+                        color={theme.palette.text.secondary}
                     >
                         {description}
                     </Typography>
