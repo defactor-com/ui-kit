@@ -51,7 +51,7 @@ export const Dropzone: React.FC<DropzoneProps> = (props) => {
       <Box
         {...getRootProps()}
         sx={{
-          border: `2px dashed ${borderColor || theme.palette.grey[300]}`,
+          border: `2px dashed ${borderColor}`,
           textAlign: "center",
           cursor: "pointer",
           display: "flex",
@@ -59,34 +59,37 @@ export const Dropzone: React.FC<DropzoneProps> = (props) => {
           alignItems: "center",
           justifyContent: "center",
           p: 4,
-          color: textColor || theme.palette.text.secondary,
+          color: textColor,
         }}
       >
         <input {...getInputProps()} />
         <AddFilesIcon
           width={48}
           height={48}
-          color={iconColor || theme.palette.grey[500]}
+          color={iconColor}
         />
         <Typography
           variant="body2"
-          fontWeight="500"
-          color={textColor || theme.palette.text.secondary}
+          sx={{ fontWeight: 500, color: textColor }}
         >
           <Typography
             component="span"
             variant="body2"
-            fontWeight="500"
-            color={theme.palette.primary.main}
-            marginRight={0.5}
+            sx={{ fontWeight: 500, color: theme.palette.primary.main, mr: 0.5 }}
           >
             {uploadText}
           </Typography>
-          {dragText}
+          <Typography
+            component="span"
+            variant="body2"
+            sx={{ fontWeight: 500, color: theme.palette.text.primary }}
+          >
+            {dragText}
+          </Typography>
         </Typography>
         <Typography
           variant="caption"
-          color={textColor || theme.palette.text.secondary}
+          sx={{ color: textColor }}
         >
           {`${fileTypesText} ${fileSizeLimitText}`}
         </Typography>
