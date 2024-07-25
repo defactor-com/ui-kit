@@ -37,17 +37,17 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
         variant="text"
         sx={{
           width: "100%",
-          borderRight: isSelected ? `2px solid #E0A225` : "",
+          borderRight: isSelected ? `2px solid ${theme.palette.secondary.main}` : "",
           borderRadius: 0,
           padding: 2,
           paddingLeft: 4,
-          color: isSelected ? activeTextColor : navLinkTextColor,
-          fontSize: 14,
+          color: isSelected ? activeTextColor || theme.palette.primary.main : navLinkTextColor || theme.palette.text.primary,
+          fontSize: theme.typography.body2.fontSize,
           alignItems: "center",
           justifyContent: "flex-start",
-          fontWeight: isSelected ? 700 : 400,
+          fontWeight: isSelected ? theme.typography.fontWeightBold : theme.typography.fontWeightRegular,
         }}
-        startIcon={<Icon color={isSelected ? activeIconColor : iconsColor} />}
+        startIcon={<Icon color={isSelected ? activeIconColor || theme.palette.primary.main : iconsColor || theme.palette.text.secondary} />}
       >
         <Box
           component="span"
@@ -60,7 +60,7 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
         {path === "/notifications" && notificationsCount > 0 && (
           <Box
             sx={{
-              backgroundColor: notificationColor,
+              backgroundColor: notificationColor || theme.palette.error.main,
               width: "6px",
               height: "6px",
               borderRadius: "50%",
