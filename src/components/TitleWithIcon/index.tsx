@@ -24,7 +24,7 @@ export const TitleWithIcon: React.FC<TitleWithIconProps> = ({
             <Box sx={{ display: "flex", alignItems: "center", color: iconColor }}>
                 <IconComponent color={iconColor} />
                 <Typography
-                    variant="subtitle1"
+                    variant="body1"
                     fontWeight={700}
                     color={textColor}
                     sx={{ marginLeft: "8px" }}
