@@ -5,10 +5,9 @@ import {
     useTheme,
     List,
     ListItem,
-    ListItemText
+    ListItemText,
 } from "@mui/material";
 import EthIcon from "../Icons/v2/ethIcon";
-import { Scale } from "@mui/icons-material";
 
 export interface ChainCardProps {
     title: string;
@@ -56,13 +55,17 @@ export const ChainCard: React.FC<ChainCardProps> = ({
                 }}
             >
                 <Box paddingTop={3}>{customIcon}</Box>
-                <Typography variant="body2" fontWeight={700}>
+                <Typography
+                    variant="body2"
+                    fontWeight={700}
+                    color={theme.palette.text.primary}
+                >
                     {title}
                 </Typography>
                 <Typography
                     variant="body2"
+                    color={theme.palette.text.secondary}
                     sx={{
-                        color: "#6B7280",
                         maxWidth: "300px",
                     }}
                 >
@@ -74,12 +77,10 @@ export const ChainCard: React.FC<ChainCardProps> = ({
                     padding: 2,
                     margin: 1.5,
                     borderRadius: 3,
-                    backgroundColor: "#F8F9FC"
+                    backgroundColor: theme.palette.background.default,
                 }}
             >
-                <Typography
-                    sx={{ fontSize: "12px", fontWeight: 700 }}
-                >
+                <Typography variant="caption" fontWeight={700}>
                     MAIN BENEFITS
                 </Typography>
                 <List sx={{ paddingLeft: 3.5, margin: 0, direction: "row" }}>
@@ -87,30 +88,29 @@ export const ChainCard: React.FC<ChainCardProps> = ({
                         <ListItem
                             key={index}
                             sx={{
-                                color: "#6b7280",
+                                color: theme.palette.text.secondary,
                                 display: "list-item",
                                 listStyleType: "disc",
                                 margin: 0,
                                 padding: 0,
-                                '&::marker': {
+                                "&::marker": {
                                     fontSize: "small",
-                                    lineHeight: "2em"
+                                    lineHeight: "2em",
                                 },
                             }}
                         >
                             <ListItemText
                                 primaryTypographyProps={{
                                     fontSize: "14px",
-                                    color: "#6B7280",
-                                    fontWeight: 400
+                                    color: theme.palette.text.secondary,
+                                    fontWeight: 400,
                                 }}
                                 primary={benefit}
                             />
                         </ListItem>
                     ))}
                 </List>
-
             </Box>
-        </Box >
+        </Box>
     );
 };
