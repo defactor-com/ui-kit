@@ -38,7 +38,7 @@ const palette = {
     secondary: '#7C7D7E',
   },
   background: {
-    default: '#F8F9FC',
+    default: '#ffffff',
   },
 };
 
