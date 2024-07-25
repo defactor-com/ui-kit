@@ -1,5 +1,15 @@
 # @defactor/ui-kit
 
+## 0.4.0
+
+### Minor Changes
+
+- 3a9d04b: Updated Theme.
+
+### Patch Changes
+
+- a4665e7: Added css import.
+
 ## 0.3.3
 
 ### Patch Changes
