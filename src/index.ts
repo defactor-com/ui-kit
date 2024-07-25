@@ -1,3 +1,5 @@
+import "./scss/styles.scss";
+
 export * from './components/Pill';
 export * from './components/Point';
 export * from './components/Modal';
