@@ -79,13 +79,7 @@ Default.args = {
       icon: ContactsIcon,
     },
   ],
-  navLinkTextColor: theme.palette.text.primary,
-  iconsColor: "#000000",
-  activeTextColor: "#000000",
-  activeIconColor: "#E0A225",
-  notificationColor: theme.palette.notification.main,
   notificationsCount: 1,
   hideOnBreakpoint: "sm",
-  mainSidebarBgColor: theme.palette.primary.light,
   defaultPath: "/dashboard",
 };
