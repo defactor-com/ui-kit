@@ -26,6 +26,7 @@ Primary.args = {
   placeholder: 'Choose...',
   menuItems: AssetTypes,
   tooltip: 'Select your asset type',
+  required: true,
   onChange: (value: string) => console.log(`Selected value: ${value}`)
 };
 
