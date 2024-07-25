@@ -34,7 +34,7 @@ const palette = {
     800: '#353535',
   },
   text: {
-    primary: '#211F23',
+    primary: '#000000',
     secondary: '#7C7D7E',
   },
   background: {
