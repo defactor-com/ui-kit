@@ -31,7 +31,6 @@ Default.args = {
   value: "",
   tooltip: "Tooltip Text",
   suffix: "USDC",
-  suffixColor: "#808080", //Temporarily until the designer updates the palette
   disabled: false,
   whiteBg: false,
   required: true,
