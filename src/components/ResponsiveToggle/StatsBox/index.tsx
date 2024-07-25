@@ -1,15 +1,15 @@
-import { Box, Divider, Typography } from '@mui/material'
-import React from 'react'
+import { Box, Divider, Typography, useTheme } from '@mui/material';
+import React from 'react';
 
-import { CustomTooltip } from '../../CustomTooltip'
+import { CustomTooltip } from '../../CustomTooltip';
 
 export interface StatsBoxProps {
-    XsWidth?: string | number
-    MdWidth?: string | number
-    title: string
-    value: string | number
-    tooltipText: string
-    unit: string | null
+    XsWidth?: string | number;
+    MdWidth?: string | number;
+    title: string;
+    value: string | number;
+    tooltipText: string;
+    unit: string | null;
 }
 
 export const StatsBox: React.FC<StatsBoxProps> = ({
@@ -20,6 +20,8 @@ export const StatsBox: React.FC<StatsBoxProps> = ({
     tooltipText,
     unit
 }) => {
+    const theme = useTheme();
+
     return (
         <Box
             sx={{
@@ -51,11 +53,11 @@ export const StatsBox: React.FC<StatsBoxProps> = ({
                 <Typography variant='subtitle1' fontWeight={700} sx={{ mr: 0.5 }}>
                     {value}
                 </Typography>
-                <Typography fontSize={14} fontWeight={700} color='#A8B0B6'>
+                <Typography variant='body2' fontWeight={700} color={theme.palette.text.secondary}>
                     {unit}
                 </Typography>
             </Box>
             <Divider sx={{ mt: 2.5 }} />
         </Box>
-    )
+    );
 }
