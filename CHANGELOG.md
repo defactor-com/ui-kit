@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.4.1
+
+### Patch Changes
+
+- 2b35c0d: Added Theme Vars.
+
 ## 0.4.0
 
 ### Minor Changes
