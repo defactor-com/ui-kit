@@ -30,8 +30,5 @@ Default.args = {
   dragText: "or drag and drop",
   fileTypesText: "PDF, DOC, JPG up to ",
   fileSizeLimitText: "10MB",
-  borderColor: "#EDF0F7", // Temporarily until the designer updates the palette
-  textColor: "#000000", // Temporarily until the designer updates the palette
-  iconColor: "#9e9e9e", // Temporarily until the designer updates the palette
-  label: "Label", // Temporarily until the designer updates the palette
+  label: "Label"
 };

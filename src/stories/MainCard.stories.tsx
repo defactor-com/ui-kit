@@ -24,8 +24,7 @@ export const Default: StoryObj<MainCardProps> = {
         title: "Sample Title",
         description: "Sample Description",
         onSelect: () => console.log('Card clicked'),
-        icon: <DocIcon />,
-        backgroundColor: '#ffffff'
+        icon: <DocIcon />
     }
 };
 

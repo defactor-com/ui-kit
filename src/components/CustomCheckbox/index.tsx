@@ -61,7 +61,7 @@ export const CustomCheckBox: React.FC<CustomCheckBoxProps> = ({
                 >
                     <CheckIcon
                         sx={{
-                            color: theme.palette.common.white,
+                            color: theme.palette.background.paper,
                             position: "absolute",
                             top: "50%",
                             left: "50%",

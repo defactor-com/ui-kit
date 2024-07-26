@@ -6,10 +6,7 @@ import MyWalletIcon from "../components/Icons/v2/myWalletIcon";
 import MyTemplateIcon from "../components/Icons/v2/myTemplateIcon";
 import NotificationsIcon from "../components/Icons/v2/notificationsIcon";
 import ContactsIcon from "../components/Icons/v2/contactsIcon";
-import themes from "../themes";
 import { PathProvider } from "../components/MainSidebar/PathProvider";
-
-const theme = themes.lightTheme;
 
 export default {
   title: "V2/MainSidebar",

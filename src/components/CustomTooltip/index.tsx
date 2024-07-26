@@ -9,10 +9,10 @@ export interface CustomTooltipProps {
 
 export const CustomTooltip: React.FC<CustomTooltipProps> = ({
   tooltipText = "",
-  iconColor = "#A8B0B6",
+  iconColor,
 }) => {
   const theme = useTheme();
-  const defaultColor = iconColor || "#A8B0B6"; //Temporarily until the designer updates the palette
+  const defaultColor = iconColor || theme.palette.grey[500];
 
   if (tooltipText === "") {
     return <></>;

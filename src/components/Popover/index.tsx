@@ -23,42 +23,44 @@ export interface PopoverProps {
     items: ListItemProps[];
     anchorEl: HTMLElement | null;
     onClose: () => void;
-    // TODO - Modify Popover
 }
 
 export const PopoverWithArrow = (
     popoverProps: Omit<MuiPopoverProps, "anchorOrigin" | "transformOrigin"> & { children: React.ReactNode },
-) => (
-    <MuiPopover
-        anchorOrigin={{ horizontal: 40, vertical: "bottom" }}
-        transformOrigin={{ horizontal: "right", vertical: -8 }}
-        slotProps={{
-            paper: {
-                sx: {
-                    overflow: "visible",
-                    "&:before": {
-                        content: '""',
-                        display: "block",
-                        position: "absolute",
-                        top: 0,
-                        right: 20,
-                        width: 10,
-                        height: 10,
-                        backgroundColor: "inherit",
-                        transform: "translateY(-50%) rotate(45deg)",
+) => {
+    const theme = useTheme();
+    return (
+        <MuiPopover
+            anchorOrigin={{ horizontal: 40, vertical: "bottom" }}
+            transformOrigin={{ horizontal: "right", vertical: -8 }}
+            slotProps={{
+                paper: {
+                    sx: {
+                        overflow: "visible",
+                        "&:before": {
+                            content: '""',
+                            display: "block",
+                            position: "absolute",
+                            top: 0,
+                            right: 20,
+                            width: 10,
+                            height: 10,
+                            backgroundColor: "inherit",
+                            transform: "translateY(-50%) rotate(45deg)",
+                        },
                     },
                 },
-            },
-        }}
-        {...popoverProps}
-    />
-);
+            }}
+            {...popoverProps}
+        />
+    );
+};
 
 const defaultPopoverItems: ListItemProps[] = [
     { text: 'Edit', icon: <EditIcon /> },
     { text: 'Duplicate', icon: <ContentCopyIcon /> },
     { text: 'Delete', icon: <DeleteIcon /> }
-]
+];
 
 export const Popover: React.FC<PopoverProps> = ({
     items = defaultPopoverItems,
@@ -68,38 +70,36 @@ export const Popover: React.FC<PopoverProps> = ({
     const theme = useTheme();
 
     return (
-        <>
-            <PopoverWithArrow
-                open={Boolean(anchorEl)}
-                anchorEl={anchorEl}
-                onClose={onClose}
-                sx={{
-                    boxShadow: "2px 2px 12px 0px #D6DAE7",
-                    ".MuiPaper-root": {
-                        borderRadius: 4,
-                    },
-                }}
-            >
-                <List>
-                    {items.map((item, index) => (
-                        <ListItem key={index} disablePadding>
-                            <ListItemButton
-                                sx={{
-                                    "&:hover": {
-                                        backgroundColor: alpha(theme.palette.primary.main, 0.1),
-                                        "& .MuiListItemIcon-root": {
-                                            color: theme.palette.primary.main,
-                                        },
+        <PopoverWithArrow
+            open={Boolean(anchorEl)}
+            anchorEl={anchorEl}
+            onClose={onClose}
+            sx={{
+                boxShadow: `2px 2px 12px 0px ${alpha(theme.palette.grey[500], 0.3)}`,
+                ".MuiPaper-root": {
+                    borderRadius: 4,
+                },
+            }}
+        >
+            <List>
+                {items.map((item, index) => (
+                    <ListItem key={index} disablePadding>
+                        <ListItemButton
+                            sx={{
+                                "&:hover": {
+                                    backgroundColor: alpha(theme.palette.primary.main, 0.1),
+                                    "& .MuiListItemIcon-root": {
+                                        color: theme.palette.primary.main,
                                     },
-                                }}
-                            >
-                                <ListItemIcon>{item.icon}</ListItemIcon>
-                                <ListItemText primary={item.text} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
-            </PopoverWithArrow>
-        </>
+                                },
+                            }}
+                        >
+                            <ListItemIcon sx={{ color: theme.palette.text.secondary }}>{item.icon}</ListItemIcon>
+                            <ListItemText primary={item.text} sx={{ color: theme.palette.text.primary }} />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
+            </List>
+        </PopoverWithArrow>
     );
 };

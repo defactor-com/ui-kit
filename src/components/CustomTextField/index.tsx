@@ -30,7 +30,7 @@ export const CustomTextField: React.FC<CustomTextFieldProps> = ({
   value = "",
   tooltip = "",
   suffix = "",
-  suffixColor = "#808080", //Temporarily until the designer updates the palette
+  suffixColor,
   onChange,
   disabled = false,
   whiteBg = false,
@@ -64,7 +64,7 @@ export const CustomTextField: React.FC<CustomTextFieldProps> = ({
         {required && (
           <Typography
             variant="caption"
-            sx={{ color: "red", fontWeight: "700", mx: 0.5 }}
+            sx={{ color: theme.palette.error.main, fontWeight: "700", mx: 0.5 }}
           >
             *
           </Typography>
@@ -75,9 +75,9 @@ export const CustomTextField: React.FC<CustomTextFieldProps> = ({
         endAdornment={
           <InputAdornment position="end">
             <Typography
-              sx={{ color: suffixColor, fontSize: "12px", fontWeight: "400", textTransform: "uppercase" }}
+              variant="caption"
+              sx={{ color: suffixColor || theme.palette.text.secondary, textTransform: "uppercase" }}
             >
-              {/** Temporarily until the designer updates the palette */}
               {suffix}
             </Typography>
           </InputAdornment>
@@ -89,7 +89,7 @@ export const CustomTextField: React.FC<CustomTextFieldProps> = ({
         }}
         onChange={onChange}
         inputProps={{
-          style: { fontSize: "14px", color: "#838A96" }, //Temporarily until the designer updates the palette
+          style: { color: theme.palette.text.secondary },
         }}
       />
     </FormControl>
