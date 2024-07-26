@@ -1,0 +1,7 @@
+$breakpoint-mobile: 600px;
+
+.container-wallet-mobile-styles {
+  @media (max-width: $breakpoint-mobile) {
+    padding: 16px;
+  }
+}

@@ -2,7 +2,6 @@ import React from "react";
 import { Story } from "@storybook/react";
 
 import { MenuOption } from "../components/MenuOption";
-import adminIcon from "../../public/assets/admin-icon.svg";
 import { Sidebar } from "../components/Sidebar";
 import { ISidebar } from "../components/Sidebar/SidebarTypes";
 import lendingIcon from "../../public/assets/lending.svg";
@@ -33,11 +32,6 @@ const sideBarItems = [
     icon: borrowingIcon,
     isSelected: false,
     text: "Borrowing",
-  },
-  {
-    icon: adminIcon,
-    text: "Admin Tools",
-    isSelected: false,
   },
 ];
 
