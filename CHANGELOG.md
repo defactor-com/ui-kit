@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.4.2
+
+### Patch Changes
+
+- 7b862b0: Next to 14.2.4, Removed config
+
 ## 0.4.1
 
 ### Patch Changes
