@@ -25,8 +25,7 @@ export const MainCard: React.FC<MainCardProps> = ({
                 borderRadius: "16px",
                 background: backgroundColor || theme.palette.background.paper,
                 padding: 2,
-                cursor: "pointer",
-                maxWidth: "400px",
+                cursor: "pointer"
             }}
             onClick={onSelect}
         >

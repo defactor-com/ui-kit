@@ -1,29 +1,37 @@
-import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
-import { MainCard } from '../components/MainCard';
+import { Meta, Story, Props } from "@storybook/addon-docs/blocks";
+import { MainCard } from "../components/MainCard";
 
 <Meta title="V2/Cards/MainCard/Documentation" component={MainCard} />
 
 # MainCard
 
-The MainCard component...
-
-## Default Usage 
+## Default Usage
 
 ```jsx
-
 const onCardSelect = () => {
-    console.log('Perform additional actions on card select.')
-  }
-
+  console.log("Perform additional actions on card select.");
+}
 ```
 
 ```jsx
-
-   <MainCard
-        title='Test Card'
-        description='This is a test card.'
-        onSelect={onCardSelect}
-      />
-
+<MainCard
+  title="Test Card"
+  description="This is a test card."
+  onSelect={onCardSelect}
+/>
 ```
 
+## Create New Template
+
+```jsx
+import { MainCard, PlusIcon } from "@defactor/ui-kit";
+```
+```jsx
+<MainCard
+  backgroundColor="#e8e9fa"
+  description="Short Description"
+  icon={<PlusIcon />}
+  onSelect={() => setOpen(true)}
+  title="Create New Template"
+/>
+```

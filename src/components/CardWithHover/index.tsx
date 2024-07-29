@@ -31,7 +31,6 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                 backgroundColor: backgroundColor || theme.palette.background.paper,
                 padding: 2,
                 cursor: "pointer",
-                maxWidth: "400px",
                 "&:hover .hover-it": {
                     display: "flex",
                 },
