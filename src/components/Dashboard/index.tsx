@@ -119,7 +119,12 @@ export const Dashboard = ({
       <div className="dashboard-container">
         <div className="graphic-container">
           <div className="graphic-container-internal">
-            <div>
+            <Box
+              justifyContent="space-between"
+              sx={{
+                display: { xl: multichainSelector ? "block" : "flex" },
+              }}
+            >
               <Box
                 mb={2}
                 sx={{
@@ -129,8 +134,17 @@ export const Dashboard = ({
               >
                 {multichainSelector}
               </Box>
-              <div className="dashboard-title-styles">
-                <Box>
+              <Box
+                className="dashboard-title-styles"
+                sx={{
+                  width: { xl: multichainSelector ? "auto" : "30%" },
+                }}
+              >
+                <Box
+                  sx={{
+                    marginTop: { xl: multichainSelector ? "0" : 1 },
+                  }}
+                >
                   {titleGraphic && (
                     <div className="graphic-header">
                       {currencyIcon && typeof currencyIcon === "string" ? (
@@ -166,9 +180,13 @@ export const Dashboard = ({
                 <Box mb={2} sx={{ display: { xs: "none", sm: "block" } }}>
                   {multichainSelector}
                 </Box>
-              </div>
+              </Box>
               {bottomLabel && bottomContainerItems.length > 0 && (
-                <>
+                <Box
+                  sx={{
+                    width: { xl: multichainSelector ? "auto" : "70%" },
+                  }}
+                >
                   <HeaderContainer
                     bottomContainerItems={bottomContainerItems}
                     bottomLabel={bottomLabel}
@@ -176,9 +194,9 @@ export const Dashboard = ({
                     icon={bottomIcon}
                     colors={colors}
                   />
-                </>
+                </Box>
               )}
-            </div>
+            </Box>
             {content}
           </div>
         </div>

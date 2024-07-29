@@ -177,10 +177,10 @@ const Template: Story<IDashboard> = (args) => {
       {...args}
       content={
         <ChartContainer
+          tooltip={exampleTooltip}
           optionalStyles={additionalStyles}
           chartSubtitle={"Pool Utilization"}
           chartDescription={"Optional Description"}
-          tooltip={exampleTooltip}
           content={
             <LineChart
               emptyDescription="Data will be listed here when available."
