@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.4.3
+
+### Patch Changes
+
+- e1e32e0: Removed Max Width from Cards
+
 ## 0.4.2
 
 ### Patch Changes
