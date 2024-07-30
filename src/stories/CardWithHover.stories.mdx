@@ -1,5 +1,6 @@
 import { Meta, Story, Props } from "@storybook/addon-docs/blocks";
 import { CardWithHover } from "../components/CardWithHover";
+import DocIcon from '../components/Icons/v2/docIcon';
 
 <Meta title="V2/Cards/CardWithHover/Documentation" component={CardWithHover} />
 
@@ -43,21 +44,9 @@ const Example: React.FC = () => {
       onClickCopy={onClickCopy}
       onClickPreview={onClickPreview}
       onClickUse={onClickUse}
+      icon={<DocIcon />} 
     />
   );
 };
 
 export default Example;
-```
-
-### Example Assets
-
-```jsx
- <CardWithHover
-              template={myTemplate}
-              isPublished={true}
-              onClickCopy={onClickCopy}
-              onClickPreview={() => handlePreviewClick(myTemplate)}
-              onClickUse={() => handleUseClick(myTemplate)}
-            />
-```
