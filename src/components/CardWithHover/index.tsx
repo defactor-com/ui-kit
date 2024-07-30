@@ -34,7 +34,7 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                 "&:hover .hover-it": {
                     display: "flex",
                 },
-                "&:hover": { boxShadow: theme.shadows[3] },
+                "&:hover": { boxShadow: "none" }, // Set boxShadow to none on hover
             }}
         >
             <Box
