@@ -2,33 +2,53 @@ import React from "react";
 import { Box, Typography, useTheme, IconButton, Button } from "@mui/material";
 import DocIcon from "../Icons/v2/docIcon";
 import CopyTemplateIcon from "../Icons/v2/copyTemplateIcon";
+import { Popover } from "../Popover";
+
+export interface ITemplate {
+    id: string;
+    template_name: string;
+    description: string;
+}
+
+export interface ICustomPopoverItem {
+    text: string;
+    icon: React.ReactNode;
+    action: (args: any) => void;
+}
 
 export interface CardWithHoverProps {
-    title?: string;
-    description?: string;
+    template: ITemplate;
+    isPublished?: boolean;
     onClickCopy?: () => void;
-    icon?: React.ReactNode;
-    backgroundColor?: string;
     onClickPreview?: () => void;
     onClickUse?: () => void;
+    popoverItems?: ICustomPopoverItem[];
 }
 
 export const CardWithHover: React.FC<CardWithHoverProps> = ({
-    title = "Title",
-    description = "Description",
+    template,
+    isPublished,
     onClickCopy,
-    icon = <DocIcon />,
-    backgroundColor,
     onClickPreview,
     onClickUse,
+    popoverItems = [],
 }) => {
     const theme = useTheme();
+    const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
+
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     return (
         <Box
             sx={{
                 borderRadius: "16px",
-                backgroundColor: backgroundColor || theme.palette.background.paper,
+                backgroundColor: theme.palette.background.paper,
                 padding: 2,
                 cursor: "pointer",
                 "&:hover .hover-it": {
@@ -49,30 +69,38 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                     alignItems="center"
                     mb={2}
                 >
-                    {icon}
+                    <DocIcon />
                     <IconButton
                         className="hover-it"
                         sx={{
+                            display: anchorEl ? 'block' : 'none',
                             p: 0,
                             width: "32px",
                             height: "32px",
                             borderRadius: "50%",
                         }}
-                        onClick={onClickCopy}
+                        onClick={isPublished ? handleClick : onClickCopy}
                     >
-                        <CopyTemplateIcon />
+                        {isPublished ? <Popover
+                            anchorEl={anchorEl}
+                            onClose={handleClose}
+                            items={popoverItems.map(item => ({
+                                text: item.text,
+                                icon: item.icon
+                            }))}
+                        /> : <CopyTemplateIcon />}
                     </IconButton>
                 </Box>
                 <Box>
                     <Typography variant="body1" fontWeight={500} textTransform={"none"} color={theme.palette.text.primary}>
-                        {title}
+                        {template.template_name}
                     </Typography>
                     <Typography
                         variant="caption"
                         textTransform={"none"}
                         color={theme.palette.text.secondary}
                     >
-                        {description}
+                        {template.description}
                     </Typography>
                 </Box>
                 <Box

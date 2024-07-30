@@ -1,13 +1,22 @@
 import { Meta, Story, Props } from "@storybook/addon-docs/blocks";
 import { CardWithHover } from "../components/CardWithHover";
+import DocIcon from '../components/Icons/v2/docIcon';
+import PlusIcon from '../components/Icons/v2/plusIcon';
 
 <Meta title="V2/Cards/CardWithHover/Documentation" component={CardWithHover} />
 
 ## CardWithHover
 
-## Example
+`CardWithHover` is a component used to display a card with various actions such as copy, preview, and use.
+
+### Props
+
+<Props of={CardWithHover} />
+
+### Example
 
 ```jsx
+import React from "react";
 import { CardWithHover, DocIcon } from "@defactor/ui-kit";
 
 const Example: React.FC = () => {
@@ -22,20 +31,27 @@ const Example: React.FC = () => {
   const onClickUse = () => {
     console.log("Use Template.");
   };
+
+  const template = {
+    id: '1',
+    template_name: 'Test Card',
+    description: 'This is a test card.'
+  };
+
   return (
-    <>
-      <CardWithHover
-        title="Test Card"
-        description="This is a test card."
-        icon={<DocIcon />}
-        onClickCopy={onClickCopy}
-        onClickPreview={onClickPreview}
-        onClickUse={onClickUse}
-        backgroundColor="#ffffff"
-      />
-    </>
+    <CardWithHover
+      template={template}
+      isPublished={true}
+      onClickCopy={onClickCopy}
+      onClickPreview={onClickPreview}
+      onClickUse={onClickUse}
+      popoverItems={[
+        { text: 'Edit', icon: <DocIcon />, action: () => console.log('Edit clicked') },
+        { text: 'Duplicate', icon: <PlusIcon />, action: () => console.log('Duplicate clicked') },
+        { text: 'Delete', icon: <DocIcon />, action: () => console.log('Delete clicked') }
+      ]}
+    />
   );
 };
 
 export default Example;
-```
