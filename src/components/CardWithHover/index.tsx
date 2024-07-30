@@ -15,6 +15,7 @@ export interface CardWithHoverProps {
     onClickCopy?: () => void;
     onClickPreview?: () => void;
     onClickUse?: () => void;
+    icon?: React.ReactElement;
 }
 
 export const CardWithHover: React.FC<CardWithHoverProps> = ({
@@ -23,6 +24,7 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
     onClickCopy,
     onClickPreview,
     onClickUse,
+    icon = <DocIcon />,
 }) => {
     const theme = useTheme();
 
@@ -51,7 +53,7 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                     alignItems="center"
                     mb={2}
                 >
-                    <DocIcon />
+                    {icon}
                     <IconButton
                         className="hover-it"
                         sx={{
