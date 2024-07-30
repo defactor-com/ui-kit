@@ -2,7 +2,6 @@ import React from 'react';
 import { Meta, Story } from "@storybook/react";
 import { CardWithHover, CardWithHoverProps } from "../components/CardWithHover";
 import DocIcon from '../components/Icons/v2/docIcon';
-import PlusIcon from '../components/Icons/v2/plusIcon';
 
 export default {
     title: 'V2/Cards/CardWithHover',
@@ -19,7 +18,6 @@ export default {
         onClickCopy: { action: 'copied', description: 'Copy handler' },
         onClickPreview: { action: 'previewed', description: 'Preview button click handler' },
         onClickUse: { action: 'used', description: 'Use button click handler' },
-        popoverItems: { control: 'object', description: 'Items for the popover menu' }
     },
     parameters: {
         layout: 'padded'
@@ -39,9 +37,4 @@ Default.args = {
     onClickCopy: () => console.log('Card copied'),
     onClickPreview: () => console.log('Preview clicked'),
     onClickUse: () => console.log('Use Template clicked'),
-    popoverItems: [
-        { text: 'Edit', icon: <DocIcon />, action: () => console.log('Edit clicked') },
-        { text: 'Duplicate', icon: <PlusIcon />, action: () => console.log('Duplicate clicked') },
-        { text: 'Delete', icon: <DocIcon />, action: () => console.log('Delete clicked') }
-    ]
 };

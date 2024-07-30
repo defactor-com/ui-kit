@@ -1,7 +1,5 @@
 import { Meta, Story, Props } from "@storybook/addon-docs/blocks";
 import { CardWithHover } from "../components/CardWithHover";
-import DocIcon from '../components/Icons/v2/docIcon';
-import PlusIcon from '../components/Icons/v2/plusIcon';
 
 <Meta title="V2/Cards/CardWithHover/Documentation" component={CardWithHover} />
 
@@ -45,13 +43,21 @@ const Example: React.FC = () => {
       onClickCopy={onClickCopy}
       onClickPreview={onClickPreview}
       onClickUse={onClickUse}
-      popoverItems={[
-        { text: 'Edit', icon: <DocIcon />, action: () => console.log('Edit clicked') },
-        { text: 'Duplicate', icon: <PlusIcon />, action: () => console.log('Duplicate clicked') },
-        { text: 'Delete', icon: <DocIcon />, action: () => console.log('Delete clicked') }
-      ]}
     />
   );
 };
 
 export default Example;
+```
+
+### Example Assets
+
+```jsx
+ <CardWithHover
+              template={myTemplate}
+              isPublished={true}
+              onClickCopy={onClickCopy}
+              onClickPreview={() => handlePreviewClick(myTemplate)}
+              onClickUse={() => handleUseClick(myTemplate)}
+            />
+```

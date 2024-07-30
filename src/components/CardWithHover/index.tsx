@@ -2,18 +2,11 @@ import React from "react";
 import { Box, Typography, useTheme, IconButton, Button } from "@mui/material";
 import DocIcon from "../Icons/v2/docIcon";
 import CopyTemplateIcon from "../Icons/v2/copyTemplateIcon";
-import { Popover } from "../Popover";
 
 export interface ITemplate {
     id: string;
     template_name: string;
     description: string;
-}
-
-export interface ICustomPopoverItem {
-    text: string;
-    icon: React.ReactNode;
-    action: (args: any) => void;
 }
 
 export interface CardWithHoverProps {
@@ -22,7 +15,6 @@ export interface CardWithHoverProps {
     onClickCopy?: () => void;
     onClickPreview?: () => void;
     onClickUse?: () => void;
-    popoverItems?: ICustomPopoverItem[];
 }
 
 export const CardWithHover: React.FC<CardWithHoverProps> = ({
@@ -31,18 +23,8 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
     onClickCopy,
     onClickPreview,
     onClickUse,
-    popoverItems = [],
 }) => {
     const theme = useTheme();
-    const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
-
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
 
     return (
         <Box
@@ -73,22 +55,15 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                     <IconButton
                         className="hover-it"
                         sx={{
-                            display: anchorEl ? 'block' : 'none',
+                            display: 'none',
                             p: 0,
                             width: "32px",
                             height: "32px",
                             borderRadius: "50%",
                         }}
-                        onClick={isPublished ? handleClick : onClickCopy}
+                        onClick={onClickCopy}
                     >
-                        {isPublished ? <Popover
-                            anchorEl={anchorEl}
-                            onClose={handleClose}
-                            items={popoverItems.map(item => ({
-                                text: item.text,
-                                icon: item.icon
-                            }))}
-                        /> : <CopyTemplateIcon />}
+                        <CopyTemplateIcon />
                     </IconButton>
                 </Box>
                 <Box>
