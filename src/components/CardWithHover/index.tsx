@@ -16,6 +16,7 @@ export interface CardWithHoverProps {
     onClickPreview?: () => void;
     onClickUse?: () => void;
     icon?: React.ReactElement;
+    backgroundColor?: string;
 }
 
 export const CardWithHover: React.FC<CardWithHoverProps> = ({
@@ -25,6 +26,7 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
     onClickPreview,
     onClickUse,
     icon = <DocIcon />,
+    backgroundColor
 }) => {
     const theme = useTheme();
 
@@ -32,7 +34,7 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
         <Box
             sx={{
                 borderRadius: "16px",
-                backgroundColor: theme.palette.background.paper,
+                backgroundColor: backgroundColor || theme.palette.background.paper,
                 padding: 2,
                 cursor: "pointer",
                 "&:hover .hover-it": {

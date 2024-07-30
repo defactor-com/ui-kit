@@ -13,6 +13,7 @@ export default {
         onClickPreview: { action: 'previewed', description: 'Preview button click handler' },
         onClickUse: { action: 'used', description: 'Use button click handler' },
         icon: { description: 'Icon component to be displayed' },
+        backgroundColor: { control: 'color', description: 'Background color of the card' },
     },
     parameters: {
         layout: 'padded'
