@@ -33,7 +33,7 @@ export const MainCard: React.FC<MainCardProps> = ({
                 display="flex"
                 flexDirection="column"
                 justifyContent="space-between"
-                height={154}
+                height={170}
             >
                 <Box
                     display="flex"
