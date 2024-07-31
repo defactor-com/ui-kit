@@ -28,7 +28,7 @@ export const MultichainSelector = ({
     sx={{
       maxWidth: 240,
       fontFamily: fontFamily,
-      width: 87 * networksList.length,
+      width: (networksList.length === 1 ? 160 : 87) * networksList.length,
     }}
   >
     <Select
@@ -63,13 +63,13 @@ export const MultichainSelector = ({
             maxWidth: 240,
             fontFamily: fontFamily,
             maxHeight: 48 * 4.5 + 8,
-            width: 86 * networksList.length,
+            width: (networksList.length === 1 ? 160 : 87) * networksList.length,
           },
         },
       }}
     >
       {networksList.map((chain: NetworksDataType) => (
-        <MenuItem>
+        <MenuItem sx={{ padding: 0 }}>
           <Box
             display="flex"
             alignItems="center"
