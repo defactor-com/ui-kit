@@ -85,9 +85,7 @@ export const Popover: React.FC<PopoverProps> = ({
             sx={{
                 boxShadow: `2px 2px 12px 0px ${alpha(theme.palette.grey[500], 0.3)}`,
                 ".MuiPaper-root": {
-                    borderRadius: 4,
-                    //  left: 'auto !important',
-                    //  right: '22px !important'
+                    borderRadius: 4
                 },
             }}
         >
