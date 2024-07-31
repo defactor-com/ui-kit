@@ -22,7 +22,14 @@ export interface CardWithHoverProps {
     onClickUse?: () => void;
     icon?: React.ReactElement;
     backgroundColor?: string;
+    popoverItems?: ListItemProps[];
 }
+
+const defaultPopoverItems: ListItemProps[] = [
+    { text: "Edit", icon: <EditIcon /> },
+    { text: "Duplicate", icon: <ContentCopyIcon /> },
+    { text: "Delete", icon: <DeleteIcon /> },
+];
 
 export const CardWithHover: React.FC<CardWithHoverProps> = ({
     template,
@@ -32,17 +39,12 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
     onClickUse,
     icon = <DocIcon />,
     backgroundColor,
+    popoverItems = defaultPopoverItems
 }) => {
     const theme = useTheme();
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
     const [hoverActive, setHoverActive] = useState(false);
     const iconRef = useRef<HTMLDivElement>(null);
-
-    const popoverItems: ListItemProps[] = [
-        { text: "Edit", icon: <EditIcon /> },
-        { text: "Duplicate", icon: <ContentCopyIcon /> },
-        { text: "Delete", icon: <DeleteIcon /> },
-    ];
 
     const handleOpen = () => {
         setAnchorEl(iconRef.current);
@@ -84,7 +86,7 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                 >
                     {icon}
                     <IconButton
-                        className={`hover-it ${hoverActive ? "show" : ""}`} // Conditional class application
+                        className={`hover-it ${hoverActive ? "show" : ""}`}
                         sx={{
                             display: "none",
                             p: 0,
@@ -152,7 +154,7 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                     </Button>
                 </Box>
             </Box>
-            {isPublished && popoverItems && (
+            {isPublished && (
                 <Popover
                     anchorEl={anchorEl}
                     onClose={handleClose}
