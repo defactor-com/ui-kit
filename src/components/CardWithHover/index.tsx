@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Typography, useTheme, IconButton, Button } from "@mui/material";
 import DocIcon from "../Icons/v2/docIcon";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import CopyTemplateIcon from "../Icons/v2/copyTemplateIcon";
 
 export interface ITemplate {
@@ -15,6 +16,7 @@ export interface CardWithHoverProps {
     onClickCopy?: () => void;
     onClickPreview?: () => void;
     onClickUse?: () => void;
+    handlePopClick?: () => void;
     icon?: React.ReactElement;
     backgroundColor?: string;
 }
@@ -25,8 +27,9 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
     onClickCopy,
     onClickPreview,
     onClickUse,
+    handlePopClick,
     icon = <DocIcon />,
-    backgroundColor
+    backgroundColor,
 }) => {
     const theme = useTheme();
 
@@ -59,19 +62,24 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                     <IconButton
                         className="hover-it"
                         sx={{
-                            display: 'none',
+                            display: "none",
                             p: 0,
                             width: "32px",
                             height: "32px",
                             borderRadius: "50%",
                         }}
-                        onClick={onClickCopy}
+                        onClick={isPublished ? handlePopClick : onClickCopy}
                     >
-                        <CopyTemplateIcon />
+                        {isPublished ? <MoreHorizIcon /> : <CopyTemplateIcon />}
                     </IconButton>
                 </Box>
                 <Box>
-                    <Typography variant="body1" fontWeight={500} textTransform={"none"} color={theme.palette.text.primary}>
+                    <Typography
+                        variant="body1"
+                        fontWeight={500}
+                        textTransform={"none"}
+                        color={theme.palette.text.primary}
+                    >
                         {template.template_name}
                     </Typography>
                     <Typography

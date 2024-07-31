@@ -20,10 +20,25 @@ export default {
     },
 } as Meta<CardWithHoverProps>;
 
-export const Default: StoryObj<CardWithHoverProps> = {
+export const UnPublished: StoryObj<CardWithHoverProps> = {
     args: {
         template: {
             id: '1',
+            template_name: "Sample Title",
+            description: "Description",
+        },
+        isPublished: false,
+        onClickCopy: () => console.log('Card copied'),
+        onClickPreview: () => console.log('Preview clicked'),
+        onClickUse: () => console.log('Use Template clicked'),
+        icon: <DocIcon />
+    }
+};
+
+export const Published: StoryObj<CardWithHoverProps> = {
+    args: {
+        template: {
+            id: '2',
             template_name: "Sample Title",
             description: "Description",
         },
