@@ -17,6 +17,7 @@ import React from "react";
 export interface ListItemProps {
     text: string;
     icon: React.ReactNode;
+    action?: () => void;
 }
 
 export interface PopoverProps {
@@ -28,7 +29,6 @@ export interface PopoverProps {
 export const PopoverWithArrow = (
     popoverProps: Omit<MuiPopoverProps, "anchorOrigin" | "transformOrigin"> & { children: React.ReactNode },
 ) => {
-    const theme = useTheme();
     return (
         <MuiPopover
             anchorOrigin={{ horizontal: 40, vertical: "bottom" }}
@@ -56,7 +56,7 @@ export const PopoverWithArrow = (
     );
 };
 
-const defaultPopoverItems: ListItemProps[] = [
+export const defaultPopoverItems: ListItemProps[] = [
     { text: 'Edit', icon: <EditIcon /> },
     { text: 'Duplicate', icon: <ContentCopyIcon /> },
     { text: 'Delete', icon: <DeleteIcon /> }
@@ -78,6 +78,9 @@ export const Popover: React.FC<PopoverProps> = ({
                 boxShadow: `2px 2px 12px 0px ${alpha(theme.palette.grey[500], 0.3)}`,
                 ".MuiPaper-root": {
                     borderRadius: 4,
+                    left: 'auto !important',
+                    right: '32px !important',
+                    top: '64px !important'
                 },
             }}
         >
@@ -93,6 +96,7 @@ export const Popover: React.FC<PopoverProps> = ({
                                     },
                                 },
                             }}
+                            onClick={item.action}
                         >
                             <ListItemIcon sx={{ color: theme.palette.text.secondary }}>{item.icon}</ListItemIcon>
                             <ListItemText primary={item.text} sx={{ color: theme.palette.text.primary }} />

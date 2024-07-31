@@ -44,8 +44,8 @@ const PopoverTemplate: React.FC<PopoverProps> = (args) => {
             <Box
                 ref={iconRef}
                 onClick={handleOpen}
-                width={150}
                 textAlign={"right"}
+                mr={"24px"}
                 sx={{ cursor: "pointer" }}
             >
                 <Box

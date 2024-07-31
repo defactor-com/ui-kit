@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Box, Typography, useTheme, IconButton, Button } from "@mui/material";
 import DocIcon from "../Icons/v2/docIcon";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import CopyTemplateIcon from "../Icons/v2/copyTemplateIcon";
+import { Popover, PopoverProps, ListItemProps } from "../Popover";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
 export interface ITemplate {
     id: string;
@@ -16,7 +20,6 @@ export interface CardWithHoverProps {
     onClickCopy?: () => void;
     onClickPreview?: () => void;
     onClickUse?: () => void;
-    handlePopClick?: () => void;
     icon?: React.ReactElement;
     backgroundColor?: string;
 }
@@ -27,11 +30,27 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
     onClickCopy,
     onClickPreview,
     onClickUse,
-    handlePopClick,
     icon = <DocIcon />,
     backgroundColor,
 }) => {
     const theme = useTheme();
+    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+    const iconRef = useRef<HTMLDivElement>(null);
+
+    // Define items for the popover
+
+    const popoverItems: ListItemProps[] = [
+        { text: "Edit", icon: <EditIcon /> },
+        { text: "Duplicate", icon: <ContentCopyIcon /> },
+        { text: "Delete", icon: <DeleteIcon /> },
+    ];
+    const handleOpen = () => {
+        setAnchorEl(iconRef.current);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     return (
         <Box
@@ -57,6 +76,7 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                     justifyContent="space-between"
                     alignItems="center"
                     mb={2}
+                    ref={iconRef}
                 >
                     {icon}
                     <IconButton
@@ -68,7 +88,7 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                             height: "32px",
                             borderRadius: "50%",
                         }}
-                        onClick={isPublished ? handlePopClick : onClickCopy}
+                        onClick={isPublished ? handleOpen : onClickCopy}
                     >
                         {isPublished ? <MoreHorizIcon /> : <CopyTemplateIcon />}
                     </IconButton>
@@ -97,40 +117,44 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                         width: "100%",
                         mt: 2,
                         gap: 2,
+                        flexDirection: "row",
                     }}
                 >
-                    <Box sx={{ width: "100%" }}>
-                        <Button
-                            fullWidth
-                            variant="outlined"
-                            sx={{
-                                borderRadius: "100px",
-                                textTransform: "none",
-                                color: "#5a5beb",
-                                borderColor: "#5a5beb",
-                            }}
-                            onClick={onClickPreview}
-                        >
-                            Preview
-                        </Button>
-                    </Box>
-                    <Box sx={{ width: "100%" }}>
-                        <Button
-                            fullWidth
-                            variant="contained"
-                            sx={{
-                                borderRadius: "100px",
-                                whiteSpace: "nowrap",
-                                textTransform: "none",
-                                backgroundColor: "#5a5beb",
-                            }}
-                            onClick={onClickUse}
-                        >
-                            Use Template
-                        </Button>
-                    </Box>
+                    <Button
+                        fullWidth
+                        variant="outlined"
+                        sx={{
+                            borderRadius: "100px",
+                            textTransform: "none",
+                            color: "#5a5beb",
+                            borderColor: "#5a5beb",
+                        }}
+                        onClick={onClickPreview}
+                    >
+                        Preview
+                    </Button>
+                    <Button
+                        fullWidth
+                        variant="contained"
+                        sx={{
+                            borderRadius: "100px",
+                            whiteSpace: "nowrap",
+                            textTransform: "none",
+                            backgroundColor: "#5a5beb",
+                        }}
+                        onClick={onClickUse}
+                    >
+                        Use Template
+                    </Button>
                 </Box>
             </Box>
+            {isPublished && popoverItems && (
+                <Popover
+                    anchorEl={anchorEl}
+                    onClose={handleClose}
+                    items={popoverItems}
+                />
+            )}
         </Box>
     );
 };
