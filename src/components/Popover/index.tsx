@@ -31,11 +31,19 @@ export const PopoverWithArrow = (
 ) => {
     return (
         <MuiPopover
-            anchorOrigin={{ horizontal: 40, vertical: "bottom" }}
-            transformOrigin={{ horizontal: "right", vertical: -8 }}
+            anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+            }}
+            transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+            }}
             slotProps={{
                 paper: {
                     sx: {
+                        mt: 7,
+                        ml: 1,
                         overflow: "visible",
                         "&:before": {
                             content: '""',
@@ -78,8 +86,8 @@ export const Popover: React.FC<PopoverProps> = ({
                 boxShadow: `2px 2px 12px 0px ${alpha(theme.palette.grey[500], 0.3)}`,
                 ".MuiPaper-root": {
                     borderRadius: 4,
-                    left: 'auto !important',
-                    right: '22px !important'
+                    //  left: 'auto !important',
+                    //  right: '22px !important'
                 },
             }}
         >
