@@ -79,8 +79,7 @@ export const Popover: React.FC<PopoverProps> = ({
                 ".MuiPaper-root": {
                     borderRadius: 4,
                     left: 'auto !important',
-                    right: '32px !important',
-                    top: '64px !important'
+                    right: '22px !important'
                 },
             }}
         >

@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Box, Typography, useTheme, IconButton, Button } from "@mui/material";
 import DocIcon from "../Icons/v2/docIcon";
 import CopyTemplateIcon from "../Icons/v2/copyTemplateIcon";
-import { Popover, PopoverProps, ListItemProps } from "../Popover";
+import { Popover, ListItemProps } from "../Popover";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
@@ -35,21 +35,23 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
 }) => {
     const theme = useTheme();
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+    const [hoverActive, setHoverActive] = useState(false);
     const iconRef = useRef<HTMLDivElement>(null);
-
-    // Define items for the popover
 
     const popoverItems: ListItemProps[] = [
         { text: "Edit", icon: <EditIcon /> },
         { text: "Duplicate", icon: <ContentCopyIcon /> },
         { text: "Delete", icon: <DeleteIcon /> },
     ];
+
     const handleOpen = () => {
         setAnchorEl(iconRef.current);
+        setHoverActive(true);
     };
 
     const handleClose = () => {
         setAnchorEl(null);
+        setHoverActive(false);
     };
 
     return (
@@ -59,11 +61,13 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                 backgroundColor: backgroundColor || theme.palette.background.paper,
                 padding: 2,
                 cursor: "pointer",
-                "&:hover .hover-it": {
+                "&:hover .hover-it, .hover-it.show": {
                     display: "flex",
                 },
                 "&:hover": { boxShadow: "none" },
             }}
+            onMouseEnter={() => setHoverActive(true)}
+            onMouseLeave={() => !anchorEl && setHoverActive(false)}
         >
             <Box
                 display="flex"
@@ -80,7 +84,7 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                 >
                     {icon}
                     <IconButton
-                        className="hover-it"
+                        className={`hover-it ${hoverActive ? "show" : ""}`} // Conditional class application
                         sx={{
                             display: "none",
                             p: 0,
@@ -111,7 +115,7 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                     </Typography>
                 </Box>
                 <Box
-                    className="hover-it"
+                    className={`hover-it ${hoverActive ? "show" : ""}`}
                     sx={{
                         display: "none",
                         width: "100%",
