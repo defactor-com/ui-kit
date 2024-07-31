@@ -93,6 +93,8 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                             width: "32px",
                             height: "32px",
                             borderRadius: "50%",
+                            boxShadow: "rgba(0, 0, 0, 0.15) 0 0 0 1px inset",
+                            color: "rgba(0, 0, 0, 0.5)"
                         }}
                         onClick={isPublished ? handleOpen : onClickCopy}
                     >
@@ -154,13 +156,15 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                     </Button>
                 </Box>
             </Box>
-            {isPublished && (
-                <Popover
-                    anchorEl={anchorEl}
-                    onClose={handleClose}
-                    items={popoverItems}
-                />
-            )}
-        </Box>
+            {
+                isPublished && (
+                    <Popover
+                        anchorEl={anchorEl}
+                        onClose={handleClose}
+                        items={popoverItems}
+                    />
+                )
+            }
+        </Box >
     );
 };
