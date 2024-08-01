@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.4.8
+
+### Patch Changes
+
+- 8222e1f: Fixed path
+
 ## 0.4.7
 
 ### Patch Changes
