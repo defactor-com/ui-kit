@@ -50,8 +50,8 @@ export const UnPublished: StoryObj<CardWithHoverProps> = {
     args: {
         template: {
             id: "1",
-            template_name: "Sample Title",
-            description: "Description not yet approved",
+            card_title: "Sample Title",
+            card_description: "Description not yet approved",
         },
         isPublished: false,
         onClickCopy: () => console.log("Card copied"),
@@ -66,8 +66,8 @@ export const Published: StoryObj<CardWithHoverProps> = {
     args: {
         template: {
             id: "2",
-            template_name: "Sample Title",
-            description: "Description of a published template",
+            card_title: "Sample Title",
+            card_description: "Description of a published template",
         },
         isPublished: true,
         onClickCopy: () => console.log("Card copied"),
