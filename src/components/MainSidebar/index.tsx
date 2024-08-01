@@ -36,7 +36,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
     notificationColor = theme.palette.error.main,
     notificationsCount = 0,
     hideOnBreakpoint = "sm",
-    defaultPath = "/dashboard",
+    defaultPath = "/",
   } = props;
 
   const { isSelected } = useSidebarHook();
