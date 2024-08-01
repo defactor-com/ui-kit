@@ -17,6 +17,7 @@ import React from "react";
 export interface ListItemProps {
     text: string;
     icon: React.ReactNode;
+    action?: () => void;
 }
 
 export interface PopoverProps {
@@ -28,14 +29,21 @@ export interface PopoverProps {
 export const PopoverWithArrow = (
     popoverProps: Omit<MuiPopoverProps, "anchorOrigin" | "transformOrigin"> & { children: React.ReactNode },
 ) => {
-    const theme = useTheme();
     return (
         <MuiPopover
-            anchorOrigin={{ horizontal: 40, vertical: "bottom" }}
-            transformOrigin={{ horizontal: "right", vertical: -8 }}
+            anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+            }}
+            transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+            }}
             slotProps={{
                 paper: {
                     sx: {
+                        mt: 7,
+                        ml: 1,
                         overflow: "visible",
                         "&:before": {
                             content: '""',
@@ -56,7 +64,7 @@ export const PopoverWithArrow = (
     );
 };
 
-const defaultPopoverItems: ListItemProps[] = [
+export const defaultPopoverItems: ListItemProps[] = [
     { text: 'Edit', icon: <EditIcon /> },
     { text: 'Duplicate', icon: <ContentCopyIcon /> },
     { text: 'Delete', icon: <DeleteIcon /> }
@@ -77,7 +85,7 @@ export const Popover: React.FC<PopoverProps> = ({
             sx={{
                 boxShadow: `2px 2px 12px 0px ${alpha(theme.palette.grey[500], 0.3)}`,
                 ".MuiPaper-root": {
-                    borderRadius: 4,
+                    borderRadius: 4
                 },
             }}
         >
@@ -93,6 +101,7 @@ export const Popover: React.FC<PopoverProps> = ({
                                     },
                                 },
                             }}
+                            onClick={item.action}
                         >
                             <ListItemIcon sx={{ color: theme.palette.text.secondary }}>{item.icon}</ListItemIcon>
                             <ListItemText primary={item.text} sx={{ color: theme.palette.text.primary }} />
