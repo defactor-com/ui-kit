@@ -8,14 +8,14 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
-export interface ITemplate {
+export interface CardTemplate {
     id: string;
-    template_name: string;
-    description: string;
+    card_title: string;
+    card_description: string;
 }
 
 export interface CardWithHoverProps {
-    template: ITemplate;
+    template: CardTemplate;
     isPublished?: boolean;
     onClickCopy?: () => void;
     onClickPreview?: () => void;
@@ -108,14 +108,14 @@ export const CardWithHover: React.FC<CardWithHoverProps> = ({
                         textTransform={"none"}
                         color={theme.palette.text.primary}
                     >
-                        {template.template_name}
+                        {template.card_title}
                     </Typography>
                     <Typography
                         variant="caption"
                         textTransform={"none"}
                         color={theme.palette.text.secondary}
                     >
-                        {template.description}
+                        {template.card_description}
                     </Typography>
                 </Box>
                 <Box
