@@ -1,5 +1,13 @@
 # @defactor/ui-kit
 
+## 0.4.7
+
+### Patch Changes
+
+- cc73acd: Modified Cards
+- 3491914: Modified Cards
+- 38a0571: Fixed CardWithHover
+
 ## 0.4.3
 
 ### Patch Changes
