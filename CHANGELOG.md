@@ -1,5 +1,13 @@
 # @defactor/ui-kit
 
+## 0.4.9
+
+### Patch Changes
+
+- bc87eef: Updated Docs
+- acf7de4: Renamed props
+- a261210: Renamed props
+
 ## 0.4.8
 
 ### Patch Changes
