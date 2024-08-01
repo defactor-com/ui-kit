@@ -41,7 +41,7 @@ const Template: ComponentStory<typeof MainSidebar> = (
 ) => {
   const { currentPath, ...sidebarProps } = args;
   return (
-    <PathProvider path={currentPath || sidebarProps.defaultPath || "/dashboard"}>
+    <PathProvider path={currentPath || sidebarProps.defaultPath || "/"}>
       <MainSidebar {...sidebarProps} />
     </PathProvider>
   );
@@ -52,7 +52,7 @@ Default.args = {
   routes: [
     {
       text: "Dashboard",
-      path: "/dashboard",
+      path: "/",
       icon: DashboardIcon,
     },
     {
@@ -78,5 +78,5 @@ Default.args = {
   ],
   notificationsCount: 1,
   hideOnBreakpoint: "sm",
-  defaultPath: "/dashboard",
+  defaultPath: "/",
 };

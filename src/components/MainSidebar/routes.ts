@@ -18,7 +18,7 @@ export const routes: Routes = {
   mainRoutes: [
     {
       text: "Dashboard",
-      path: "/dashboard",
+      path: "/",
       icon: DashboardIcon,
     },
     {
