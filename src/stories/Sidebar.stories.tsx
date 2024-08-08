@@ -39,15 +39,21 @@ const sideBarItems = [
 ];
 
 const appsData = [
-  { logo: engageIcon, url: "https://engage.defactor.com/dashboard" },
-  { logo: assetsIcon, url: "https://assets.defactor.dev/" },
+  {
+    logo: { src: engageIcon, height: 21, width: 80 },
+    url: "https://engage.defactor.com/dashboard",
+  },
+  {
+    logo: { src: assetsIcon, height: 21, width: 74 },
+    url: "https://assets.defactor.dev/",
+  },
 ];
 
 const Template: Story<ISidebar> = (args) => <Sidebar {...args} />;
 
 export const SidebarItem = Template.bind({});
 SidebarItem.args = {
-  mainApp: { logo: poolsIcon, url: "" },
+  mainApp: { logo: { src: poolsIcon, height: 21, width: 53 }, url: "" },
   optionalStyles: additionalStyles,
   appsData: appsData,
   menuOptions: (
