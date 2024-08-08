@@ -1,10 +1,13 @@
 import React from "react";
 import { Story } from "@storybook/react";
 
-import { MenuOption } from "../components/MenuOption";
 import { Sidebar } from "../components/Sidebar";
-import { ISidebar } from "../components/Sidebar/SidebarTypes";
+import { MenuOption } from "../components/MenuOption";
 import lendingIcon from "../../public/assets/lending.svg";
+import poolsIcon from "../../public/assets/pools-logo.svg";
+import assetsIcon from "../../public/assets/assets-logo.svg";
+import engageIcon from "../../public/assets/engage-logo.svg";
+import { ISidebar } from "../components/Sidebar/SidebarTypes";
 import dashboardIcon from "../../public/assets/dashboard.svg";
 import borrowingIcon from "../../public/assets/borrowing.svg";
 
@@ -35,11 +38,18 @@ const sideBarItems = [
   },
 ];
 
+const appsData = [
+  { logo: engageIcon, url: "https://engage.defactor.com/dashboard" },
+  { logo: assetsIcon, url: "https://assets.defactor.dev/" },
+];
+
 const Template: Story<ISidebar> = (args) => <Sidebar {...args} />;
 
 export const SidebarItem = Template.bind({});
 SidebarItem.args = {
+  mainApp: { logo: poolsIcon, url: "" },
   optionalStyles: additionalStyles,
+  appsData: appsData,
   menuOptions: (
     <div className="flex-sidebar-story">
       {sideBarItems.map((data) => (
