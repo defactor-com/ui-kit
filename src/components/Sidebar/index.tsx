@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import React from "react";
 import Image from "next/image";
-import { Box, Link } from "@mui/material";
+import { Box, Button, Link } from "@mui/material";
 
 import linkIcon from "../../../public/assets/link-icon.svg";
 
@@ -29,17 +29,20 @@ export const Sidebar = ({
       <div className="sidebar-options-container">{menuOptions}</div>
       <Box sx={{ display: { xs: "none", md: "block" } }}>
         {appsData?.map((item) => (
-          <Link href={item.url}>
-            <Box
-              display="flex"
-              padding="16px"
-              alignItems="center"
-              borderTop="solid 1px #EDF0F7"
-              justifyContent="space-between"
+          <Link href={item.url} target="_blank">
+            <Button
+              fullWidth
+              sx={{
+                display: "flex",
+                padding: "16px",
+                alignItems: "center",
+                borderTop: "solid 1px #EDF0F7",
+                justifyContent: "space-between",
+              }}
             >
               <Image width={73} height={21} src={item.logo} alt="Tool logo" />
               <Image width={12} height={12} src={linkIcon} alt="Tool logo" />
-            </Box>
+            </Button>
           </Link>
         ))}
       </Box>
