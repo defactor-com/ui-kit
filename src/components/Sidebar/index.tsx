@@ -24,7 +24,12 @@ export const Sidebar = ({
         borderBottom="solid 2px #EDF0F7"
         sx={{ display: { xs: "none", md: "flex" } }}
       >
-        <Image width={52} height={21} src={mainApp.logo} alt="Tool logo" />
+        <Image
+          alt="Tool logo"
+          src={mainApp.logo.src}
+          width={mainApp.logo.width}
+          height={mainApp.logo.height}
+        />
       </Box>
       <div className="sidebar-options-container">{menuOptions}</div>
       <Box sx={{ display: { xs: "none", md: "block" } }}>
@@ -40,8 +45,13 @@ export const Sidebar = ({
                 justifyContent: "space-between",
               }}
             >
-              <Image width={73} height={21} src={item.logo} alt="Tool logo" />
-              <Image width={12} height={12} src={linkIcon} alt="Tool logo" />
+              <Image
+                alt="Tool logo"
+                src={item.logo.src}
+                width={item.logo.width}
+                height={item.logo.height}
+              />
+              <Image width={12} height={12} src={linkIcon} alt="Link icon" />
             </Button>
           </Link>
         ))}

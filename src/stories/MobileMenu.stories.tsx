@@ -1,23 +1,22 @@
 import React from "react";
 import { Story } from "@storybook/react";
 
-import { Sidebar } from "../components/Sidebar";
 import { MenuOption } from "../components/MenuOption";
+import { MobileMenu } from "../components/MobileMenu";
 import lendingIcon from "../../public/assets/lending.svg";
 import poolsIcon from "../../public/assets/pools-logo.svg";
 import assetsIcon from "../../public/assets/assets-logo.svg";
 import engageIcon from "../../public/assets/engage-logo.svg";
-import { ISidebar } from "../components/Sidebar/SidebarTypes";
 import dashboardIcon from "../../public/assets/dashboard.svg";
 import borrowingIcon from "../../public/assets/borrowing.svg";
-
-const additionalStyles: React.CSSProperties = {
-  backgroundColor: "#fff",
-};
+import EnglishFlag from "../../public/assets/english-flag.svg";
+import SpanishFlag from "../../public/assets/spanish-flag.svg";
+import { LanguageSelector } from "../components/LanguageSelector";
+import { IMenuMobile } from "../components/MobileMenu/MobileMenuTypes";
 
 export default {
-  title: "Sidebar",
-  component: Sidebar,
+  title: "MobileMenu",
+  component: MobileMenu,
 };
 
 const sideBarItems = [
@@ -40,24 +39,43 @@ const sideBarItems = [
 
 const appsData = [
   {
-    logo: { src: engageIcon, height: 21, width: 80 },
-    url: "https://engage.defactor.com/dashboard",
+    url: "https://assets.defactor.dev/",
+    logo: { src: assetsIcon, height: 21, width: 74 },
   },
   {
-    logo: { src: assetsIcon, height: 21, width: 74 },
-    url: "https://assets.defactor.dev/",
+    url: "https://engage.defactor.com/dashboard",
+    logo: { src: engageIcon, height: 21, width: 80 },
   },
 ];
 
-const Template: Story<ISidebar> = (args) => <Sidebar {...args} />;
+const Template: Story<IMenuMobile> = (args) => {
+  return <MobileMenu {...args} />;
+};
 
-export const SidebarItem = Template.bind({});
-SidebarItem.args = {
-  mainApp: { logo: { src: poolsIcon, height: 21, width: 53 }, url: "" },
-  optionalStyles: additionalStyles,
+export const MobileMenuItem = Template.bind({});
+MobileMenuItem.args = {
   appsData: appsData,
+  languageSelector: (
+    <LanguageSelector
+      locale="en"
+      t={() => {}}
+      router={() => {}}
+      pathname={() => {}}
+      options={[
+        {
+          id: "en",
+          flag: EnglishFlag,
+        },
+        {
+          id: "es",
+          flag: SpanishFlag,
+        },
+      ]}
+    />
+  ),
+  languageLabel: "Language",
   menuOptions: (
-    <div className="flex-sidebar-story">
+    <div>
       {sideBarItems.map((data) => (
         <div key={data.text} style={{ width: "100%" }}>
           <MenuOption
@@ -70,4 +88,5 @@ SidebarItem.args = {
       ))}
     </div>
   ),
+  mainApp: { logo: { src: poolsIcon, height: 21, width: 53 }, url: "" },
 };

@@ -18,6 +18,7 @@ export * from './components/Container';
 export * from './components/MenuOption';
 export * from './components/LendBorrow';
 export * from "./components/MobileList";
+export * from "./components/MobileMenu";
 export * from './components/CardContainer';
 export * from './components/CardComponent';
 export * from './components/FlatContainer';
