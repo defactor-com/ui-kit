@@ -12,7 +12,7 @@ export type AppDataType = {
 export interface ISidebar {
   mainApp: AppDataType;
   externalStyles?: string;
-  appsData: Array<AppDataType>;
+  appsData?: Array<AppDataType>;
   menuOptions?: React.ReactNode;
   optionalStyles?: React.CSSProperties;
 }

@@ -51,7 +51,7 @@ export const Sidebar = ({
                 width={item.logo.width}
                 height={item.logo.height}
               />
-              <Image width={12} height={12} src={linkIcon} alt="Tool logo" />
+              <Image width={12} height={12} src={linkIcon} alt="Link icon" />
             </Button>
           </Link>
         ))}
