@@ -165,6 +165,7 @@ export const PieChart = ({
   loaderComponent,
   emptyDescription,
   showLabels = true,
+  chartPosition = "center",
   formatValue = (value) => value.toLocaleString("en-US"),
 }: IPieChart) => {
   const RenderComponent = () => {
@@ -193,7 +194,10 @@ export const PieChart = ({
   };
 
   return (
-    <div className="pie-chart-container">
+    <div
+      className="pie-chart-container"
+      style={{ justifyContent: chartPosition }}
+    >
       <RenderComponent />
     </div>
   );
