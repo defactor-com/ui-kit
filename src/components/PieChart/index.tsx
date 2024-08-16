@@ -15,6 +15,7 @@ import { EmptyChart } from "../EmptyChart";
 
 import { IPieChart } from "./PieChartTypes";
 import usePieChartState from "./usePieChartState";
+import { Box } from "@mui/material";
 
 const CustomTooltip = ({
   fontFamily,
@@ -76,6 +77,8 @@ const renderCustomizedLabel = ({
 const Chart = ({
   data,
   fontFamily,
+  showLabels,
+  internalContent,
   formatValue = (value) => value.toLocaleString("en-US"),
 }: IPieChart) => {
   const [{ colors }, { groupData }] = usePieChartState({ data });
@@ -94,7 +97,7 @@ const Chart = ({
             innerRadius={110}
             outerRadius={122}
             fontFamily={fontFamily}
-            label={renderCustomizedLabel}
+            label={internalContent ? undefined : renderCustomizedLabel}
           >
             {data.map((_entry, index) => (
               <Cell
@@ -114,9 +117,23 @@ const Chart = ({
               />
             }
           />
+          {internalContent && (
+            <foreignObject x="0" y="8%" width="100%" height="82%">
+              <Box
+                width="100%"
+                height="100%"
+                display="flex"
+                alignItems="center"
+                flexDirection="column"
+              >
+                {internalContent}
+              </Box>
+            </foreignObject>
+          )}
         </RechartsPieChart>
       </ResponsiveContainer>
-      {groupData &&
+      {showLabels &&
+        groupData &&
         groupData(data).map((data, index) => (
           <div className="pie-chart-legend-container" key={`subgroup-${index}`}>
             {(data || []).map(({ name, color }, index) => (
@@ -140,13 +157,16 @@ const Chart = ({
 
 export const PieChart = ({
   data,
-  fontFamily,
   loading,
   emptyIcon,
   emptyTitle,
-  emptyDescription,
-  formatValue = (value) => value.toLocaleString("en-US"),
+  fontFamily,
+  internalContent,
   loaderComponent,
+  emptyDescription,
+  showLabels = true,
+  chartPosition = "center",
+  formatValue = (value) => value.toLocaleString("en-US"),
 }: IPieChart) => {
   const RenderComponent = () => {
     if (!data?.length && !loading) {
@@ -162,13 +182,22 @@ export const PieChart = ({
       return <div>{loaderComponent}</div>;
     } else {
       return (
-        <Chart data={data} fontFamily={fontFamily} formatValue={formatValue} />
+        <Chart
+          data={data}
+          showLabels={showLabels}
+          fontFamily={fontFamily}
+          formatValue={formatValue}
+          internalContent={internalContent}
+        />
       );
     }
   };
 
   return (
-    <div className="pie-chart-container">
+    <div
+      className="pie-chart-container"
+      style={{ justifyContent: chartPosition }}
+    >
       <RenderComponent />
     </div>
   );

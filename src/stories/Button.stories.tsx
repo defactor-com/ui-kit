@@ -21,7 +21,6 @@ Contained.args = {
   variant: "contained",
   bgColor: "#26A66B",
   label: "Contained",
-  optionalStyles: additionalStyles,
 };
 
 export const Outlined = Template.bind({});
