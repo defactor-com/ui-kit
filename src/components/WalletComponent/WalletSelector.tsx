@@ -14,6 +14,7 @@ export const WalletSelector = ({
   theme,
   labels,
   address,
+  onClick,
   networks,
   isConnected,
   userContext,
@@ -81,6 +82,7 @@ export const WalletSelector = ({
         theme={theme}
         labels={labels}
         address={address}
+        onClick={onClick}
         networks={networks}
         anchorEl={anchorEl}
         userContext={userContext}
