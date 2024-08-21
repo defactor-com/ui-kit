@@ -156,14 +156,9 @@ const WalletContainer = ({
                             sx={{
                               padding: "0px !important",
                               bgcolor: "#F8F9FC",
-                              ".css-d9oaum-MuiSelect-select-MuiInputBase-input-MuiFilledInput-input":
-                                {
-                                  padding: "8px 4px !important",
-                                },
-                              ".css-hhbxku-MuiSelect-select-MuiInputBase-input-MuiFilledInput-input":
-                                {
-                                  padding: "8px 4px !important",
-                                },
+                              ".MuiFilledInput-input": {
+                                padding: "8px 4px !important",
+                              },
                               "&::before": {
                                 display: "none",
                               },
