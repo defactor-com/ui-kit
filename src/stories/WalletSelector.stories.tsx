@@ -112,11 +112,8 @@ const Template: Story<IWalletSelector> = (args) => {
         refreshToken: "",
         walletAddress: "0xd198F7a8C953AC47dfd0F6a0267e4d19c67ce351",
       }}
-      // handleLogout={()=>{}}
       networksAssets={[]}
-      // openConnectWallet={openConnectWallet}
       configNetworks={[]}
-      // walletIconColor={"#211F23"}
       formatCurrency={() => "88,888,888.88"}
       labels={{
         copied: "copied",
@@ -127,9 +124,6 @@ const Template: Story<IWalletSelector> = (args) => {
         copyToClipboard: "copyToClipboard",
         collateralBalance: "collateralBalance",
       }}
-      // onClickMenuOption={async (chainId: ChainIdType) =>
-      //   handleChangeNetworkConnected(await getNetworkData(chainId))
-      // }
       handleFormartCurrency={() => "88,888,888.88"}
       openConnectWallet={function (): void {
         throw new Error("Function not implemented.");

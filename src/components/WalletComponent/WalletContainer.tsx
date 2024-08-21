@@ -5,7 +5,6 @@ import {
   Box,
   Divider,
   FormControl,
-  InputLabel,
   MenuItem,
   Popover,
   Select,
@@ -209,6 +208,7 @@ const WalletContainer = ({
                             {userContext?.accountCollateralBalance.map(
                               (collateral: TokenBalance) => (
                                 <MenuItem
+                                  key={collateral?.address}
                                   sx={{
                                     backgroundColor:
                                       userContext?.selectedCollateralBalance
@@ -223,7 +223,6 @@ const WalletContainer = ({
                                   <Box
                                     display="flex"
                                     alignItems="end"
-                                    key={collateral?.address}
                                     onClick={() => onClick(collateral)}
                                   >
                                     <Typography
