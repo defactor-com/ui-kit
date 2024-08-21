@@ -8,6 +8,7 @@ export type ChainIdType = 1 | 137 | 11155111 | 80002 | 97 | 84532 | 8453 | 56;
 export type WalletContainerProps = {
   onClickMenuOption(chainId: ChainIdType): NetworksDataType;
   configNetworks: Array<NetworksDataType>;
+  onClick(collateral: TokenBalance): void;
   handleFormartCurrency: () => string;
   address: `0x${string}` | undefined;
   handleLogout: () => Promise<void>;
@@ -22,7 +23,11 @@ export type WalletContainerProps = {
     copied: string;
   };
   networksAssets: Array<any>;
-  formatCurrency(): string;
+  formatCurrency(
+    value: number | string | bigint,
+    precision: number,
+    cutValue?: boolean
+  ): string;
   id: string | undefined;
   networks: Array<any>;
   handleClose(): void;
@@ -73,3 +78,10 @@ export interface IWalletSelector extends WalletContainerProps {
   openConnectWallet(): void;
   networksAssets: Array<any>;
 }
+
+export type TokenBalance = {
+  symbol: string;
+  address: string;
+  balance: bigint;
+  decimals: number;
+};

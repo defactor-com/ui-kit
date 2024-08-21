@@ -1,7 +1,16 @@
 import React from "react";
 import Image from "next/image";
 import { alpha } from "@mui/system";
-import { Box, Divider, Popover, Tooltip, Typography } from "@mui/material";
+import {
+  Box,
+  Divider,
+  FormControl,
+  MenuItem,
+  Popover,
+  Select,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 
 import { Button } from "../Button";
 import { Container } from "../Container";
@@ -10,7 +19,7 @@ import desconnetIcon from "../../../public/assets/desconnect-wallet-icon.svg";
 import { NetworksDataType } from "../MultichainSelector/MultiChainSelectorTypes";
 
 import { WalletContainerComponent } from "./styles";
-import { WalletContainerProps } from "./WalletTypes";
+import { TokenBalance, WalletContainerProps } from "./WalletTypes";
 import useWalletContainer from "./useWalletContainer";
 
 const WalletContainer = ({
@@ -25,6 +34,7 @@ const WalletContainer = ({
   networks,
   anchorEl,
   address,
+  onClick,
   labels,
   theme,
   open,
@@ -102,7 +112,6 @@ const WalletContainer = ({
                       <Typography
                         sx={{ ...theme.typography.caption, fontWeight: 700 }}
                         ml={0.5}
-                        mb={0.5}
                       >
                         {userContext.accountBalance.symbol}
                       </Typography>
@@ -115,18 +124,130 @@ const WalletContainer = ({
                       {labels.collateralBalance}
                     </Typography>
                     <Box display="flex" alignItems="end" mt={1}>
-                      <Typography
-                        sx={{ ...theme.typography.subtitle1, fontWeight: 700 }}
-                      >
-                        {formatCurrency()}
-                      </Typography>
-                      <Typography
-                        sx={{ ...theme.typography.caption, fontWeight: 700 }}
-                        ml={0.5}
-                        mb={0.5}
-                      >
-                        {userContext.accountCollateralBalance.symbol}
-                      </Typography>
+                      {userContext.accountCollateralBalance.length === 1 ? (
+                        <Box display="flex" alignItems="end">
+                          <Typography
+                            sx={{
+                              ...theme.typography.subtitle1,
+                              fontWeight: 700,
+                            }}
+                          >
+                            {formatCurrency(
+                              userContext.accountCollateralBalance[0].balance,
+                              userContext.accountCollateralBalance[0].decimals
+                            )}
+                          </Typography>
+                          <Typography
+                            sx={{
+                              ...theme.typography.caption,
+                              fontWeight: 700,
+                            }}
+                            ml={0.5}
+                            mb={0.5}
+                          >
+                            {userContext.accountCollateralBalance[0].symbol}
+                          </Typography>
+                        </Box>
+                      ) : (
+                        <FormControl fullWidth>
+                          <Select
+                            variant="filled"
+                            id="demo-simple-select"
+                            sx={{
+                              padding: "0px !important",
+                              bgcolor: "#F8F9FC",
+                              ".MuiFilledInput-input": {
+                                padding: "8px 4px !important",
+                              },
+                              "&::before": {
+                                display: "none",
+                              },
+                              "&::after": {
+                                display: "none",
+                              },
+                              "&:hover": {
+                                border: "none",
+                              },
+                            }}
+                            value={userContext.selectedCollateralBalance}
+                            renderValue={(selected: TokenBalance) => (
+                              <Box
+                                display="flex"
+                                alignItems="end"
+                                key={selected?.address}
+                              >
+                                <Typography
+                                  sx={{
+                                    ...theme.typography.subtitle1,
+                                    fontWeight: 700,
+                                  }}
+                                >
+                                  {formatCurrency(
+                                    selected?.balance,
+                                    selected?.decimals
+                                  )}
+                                </Typography>
+                                <Typography
+                                  sx={{
+                                    ...theme.typography.caption,
+                                    fontWeight: 700,
+                                  }}
+                                  ml={0.5}
+                                  mb={0.5}
+                                >
+                                  {selected?.symbol}
+                                </Typography>
+                              </Box>
+                            )}
+                          >
+                            {userContext?.accountCollateralBalance.map(
+                              (collateral: TokenBalance) => (
+                                <MenuItem
+                                  key={collateral?.address}
+                                  sx={{
+                                    backgroundColor:
+                                      userContext?.selectedCollateralBalance
+                                        ?.address === collateral?.address
+                                        ? alpha(theme.palette.primary.main, 0.1)
+                                        : "#fff !important",
+                                    "&:hover": {
+                                      backgroundColor: "#F8F9FC !important",
+                                    },
+                                  }}
+                                >
+                                  <Box
+                                    display="flex"
+                                    alignItems="end"
+                                    onClick={() => onClick(collateral)}
+                                  >
+                                    <Typography
+                                      sx={{
+                                        ...theme.typography.subtitle1,
+                                        fontWeight: 700,
+                                      }}
+                                    >
+                                      {formatCurrency(
+                                        collateral.balance,
+                                        collateral.decimals
+                                      )}
+                                    </Typography>
+                                    <Typography
+                                      sx={{
+                                        ...theme.typography.caption,
+                                        fontWeight: 700,
+                                      }}
+                                      ml={0.5}
+                                      mb={0.5}
+                                    >
+                                      {collateral.symbol}
+                                    </Typography>
+                                  </Box>
+                                </MenuItem>
+                              )
+                            )}
+                          </Select>
+                        </FormControl>
+                      )}
                     </Box>
                   </Box>
                   <Divider />
