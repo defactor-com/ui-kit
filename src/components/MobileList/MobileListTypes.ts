@@ -1,3 +1,4 @@
+import { SxProps, Theme } from "@mui/material";
 import { IFilterObject, IFilterSelectedObject } from "../Table/TableTypes";
 
 export interface IRowsObject {
@@ -25,6 +26,7 @@ export interface IMobileList {
   nextPage?(motion: string): void;
   loaderComponent?: React.ReactNode;
   emptyIcon?: React.ReactNode | string;
+  headerOptionalStyles?: SxProps<Theme>;
   handleSelectedPage?(selectedValue: number): void;
   setFilters: React.Dispatch<
     React.SetStateAction<Array<IFilterSelectedObject>>
