@@ -18,6 +18,7 @@ export const MobileList = ({
   totalRowsNumber,
   rowsPageSelected,
   handleSelectedPage,
+  headerOptionalStyles,
   handleSelectedRowsPage,
 }: IMobileList) => {
   return (
@@ -29,6 +30,7 @@ export const MobileList = ({
             <Box>
               <Box
                 borderBottom="2px solid rgba(189, 189, 189, 0.5)"
+                sx={headerOptionalStyles}
                 padding={2}
               >
                 {item.header}

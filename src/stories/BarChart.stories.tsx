@@ -34,6 +34,7 @@ const Template: Story<IBarChart> = (args) => {
   return (
     <BarChart
       {...args}
+      displayDirection="vertical"
       currentFilter={currentFilter}
       handleChangeFilter={handleChangeFilter}
       loaderComponent={

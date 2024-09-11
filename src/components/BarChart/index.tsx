@@ -286,6 +286,8 @@ const Chart = ({
                   "&.Mui-checked": {
                     color: colors[index % colors.length],
                   },
+                  padding:
+                    displayDirection === "vertical" ? "8px 8px 8px 0" : "8px",
                 }}
               />
               <Point color={colors[index % colors.length]} /> {name}
