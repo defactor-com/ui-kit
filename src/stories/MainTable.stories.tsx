@@ -3,7 +3,7 @@ import { Story, Meta } from "@storybook/react";
 import { MainTable, MainTableProps } from "../components/V3/MainTable"
 
 export default {
-    title: "V2/MainTable",
+    title: "V3/MainTable",
     component: MainTable,
     argTypes: {
         // color: { control: "color" },
