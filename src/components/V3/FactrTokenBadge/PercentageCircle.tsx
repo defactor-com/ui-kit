@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import { EthFactrIcon } from '../../Icons/v3/ethFactrIcon';
 
 interface PercentageCircleProps {
+    icon?: React.ReactElement;
     percentage: string;
 }
 
-const PercentageCircle: React.FC<PercentageCircleProps> = ({ percentage }) => {
+const PercentageCircle: React.FC<PercentageCircleProps> = ({ icon, percentage }) => {
     const value = parseFloat(percentage);
     const radius = 28.5;
     const circumference = 2 * Math.PI * radius;
@@ -42,9 +42,9 @@ const PercentageCircle: React.FC<PercentageCircleProps> = ({ percentage }) => {
                 top="50%"
                 left="50%"
                 pt={0.65}
-                sx={{ transform: "translate(-50%, -50%)" }}
+                sx={{ transform: 'translate(-50%, -50%)' }}
             >
-                <EthFactrIcon width={49} height={49} />
+                {icon}
             </Box>
         </Box>
     );
