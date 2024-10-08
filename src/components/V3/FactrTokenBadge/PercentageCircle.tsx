@@ -13,29 +13,35 @@ const PercentageCircle: React.FC<PercentageCircleProps> = ({ percentage }) => {
     const strokeDashoffset = circumference - (value / 100) * circumference;
 
     return (
-        <Box display="flex" justifyContent="center" alignItems="center" width={'100%'}>
-            <Box position="relative" display="flex" justifyContent="center" alignItems="center">
-                <svg width="100" height="100">
-                    <circle
-                        cx="50"
-                        cy="50"
-                        r={radius}
-                        stroke="#E6E6E6" // Background circle color
-                        strokeWidth="6"
-                        fill="none"
-                    />
-                    <circle
-                        cx="50"
-                        cy="50"
-                        r={radius}
-                        stroke="#5F66FF" // Percentage circle color
-                        strokeWidth="6"
-                        fill="none"
-                        strokeDasharray={circumference}
-                        strokeDashoffset={strokeDashoffset}
-                        style={{ transition: 'stroke-dashoffset 0.5s ease-in-out' }} // Animate the circle
-                    />
-                </svg>
+
+        <Box position="relative" display="flex" justifyContent="center" alignItems="center">
+            <svg width="100" height="86">
+                <circle
+                    cx="50"
+                    cy="50"
+                    r={radius}
+                    stroke="#E6E6E6" // Background circle color
+                    strokeWidth="3"
+                    fill="none"
+                />
+                <circle
+                    cx="50"
+                    cy="50"
+                    r={radius}
+                    stroke="#5F66FF" // Percentage circle color
+                    strokeWidth="3"
+                    fill="none"
+                    strokeDasharray={circumference}
+                    strokeDashoffset={strokeDashoffset}
+                    style={{ transition: 'stroke-dashoffset 0.5s ease-in-out' }} // Animate the circle
+                />
+            </svg>
+            <Box
+                position="absolute"
+                top="50%"
+                left="50%"
+                sx={{ transform: "translate(-50%, -50%)" }}
+            >
                 <EthFactrIcon />
             </Box>
         </Box>
