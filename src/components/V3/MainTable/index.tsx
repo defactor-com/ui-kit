@@ -20,15 +20,13 @@ export interface Header {
 
 export interface MainTableProps {
     showActions?: boolean;
+    headers?: Header[];
+    rows?: Array<Record<string, any>>;
 }
 
 const MainTable: React.FC<MainTableProps> = ({
     showActions = true,
-}) => {
-    const theme = useTheme();
-
-    // Sample static data for the table
-    const headers: Header[] = [
+    headers = [
         { name: 'Asset Name', alignment: 'left' },
         { name: 'Symbol', alignment: 'left' },
         { name: 'Type', alignment: 'left' },
@@ -36,9 +34,8 @@ const MainTable: React.FC<MainTableProps> = ({
         { name: 'Supply', alignment: 'left' },
         { name: 'Status', alignment: 'left' },
         showActions && { name: 'Actions', alignment: 'center' },
-    ].filter((header): header is Header => header !== false);
-
-    const rows = [
+    ].filter((header): header is Header => header !== false),
+    rows = [
         {
             id: '1',
             asset_name: 'Sample Asset 1',
@@ -57,7 +54,9 @@ const MainTable: React.FC<MainTableProps> = ({
             supply: 300,
             status: 'draft',
         },
-    ];
+    ],
+}) => {
+    const theme = useTheme();
 
     return (
         <TableContainer
