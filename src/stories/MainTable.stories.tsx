@@ -5,9 +5,6 @@ import MainTable, { MainTableProps } from "../components/V3/MainTable";
 export default {
     title: "V3/MainTable",
     component: MainTable,
-    argTypes: {
-        // color: { control: "color" },
-    },
 } as Meta;
 
 const Template: Story<MainTableProps> = (args) => (
@@ -16,7 +13,13 @@ const Template: Story<MainTableProps> = (args) => (
 
 export const BasicMainTable = Template.bind({});
 BasicMainTable.args = {
-
+    headers: [
+        { name: 'Asset Name', alignment: 'left' },
+        { name: 'Symbol', alignment: 'left' },
+        { name: 'Type', alignment: 'left' },
+        { name: 'Price', alignment: 'left' },
+        { name: 'Supply', alignment: 'left' },
+        { name: 'Status', alignment: 'left' },
+        { name: 'Actions', alignment: 'center' },
+    ],
 };
-
-
