@@ -1,48 +1,48 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import { EthFactrIcon } from '../../Icons/v3/ethFactrIcon'; // Adjust the import path as needed
+import { EthFactrIcon } from '../../Icons/v3/ethFactrIcon';
 
 interface PercentageCircleProps {
-    percentage: string; // percentage as a string like "68.41%"
+    percentage: string;
 }
 
 const PercentageCircle: React.FC<PercentageCircleProps> = ({ percentage }) => {
     const value = parseFloat(percentage);
-    const radius = 30; // Adjust for your SVG size
+    const radius = 28.5; // Radius to fit the 61px circle
     const circumference = 2 * Math.PI * radius;
     const strokeDashoffset = circumference - (value / 100) * circumference;
 
     return (
-
         <Box position="relative" display="flex" justifyContent="center" alignItems="center">
-            <svg width="100" height="86">
+            <svg width="61" height="61">
                 <circle
-                    cx="50"
-                    cy="50"
+                    cx="30.5"
+                    cy="30.5"
                     r={radius}
-                    stroke="#E6E6E6" // Background circle color
+                    stroke="#E6E6E6"
                     strokeWidth="3"
                     fill="none"
                 />
                 <circle
-                    cx="50"
-                    cy="50"
+                    cx="30.5"
+                    cy="30.5"
                     r={radius}
-                    stroke="#5F66FF" // Percentage circle color
+                    stroke="#5F66FF"
                     strokeWidth="3"
                     fill="none"
                     strokeDasharray={circumference}
                     strokeDashoffset={strokeDashoffset}
-                    style={{ transition: 'stroke-dashoffset 0.5s ease-in-out' }} // Animate the circle
+                    style={{ transition: 'stroke-dashoffset 0.5s ease-in-out' }}
                 />
             </svg>
             <Box
                 position="absolute"
                 top="50%"
                 left="50%"
+                pt={0.5}
                 sx={{ transform: "translate(-50%, -50%)" }}
             >
-                <EthFactrIcon />
+                <EthFactrIcon width={49} height={49} />
             </Box>
         </Box>
     );
