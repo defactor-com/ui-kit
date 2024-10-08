@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import EthFactrIcon from '../../Icons/v3/ethFactrIcon'; // Adjust the import path as needed
+import { EthFactrIcon } from '../../Icons/v3/ethFactrIcon'; // Adjust the import path as needed
 
 interface PercentageCircleProps {
     percentage: string; // percentage as a string like "68.41%"

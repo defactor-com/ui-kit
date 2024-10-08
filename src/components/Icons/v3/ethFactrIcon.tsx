@@ -3,69 +3,57 @@ import { IconsType } from "../IconsTypes";
 
 export interface EthFactrIconProps extends IconsType {
     backgroundColor?: string;
+    width?: number;
+    height?: number;
 }
 
 export const EthFactrIcon: React.FC<EthFactrIconProps> = ({
-    width = 62,
-    height = 61,
+    width = 50,
+    height = 50,
+    backgroundColor,
 }) => (
     <svg
         width={width}
         height={height}
-        viewBox="0 0 62 61"
+        viewBox="0 0 50 50"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
     >
-        <g clipPath="url(#clip0_5462_9238)">
-            {/* Remove the circular path here */}
-            {/* Keep the rest of the icon paths as they are */}
-            <g opacity="0.6">
-                <path
-                    d="M29.9775 26.3672L19.6826 30.7794L29.9775 36.5112L40.2683 30.7794L29.9775 26.3672Z"
-                    fill="white"
-                />
-            </g>
-            <g opacity="0.45">
-                <path
-                    d="M19.6826 30.7786L29.9775 36.5103V14.6816L19.6826 30.7786Z"
-                    fill="white"
-                />
-            </g>
-            <g opacity="0.8">
-                <path
-                    d="M29.981 14.6816V36.5103L40.2718 30.7786L29.981 14.6816Z"
-                    fill="white"
-                />
-            </g>
-            <g opacity="0.45">
-                <path
-                    d="M19.6826 32.6152L29.9775 46.2829V38.3469L19.6826 32.6152Z"
-                    fill="white"
-                />
-            </g>
-            <g opacity="0.8">
-                <path
-                    d="M29.981 38.3469V46.2829L40.2799 32.6152L29.981 38.3469Z"
-                    fill="white"
-                />
+        <g clipPath="url(#clip0_5462_9240)">
+            <path
+                d="M48.7194 25.4907C48.7194 12.2885 38.0168 1.58588 24.8145 1.58588C11.6122 1.58588 0.909668 12.2885 0.909668 25.4907C0.909668 38.693 11.6122 49.3956 24.8145 49.3956C38.0168 49.3956 48.7194 38.693 48.7194 25.4907Z"
+                fill="#5F66FF"
+            />
+            <mask id="mask0_5462_9240" style={{ maskType: "luminance" }} maskUnits="userSpaceOnUse" x="8" y="9" width="34" height="33">
+                <path d="M41.5792 9.68164H8.05029V41.3082H41.5792V9.68164Z" fill="white" />
+            </mask>
+            <g mask="url(#mask0_5462_9240)">
+                <g opacity="0.6">
+                    <path d="M23.9775 21.3672L13.6826 25.7794L23.9775 31.5112L34.2683 25.7794L23.9775 21.3672Z" fill="white" />
+                </g>
+                <g opacity="0.45">
+                    <path d="M13.6826 25.7786L23.9775 31.5103V9.68164L13.6826 25.7786Z" fill="white" />
+                </g>
+                <g opacity="0.8">
+                    <path d="M23.981 9.68164V31.5103L34.2718 25.7786L23.981 9.68164Z" fill="white" />
+                </g>
+                <g opacity="0.45">
+                    <path d="M13.6826 27.6152L23.9775 41.2829V33.3469L13.6826 27.6152Z" fill="white" />
+                </g>
+                <g opacity="0.8">
+                    <path d="M23.981 33.3469V41.2829L34.2799 27.6152L23.981 33.3469Z" fill="white" />
+                </g>
             </g>
             <path
-                d="M54.7194 30.4907C54.7194 17.2885 44.0168 6.58588 30.8145 6.58588C17.6122 6.58588 6.90967 17.2885 6.90967 30.4907C6.90967 43.693 17.6122 54.3956 30.8145 54.3956C44.0168 54.3956 54.7194 43.693 54.7194 30.4907Z"
+                d="M48.7194 25.4907C48.7194 12.2885 38.0168 1.58588 24.8145 1.58588C11.6122 1.58588 0.909668 12.2885 0.909668 25.4907C0.909668 38.693 11.6122 49.3956 24.8145 49.3956C38.0168 49.3956 48.7194 38.693 48.7194 25.4907Z"
                 stroke="white"
                 strokeWidth="0.620906"
             />
         </g>
         <defs>
-            <clipPath id="clip0_5462_9238">
-                <rect
-                    width="49.0515"
-                    height="49.0515"
-                    fill="white"
-                    transform="translate(6.28857 5.66016)"
-                />
+            <clipPath id="clip0_5462_9240">
+                <rect width="49.0515" height="49.0515" fill="white" transform="translate(0.288574 0.660156)" />
             </clipPath>
         </defs>
     </svg>
 );
-
-export default EthFactrIcon;
