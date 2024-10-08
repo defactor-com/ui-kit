@@ -1,0 +1,62 @@
+import { Meta, Story, Props } from "@storybook/addon-docs/blocks";
+import MainTable from "../components/V3/MainTable"; 
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+
+<Meta title="V3/MainTable/Documentation" component={MainTable} />
+
+## MainTable
+
+`MainTable` is a component used to display a table with customizable headers and rows, along with optional action buttons for each row.
+
+### Props
+
+<Props of={MainTable} />
+
+### Example
+
+```jsx
+import React from "react";
+import MainTable from "@defactor/ui-kit";
+
+const Example: React.FC = () => {
+  const headers = [
+    { name: 'Asset Name', alignment: 'left' },
+    { name: 'Symbol', alignment: 'left' },
+    { name: 'Type', alignment: 'left' },
+    { name: 'Price', alignment: 'left' },
+    { name: 'Supply', alignment: 'left' },
+    { name: 'Status', alignment: 'left' },
+    { name: 'Actions', alignment: 'center' },
+  ];
+
+  const rows = [
+    {
+      id: '1',
+      asset_name: 'Sample Asset 1',
+      asset_symbol: 'SA1',
+      asset_type: 'ERC-20',
+      price: '1000',
+      supply: 500,
+      status: 'mined',
+    },
+    {
+      id: '2',
+      asset_name: 'Sample Asset 2',
+      asset_symbol: 'SA2',
+      asset_type: 'ERC-3643',
+      price: '2000',
+      supply: 300,
+      status: 'draft',
+    },
+  ];
+
+  return (
+    <MainTable
+      headers={headers}
+      rows={rows}
+      showActions={true} // Pass true or false to display/hide actions
+    />
+  );
+};
+
+export default Example;
