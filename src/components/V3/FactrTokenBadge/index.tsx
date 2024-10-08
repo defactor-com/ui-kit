@@ -17,12 +17,12 @@ const FactrTokenBadge: React.FC<FactrTokenBadgeProps> = ({
 }) => {
     return (
         <Box display="flex" width={'100%'} alignItems="center" justifyContent="center" padding={6} sx={{ backgroundColor: "white" }}>
-            <Box display="flex" width="120px" height="152px" flexDirection="column" alignItems="center" justifyContent="center" sx={{ backgroundColor: background, borderRadius: "8px" }} >
+            <Box display="flex" width="120px" height="152px" flexDirection="column" alignItems="center" justifyContent="center" pt={2} pb={2} sx={{ backgroundColor: background, borderRadius: "8px" }} >
                 {icon}
-                <Typography variant="body2" color="textPrimary" fontWeight={600}>
+                <Typography variant="body2" color="textPrimary" fontWeight={600} pt={1}>
                     {name}
                 </Typography>
-                <Typography variant="body2" color="textPrimary" fontSize="13px">
+                <Typography variant="body2" color="textPrimary" fontSize="13px" pt={0.5}>
                     {percentage}
                 </Typography>
             </Box>
