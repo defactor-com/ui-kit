@@ -1,4 +1,5 @@
 import React from 'react';
+import { Box, Typography } from '@mui/material';
 import EthFactrIcon from '../../Icons/v3/ethFactrIcon'; // Adjusted import path
 
 export interface FactrTokenBadgeProps {
@@ -13,13 +14,15 @@ const FactrTokenBadge: React.FC<FactrTokenBadgeProps> = ({
     percentage = '50%',
 }) => {
     return (
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <Box display="flex" flexDirection="column" alignItems="center">
             {icon}
-            <div>
-                <div>{name}</div>
-                <div>{percentage}</div>
-            </div>
-        </div>
+            <Typography variant="subtitle1" color="textPrimary">
+                {name}
+            </Typography>
+            <Typography variant="body2" color="textSecondary">
+                {percentage}
+            </Typography>
+        </Box>
     );
 };
 
