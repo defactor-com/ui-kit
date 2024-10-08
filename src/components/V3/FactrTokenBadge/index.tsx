@@ -16,7 +16,7 @@ const FactrTokenBadge: React.FC<FactrTokenBadgeProps> = ({
     background = '#F8F9FC'
 }) => {
     return (
-        <Box display="flex" width="100%" maxWidth="140px" height="100%" flexDirection="column" alignItems="center" justifyContent="center" pt={2} pb={3} sx={{ backgroundColor: background, borderRadius: "8px" }}>
+        <Box display="flex" width="100%" maxWidth="140px" height="100%" flexDirection="column" alignItems="center" justifyContent="center" p={3} sx={{ backgroundColor: background, borderRadius: "8px" }}>
             <PercentageCircle percentage={percentage} />
             <Typography variant="body2" color="textPrimary" fontWeight={600} pt={1}>
                 {name}
