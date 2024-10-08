@@ -16,5 +16,5 @@ export const BasicFactrTokenBadge = Template.bind({});
 BasicFactrTokenBadge.args = {
     icon: <EthFactrIcon />,
     name: "Ethereum",
-    percentage: "50%",
+    percentage: "68.41%",
 };

@@ -12,7 +12,7 @@ export interface FactrTokenBadgeProps {
 const FactrTokenBadge: React.FC<FactrTokenBadgeProps> = ({
     icon = <EthFactrIcon />,
     name = 'Ethereum',
-    percentage = '50%',
+    percentage = '68.41%',
     background = '#F8F9FC'
 }) => {
     return (
