@@ -1,6 +1,5 @@
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import {
-    //Box,
     Chip,
     IconButton,
     Paper,
@@ -20,26 +19,24 @@ export interface Header {
 }
 
 export interface MainTableProps {
-    global?: boolean;
+    showActions?: boolean;
 }
 
 const MainTable: React.FC<MainTableProps> = ({
-    global = false,
+    showActions = true,
 }) => {
     const theme = useTheme();
 
     // Sample static data for the table
-    const headers: (Header | false)[] = [
+    const headers: Header[] = [
         { name: 'Asset Name', alignment: 'left' },
         { name: 'Symbol', alignment: 'left' },
         { name: 'Type', alignment: 'left' },
         { name: 'Price', alignment: 'left' },
         { name: 'Supply', alignment: 'left' },
         { name: 'Status', alignment: 'left' },
-        !global && { name: 'Actions', alignment: 'center' },
-    ];
-
-    const filteredHeaders = headers.filter((header): header is Header => header !== false);
+        showActions && { name: 'Actions', alignment: 'center' },
+    ].filter((header): header is Header => header !== false);
 
     const rows = [
         {
@@ -47,7 +44,7 @@ const MainTable: React.FC<MainTableProps> = ({
             asset_name: 'Sample Asset 1',
             asset_symbol: 'SA1',
             asset_type: 'ERC-20',
-            price: 1000,
+            price: '1000',
             supply: 500,
             status: 'mined',
         },
@@ -56,7 +53,7 @@ const MainTable: React.FC<MainTableProps> = ({
             asset_name: 'Sample Asset 2',
             asset_symbol: 'SA2',
             asset_type: 'ERC-3643',
-            price: 2000,
+            price: '2000',
             supply: 300,
             status: 'draft',
         },
@@ -80,7 +77,7 @@ const MainTable: React.FC<MainTableProps> = ({
                     }}
                 >
                     <TableRow sx={{ border: 0 }}>
-                        {filteredHeaders.map((header) => (
+                        {headers.map((header) => (
                             <TableCell
                                 key={header.name}
                                 align={header.alignment}
@@ -159,7 +156,7 @@ const MainTable: React.FC<MainTableProps> = ({
                                     }}
                                 />
                             </TableCell>
-                            {!global && (
+                            {showActions && (
                                 <TableCell align='center' sx={{ width: '90px' }}>
                                     <IconButton>
                                         <MoreHorizIcon />
