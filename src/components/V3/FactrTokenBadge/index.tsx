@@ -1,6 +1,5 @@
 import React from 'react';
-
-import DocIcon from '../../Icons/v3/ethFactrIcon';
+import EthFactrIcon from '../../Icons/v3/ethFactrIcon'; // Adjusted import path
 
 export interface FactrTokenBadgeProps {
     icon?: React.ReactElement;
@@ -9,7 +8,7 @@ export interface FactrTokenBadgeProps {
 }
 
 const FactrTokenBadge: React.FC<FactrTokenBadgeProps> = ({
-    icon = <DocIcon />,
+    icon = <EthFactrIcon />,
     name = 'Ethereum',
     percentage = '50%',
 }) => {

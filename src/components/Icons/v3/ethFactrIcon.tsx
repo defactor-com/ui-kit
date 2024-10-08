@@ -1,11 +1,11 @@
 import React from "react";
 import { IconsType } from "../IconsTypes";
 
-export interface ethFactrIconProps extends IconsType {
+export interface EthFactrIconProps extends IconsType {
     backgroundColor?: string;
 }
 
-export const ethFactrIcon: React.FC<ethFactrIconProps> = ({
+export const EthFactrIcon: React.FC<EthFactrIconProps> = ({
     width = 40,
     height = 40,
     color = "#151515",
@@ -34,4 +34,4 @@ export const ethFactrIcon: React.FC<ethFactrIconProps> = ({
     </svg>
 );
 
-export default ethFactrIcon;
+export default EthFactrIcon;
