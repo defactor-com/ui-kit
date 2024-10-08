@@ -11,7 +11,7 @@ export interface FactrTokenBadgeProps {
     background?: string;
 }
 
-const FactrTokenBadge: React.FC<FactrTokenBadgeProps> = ({
+export const FactrTokenBadge: React.FC<FactrTokenBadgeProps> = ({
     icon = <EthFactrIcon width={49} height={49} />,
     name = 'Ethereum',
     percentage = '68.41%',
@@ -40,4 +40,3 @@ const FactrTokenBadge: React.FC<FactrTokenBadgeProps> = ({
     );
 };
 
-export default FactrTokenBadge;

@@ -97,3 +97,4 @@ export {
   CustomDropdown,
   CustomDropdownProps,
 } from "./components/CustomDropdown";
+export { FactrTokenBadge, FactrTokenBadgeProps } from './components/V3/FactrTokenBadge';
