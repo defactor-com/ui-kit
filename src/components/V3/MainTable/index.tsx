@@ -24,7 +24,7 @@ export interface MainTableProps {
     rows?: Array<Record<string, any>>;
 }
 
-const MainTable: React.FC<MainTableProps> = ({
+export const MainTable: React.FC<MainTableProps> = ({
     showActions = true,
     headers = [
         { name: 'Asset Name', alignment: 'left' },
@@ -169,5 +169,3 @@ const MainTable: React.FC<MainTableProps> = ({
         </TableContainer>
     );
 };
-
-export default MainTable;
