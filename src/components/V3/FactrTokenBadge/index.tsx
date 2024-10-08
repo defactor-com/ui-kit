@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import EthFactrIcon from '../../Icons/v3/ethFactrIcon'; // Adjusted import path
+import EthFactrIcon from '../../Icons/v3/ethFactrIcon';
 
 export interface FactrTokenBadgeProps {
     icon?: React.ReactElement;
