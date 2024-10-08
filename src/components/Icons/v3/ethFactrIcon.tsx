@@ -10,7 +10,7 @@ export interface EthFactrIconProps extends IconsType {
 export const EthFactrIcon: React.FC<EthFactrIconProps> = ({
     width = 50,
     height = 50,
-    backgroundColor,
+    backgroundColor = "#5F66FF",
 }) => (
     <svg
         width={width}
@@ -22,7 +22,7 @@ export const EthFactrIcon: React.FC<EthFactrIconProps> = ({
         <g clipPath="url(#clip0_5462_9240)">
             <path
                 d="M48.7194 25.4907C48.7194 12.2885 38.0168 1.58588 24.8145 1.58588C11.6122 1.58588 0.909668 12.2885 0.909668 25.4907C0.909668 38.693 11.6122 49.3956 24.8145 49.3956C38.0168 49.3956 48.7194 38.693 48.7194 25.4907Z"
-                fill="#5F66FF"
+                fill={backgroundColor}
             />
             <mask id="mask0_5462_9240" style={{ maskType: "luminance" }} maskUnits="userSpaceOnUse" x="8" y="9" width="34" height="33">
                 <path d="M41.5792 9.68164H8.05029V41.3082H41.5792V9.68164Z" fill="white" />
