@@ -1,19 +1,21 @@
 import React from 'react';
 
+import DocIcon from '../../Icons/v2/docIcon';
+
 export interface FactrTokenBadgeProps {
-    icon?: string;
+    icon?: React.ReactElement;
     name?: string;
     percentage?: string;
 }
 
 const FactrTokenBadge: React.FC<FactrTokenBadgeProps> = ({
-    icon = '/v3-ethFactrToken-icon.svg',
+    icon = <DocIcon />,
     name = 'Ethereum',
     percentage = '50%',
 }) => {
     return (
         <div style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={icon} alt={`${name} icon`} style={{ width: '24px', height: '24px', marginRight: '8px' }} />
+            {icon}
             <div>
                 <div>{name}</div>
                 <div>{percentage}</div>
