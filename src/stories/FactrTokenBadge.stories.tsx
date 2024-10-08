@@ -1,6 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import { Box } from '@mui/material'; // Import Box from MUI
+import { Box } from '@mui/material';
 import FactrTokenBadge, { FactrTokenBadgeProps } from "../components/V3/FactrTokenBadge";
 import EthFactrIcon from "../components/Icons/v3/ethFactrIcon";
 

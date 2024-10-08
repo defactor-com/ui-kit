@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import EthFactrIcon from '../../Icons/v3/ethFactrIcon';
+import PercentageCircle from './PercentageCircle';
 
 export interface FactrTokenBadgeProps {
     icon?: React.ReactElement;
@@ -10,14 +10,14 @@ export interface FactrTokenBadgeProps {
 }
 
 const FactrTokenBadge: React.FC<FactrTokenBadgeProps> = ({
-    icon = <EthFactrIcon />,
+    icon,
     name = 'Ethereum',
     percentage = '68.41%',
     background = '#F8F9FC'
 }) => {
     return (
         <Box display="flex" width="120px" height="152px" flexDirection="column" alignItems="center" justifyContent="center" pt={2} pb={2} sx={{ backgroundColor: background, borderRadius: "8px" }}>
-            {icon}
+            <PercentageCircle percentage={percentage} />
             <Typography variant="body2" color="textPrimary" fontWeight={600} pt={1}>
                 {name}
             </Typography>
