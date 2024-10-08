@@ -41,7 +41,7 @@ const PercentageCircle: React.FC<PercentageCircleProps> = ({ percentage }) => {
                 position="absolute"
                 top="50%"
                 left="50%"
-                pt={0.5}
+                pt={0.65}
                 sx={{ transform: "translate(-50%, -50%)" }}
             >
                 <EthFactrIcon width={49} height={49} />
