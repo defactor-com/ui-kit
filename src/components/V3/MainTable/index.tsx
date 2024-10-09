@@ -1,5 +1,6 @@
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import {
+    Box,
     Chip,
     IconButton,
     Paper,
@@ -19,6 +20,7 @@ export interface Header {
     alignment: 'left' | 'center' | 'right';
     tooltip?: boolean;
     tooltipMessage?: string;
+    icon?: React.ReactElement;
 }
 
 export interface MainTableProps {
@@ -102,6 +104,11 @@ export const MainTable: React.FC<MainTableProps> = ({
                                 {header.name}
                                 {header.tooltip && header.tooltipMessage && (
                                     <CustomTooltip tooltipText={header.tooltipMessage} />
+                                )}
+                                {header.icon && (
+                                    <Box sx={{ marginRight: 1 }}>
+                                        {header.icon}
+                                    </Box>
                                 )}
                             </TableCell>
                         ))}
