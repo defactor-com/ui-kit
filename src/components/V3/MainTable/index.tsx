@@ -31,7 +31,6 @@ export const MainTable: React.FC<MainTableProps> = ({
 }) => {
     const theme = useTheme();
 
-    // Default headers
     const defaultHeaders: Header[] = [
         { name: 'Asset Name', alignment: 'left' },
         { name: 'Symbol', alignment: 'left' },
@@ -42,10 +41,8 @@ export const MainTable: React.FC<MainTableProps> = ({
         showActions && { name: 'Actions', alignment: 'center' },
     ].filter((header): header is Header => header !== false);
 
-    // Merge provided headers with defaults
     const headers = propHeaders ?? defaultHeaders;
 
-    // Default rows
     const defaultRows = [
         {
             id: '1',
@@ -67,7 +64,6 @@ export const MainTable: React.FC<MainTableProps> = ({
         },
     ];
 
-    // Merge provided rows with defaults
     const rows = propRows ?? defaultRows;
 
     return (
