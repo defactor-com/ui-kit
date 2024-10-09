@@ -100,16 +100,20 @@ export const MainTable: React.FC<MainTableProps> = ({
                                     color: theme.palette.grey[400],
                                     fontWeight: '700',
                                 }}
-                            >
-                                {header.name}
-                                {header.tooltip && header.tooltipMessage && (
-                                    <CustomTooltip tooltipText={header.tooltipMessage} />
-                                )}
-                                {header.icon && (
-                                    <Box sx={{ marginRight: 1 }}>
-                                        {header.icon}
-                                    </Box>
-                                )}
+                            >     <Box display="flex" alignItems="center" justifyContent="flex-start">
+
+                                    {header.name}
+                                    {header.tooltip && header.tooltipMessage && (
+                                        <Box display={"flex"}>
+                                            <CustomTooltip tooltipText={header.tooltipMessage} />
+                                        </Box>
+                                    )}
+                                    {header.icon && (
+                                        <Box display={"flex"}>
+                                            {header.icon}
+                                        </Box>
+                                    )}
+                                </Box>
                             </TableCell>
                         ))}
                     </TableRow>
