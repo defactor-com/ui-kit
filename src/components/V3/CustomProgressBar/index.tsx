@@ -7,7 +7,7 @@ interface CustomProgressBarProps {
 
 export const CustomProgressBar: React.FC<CustomProgressBarProps> = ({ progress }) => {
     return (
-        <Box display="flex" alignItems="center" width="100%">
+        <Box display="flex" alignItems="center" justifyContent="center" width="100%" height="100%">
             {/* Background Bar */}
             <Box
                 sx={{

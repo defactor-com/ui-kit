@@ -113,7 +113,7 @@ export const MainTable: React.FC<MainTableProps> = ({
                                         </Box>
                                     )}
                                     {header.icon && (
-                                        <Box display={"flex"} >
+                                        <Box display="flex" alignItems="center" justifyContent="center">
                                             {header.icon}
                                         </Box>
                                     )}
@@ -154,7 +154,10 @@ export const MainTable: React.FC<MainTableProps> = ({
                                         />
                                     </TableCell>
                                 ) : header.name === '% Liquid' ? (
-                                    row.liquid
+                                    <Box display="flex" alignItems="center" justifyContent="center" width="100%" height="100%" minHeight="68px">
+
+                                        {row.liquid}
+                                    </Box>
                                 ) : header.name !== 'Actions' ? (
                                     <TableCell
                                         key={header.name}
