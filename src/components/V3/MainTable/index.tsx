@@ -26,7 +26,13 @@ export interface MainTableProps {
 
 export const MainTable: React.FC<MainTableProps> = ({
     showActions = true,
-    headers = [
+    headers: propHeaders,
+    rows: propRows,
+}) => {
+    const theme = useTheme();
+
+    // Default headers
+    const defaultHeaders: Header[] = [
         { name: 'Asset Name', alignment: 'left' },
         { name: 'Symbol', alignment: 'left' },
         { name: 'Type', alignment: 'left' },
@@ -34,8 +40,13 @@ export const MainTable: React.FC<MainTableProps> = ({
         { name: 'Supply', alignment: 'left' },
         { name: 'Status', alignment: 'left' },
         showActions && { name: 'Actions', alignment: 'center' },
-    ].filter((header): header is Header => header !== false),
-    rows = [
+    ].filter((header): header is Header => header !== false);
+
+    // Merge provided headers with defaults
+    const headers = propHeaders ?? defaultHeaders;
+
+    // Default rows
+    const defaultRows = [
         {
             id: '1',
             asset_name: 'Sample Asset 1',
@@ -54,9 +65,10 @@ export const MainTable: React.FC<MainTableProps> = ({
             supply: 300,
             status: 'draft',
         },
-    ],
-}) => {
-    const theme = useTheme();
+    ];
+
+    // Merge provided rows with defaults
+    const rows = propRows ?? defaultRows;
 
     return (
         <TableContainer
@@ -109,16 +121,10 @@ export const MainTable: React.FC<MainTableProps> = ({
                             >
                                 {row.asset_name}
                             </TableCell>
-                            <TableCell
-                                align='left'
-                                sx={{ borderBottom: `1px solid ${theme.palette.grey[300]}` }}
-                            >
+                            <TableCell align='left' sx={{ borderBottom: `1px solid ${theme.palette.grey[300]}` }}>
                                 {row.asset_symbol}
                             </TableCell>
-                            <TableCell
-                                align='left'
-                                sx={{ borderBottom: `1px solid ${theme.palette.grey[300]}` }}
-                            >
+                            <TableCell align='left' sx={{ borderBottom: `1px solid ${theme.palette.grey[300]}` }}>
                                 {row.asset_type}
                             </TableCell>
                             <TableCell
