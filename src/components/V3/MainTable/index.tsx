@@ -157,12 +157,7 @@ export const MainTable: React.FC<MainTableProps> = ({
                                             borderBottom: `1px solid ${theme.palette.grey[300]}`,
                                         }}
                                     >
-                                        {(row as Record<string, any>)[
-                                            header.name
-                                                .toLowerCase()
-                                                .replace(/ /g, '_')
-                                                .replace('%', 'percent')
-                                        ] || 'N/A'}
+                                        {header.name}
                                     </TableCell>
                                 ) : (
                                     showActions && (
