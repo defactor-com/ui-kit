@@ -2,6 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { MainTable, MainTableProps } from "../components/V3/MainTable";
 import { ArrowNarrowDown } from "@untitled-ui/icons-react";
+import { CustomProgressBar } from "../components/V3/CustomProgressBar";
 
 export default {
     title: "V3/MainTable",
@@ -33,7 +34,7 @@ EngageMainTable.args = {
             address: '0x1234...abcd',
             chain: 'Ethereum',
             amount: '1500',
-            liquid: '60%',
+            liquid: <CustomProgressBar progress={50} />,
             locked: '40%',
         },
         {
@@ -41,7 +42,7 @@ EngageMainTable.args = {
             address: '0x5678...efgh',
             chain: 'Polygon',
             amount: '3000',
-            liquid: '75%',
+            liquid: <CustomProgressBar progress={75} />,
             locked: '25%',
         },
     ],

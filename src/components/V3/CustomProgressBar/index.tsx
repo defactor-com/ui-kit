@@ -5,7 +5,7 @@ interface CustomProgressBarProps {
     progress: number;
 }
 
-const CustomProgressBar: React.FC<CustomProgressBarProps> = ({ progress }) => {
+export const CustomProgressBar: React.FC<CustomProgressBarProps> = ({ progress }) => {
     return (
         <Box display="flex" alignItems="center" width="100%">
             {/* Background Bar */}
@@ -50,4 +50,3 @@ const CustomProgressBar: React.FC<CustomProgressBarProps> = ({ progress }) => {
     );
 };
 
-export default CustomProgressBar;
