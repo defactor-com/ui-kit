@@ -24,7 +24,7 @@ EngageMainTable.args = {
         { name: 'Chain', alignment: 'left' },
         { name: 'Amount', alignment: 'left' },
         { name: '% Liquid', alignment: 'left', tooltip: true, tooltipMessage: "Percentage of liquid." },
-        { name: 'Locked', alignment: 'left' }
+        { name: 'Locked', alignment: 'left', tooltip: true, tooltipMessage: "Locked Tooltip Text." }
     ],
     rows: [
         {
