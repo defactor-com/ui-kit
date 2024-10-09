@@ -26,14 +26,15 @@ export const EmptyTable: React.FC<EmptyTableProps> = ({
                 backgroundColor: "#ffffff",
                 height: "420px",
                 width: "100%",
-                maxWidth: "1164px"
+                maxWidth: "1164px",
+                p: 2
             }}
         >
             <CircleIcon
                 backgroundColor="#EFEFFD"
                 icon={<CoinsStacked01 style={{ width: 40, height: 40, color: '#5A5BEB' }} />}
             />
-            <Typography variant='h6' maxWidth='450px' fontWeight={700}>
+            <Typography variant='h6' maxWidth='550px' fontWeight={700}>
                 {title}
             </Typography>
             <Box

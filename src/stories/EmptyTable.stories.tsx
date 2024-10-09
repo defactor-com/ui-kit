@@ -20,6 +20,6 @@ const Template: Story = (args) => (
 
 export const DefaultEmptyTable = Template.bind({});
 DefaultEmptyTable.args = {
-    title: 'No assets to display Test',
-    description: 'You can create a new asset from existing community templates or by creating your own template first. Test',
+    title: 'Lorem ipsum dolor sit amet consectetur',
+    description: 'Lorem ipsum dolor sit amet consectetur. Ultrices hendrerit fringilla et rhoncus elit dolor.',
 };
