@@ -43,6 +43,8 @@ export const MainTable: React.FC<MainTableProps> = ({
         { name: 'Price', alignment: 'left', tooltip: false },
         { name: 'Supply', alignment: 'left', tooltip: false },
         { name: 'Status', alignment: 'left', tooltip: false },
+
+        { name: 'Test', alignment: 'left', tooltip: false },
     ];
 
     const headers = propHeaders ?? (showActions
@@ -58,6 +60,7 @@ export const MainTable: React.FC<MainTableProps> = ({
             price: '1000',
             supply: 500,
             status: 'mined',
+            test: 'neki'
         },
         {
             id: '2',
@@ -67,6 +70,7 @@ export const MainTable: React.FC<MainTableProps> = ({
             price: '2000',
             supply: 300,
             status: 'draft',
+            test: 'neki'
         },
     ];
 
@@ -149,6 +153,8 @@ export const MainTable: React.FC<MainTableProps> = ({
                                             }}
                                         />
                                     </TableCell>
+                                ) : header.name === 'Test' ? (
+                                    row.test
                                 ) : header.name !== 'Actions' ? (
                                     <TableCell
                                         key={header.name}
