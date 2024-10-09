@@ -9,7 +9,7 @@ export default {
 } as Meta;
 
 const Template: Story = (args) => (
-    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mt: 5 }}>
+    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
         <EmptyTable {...args} />
     </Box>
 );

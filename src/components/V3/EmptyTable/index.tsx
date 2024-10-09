@@ -13,9 +13,12 @@ export const EmptyTable: React.FC = () => {
                 flexDirection: 'column',
                 textAlign: 'center',
                 alignItems: 'center',
+                justifyContent: 'center',
                 gap: 3,
-                mt: 10,
-                mb: 40
+                backgroundColor: "#ffffff",
+                height: "420px",
+                width: "100%",
+                maxWidth: "1164px"
             }}
         >
             <CoinsStacked01
@@ -29,7 +32,7 @@ export const EmptyTable: React.FC = () => {
             <Box
                 sx={{
                     display: 'flex',
-                    maxWidth: '80%'
+                    maxWidth: '80%',
                 }}
             >
                 <Typography variant='body1' sx={{ color: theme.palette.grey[400] }}>
