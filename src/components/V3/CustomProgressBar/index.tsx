@@ -7,8 +7,7 @@ interface CustomProgressBarProps {
 
 export const CustomProgressBar: React.FC<CustomProgressBarProps> = ({ progress }) => {
     return (
-        <Box display="flex" alignItems="center" justifyContent="center" width="100%" height="100%">
-            {/* Background Bar */}
+        <Box display="flex" alignItems="center" width="100%" height="100%">
             <Box
                 sx={{
                     position: 'relative',
@@ -16,11 +15,11 @@ export const CustomProgressBar: React.FC<CustomProgressBarProps> = ({ progress }
                     height: 12,
                     backgroundColor: '#EFEFF3',
                     borderRadius: '4.5px',
+                    flexGrow: 1,
                 }}
                 aria-describedby="progress-bar"
                 aria-busy={progress < 100}
             >
-                {/* Filled Progress */}
                 <Box
                     sx={{
                         width: `${progress}%`,
@@ -29,24 +28,16 @@ export const CustomProgressBar: React.FC<CustomProgressBarProps> = ({ progress }
                         borderRadius: '4.5px',
                     }}
                 />
-
-                {/* Percentage Text */}
-                <Typography
-                    variant="caption"
-                    sx={{
-                        position: 'absolute',
-                        top: '50%',
-                        right: 0,
-                        transform: 'translateY(-50%)',
-                        fontSize: '0.75rem',
-                        color: '#7A7B7D',
-                        paddingRight: 8,
-                    }}
-                >
-                    {progress}%
-                </Typography>
             </Box>
+
+            <Typography
+                variant="caption"
+                fontWeight={700}
+                pl={1}
+                color={"#7A7B7D"}
+            >
+                {progress}%
+            </Typography>
         </Box>
     );
 };
-
