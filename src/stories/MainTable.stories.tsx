@@ -20,6 +20,17 @@ BasicMainTable.args = {
         { name: 'Price', alignment: 'left' },
         { name: 'Supply', alignment: 'left' },
         { name: 'Status', alignment: 'left' },
-        { name: 'Actions', alignment: 'center' },
+        { name: 'Actions', alignment: 'center' }
+    ],
+};
+
+export const EngageMainTable = Template.bind({});
+BasicMainTable.args = {
+    headers: [
+        { name: 'Address', alignment: 'left' },
+        { name: 'Chain', alignment: 'left' },
+        { name: 'Amount', alignment: 'left' },
+        { name: '% Liquid', alignment: 'left' },
+        { name: 'Locked', alignment: 'left' }
     ],
 };
