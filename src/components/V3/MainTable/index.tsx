@@ -109,7 +109,7 @@ export const MainTable: React.FC<MainTableProps> = ({
                                         </Box>
                                     )}
                                     {header.icon && (
-                                        <Box display={"flex"}>
+                                        <Box display={"flex"} >
                                             {header.icon}
                                         </Box>
                                     )}

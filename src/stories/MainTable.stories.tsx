@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { MainTable, MainTableProps } from "../components/V3/MainTable";
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { ArrowNarrowDown } from "@untitled-ui/icons-react";
 
 export default {
     title: "V3/MainTable",
@@ -23,7 +23,7 @@ EngageMainTable.args = {
     headers: [
         { name: 'Address', alignment: 'left' },
         { name: 'Chain', alignment: 'left' },
-        { name: 'Amount', alignment: 'left', icon: <ArrowDropDownIcon /> },
+        { name: 'Amount', alignment: 'left', icon: <ArrowNarrowDown height={'16px'} color="#5F66FF" /> },
         { name: '% Liquid', alignment: 'left', tooltip: true, tooltipMessage: "Percentage of liquid." },
         { name: 'Locked', alignment: 'left', tooltip: true, tooltipMessage: "Locked Tooltip Text." }
     ],
