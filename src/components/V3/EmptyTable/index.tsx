@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Typography, useTheme } from '@mui/material'
 import CircleIcon from '../CircleIcon'
-
+import { CoinsStacked01 } from '@untitled-ui/icons-react';
 
 export const EmptyTable: React.FC = () => {
     const theme = useTheme()
@@ -21,7 +21,10 @@ export const EmptyTable: React.FC = () => {
                 maxWidth: "1164px"
             }}
         >
-            <CircleIcon />
+            <CircleIcon
+                backgroundColor="#EFEFFD"
+                icon={<CoinsStacked01 style={{ width: 40, height: 40, color: '#5A5BEB' }} />}
+            />
             <Typography variant='h6' fontWeight={700}>
                 No assets to display
             </Typography>

@@ -2,7 +2,15 @@ import React from 'react';
 import { CoinsStacked01 } from '@untitled-ui/icons-react';
 import { Box } from '@mui/material';
 
-const CircleIcon = ({ backgroundColor = '#EFEFFD' }) => {
+interface CircleIconProps {
+    backgroundColor?: string;
+    icon?: React.ReactElement;
+}
+
+const CircleIcon: React.FC<CircleIconProps> = ({
+    backgroundColor = '#EFEFFD',
+    icon = <CoinsStacked01 style={{ width: 40, height: 40, color: '#5A5BEB' }} />,
+}) => {
     return (
         <Box
             sx={{
@@ -15,7 +23,7 @@ const CircleIcon = ({ backgroundColor = '#EFEFFD' }) => {
                 alignItems: 'center',
             }}
         >
-            <CoinsStacked01 style={{ width: 40, height: 40, color: '#5A5BEB' }} />
+            {icon}
         </Box>
     );
 };
