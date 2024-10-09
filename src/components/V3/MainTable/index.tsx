@@ -1,6 +1,5 @@
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import {
-    Chip,
     IconButton,
     Paper,
     Table,
@@ -12,11 +11,15 @@ import {
 } from '@mui/material';
 import { useTheme } from '@mui/material';
 import React from 'react';
+import { CustomTooltip } from '../../CustomTooltip';
 
 export interface Header {
     name: string;
     alignment: 'left' | 'center' | 'right';
+    tooltip?: boolean;
+    tooltipMessage?: string;
 }
+
 
 export interface MainTableProps {
     showActions?: boolean;
@@ -32,12 +35,12 @@ export const MainTable: React.FC<MainTableProps> = ({
     const theme = useTheme();
 
     const defaultHeaders: Header[] = [
-        { name: 'Asset Name', alignment: 'left' },
-        { name: 'Symbol', alignment: 'left' },
-        { name: 'Type', alignment: 'left' },
-        { name: 'Price', alignment: 'left' },
-        { name: 'Supply', alignment: 'left' },
-        { name: 'Status', alignment: 'left' },
+        { name: 'Asset Name', alignment: 'left', tooltip: false },
+        { name: 'Symbol', alignment: 'left', tooltip: false },
+        { name: 'Type', alignment: 'left', tooltip: false },
+        { name: 'Price', alignment: 'left', tooltip: false },
+        { name: 'Supply', alignment: 'left', tooltip: false },
+        { name: 'Status', alignment: 'left', tooltip: false },
     ];
 
     const headers = propHeaders ?? (showActions
@@ -48,8 +51,8 @@ export const MainTable: React.FC<MainTableProps> = ({
         {
             id: '1',
             asset_name: 'Sample Asset 1',
-            asset_symbol: 'SA1',
-            asset_type: 'ERC-20',
+            symbol: 'SA1',
+            type: 'ERC-20',
             price: '1000',
             supply: 500,
             status: 'mined',
@@ -57,8 +60,8 @@ export const MainTable: React.FC<MainTableProps> = ({
         {
             id: '2',
             asset_name: 'Sample Asset 2',
-            asset_symbol: 'SA2',
-            asset_type: 'ERC-3643',
+            symbol: 'SA2',
+            type: 'ERC-3643',
             price: '2000',
             supply: 300,
             status: 'draft',
@@ -97,6 +100,9 @@ export const MainTable: React.FC<MainTableProps> = ({
                                 }}
                             >
                                 {header.name}
+                                {header.tooltip && header.tooltipMessage && (
+                                    <CustomTooltip tooltipText={header.tooltipMessage} />
+                                )}
                             </TableCell>
                         ))}
                     </TableRow>

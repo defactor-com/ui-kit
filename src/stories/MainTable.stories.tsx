@@ -13,35 +13,7 @@ const Template: Story<MainTableProps> = (args) => (
 
 export const BasicMainTable = Template.bind({});
 BasicMainTable.args = {
-    headers: [
-        { name: 'Asset Name', alignment: 'left' },
-        { name: 'Symbol', alignment: 'left' },
-        { name: 'Type', alignment: 'left' },
-        { name: 'Price', alignment: 'left' },
-        { name: 'Supply', alignment: 'left' },
-        { name: 'Status', alignment: 'left' },
-        { name: 'Actions', alignment: 'center' }
-    ],
-    rows: [
-        {
-            id: '1',
-            asset_name: 'Sample Asset 1',
-            asset_symbol: 'SA1',
-            asset_type: 'ERC-20',
-            price: '1000',
-            supply: 500,
-            status: 'mined',
-        },
-        {
-            id: '2',
-            asset_name: 'Sample Asset 2',
-            asset_symbol: 'SA2',
-            asset_type: 'ERC-3643',
-            price: '2000',
-            supply: 300,
-            status: 'draft',
-        },
-    ],
+
 };
 
 export const EngageMainTable = Template.bind({});
@@ -51,7 +23,7 @@ EngageMainTable.args = {
         { name: 'Address', alignment: 'left' },
         { name: 'Chain', alignment: 'left' },
         { name: 'Amount', alignment: 'left' },
-        { name: '% Liquid', alignment: 'left' },
+        { name: '% Liquid', alignment: 'left', tooltip: true, tooltipMessage: "Percentage of liquid." },
         { name: 'Locked', alignment: 'left' }
     ],
     rows: [
