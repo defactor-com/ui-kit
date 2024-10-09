@@ -52,8 +52,7 @@ EngageMainTable.args = {
         { name: 'Chain', alignment: 'left' },
         { name: 'Amount', alignment: 'left' },
         { name: '% Liquid', alignment: 'left' },
-        { name: 'Locked', alignment: 'left' },
-        { name: 'Actions', alignment: 'center' }
+        { name: 'Locked', alignment: 'left' }
     ],
     rows: [
         {

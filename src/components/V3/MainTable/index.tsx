@@ -38,10 +38,11 @@ export const MainTable: React.FC<MainTableProps> = ({
         { name: 'Price', alignment: 'left' },
         { name: 'Supply', alignment: 'left' },
         { name: 'Status', alignment: 'left' },
-        showActions && { name: 'Actions', alignment: 'center' },
-    ].filter((header): header is Header => header !== false);
+    ];
 
-    const headers = propHeaders ?? defaultHeaders;
+    const headers = propHeaders ?? (showActions
+        ? [...defaultHeaders, { name: 'Actions', alignment: 'center' }]
+        : defaultHeaders);
 
     const defaultRows = [
         {
@@ -111,23 +112,33 @@ export const MainTable: React.FC<MainTableProps> = ({
                             }}
                         >
                             {headers.map((header) => (
-                                <TableCell
-                                    key={header.name}
-                                    align={header.alignment}
-                                    sx={{
-                                        borderBottom: `1px solid ${theme.palette.grey[300]}`,
-                                    }}
-                                >
-                                    {(row as Record<string, any>)[header.name.toLowerCase().replace(/ /g, '_')] || 'N/A'}
-                                </TableCell>
+                                header.name !== 'Actions' ? (
+                                    <TableCell
+                                        key={header.name}
+                                        align={header.alignment}
+                                        sx={{
+                                            borderBottom: `1px solid ${theme.palette.grey[300]}`,
+                                        }}
+                                    >
+                                        {(row as Record<string, any>)[header.name.toLowerCase().replace(/ /g, '_')] || 'N/A'}
+                                    </TableCell>
+                                ) : (
+                                    showActions && (
+                                        <TableCell
+                                            key="Actions"
+                                            align="center"
+                                            sx={{
+                                                borderBottom: `1px solid ${theme.palette.grey[300]}`,
+                                                width: '90px',
+                                            }}
+                                        >
+                                            <IconButton>
+                                                <MoreHorizIcon />
+                                            </IconButton>
+                                        </TableCell>
+                                    )
+                                )
                             ))}
-                            {showActions && (
-                                <TableCell align='center' sx={{ width: '90px' }}>
-                                    <IconButton>
-                                        <MoreHorizIcon />
-                                    </IconButton>
-                                </TableCell>
-                            )}
                         </TableRow>
                     ))}
                 </TableBody>
