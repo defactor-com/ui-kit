@@ -6,6 +6,10 @@ import { Box } from '@mui/material';
 export default {
     title: 'V3/EmptyTable',
     component: EmptyTable,
+    argTypes: {
+        title: { control: 'text' },
+        subtitle: { control: 'text' },
+    },
 } as Meta;
 
 const Template: Story = (args) => (
@@ -15,4 +19,7 @@ const Template: Story = (args) => (
 );
 
 export const DefaultEmptyTable = Template.bind({});
-DefaultEmptyTable.args = {};
+DefaultEmptyTable.args = {
+    title: 'No assets to display Test',
+    description: 'You can create a new asset from existing community templates or by creating your own template first. Test',
+};

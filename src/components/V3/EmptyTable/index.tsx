@@ -33,7 +33,7 @@ export const EmptyTable: React.FC<EmptyTableProps> = ({
                 backgroundColor="#EFEFFD"
                 icon={<CoinsStacked01 style={{ width: 40, height: 40, color: '#5A5BEB' }} />}
             />
-            <Typography variant='h6' fontWeight={700}>
+            <Typography variant='h6' maxWidth='450px' fontWeight={700}>
                 {title}
             </Typography>
             <Box
@@ -42,7 +42,7 @@ export const EmptyTable: React.FC<EmptyTableProps> = ({
                     maxWidth: '80%',
                 }}
             >
-                <Typography variant='body1' sx={{ color: theme.palette.grey[400] }}>
+                <Typography variant='body1' maxWidth='350px' sx={{ color: theme.palette.grey[400] }}>
 
                     {description}
                 </Typography>
