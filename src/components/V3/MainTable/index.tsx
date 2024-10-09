@@ -14,7 +14,6 @@ import {
 import { useTheme } from '@mui/material';
 import React from 'react';
 import { CustomTooltip } from '../../CustomTooltip';
-import { CustomProgressBar } from '../CustomProgressBar';
 
 export interface Header {
     name: string;
@@ -24,10 +23,15 @@ export interface Header {
     icon?: React.ReactElement;
 }
 
+export interface RowData {
+    [key: string]: any;
+}
+
+
 export interface MainTableProps {
     showActions?: boolean;
     headers?: Header[];
-    rows?: Array<Record<string, any>>;
+    rows?: RowData[];
 }
 
 export const MainTable: React.FC<MainTableProps> = ({
@@ -44,7 +48,6 @@ export const MainTable: React.FC<MainTableProps> = ({
         { name: 'Price', alignment: 'left', tooltip: false },
         { name: 'Supply', alignment: 'left', tooltip: false },
         { name: 'Status', alignment: 'left', tooltip: false },
-        { name: '% Liquid', alignment: 'left', tooltip: false },
     ];
 
     const headers = propHeaders ?? (showActions
@@ -59,8 +62,7 @@ export const MainTable: React.FC<MainTableProps> = ({
             type: 'ERC-20',
             price: '1000',
             supply: 500,
-            status: 'mined',
-            liquid: <CustomProgressBar progress={50} />
+            status: 'mined'
         },
         {
             id: '2',
@@ -69,12 +71,11 @@ export const MainTable: React.FC<MainTableProps> = ({
             type: 'ERC-3643',
             price: '2000',
             supply: 300,
-            status: 'draft',
-            liquid: <CustomProgressBar progress={50} />
+            status: 'draft'
         },
     ];
 
-    const rows = propRows ?? defaultRows;
+    const rows = (propRows ?? defaultRows) as RowData[];
 
     return (
         <TableContainer
@@ -154,10 +155,29 @@ export const MainTable: React.FC<MainTableProps> = ({
                                         />
                                     </TableCell>
                                 ) : header.name === '% Liquid' ? (
-                                    <Box display="flex" alignItems="center" justifyContent="center" width="100%" height="100%" minHeight="68px" maxWidth="141px">
-
-                                        {row.liquid}
-                                    </Box>
+                                    <TableCell
+                                        key={header.name}
+                                        align={header.alignment}
+                                        sx={{
+                                            borderBottom: `1px solid ${theme.palette.grey[300]}`,
+                                        }}
+                                    >
+                                        {row.liquid ? (
+                                            <Box
+                                                display="flex"
+                                                alignItems="center"
+                                                justifyContent="center"
+                                                width="100%"
+                                                height="100%"
+                                                minHeight="40px"
+                                                maxWidth="141px"
+                                            >
+                                                {row.liquid}
+                                            </Box>
+                                        ) : (
+                                            ''
+                                        )}
+                                    </TableCell>
                                 ) : header.name !== 'Actions' ? (
                                     <TableCell
                                         key={header.name}
