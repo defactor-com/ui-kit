@@ -110,53 +110,17 @@ export const MainTable: React.FC<MainTableProps> = ({
                                 whiteSpace: 'nowrap',
                             }}
                         >
-                            <TableCell
-                                component='th'
-                                scope='row'
-                                sx={{ borderBottom: `1px solid ${theme.palette.grey[300]}` }}
-                            >
-                                {row.asset_name}
-                            </TableCell>
-                            <TableCell align='left' sx={{ borderBottom: `1px solid ${theme.palette.grey[300]}` }}>
-                                {row.asset_symbol}
-                            </TableCell>
-                            <TableCell align='left' sx={{ borderBottom: `1px solid ${theme.palette.grey[300]}` }}>
-                                {row.asset_type}
-                            </TableCell>
-                            <TableCell
-                                align='left'
-                                sx={{
-                                    whiteSpace: 'nowrap',
-                                    borderBottom: `1px solid ${theme.palette.grey[300]}`,
-                                }}
-                            >
-                                {row.price.toLocaleString()}
-                            </TableCell>
-                            <TableCell
-                                align='left'
-                                sx={{
-                                    whiteSpace: 'nowrap',
-                                    borderBottom: `1px solid ${theme.palette.grey[300]}`,
-                                }}
-                            >
-                                {row.supply.toLocaleString()}
-                            </TableCell>
-                            <TableCell
-                                align='left'
-                                sx={{
-                                    whiteSpace: 'nowrap',
-                                    maxWidth: '40px',
-                                    borderBottom: `1px solid ${theme.palette.grey[300]}`,
-                                }}
-                            >
-                                <Chip
-                                    label={row.status.charAt(0).toUpperCase() + row.status.slice(1)}
+                            {headers.map((header) => (
+                                <TableCell
+                                    key={header.name}
+                                    align={header.alignment}
                                     sx={{
-                                        backgroundColor: row.status === 'mined' ? theme.palette.success.main : theme.palette.warning.main,
-                                        color: theme.palette.common.white,
+                                        borderBottom: `1px solid ${theme.palette.grey[300]}`,
                                     }}
-                                />
-                            </TableCell>
+                                >
+                                    {(row as Record<string, any>)[header.name.toLowerCase().replace(/ /g, '_')] || 'N/A'}
+                                </TableCell>
+                            ))}
                             {showActions && (
                                 <TableCell align='center' sx={{ width: '90px' }}>
                                     <IconButton>
