@@ -14,6 +14,7 @@ import {
 import { useTheme } from '@mui/material';
 import React from 'react';
 import { CustomTooltip } from '../../CustomTooltip';
+import { CustomProgressBar } from '../CustomProgressBar';
 
 export interface Header {
     name: string;
@@ -59,7 +60,7 @@ export const MainTable: React.FC<MainTableProps> = ({
             price: '1000',
             supply: 500,
             status: 'mined',
-            liquid: 'neki'
+            liquid: <CustomProgressBar progress={50} />
         },
         {
             id: '2',
@@ -69,7 +70,7 @@ export const MainTable: React.FC<MainTableProps> = ({
             price: '2000',
             supply: 300,
             status: 'draft',
-            liquid: 'neki'
+            liquid: <CustomProgressBar progress={50} />
         },
     ];
 
