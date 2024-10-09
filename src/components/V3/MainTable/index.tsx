@@ -154,7 +154,7 @@ export const MainTable: React.FC<MainTableProps> = ({
                                         />
                                     </TableCell>
                                 ) : header.name === '% Liquid' ? (
-                                    <Box display="flex" alignItems="center" justifyContent="center" width="100%" height="100%" minHeight="68px">
+                                    <Box display="flex" alignItems="center" justifyContent="center" width="100%" height="100%" minHeight="68px" maxWidth="141px">
 
                                         {row.liquid}
                                     </Box>
