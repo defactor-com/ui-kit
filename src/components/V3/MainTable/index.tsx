@@ -1,5 +1,6 @@
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import {
+    Chip,
     IconButton,
     Paper,
     Table,
@@ -19,7 +20,6 @@ export interface Header {
     tooltip?: boolean;
     tooltipMessage?: string;
 }
-
 
 export interface MainTableProps {
     showActions?: boolean;
@@ -118,7 +118,27 @@ export const MainTable: React.FC<MainTableProps> = ({
                             }}
                         >
                             {headers.map((header) => (
-                                header.name !== 'Actions' ? (
+                                header.name === 'Status' ? (
+                                    <TableCell
+                                        key={header.name}
+                                        align={header.alignment}
+                                        sx={{
+                                            whiteSpace: 'nowrap',
+                                            maxWidth: '40px',
+                                            borderBottom: `1px solid ${theme.palette.grey[300]}`,
+                                        }}
+                                    >
+                                        <Chip
+                                            label={row.status.charAt(0).toUpperCase() + row.status.slice(1)}
+                                            sx={{
+                                                backgroundColor: row.status === 'mined'
+                                                    ? theme.palette.success.main
+                                                    : theme.palette.warning.main,
+                                                color: theme.palette.common.white,
+                                            }}
+                                        />
+                                    </TableCell>
+                                ) : header.name !== 'Actions' ? (
                                     <TableCell
                                         key={header.name}
                                         align={header.alignment}
