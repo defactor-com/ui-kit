@@ -46,7 +46,10 @@ export const CardComponent = ({
           {value && (
             <div className="flat-body-container">
               <div className="flex-column-direction">
-                <span className="variant-h3" style={{ fontFamily }}>
+                <span
+                  className="variant-h3"
+                  style={{ fontFamily, wordBreak: "break-all" }}
+                >
                   {value}
                 </span>
               </div>

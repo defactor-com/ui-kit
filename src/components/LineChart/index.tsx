@@ -102,7 +102,7 @@ const RenderComponent = ({
   } else {
     return (
       <ResponsiveContainer
-        width="98%"
+        width="97%"
         height="55%"
         minHeight="200px"
         className="line-chart-container"

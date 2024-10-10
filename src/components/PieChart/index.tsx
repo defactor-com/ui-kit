@@ -156,6 +156,7 @@ const Chart = ({
 };
 
 export const PieChart = ({
+  sx,
   data,
   loading,
   emptyIcon,
@@ -194,11 +195,11 @@ export const PieChart = ({
   };
 
   return (
-    <div
+    <Box
       className="pie-chart-container"
-      style={{ justifyContent: chartPosition }}
+      sx={{ ...sx, justifyContent: chartPosition }}
     >
       <RenderComponent />
-    </div>
+    </Box>
   );
 };
