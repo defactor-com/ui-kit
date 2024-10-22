@@ -24,7 +24,7 @@ export const MultichainSelectorV3: React.FC<IMultiChainSelector> = ({
 }) => {
   const renderValue = (selected: NetworksDataType[]) => (
     <Box display="flex" flexWrap="wrap">
-      <Typography mr={2} variant="body2" fontWeight={500}>
+      <Typography mr={2} variant="body2" fontWeight={500} color={"#606060"}>
         {textFieldLabel}
       </Typography>
       {selected.map((value) => (
@@ -57,7 +57,8 @@ export const MultichainSelectorV3: React.FC<IMultiChainSelector> = ({
           borderRadius: "30px",
           borderColor: "rgba(189, 189, 189, 0.5)",
           '& .MuiSelect-icon': {
-            color: 'black',
+            color: "black",
+            transform: "scale(0.8)"
           },
         }}
         IconComponent={ExpandMoreIcon}
