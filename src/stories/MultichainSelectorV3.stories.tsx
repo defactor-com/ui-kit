@@ -105,7 +105,7 @@ const networkSelected = [
   },
 ];
 
-export const MultichainSelectorItemV3: Story<IMultiChainSelector> = (args) => {
+export const MultichainMainItem: Story<IMultiChainSelector> = (args) => {
   return (
     <MultichainSelectorV3
       {...args}
