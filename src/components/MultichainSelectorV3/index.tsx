@@ -54,6 +54,7 @@ export const MultichainSelectorV3: React.FC<IMultiChainSelector> = ({
         sx={{
           height: 32,
           borderRadius: "30px",
+          borderColor: "rgba(189, 189, 189, 0.5)"
         }}
         renderValue={renderValue}
         MenuProps={{
