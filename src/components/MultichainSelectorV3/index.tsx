@@ -27,10 +27,10 @@ export const MultichainSelectorV3: React.FC<IMultiChainSelector> = ({
         {textFieldLabel}
       </Typography>
       {selected.map((value) => (
-        <Box mr={1} display="flex" alignItems="center" key={value.chainId}>
+        <Box mr={0.5} display="flex" alignItems="center" key={value.chainId}>
           <img
-            width={24}
-            height={24}
+            width={20}
+            height={20}
             alt={`Network ${value.name} icon`}
             src={networksAssets[value.chainId]?.logo || ""}
           />
