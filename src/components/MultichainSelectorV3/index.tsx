@@ -23,6 +23,9 @@ export const MultichainSelectorV3: React.FC<IMultiChainSelector> = ({
 }) => {
   const renderValue = (selected: NetworksDataType[]) => (
     <Box display="flex" flexWrap="wrap">
+      <Typography mr={2} variant="body2" fontWeight={500}>
+        {textFieldLabel}
+      </Typography>
       {selected.map((value) => (
         <Box mr={1} display="flex" alignItems="center" key={value.chainId}>
           <img
@@ -33,9 +36,6 @@ export const MultichainSelectorV3: React.FC<IMultiChainSelector> = ({
           />
         </Box>
       ))}
-      <Typography ml={1} variant="body1" fontWeight={700}>
-        {textFieldLabel}
-      </Typography>
     </Box>
   );
 
