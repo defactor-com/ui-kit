@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import { IMultiChainSelector, NetworksDataType } from "./MultiChainSelectorTypesV3";
 
@@ -54,7 +55,10 @@ export const MultichainSelectorV3: React.FC<IMultiChainSelector> = ({
         sx={{
           height: 32,
           borderRadius: "30px",
-          borderColor: "rgba(189, 189, 189, 0.5)"
+          borderColor: "rgba(189, 189, 189, 0.5)",
+          '& .MuiSelect-icon': {
+            color: '#000000',
+          },
         }}
         renderValue={renderValue}
         MenuProps={{
