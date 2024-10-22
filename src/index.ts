@@ -1,3 +1,4 @@
+import { MultichainSelectorV3 } from "./components/MultichainSelectorV3";
 import "./scss/styles.scss";
 
 export * from './components/Pill';
@@ -97,3 +98,4 @@ export {
   CustomDropdown,
   CustomDropdownProps,
 } from "./components/CustomDropdown";
+export { MultichainSelectorV3 } from "./components/MultichainSelectorV3";
