@@ -57,9 +57,10 @@ export const MultichainSelectorV3: React.FC<IMultiChainSelector> = ({
           borderRadius: "30px",
           borderColor: "rgba(189, 189, 189, 0.5)",
           '& .MuiSelect-icon': {
-            color: '#000000',
+            color: 'black',
           },
         }}
+        IconComponent={ExpandMoreIcon}
         renderValue={renderValue}
         MenuProps={{
           PaperProps: {
