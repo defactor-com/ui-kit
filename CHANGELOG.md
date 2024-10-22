@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.0
+
+### Minor Changes
+
+- 0551758: Added V3 Component MultichainSelectorV3.
+
 ## 0.4.9
 
 ### Patch Changes
