@@ -13,7 +13,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import { IMultiChainSelector, NetworksDataType } from "./MultiChainSelectorTypesV3";
 
-export const MultichainSelectorV3: React.FC<IMultiChainSelector> = ({
+export const MultichainSelectorV3: React.FC<IMultiChainSelector & { disabled?: boolean }> = ({
   networkSelected,
   networksAssets,
   textFieldLabel,
@@ -21,6 +21,7 @@ export const MultichainSelectorV3: React.FC<IMultiChainSelector> = ({
   fontFamily,
   onClick,
   color,
+  disabled = false, // Add disabled prop
 }) => {
   const renderValue = (selected: NetworksDataType[]) => (
     <Box display="flex" flexWrap="wrap">
@@ -46,6 +47,8 @@ export const MultichainSelectorV3: React.FC<IMultiChainSelector> = ({
         maxWidth: 240,
         fontFamily,
         width: (networksList.length === 1 ? 160 : 87) * networksList.length,
+        opacity: disabled ? 0.7 : 1,
+        pointerEvents: disabled ? "none" : "auto",
       }}
     >
       <Select
@@ -73,6 +76,7 @@ export const MultichainSelectorV3: React.FC<IMultiChainSelector> = ({
             },
           },
         }}
+        disabled={disabled}
       >
         {networksList.map((chain: NetworksDataType) => (
           <MenuItem key={chain.chainId} sx={{ padding: 0 }}>

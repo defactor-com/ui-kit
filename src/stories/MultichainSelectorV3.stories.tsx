@@ -119,3 +119,19 @@ export const MultichainMainItem: Story<IMultiChainSelector> = (args) => {
     />
   );
 };
+
+export const MultichainDisabledItem: Story<IMultiChainSelector> = (args) => {
+  return (
+    <MultichainSelectorV3
+      {...args}
+      fontFamily=""
+      color="#26A66B"
+      onClick={() => { }}
+      textFieldLabel="Chains"
+      networksList={networksList}
+      networksAssets={networksAssets}
+      networkSelected={networkSelected}
+      disabled={true}
+    />
+  );
+};
