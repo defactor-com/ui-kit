@@ -57,6 +57,7 @@ export const MultichainSelectorV3: React.FC<IMultiChainSelector & { disabled?: b
         id="multichain-selector"
         sx={{
           height: 32,
+          bgcolor: 'white',
           borderRadius: "30px",
           borderColor: "rgba(189, 189, 189, 0.5)",
           '& .MuiSelect-icon': {
