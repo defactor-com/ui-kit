@@ -21,7 +21,7 @@ export const MultichainSelectorV3: React.FC<IMultiChainSelector & { disabled?: b
   fontFamily,
   onClick,
   color,
-  disabled = false, // Add disabled prop
+  disabled = false,
 }) => {
   const renderValue = (selected: NetworksDataType[]) => (
     <Box display="flex" flexWrap="wrap">
