@@ -52,7 +52,7 @@ export const MultichainSelectorV3: React.FC<IMultiChainSelector> = ({
         value={networkSelected}
         id="multichain-selector"
         sx={{
-          height: 40,
+          height: 32,
           borderRadius: "30px",
         }}
         renderValue={renderValue}
