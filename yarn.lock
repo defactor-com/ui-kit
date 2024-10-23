@@ -3475,6 +3475,11 @@
   dependencies:
     "@types/yargs-parser" "*"
 
+"@untitled-ui/icons-react@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@untitled-ui/icons-react/-/icons-react-0.1.3.tgz#8c692aa82af57cacf962099d86f8d96656f69c91"
+  integrity sha512-IIInbrn4E+xu2iIZjBw7/ru8Q1kH8A3bakh+967gmx5GLrA5j3ypc5Jc7+5ohA3ZtYjnhHM++cLUIkwgcC8hiA==
+
 "@webassemblyjs/ast@1.12.1", "@webassemblyjs/ast@^1.12.1":
   version "1.12.1"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.12.1.tgz#bb16a0e8b1914f979f45864c23819cc3e3f0d4bb"

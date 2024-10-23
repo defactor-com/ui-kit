@@ -1,8 +1,8 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { MultichainSelectorV3 } from "../components/MultichainSelectorV3";
-import { IMultiChainSelector } from "../components/MultichainSelectorV3/MultiChainSelectorTypesV3";
+import { MultichainSelectorV3 } from "../components/V3/MultichainSelectorV3";
+import { IMultiChainSelector } from "../components/V3/MultichainSelectorV3/MultiChainSelectorTypesV3";
 
 export default {
   title: "V3/MultichainSelectorV3",
