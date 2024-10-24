@@ -198,17 +198,32 @@ const Chart = ({
               axisLine={false}
               tick={(props) => {
                 return displayDirection === "horizontal" ? (
-                  <text
-                    x={props.x}
-                    y={props.y}
-                    fontSize={11}
-                    fill="#7C7D7E"
-                    textAnchor="end"
-                    fontWeight={500}
-                    fontFamily={fontFamily}
+                  <foreignObject
+                    width="60"
+                    x="initial"
+                    height="115"
+                    y={props.y - 58}
                   >
-                    {chartData[props.payload.index].name}
-                  </text>
+                    <div
+                      style={{
+                        height: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontSize: "11px",
+                          color: "#7C7D7E",
+                          fontWeight: "500",
+                          fontFamily: fontFamily,
+                          wordBreak: "break-word",
+                        }}
+                      >
+                        {chartData[props.payload.index].name}
+                      </div>
+                    </div>
+                  </foreignObject>
                 ) : (
                   <foreignObject
                     x={props.x - 61}
