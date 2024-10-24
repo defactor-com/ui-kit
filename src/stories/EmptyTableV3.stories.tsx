@@ -20,6 +20,6 @@ const Template: Story = (args) => (
 
 export const DefaultEmptyTable = Template.bind({});
 DefaultEmptyTable.args = {
-    // title: 'Lorem ipsum dolor sit amet consectetur',
-    // description: 'Lorem ipsum dolor sit amet consectetur. Ultrices hendrerit fringilla et rhoncus elit dolor.',
+    title: 'Lorem ipsum dolor sit amet consectetur',
+    description: 'Lorem ipsum dolor sit amet consectetur. Ultrices hendrerit fringilla et rhoncus elit dolor.',
 };

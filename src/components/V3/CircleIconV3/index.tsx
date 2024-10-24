@@ -3,19 +3,19 @@ import { CoinsStacked01 } from '@untitled-ui/icons-react';
 import { Box } from '@mui/material';
 
 interface CircleIconProps {
-    width?: string,
-    height?: string,
-    borderRadius?: '50%',
+    width?: string;
+    height?: string;
+    borderRadius?: string;
     backgroundColor?: string;
     icon?: React.ReactElement;
 }
 
 const CircleIconV3: React.FC<CircleIconProps> = ({
-    width = 88,
-    height = 88,
+    width = '88px',
+    height = '88px',
     borderRadius = '50%',
     backgroundColor = '#EFEFFD',
-    icon = <CoinsStacked01 style={{ width: 40, height: 40, color: '#5A5BEB' }} />,
+    icon = <CoinsStacked01 style={{ width: '40px', height: '40px', color: '#5A5BEB' }} />,
 }) => {
     return (
         <Box
