@@ -6,28 +6,51 @@ import { CoinsStacked01 } from '@untitled-ui/icons-react';
 interface EmptyTableProps {
     title?: string;
     description?: string;
+    backgroundColor?: string;
+    height?: string;
+    width?: string;
+    maxWidth?: string;
+    gap?: number;
+    padding?: number;
+    display?: string;
+    flexDirection?: string;
+    textAlign?: string;
+    alignItems?: string;
+    justifyContent?: string;
 }
 
 export const EmptyTableV3: React.FC<EmptyTableProps> = ({
-    title = 'No assets to display',
-    description = 'You can create a new asset from existing community templates or by creating your own template first.'
+    title = 'Lorem ipsum dolor sit amet consectetur',
+    description = 'Lorem ipsum dolor sit amet consectetur. Ultrices hendrerit fringilla et rhoncus elit dolor.',
+    backgroundColor = '#ffffff',
+    height = '420px',
+    width = "100%",
+    maxWidth = '1164px',
+    gap = 3,
+    padding = 2,
+    display = 'flex',
+    flexDirection = 'column',
+    textAlign = 'center',
+    alignItems = 'center',
+    justifyContent = 'center'
+
 }) => {
     const theme = useTheme()
 
     return (
         <Box
             sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                textAlign: 'center',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 3,
-                backgroundColor: "#ffffff",
-                height: "420px",
-                width: "100%",
-                maxWidth: "1164px",
-                p: 2
+                display: display,
+                flexDirection: flexDirection,
+                textAlign: textAlign,
+                alignItems: alignItems,
+                justifyContent: justifyContent,
+                gap: gap,
+                backgroundColor: backgroundColor,
+                height: height,
+                width: width,
+                maxWidth: maxWidth,
+                p: padding
             }}
         >
             <CircleIconV3

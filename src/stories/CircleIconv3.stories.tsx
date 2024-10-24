@@ -24,6 +24,6 @@ const Template: Story = (args) => (
 
 export const BasicCircleIcon = Template.bind({});
 BasicCircleIcon.args = {
-    backgroundColor: "#EFEFFD",
-    icon: <CoinsStacked01 style={{ width: 40, height: 40, color: '#5A5BEB' }} />,
+    //backgroundColor: "#EFEFFD",
+    // icon: <CoinsStacked01 style={{ width: 40, height: 40, color: '#5A5BEB' }} />,
 };
