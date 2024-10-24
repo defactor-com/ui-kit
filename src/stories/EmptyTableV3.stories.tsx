@@ -8,7 +8,7 @@ export default {
     component: EmptyTableV3,
     argTypes: {
         title: { control: 'text' },
-        subtitle: { control: 'text' },
+        description: { control: 'text' },
     },
 } as Meta;
 
