@@ -1,9 +1,9 @@
 import React from 'react'
 import { Box, Typography, useTheme } from '@mui/material'
-import CircleIconV3 from '../CircleIconV3'
+import { CircleIconV3 } from '../CircleIconV3'
 import { CoinsStacked01 } from '@untitled-ui/icons-react';
 
-interface EmptyTableProps {
+export interface EmptyTableProps {
     title?: string;
     description?: string;
     backgroundColor?: string;
@@ -74,5 +74,3 @@ export const EmptyTableV3: React.FC<EmptyTableProps> = ({
         </Box >
     )
 }
-
-export default EmptyTableV3

@@ -2,7 +2,7 @@ import React from 'react';
 import { CoinsStacked01 } from '@untitled-ui/icons-react';
 import { Box } from '@mui/material';
 
-interface CircleIconProps {
+export interface CircleIconProps {
     width?: string;
     height?: string;
     borderRadius?: string;
@@ -10,7 +10,7 @@ interface CircleIconProps {
     icon?: React.ReactElement;
 }
 
-const CircleIconV3: React.FC<CircleIconProps> = ({
+export const CircleIconV3: React.FC<CircleIconProps> = ({
     width = '88px',
     height = '88px',
     borderRadius = '50%',
@@ -33,5 +33,3 @@ const CircleIconV3: React.FC<CircleIconProps> = ({
         </Box>
     );
 };
-
-export default CircleIconV3;

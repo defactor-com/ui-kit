@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { Box } from '@mui/material';
-import CircleIconV3 from "../components/V3/CircleIconV3";
+import { CircleIconV3 } from "../components/V3/CircleIconV3";
 import { CoinsStacked01 } from "@untitled-ui/icons-react";
 
 export default {
