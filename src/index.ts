@@ -1,4 +1,5 @@
-import { MultichainSelectorV3 } from "./components/MultichainSelectorV3";
+import { EmptyTableV3 } from "./components/V3/EmptyTableV3";
+import { MultichainSelectorV3 } from "./components/V3/MultichainSelectorV3";
 import "./scss/styles.scss";
 
 export * from './components/Pill';
@@ -98,4 +99,6 @@ export {
   CustomDropdown,
   CustomDropdownProps,
 } from "./components/CustomDropdown";
-export { MultichainSelectorV3 } from "./components/MultichainSelectorV3";
+export { MultichainSelectorV3 } from "./components/V3/MultichainSelectorV3";
+export { EmptyTableV3 } from "./components/V3/EmptyTableV3";
+export { CircleIconV3 } from "./components/V3/CircleIconV3";
