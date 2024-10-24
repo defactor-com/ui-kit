@@ -34,7 +34,7 @@ const Template: Story<IBarChart> = (args) => {
   return (
     <BarChart
       {...args}
-      displayDirection="vertical"
+      displayDirection="horizontal"
       currentFilter={currentFilter}
       handleChangeFilter={handleChangeFilter}
       loaderComponent={
@@ -48,7 +48,11 @@ const Template: Story<IBarChart> = (args) => {
   );
 };
 
-const poolNames = ["POOL A", "POOL B", "POOL C"];
+const poolNames = [
+  "FACTR Polygon Pool-1 2024",
+  "FACTR Polygon Pool-2 2024",
+  "FACTR Polygon Pool-3 2024",
+];
 const barChartColors = ["#5A5BEB", "#26A66B80"];
 const barChatSeries: ChartSeriesType[] = [
   { name: "Lending", data: [3000, 200, 1000] },
