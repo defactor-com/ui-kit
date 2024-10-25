@@ -1,14 +1,16 @@
 import { Box } from '@mui/material'
 import React from 'react'
 
+import { EthFactrIcon } from './EthFactrIcon'
+
 export interface PercentageCircleProps {
     icon?: React.ReactElement
-    percentage: string
+    percentage?: string
 }
 
 export const PercentageCircle: React.FC<PercentageCircleProps> = ({
-    icon,
-    percentage
+    icon = <EthFactrIcon width={49} height={49} />,
+    percentage = '75%'
 }) => {
     const value = parseFloat(percentage)
     const radius = 28.5
