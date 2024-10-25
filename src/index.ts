@@ -99,6 +99,14 @@ export {
   CustomDropdown,
   CustomDropdownProps,
 } from "./components/CustomDropdown";
-export { MultichainSelectorV3 } from "./components/V3/MultichainSelectorV3";
-export { EmptyTableV3 } from "./components/V3/EmptyTableV3";
-export { CircleIconV3 } from "./components/V3/CircleIconV3";
+export {
+  MultichainSelectorV3
+} from "./components/V3/MultichainSelectorV3";
+export {
+  EmptyTableV3,
+  EmptyTableProps
+} from "./components/V3/EmptyTableV3";
+export {
+  CircleIconV3,
+  CircleIconProps
+} from "./components/V3/CircleIconV3";
