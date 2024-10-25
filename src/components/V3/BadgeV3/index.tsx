@@ -5,14 +5,14 @@ import { PercentageCircleV3 } from '../PercentageCircleV3'
 
 import { EthFactrIcon } from '../PercentageCircleV3/EthFactrIcon'
 
-export interface FactrTokenBadgeProps {
+export interface BadgeProps {
     icon?: React.ReactElement
     name?: string
     percentage?: string
     background?: string
 }
 
-export const FactrTokenBadge: React.FC<FactrTokenBadgeProps> = ({
+export const BadgeV3: React.FC<BadgeProps> = ({
     icon = <EthFactrIcon width={49} height={49} />,
     name = 'Ethereum',
     percentage = '68.41%',
