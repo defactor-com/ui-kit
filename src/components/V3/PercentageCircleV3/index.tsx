@@ -8,7 +8,7 @@ export interface PercentageCircleProps {
     percentage?: string
 }
 
-export const PercentageCircle: React.FC<PercentageCircleProps> = ({
+export const PercentageCircleV3: React.FC<PercentageCircleProps> = ({
     icon = <EthFactrIcon width={49} height={49} />,
     percentage = '75%'
 }) => {
