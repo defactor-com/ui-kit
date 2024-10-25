@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.2
+
+### Patch Changes
+
+- 37f2ec7: Added EmptyTableV3 and CircleIconV3.
+
 ## 0.5.0
 
 ### Minor Changes
