@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { PercentageCircle, PercentageCircleProps } from '../components/V3/PercentageCircle';
-import { EthFactrIcon } from '../components/V3/PercentageCircle/EthFactrIcon';
+import { PercentageCircle, PercentageCircleProps } from '../components/V3/PercentageCircleV3';
+import { EthFactrIcon } from '../components/V3/PercentageCircleV3/EthFactrIcon';
 
 export default {
     title: 'V3/PercentageCircle',
