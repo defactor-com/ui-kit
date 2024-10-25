@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.3
+
+### Patch Changes
+
+- 0d5830a: Added Props Exports.
+
 ## 0.5.2
 
 ### Patch Changes
