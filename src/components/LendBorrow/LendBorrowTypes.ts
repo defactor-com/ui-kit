@@ -17,6 +17,10 @@ export interface ILendBorrow {
   fontFamily?: string;
   tokenSymbol?: string;
   borrowingSvg: string;
+  maxLendBorrow?: string;
+  minLendBorrow?: string;
+  minAmountLabel?: string;
+  maxAmountLabel?: string;
   textCollateral?: string;
   value: InputValue | bigint;
   collateralBalance?: string;
