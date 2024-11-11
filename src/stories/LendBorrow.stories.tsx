@@ -78,6 +78,10 @@ const Template: Story<ILendBorrow> = (args) => {
       textWallet="My Collateral Balance"
       collateralRequired="100,000.00"
       collateralBalance="100,000.00"
+      maxLendBorrow="1,000,000.00"
+      minLendBorrow="100.00"
+      maxAmountLabel="Max Lend"
+      minAmountLabel="Min Lend"
       borrowingSvg={borrowIcon}
       currentTab={currentTab}
       onChange={handleChange}

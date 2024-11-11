@@ -1,5 +1,5 @@
 import React from "react";
-import { Tab } from "@mui/material";
+import { alpha, Box, Tab, Typography, useTheme } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { TabContext, TabPanel, TabList } from "@mui/lab";
 
@@ -37,6 +37,10 @@ export const LendBorrow = ({
   tokenSymbol,
   onChangeTab,
   borrowingSvg,
+  minLendBorrow,
+  maxLendBorrow,
+  minAmountLabel,
+  maxAmountLabel,
   textCollateral,
   loaderCollateral,
   collateralBalance,
@@ -46,6 +50,7 @@ export const LendBorrow = ({
   selectedPool,
 }: ILendBorrow) => {
   const classes = useStyles({ indicatorColor: color });
+  const theme = useTheme();
 
   return (
     <Container
@@ -106,6 +111,40 @@ export const LendBorrow = ({
                   onChange={onChange}
                   value={value?.toString()}
                 />
+                <Box display="flex" justifyContent="space-between" mt={0.5}>
+                  {minLendBorrow && minAmountLabel && (
+                    <Typography
+                      variant="caption"
+                      fontFamily={fontFamily}
+                      color={alpha(theme.palette.common.black, 0.5)}
+                    >
+                      {minAmountLabel}:{" "}
+                      <Typography
+                        color="black"
+                        variant="caption"
+                        fontFamily={fontFamily}
+                      >
+                        {minLendBorrow}
+                      </Typography>
+                    </Typography>
+                  )}
+                  {maxLendBorrow && maxAmountLabel && (
+                    <Typography
+                      variant="caption"
+                      fontFamily={fontFamily}
+                      color={alpha(theme.palette.common.black, 0.5)}
+                    >
+                      {maxAmountLabel}:{" "}
+                      <Typography
+                        color="black"
+                        variant="caption"
+                        fontFamily={fontFamily}
+                      >
+                        {maxLendBorrow}
+                      </Typography>
+                    </Typography>
+                  )}
+                </Box>
                 <CollateralSection
                   tokenIcon={tokenIcon}
                   walletIcon={walletSvg}
@@ -144,6 +183,40 @@ export const LendBorrow = ({
                   onChange={onChange}
                   value={value?.toString()}
                 />
+                <Box display="flex" justifyContent="space-between" mt={0.5}>
+                  {minLendBorrow && minAmountLabel && (
+                    <Typography
+                      variant="caption"
+                      fontFamily={fontFamily}
+                      color={alpha(theme.palette.common.black, 0.5)}
+                    >
+                      {minAmountLabel}:{" "}
+                      <Typography
+                        color="black"
+                        variant="caption"
+                        fontFamily={fontFamily}
+                      >
+                        {minLendBorrow}
+                      </Typography>
+                    </Typography>
+                  )}
+                  {maxLendBorrow && maxAmountLabel && (
+                    <Typography
+                      variant="caption"
+                      fontFamily={fontFamily}
+                      color={alpha(theme.palette.common.black, 0.5)}
+                    >
+                      {maxAmountLabel}:{" "}
+                      <Typography
+                        color="black"
+                        variant="caption"
+                        fontFamily={fontFamily}
+                      >
+                        {maxLendBorrow}
+                      </Typography>
+                    </Typography>
+                  )}
+                </Box>
                 <CollateralSection
                   tokenIcon={tokenIcon}
                   walletIcon={walletSvg}
