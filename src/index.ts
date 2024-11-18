@@ -110,3 +110,11 @@ export {
   CircleIconV3,
   CircleIconProps
 } from "./components/V3/CircleIconV3";
+export {
+  PercentageCircleV3,
+  PercentageCircleProps
+} from "./components/V3/PercentageCircleV3";
+export {
+  BadgeV3,
+  BadgeProps
+} from "./components/V3/BadgeV3";
