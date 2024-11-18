@@ -17,6 +17,7 @@ export interface EmptyTableProps {
     textAlign?: string;
     alignItems?: string;
     justifyContent?: string;
+    icon?: React.ReactElement;
 }
 
 export const EmptyTableV3: React.FC<EmptyTableProps> = ({
@@ -32,7 +33,8 @@ export const EmptyTableV3: React.FC<EmptyTableProps> = ({
     flexDirection = 'column',
     textAlign = 'center',
     alignItems = 'center',
-    justifyContent = 'center'
+    justifyContent = 'center',
+    icon = <CoinsStacked01 style={{ width: 40, height: 40, color: '#5A5BEB' }} />
 
 }) => {
     const theme = useTheme()
@@ -55,7 +57,7 @@ export const EmptyTableV3: React.FC<EmptyTableProps> = ({
         >
             <CircleIconV3
                 backgroundColor="#EFEFFD"
-                icon={<CoinsStacked01 style={{ width: 40, height: 40, color: '#5A5BEB' }} />}
+                icon={icon}
             />
             <Typography variant='h6' maxWidth='550px' fontWeight={700}>
                 {title}
