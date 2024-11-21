@@ -10,7 +10,7 @@ export default {
 };
 
 const Template: Story<IInput> = (args) => {
-  const [value, setValue] = useState<string | number>(0);
+  const [value, setValue] = useState<string>("0");
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };

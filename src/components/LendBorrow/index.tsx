@@ -33,21 +33,26 @@ export const LendBorrow = ({
   lendingSvg,
   textWallet,
   fontFamily,
+  maxOnclick,
+  minOnclick,
+  inputError,
   labelBorrow,
-  tokenSymbol,
   onChangeTab,
   borrowingSvg,
+  selectedPool,
+  buttonsLabels,
   minLendBorrow,
   maxLendBorrow,
   minAmountLabel,
   maxAmountLabel,
   textCollateral,
+  baseTokenSymbol,
   loaderCollateral,
   collateralBalance,
   color = "#26a66b",
   collateralRequired,
+  collateralTokenSymbol,
   showRequiredCollateral = false,
-  selectedPool,
 }: ILendBorrow) => {
   const classes = useStyles({ indicatorColor: color });
   const theme = useTheme();
@@ -107,9 +112,15 @@ export const LendBorrow = ({
             >
               <TabPanel value={labelLend} className="tabPanelCustom">
                 <Input
-                  setFormat={true}
+                  value={value}
                   onChange={onChange}
-                  value={value?.toString()}
+                  colorMaxButton={color}
+                  fontFamily={fontFamily}
+                  maxOnclick={maxOnclick}
+                  minOnclick={minOnclick}
+                  inputError={inputError}
+                  tokenSymbol={baseTokenSymbol}
+                  buttonsLabels={buttonsLabels}
                 />
                 <Box display="flex" justifyContent="space-between" mt={0.5}>
                   {minLendBorrow && minAmountLabel && (
@@ -152,9 +163,9 @@ export const LendBorrow = ({
                   textWallet={textWallet}
                   loader={loaderCollateral}
                   backgroundColor={bgColor}
-                  tokenSymbol={tokenSymbol}
                   textCollateral={textCollateral}
                   numberWallet={collateralBalance}
+                  tokenSymbol={collateralTokenSymbol}
                   numberCollateral={collateralRequired}
                   requiredSection={showRequiredCollateral}
                 />
@@ -179,9 +190,15 @@ export const LendBorrow = ({
               </TabPanel>
               <TabPanel value={labelBorrow} className="tabPanelCustom">
                 <Input
-                  setFormat={true}
+                  value={value}
                   onChange={onChange}
-                  value={value?.toString()}
+                  colorMaxButton={color}
+                  fontFamily={fontFamily}
+                  maxOnclick={maxOnclick}
+                  minOnclick={minOnclick}
+                  inputError={inputError}
+                  tokenSymbol={baseTokenSymbol}
+                  buttonsLabels={buttonsLabels}
                 />
                 <Box display="flex" justifyContent="space-between" mt={0.5}>
                   {minLendBorrow && minAmountLabel && (
@@ -224,9 +241,9 @@ export const LendBorrow = ({
                   textWallet={textWallet}
                   loader={loaderCollateral}
                   backgroundColor={bgColor}
-                  tokenSymbol={tokenSymbol}
                   textCollateral={textCollateral}
                   numberWallet={collateralBalance}
+                  tokenSymbol={collateralTokenSymbol}
                   numberCollateral={collateralRequired}
                   requiredSection={showRequiredCollateral}
                 />
