@@ -1,5 +1,12 @@
 # @defactor/ui-kit
 
+## 0.5.11
+
+### Patch Changes
+
+- Added icon prop support to EmptyTableV3 for custom icon rendering.
+- 8484800: Added BadgeV3 and PercentageCircleV3.
+
 ## 0.5.3
 
 ### Patch Changes
