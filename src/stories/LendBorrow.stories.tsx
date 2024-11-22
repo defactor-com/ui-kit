@@ -21,7 +21,7 @@ const Template: Story<ILendBorrow> = (args) => {
   const [borrowIcon, setBorrowIcon] = useState(borrowingIconSvg);
   const [lendIcon, setLendIcon] = useState(activeBorrowingIconSvg);
   const [currentTab, setCurrentTab] = useState("Lend");
-  const [value, setValue] = useState<string | number>(0);
+  const [value, setValue] = useState<string>("0");
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
@@ -74,9 +74,11 @@ const Template: Story<ILendBorrow> = (args) => {
   return (
     <LendBorrow
       {...args}
+      inputError="The amount entered is greater than the maximum allowed."
       textCollateral="Collateral Required"
       textWallet="My Collateral Balance"
       collateralRequired="100,000.00"
+      collateralTokenSymbol={"FACTR"}
       collateralBalance="100,000.00"
       maxLendBorrow="1,000,000.00"
       minLendBorrow="100.00"
@@ -84,16 +86,20 @@ const Template: Story<ILendBorrow> = (args) => {
       minAmountLabel="Min Lend"
       borrowingSvg={borrowIcon}
       currentTab={currentTab}
+      baseTokenSymbol="USDC"
       onChange={handleChange}
       onChangeTab={changeTab}
       showRequiredCollateral
       walletSvg={WalletIcon}
-      tokenSymbol={"FACTR"}
       lendingSvg={lendIcon}
       fontFamily="cursive"
       labelBorrow="Borrow"
       labelLend="Lend"
       value={value}
+      buttonsLabels={{
+        min: "Min",
+        max: "Max",
+      }}
       selectedPool={SelectedPool}
     />
   );
