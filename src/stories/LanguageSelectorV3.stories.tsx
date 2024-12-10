@@ -45,6 +45,7 @@ export const LanguageSelectorItem = Template.bind({});
 LanguageSelectorItem.args = {
   locale: "en",
   pathname: "/",
-  t: (key: string, { locale }: { locale: string }) => `Language: ${locale}`,
+  router: () => {},
+  t: (key: string, { locale }: { locale: string }) => `${locale}`,
   options,
 };
