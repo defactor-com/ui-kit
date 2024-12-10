@@ -2,7 +2,7 @@ import React from "react";
 import { Story } from "@storybook/react";
 
 import UsaIcon from "../components/V3/LanguageSelectorV3/usaIcon";
-import SpanishFlag from "../../public/assets/spanish-flag.svg";
+import SpanishIcon from "../components/V3/LanguageSelectorV3/SpanishIcon";
 
 import { ILanguageSelector } from "../components/LanguageSelector/LanguageSelectorTypes";
 import { LanguageSelectorV3 } from "../components/V3/LanguageSelectorV3";
@@ -19,7 +19,7 @@ const options = [
   },
   {
     id: "es",
-    flag: SpanishFlag,
+    flag: SpanishIcon,
   },
 ];
 

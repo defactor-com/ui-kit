@@ -74,19 +74,19 @@ export const LanguageSelectorV3 = ({
         }}
       >
         {options.map((lng) => (
-          <MenuItem
-            key={lng.id}
-            onClick={() => handleClose(lng.id)}
-            className={locale === lng.id ? "selectedOption" : "menuOption"}
-            style={{
-              backgroundColor:
-                locale === lng.id ? `${alpha(bgColor, 0.1)}` : "",
-              borderLeft: locale === lng.id ? `2px solid ${bgColor}` : "",
-            }}
-          >
-            <img src={lng.flag} alt={`${lng.id} Flag`} />
-            {t("locale", { locale: lng.id }) || lng.id}
-          </MenuItem>
+     <MenuItem
+     key={lng.id}
+     onClick={() => handleClose(lng.id)}
+     className={locale === lng.id ? "selectedOption" : "menuOption"}
+     style={{
+       backgroundColor: locale === lng.id ? `${alpha(bgColor, 0.1)}` : "",
+       borderLeft: locale === lng.id ? `2px solid ${bgColor}` : "",
+     }}
+   >
+     <lng.flag />
+     {t("locale", { locale: lng.id }) || lng.id}
+   </MenuItem>
+   
         ))}
       </Menu>
     </div>
