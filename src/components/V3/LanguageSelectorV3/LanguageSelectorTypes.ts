@@ -9,7 +9,7 @@ export interface ILanguageSelector {
   router: any;
   pathname: any;
   locale: string;
-  icon?: ReactElement;
+  icon?: any | ReactElement;
   bgColor?: string;
   options: OptionLanguage[];
   t: (key: string, options?: any) => string;
