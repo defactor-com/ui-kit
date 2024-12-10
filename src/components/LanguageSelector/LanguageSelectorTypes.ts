@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 
 type OptionLanguage = {
   id: string;
-  flag: any;
+  flag: string;
 };
 
 export interface ILanguageSelector {
