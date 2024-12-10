@@ -10,7 +10,6 @@ export interface ILanguageSelector {
   pathname: any;
   locale: string;
   icon?: string | ReactElement;
-  activeIcon?: string | ReactElement;
   bgColor?: string;
   options: OptionLanguage[];
   t: any;
@@ -20,7 +19,6 @@ export interface ILanguageSelectorState {
   router: any;
   pathname: any;
   icon: string | ReactElement;
-  activeIcon: string | ReactElement;
 }
 
 export type LanguageData = {

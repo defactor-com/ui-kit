@@ -12,7 +12,6 @@ const LanguageSelectorState = ({
   router,
   pathname,
   icon,
-  activeIcon,
 }: ILanguageSelectorState): [LanguageData, LanguageCallbacks] => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [, startTransition] = useTransition();
@@ -24,7 +23,6 @@ const LanguageSelectorState = ({
     setVisible(false);
     const timer = setTimeout(() => {
       const validation = open || value;
-      setCurrentIcon(validation ? activeIcon : icon);
       setVisible(true);
     }, 250);
     return () => clearTimeout(timer);
@@ -45,10 +43,6 @@ const LanguageSelectorState = ({
       router.replace(pathname, { locale: lng });
     });
   };
-
-  useEffect(() => {
-    setCurrentIcon(open ? activeIcon : icon);
-  }, [anchorEl]);
 
   return [
     {

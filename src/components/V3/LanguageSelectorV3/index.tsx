@@ -13,7 +13,6 @@ import UsaIcon from "./usaIcon";
 
 export const LanguageSelectorV3 = ({
   icon = <UsaIcon />,
-  activeIcon = <UsaIcon />,
   router,
   pathname,
   locale,
@@ -24,7 +23,7 @@ export const LanguageSelectorV3 = ({
   const [
     { visible, isOpen, anchorEl, currentIcon },
     { handleClick, handleClose, handleHover },
-  ] = LanguageSelectorState({ router, pathname, icon, activeIcon });
+  ] = LanguageSelectorState({ router, pathname, icon });
 
   return (
     <div>
