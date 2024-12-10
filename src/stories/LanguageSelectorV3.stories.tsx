@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Story } from "@storybook/react";
 
 import UsaIcon from "../components/V3/LanguageSelectorV3/usaIcon";
@@ -22,16 +22,29 @@ const options = [
   },
 ];
 
-const Template: Story<ILanguageSelector> = (args) => <LanguageSelectorV3 {...args} />;
+const Template: Story<ILanguageSelector> = (args) => {
+  const [localeText, setLocaleText] = useState(args.locale);
+
+  const handleReplace = (path: string, options: any) => {
+    console.log(`Navigated to ${path} with locale ${options.locale}`);
+    setLocaleText(options.locale);
+  };
+
+  return (
+    <LanguageSelectorV3
+      {...args}
+      locale={localeText}
+      router={{
+        replace: handleReplace,
+      }}
+    />
+  );
+};
 
 export const LanguageSelectorItem = Template.bind({});
 LanguageSelectorItem.args = {
   locale: "en",
   pathname: "/",
-  router: {
-    replace: (path: string, options: any) =>
-      console.log(`Navigated to ${path} with locale ${options.locale}`),
-  },
   t: (key: string, { locale }: { locale: string }) => `Language: ${locale}`,
   options,
 };
