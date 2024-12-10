@@ -1,7 +1,7 @@
 import React from "react";
 import { Story } from "@storybook/react";
 
-import EnglishFlag from "../../public/assets/english-flag.svg";
+import UsaIcon from "../components/V3/LanguageSelectorV3/usaIcon";
 import SpanishFlag from "../../public/assets/spanish-flag.svg";
 
 import { ILanguageSelector } from "../components/LanguageSelector/LanguageSelectorTypes";
@@ -15,7 +15,7 @@ export default {
 const options = [
   {
     id: "en",
-    flag: EnglishFlag,
+    flag: UsaIcon,
   },
   {
     id: "es",
