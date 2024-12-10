@@ -1,37 +1,31 @@
 import { ReactElement } from "react";
 
-type OptionLanguage = {
+export type OptionLanguage = {
   id: string;
-  flag: string;
+  flag: React.ElementType;
 };
 
 export interface ILanguageSelector {
   router: any;
   pathname: any;
   locale: string;
-  icon?: string | ReactElement;
+  icon?: ReactElement;
   bgColor?: string;
   options: OptionLanguage[];
-  t: any;
+  t: (key: string, options?: any) => string;
 }
 
 export interface ILanguageSelectorState {
   router: any;
   pathname: any;
-  icon: string | ReactElement;
+  icon: ReactElement;
 }
 
 export type LanguageData = {
   isOpen: boolean;
   visible: boolean;
   anchorEl: HTMLElement | null;
-  currentIcon?: string | React.ReactElement;
-};
-
-export type LanguageIconProps = {
-  color?: string;
-  width?: number;
-  height?: number;
+  currentIcon?: React.ReactElement;
 };
 
 export type LanguageCallbacks = {

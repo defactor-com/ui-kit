@@ -1,18 +1,19 @@
 "use client";
 
+import React from "react";
 import { useState, useTransition } from "react";
-
 import {
   ILanguageSelectorState,
-  LanguageCallbacks,
   LanguageData,
+  LanguageCallbacks,
 } from "./LanguageSelectorTypes";
 
 const LanguageSelectorState = ({
   router,
   pathname,
   icon,
-}: ILanguageSelectorState): [LanguageData, LanguageCallbacks] => {
+  options,
+}: ILanguageSelectorState & { options: { id: string; flag: React.ElementType }[] }): [LanguageData, LanguageCallbacks] => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [, startTransition] = useTransition();
   const open = Boolean(anchorEl);
@@ -22,7 +23,6 @@ const LanguageSelectorState = ({
   const handleHover = (value: boolean) => {
     setVisible(false);
     const timer = setTimeout(() => {
-      const validation = open || value;
       setVisible(true);
     }, 250);
     return () => clearTimeout(timer);
@@ -35,13 +35,20 @@ const LanguageSelectorState = ({
   const handleClose = (lng: string | null) => {
     if (!lng) {
       setAnchorEl(null);
-
       return;
+    }
+
+    // Update current icon based on selected language
+    const selectedLanguage = options.find((option) => option.id === lng);
+    if (selectedLanguage) {
+      setCurrentIcon(React.createElement(selectedLanguage.flag));
+
     }
 
     startTransition(() => {
       router.replace(pathname, { locale: lng });
     });
+    setAnchorEl(null);
   };
 
   return [

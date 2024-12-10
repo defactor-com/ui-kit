@@ -6,7 +6,6 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material";
-
 import LanguageSelectorState from "./LanguageSelectorState";
 import { ILanguageSelector } from "./LanguageSelectorTypes";
 import UsaIcon from "./usaIcon";
@@ -23,13 +22,18 @@ export const LanguageSelectorV3 = ({
   const [
     { visible, isOpen, anchorEl, currentIcon },
     { handleClick, handleClose, handleHover },
-  ] = LanguageSelectorState({ router, pathname, icon });
+  ] = LanguageSelectorState({
+    router,
+    pathname,
+    icon,
+    options,
+  });
 
   return (
     <div>
-      <div className={"button"}>
+      <div className="button">
         <IconButton
-          className={"buttonMui"}
+          className="buttonMui"
           id="basic-button"
           aria-controls={isOpen ? "basic-menu" : undefined}
           aria-haspopup="true"
@@ -41,16 +45,12 @@ export const LanguageSelectorV3 = ({
           <div
             className={clsx("containerIcon", visible ? "fade-in" : "fade-out")}
           >
-            {typeof currentIcon === "string" ? (
-              <img src={currentIcon} alt="icon" />
-            ) : (
-              currentIcon
-            )}
+            {currentIcon || icon}
           </div>
           <Typography
             variant="body1"
-            fontWeight={"bold"}
-            className={"languageLabel"}
+            fontWeight="bold"
+            className="languageLabel"
           >
             {locale}
           </Typography>

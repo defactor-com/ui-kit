@@ -3,8 +3,7 @@ import { Story } from "@storybook/react";
 
 import UsaIcon from "../components/V3/LanguageSelectorV3/usaIcon";
 import SpanishIcon from "../components/V3/LanguageSelectorV3/SpanishIcon";
-
-import { ILanguageSelector } from "../components/LanguageSelector/LanguageSelectorTypes";
+import { ILanguageSelector } from "../components/V3/LanguageSelectorV3/LanguageSelectorTypes";
 import { LanguageSelectorV3 } from "../components/V3/LanguageSelectorV3";
 
 export default {
@@ -23,15 +22,16 @@ const options = [
   },
 ];
 
-const Template: Story<ILanguageSelector> = (args) => {
-  return <LanguageSelectorV3 {...args} />;
-};
+const Template: Story<ILanguageSelector> = (args) => <LanguageSelectorV3 {...args} />;
 
 export const LanguageSelectorItem = Template.bind({});
 LanguageSelectorItem.args = {
   locale: "en",
-  pathname: () => {},
-  router: () => {},
-  t: () => {},
-  options: options,
+  pathname: "/",
+  router: {
+    replace: (path: string, options: any) =>
+      console.log(`Navigated to ${path} with locale ${options.locale}`),
+  },
+  t: (key: string, { locale }: { locale: string }) => `Language: ${locale}`,
+  options,
 };
