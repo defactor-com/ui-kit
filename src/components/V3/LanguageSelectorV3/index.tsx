@@ -5,6 +5,7 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 import { alpha } from "@mui/material";
 import LanguageSelectorState from "./LanguageSelectorState";
 import { ILanguageSelector } from "./LanguageSelectorTypes";
@@ -30,8 +31,8 @@ export const LanguageSelectorV3 = ({
   });
 
   return (
-    <div>
-      <div className="button">
+    <Box>
+      <Box className="button">
         <IconButton
           className="buttonMui"
           id="basic-button"
@@ -42,11 +43,11 @@ export const LanguageSelectorV3 = ({
           onMouseEnter={() => handleHover(true)}
           onMouseLeave={() => handleHover(false)}
         >
-          <div
+          <Box
             className={clsx("containerIcon", visible ? "fade-in" : "fade-out")}
           >
             {currentIcon || icon}
-          </div>
+          </Box>
           <Typography
             variant="body1"
             fontWeight="bold"
@@ -54,11 +55,11 @@ export const LanguageSelectorV3 = ({
           >
             {locale}
           </Typography>
-          <div className="arrowContainer">
+          <Box className="arrowContainer">
             <ArrowDropDown />
-          </div>
+          </Box>
         </IconButton>
-      </div>
+      </Box>
       <Menu
         id="basic-menu"
         classes={{
@@ -87,6 +88,6 @@ export const LanguageSelectorV3 = ({
           </MenuItem>
         ))}
       </Menu>
-    </div>
+    </Box>
   );
 };
