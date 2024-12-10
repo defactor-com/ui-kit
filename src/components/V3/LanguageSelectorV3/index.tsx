@@ -37,7 +37,7 @@ export const LanguageSelectorV3 = ({
   useEffect(() => {
     const selectedOption = options.find((option) => option.id === locale);
     if (selectedOption?.flag) {
-      setCurrentIcon(React.createElement(selectedOption.flag)); // Convert ElementType to ReactElement
+      setCurrentIcon(React.createElement(selectedOption.flag));
     } else {
       setCurrentIcon(icon);
     }

@@ -13,7 +13,6 @@ const Template: Story<ILanguageSelector> = (args) => {
   const [localeText, setLocaleText] = useState(args.locale);
 
   const handleReplace = (path: string, options: any) => {
-    console.log(`Navigated to ${path} with locale ${options.locale}`);
     setLocaleText(options.locale);
   };
 
