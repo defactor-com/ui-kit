@@ -36,7 +36,11 @@ export const LanguageSelectorV3 = ({
 
   useEffect(() => {
     const selectedOption = options.find((option) => option.id === locale);
-    setCurrentIcon(selectedOption?.flag || icon);
+    if (selectedOption?.flag) {
+      setCurrentIcon(React.createElement(selectedOption.flag)); // Convert ElementType to ReactElement
+    } else {
+      setCurrentIcon(icon);
+    }
   }, [locale, options]);
 
   const [
@@ -101,16 +105,8 @@ export const LanguageSelectorV3 = ({
                 locale === lng.id ? `${alpha(bgColor, 0.1)}` : "",
               borderLeft: locale === lng.id ? `2px solid ${bgColor}` : "",
             }}
-          >
-            {typeof lng.flag === "string" ? (
-              <img
-                src={lng.flag}
-                alt={`${lng.id} flag`}
-                style={{ marginRight: 8 }}
-              />
-            ) : (
+          >            
               <lng.flag />
-            )}
             {t("locale", { locale: lng.id }) || lng.id}
           </MenuItem>
         ))}

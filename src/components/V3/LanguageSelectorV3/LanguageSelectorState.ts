@@ -38,11 +38,9 @@ const LanguageSelectorState = ({
       return;
     }
 
-    // Update current icon based on selected language
     const selectedLanguage = options.find((option) => option.id === lng);
-    if (selectedLanguage) {
+    if (selectedLanguage?.flag) {
       setCurrentIcon(React.createElement(selectedLanguage.flag));
-
     }
 
     startTransition(() => {
