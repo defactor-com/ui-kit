@@ -7,14 +7,13 @@ import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material";
 
-import LanguageIcon from "../../Icons/LanguageIcon";
-
 import LanguageSelectorState from "./LanguageSelectorState";
 import { ILanguageSelector } from "./LanguageSelectorTypes";
+import UsaIcon from "./usaIcon";
 
 export const LanguageSelectorV3 = ({
-  icon = <LanguageIcon />,
-  activeIcon = <LanguageIcon color="#64a3e5" />,
+  icon = <UsaIcon />,
+  activeIcon = <UsaIcon />,
   router,
   pathname,
   locale,
