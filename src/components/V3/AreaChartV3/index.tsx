@@ -23,7 +23,7 @@ export interface AreaChartV3Props {
 
 export const AreaChartV3: React.FC<AreaChartV3Props> = ({
   data,
-  tickFormatterTrue = true, // Note: true -> Hide the text for the first data point (0 and 00:00) on the X and Y axes without removing the data itself.
+  tickFormatterTrue = true,
   width = "100%",
   height = 300,
   xKey = "name",
@@ -46,6 +46,7 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
                 ? (tick, index) => (index === 0 ? "" : tick)
                 : undefined
             }
+            tickLine={false}
           />
           <YAxis
             tickFormatter={
@@ -53,6 +54,7 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
                 ? (tick, index) => (index === 0 ? "" : tick)
                 : undefined
             }
+            tickLine={false}
           />
           <Tooltip />
           <Area
