@@ -12,6 +12,7 @@ import {
 
 export interface AreaChartV3Props {
   data: { name: string; value: number }[];
+  tickFormatterTrue: boolean;
   width?: number | string;
   height?: number | string;
   xKey?: string;
@@ -22,6 +23,7 @@ export interface AreaChartV3Props {
 
 export const AreaChartV3: React.FC<AreaChartV3Props> = ({
   data,
+  tickFormatterTrue = true, // Note: true -> Hide the text for the first data point (0 and 00:00) on the X and Y axes without removing the data itself.
   width = "100%",
   height = 300,
   xKey = "name",
@@ -39,10 +41,18 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
           <CartesianGrid stroke={gridColor} strokeDasharray="3 3" />
           <XAxis
             dataKey={xKey}
-            tickFormatter={(tick, index) => (index === 0 ? "" : tick)}
+            tickFormatter={
+              tickFormatterTrue
+                ? (tick, index) => (index === 0 ? "" : tick)
+                : undefined
+            }
           />
           <YAxis
-            tickFormatter={(tick, index) => (index === 0 ? "" : tick)}
+            tickFormatter={
+              tickFormatterTrue
+                ? (tick, index) => (index === 0 ? "" : tick)
+                : undefined
+            }
           />
           <Tooltip />
           <Area
@@ -57,4 +67,3 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
     </Box>
   );
 };
-
