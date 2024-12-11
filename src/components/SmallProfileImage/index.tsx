@@ -5,6 +5,7 @@ import { ISmallProfileImage } from "./SmallProfileImageTypes";
 export const SmallProfileImage = ({
   size,
   image,
+  imageRadius,
   imgChild,
   bgColor = "#F8F9FC",
 }: ISmallProfileImage) => (
@@ -18,7 +19,7 @@ export const SmallProfileImage = ({
           src={image}
           alt="avatar"
           className="app-avatar"
-          style={{ width: size, height: size }}
+          style={{ width: size, height: size, borderRadius: imageRadius}}
         />
       )}
       {imgChild}
