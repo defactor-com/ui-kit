@@ -55,9 +55,8 @@ export const LanguageSelectorV3 = ({
 
   return (
     <Box>
-      <Box className="button">
+      <Box>
         <IconButton
-          className="buttonMui"
           id="basic-button"
           aria-controls={isOpen ? "basic-menu" : undefined}
           aria-haspopup="true"
@@ -71,6 +70,7 @@ export const LanguageSelectorV3 = ({
           >
             {currentIcon || icon}
           </Box>
+          <Box display="flex">
           <Typography
             variant="body1"
             fontWeight="700"
@@ -85,7 +85,8 @@ export const LanguageSelectorV3 = ({
           >
             {locale}
           </Typography>
-          <Box pl={0.2}>
+          </Box>
+          <Box display="flex" pl={0.2}>
             <ChevronDown />
           </Box>
         </IconButton>
