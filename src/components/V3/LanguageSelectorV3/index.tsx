@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import clsx from "clsx";
-import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
+import { ChevronDown } from "@untitled-ui/icons-react";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -78,8 +78,8 @@ export const LanguageSelectorV3 = ({
           >
             {locale}
           </Typography>
-          <Box className="arrowContainer">
-            <ArrowDropDown />
+          <Box pl={0.2}>
+            <ChevronDown/>
           </Box>
         </IconButton>
       </Box>
