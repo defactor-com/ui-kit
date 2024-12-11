@@ -37,8 +37,13 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
           margin={{ top: 20, right: 20, bottom: 20, left: 0 }}
         >
           <CartesianGrid stroke={gridColor} strokeDasharray="3 3" />
-          <XAxis dataKey={xKey} />
-          <YAxis />
+          <XAxis
+            dataKey={xKey}
+            tickFormatter={(tick, index) => (index === 0 ? "" : tick)}
+          />
+          <YAxis
+            tickFormatter={(tick, index) => (index === 0 ? "" : tick)}
+          />
           <Tooltip />
           <Area
             type="monotone"
@@ -52,3 +57,4 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
     </Box>
   );
 };
+
