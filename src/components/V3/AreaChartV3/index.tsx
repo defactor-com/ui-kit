@@ -6,7 +6,6 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip,
   ResponsiveContainer,
 } from "recharts";
 
@@ -56,7 +55,6 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
             }
             tickLine={false}
           />
-          <Tooltip />
           <Area
             type="monotone"
             dataKey={yKey}
