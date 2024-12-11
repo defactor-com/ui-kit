@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, alpha } from "@mui/material";
 import React from "react";
 import {
   AreaChart,
@@ -61,7 +61,7 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
             type="monotone"
             dataKey={yKey}
             stroke={areaColor}
-            fill={areaColor} // add alpha
+            fill={alpha(areaColor, 0.2)}
             fillOpacity={1}
             dot={{ r: 2, stroke: areaColor, strokeWidth: 2, fill: areaColor}} // Dots are always visible
             activeDot={{ r: 2, stroke: areaColor, strokeWidth: 2, fill: areaColor}}
