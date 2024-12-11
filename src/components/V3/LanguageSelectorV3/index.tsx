@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import clsx from "clsx";
 import { ChevronDown } from "@untitled-ui/icons-react";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
