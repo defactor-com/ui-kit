@@ -9,7 +9,6 @@ export default {
     width: { control: "text" },
     height: { control: "text" },
     areaColor: { control: "color" },
-    gridColor: { control: "color" },
     data: { control: false },
     xKey: { control: "text" },
     yKey: { control: "text" },
@@ -34,5 +33,4 @@ Default.args = {
   xKey: "name",
   yKey: "value",
   areaColor: "#8884d8",
-  gridColor: "#f0f0f0",
 };

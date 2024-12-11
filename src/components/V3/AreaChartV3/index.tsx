@@ -17,18 +17,16 @@ export interface AreaChartV3Props {
   xKey?: string;
   yKey?: string;
   areaColor?: string;
-  gridColor?: string;
 }
 
 export const AreaChartV3: React.FC<AreaChartV3Props> = ({
   data,
-  tickFormatterTrue = true,  // Note: true -> Hide the text for the first data point (0 and 00:00) on the X and Y axes without removing the data itself.
+  tickFormatterTrue = true, // Note: true -> Hide the text for the first data point (0 and 00:00) on the X and Y axes without removing the data itself.
   width = "100%",
   height = 300,
   xKey = "name",
   yKey = "value",
   areaColor = "#5A5BEB",
-  gridColor = "black", // 0.5 black
 }) => {
   return (
     <Box maxWidth={"500px"}>
@@ -37,7 +35,7 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
           data={data}
           margin={{ top: 20, right: 20, bottom: 20, left: 0 }}
         >
-          <CartesianGrid stroke={gridColor}/>
+          <CartesianGrid stroke="#000000" strokeOpacity={0.5} strokeWidth={1} />
           <XAxis
             dataKey={xKey}
             tickFormatter={
@@ -60,8 +58,13 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
             stroke={areaColor}
             fill={alpha(areaColor, 0.2)}
             fillOpacity={1}
-            dot={{ r: 2, stroke: areaColor, strokeWidth: 2, fill: areaColor}}
-            activeDot={{ r: 2, stroke: areaColor, strokeWidth: 2, fill: areaColor}}
+            dot={{ r: 2, stroke: areaColor, strokeWidth: 2, fill: areaColor }}
+            activeDot={{
+              r: 2,
+              stroke: areaColor,
+              strokeWidth: 2,
+              fill: areaColor,
+            }}
           />
         </AreaChart>
       </ResponsiveContainer>
