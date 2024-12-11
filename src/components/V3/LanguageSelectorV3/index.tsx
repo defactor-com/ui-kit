@@ -73,13 +73,20 @@ export const LanguageSelectorV3 = ({
           </Box>
           <Typography
             variant="body1"
-            fontWeight="bold"
-            className="languageLabel"
+            fontWeight="700"
+            textTransform="uppercase"
+            color="#151515"
+            sx={{           
+              display: {
+                xs: 'none',
+                md: 'block'
+              }
+             }}
           >
             {locale}
           </Typography>
           <Box pl={0.2}>
-            <ChevronDown/>
+            <ChevronDown />
           </Box>
         </IconButton>
       </Box>
@@ -105,8 +112,8 @@ export const LanguageSelectorV3 = ({
                 locale === lng.id ? `${alpha(bgColor, 0.1)}` : "",
               borderLeft: locale === lng.id ? `2px solid ${bgColor}` : "",
             }}
-          >            
-              <lng.flag />
+          >
+            <lng.flag />
             {t("locale", { locale: lng.id }) || lng.id}
           </MenuItem>
         ))}
