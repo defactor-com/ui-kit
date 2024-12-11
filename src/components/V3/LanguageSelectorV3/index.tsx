@@ -105,6 +105,7 @@ export const LanguageSelectorV3 = ({
             key={lng.id}
             onClick={() => handleClose(lng.id)}
             sx={{
+              textTransform: "capitalize",
               padding: (theme) => `${theme.spacing(1)} ${theme.spacing(2)}`,
               color: locale === lng.id ? "black" : "inherit",
               display: "flex",
