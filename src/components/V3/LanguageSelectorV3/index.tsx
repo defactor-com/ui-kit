@@ -68,7 +68,7 @@ export const LanguageSelectorV3 = ({
             pr={1}
             sx={{
               opacity: visible ? 1 : 0.7,
-              transition: "opacity 0.3s ease-in-out"
+              transition: "opacity 0.3s ease-in-out",
             }}
           >
             {currentIcon || icon}
@@ -79,12 +79,6 @@ export const LanguageSelectorV3 = ({
               fontWeight="700"
               textTransform="uppercase"
               color="#151515"
-              sx={{
-                display: {
-                  xs: "none",
-                  md: "block",
-                },
-              }}
             >
               {locale}
             </Typography>
