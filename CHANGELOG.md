@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.12
+
+### Patch Changes
+
+- 1a88d68: Added imageRadius to PrviewProfile Component.
+
 ## 0.5.11
 
 ### Patch Changes
