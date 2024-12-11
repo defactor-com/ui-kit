@@ -71,20 +71,20 @@ export const LanguageSelectorV3 = ({
             {currentIcon || icon}
           </Box>
           <Box display="flex">
-          <Typography
-            variant="body1"
-            fontWeight="700"
-            textTransform="uppercase"
-            color="#151515"
-            sx={{           
-              display: {
-                xs: 'none',
-                md: 'block'
-              }
-             }}
-          >
-            {locale}
-          </Typography>
+            <Typography
+              variant="body1"
+              fontWeight="700"
+              textTransform="uppercase"
+              color="#151515"
+              sx={{
+                display: {
+                  xs: "none",
+                  md: "block",
+                },
+              }}
+            >
+              {locale}
+            </Typography>
           </Box>
           <Box display="flex" pl={0.2}>
             <ChevronDown />
@@ -107,11 +107,17 @@ export const LanguageSelectorV3 = ({
           <MenuItem
             key={lng.id}
             onClick={() => handleClose(lng.id)}
-            className={locale === lng.id ? "selectedOption" : "menuOption"}
             sx={{
+              padding: (theme) => `${theme.spacing(1)} ${theme.spacing(2)}`,
+              color: locale === lng.id ? "black" : "inherit",
+              display: "flex",
+              gap: 1,
               backgroundColor:
                 locale === lng.id ? `${alpha(bgColor, 0.1)}` : "",
-              borderLeft: locale === lng.id ? `2px solid ${bgColor}` : "",
+              borderLeft:
+                locale === lng.id
+                  ? `2px solid ${bgColor}`
+                  : "2px solid transparent",
             }}
           >
             <lng.flag />
