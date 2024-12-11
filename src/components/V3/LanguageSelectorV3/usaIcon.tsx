@@ -2,7 +2,7 @@ import React from "react";
 import { IconsType } from "../../Icons/IconsTypes";
 
 const UsaIcon: React.FC<IconsType> = ({
-  width = 25,
+  width = 24,
   height = 24,
   color = "#D80027",
 }) => (

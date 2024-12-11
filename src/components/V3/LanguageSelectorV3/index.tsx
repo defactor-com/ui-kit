@@ -66,7 +66,11 @@ export const LanguageSelectorV3 = ({
           onMouseLeave={() => handleHover(false)}
         >
           <Box
-            className={clsx("containerIcon", visible ? "fade-in" : "fade-out")}
+            pr={1}
+            sx={{
+              opacity: visible ? 1 : 0.7,
+              transition: "opacity 0.3s ease-in-out"
+            }}
           >
             {currentIcon || icon}
           </Box>

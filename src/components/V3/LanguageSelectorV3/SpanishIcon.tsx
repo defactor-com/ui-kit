@@ -1,7 +1,7 @@
 import React from "react";
 import { IconsType } from "../../Icons/IconsTypes";
 
-const SpanishIcon: React.FC<IconsType> = ({ width = 25, height = 24 }) => (
+const SpanishIcon: React.FC<IconsType> = ({ width = 24, height = 24 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
