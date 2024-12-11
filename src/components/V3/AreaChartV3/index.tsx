@@ -27,7 +27,7 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
   height = 300,
   xKey = "name",
   yKey = "value",
-  areaColor = "red",//"#8884d8",
+  areaColor = "#5A5BEB",
   gridColor = "black", // 0.5 black
 }) => {
   return (
@@ -56,12 +56,11 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
             tickLine={false}
           />
           <Area
-            type="monotone"
             dataKey={yKey}
             stroke={areaColor}
             fill={alpha(areaColor, 0.2)}
             fillOpacity={1}
-            dot={{ r: 2, stroke: areaColor, strokeWidth: 2, fill: areaColor}} // Dots are always visible
+            dot={{ r: 2, stroke: areaColor, strokeWidth: 2, fill: areaColor}}
             activeDot={{ r: 2, stroke: areaColor, strokeWidth: 2, fill: areaColor}}
           />
         </AreaChart>
