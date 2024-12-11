@@ -32,7 +32,6 @@ export * from './components/PreviewProfile';
 export * from "./components/ChartContainer";
 export * from "./components/PreviewProfile";
 export * from './components/LanguageSelector';
-export * from "./components/LanguageSelector";
 export * from './components/SmallProfileImage';
 export * from './components/CollateralSection';
 export * from "./components/SmallProfileImage";
@@ -118,3 +117,4 @@ export {
   BadgeV3,
   BadgeProps
 } from "./components/V3/BadgeV3";
+export { LanguageSelectorV3 } from "./components/V3/LanguageSelectorV3";
