@@ -7,6 +7,7 @@ import { IPreviewProfile } from "./PreviewProfileTypes";
 export const PreviewProfile = ({
   label,
   image,
+  imageRadius = "0%",
   bgColor,
   imgChild,
   fontSize,
@@ -20,6 +21,7 @@ export const PreviewProfile = ({
       size={imageSize}
       bgColor={bgColor}
       imgChild={imgChild}
+      imageRadius={imageRadius}
     />
     <span
       className="label-space"
