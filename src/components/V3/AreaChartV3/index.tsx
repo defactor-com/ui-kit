@@ -23,7 +23,7 @@ export interface AreaChartV3Props {
   boxBgColor?: string;
   fillTickColor?: string;
   strokeColor?: string;
-  boxPadding?: string;
+  boxPadding?: string | number;
 }
 
 
