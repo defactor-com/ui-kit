@@ -27,9 +27,5 @@ Default.args = {
     { time: "14:00", value: 310000 },
     { time: "16:00", value: 350000 },
     { time: "00:00", value: 390000 },
-  ],
-  width: "100%",
-  height: 220,
-  xKey: "time",
-  yKey: "value"
+  ]
 };
