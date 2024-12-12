@@ -1,3 +1,4 @@
+import { formatLargeNumber } from "../../../utils/formatValues";
 import { Box, alpha } from "@mui/material";
 import React from "react";
 import {
@@ -11,8 +12,8 @@ import {
 
 export interface AreaChartV3Props {
   data: { time: string; value: number }[];
-  tickFormatterXTrue?: boolean;
-  tickFormatterYTrue?: boolean;
+  hideFirstTickXTrue?: boolean;
+  hideFirstTickYTrue?: boolean;
   width?: number | string;
   maxWidth?: number | string;
   height?: number | string;
@@ -27,8 +28,8 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
   boxBgColor = "white",
   boxPadding = "16px 16px 0px 0px",
   data,
-  tickFormatterXTrue = false,
-  tickFormatterYTrue = true,
+  hideFirstTickXTrue = false,
+  hideFirstTickYTrue = true,
   width = "100%",
   height = 220,
   maxWidth = "500px",
@@ -50,7 +51,7 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
           <XAxis
             dataKey={xKey}
             tickFormatter={
-              tickFormatterXTrue
+              hideFirstTickXTrue
                 ? (tick, index) => (index === 0 ? "" : tick)
                 : undefined
             }
@@ -64,9 +65,9 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
           />
           <YAxis
             tickFormatter={
-              tickFormatterYTrue
-                ? (tick, index) => (index === 0 ? "" : tick)
-                : undefined
+              hideFirstTickYTrue
+                ? (tick, index) => (index === 0 ? "" : formatLargeNumber(tick))
+                : formatLargeNumber
             }
             tickLine={false}
             axisLine={false}
