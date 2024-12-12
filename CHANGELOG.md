@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.13
+
+### Patch Changes
+
+- 45ce4fa: Added LanguageSelectorV3.
+
 ## 0.5.12
 
 ### Patch Changes
