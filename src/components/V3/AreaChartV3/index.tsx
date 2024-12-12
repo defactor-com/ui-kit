@@ -10,50 +10,70 @@ import {
 } from "recharts";
 
 export interface AreaChartV3Props {
-  data: { name: string; value: number }[];
-  tickFormatterTrue: boolean;
+  data: { time: string; value: number }[];
+  tickFormatterXTrue: boolean;
+  tickFormatterYTrue: boolean;
   width?: number | string;
+  maxWidth?: number | string;
   height?: number | string;
   xKey?: string;
   yKey?: string;
   areaColor?: string;
+  boxBgColor?: string;
+  boxPadding?: string;
 }
 
 export const AreaChartV3: React.FC<AreaChartV3Props> = ({
+  boxBgColor = "white",
+  boxPadding = "16px 16px 0px 0px",
   data,
-  tickFormatterTrue = true, // Note: true -> Hide the text for the first data point (example 0 and 00:00) on the X and Y axes without removing the data itself.
+  tickFormatterXTrue = false,
+  tickFormatterYTrue = true,
   width = "100%",
-  height = 300,
+  maxWidth = "500px",
   xKey = "time",
   yKey = "value",
   areaColor = "#5A5BEB",
 }) => {
   return (
-    <Box maxWidth="500px" bgcolor="white">
-      <ResponsiveContainer width={width} height={height}>
-        <AreaChart
-          data={data}
-          margin={{ top: 20, right: 20, bottom: 20, left: 0 }}
-        >
-          <CartesianGrid stroke="#BDBDBD" strokeOpacity={1} strokeWidth={1} strokeDasharray="5 5" vertical={false}/>
+    <Box maxWidth={maxWidth} height={220} bgcolor={boxBgColor} p={boxPadding}>
+      <ResponsiveContainer width={width} height="100%">
+        <AreaChart data={data}>
+          <CartesianGrid
+            stroke="#BDBDBD"
+            strokeOpacity={1}
+            strokeWidth={1}
+            strokeDasharray="3 6"
+            vertical={false}
+          />
           <XAxis
             dataKey={xKey}
             tickFormatter={
-              tickFormatterTrue
+              tickFormatterXTrue
                 ? (tick, index) => (index === 0 ? "" : tick)
                 : undefined
             }
             tickLine={false}
             axisLine={false}
+            tick={{
+              fontSize: 11,
+              fontWeight: 700,
+              fill: "#7C7D7E",
+            }}
           />
           <YAxis
             tickFormatter={
-              tickFormatterTrue
+              tickFormatterYTrue
                 ? (tick, index) => (index === 0 ? "" : tick)
                 : undefined
             }
             tickLine={false}
             axisLine={false}
+            tick={{
+              fontSize: 11,
+              fontWeight: 700,
+              fill: "#7C7D7E",
+            }}
           />
           <Area
             dataKey={yKey}
