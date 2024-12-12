@@ -20,13 +20,13 @@ const Template: Story<AreaChartV3Props> = (args) => <AreaChartV3 {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   data: [
-    { name: "00:00", value: 140 },
-    { name: "04:00", value: 210 },
-    { name: "08:00", value: 250 },
-    { name: "12:00", value: 300 },
-    { name: "14:00", value: 310 },
-    { name: "16:00", value: 350 },
-    { name: "00:00", value: 390 },
+    { name: "00:00", value: 140000 },
+    { name: "04:00", value: 210000 },
+    { name: "08:00", value: 250000 },
+    { name: "12:00", value: 300000 },
+    { name: "14:00", value: 310000 },
+    { name: "16:00", value: 350000 },
+    { name: "00:00", value: 390000 },
   ],
   width: "100%",
   height: 300,
