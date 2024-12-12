@@ -29,13 +29,13 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
   areaColor = "#5A5BEB",
 }) => {
   return (
-    <Box maxWidth={"500px"}>
+    <Box maxWidth="500px" bgcolor="white">
       <ResponsiveContainer width={width} height={height}>
         <AreaChart
           data={data}
           margin={{ top: 20, right: 20, bottom: 20, left: 0 }}
         >
-          <CartesianGrid stroke="#000000" strokeOpacity={0.5} strokeWidth={1} />
+          <CartesianGrid stroke="#BDBDBD" strokeOpacity={1} strokeWidth={1} strokeDasharray="5 5" vertical={false}/>
           <XAxis
             dataKey={xKey}
             tickFormatter={
