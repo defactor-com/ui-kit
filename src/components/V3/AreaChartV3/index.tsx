@@ -11,8 +11,8 @@ import {
 
 export interface AreaChartV3Props {
   data: { time: string; value: number }[];
-  tickFormatterXTrue: boolean;
-  tickFormatterYTrue: boolean;
+  tickFormatterXTrue?: boolean;
+  tickFormatterYTrue?: boolean;
   width?: number | string;
   maxWidth?: number | string;
   height?: number | string;
@@ -30,13 +30,14 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
   tickFormatterXTrue = false,
   tickFormatterYTrue = true,
   width = "100%",
+  height = 220,
   maxWidth = "500px",
   xKey = "time",
   yKey = "value",
-  areaColor = "#5A5BEB",
+  areaColor = "#5A5BEB", 
 }) => {
   return (
-    <Box maxWidth={maxWidth} height={220} bgcolor={boxBgColor} p={boxPadding}>
+    <Box maxWidth={maxWidth} height={height} bgcolor={boxBgColor} p={boxPadding}>
       <ResponsiveContainer width={width} height="100%">
         <AreaChart data={data}>
           <CartesianGrid

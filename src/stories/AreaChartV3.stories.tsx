@@ -29,8 +29,7 @@ Default.args = {
     { time: "00:00", value: 390000 },
   ],
   width: "100%",
-  height: 300,
+  height: 220,
   xKey: "time",
-  yKey: "value",
-  areaColor: "#8884d8",
+  yKey: "value"
 };
