@@ -1,5 +1,3 @@
-import { EmptyTableV3 } from "./components/V3/EmptyTableV3";
-import { MultichainSelectorV3 } from "./components/V3/MultichainSelectorV3";
 import "./scss/styles.scss";
 
 export * from "./components/Pill";
@@ -31,7 +29,6 @@ export * from "./components/ChartContainer";
 export * from "./components/PreviewProfile";
 export * from "./components/ChartContainer";
 export * from "./components/PreviewProfile";
-export * from "./components/LanguageSelector";
 export * from "./components/LanguageSelector";
 export * from "./components/SmallProfileImage";
 export * from "./components/CollateralSection";
@@ -112,4 +109,5 @@ export {
   PercentageCircleProps,
 } from "./components/V3/PercentageCircleV3";
 export { BadgeV3, BadgeProps } from "./components/V3/BadgeV3";
+export { LanguageSelectorV3 } from "./components/V3/LanguageSelectorV3";
 export { AreaChartV3, AreaChartV3Props } from "./components/V3/AreaChartV3";
