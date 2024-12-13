@@ -21,7 +21,107 @@ type WalletSelectorV3Props = {
   handleFormatCurrency?: () => string;
 };
 
-const WalletSelectorV3: React.FC<WalletSelectorV3Props> = ({
+// 2
+import Image from "next/image";
+import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
+
+import WalletConnectIcon from "../../Icons/walletConnectIcon";
+
+import WalletContainer from "../../WalletComponent/WalletContainer";
+import { IWalletSelector } from "../../WalletComponent/WalletTypes";
+import useWalletSelectorHook from "../../WalletComponent/useWalletSelectorHook";
+import { Button } from "../../Button";
+
+export const WalletSelector = ({
+  theme,
+  labels,
+  address,
+  onClick,
+  networks,
+  isConnected,
+  userContext,
+  handleLogout,
+  networksAssets,
+  configNetworks,
+  formatCurrency,
+  openConnectWallet,
+  onClickMenuOption,
+  handleFormartCurrency,
+}: IWalletSelector): JSX.Element => {
+  const [{ anchorEl, open, id }, { handleClick, handleClose }] =
+    useWalletSelectorHook();
+  const isMobile = window.innerWidth <= 600;
+
+  return (
+    <div>
+      {!isConnected ? (
+        <Button
+          icon={
+            <WalletConnectIcon
+              color={
+                isMobile
+                  ? theme.palette.text.primary
+                  : theme.palette.common.white
+              }
+            />
+          }
+          onClick={() => {
+            openConnectWallet(), handleClose();
+          }}
+          fontFamily={theme.typography.fontFamily}
+          variant={isMobile ? "text" : "contained"}
+          label={isMobile ? undefined : labels.connectWallet}
+          optionalStyles={{ padding: theme.spacing(1.5, 2) }}
+          bgColor={isMobile ? "" : theme.palette.secondary.main}
+        />
+      ) : (
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="end"
+          aria-describedby={id}
+          onClick={handleClick}
+          sx={{
+            cursor: "pointer",
+            transition: "all 0.6s ease-in-out",
+            ":hover": {
+              opacity: 0.8,
+            },
+          }}
+        >
+          <Image
+            width={40}
+            height={40}
+            alt="Chain logo"
+            src={networksAssets[userContext.networkConnected.chainId]?.logo}
+          />
+          <ArrowDropDown />
+        </Box>
+      )}
+      <WalletContainer
+        id={id}
+        open={open}
+        theme={theme}
+        labels={labels}
+        address={address}
+        onClick={onClick}
+        networks={networks}
+        anchorEl={anchorEl}
+        userContext={userContext}
+        handleClose={handleClose}
+        handleLogout={handleLogout}
+        formatCurrency={formatCurrency}
+        configNetworks={configNetworks}
+        networksAssets={networksAssets}
+        onClickMenuOption={onClickMenuOption}
+        handleFormartCurrency={handleFormartCurrency}
+      />
+    </div>
+  );
+};
+
+
+export const WalletSelectorV3: React.FC<WalletSelectorV3Props> = ({
   address = "0x1234...abcd",
   networks = () => console.log("Networks called"),
   isConnected = true,
@@ -60,4 +160,3 @@ const WalletSelectorV3: React.FC<WalletSelectorV3Props> = ({
   );
 };
 
-export default WalletSelectorV3;
