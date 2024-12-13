@@ -1,15 +1,14 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 
-// Define prop types for the component
 interface ConnectWalletButtonProps {
-  btnText: string;
-  handleClick: () => void;
+  btnText?: string;
+  handleClick?: () => void;
 }
 
 const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({ 
   btnText = 'Connect Wallet', 
-  handleClick = () => console.log('Handle click triggered') 
+  handleClick = () => console.log('Handle click triggered.') 
 }) => {
   return (
     <Button
