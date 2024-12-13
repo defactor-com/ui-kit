@@ -1,44 +1,42 @@
-import { EmptyTableV3 } from "./components/V3/EmptyTableV3";
-import { MultichainSelectorV3 } from "./components/V3/MultichainSelectorV3";
 import "./scss/styles.scss";
 
-export * from './components/Pill';
-export * from './components/Point';
-export * from './components/Modal';
-export * from './components/Table';
-export * from './components/Input';
-export * from './components/Button';
-export * from './components/Sidebar';
-export * from './components/Tooltip';
-export * from './components/BarChart';
-export * from './components/DropDown';
-export * from './components/PieChart';
-export * from './components/LineChart';
-export * from './components/Dashboard';
+export * from "./components/Pill";
+export * from "./components/Point";
+export * from "./components/Modal";
+export * from "./components/Table";
+export * from "./components/Input";
+export * from "./components/Button";
+export * from "./components/Sidebar";
+export * from "./components/Tooltip";
+export * from "./components/BarChart";
+export * from "./components/DropDown";
+export * from "./components/PieChart";
+export * from "./components/LineChart";
+export * from "./components/Dashboard";
 export * from "./components/LoaderApp";
-export * from './components/Container';
-export * from './components/MenuOption';
-export * from './components/LendBorrow';
+export * from "./components/Container";
+export * from "./components/MenuOption";
+export * from "./components/LendBorrow";
 export * from "./components/MobileList";
 export * from "./components/MobileMenu";
-export * from './components/CardContainer';
-export * from './components/CardComponent';
-export * from './components/FlatContainer';
 export * from "./components/CardContainer";
 export * from "./components/CardComponent";
 export * from "./components/FlatContainer";
-export * from './components/ChartContainer';
-export * from './components/PreviewProfile';
+export * from "./components/CardContainer";
+export * from "./components/CardComponent";
+export * from "./components/FlatContainer";
 export * from "./components/ChartContainer";
 export * from "./components/PreviewProfile";
-export * from './components/LanguageSelector';
-export * from './components/SmallProfileImage';
-export * from './components/CollateralSection';
+export * from "./components/ChartContainer";
+export * from "./components/PreviewProfile";
+export * from "./components/LanguageSelector";
+export * from "./components/SmallProfileImage";
+export * from "./components/CollateralSection";
 export * from "./components/SmallProfileImage";
 export * from "./components/CollateralSection";
 export * from "./components/MultichainSelector";
-export * from './components/InformativeContainer';
-export * from './components/FluctuationComponent';
+export * from "./components/InformativeContainer";
+export * from "./components/FluctuationComponent";
 export * from "./components/FluctuationComponent";
 export * from "./components/InformativeContainer";
 export * from "./components/WalletComponent/WalletSelector";
@@ -85,7 +83,12 @@ export { CardWithHover, CardWithHoverProps } from "./components/CardWithHover";
 export { DocIcon, DocIconProps } from "./components/Icons/v2/docIcon";
 export { PlusIcon, PlusIconProps } from "./components/Icons/v2/plusIcon";
 export { ChainCard, ChainCardProps } from "./components/ChainCard";
-export { Popover, PopoverProps, ListItemProps, defaultPopoverItems } from "./components/Popover";
+export {
+  Popover,
+  PopoverProps,
+  ListItemProps,
+  defaultPopoverItems,
+} from "./components/Popover";
 export {
   StatsBox,
   StatsBoxProps,
@@ -98,23 +101,13 @@ export {
   CustomDropdown,
   CustomDropdownProps,
 } from "./components/CustomDropdown";
-export {
-  MultichainSelectorV3
-} from "./components/V3/MultichainSelectorV3";
-export {
-  EmptyTableV3,
-  EmptyTableProps
-} from "./components/V3/EmptyTableV3";
-export {
-  CircleIconV3,
-  CircleIconProps
-} from "./components/V3/CircleIconV3";
+export { MultichainSelectorV3 } from "./components/V3/MultichainSelectorV3";
+export { EmptyTableV3, EmptyTableProps } from "./components/V3/EmptyTableV3";
+export { CircleIconV3, CircleIconProps } from "./components/V3/CircleIconV3";
 export {
   PercentageCircleV3,
-  PercentageCircleProps
+  PercentageCircleProps,
 } from "./components/V3/PercentageCircleV3";
-export {
-  BadgeV3,
-  BadgeProps
-} from "./components/V3/BadgeV3";
+export { BadgeV3, BadgeProps } from "./components/V3/BadgeV3";
 export { LanguageSelectorV3 } from "./components/V3/LanguageSelectorV3";
+export { AreaChartV3, AreaChartV3Props } from "./components/V3/AreaChartV3";
