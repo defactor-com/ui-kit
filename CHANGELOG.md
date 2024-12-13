@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.14
+
+### Patch Changes
+
+- 80a719c: Added AreaChartV3.
+
 ## 0.5.13
 
 ### Patch Changes
