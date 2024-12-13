@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.15
+
+### Patch Changes
+
+- d02e262: Fixed exports.
+
 ## 0.5.14
 
 ### Patch Changes
