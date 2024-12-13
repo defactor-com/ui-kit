@@ -26,9 +26,7 @@ export * from "./components/CardContainer";
 export * from "./components/CardComponent";
 export * from "./components/FlatContainer";
 export * from "./components/ChartContainer";
-export * from "./components/PreviewProfile";
 export * from "./components/ChartContainer";
-export * from "./components/PreviewProfile";
 export * from "./components/LanguageSelector";
 export * from "./components/SmallProfileImage";
 export * from "./components/CollateralSection";
@@ -111,3 +109,5 @@ export {
 export { BadgeV3, BadgeProps } from "./components/V3/BadgeV3";
 export { LanguageSelectorV3 } from "./components/V3/LanguageSelectorV3";
 export { AreaChartV3, AreaChartV3Props } from "./components/V3/AreaChartV3";
+export { PreviewProfile } from "./components/PreviewProfile";
+export { IPreviewProfile } from "./components/PreviewProfile/PreviewProfileTypes";
