@@ -17,11 +17,10 @@ export const Sidebar = ({
   <div className="sidebar-mobile">
     <div
       className={clsx(externalStyles, "sidebar-container")}
-      style={{ ...optionalStyles }}
+      style={{ ...optionalStyles, boxShadow: 'none', border: 'none' }}
     >
       <Box
         padding="24px 16px"
-        borderBottom="solid 2px #EDF0F7"
         sx={{ display: { xs: "none", md: "flex" } }}
       >
         <Image
@@ -41,7 +40,6 @@ export const Sidebar = ({
                 display: "flex",
                 padding: "16px",
                 alignItems: "center",
-                borderTop: "solid 1px #EDF0F7",
                 justifyContent: "space-between",
               }}
             >
