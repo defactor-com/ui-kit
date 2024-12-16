@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.17
+
+### Patch Changes
+
+- 2a97ae9: Sidebar and MainSidebar: Fixed style.
+
 ## 0.5.16
 
 ### Patch Changes
