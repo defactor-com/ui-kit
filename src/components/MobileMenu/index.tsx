@@ -32,13 +32,15 @@ export const MobileMenu = ({
   menuOptions,
   languageLabel,
   languageSelector,
+  marginRight = 0,
+  marginLeft = 1
 }: IMenuMobile) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
 
   return (
-    <Box>
+    <Box mr={marginRight} ml={marginLeft}>
       <IconButton
         onClick={handleOpen}
         sx={{ borderRadius: "20px", border: "1.25px solid #EDF0F7" }}
