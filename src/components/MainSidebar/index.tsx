@@ -2,13 +2,7 @@ import React from "react";
 import { Box, Drawer, useMediaQuery, useTheme } from "@mui/material";
 import useSidebarHook from "./useSidebarHook";
 import MainMenuItem from "./MenuItem";
-
-// icons
-import DashboardIcon from "../Icons/v2/dashboardIcon";
-import MyWalletIcon from "../Icons/v2/myWalletIcon";
-import MyTemplateIcon from "../Icons/v2/myTemplateIcon";
-import NotificationsIcon from "../Icons/v2/notificationsIcon";
-import ContactsIcon from "../Icons/v2/contactsIcon";
+import { routes } from "./engageRoutes";
 
 export type Route = {
   text: string;
@@ -19,7 +13,6 @@ export type Route = {
 };
 
 export type MainSidebarProps = {
-  routes?: Route[];
   mainSidebarBgColor?: string;
   navLinkTextColor?: string;
   iconsColor?: string;
@@ -31,38 +24,9 @@ export type MainSidebarProps = {
   defaultPath?: string;
 };
 
-const assetsRoutes: Route[] = [
-  {
-    text: "Dashboard",
-    path: "/",
-    icon: DashboardIcon as React.ElementType,
-  },
-  {
-    text: "MyWallet",
-    path: "/wallet",
-    icon: MyWalletIcon as React.ElementType,
-  },
-  {
-    text: "MyTemplates",
-    path: "/templates",
-    icon: MyTemplateIcon as React.ElementType,
-  },
-  {
-    text: "Notifications",
-    path: "/notifications",
-    icon: NotificationsIcon as React.ElementType,
-  },
-  {
-    text: "Contacts",
-    path: "/contacts",
-    icon: ContactsIcon as React.ElementType,
-  },
-];
-
 export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
   const theme = useTheme();
   const {
-    routes = assetsRoutes,
     mainSidebarBgColor = theme.palette.background.paper,
     navLinkTextColor = theme.palette.text.primary,
     iconsColor = theme.palette.text.primary,
@@ -74,6 +38,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
     defaultPath = "/",
   } = props;
 
+  const { firstRoutes, secondRoutes } = routes();
   const { isSelected } = useSidebarHook();
   const isHidden = useMediaQuery(theme.breakpoints.down(hideOnBreakpoint));
 
@@ -101,18 +66,18 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
     >
       <Box sx={{ height: 60 }} />
       <Box sx={{ overflow: "auto" }}>
-        {routes.map((route, index) => (
+        {[...firstRoutes, ...secondRoutes].map((route, index) => (
           <MainMenuItem
-            icon={route.icon}
             key={index}
+            icon={route.icon}
             text={route.text}
             path={route.path}
             isSelected={checkSelected(route.path)}
             notificationsCount={
               route.path === "/notifications" ? notificationsCount : 0
             }
-            navLinkTextColor={route.navLinkTextColor || navLinkTextColor}
-            iconsColor={route.iconsColor || iconsColor}
+            navLinkTextColor={navLinkTextColor}
+            iconsColor={iconsColor}
             activeTextColor={activeTextColor}
             activeIconColor={activeIconColor}
             notificationColor={notificationColor}

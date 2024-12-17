@@ -1,13 +1,13 @@
-import AdminIcon from './icons/adminIcon'
-import BuyBackIcon from './icons/buyBackIcon'
-import EcosystemIcon from './icons/ecosystemIcon'
-import GovernanceIcon from './icons/governanceIcon'
-import StakingIcon from './icons/stakingIcon'
-import VestingIcon from './icons/vestingIcon'
+import AdminIcon from './icons/adminIcon';
+import BuyBackIcon from './icons/buyBackIcon';
+import EcosystemIcon from './icons/ecosystemIcon';
+import GovernanceIcon from './icons/governanceIcon';
+import StakingIcon from './icons/stakingIcon';
+import VestingIcon from './icons/vestingIcon';
 
 // Demo generalConfig
 export const generalConfig = {
-    routesDisabled: ['buy-back', 'governance'],
+    routesDisabled: ['admin'],
 };
 
 export const routes = () => {
@@ -22,46 +22,46 @@ export const routes = () => {
             icon: BuyBackIcon,
             text: 'buyBack',
             path: '/buy-back',
-            public: true
+            public: true,
         },
         {
             icon: StakingIcon,
             text: 'staking',
             path: '/staking',
-            public: true
+            public: true,
         },
         {
             icon: GovernanceIcon,
             text: 'governance',
             path: '/governance',
-            public: true
+            public: true,
         },
         {
             icon: VestingIcon,
             text: 'vesting',
             path: '/vesting',
-            public: true
+            public: true,
         },
         {
             icon: AdminIcon,
             text: 'admin',
             path: '/admin',
-            public: false
-        }
-    ]
+            public: false,
+        },
+    ];
 
     return {
         firstRoutes: arrayRoutes
             .slice(0, 2)
             .filter(
-                route =>
+                (route) =>
                     !generalConfig.routesDisabled.includes(route.path.replace('/', ''))
             ),
         secondRoutes: arrayRoutes
             .slice(2)
             .filter(
-                route =>
+                (route) =>
                     !generalConfig.routesDisabled.includes(route.path.replace('/', ''))
-            )
-    }
-}
+            ),
+    };
+};
