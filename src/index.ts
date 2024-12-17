@@ -61,7 +61,7 @@ export {
   ContactsIcon,
   ContactsIconProps,
 } from "./components/Icons/v2/contactsIcon";
-export { routes, Routes } from "./components/MainSidebar/routes";
+export { routes } from "./components/MainSidebar/engageRoutes";
 export { MainSidebar, MainSidebarProps, Route } from "./components/MainSidebar";
 export { PathProvider } from "./components/MainSidebar/PathProvider";
 export {
