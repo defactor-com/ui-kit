@@ -3,6 +3,13 @@ import { Box, Drawer, useMediaQuery, useTheme } from "@mui/material";
 import useSidebarHook from "./useSidebarHook";
 import MainMenuItem from "./MenuItem";
 
+// icons
+import DashboardIcon from "../Icons/v2/dashboardIcon";
+import MyWalletIcon from "../Icons/v2/myWalletIcon";
+import MyTemplateIcon from "../Icons/v2/myTemplateIcon";
+import NotificationsIcon from "../Icons/v2/notificationsIcon";
+import ContactsIcon from "../Icons/v2/contactsIcon";
+
 export type Route = {
   text: string;
   path: string;
@@ -12,7 +19,7 @@ export type Route = {
 };
 
 export type MainSidebarProps = {
-  routes: Route[];
+  routes?: Route[];
   mainSidebarBgColor?: string;
   navLinkTextColor?: string;
   iconsColor?: string;
@@ -24,10 +31,38 @@ export type MainSidebarProps = {
   defaultPath?: string;
 };
 
+const assetsRoutes: Route[] = [
+  {
+    text: "Dashboard",
+    path: "/",
+    icon: DashboardIcon as React.ElementType,
+  },
+  {
+    text: "MyWallet",
+    path: "/wallet",
+    icon: MyWalletIcon as React.ElementType,
+  },
+  {
+    text: "MyTemplates",
+    path: "/templates",
+    icon: MyTemplateIcon as React.ElementType,
+  },
+  {
+    text: "Notifications",
+    path: "/notifications",
+    icon: NotificationsIcon as React.ElementType,
+  },
+  {
+    text: "Contacts",
+    path: "/contacts",
+    icon: ContactsIcon as React.ElementType,
+  },
+];
+
 export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
   const theme = useTheme();
   const {
-    routes,
+    routes = assetsRoutes,
     mainSidebarBgColor = theme.palette.background.paper,
     navLinkTextColor = theme.palette.text.primary,
     iconsColor = theme.palette.text.primary,
@@ -43,7 +78,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
   const isHidden = useMediaQuery(theme.breakpoints.down(hideOnBreakpoint));
 
   const checkSelected = (path: string) => {
-    return isSelected(path) || (isSelected('/') && path === defaultPath);
+    return isSelected(path) || (isSelected("/") && path === defaultPath);
   };
 
   if (isHidden) {
@@ -60,7 +95,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
           width: "180px",
           boxSizing: "border-box",
           backgroundColor: mainSidebarBgColor,
-          border: 'none'
+          border: "none",
         },
       }}
     >
