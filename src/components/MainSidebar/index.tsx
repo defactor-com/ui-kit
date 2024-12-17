@@ -1,11 +1,20 @@
 import React from "react";
-import { Box, Drawer, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  Button,
+  Link,
+  Drawer,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import useSidebarHook from "./useSidebarHook";
 import MainMenuItem from "./MenuItem";
 import { routes } from "./engageRoutes";
 import Image from "next/image";
-//import poolsIcon from "../../../public/assets/pools-logo.svg";
+import assetsIcon from "../../../public/assets/assets-logo.svg";
+import poolsIcon from "../../../public/assets/pools-logo.svg";
 import engageIcon from "../../../public/assets/engage-logo.svg";
+import linkIcon from "../../../public/assets/link-icon.svg";
 
 export type Route = {
   text: string;
@@ -17,6 +26,7 @@ export type Route = {
 
 export type MainSidebarProps = {
   mainApp?: any;
+  appsData?: any;
   mainSidebarBgColor?: string;
   navLinkTextColor?: string;
   iconsColor?: string;
@@ -27,6 +37,22 @@ export type MainSidebarProps = {
   hideOnBreakpoint?: "xs" | "sm" | "md" | "lg" | "xl";
   defaultPath?: string;
 };
+
+type AppData = {
+  logo: { src: string; height: number; width: number };
+  url: string;
+};
+
+const demoAppsData: AppData[] = [
+  {
+    logo: { src: poolsIcon, height: 21, width: 53 },
+    url: "https://pools-dev.defactor.dev/",
+  },
+  {
+    logo: { src: assetsIcon, height: 21, width: 74 },
+    url: "https://assets.defactor.dev/",
+  },
+];
 
 export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
   const theme = useTheme();
@@ -44,6 +70,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
       logo: { src: engageIcon, height: 21, width: 80 },
       url: "",
     },
+    appsData = demoAppsData,
   } = props;
 
   const { firstRoutes, secondRoutes } = routes();
@@ -65,6 +92,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
         width: "180px",
         flexShrink: 0,
         [`& .MuiDrawer-paper`]: {
+          justifyContent: "space-between",
           width: "180px",
           boxSizing: "border-box",
           backgroundColor: mainSidebarBgColor,
@@ -72,39 +100,65 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
         },
       }}
     >
-      <Box
-        display={{ xs: "none", md: "flex" }}
-        width="100%"
-        justifyContent="flex-start"
-        alignItems="center"
-        minHeight="69px"
-        pl={3.5}
-        borderBottom="1px solid" borderColor={theme.palette.grey[200]}
-      >
-        <Image
-          alt="Tool logo"
-          src={mainApp.logo.src}
-          width={mainApp.logo.width}
-          height={mainApp.logo.height}
-        />
-      </Box>
-      <Box sx={{ overflow: "auto" }}>
-        {[...firstRoutes, ...secondRoutes].map((route, index) => (
-          <MainMenuItem
-            key={index}
-            icon={route.icon}
-            text={route.text}
-            path={route.path}
-            isSelected={checkSelected(route.path)}
-            notificationsCount={
-              route.path === "/notifications" ? notificationsCount : 0
-            }
-            navLinkTextColor={navLinkTextColor}
-            iconsColor={iconsColor}
-            activeTextColor={activeTextColor}
-            activeIconColor={activeIconColor}
-            notificationColor={notificationColor}
+      <Box>
+        <Box
+          display={{ xs: "none", md: "flex" }}
+          width="100%"
+          justifyContent="flex-start"
+          alignItems="center"
+          minHeight="69px"
+          pl={3.5}
+          borderBottom="1px solid"
+          borderColor={theme.palette.grey[200]}
+        >
+          <Image
+            alt="Tool logo"
+            src={mainApp.logo.src}
+            width={mainApp.logo.width}
+            height={mainApp.logo.height}
           />
+        </Box>
+        <Box sx={{ overflow: "auto" }}>
+          {[...firstRoutes, ...secondRoutes].map((route, index) => (
+            <MainMenuItem
+              key={index}
+              icon={route.icon}
+              text={route.text}
+              path={route.path}
+              isSelected={checkSelected(route.path)}
+              notificationsCount={
+                route.path === "/notifications" ? notificationsCount : 0
+              }
+              navLinkTextColor={navLinkTextColor}
+              iconsColor={iconsColor}
+              activeTextColor={activeTextColor}
+              activeIconColor={activeIconColor}
+              notificationColor={notificationColor}
+            />
+          ))}
+        </Box>
+      </Box>
+      <Box sx={{ display: { xs: "none", md: "block" } }}>
+        {appsData?.map((item: AppData, index: number) => (
+          <Link href={item.url} target="_blank">
+            <Button
+              fullWidth
+              sx={{
+                display: "flex",
+                padding: "16px",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <Image
+                alt="Tool logo"
+                src={item.logo.src}
+                width={item.logo.width}
+                height={item.logo.height}
+              />
+              <Image width={12} height={12} src={linkIcon} alt="Link icon" />
+            </Button>
+          </Link>
         ))}
       </Box>
     </Drawer>
