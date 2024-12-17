@@ -11,7 +11,7 @@ import useSidebarHook from "./useSidebarHook";
 import MainMenuItem from "./MenuItem";
 import { routes } from "./engageRoutes";
 import Image from "next/image";
-import assetsIcon from "../../../public/assets/assets-logo.svg";
+import assetsIcon from "../../../public/assets/asset-logo.svg";
 import poolsIcon from "../../../public/assets/pools-logo.svg";
 import engageIcon from "../../../public/assets/engage-logo.svg";
 import linkIcon from "../../../public/assets/link-icon.svg";
