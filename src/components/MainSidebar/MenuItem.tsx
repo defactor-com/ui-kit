@@ -42,6 +42,7 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
           padding: 2,
           paddingLeft: 4,
           color: isSelected ? activeTextColor || theme.palette.primary.main : navLinkTextColor || theme.palette.text.primary,
+          backgroundColor: isSelected ? theme.palette.background.default || theme.palette.background.paper : theme.palette.background.paper,
           fontSize: theme.typography.body2.fontSize,
           alignItems: "center",
           justifyContent: "flex-start",
