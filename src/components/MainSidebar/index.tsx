@@ -139,7 +139,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
         </Box>
       </Box>
       <Box sx={{ display: { xs: "none", md: "block" } }}>
-        {appsData?.map((item: AppData, index: number) => (
+        {appsData?.map((item: AppData) => (
           <Link href={item.url} target="_blank">
             <Button
               fullWidth
@@ -148,6 +148,9 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
                 padding: "16px",
                 alignItems: "center",
                 justifyContent: "space-between",
+                borderTop: `1px solid ${theme.palette.grey[200]}`,
+                borderRadius: "0px",
+                minHeight: "53px",
               }}
             >
               <Image
