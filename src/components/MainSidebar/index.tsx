@@ -3,6 +3,9 @@ import { Box, Drawer, useMediaQuery, useTheme } from "@mui/material";
 import useSidebarHook from "./useSidebarHook";
 import MainMenuItem from "./MenuItem";
 import { routes } from "./engageRoutes";
+import Image from "next/image";
+//import poolsIcon from "../../../public/assets/pools-logo.svg";
+import engageIcon from "../../../public/assets/engage-logo.svg";
 
 export type Route = {
   text: string;
@@ -13,6 +16,7 @@ export type Route = {
 };
 
 export type MainSidebarProps = {
+  mainApp?: any;
   mainSidebarBgColor?: string;
   navLinkTextColor?: string;
   iconsColor?: string;
@@ -36,6 +40,10 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
     notificationsCount = 0,
     hideOnBreakpoint = "sm",
     defaultPath = "/",
+    mainApp = {
+      logo: { src: engageIcon, height: 21, width: 80 },
+      url: "",
+    },
   } = props;
 
   const { firstRoutes, secondRoutes } = routes();
@@ -64,7 +72,22 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
         },
       }}
     >
-      <Box sx={{ height: 60 }} />
+      <Box
+        display={{ xs: "none", md: "flex" }}
+        width="100%"
+        justifyContent="flex-start"
+        alignItems="center"
+        minHeight="69px"
+        pl={3.5}
+        borderBottom="1px solid" borderColor={theme.palette.grey[200]}
+      >
+        <Image
+          alt="Tool logo"
+          src={mainApp.logo.src}
+          width={mainApp.logo.width}
+          height={mainApp.logo.height}
+        />
+      </Box>
       <Box sx={{ overflow: "auto" }}>
         {[...firstRoutes, ...secondRoutes].map((route, index) => (
           <MainMenuItem
