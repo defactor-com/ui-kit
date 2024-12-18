@@ -37,14 +37,15 @@ export type MainSidebarProps = {
   hideOnBreakpoint?: "xs" | "sm" | "md" | "lg" | "xl";
   defaultPath?: string;
   routes?: Route[];
+  pt?: number | string
 };
 
-type AppData = {
+export type AppData = {
   logo: { src: string; height: number; width: number };
   url: string;
 };
 
-const demoAppsData: AppData[] = [
+export const demoAppsData: AppData[] = [
   {
     logo: { src: poolsIcon, height: 21, width: 53 },
     url: "https://pools-dev.defactor.dev/",
@@ -58,6 +59,7 @@ const demoAppsData: AppData[] = [
 export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
   const theme = useTheme();
   const {
+    pt = 0,
     mainSidebarBgColor = theme.palette.background.paper,
     navLinkTextColor = theme.palette.text.primary,
     iconsColor = theme.palette.text.primary,
