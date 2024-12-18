@@ -107,7 +107,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
         },
       }}
     >
-      <Box pt={mt}>
+      <Box mt={mt}>
         <Box
           display={{ xs: "none", md: "flex" }}
           width="100%"
