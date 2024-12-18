@@ -21,7 +21,7 @@ export const routes = () => {
         {
             icon: BuyBackIcon,
             text: 'buyBack',
-            path: '/',
+            path: '/buy-back',
             public: true,
         },
         {
