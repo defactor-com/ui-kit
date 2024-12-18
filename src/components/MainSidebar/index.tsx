@@ -36,7 +36,7 @@ export type AppDataType = {
 
 export type MainSidebarProps = {
   mainApp?: AppDataType;
-  appsData?: any;
+  appsData?: AppData[];
   mainSidebarBgColor?: string;
   navLinkTextColor?: string;
   iconsColor?: string;
