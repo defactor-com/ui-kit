@@ -11,31 +11,13 @@ import { useSidebarHook } from "./useSidebarHook";
 import MainMenuItem from "./MenuItem";
 import { routes } from "./engageRoutes";
 import Image from "next/image";
-import assetsIcon from "../../../public/assets/asset-logo.svg";
-import poolsIcon from "../../../public/assets/pools-logo.svg";
 import engageIcon from "../../../public/assets/engage-logo.svg";
 import linkIcon from "../../../public/assets/link-icon.svg";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
-
-export type Route = {
-  text: string;
-  path: string;
-  icon: React.ElementType;
-  navLinkTextColor?: string;
-  iconsColor?: string;
-};
-
-export type AppDataType = {
-  logo: {
-    width: number;
-    height: number;
-    src: string | StaticImport;
-  };
-  url?: string;
-};
+import { Route, AppData } from "./icons/types";
+import { demoAppsData } from "./demoAppsData";
 
 export type MainSidebarProps = {
-  mainApp?: AppDataType;
+  mainApp?: AppData;
   appsData?: AppData[];
   mainSidebarBgColor?: string;
   navLinkTextColor?: string;
@@ -50,22 +32,6 @@ export type MainSidebarProps = {
   mt?: number | string;
   selectedBgColor?: string;
 };
-
-export type AppData = {
-  logo: { src: string; height: number; width: number };
-  url: string;
-};
-
-export const demoAppsData: AppData[] = [
-  {
-    logo: { src: poolsIcon, height: 21, width: 53 },
-    url: "https://pools-dev.defactor.dev/",
-  },
-  {
-    logo: { src: assetsIcon, height: 21, width: 74 },
-    url: "https://assets.defactor.dev/",
-  },
-];
 
 export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
   const theme = useTheme();
