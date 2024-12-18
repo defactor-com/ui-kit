@@ -37,7 +37,7 @@ export type MainSidebarProps = {
   hideOnBreakpoint?: "xs" | "sm" | "md" | "lg" | "xl";
   defaultPath?: string;
   routes?: Route[];
-  pt?: number | string
+  mt?: number | string
 };
 
 export type AppData = {
@@ -59,7 +59,7 @@ export const demoAppsData: AppData[] = [
 export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
   const theme = useTheme();
   const {
-    pt = 0,
+    mt = 0,
     mainSidebarBgColor = theme.palette.background.paper,
     navLinkTextColor = theme.palette.text.primary,
     iconsColor = theme.palette.text.primary,
@@ -107,7 +107,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
         },
       }}
     >
-      <Box>
+      <Box pt={mt}>
         <Box
           display={{ xs: "none", md: "flex" }}
           width="100%"
