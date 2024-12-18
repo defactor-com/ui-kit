@@ -38,6 +38,7 @@ export type MainSidebarProps = {
   defaultPath?: string;
   routes?: Route[];
   mt?: number | string;
+  selectedBgColor?: string;
 };
 
 export type AppData = {
@@ -75,6 +76,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
     },
     appsData = demoAppsData,
     routes: demoRoutes,
+    selectedBgColor
   } = props;
 
   const { isSelected } = useSidebarHook();
@@ -143,6 +145,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
                 activeTextColor={activeTextColor}
                 activeIconColor={activeIconColor}
                 notificationColor={notificationColor}
+                selectedBgColor={selectedBgColor}
               />
             )
           )}
