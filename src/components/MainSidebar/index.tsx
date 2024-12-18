@@ -107,7 +107,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
         },
       }}
     >
-      <Box mt={mt}>
+      <Box>
         <Box
           display={{ xs: "none", md: "flex" }}
           width="100%"
@@ -117,6 +117,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
           pl={3.5}
           borderBottom="1px solid"
           borderColor={theme.palette.grey[200]}
+          mt={mt}
         >
           <Image
             alt="Tool logo"
