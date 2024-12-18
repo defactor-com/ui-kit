@@ -3,7 +3,7 @@ import { Box, Button, useTheme } from "@mui/material";
 import { ElementType } from "react";
 import Link from "next/link";
 
-interface MenuItemProps {
+export interface MenuItemProps {
   text: string;
   path: string;
   icon: ElementType;
@@ -16,7 +16,7 @@ interface MenuItemProps {
   notificationColor?: string;
 }
 
-const MainMenuItem: React.FC<MenuItemProps> = ({
+export const MainMenuItem: React.FC<MenuItemProps> = ({
   text,
   path,
   icon: Icon,

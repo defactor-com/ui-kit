@@ -62,7 +62,6 @@ export {
   ContactsIconProps,
 } from "./components/Icons/v2/contactsIcon";
 export { routes } from "./components/MainSidebar/engageRoutes";
-export { PathProvider } from "./components/MainSidebar/PathProvider";
 export {
   CustomCheckBox,
   CustomCheckBoxProps,
@@ -102,4 +101,6 @@ export { LanguageSelectorV3 } from "./components/V3/LanguageSelectorV3";
 export { AreaChartV3, AreaChartV3Props } from "./components/V3/AreaChartV3";
 export { PreviewProfile } from "./components/PreviewProfile";
 export { IPreviewProfile } from "./components/PreviewProfile/PreviewProfileTypes";
-export * from "./components/MainSidebar";
+export { MainSidebar, MainSidebarProps, Route, AppData } from "./components/MainSidebar";
+export { PathProvider } from "./components/MainSidebar/PathProvider";
+
