@@ -48,7 +48,7 @@ export const MainMenuItem: React.FC<MenuItemProps> = ({
             ? activeTextColor || theme.palette.primary.main
             : navLinkTextColor || theme.palette.text.primary,
           backgroundColor: isSelected
-            ? selectedBgColor || theme.palette.background.paper
+            ? selectedBgColor || theme.palette.background.default
             : theme.palette.background.paper,
           fontSize: theme.typography.body2.fontSize,
           alignItems: "center",
