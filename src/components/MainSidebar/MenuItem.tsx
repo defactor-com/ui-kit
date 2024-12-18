@@ -70,7 +70,7 @@ export const MainMenuItem: React.FC<MenuItemProps> = ({
         <Box
           component="span"
           sx={{
-            textTransform: "none",
+            textTransform: "capitalize",
           }}
         >
           {text}
