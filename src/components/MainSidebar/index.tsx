@@ -36,6 +36,7 @@ export type MainSidebarProps = {
   notificationsCount?: number;
   hideOnBreakpoint?: "xs" | "sm" | "md" | "lg" | "xl";
   defaultPath?: string;
+  routes?: Route[];
 };
 
 type AppData = {
@@ -71,9 +72,9 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
       url: "",
     },
     appsData = demoAppsData,
+    routes: demoRoutes,
   } = props;
 
-  const { firstRoutes, secondRoutes } = routes();
   const { isSelected } = useSidebarHook();
   const isHidden = useMediaQuery(theme.breakpoints.down(hideOnBreakpoint));
 
@@ -84,6 +85,10 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
   if (isHidden) {
     return null;
   }
+
+  const { firstRoutes, secondRoutes } = demoRoutes
+    ? { firstRoutes: demoRoutes.slice(0, 2), secondRoutes: demoRoutes.slice(2) }
+    : routes();
 
   return (
     <Drawer
@@ -119,7 +124,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
           />
         </Box>
         <Box sx={{ overflow: "auto" }}>
-          {[...firstRoutes, ...secondRoutes].map((route, index) => (
+          {[...firstRoutes, ...secondRoutes].map((route: Route, index: number) => (
             <MainMenuItem
               key={index}
               icon={route.icon}
@@ -139,8 +144,8 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
         </Box>
       </Box>
       <Box sx={{ display: { xs: "none", md: "block" } }}>
-        {appsData?.map((item: AppData) => (
-          <Link href={item.url} target="_blank">
+        {appsData?.map((item: AppData, index: number) => (
+          <Link href={item.url} target="_blank" key={index}>
             <Button
               fullWidth
               sx={{
@@ -167,3 +172,4 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
     </Drawer>
   );
 };
+
