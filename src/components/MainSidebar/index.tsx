@@ -15,6 +15,7 @@ import assetsIcon from "../../../public/assets/asset-logo.svg";
 import poolsIcon from "../../../public/assets/pools-logo.svg";
 import engageIcon from "../../../public/assets/engage-logo.svg";
 import linkIcon from "../../../public/assets/link-icon.svg";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 export type Route = {
   text: string;
@@ -24,8 +25,17 @@ export type Route = {
   iconsColor?: string;
 };
 
+export type AppDataType = {
+  logo: {
+    width: number;
+    height: number;
+    src: string | StaticImport;
+  };
+  url?: string;
+};
+
 export type MainSidebarProps = {
-  mainApp?: any;
+  mainApp?: AppDataType;
   appsData?: any;
   mainSidebarBgColor?: string;
   navLinkTextColor?: string;
@@ -76,7 +86,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
     },
     appsData = demoAppsData,
     routes: demoRoutes,
-    selectedBgColor
+    selectedBgColor,
   } = props;
 
   const { isSelected } = useSidebarHook();
