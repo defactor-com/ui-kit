@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { useSidebarHook } from "./useSidebarHook";
 import MainMenuItem from "./MenuItem";
-import { routes } from "./engageRoutes";
+import { routes } from "./demoRoutes";
 import Image from "next/image";
 import engageIcon from "../../../public/assets/engage-logo.svg";
 import linkIcon from "../../../public/assets/link-icon.svg";

@@ -61,7 +61,7 @@ export {
   ContactsIcon,
   ContactsIconProps,
 } from "./components/Icons/v2/contactsIcon";
-export { routes } from "./components/MainSidebar/engageRoutes";
+export { routes } from "./components/MainSidebar/demoRoutes";
 export {
   CustomCheckBox,
   CustomCheckBoxProps,
@@ -103,9 +103,7 @@ export { PreviewProfile } from "./components/PreviewProfile";
 export { IPreviewProfile } from "./components/PreviewProfile/PreviewProfileTypes";
 export {
   MainSidebar,
-  MainSidebarProps,
-  Route,
-  AppData,
+  MainSidebarProps
 } from "./components/MainSidebar";
 export { PathProvider } from "./components/MainSidebar/PathProvider";
 export { useSidebarHook } from "./components/MainSidebar/useSidebarHook";
