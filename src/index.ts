@@ -109,3 +109,4 @@ export {
 } from "./components/MainSidebar";
 export { PathProvider } from "./components/MainSidebar/PathProvider";
 export { useSidebarHook } from "./components/MainSidebar/useSidebarHook";
+export { usePathname } from "./components/MainSidebar/PathProvider";
