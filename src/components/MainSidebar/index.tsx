@@ -7,7 +7,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import useSidebarHook from "./useSidebarHook";
+import { useSidebarHook } from "./useSidebarHook";
 import MainMenuItem from "./MenuItem";
 import { routes } from "./engageRoutes";
 import Image from "next/image";
@@ -37,7 +37,7 @@ export type MainSidebarProps = {
   hideOnBreakpoint?: "xs" | "sm" | "md" | "lg" | "xl";
   defaultPath?: string;
   routes?: Route[];
-  mt?: number | string
+  mt?: number | string;
 };
 
 export type AppData = {
@@ -127,23 +127,25 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
           />
         </Box>
         <Box sx={{ overflow: "auto" }}>
-          {[...firstRoutes, ...secondRoutes].map((route: Route, index: number) => (
-            <MainMenuItem
-              key={index}
-              icon={route.icon}
-              text={route.text}
-              path={route.path}
-              isSelected={checkSelected(route.path)}
-              notificationsCount={
-                route.path === "/notifications" ? notificationsCount : 0
-              }
-              navLinkTextColor={navLinkTextColor}
-              iconsColor={iconsColor}
-              activeTextColor={activeTextColor}
-              activeIconColor={activeIconColor}
-              notificationColor={notificationColor}
-            />
-          ))}
+          {[...firstRoutes, ...secondRoutes].map(
+            (route: Route, index: number) => (
+              <MainMenuItem
+                key={index}
+                icon={route.icon}
+                text={route.text}
+                path={route.path}
+                isSelected={checkSelected(route.path)}
+                notificationsCount={
+                  route.path === "/notifications" ? notificationsCount : 0
+                }
+                navLinkTextColor={navLinkTextColor}
+                iconsColor={iconsColor}
+                activeTextColor={activeTextColor}
+                activeIconColor={activeIconColor}
+                notificationColor={notificationColor}
+              />
+            )
+          )}
         </Box>
       </Box>
       <Box sx={{ display: { xs: "none", md: "block" } }}>
@@ -175,4 +177,3 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
     </Drawer>
   );
 };
-
