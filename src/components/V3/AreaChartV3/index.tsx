@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, alpha } from "@mui/material";
+import { Box, alpha, useTheme, useMediaQuery } from "@mui/material";
 import {
   AreaChart,
   Area,
@@ -14,6 +14,7 @@ export interface AreaChartV3Props {
   data: { time: string; value: number }[];
   hideFirstTickXTrue?: boolean;
   hideFirstTickYTrue?: boolean;
+  hideTickValuesOnMobile?: boolean; 
   width?: number | string;
   maxWidth?: number | string;
   height?: number | string;
@@ -26,21 +27,24 @@ export interface AreaChartV3Props {
   boxPadding?: string | number;
 }
 
-
 export const AreaChartV3: React.FC<AreaChartV3Props> = ({
   data,
-  xKey="time",
-  yKey="value",
-  height=220,
-  maxWidth="100%",
-  boxBgColor="#ffffff",
-  areaColor="#5A5BEB",
-  fillTickColor="#7C7D7E",
-  strokeColor="#BDBDBD",
-  boxPadding="16px 16px 0px 0px",
-  hideFirstTickXTrue=false,
-  hideFirstTickYTrue=true
+  xKey = "time",
+  yKey = "value",
+  height = 220,
+  maxWidth = "100%",
+  boxBgColor = "#ffffff",
+  areaColor = "#5A5BEB",
+  fillTickColor = "#7C7D7E",
+  strokeColor = "#BDBDBD",
+  boxPadding = "16px 16px 0px 0px",
+  hideFirstTickXTrue = false,
+  hideFirstTickYTrue = true,
+  hideTickValuesOnMobile = true
 }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
     <Box
       maxWidth={maxWidth}
@@ -66,11 +70,15 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
             }
             tickLine={false}
             axisLine={false}
-            tick={{
-              fontSize: 11,
-              fontWeight: 700,
-              fill: fillTickColor,
-            }}
+            tick={
+              hideTickValuesOnMobile && isMobile
+                ? { fontSize: 0 }
+                : {
+                    fontSize: 11,
+                    fontWeight: 700,
+                    fill: fillTickColor,
+                  }
+            }
           />
           <YAxis
             tickFormatter={
@@ -80,11 +88,15 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
             }
             tickLine={false}
             axisLine={false}
-            tick={{
-              fontSize: 11,
-              fontWeight: 700,
-              fill: fillTickColor,
-            }}
+            tick={
+              hideTickValuesOnMobile && isMobile
+                ? { fontSize: 0 } 
+                : {
+                    fontSize: 11,
+                    fontWeight: 700,
+                    fill: fillTickColor,
+                  }
+            }
           />
           <Area
             dataKey={yKey}
