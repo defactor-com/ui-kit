@@ -25,6 +25,7 @@ export interface AreaChartV3Props {
   fillTickColor?: string;
   strokeColor?: string;
   boxPadding?: string | number;
+  ml?: string | number;
 }
 
 export const AreaChartV3: React.FC<AreaChartV3Props> = ({
@@ -40,18 +41,19 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
   boxPadding = "16px 16px 0px 0px",
   hideFirstTickXTrue = false,
   hideFirstTickYTrue = true,
-  hideTickValuesOnMobile = false
+  hideTickValuesOnMobile = true,
+  ml = "-44px"
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Box
-    width='100%'
       maxWidth={maxWidth}
       height={height}
       bgcolor={boxBgColor}
       p={boxPadding}
+      ml={hideTickValuesOnMobile && isMobile ? ml : undefined}
     >
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={data}>
