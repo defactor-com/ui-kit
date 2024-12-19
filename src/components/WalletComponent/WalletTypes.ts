@@ -34,6 +34,7 @@ export type WalletContainerProps = {
   userContext: any;
   open: boolean;
   theme: Theme;
+  showIconD?: boolean;
 };
 
 export type WalletSelectorData = {
