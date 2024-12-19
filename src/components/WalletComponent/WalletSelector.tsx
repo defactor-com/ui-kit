@@ -25,6 +25,9 @@ export const WalletSelector = ({
   openConnectWallet,
   onClickMenuOption,
   handleFormartCurrency,
+  fontSize ="14px",
+  fontWeight="500",
+  MaxHeight= "39px",
   showIconD = false,
 }: IWalletSelector): JSX.Element => {
   const [{ anchorEl, open, id }, { handleClick, handleClose }] =
@@ -54,9 +57,9 @@ export const WalletSelector = ({
           label={isMobile ? undefined : labels.connectWallet}
           optionalStyles={{ padding: theme.spacing(1.5, 2) }}
           bgColor={isMobile ? "" : theme.palette.secondary.main}
-          fontSize={"14px"}
-          fontWeight={"500"}
-          MaxHeight={"39px"}
+          fontSize={fontSize}
+          fontWeight={fontWeight}
+          MaxHeight={MaxHeight}
         />
       ) : (
         <Box
