@@ -28,7 +28,7 @@ export const WalletSelector = ({
   fontSize ="14px",
   fontWeight="500",
   MaxHeight= "39px",
-  showIconD = false,
+  showIconD = false
 }: IWalletSelector): JSX.Element => {
   const [{ anchorEl, open, id }, { handleClick, handleClose }] =
     useWalletSelectorHook();
