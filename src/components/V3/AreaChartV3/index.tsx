@@ -32,7 +32,7 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
   xKey = "time",
   yKey = "value",
   height = 220,
-  maxWidth = "100%",
+  maxWidth = 'none',
   boxBgColor = "#ffffff",
   areaColor = "#5A5BEB",
   fillTickColor = "#7C7D7E",
@@ -40,13 +40,14 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
   boxPadding = "16px 16px 0px 0px",
   hideFirstTickXTrue = false,
   hideFirstTickYTrue = true,
-  hideTickValuesOnMobile = true
+  hideTickValuesOnMobile = false
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Box
+    width='100%'
       maxWidth={maxWidth}
       height={height}
       bgcolor={boxBgColor}
