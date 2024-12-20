@@ -5,9 +5,8 @@ import GovernanceIcon from './icons/governanceIcon';
 import StakingIcon from './icons/stakingIcon';
 import VestingIcon from './icons/vestingIcon';
 
-// Demo generalConfig
 export const generalConfig = {
-    routesDisabled: ['admin'],
+    routesDisabled: ['vesting'],
 };
 
 export const routes = () => {
