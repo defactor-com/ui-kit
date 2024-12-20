@@ -13,3 +13,8 @@ export const demoAppsData: AppData[] = [
         url: "https://assets.defactor.dev/",
     },
 ];
+
+export const ROLES = { admin: "user-admin" };
+export const userContext = {
+    role: "user-admin",
+};

@@ -18,12 +18,7 @@ import engageIcon from "../../../public/assets/engage-logo.svg";
 import linkIcon from "../../../public/assets/link-icon.svg";
 import { Route, AppData } from "./icons/types";
 import { demoAppsData } from "./demoAppsData";
-
-// demo
-export const ROLES = { admin: "user-admin" };
-export const userContext = {
-  role: "user-admin",
-};
+import { ROLES, userContext } from "./demoAppsData";
 
 export type MainSidebarProps = {
   mainApp?: AppData;
