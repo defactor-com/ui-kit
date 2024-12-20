@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.20
+
+### Patch Changes
+
+- 599ecec: Unified Wallet Selector Button.
+
 ## 0.5.19
 
 ### Patch Changes
