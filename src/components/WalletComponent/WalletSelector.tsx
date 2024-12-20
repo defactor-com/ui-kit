@@ -38,17 +38,13 @@ export const WalletSelector = ({
     <div>
       {!isConnected ? (
         <Button
-          icon={
-            !isMobile && showIconD ? (
-              <WalletConnectIcon
-                color={
-                  isMobile
-                    ? theme.palette.text.primary
-                    : theme.palette.common.white
-                }
-              />
-            ) : undefined
-          }
+        icon={
+          isMobile ? (
+            <WalletConnectIcon color={theme.palette.text.primary} />
+          ) : showIconD ? (
+            <WalletConnectIcon color={theme.palette.common.white} />
+          ) : undefined
+        }
           onClick={() => {
             openConnectWallet(), handleClose();
           }}
