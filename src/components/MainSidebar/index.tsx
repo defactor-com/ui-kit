@@ -50,7 +50,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
     activeIconColor = theme.palette.secondary.main,
     notificationColor = theme.palette.error.main,
     notificationsCount = 0,
-    hideOnBreakpoint = "sm",
+    hideOnBreakpoint = "md",
     defaultPath = "/",
     mainApp = {
       logo: { src: engageIcon, height: 21, width: 80 },
