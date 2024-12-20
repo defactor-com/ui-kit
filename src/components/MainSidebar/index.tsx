@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React from "react";
 import {
@@ -8,6 +8,7 @@ import {
   Drawer,
   useMediaQuery,
   useTheme,
+  Divider,
 } from "@mui/material";
 import { useSidebarHook } from "./useSidebarHook";
 import MainMenuItem from "./MenuItem";
@@ -107,26 +108,49 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
           />
         </Box>
         <Box sx={{ overflow: "auto" }}>
-          {[...firstRoutes, ...secondRoutes].map(
-            (route: Route, index: number) => (
-              <MainMenuItem
-                key={index}
-                icon={route.icon}
-                text={route.text}
-                path={route.path}
-                isSelected={checkSelected(route.path)}
-                notificationsCount={
-                  route.path === "/notifications" ? notificationsCount : 0
-                }
-                navLinkTextColor={navLinkTextColor}
-                iconsColor={iconsColor}
-                activeTextColor={activeTextColor}
-                activeIconColor={activeIconColor}
-                notificationColor={notificationColor}
-                selectedBgColor={selectedBgColor}
-              />
-            )
+          {[...firstRoutes].map((route: Route, index: number) => (
+            <MainMenuItem
+              key={index}
+              icon={route.icon}
+              text={route.text}
+              path={route.path}
+              isSelected={checkSelected(route.path)}
+              notificationsCount={
+                route.path === "/notifications" ? notificationsCount : 0
+              }
+              navLinkTextColor={navLinkTextColor}
+              iconsColor={iconsColor}
+              activeTextColor={activeTextColor}
+              activeIconColor={activeIconColor}
+              notificationColor={notificationColor}
+              selectedBgColor={selectedBgColor}
+            />
+          ))}
+          {routes().firstRoutes.length > 0 && (
+            <Divider
+              sx={{
+                border: `${theme.palette.grey[300]} 1px solid`,
+              }}
+            />
           )}
+          {[...secondRoutes].map((route: Route, index: number) => (
+            <MainMenuItem
+              key={index}
+              icon={route.icon}
+              text={route.text}
+              path={route.path}
+              isSelected={checkSelected(route.path)}
+              notificationsCount={
+                route.path === "/notifications" ? notificationsCount : 0
+              }
+              navLinkTextColor={navLinkTextColor}
+              iconsColor={iconsColor}
+              activeTextColor={activeTextColor}
+              activeIconColor={activeIconColor}
+              notificationColor={notificationColor}
+              selectedBgColor={selectedBgColor}
+            />
+          ))}
         </Box>
       </Box>
       <Box sx={{ display: { xs: "none", md: "block" } }}>
