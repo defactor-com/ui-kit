@@ -19,6 +19,12 @@ import linkIcon from "../../../public/assets/link-icon.svg";
 import { Route, AppData } from "./icons/types";
 import { demoAppsData } from "./demoAppsData";
 
+// demo
+export const ROLES = { admin: "user-admin" };
+export const userContext = {
+  role: "user-admin",
+};
+
 export type MainSidebarProps = {
   mainApp?: AppData;
   appsData?: AppData[];
@@ -34,6 +40,8 @@ export type MainSidebarProps = {
   routes?: Route[];
   mt?: number | string;
   selectedBgColor?: string;
+  roles?: Record<string, string>;
+  userContext?: { role: string };
 };
 
 export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
@@ -56,6 +64,8 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
     appsData = demoAppsData,
     routes: demoRoutes,
     selectedBgColor,
+    roles = ROLES,
+    userContext: context = userContext,
   } = props;
 
   const { isSelected } = useSidebarHook();
@@ -108,24 +118,28 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
           />
         </Box>
         <Box sx={{ overflow: "auto" }}>
-          {[...firstRoutes].map((route: Route, index: number) => (
-            <MainMenuItem
-              key={index}
-              icon={route.icon}
-              text={route.text}
-              path={route.path}
-              isSelected={checkSelected(route.path)}
-              notificationsCount={
-                route.path === "/notifications" ? notificationsCount : 0
-              }
-              navLinkTextColor={navLinkTextColor}
-              iconsColor={iconsColor}
-              activeTextColor={activeTextColor}
-              activeIconColor={activeIconColor}
-              notificationColor={notificationColor}
-              selectedBgColor={selectedBgColor}
-            />
-          ))}
+          {[...firstRoutes]
+            .filter(
+              (route: Route) => route.public || context.role === roles.admin
+            )
+            .map((route: Route, index: number) => (
+              <MainMenuItem
+                key={index}
+                icon={route.icon}
+                text={route.text}
+                path={route.path}
+                isSelected={checkSelected(route.path)}
+                notificationsCount={
+                  route.path === "/notifications" ? notificationsCount : 0
+                }
+                navLinkTextColor={navLinkTextColor}
+                iconsColor={iconsColor}
+                activeTextColor={activeTextColor}
+                activeIconColor={activeIconColor}
+                notificationColor={notificationColor}
+                selectedBgColor={selectedBgColor}
+              />
+            ))}
           {routes().firstRoutes.length > 0 && (
             <Divider
               sx={{
@@ -133,24 +147,28 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
               }}
             />
           )}
-          {[...secondRoutes].map((route: Route, index: number) => (
-            <MainMenuItem
-              key={index}
-              icon={route.icon}
-              text={route.text}
-              path={route.path}
-              isSelected={checkSelected(route.path)}
-              notificationsCount={
-                route.path === "/notifications" ? notificationsCount : 0
-              }
-              navLinkTextColor={navLinkTextColor}
-              iconsColor={iconsColor}
-              activeTextColor={activeTextColor}
-              activeIconColor={activeIconColor}
-              notificationColor={notificationColor}
-              selectedBgColor={selectedBgColor}
-            />
-          ))}
+          {[...secondRoutes]
+            .filter(
+              (route: Route) => route.public || context.role === roles.admin
+            )
+            .map((route: Route, index: number) => (
+              <MainMenuItem
+                key={index}
+                icon={route.icon}
+                text={route.text}
+                path={route.path}
+                isSelected={checkSelected(route.path)}
+                notificationsCount={
+                  route.path === "/notifications" ? notificationsCount : 0
+                }
+                navLinkTextColor={navLinkTextColor}
+                iconsColor={iconsColor}
+                activeTextColor={activeTextColor}
+                activeIconColor={activeIconColor}
+                notificationColor={notificationColor}
+                selectedBgColor={selectedBgColor}
+              />
+            ))}
         </Box>
       </Box>
       <Box sx={{ display: { xs: "none", md: "block" } }}>

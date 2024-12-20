@@ -17,6 +17,7 @@ export type Route = {
     icon: React.ElementType;
     navLinkTextColor?: string;
     iconsColor?: string;
+    public?: boolean;
 };
 
 export type AppData = {
