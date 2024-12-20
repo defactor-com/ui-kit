@@ -16,6 +16,9 @@ export const Button = ({
   externalStyles,
   optionalStyles,
   disabled = false,
+  fontSize,
+  fontWeight,
+  MaxHeight,
   ...props
 }: IButton) => {
   const classNames = `btn btn-${variant} ${
@@ -26,13 +29,19 @@ export const Button = ({
     borderColor: borderColor,
     backgroundColor: bgColor,
     fontFamily: fontFamily,
-    color: color,
+    color: color
   };
 
   return (
     <button
       className={clsx(externalStyles, classNames)}
-      style={{ ...defaultStyles, ...optionalStyles }}
+      style={{
+        ...defaultStyles,
+        ...optionalStyles,
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        maxHeight: MaxHeight
+      }}
       disabled={disabled}
       {...props}
     >

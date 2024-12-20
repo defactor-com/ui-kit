@@ -34,6 +34,10 @@ export type WalletContainerProps = {
   userContext: any;
   open: boolean;
   theme: Theme;
+  showIconD?: boolean;
+  fontSize?: number | string;
+  fontWeight?: number | string;
+  MaxHeight?: number | string;
 };
 
 export type WalletSelectorData = {
