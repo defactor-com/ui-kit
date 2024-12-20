@@ -1,11 +1,8 @@
 import { useTheme } from "@mui/styles";
 import { usePathname } from "./PathProvider";
 import { useCallback } from "react";
-import { Routes } from "./routes";
 
-type RouteType = keyof Routes;
-
-const useSidebarHook = () => {
+export const useSidebarHook = () => {
   const theme = useTheme();
   const pathName = usePathname();
 
@@ -16,9 +13,5 @@ const useSidebarHook = () => {
     [pathName]
   );
 
-  const routeType: RouteType = "mainRoutes";
-
-  return { theme, routeType, isSelected };
+  return { theme, isSelected };
 };
-
-export default useSidebarHook;

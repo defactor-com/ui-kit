@@ -61,9 +61,7 @@ export {
   ContactsIcon,
   ContactsIconProps,
 } from "./components/Icons/v2/contactsIcon";
-export { routes, Routes } from "./components/MainSidebar/routes";
-export { MainSidebar, MainSidebarProps, Route } from "./components/MainSidebar";
-export { PathProvider } from "./components/MainSidebar/PathProvider";
+export { routes } from "./components/MainSidebar/demoRoutes";
 export {
   CustomCheckBox,
   CustomCheckBoxProps,
@@ -103,3 +101,10 @@ export { LanguageSelectorV3 } from "./components/V3/LanguageSelectorV3";
 export { AreaChartV3, AreaChartV3Props } from "./components/V3/AreaChartV3";
 export { PreviewProfile } from "./components/PreviewProfile";
 export { IPreviewProfile } from "./components/PreviewProfile/PreviewProfileTypes";
+export {
+  MainSidebar,
+  MainSidebarProps
+} from "./components/MainSidebar";
+export { PathProvider } from "./components/MainSidebar/PathProvider";
+export { useSidebarHook } from "./components/MainSidebar/useSidebarHook";
+export { usePathname } from "./components/MainSidebar/PathProvider";

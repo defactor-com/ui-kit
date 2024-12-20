@@ -3,7 +3,7 @@ import { Box, Button, useTheme } from "@mui/material";
 import { ElementType } from "react";
 import Link from "next/link";
 
-interface MenuItemProps {
+export interface MenuItemProps {
   text: string;
   path: string;
   icon: ElementType;
@@ -14,9 +14,10 @@ interface MenuItemProps {
   activeTextColor?: string;
   activeIconColor?: string;
   notificationColor?: string;
+  selectedBgColor?: string;
 }
 
-const MainMenuItem: React.FC<MenuItemProps> = ({
+export const MainMenuItem: React.FC<MenuItemProps> = ({
   text,
   path,
   icon: Icon,
@@ -27,6 +28,7 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
   activeTextColor,
   activeIconColor,
   notificationColor,
+  selectedBgColor,
 }) => {
   const theme = useTheme();
 
@@ -37,22 +39,38 @@ const MainMenuItem: React.FC<MenuItemProps> = ({
         variant="text"
         sx={{
           width: "100%",
+          minHeight: "64px",
           borderRight: isSelected ? `2px solid ${theme.palette.secondary.main}` : "",
           borderRadius: 0,
           padding: 2,
           paddingLeft: 4,
-          color: isSelected ? activeTextColor || theme.palette.primary.main : navLinkTextColor || theme.palette.text.primary,
+          color: isSelected
+            ? activeTextColor || theme.palette.primary.main
+            : navLinkTextColor || theme.palette.text.primary,
+          backgroundColor: isSelected
+            ? selectedBgColor || theme.palette.background.default
+            : theme.palette.background.paper,
           fontSize: theme.typography.body2.fontSize,
           alignItems: "center",
           justifyContent: "flex-start",
-          fontWeight: isSelected ? theme.typography.fontWeightBold : theme.typography.fontWeightRegular,
+          fontWeight: isSelected
+            ? theme.typography.fontWeightBold
+            : theme.typography.fontWeightRegular,
         }}
-        startIcon={<Icon color={isSelected ? activeIconColor || theme.palette.primary.main : iconsColor || theme.palette.text.secondary} />}
+        startIcon={
+          <Icon
+            color={
+              isSelected
+                ? activeIconColor || theme.palette.primary.main
+                : iconsColor || theme.palette.text.secondary
+            }
+          />
+        }
       >
         <Box
           component="span"
           sx={{
-            textTransform: "none",
+            textTransform: "capitalize",
           }}
         >
           {text}
