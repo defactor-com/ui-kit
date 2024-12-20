@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.18
+
+### Patch Changes
+
+- 5dc5da6: Improved MainSidebar.
+
 ## 0.5.17
 
 ### Patch Changes
