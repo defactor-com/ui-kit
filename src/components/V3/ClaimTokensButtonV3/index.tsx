@@ -4,10 +4,11 @@ import { Box, Button, CircularProgress } from '@mui/material'
 import { useWeb3ModalAccount } from '@web3modal/ethers/react'
 import { claimFaucetTokens } from 'api'
 import { memo, useState } from 'react'
+import React from 'react'
 
 import { useMessage } from 'app/context/MessageContext'
 
-const ClaimTokensButton = () => {
+const ClaimTokensButtonV3 = () => {
   const { isConnected, address, chainId } = useWeb3ModalAccount()
   const [loading, setLoading] = useState(false)
 
@@ -67,4 +68,4 @@ const ClaimTokensButton = () => {
   )
 }
 
-export default memo(ClaimTokensButton)
+export default memo(ClaimTokensButtonV3)
