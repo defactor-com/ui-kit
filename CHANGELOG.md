@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.22
+
+### Patch Changes
+
+- 586b9d3: Added ToolItemV3.
+
 ## 0.5.21
 
 ### Patch Changes
