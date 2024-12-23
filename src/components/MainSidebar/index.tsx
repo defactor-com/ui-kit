@@ -1,24 +1,16 @@
 "use client";
 
 import React from "react";
-import {
-  Box,
-  Button,
-  Link,
-  Drawer,
-  useMediaQuery,
-  useTheme,
-  Divider,
-} from "@mui/material";
+import { Box, Drawer, useMediaQuery, useTheme, Divider } from "@mui/material";
 import { useSidebarHook } from "./useSidebarHook";
 import MainMenuItem from "./MenuItem";
 import { routes } from "./demoRoutes";
 import Image from "next/image";
 import engageIcon from "../../../public/assets/engage-logo.svg";
-import linkIcon from "../../../public/assets/link-icon.svg";
 import { Route, AppData } from "./icons/types";
 import { demoAppsData } from "./demoAppsData";
 import { ROLES, userContext } from "./demoAppsData";
+import { ToolItemV3 } from "../V3/ToolItemV3";
 
 export type MainSidebarProps = {
   mainApp?: AppData;
@@ -168,28 +160,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
       </Box>
       <Box sx={{ display: { xs: "none", md: "block" } }}>
         {appsData?.map((item: AppData, index: number) => (
-          <Link href={item.url} target="_blank" key={index}>
-            <Button
-              fullWidth
-              sx={{
-                display: "flex",
-                padding: "16px",
-                alignItems: "center",
-                justifyContent: "space-between",
-                borderTop: `1px solid ${theme.palette.grey[200]}`,
-                borderRadius: "0px",
-                minHeight: "53px",
-              }}
-            >
-              <Image
-                alt="Tool logo"
-                src={item.logo.src}
-                width={item.logo.width}
-                height={item.logo.height}
-              />
-              <Image width={12} height={12} src={linkIcon} alt="Link icon" />
-            </Button>
-          </Link>
+          <ToolItemV3 key={index} item={item} index={index} />
         ))}
       </Box>
     </Drawer>
