@@ -58,7 +58,7 @@ export const MobileMenuV3: React.FC<MobileMenuV3Props> = (props) => {
   } = props;
 
   const { isSelected } = useSidebarHook();
-  const isHidden = useMediaQuery(theme.breakpoints.down(hideOnBreakpoint));
+  const isHidden = useMediaQuery(theme.breakpoints.up(hideOnBreakpoint));
 
   const checkSelected = (path: string) => {
     return isSelected(path) || (isSelected("/") && path === defaultPath);
