@@ -11,7 +11,7 @@ export interface ILanguageSelector {
   locale: string;
   icon?: ReactElement;
   bgColor?: string;
-  options: OptionLanguage[];
+  options?: OptionLanguage[];
   t: (key: string, options?: any) => string;
 }
 

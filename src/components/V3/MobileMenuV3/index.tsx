@@ -161,6 +161,11 @@ export const MobileMenuV3: React.FC<MobileMenuV3Props> = (props) => {
               selectedBgColor={selectedBgColor}
             />
           ))}
+          <Divider
+            sx={{
+              border: `${theme.palette.grey[300]} 1px solid`,
+            }}
+          />
       </Box>
       <Box
         sx={{

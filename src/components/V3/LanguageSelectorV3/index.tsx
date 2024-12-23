@@ -119,7 +119,7 @@ export const LanguageSelectorV3 = ({
             }}
           >
             <lng.flag />
-            {t("locale", { locale: lng.id }) || lng.id}
+            {t("locale", { locale: lng.id }) || lng.id} 
           </MenuItem>
         ))}
       </Menu>
