@@ -1,13 +1,13 @@
 'use client'
 
 import { Box, Button, CircularProgress } from '@mui/material'
-import { useWeb3ModalAccount } from '@web3modal/ethers/react'
 import { memo, useState } from 'react'
 import React from 'react'
 
 interface ClaimTokensButtonV3Props {
   claimFaucetTokens?: (userAddress: string, chainId: number) => Promise<{ success: boolean; res: { msg: string } }>
   useMessage?: () => { setMessageData: (data: { message: string; severity: 'success' | 'error' }) => void }
+  useWeb3ModalAccount?: () => { isConnected: boolean; address: string; chainId: number }
 }
 
 const defaultClaimFaucetTokens = async (userAddress: string, chainId: number) => {
@@ -23,9 +23,18 @@ const defaultUseMessage = () => {
   }
 }
 
+const defaultUseWeb3ModalAccount = () => {
+  return {
+    isConnected: true,
+    address: '0xDemoAddress',
+    chainId: 1
+  }
+}
+
 const ClaimTokensButtonV3: React.FC<ClaimTokensButtonV3Props> = ({ 
   claimFaucetTokens = defaultClaimFaucetTokens, 
-  useMessage = defaultUseMessage 
+  useMessage = defaultUseMessage,
+  useWeb3ModalAccount = defaultUseWeb3ModalAccount
 }) => {
   const { isConnected, address, chainId } = useWeb3ModalAccount()
   const [loading, setLoading] = useState(false)
