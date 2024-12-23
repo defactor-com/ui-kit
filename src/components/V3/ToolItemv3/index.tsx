@@ -3,26 +3,26 @@
 import React from 'react';
 import { Button, Link, useTheme } from '@mui/material';
 import Image from 'next/image';
-import { LinkExternal02 } from '@untitled-ui/icons-react'
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import { LinkExternal02 } from '@untitled-ui/icons-react';
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
-export type ToolItemV3Props = {
-    item: {
-      url: string;
-      logo: {
-        src: string | StaticImport; 
-        width: number;
-        height: number;
-      };
+export interface ToolItemV3Props {
+  item: {
+    url: string;
+    logo: {
+      src: string | StaticImport;
+      width: number;
+      height: number;
     };
-    index: number;
-  };  
+  };
+  index: number;
+}
 
 export const ToolItemV3: React.FC<ToolItemV3Props> = ({ item, index }) => {
   const theme = useTheme();
 
   return (
-    <Link href={item.url} target="_blank" key={index}>
+    <Link href={item.url} target="_blank" key={index} sx={{ textDecoration: 'none' }}>
       <Button
         fullWidth
         sx={{
@@ -31,7 +31,7 @@ export const ToolItemV3: React.FC<ToolItemV3Props> = ({ item, index }) => {
           alignItems: 'center',
           justifyContent: 'space-between',
           borderTop: `1px solid ${theme.palette.grey[200]}`,
-          borderRadius: '0px',
+          borderRadius: 0,
           minHeight: '53px',
         }}
       >
@@ -42,10 +42,10 @@ export const ToolItemV3: React.FC<ToolItemV3Props> = ({ item, index }) => {
           height={item.logo.height}
         />
         <LinkExternal02
-            width={14}
-            height={14}
-            color={theme.palette.grey[400]}
-          />
+          width={14}
+          height={14}
+          color={theme.palette.grey[400]}
+        />
       </Button>
     </Link>
   );
