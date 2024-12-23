@@ -1,3 +1,4 @@
+import ToolItemV3 from "./components/V3/ToolItemV3";
 import "./scss/styles.scss";
 
 export * from "./components/Pill";
@@ -108,4 +109,3 @@ export {
 export { PathProvider } from "./components/MainSidebar/PathProvider";
 export { useSidebarHook } from "./components/MainSidebar/useSidebarHook";
 export { usePathname } from "./components/MainSidebar/PathProvider";
-export { ToolItemV3, ToolItemV3Props } from "./components/V3/ToolItemV3";

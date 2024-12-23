@@ -18,7 +18,7 @@ export type ToolItemV3Props = {
     index: number;
   };  
 
-export const ToolItemV3: React.FC<ToolItemV3Props> = ({ item, index }) => {
+const ToolItemV3: React.FC<ToolItemV3Props> = ({ item, index }) => {
   const theme = useTheme();
 
   return (
@@ -50,3 +50,5 @@ export const ToolItemV3: React.FC<ToolItemV3Props> = ({ item, index }) => {
     </Link>
   );
 };
+
+export default ToolItemV3;

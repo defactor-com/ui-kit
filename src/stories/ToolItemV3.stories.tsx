@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { ToolItemV3, ToolItemV3Props } from "../components/V3/ToolItemV3"; 
+import ToolItemV3, { ToolItemV3Props } from '../components/V3/ToolItemV3';
 import poolsIcon from "../../public/assets/pools-logo.svg";
 
 

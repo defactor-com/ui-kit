@@ -16,7 +16,7 @@ import engageIcon from "../../../public/assets/engage-logo.svg";
 import { Route, AppData } from "./icons/types";
 import { demoAppsData } from "./demoAppsData";
 import { ROLES, userContext } from "./demoAppsData";
-import { ToolItemV3 } from "../V3/ToolItemV3";
+import ToolItemV3 from "../V3/ToolItemV3";
 
 export type MainSidebarProps = {
   mainApp?: AppData;
