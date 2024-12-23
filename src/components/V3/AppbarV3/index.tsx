@@ -20,7 +20,7 @@ import {
     routesDisabled: [],
   };
   
-  interface AppbarV3Props {
+  export interface AppbarV3Props {
     appLogo?: string;
     appLogoAlt?: string;
     appEnvironment?: string;
@@ -28,7 +28,7 @@ import {
     currentLogoAlt?: string;
   }
   
-  const AppbarV3: React.FC<AppbarV3Props> = ({
+  export const AppbarV3: React.FC<AppbarV3Props> = ({
     appLogo = "/default-logo.png",
     appLogoAlt = "Header Logo",
     appEnvironment = "production",
@@ -100,6 +100,5 @@ import {
       </AppBar>
     );
   };
-  
-  export default AppbarV3;
+
   
