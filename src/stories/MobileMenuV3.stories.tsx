@@ -1,51 +1,46 @@
-import React from "react";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { MobileMenuV3 } from "../components/V3/MobileMenuV3";
-
-import { PathProvider } from "../components/V3/MobileMenuV3/PathProvider";
+import React, { useState } from 'react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { MobileMenuV3 } from '../components/V3/MobileMenuV3';
+import { demoAppsData } from '../components/V3/MobileMenuV3/demoAppsData';
+import { Box, IconButton } from '@mui/material';
+import { Menu01 } from '@untitled-ui/icons-react';
 
 export default {
-  title: "V3/MobileMenuV3",
+  title: 'V3/MobileMenuV3',
   component: MobileMenuV3,
   argTypes: {
-    routes: { control: "object" },
-    navLinkTextColor: { control: "color" },
-    iconsColor: { control: "color" },
-    activeTextColor: { control: "color" },
-    activeIconColor: { control: "color" },
-    notificationColor: { control: "color" },
-    notificationsCount: { control: "number" },
-    hideOnBreakpoint: {
-      control: {
-        type: "select",
-        options: ["xs", "sm", "md", "lg", "xl"],
-      },
-    },
-    mainSidebarBgColor: { control: "color" },
-    currentPath: { control: "text" },
-    defaultPath: { control: "text" },
+    open: { control: 'boolean' },
   },
 } as ComponentMeta<typeof MobileMenuV3>;
 
-interface MainSidebarStoryArgs
-  extends React.ComponentProps<typeof MobileMenuV3> {
-  currentPath?: string;
-}
+const Template: ComponentStory<typeof MobileMenuV3> = (args) => {
+  const [open, setOpen] = useState(false);
 
-const Template: ComponentStory<typeof MobileMenuV3> = (
-  args: MainSidebarStoryArgs
-) => {
-  const { currentPath, ...sidebarProps } = args;
   return (
-    <PathProvider path={currentPath || sidebarProps.defaultPath || "/"}>
-      <MobileMenuV3 {...sidebarProps} />
-    </PathProvider>
+    <Box>
+      <IconButton onClick={() => setOpen(true)}>
+        <Menu01 />
+      </IconButton>
+      <MobileMenuV3
+        {...args}
+        open={open}
+        onClose={() => setOpen(false)}
+        appsData={demoAppsData}
+      />
+    </Box>
   );
 };
 
 export const Default = Template.bind({});
 Default.args = {
-  notificationsCount: 1,
-  hideOnBreakpoint: "sm",
-  defaultPath: "/",
+  navLinkTextColor: '#000000',
+  iconsColor: '#000000',
+  activeTextColor: '#ffffff',
+  activeIconColor: '#1976d2',
+  notificationColor: '#d32f2f',
+  notificationsCount: 5,
+  hideOnBreakpoint: 'md',
+  defaultPath: '/',
+  selectedBgColor: '#f0f0f0',
+  mt: 0,
 };

@@ -5,15 +5,15 @@ import { Box, Drawer, useMediaQuery, useTheme, Divider } from "@mui/material";
 import { useSidebarHook } from "./useSidebarHook";
 import MainMenuItem from "./MenuItem";
 import { routes } from "./demoRoutes";
-import Image from "next/image";
-import engageIcon from "../../../../public/assets/engage-logo.svg";
+//import Image from "next/image";
+//import engageIcon from "../../../../public/assets/engage-logo.svg";
 import { Route, AppData } from "./icons/types";
 import { demoAppsData } from "./demoAppsData";
 import { ROLES, userContext } from "./demoAppsData";
 import { ToolItemV3 } from "../ToolItemV3";
 
 export type MobileMenuV3Props = {
-  mainApp?: AppData;
+  //mainApp?: AppData;
   appsData?: AppData[];
   navLinkTextColor?: string;
   iconsColor?: string;
@@ -28,6 +28,8 @@ export type MobileMenuV3Props = {
   selectedBgColor?: string;
   roles?: Record<string, string>;
   userContext?: { role: string };
+  open: boolean
+  onClose: () => void
 };
 
 export const MobileMenuV3: React.FC<MobileMenuV3Props> = (props) => {
@@ -42,15 +44,17 @@ export const MobileMenuV3: React.FC<MobileMenuV3Props> = (props) => {
     notificationsCount = 0,
     hideOnBreakpoint = "md",
     defaultPath = "/",
-    mainApp = {
+    /*mainApp = {
       logo: { src: engageIcon, height: 21, width: 80 },
       url: "",
-    },
+    },*/
     appsData = demoAppsData,
     routes: demoRoutes,
     selectedBgColor,
     roles = ROLES,
     userContext: context = userContext,
+    open,
+    onClose
   } = props;
 
   const { isSelected } = useSidebarHook();
@@ -70,20 +74,25 @@ export const MobileMenuV3: React.FC<MobileMenuV3Props> = (props) => {
 
   return (
     <Drawer
-      variant="permanent"
+      anchor="top"
+      open={open}
+      onClose={onClose}
       sx={{
-        width: "180px",
-        flexShrink: 0,
-        [`& .MuiDrawer-paper`]: {
-          justifyContent: "space-between",
-          width: "180px",
-          boxSizing: "border-box",
-          border: "none",
+        display: "flex",
+        flexDirection: "column",
+        height: "100vh",
+      }}
+      PaperProps={{
+        sx: {
+          height: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          paddingTop: 7,
         },
       }}
     >
-      <Box>
-        <Box
+      <Box sx={{ flexGrow: 1, overflowY: "auto" }}>
+        {/** <Box
           display={{ xs: "none", md: "flex" }}
           width="100%"
           justifyContent="flex-start"
@@ -100,62 +109,69 @@ export const MobileMenuV3: React.FC<MobileMenuV3Props> = (props) => {
             width={mainApp.logo.width}
             height={mainApp.logo.height}
           />
-        </Box>
-        <Box sx={{ overflow: "auto" }}>
-          {[...firstRoutes]
-            .filter(
-              (route: Route) => route.public || context.role === roles.admin
-            )
-            .map((route: Route, index: number) => (
-              <MainMenuItem
-                key={index}
-                icon={route.icon}
-                text={route.text}
-                path={route.path}
-                isSelected={checkSelected(route.path)}
-                notificationsCount={
-                  route.path === "/notifications" ? notificationsCount : 0
-                }
-                navLinkTextColor={navLinkTextColor}
-                iconsColor={iconsColor}
-                activeTextColor={activeTextColor}
-                activeIconColor={activeIconColor}
-                notificationColor={notificationColor}
-                selectedBgColor={selectedBgColor}
-              />
-            ))}
-          {routes().firstRoutes.length > 0 && (
-            <Divider
-              sx={{
-                border: `${theme.palette.grey[300]} 1px solid`,
-              }}
+        </Box> */}
+        {[...firstRoutes]
+          .filter(
+            (route: Route) => route.public || context.role === roles.admin
+          )
+          .map((route: Route, index: number) => (
+            <MainMenuItem
+              key={index}
+              icon={route.icon}
+              text={route.text}
+              path={route.path}
+              isSelected={checkSelected(route.path)}
+              notificationsCount={
+                route.path === "/notifications" ? notificationsCount : 0
+              }
+              navLinkTextColor={navLinkTextColor}
+              iconsColor={iconsColor}
+              activeTextColor={activeTextColor}
+              activeIconColor={activeIconColor}
+              notificationColor={notificationColor}
+              selectedBgColor={selectedBgColor}
             />
-          )}
-          {[...secondRoutes]
-            .filter(
-              (route: Route) => route.public || context.role === roles.admin
-            )
-            .map((route: Route, index: number) => (
-              <MainMenuItem
-                key={index}
-                icon={route.icon}
-                text={route.text}
-                path={route.path}
-                isSelected={checkSelected(route.path)}
-                notificationsCount={
-                  route.path === "/notifications" ? notificationsCount : 0
-                }
-                navLinkTextColor={navLinkTextColor}
-                iconsColor={iconsColor}
-                activeTextColor={activeTextColor}
-                activeIconColor={activeIconColor}
-                notificationColor={notificationColor}
-                selectedBgColor={selectedBgColor}
-              />
-            ))}
-        </Box>
+          ))}
+        {routes().firstRoutes.length > 0 && (
+          <Divider
+            sx={{
+              border: `${theme.palette.grey[300]} 1px solid`,
+            }}
+          />
+        )}
+        {[...secondRoutes]
+          .filter(
+            (route: Route) => route.public || context.role === roles.admin
+          )
+          .map((route: Route, index: number) => (
+            <MainMenuItem
+              key={index}
+              icon={route.icon}
+              text={route.text}
+              path={route.path}
+              isSelected={checkSelected(route.path)}
+              notificationsCount={
+                route.path === "/notifications" ? notificationsCount : 0
+              }
+              navLinkTextColor={navLinkTextColor}
+              iconsColor={iconsColor}
+              activeTextColor={activeTextColor}
+              activeIconColor={activeIconColor}
+              notificationColor={notificationColor}
+              selectedBgColor={selectedBgColor}
+            />
+          ))}
       </Box>
-      <Box sx={{ display: { xs: "none", md: "block" } }}>
+      <Box
+        sx={{
+          p: 2,
+
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "left",
+          width: "100%",
+        }}
+      >
         {appsData?.map((item: AppData, index: number) => (
           <ToolItemV3 key={index} item={item} index={index} />
         ))}
