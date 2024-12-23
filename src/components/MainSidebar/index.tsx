@@ -1,13 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  Box,
-  Drawer,
-  useMediaQuery,
-  useTheme,
-  Divider,
-} from "@mui/material";
+import { Box, Drawer, useMediaQuery, useTheme, Divider } from "@mui/material";
 import { useSidebarHook } from "./useSidebarHook";
 import MainMenuItem from "./MenuItem";
 import { routes } from "./demoRoutes";
@@ -16,7 +10,7 @@ import engageIcon from "../../../public/assets/engage-logo.svg";
 import { Route, AppData } from "./icons/types";
 import { demoAppsData } from "./demoAppsData";
 import { ROLES, userContext } from "./demoAppsData";
-import ToolItemV3 from "../V3/ToolItemV3";
+import { ToolItemV3 } from "../V3/ToolItemV3";
 
 export type MainSidebarProps = {
   mainApp?: AppData;
