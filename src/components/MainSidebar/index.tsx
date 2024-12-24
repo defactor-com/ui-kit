@@ -20,6 +20,7 @@ export type MainSidebarProps = {
   iconsColor?: string;
   activeTextColor?: string;
   activeIconColor?: string;
+  activeBorderColor?: string;
   notificationColor?: string;
   notificationsCount?: number;
   hideOnBreakpoint?: "xs" | "sm" | "md" | "lg" | "xl";
@@ -39,7 +40,8 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
     navLinkTextColor = theme.palette.text.primary,
     iconsColor = theme.palette.text.primary,
     activeTextColor = theme.palette.text.primary,
-    activeIconColor = theme.palette.secondary.main,
+    activeIconColor = theme.palette.primary.main,
+    activeBorderColor = theme.palette.primary.main,
     notificationColor = theme.palette.error.main,
     notificationsCount = 0,
     hideOnBreakpoint = "md",
@@ -123,6 +125,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
                 iconsColor={iconsColor}
                 activeTextColor={activeTextColor}
                 activeIconColor={activeIconColor}
+                activeBorderColor={activeBorderColor}
                 notificationColor={notificationColor}
                 selectedBgColor={selectedBgColor}
               />
