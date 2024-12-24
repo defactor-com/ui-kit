@@ -16,6 +16,9 @@ import {
   import { MobileMenuV3 } from "../MobileMenuV3";
   import ClaimTokensButtonV3 from "../ClaimTokensButtonV3";
   
+  import DefactorLogo from "./defactor-logo.svg";
+  import EngageLogo from "./engage-logo.svg";
+
   export const generalConfig = {
     routesDisabled: [],
   };
@@ -29,11 +32,11 @@ import {
   }
   
   export const AppbarV3: React.FC<AppbarV3Props> = ({
-    appLogo = "/default-logo.png",
-    appLogoAlt = "Header Logo",
-    appEnvironment = "production",
-    currentLogo = "/default-mobile-logo.png",
-    currentLogoAlt = "Default Mobile Logo",
+    appLogo = DefactorLogo,
+    appLogoAlt = "Defactor Logo",
+    appEnvironment = "test",
+    currentLogo = EngageLogo,
+    currentLogoAlt = "Engage Logo",
   }) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));

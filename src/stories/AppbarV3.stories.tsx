@@ -30,10 +30,7 @@ const Template: ComponentStory<typeof AppbarV3> = (args: AppbarV3Props) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  appLogo: "/default-logo.png",
   appLogoAlt: "Header Logo",
-  appEnvironment: "production",
-  currentLogo: "/default-mobile-logo.png",
   currentLogoAlt: "Default Mobile Logo",
 };
 
