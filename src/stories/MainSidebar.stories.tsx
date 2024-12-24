@@ -47,5 +47,5 @@ export const Default = Template.bind({});
 Default.args = {
   notificationsCount: 1,
   hideOnBreakpoint: "sm",
-  defaultPath: "/",
+  defaultPath: "/"
 };

@@ -13,6 +13,7 @@ export interface MenuItemProps {
   iconsColor?: string;
   activeTextColor?: string;
   activeIconColor?: string;
+  activeBorderColor?: string;
   notificationColor?: string;
   selectedBgColor?: string;
 }
@@ -27,6 +28,7 @@ export const MainMenuItem: React.FC<MenuItemProps> = ({
   iconsColor,
   activeTextColor,
   activeIconColor,
+  activeBorderColor,
   notificationColor,
   selectedBgColor,
 }) => {
@@ -40,7 +42,7 @@ export const MainMenuItem: React.FC<MenuItemProps> = ({
         sx={{
           width: "100%",
           minHeight: "64px",
-          borderRight: isSelected ? `2px solid ${theme.palette.secondary.main}` : "",
+          borderRight: isSelected ? `2px solid ${activeBorderColor}` : "",
           borderRadius: 0,
           padding: 2,
           paddingLeft: 4,
