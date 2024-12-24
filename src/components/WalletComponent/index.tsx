@@ -11,25 +11,31 @@ import { IWalletSelector } from "./WalletTypes";
 import useWalletSelectorHook from "./useWalletSelectorHook";
 
 export const WalletSelector = ({
-  theme,
-  labels,
-  address,
-  onClick,
-  networks,
-  isConnected,
-  userContext,
-  handleLogout,
-  networksAssets,
-  configNetworks,
-  formatCurrency,
-  openConnectWallet,
-  onClickMenuOption,
-  handleFormartCurrency,
-  fontSize ="14px",
-  fontWeight="500",
-  MaxHeight= "39px",
-  showIconD = false
-}: IWalletSelector): JSX.Element => {
+  walletSelectorProps,
+}: {
+  walletSelectorProps: IWalletSelector;
+}): JSX.Element => {
+  const {
+    theme,
+    labels,
+    address,
+    onClick,
+    networks,
+    isConnected,
+    userContext,
+    handleLogout,
+    networksAssets,
+    configNetworks,
+    formatCurrency,
+    openConnectWallet,
+    onClickMenuOption,
+    handleFormartCurrency,
+    fontSize = "14px",
+    fontWeight = "500",
+    MaxHeight = "39px",
+    showIconD = false,
+  } = walletSelectorProps;
+
   const [{ anchorEl, open, id }, { handleClick, handleClose }] =
     useWalletSelectorHook();
   const isMobile = window.innerWidth <= 600;
@@ -38,13 +44,13 @@ export const WalletSelector = ({
     <div>
       {!isConnected ? (
         <Button
-        icon={
-          isMobile ? (
-            <WalletConnectIcon color={theme.palette.text.primary} />
-          ) : showIconD ? (
-            <WalletConnectIcon color={theme.palette.common.white} />
-          ) : undefined
-        }
+          icon={
+            isMobile ? (
+              <WalletConnectIcon color={theme.palette.text.primary} />
+            ) : showIconD ? (
+              <WalletConnectIcon color={theme.palette.common.white} />
+            ) : undefined
+          }
           onClick={() => {
             openConnectWallet(), handleClose();
           }}

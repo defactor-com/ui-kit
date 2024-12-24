@@ -105,7 +105,7 @@ export const AppbarV3: React.FC<AppbarV3Props> = ({
         {!isMobile ? (
           <>
             {appEnvironment === "testnet" && <ClaimTokensButtonV3 />}
-            <WalletSelector {...walletSelectorProps(theme)} />
+            <WalletSelector walletSelectorProps={walletSelectorProps} />
             <LanguageSelectorV3 {...languageSelectorProps} />
           </>
         ) : (

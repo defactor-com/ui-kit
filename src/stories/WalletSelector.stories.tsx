@@ -12,7 +12,7 @@ export default {
 
 const Template: Story<IWalletSelector> = () => {
   const theme = useTheme();
-  return <WalletSelector {...walletSelectorProps(theme)} />;
+  return <WalletSelector walletSelectorProps={walletSelectorProps} />;
 };
 
 export const WalletSelectorItem = Template.bind({});

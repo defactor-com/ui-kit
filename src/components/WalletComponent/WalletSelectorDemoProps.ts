@@ -1,8 +1,10 @@
 import { ChainIdType, TokenBalance } from "./WalletTypes";
 import { NetworksDataType } from "../MultichainSelector/MultiChainSelectorTypes";
+import { IWalletSelector } from "./WalletTypes";
+import { Theme } from "@mui/material";
 
-export const walletSelectorProps = (theme: any) => ({
-    address: "0xd198F7a8C953AC47dfd0F6a0267e4d19c67ce351" as `0x${string}`,
+export const walletSelectorProps: IWalletSelector = {
+    address: "0xd198F7a8C953AC47dfd0F6a0267e4d19c67ce351",
     networks: [
         {
             chainId: 11155111,
@@ -96,7 +98,7 @@ export const walletSelectorProps = (theme: any) => ({
     },
     networksAssets: [],
     configNetworks: [],
-    formatCurrency: () => "88,888,888.88",
+    formatCurrency: (value: number | string | bigint) => "88,888,888.88",
     labels: {
         copied: "copied",
         network: "network",
@@ -125,5 +127,5 @@ export const walletSelectorProps = (theme: any) => ({
         throw new Error("Function not implemented.");
     },
     open: true,
-    theme,
-});
+    theme: {} as Theme,
+};
