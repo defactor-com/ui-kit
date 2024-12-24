@@ -29,7 +29,7 @@ export * from "./components/CollateralSection";
 export * from "./components/MultichainSelector";
 export * from "./components/InformativeContainer";
 export * from "./components/FluctuationComponent";
-export * from "./components/WalletComponent/WalletSelector";
+export * from "./components/WalletComponent";
 export * from "./components/WalletComponent/SelectedWalletComponent";
 export { CustomTextField } from "./components/CustomTextField";
 export { TitleWithIcon, TitleWithIconProps } from "./components/TitleWithIcon";

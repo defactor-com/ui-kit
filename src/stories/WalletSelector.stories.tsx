@@ -2,7 +2,7 @@ import React from "react";
 import { Story } from "@storybook/react";
 import { useTheme } from "@mui/material";
 import { IWalletSelector } from "../components/WalletComponent/WalletTypes";
-import { WalletSelector } from "../components/WalletComponent/WalletSelector";
+import { WalletSelector } from "../components/WalletComponent";
 import { walletSelectorProps } from "../components/WalletComponent/WalletSelectorDemoProps";
 
 export default {
