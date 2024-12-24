@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.23
+
+### Patch Changes
+
+- 59594dc: Added MainSidebar activeBorderColor prop.
+
 ## 0.5.22
 
 ### Patch Changes
