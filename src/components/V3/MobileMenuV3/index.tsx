@@ -1,7 +1,14 @@
 "use client";
 
 import React from "react";
-import { Box, Drawer, useMediaQuery, useTheme, Divider } from "@mui/material";
+import {
+  Box,
+  Drawer,
+  useMediaQuery,
+  useTheme,
+  Divider,
+  Typography,
+} from "@mui/material";
 import { useSidebarHook } from "./useSidebarHook";
 import MainMenuItem from "./MenuItem";
 import { routes } from "./demoRoutes";
@@ -11,6 +18,10 @@ import { Route, AppData } from "./icons/types";
 import { demoAppsData } from "./demoAppsData";
 import { ROLES, userContext } from "./demoAppsData";
 import { ToolItemV3 } from "../ToolItemV3";
+import { LanguageSelectorV3 } from "../LanguageSelectorV3";
+import { ILanguageSelector } from "../LanguageSelectorV3/LanguageSelectorTypes";
+import UsaIcon from "../LanguageSelectorV3/usaIcon";
+import SpanishIcon from "../LanguageSelectorV3/SpanishIcon";
 
 export type MobileMenuV3Props = {
   //mainApp?: AppData;
@@ -28,9 +39,22 @@ export type MobileMenuV3Props = {
   selectedBgColor?: string;
   roles?: Record<string, string>;
   userContext?: { role: string };
-  open: boolean
-  onClose: () => void
+  open: boolean;
+  onClose: () => void;
+  languageText?: string;
+  languageSelectorProps?: ILanguageSelector;
 };
+
+const defaultOptions = [
+  {
+    id: "en",
+    flag: UsaIcon,
+  },
+  {
+    id: "es",
+    flag: SpanishIcon,
+  },
+];
 
 export const MobileMenuV3: React.FC<MobileMenuV3Props> = (props) => {
   const theme = useTheme();
@@ -54,7 +78,16 @@ export const MobileMenuV3: React.FC<MobileMenuV3Props> = (props) => {
     roles = ROLES,
     userContext: context = userContext,
     open,
-    onClose
+    onClose,
+    languageText = "Language",
+    languageSelectorProps = {
+      router: {},
+      pathname: "/",
+      locale: "en",
+      t: (key, options) => options?.locale || "en",
+      bgColor: "#057d2f",
+      options: defaultOptions,
+    },
   } = props;
 
   const { isSelected } = useSidebarHook();
@@ -161,11 +194,15 @@ export const MobileMenuV3: React.FC<MobileMenuV3Props> = (props) => {
               selectedBgColor={selectedBgColor}
             />
           ))}
-          <Divider
-            sx={{
-              border: `${theme.palette.grey[300]} 1px solid`,
-            }}
-          />
+        <Divider
+          sx={{
+            border: `${theme.palette.grey[300]} 1px solid`,
+          }}
+        />
+        <Box>
+          <Typography>{languageText}</Typography>
+          <LanguageSelectorV3 {...languageSelectorProps} />
+        </Box>
       </Box>
       <Box
         sx={{

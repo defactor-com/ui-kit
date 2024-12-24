@@ -18,7 +18,7 @@ import ClaimTokensButtonV3 from "../ClaimTokensButtonV3";
 
 import DefactorLogo from "./defactor-logo.svg";
 import EngageLogo from "./engage-logo.svg";
-import { ILanguageSelector, OptionLanguage } from "../LanguageSelectorV3/LanguageSelectorTypes";
+import { ILanguageSelector } from "../LanguageSelectorV3/LanguageSelectorTypes";
 import UsaIcon from "../LanguageSelectorV3/usaIcon";
 import SpanishIcon from "../LanguageSelectorV3/SpanishIcon";
 
