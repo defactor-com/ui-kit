@@ -7,6 +7,7 @@ import {
   Toolbar,
   useMediaQuery,
   useTheme,
+  alpha
 } from "@mui/material";
 import { Menu01, XClose } from "@untitled-ui/icons-react";
 import Link from "next/link";
@@ -30,6 +31,7 @@ export interface AppbarV3Props {
   appEnvironment?: string;
   currentLogo?: string;
   currentLogoAlt?: string;
+  boxShadow?: string;
 }
 
 export const AppbarV3: React.FC<AppbarV3Props> = ({
@@ -38,6 +40,7 @@ export const AppbarV3: React.FC<AppbarV3Props> = ({
   appEnvironment = "test",
   currentLogo = EngageLogo,
   currentLogoAlt = "Engage Logo",
+  boxShadow = `8px 10px 10px 0px ${alpha('#D6DAE7', 0.25)}`
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -57,7 +60,7 @@ export const AppbarV3: React.FC<AppbarV3Props> = ({
         zIndex: (theme) => theme.zIndex.drawer + 1,
         height: 60,
         backgroundColor: "white",
-        boxShadow: "8px 10px 10px 0px #D6DAE740",
+        boxShadow: boxShadow,
         pr: "0px !important",
       }}
     >
