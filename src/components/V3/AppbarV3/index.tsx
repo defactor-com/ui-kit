@@ -1,5 +1,3 @@
-"use client";
-
 import {
   AppBar,
   Box,
@@ -7,7 +5,7 @@ import {
   Toolbar,
   useMediaQuery,
   useTheme,
-  alpha
+  alpha,
 } from "@mui/material";
 import { Menu01, XClose } from "@untitled-ui/icons-react";
 import Link from "next/link";
@@ -20,6 +18,9 @@ import ClaimTokensButtonV3 from "../ClaimTokensButtonV3";
 
 import DefactorLogo from "./defactor-logo.svg";
 import EngageLogo from "./engage-logo.svg";
+import { ILanguageSelector, OptionLanguage } from "../LanguageSelectorV3/LanguageSelectorTypes";
+import UsaIcon from "../LanguageSelectorV3/usaIcon";
+import SpanishIcon from "../LanguageSelectorV3/SpanishIcon";
 
 export const generalConfig = {
   routesDisabled: [],
@@ -32,7 +33,19 @@ export interface AppbarV3Props {
   currentLogo?: string;
   currentLogoAlt?: string;
   boxShadow?: string;
+  languageSelectorProps?: ILanguageSelector;
 }
+
+const defaultOptions = [
+  {
+    id: "en",
+    flag: UsaIcon,
+  },
+  {
+    id: "es",
+    flag: SpanishIcon,
+  },
+];
 
 export const AppbarV3: React.FC<AppbarV3Props> = ({
   appLogo = DefactorLogo,
@@ -40,7 +53,15 @@ export const AppbarV3: React.FC<AppbarV3Props> = ({
   appEnvironment = "test",
   currentLogo = EngageLogo,
   currentLogoAlt = "Engage Logo",
-  boxShadow = `8px 10px 10px 0px ${alpha('#D6DAE7', 0.25)}`
+  boxShadow = `8px 10px 10px 0px ${alpha("#D6DAE7", 0.25)}`,
+  languageSelectorProps = {
+    router: {},
+    pathname: "/",
+    locale: "en",
+    t: (key, options) => options?.locale || "en",
+    bgColor: "#057d2f",
+    options: defaultOptions,
+  },
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -81,12 +102,7 @@ export const AppbarV3: React.FC<AppbarV3Props> = ({
         {!isMobile ? (
           <>
             {appEnvironment === "testnet" && <ClaimTokensButtonV3 />}
-            <LanguageSelectorV3
-              router={() => {}}
-              pathname="/"
-              locale="en"
-              t={(key: string, { locale }: { locale: string }) => `${locale}`}
-            />
+            <LanguageSelectorV3 {...languageSelectorProps} />
           </>
         ) : (
           <>
