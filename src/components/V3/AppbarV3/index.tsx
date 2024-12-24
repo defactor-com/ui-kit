@@ -21,6 +21,9 @@ import EngageLogo from "./engage-logo.svg";
 import { ILanguageSelector } from "../LanguageSelectorV3/LanguageSelectorTypes";
 import UsaIcon from "../LanguageSelectorV3/usaIcon";
 import SpanishIcon from "../LanguageSelectorV3/SpanishIcon";
+import { WalletSelector } from "../../WalletComponent";
+import { walletSelectorProps } from "../../WalletComponent/WalletSelectorDemoProps";
+
 
 export const generalConfig = {
   routesDisabled: [],
@@ -102,6 +105,7 @@ export const AppbarV3: React.FC<AppbarV3Props> = ({
         {!isMobile ? (
           <>
             {appEnvironment === "testnet" && <ClaimTokensButtonV3 />}
+            <WalletSelector {...walletSelectorProps(theme)} />
             <LanguageSelectorV3 {...languageSelectorProps} />
           </>
         ) : (
