@@ -43,7 +43,7 @@ export const MainMenuItem: React.FC<MenuItemProps> = ({
           borderRight: isSelected ? `2px solid ${theme.palette.secondary.main}` : "",
           borderRadius: 0,
           padding: 2,
-          paddingLeft: 4,
+          paddingLeft: {sx: 2, md: 4},
           color: isSelected
             ? activeTextColor || theme.palette.primary.main
             : navLinkTextColor || theme.palette.text.primary,

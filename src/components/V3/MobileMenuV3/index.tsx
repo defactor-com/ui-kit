@@ -199,8 +199,16 @@ export const MobileMenuV3: React.FC<MobileMenuV3Props> = (props) => {
             border: `${theme.palette.grey[300]} 1px solid`,
           }}
         />
-        <Box>
-          <Typography>{languageText}</Typography>
+        <Box
+          sx={{
+            p: 2,
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <Typography variant="body2">{languageText}</Typography>
           <LanguageSelectorV3 {...languageSelectorProps} />
         </Box>
       </Box>
