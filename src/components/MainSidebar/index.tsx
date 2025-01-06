@@ -61,16 +61,22 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
   const isHidden = useMediaQuery(theme.breakpoints.down(hideOnBreakpoint));
 
   const checkSelected = (path: string) => {
-    return isSelected(path) || (isSelected("/") && path === defaultPath);
+    const result = isSelected(path) || (isSelected("/") && path === defaultPath);
+    console.log(`Checking selection for path: ${path}, result: ${result}`);
+    return result;
   };
 
   if (isHidden) {
+    console.log("Sidebar is hidden due to breakpoint.");
     return null;
   }
 
   const { firstRoutes, secondRoutes } = demoRoutes
     ? { firstRoutes: demoRoutes.slice(0, 2), secondRoutes: demoRoutes.slice(2) }
     : routes();
+
+  console.log("First routes:", firstRoutes);
+  console.log("Second routes:", secondRoutes);
 
   return (
     <Drawer
@@ -155,6 +161,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
                 iconsColor={iconsColor}
                 activeTextColor={activeTextColor}
                 activeIconColor={activeIconColor}
+                activeBorderColor={activeBorderColor}
                 notificationColor={notificationColor}
                 selectedBgColor={selectedBgColor}
               />
