@@ -61,7 +61,8 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
   const isHidden = useMediaQuery(theme.breakpoints.down(hideOnBreakpoint));
 
   const checkSelected = (path: string) => {
-    const result = isSelected(path) || (isSelected("/") && path === defaultPath);
+    const result =
+      isSelected(path) || (isSelected("/") && path === defaultPath);
     console.log(`Checking selection for path: ${path}, result: ${result}`);
     return result;
   };
