@@ -163,6 +163,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
                 activeBorderColor={activeBorderColor}
                 notificationColor={notificationColor}
                 selectedBgColor={selectedBgColor}
+                onClick={() => {if(onClick) onClick(route.path)}}
               />
             ))}
         </Box>
