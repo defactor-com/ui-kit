@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.24
+
+### Patch Changes
+
+- 8ec52e1: Fixed MainSidebar Border and Divider Logics.
+
 ## 0.5.23
 
 ### Patch Changes
