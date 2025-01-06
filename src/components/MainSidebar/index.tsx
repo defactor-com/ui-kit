@@ -130,7 +130,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
                 selectedBgColor={selectedBgColor}
               />
             ))}
-          {routes().firstRoutes.length > 0 && (
+          {routes().secondRoutes.length > 0 && (
             <Divider
               sx={{
                 border: `${theme.palette.grey[300]} 1px solid`,
