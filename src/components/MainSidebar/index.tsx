@@ -61,7 +61,9 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
   const isHidden = useMediaQuery(theme.breakpoints.down(hideOnBreakpoint));
 
   const checkSelected = (path: string) => {
-    return isSelected(path) || (isSelected("/") && path === defaultPath);
+    const result =
+      isSelected(path) || (isSelected("/") && path === defaultPath);
+    return result;
   };
 
   if (isHidden) {
@@ -130,7 +132,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
                 selectedBgColor={selectedBgColor}
               />
             ))}
-          {routes().firstRoutes.length > 0 && (
+          {routes().secondRoutes.length > 0 && (
             <Divider
               sx={{
                 border: `${theme.palette.grey[300]} 1px solid`,
@@ -155,6 +157,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
                 iconsColor={iconsColor}
                 activeTextColor={activeTextColor}
                 activeIconColor={activeIconColor}
+                activeBorderColor={activeBorderColor}
                 notificationColor={notificationColor}
                 selectedBgColor={selectedBgColor}
               />
