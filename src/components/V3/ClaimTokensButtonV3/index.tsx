@@ -1,8 +1,7 @@
 "use client";
 
 import { Box, Button, CircularProgress } from "@mui/material";
-import { memo, useState } from "react";
-import React from "react";
+import React, { memo, useState } from "react";
 
 export interface Web3Account {
   isConnected: boolean;
