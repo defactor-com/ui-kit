@@ -6,9 +6,7 @@ import { useSidebarHook } from "./useSidebarHook";
 import MainMenuItem from "./MenuItem";
 import { routes } from "./demoRoutes";
 import Image from "next/image";
-import engageIcon from "../../../public/assets/engage-logo.svg";
 import { Route, AppData } from "./icons/types";
-import { demoAppsData } from "./demoAppsData";
 import { ROLES, userContext } from "./demoAppsData";
 import { ToolItemV3 } from "../V3/ToolItemV3";
 
@@ -47,11 +45,8 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
     notificationsCount = 0,
     hideOnBreakpoint = "md",
     defaultPath = "/",
-    mainApp = {
-      logo: { src: engageIcon, height: 21, width: 80 },
-      url: "",
-    },
-    appsData = demoAppsData,
+    mainApp,
+    appsData,
     routes: demoRoutes,
     selectedBgColor,
     roles = ROLES,
@@ -103,12 +98,16 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
           borderColor={theme.palette.grey[200]}
           mt={mt}
         >
-          <Image
-            alt="Tool logo"
-            src={mainApp.logo.src}
-            width={mainApp.logo.width}
-            height={mainApp.logo.height}
-          />
+          {mainApp ? (
+            <Image
+              alt="Tool logo"
+              src={mainApp.logo.src}
+              width={mainApp.logo.width}
+              height={mainApp.logo.height}
+            />
+          ) : (
+            <></>
+          )}
         </Box>
         <Box sx={{ overflow: "auto" }}>
           {[...firstRoutes]
@@ -132,7 +131,9 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
                 activeBorderColor={activeBorderColor}
                 notificationColor={notificationColor}
                 selectedBgColor={selectedBgColor}
-                onClick={() => {if(onClick) onClick(route.path)}}
+                onClick={() => {
+                  if (onClick) onClick(route.path);
+                }}
               />
             ))}
           {routes().secondRoutes.length > 0 && (
@@ -163,7 +164,9 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
                 activeBorderColor={activeBorderColor}
                 notificationColor={notificationColor}
                 selectedBgColor={selectedBgColor}
-                onClick={() => {if(onClick) onClick(route.path)}}
+                onClick={() => {
+                  if (onClick) onClick(route.path);
+                }}
               />
             ))}
         </Box>
