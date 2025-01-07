@@ -5,7 +5,7 @@ import { useWeb3ModalAccount } from "@web3modal/ethers/react";
 import { memo, useState } from "react";
 import React from "react";
 
-interface ClaimTokensButtonV3Props {
+export interface ClaimTokensButtonV3Props {
   claimFaucetTokens?: (
     userAddress: string,
     chainId: number
