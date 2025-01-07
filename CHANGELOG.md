@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.25
+
+### Patch Changes
+
+- 3f6dbf6: Fix MainSidebar Component to Prevent Full Page Refresh on Menu Click.
+
 ## 0.5.24
 
 ### Patch Changes
