@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.26
+
+### Patch Changes
+
+- 5d2769f: Added ClaimTokensButtonV3.
+
 ## 0.5.25
 
 ### Patch Changes
