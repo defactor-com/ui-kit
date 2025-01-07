@@ -30,6 +30,7 @@ export type MainSidebarProps = {
   selectedBgColor?: string;
   roles?: Record<string, string>;
   userContext?: { role: string };
+  onClick?: (path: string) => void;
 };
 
 export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
@@ -55,6 +56,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
     selectedBgColor,
     roles = ROLES,
     userContext: context = userContext,
+    onClick,
   } = props;
 
   const { isSelected } = useSidebarHook();
@@ -130,6 +132,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
                 activeBorderColor={activeBorderColor}
                 notificationColor={notificationColor}
                 selectedBgColor={selectedBgColor}
+                onClick={() => {if(onClick) onClick(route.path)}}
               />
             ))}
           {routes().secondRoutes.length > 0 && (
@@ -160,6 +163,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
                 activeBorderColor={activeBorderColor}
                 notificationColor={notificationColor}
                 selectedBgColor={selectedBgColor}
+                onClick={() => {if(onClick) onClick(route.path)}}
               />
             ))}
         </Box>
