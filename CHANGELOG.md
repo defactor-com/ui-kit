@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.27
+
+### Patch Changes
+
+- a8d45a9: Removed default values.
+
 ## 0.5.26
 
 ### Patch Changes
