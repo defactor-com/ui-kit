@@ -1,0 +1,151 @@
+import {
+  AppBar,
+  Box,
+  IconButton,
+  Toolbar,
+  useMediaQuery,
+  useTheme,
+  alpha,
+} from "@mui/material";
+import { Menu01, XClose } from "@untitled-ui/icons-react";
+import Link from "next/link";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+
+import { LanguageSelectorV3 } from "../LanguageSelectorV3";
+//import { MobileMenuV3 } from "../MobileMenuV3";
+import ClaimTokensButtonV3 from "../ClaimTokensButtonV3";
+
+import DefactorLogo from "./defactor-logo.svg";
+import EngageLogo from "./engage-logo.svg";
+import { ILanguageSelector } from "../LanguageSelectorV3/LanguageSelectorTypes";
+import UsaIcon from "../LanguageSelectorV3/usaIcon";
+import SpanishIcon from "../LanguageSelectorV3/SpanishIcon";
+
+export const generalConfig = {
+  routesDisabled: [],
+};
+
+export interface Web3Account {
+  isConnected: boolean;
+  address: string;
+  chainId: number;
+}
+
+export interface AppbarV3Props {
+  MobileMenuV3?: any;
+  appLogo?: string;
+  appLogoAlt?: string;
+  claimTokens?: boolean;
+  currentLogo?: string;
+  currentLogoAlt?: string;
+  boxShadow?: string;
+  languageSelectorProps?: ILanguageSelector;
+  web3AccountHook: () => Web3Account;
+  WalletSelector: any;
+}
+
+const defaultOptions = [
+  {
+    id: "en",
+    flag: UsaIcon,
+  },
+  {
+    id: "es",
+    flag: SpanishIcon,
+  },
+];
+
+export const AppbarV3: React.FC<AppbarV3Props> = ({
+  MobileMenuV3,
+  web3AccountHook,
+  WalletSelector,
+  appLogo = DefactorLogo,
+  appLogoAlt = "Defactor Logo",
+  claimTokens = false,
+  currentLogo = EngageLogo,
+  currentLogoAlt = "Engage Logo",
+  boxShadow = `8px 10px 10px 0px ${alpha("#D6DAE7", 0.25)}`,
+  languageSelectorProps = {
+    router: {},
+    pathname: "/",
+    locale: "en",
+    t: (key, options) => options?.locale || "en",
+    bgColor: "#057d2f",
+    options: defaultOptions,
+  },
+}) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [open, setOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!isMobile && open) {
+      setOpen(false);
+    }
+  }, [isMobile, open]);
+
+  return (
+    <AppBar
+      component={"header"}
+      position="fixed"
+      sx={{
+        zIndex: (theme) => theme.zIndex.drawer + 1,
+        height: 60,
+        backgroundColor: "white",
+        boxShadow: boxShadow,
+        pr: "0px !important",
+      }}
+    >
+      <Toolbar>
+        <Box sx={{ flexGrow: 1 }}>
+          <Link href="/" passHref>
+            <Box sx={{ position: "relative", width: 120, height: 40 }}>
+              <Image
+                src={appLogo}
+                alt={appLogoAlt}
+                layout="fill"
+                objectFit="contain"
+                priority
+              />
+            </Box>
+          </Link>
+        </Box>
+        {!isMobile ? (
+          <>
+            {claimTokens === true && <ClaimTokensButtonV3 web3AccountHook={web3AccountHook}/>}
+            {WalletSelector ? WalletSelector : <>WalletSelector Placeholder</>}
+            <LanguageSelectorV3 {...languageSelectorProps} />
+          </>
+        ) : (
+          <>
+            <Box height="22px" margin={2}>
+              <Link href="/" passHref>
+                <Box sx={{ position: "relative", width: 87, height: 23 }}>
+                  <Image
+                    src={currentLogo}
+                    alt={currentLogoAlt}
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </Box>
+              </Link>
+            </Box>
+            <IconButton
+              sx={{
+                p: 0,
+                width: "40px",
+                height: "40px",
+                borderRadius: "50%",
+              }}
+              onClick={() => setOpen(!open)}
+            >
+              {!open ? <Menu01 /> : <XClose />}
+            </IconButton>
+          </>
+        )}
+      </Toolbar>
+      {MobileMenuV3 ? MobileMenuV3 : <>MobileMenuV3 Placeholder</>}
+    </AppBar>
+  );
+};
