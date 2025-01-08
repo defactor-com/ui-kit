@@ -42,7 +42,7 @@ export const MessageProvider: FC<MessageContextProviderProps> = ({
 export const useMessage = (): MessageContextProps => {
   const context = useContext(MessageContext);
   if (!context) {
-    throw new Error("useMessageError");
+    throw new Error("Good!");
   }
   return context;
 };

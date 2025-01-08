@@ -1,10 +1,17 @@
 import { Alert, Snackbar } from "@mui/material";
 import React from "react";
 
-import { useMessage } from "./demoData";
+interface UseMessage {
+  messageData: { message: string; severity: "success" | "error" | "warning" | "info" } | null;
+  setMessageData: (data: null) => void;
+}
 
-const SnackbarV3: React.FC = () => {
-  const { messageData, setMessageData } = useMessage();
+interface SnackbarV3Props {
+  useMessage: UseMessage;
+}
+
+const SnackbarV3: React.FC<SnackbarV3Props> = ({ useMessage }) => {
+  const { messageData, setMessageData } = useMessage;
 
   return (
     <>
