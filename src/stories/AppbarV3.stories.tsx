@@ -51,7 +51,7 @@ Default.args = {
   appLogo:  DefactorLogo,
   currentLogoAlt: "Current Logo",
   currentLogo: EngageLogo,
-  claimTokens: true,
+  //claimTokens: true,
   boxShadow: "8px 10px 10px 0px rgba(214, 218, 231, 0.25)",
   web3AccountHook: () => ({
     isConnected: true,

@@ -42,7 +42,7 @@ export const AppbarV3: React.FC<AppbarV3Props> = ({
   languageSelector: LanguageSelector,
   appLogo,
   appLogoAlt = "App Logo",
-  claimTokens,
+  claimTokens = false,
   ClaimTokensBtn,
   currentLogo,
   currentLogoAlt = "Current Logo",
