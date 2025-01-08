@@ -1,5 +1,41 @@
 # @defactor/ui-kit
 
+## 0.5.28
+
+### Patch Changes
+
+- cf10f67: Fixed MainSidebar Selected Border Style.
+
+## 0.5.27
+
+### Patch Changes
+
+- a8d45a9: Removed default values.
+
+## 0.5.26
+
+### Patch Changes
+
+- 5d2769f: Added ClaimTokensButtonV3.
+
+## 0.5.25
+
+### Patch Changes
+
+- 3f6dbf6: Fix MainSidebar Component to Prevent Full Page Refresh on Menu Click.
+
+## 0.5.24
+
+### Patch Changes
+
+- 8ec52e1: Fixed MainSidebar Border and Divider Logics.
+
+## 0.5.23
+
+### Patch Changes
+
+- 59594dc: Added MainSidebar activeBorderColor prop.
+
 ## 0.5.22
 
 ### Patch Changes

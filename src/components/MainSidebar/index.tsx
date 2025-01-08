@@ -6,9 +6,7 @@ import { useSidebarHook } from "./useSidebarHook";
 import MainMenuItem from "./MenuItem";
 import { routes } from "./demoRoutes";
 import Image from "next/image";
-import engageIcon from "../../../public/assets/engage-logo.svg";
 import { Route, AppData } from "./icons/types";
-import { demoAppsData } from "./demoAppsData";
 import { ROLES, userContext } from "./demoAppsData";
 import { ToolItemV3 } from "../V3/ToolItemV3";
 
@@ -20,6 +18,7 @@ export type MainSidebarProps = {
   iconsColor?: string;
   activeTextColor?: string;
   activeIconColor?: string;
+  activeBorderColor?: string;
   notificationColor?: string;
   notificationsCount?: number;
   hideOnBreakpoint?: "xs" | "sm" | "md" | "lg" | "xl";
@@ -29,6 +28,7 @@ export type MainSidebarProps = {
   selectedBgColor?: string;
   roles?: Record<string, string>;
   userContext?: { role: string };
+  onClick?: (path: string) => void;
 };
 
 export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
@@ -39,27 +39,28 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
     navLinkTextColor = theme.palette.text.primary,
     iconsColor = theme.palette.text.primary,
     activeTextColor = theme.palette.text.primary,
-    activeIconColor = theme.palette.secondary.main,
+    activeIconColor = theme.palette.primary.main,
+    activeBorderColor = theme.palette.primary.main,
     notificationColor = theme.palette.error.main,
     notificationsCount = 0,
     hideOnBreakpoint = "md",
     defaultPath = "/",
-    mainApp = {
-      logo: { src: engageIcon, height: 21, width: 80 },
-      url: "",
-    },
-    appsData = demoAppsData,
+    mainApp,
+    appsData,
     routes: demoRoutes,
     selectedBgColor,
     roles = ROLES,
     userContext: context = userContext,
+    onClick,
   } = props;
 
   const { isSelected } = useSidebarHook();
   const isHidden = useMediaQuery(theme.breakpoints.down(hideOnBreakpoint));
 
   const checkSelected = (path: string) => {
-    return isSelected(path) || (isSelected("/") && path === defaultPath);
+    const result =
+      isSelected(path) || (isSelected("/") && path === defaultPath);
+    return result;
   };
 
   if (isHidden) {
@@ -82,6 +83,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
           boxSizing: "border-box",
           backgroundColor: mainSidebarBgColor,
           border: "none",
+          transition: "none",
         },
       }}
     >
@@ -97,12 +99,16 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
           borderColor={theme.palette.grey[200]}
           mt={mt}
         >
-          <Image
-            alt="Tool logo"
-            src={mainApp.logo.src}
-            width={mainApp.logo.width}
-            height={mainApp.logo.height}
-          />
+          {mainApp ? (
+            <Image
+              alt="Tool logo"
+              src={mainApp.logo.src}
+              width={mainApp.logo.width}
+              height={mainApp.logo.height}
+            />
+          ) : (
+            <></>
+          )}
         </Box>
         <Box sx={{ overflow: "auto" }}>
           {[...firstRoutes]
@@ -123,11 +129,15 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
                 iconsColor={iconsColor}
                 activeTextColor={activeTextColor}
                 activeIconColor={activeIconColor}
+                activeBorderColor={activeBorderColor}
                 notificationColor={notificationColor}
                 selectedBgColor={selectedBgColor}
+                onClick={() => {
+                  if (onClick) onClick(route.path);
+                }}
               />
             ))}
-          {routes().firstRoutes.length > 0 && (
+          {routes().secondRoutes.length > 0 && (
             <Divider
               sx={{
                 border: `${theme.palette.grey[300]} 1px solid`,
@@ -152,8 +162,12 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
                 iconsColor={iconsColor}
                 activeTextColor={activeTextColor}
                 activeIconColor={activeIconColor}
+                activeBorderColor={activeBorderColor}
                 notificationColor={notificationColor}
                 selectedBgColor={selectedBgColor}
+                onClick={() => {
+                  if (onClick) onClick(route.path);
+                }}
               />
             ))}
         </Box>
