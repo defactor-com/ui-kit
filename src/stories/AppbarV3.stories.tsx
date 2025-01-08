@@ -3,7 +3,7 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { AppbarV3, AppbarV3Props } from "../components/V3/AppbarV3";
-import { colors, useTheme } from "@mui/material";
+import { useTheme } from "@mui/material";
 
 export default {
   title: "V3/AppbarV3",
@@ -31,6 +31,11 @@ Default.args = {
   WalletSelector: () => (
     <div>
       <h6 style={{ color: 'grey' }}>WALLET</h6>
+    </div>
+  ),
+  MobileMenuV3: () => (
+    <div>
+      <h6 style={{ color: 'grey' }}>MOBILE MENU</h6>
     </div>
   ),
 };

@@ -32,7 +32,7 @@ export interface Web3Account {
 }
 
 export interface AppbarV3Props {
-  MobileMenuV3?: React.ReactNode;
+  MobileMenuV3?: React.ComponentType;
   appLogo?: string;
   appLogoAlt?: string;
   claimTokens?: boolean;
@@ -146,7 +146,7 @@ export const AppbarV3: React.FC<AppbarV3Props> = ({
           </>
         )}
       </Toolbar>
-      {MobileMenuV3 && open && MobileMenuV3}
+      {MobileMenuV3 && open && <MobileMenuV3 />}
     </AppBar>
   );
 };
