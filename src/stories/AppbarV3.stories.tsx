@@ -44,9 +44,7 @@ Default.args = {
   ClaimTokensBtn: () => (
     <button style={{ padding: '5px 10px' }}>Claim Tokens</button>
   ),
-  appLogo: "https://via.placeholder.com/120x40.png?text=App+Logo",
   appLogoAlt: "App Logo",
-  currentLogo: "https://via.placeholder.com/87x23.png?text=Current+Logo",
   currentLogoAlt: "Current Logo",
   claimTokens: true,
   boxShadow: "8px 10px 10px 0px rgba(214, 218, 231, 0.25)",
