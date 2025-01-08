@@ -11,15 +11,8 @@ import { Menu01, XClose } from "@untitled-ui/icons-react";
 import Link from "next/link";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-
-import { LanguageSelectorV3 } from "../LanguageSelectorV3";
-import ClaimTokensButtonV3 from "../ClaimTokensButtonV3";
-
 import DefactorLogo from "./defactor-logo.svg";
 import EngageLogo from "./engage-logo.svg";
-import { ILanguageSelector } from "../LanguageSelectorV3/LanguageSelectorTypes";
-import UsaIcon from "../LanguageSelectorV3/usaIcon";
-import SpanishIcon from "../LanguageSelectorV3/SpanishIcon";
 
 export const generalConfig = {
   routesDisabled: [],
@@ -32,47 +25,30 @@ export interface Web3Account {
 }
 
 export interface AppbarV3Props {
-  MobileMenuV3?: React.ComponentType;
+  mobileMenu?: React.ComponentType;
   appLogo?: string;
   appLogoAlt?: string;
   claimTokens?: boolean;
   currentLogo?: string;
   currentLogoAlt?: string;
   boxShadow?: string;
-  languageSelectorProps?: ILanguageSelector;
   web3AccountHook: () => Web3Account;
-  WalletSelector: React.ComponentType;
+  walletSelector: React.ComponentType;
+  languageSelector: React.ComponentType;
+  ClaimTokensBtn: React.ComponentType;
 }
 
-const defaultOptions = [
-  {
-    id: "en",
-    flag: UsaIcon,
-  },
-  {
-    id: "es",
-    flag: SpanishIcon,
-  },
-];
-
 export const AppbarV3: React.FC<AppbarV3Props> = ({
-  MobileMenuV3,
-  web3AccountHook,
-  WalletSelector,
+  mobileMenu,
+  walletSelector: WalletSelector,
+  languageSelector: LanguageSelector,
   appLogo = DefactorLogo,
   appLogoAlt = "Defactor Logo",
-  claimTokens = false,
+  claimTokens,
+  ClaimTokensBtn,
   currentLogo = EngageLogo,
   currentLogoAlt = "Engage Logo",
   boxShadow = `8px 10px 10px 0px ${alpha("#D6DAE7", 0.25)}`,
-  languageSelectorProps = {
-    router: {},
-    pathname: "/",
-    locale: "en",
-    t: (key, options) => options?.locale || "en",
-    bgColor: "#057d2f",
-    options: defaultOptions,
-  },
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -103,8 +79,8 @@ export const AppbarV3: React.FC<AppbarV3Props> = ({
               <Image
                 src={appLogo}
                 alt={appLogoAlt}
-                layout="fill"
-                objectFit="contain"
+                fill
+                style={{ objectFit: "contain" }}
                 priority
               />
             </Box>
@@ -112,11 +88,9 @@ export const AppbarV3: React.FC<AppbarV3Props> = ({
         </Box>
         {!isMobile ? (
           <>
-            {claimTokens && (
-              <ClaimTokensButtonV3 web3AccountHook={web3AccountHook} />
-            )}
+            {claimTokens && <ClaimTokensBtn />}
             <WalletSelector />
-            <LanguageSelectorV3 {...languageSelectorProps} />
+            <LanguageSelector />
           </>
         ) : (
           <>
@@ -126,8 +100,8 @@ export const AppbarV3: React.FC<AppbarV3Props> = ({
                   <Image
                     src={currentLogo}
                     alt={currentLogoAlt}
-                    layout="fill"
-                    objectFit="contain"
+                    fill
+                    style={{ objectFit: "contain" }}
                   />
                 </Box>
               </Link>
@@ -146,7 +120,7 @@ export const AppbarV3: React.FC<AppbarV3Props> = ({
           </>
         )}
       </Toolbar>
-      {MobileMenuV3 && open && <MobileMenuV3 />}
+      {mobileMenu && open && React.createElement(mobileMenu)}
     </AppBar>
   );
 };

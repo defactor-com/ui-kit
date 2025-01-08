@@ -11,12 +11,10 @@ export default {
   argTypes: {
     appLogo: { control: "text" },
     appLogoAlt: { control: "text" },
-    appEnvironment: {
-      control: { type: "select" },
-      options: ["production", "testnet", "development"],
-    },
     currentLogo: { control: "text" },
     currentLogoAlt: { control: "text" },
+    claimTokens: { control: "boolean" },
+    boxShadow: { control: "text" },
   },
 } as ComponentMeta<typeof AppbarV3>;
 
@@ -28,16 +26,35 @@ const Template: ComponentStory<typeof AppbarV3> = (args: AppbarV3Props) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  WalletSelector: () => (
-    <div>
-      <h6 style={{ color: 'grey' }}>WALLET</h6>
-    </div>
-  ),
-  MobileMenuV3: () => (
+  mobileMenu: () => (
     <div>
       <h6 style={{ color: 'grey' }}>MOBILE MENU</h6>
     </div>
   ),
+  walletSelector: () => (
+    <div>
+      <h6 style={{ color: 'grey' }}>WALLET SELECTOR</h6>
+    </div>
+  ),
+  languageSelector: () => (
+    <div>
+      <h6 style={{ color: 'grey' }}>LANGUAGE SELECTOR</h6>
+    </div>
+  ),
+  ClaimTokensBtn: () => (
+    <button style={{ padding: '5px 10px' }}>Claim Tokens</button>
+  ),
+  appLogo: "https://via.placeholder.com/120x40.png?text=App+Logo",
+  appLogoAlt: "App Logo",
+  currentLogo: "https://via.placeholder.com/87x23.png?text=Current+Logo",
+  currentLogoAlt: "Current Logo",
+  claimTokens: true,
+  boxShadow: "8px 10px 10px 0px rgba(214, 218, 231, 0.25)",
+  web3AccountHook: () => ({
+    isConnected: true,
+    address: "0x1234...abcd",
+    chainId: 1,
+  }),
 };
 
 export const MobileView = Template.bind({});
