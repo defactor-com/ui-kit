@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.28
+
+### Patch Changes
+
+- cf10f67: Fixed MainSidebar Selected Border Style.
+
 ## 0.5.27
 
 ### Patch Changes

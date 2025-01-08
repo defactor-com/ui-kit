@@ -44,7 +44,8 @@ export const MainMenuItem: React.FC<MenuItemProps> = ({
       sx={{
         width: "100%",
         minHeight: "64px",
-        borderRight: isSelected ? `2px solid ${activeBorderColor}` : "",
+        borderRight: isSelected ? `2px solid ${activeBorderColor}` : "2px solid transparent",
+        transition: "border-right 0.3s ease", 
         borderRadius: 0,
         padding: 2,
         paddingLeft: 4,

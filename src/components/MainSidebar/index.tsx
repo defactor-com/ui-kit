@@ -83,6 +83,7 @@ export const MainSidebar: React.FC<MainSidebarProps> = (props) => {
           boxSizing: "border-box",
           backgroundColor: mainSidebarBgColor,
           border: "none",
+          transition: "none",
         },
       }}
     >
