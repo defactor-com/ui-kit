@@ -11,7 +11,6 @@ import { Menu01, XClose } from "@untitled-ui/icons-react";
 import Link from "next/link";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import DefactorLogo from "./defactor-logo.svg";
 import EngageLogo from "./engage-logo.svg";
 
 export const generalConfig = {
@@ -26,7 +25,7 @@ export interface Web3Account {
 
 export interface AppbarV3Props {
   mobileMenu?: React.ComponentType;
-  appLogo?: string;
+  appLogo: string;
   appLogoAlt?: string;
   claimTokens?: boolean;
   currentLogo?: string;
@@ -42,7 +41,7 @@ export const AppbarV3: React.FC<AppbarV3Props> = ({
   mobileMenu,
   walletSelector: WalletSelector,
   languageSelector: LanguageSelector,
-  appLogo = DefactorLogo,
+  appLogo,
   appLogoAlt = "Defactor Logo",
   claimTokens,
   ClaimTokensBtn,

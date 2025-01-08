@@ -4,6 +4,7 @@ import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { AppbarV3, AppbarV3Props } from "../components/V3/AppbarV3";
 import { useTheme } from "@mui/material";
+import DefactorLogo from "../components/V3/AppbarV3/defactor-logo.svg"
 
 export default {
   title: "V3/AppbarV3",
@@ -45,6 +46,7 @@ Default.args = {
     <button style={{ padding: '5px 10px' }}>Claim Tokens</button>
   ),
   appLogoAlt: "App Logo",
+  appLogo:  DefactorLogo,
   currentLogoAlt: "Current Logo",
   claimTokens: true,
   boxShadow: "8px 10px 10px 0px rgba(214, 218, 231, 0.25)",
