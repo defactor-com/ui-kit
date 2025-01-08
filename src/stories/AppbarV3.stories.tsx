@@ -3,7 +3,7 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { AppbarV3, AppbarV3Props } from "../components/V3/AppbarV3";
-import { useTheme } from "@mui/material";
+import { colors, useTheme } from "@mui/material";
 
 export default {
   title: "V3/AppbarV3",
@@ -28,7 +28,11 @@ const Template: ComponentStory<typeof AppbarV3> = (args: AppbarV3Props) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  WalletSelector: () => <div>Wallet Selector Text</div>,
+  WalletSelector: () => (
+    <div>
+      <h6 style={{ color: 'grey' }}>WALLET</h6>
+    </div>
+  ),
 };
 
 export const MobileView = Template.bind({});
