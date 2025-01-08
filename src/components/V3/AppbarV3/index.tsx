@@ -11,7 +11,6 @@ import { Menu01, XClose } from "@untitled-ui/icons-react";
 import Link from "next/link";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import EngageLogo from "./engage-logo.svg";
 
 export const generalConfig = {
   routesDisabled: [],
@@ -28,7 +27,7 @@ export interface AppbarV3Props {
   appLogo: string;
   appLogoAlt?: string;
   claimTokens?: boolean;
-  currentLogo?: string;
+  currentLogo: string;
   currentLogoAlt?: string;
   boxShadow?: string;
   web3AccountHook: () => Web3Account;
@@ -42,11 +41,11 @@ export const AppbarV3: React.FC<AppbarV3Props> = ({
   walletSelector: WalletSelector,
   languageSelector: LanguageSelector,
   appLogo,
-  appLogoAlt = "Defactor Logo",
+  appLogoAlt = "App Logo",
   claimTokens,
   ClaimTokensBtn,
-  currentLogo = EngageLogo,
-  currentLogoAlt = "Engage Logo",
+  currentLogo,
+  currentLogoAlt = "Current Logo",
   boxShadow = `8px 10px 10px 0px ${alpha("#D6DAE7", 0.25)}`,
 }) => {
   const theme = useTheme();
