@@ -23,18 +23,17 @@ export default {
 const Template: ComponentStory<typeof AppbarV3> = (args: AppbarV3Props) => {
   const theme = useTheme();
 
-  return (
-    <AppbarV3 {...args} />
-  );
+  return <AppbarV3 {...args} />;
 };
 
 export const Default = Template.bind({});
 Default.args = {
+  WalletSelector: () => <div>Wallet Selector Text</div>,
 };
 
 export const MobileView = Template.bind({});
 MobileView.args = {
-  ...Default.args
+  ...Default.args,
 };
 MobileView.parameters = {
   viewport: {

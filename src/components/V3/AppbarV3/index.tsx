@@ -13,7 +13,6 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 import { LanguageSelectorV3 } from "../LanguageSelectorV3";
-//import { MobileMenuV3 } from "../MobileMenuV3";
 import ClaimTokensButtonV3 from "../ClaimTokensButtonV3";
 
 import DefactorLogo from "./defactor-logo.svg";
@@ -33,7 +32,7 @@ export interface Web3Account {
 }
 
 export interface AppbarV3Props {
-  MobileMenuV3?: any;
+  MobileMenuV3?: React.ReactNode;
   appLogo?: string;
   appLogoAlt?: string;
   claimTokens?: boolean;
@@ -42,7 +41,7 @@ export interface AppbarV3Props {
   boxShadow?: string;
   languageSelectorProps?: ILanguageSelector;
   web3AccountHook: () => Web3Account;
-  WalletSelector: any;
+  WalletSelector: React.ComponentType;
 }
 
 const defaultOptions = [
@@ -113,8 +112,10 @@ export const AppbarV3: React.FC<AppbarV3Props> = ({
         </Box>
         {!isMobile ? (
           <>
-            {claimTokens === true && <ClaimTokensButtonV3 web3AccountHook={web3AccountHook}/>}
-            {WalletSelector ? WalletSelector : <>WalletSelector Placeholder</>}
+            {claimTokens && (
+              <ClaimTokensButtonV3 web3AccountHook={web3AccountHook} />
+            )}
+            <WalletSelector />
             <LanguageSelectorV3 {...languageSelectorProps} />
           </>
         ) : (
@@ -145,7 +146,7 @@ export const AppbarV3: React.FC<AppbarV3Props> = ({
           </>
         )}
       </Toolbar>
-      {MobileMenuV3 ? MobileMenuV3 : <>MobileMenuV3 Placeholder</>}
+      {MobileMenuV3 && open && MobileMenuV3}
     </AppBar>
   );
 };
