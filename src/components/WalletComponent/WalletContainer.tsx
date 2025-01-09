@@ -201,9 +201,11 @@ const WalletContainer = ({
                             )}
                           >
                             {userContext?.accountCollateralBalance.map(
-                              (collateral: TokenBalance) => (
+                              (collateral: TokenBalance, index: number) => (
                                 <MenuItem
-                                  key={collateral?.address}
+                                  key={
+                                    collateral?.address || `collateral-${index}`
+                                  }
                                   sx={{
                                     backgroundColor:
                                       userContext?.selectedCollateralBalance
@@ -251,8 +253,7 @@ const WalletContainer = ({
                     </Box>
                   </Box>
                   <Divider />
-                </>
-              )}
+</>              )}
               <Typography
                 sx={{ ...theme.typography.body1, fontWeight: 500 }}
                 mt={2}
@@ -261,13 +262,18 @@ const WalletContainer = ({
                 {labels.network}
               </Typography>
               <Box mb={4}>
-                {networks.map((network) => {
+                {networks.map((network, index: number) => {
                   const networkAvailable = configNetworks.filter(
                     (net: NetworksDataType) => net.chainId === network.chainId
                   );
 
-                  return networkAvailable.length ? (
+                  if (networkAvailable.length === 0) {
+                    return null;
+                  }
+
+                  return (
                     <MenuOption
+                      key={network.chainId || `network-${index}`} 
                       text={network.name}
                       style={{
                         fontFamily: theme.typography.fontFamily,
@@ -288,9 +294,7 @@ const WalletContainer = ({
                           ? theme.palette.secondary.main
                           : undefined
                       }
-                      isSelected={
-                        userContext?.networkConnected.name === network.name
-                      }
+                      isSelected={userContext?.networkConnected.name === network.name}
                       icon={
                         <Image
                           width={24}
@@ -301,8 +305,6 @@ const WalletContainer = ({
                       }
                       onClick={() => onClickMenuOption(network.chainId)}
                     />
-                  ) : (
-                    <></>
                   );
                 })}
               </Box>
