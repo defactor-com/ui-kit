@@ -269,12 +269,12 @@ const WalletContainer = ({
                   );
 
                   if (networkAvailable.length === 0) {
-                    return null; // Skip rendering if network is not available
+                    return null;
                   }
 
                   return (
                     <MenuOption
-                      key={network.chainId || `network-${index}`} // Ensure a unique key
+                      key={network.chainId || `network-${index}`} 
                       text={network.name}
                       style={{
                         fontFamily: theme.typography.fontFamily,
