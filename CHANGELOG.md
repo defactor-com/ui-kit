@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.30
+
+### Patch Changes
+
+- 6d9f61f: Fixed WalletSelector Warnings.
+
 ## 0.5.29
 
 ### Patch Changes
