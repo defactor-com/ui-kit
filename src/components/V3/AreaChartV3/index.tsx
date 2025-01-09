@@ -91,8 +91,7 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
           <YAxis
             tickFormatter={
               hideFirstTickYTrue
-                ? (tick, index) =>
-                    index === 0 ? "" : formatLargeNumber(tick)
+                ? (tick, index) => (index === 0 ? "" : formatLargeNumber(tick))
                 : formatLargeNumber
             }
             tickLine={false}
