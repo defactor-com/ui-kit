@@ -14,7 +14,7 @@ export interface AreaChartV3Props {
   data: { time: string; value: number }[];
   hideFirstTickXTrue?: boolean;
   hideFirstTickYTrue?: boolean;
-  hideTickValuesOnMobile?: boolean; 
+  hideTickValuesOnMobile?: boolean;
   width?: number | string;
   maxWidth?: number | string;
   height?: number | string;
@@ -33,7 +33,7 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
   xKey = "time",
   yKey = "value",
   height = 220,
-  maxWidth = 'none',
+  maxWidth = "none",
   boxBgColor = "#ffffff",
   areaColor = "#5A5BEB",
   fillTickColor = "#7C7D7E",
@@ -42,7 +42,7 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
   hideFirstTickXTrue = false,
   hideFirstTickYTrue = true,
   hideTickValuesOnMobile = false,
-  ml = "-44px"
+  ml = "-44px",
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -56,23 +56,28 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
       ml={hideTickValuesOnMobile && isMobile ? ml : undefined}
     >
       <ResponsiveContainer width="100%" height="100%">
-        <AreaChart data={data}>
+        <AreaChart
+          data={data}
+          margin={{ top: 10, right: 10, bottom: 0, left: 10 }}
+        >
           <CartesianGrid
             stroke={strokeColor}
             strokeOpacity={1}
             strokeWidth={1}
             strokeDasharray="3 6"
             vertical={false}
+            horizontal={true}
           />
           <XAxis
             dataKey={xKey}
             tickFormatter={
               hideFirstTickXTrue
                 ? (tick, index) => (index === 0 ? "" : tick)
-                : undefined
+                : (tick) => tick
             }
             tickLine={false}
             axisLine={false}
+            orientation="bottom"
             tick={
               hideTickValuesOnMobile && isMobile
                 ? { fontSize: 0 }
@@ -86,22 +91,26 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
           <YAxis
             tickFormatter={
               hideFirstTickYTrue
-                ? (tick, index) => (index === 0 ? "" : formatLargeNumber(tick))
+                ? (tick, index) =>
+                    index === 0 ? "" : formatLargeNumber(tick)
                 : formatLargeNumber
             }
             tickLine={false}
             axisLine={false}
+            orientation="left"
             tick={
               hideTickValuesOnMobile && isMobile
-                ? { fontSize: 0 } 
+                ? { fontSize: 0 }
                 : {
                     fontSize: 11,
                     fontWeight: 700,
                     fill: fillTickColor,
                   }
             }
+            domain={["auto", "auto"]}
           />
           <Area
+            type="monotone"
             dataKey={yKey}
             stroke={areaColor}
             fill={alpha(areaColor, 0.1)}
