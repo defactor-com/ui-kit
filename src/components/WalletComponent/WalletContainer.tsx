@@ -60,7 +60,7 @@ const WalletContainer = ({
           content={
             <Box minWidth="250px">
               {address && (
-                <React.Fragment key="wallet-address-fragment">
+                <>
                   <Box
                     bgcolor={theme.palette.background.default}
                     flexDirection="column"
@@ -253,8 +253,7 @@ const WalletContainer = ({
                     </Box>
                   </Box>
                   <Divider />
-                </React.Fragment>
-              )}
+</>              )}
               <Typography
                 sx={{ ...theme.typography.body1, fontWeight: 500 }}
                 mt={2}
