@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { AppbarV3, AppbarV3Props } from "../components/V3/AppbarV3";
 import { useTheme } from "@mui/material";
-import DefactorLogo from "../components/V3/AppbarV3/defactor-logo.svg"
+import DefactorLogo from "../components/V3/AppbarV3/defactor-logo.svg";
 import EngageLogo from "../components/V3/AppbarV3/engage-logo.svg";
-
+import ClaimTokensButtonV3 from "../components/V3/ClaimTokensButtonV3";
 
 export default {
   title: "V3/AppbarV3",
@@ -31,24 +31,30 @@ export const Default = Template.bind({});
 Default.args = {
   mobileMenu: () => (
     <div>
-      <h6 style={{ color: 'grey' }}>MOBILE MENU</h6>
+      <h6 style={{ color: "grey" }}>MOBILE MENU</h6>
     </div>
   ),
   walletSelector: () => (
     <div>
-      <h6 style={{ color: 'grey' }}>WALLET SELECTOR</h6>
+      <h6 style={{ color: "grey" }}>WALLET SELECTOR</h6>
     </div>
   ),
   languageSelector: () => (
     <div>
-      <h6 style={{ color: 'grey' }}>LANGUAGE SELECTOR</h6>
+      <h6 style={{ color: "grey" }}>LANGUAGE SELECTOR</h6>
     </div>
   ),
   ClaimTokensBtn: () => (
-    <button style={{ padding: '5px 10px' }}>Claim Tokens</button>
+    <ClaimTokensButtonV3
+      web3AccountHook={() => ({
+        isConnected: true,
+        address: "0x1234567890abcdef1234567890abcdef12345678",
+        chainId: 1,
+      })}
+    />
   ),
   appLogoAlt: "App Logo",
-  appLogo:  DefactorLogo,
+  appLogo: DefactorLogo,
   currentLogoAlt: "Current Logo",
   currentLogo: EngageLogo,
   claimTokens: true,
