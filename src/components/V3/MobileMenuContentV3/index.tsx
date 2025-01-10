@@ -9,6 +9,8 @@ import MenuItem from "./MenuItem";
 import ToolItem from "./toolItem";
 import useSidebarHook from "./useSidebarHook";
 import routes from "./routes";
+import { LanguageSelectorExample } from "../../LanguageSelector/LanguageSelectorExample";
+import { WalletSelectorExample } from "../../WalletComponent/WalletSelectorExample";
 
 interface MobileNavigationDrawerProps {
   open: boolean;
@@ -62,7 +64,7 @@ const MobileNavigationDrawer: React.FC<MobileNavigationDrawerProps> = ({
               width: "100%",
             }}
           >
-            {/* <WalletSelector width="100%" height="48px" /> */}  <Typography variant="body2">{"WalletSelector"}</Typography>
+            <WalletSelectorExample />
           </Box>
           <Box
             sx={{
@@ -73,7 +75,7 @@ const MobileNavigationDrawer: React.FC<MobileNavigationDrawerProps> = ({
             }}
           >
             <Typography variant="body2">{"Language"}</Typography>
-            {/* <LanguageSelector /> */} <Typography variant="body2">{"LanguageSelector"}</Typography>
+            <LanguageSelectorExample />
           </Box>
         </Box>
 
