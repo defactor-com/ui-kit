@@ -1,5 +1,17 @@
 # @defactor/ui-kit
 
+## 0.5.30
+
+### Patch Changes
+
+- 6d9f61f: Fixed WalletSelector Warnings.
+
+## 0.5.29
+
+### Patch Changes
+
+- e7e4e2f: Fixed Warning: (AreaChartV3) Support for defaultProps will be removed from function components in a future major release.
+
 ## 0.5.28
 
 ### Patch Changes
