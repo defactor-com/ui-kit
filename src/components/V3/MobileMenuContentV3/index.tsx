@@ -7,8 +7,8 @@ import MenuItem from "./MenuItem";
 import ToolItem from "./toolItem";
 import useSidebarHook from "./useSidebarHook";
 import routes from "./routes";
+import ConnectWalletButtonV3 from "../ConnectWalletButtonV3";
 //import { LanguageSelectorV3Example } from "../LanguageSelectorV3/LanguageSelectorV3Example";
-import { WalletSelectorExample } from "../../WalletComponent/WalletSelectorExample";
 
 interface MobileMenuContentV3Props {
   open: boolean;
@@ -62,7 +62,7 @@ const MobileMenuContentV3: React.FC<MobileMenuContentV3Props> = ({
               width: "100%",
             }}
           >
-            <WalletSelectorExample />
+            <ConnectWalletButtonV3 />
           </Box>
           <Box
             sx={{
