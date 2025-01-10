@@ -8,6 +8,7 @@ import DefactorLogo from "../components/V3/AppbarV3/defactor-logo.svg";
 import EngageLogo from "../components/V3/AppbarV3/engage-logo.svg";
 import ClaimTokensButtonV3 from "../components/V3/ClaimTokensButtonV3";
 import { WalletSelectorExample } from "../components/WalletComponent/WalletSelectorExample";
+import { MobileNavExample } from "../components/MobileMenu/MobileMenuExample";
 
 export default {
   title: "V3/AppbarV3",
@@ -31,9 +32,7 @@ const Template: ComponentStory<typeof AppbarV3> = (args: AppbarV3Props) => {
 export const Default = Template.bind({});
 Default.args = {
   mobileMenu: () => (
-    <div>
-      <h6 style={{ color: "grey" }}>MOBILE MENU</h6>
-    </div>
+   <MobileNavExample />
   ),
   walletSelector: () => (
    <WalletSelectorExample />
