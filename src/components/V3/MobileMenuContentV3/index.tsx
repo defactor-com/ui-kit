@@ -7,15 +7,15 @@ import MenuItem from "./MenuItem";
 import ToolItem from "./toolItem";
 import useSidebarHook from "./useSidebarHook";
 import routes from "./routes";
-import { LanguageSelectorV3Example } from "../LanguageSelectorV3/LanguageSelectorV3Example";
+//import { LanguageSelectorV3Example } from "../LanguageSelectorV3/LanguageSelectorV3Example";
 import { WalletSelectorExample } from "../../WalletComponent/WalletSelectorExample";
 
-interface MobileNavigationDrawerProps {
+interface MobileMenuContentV3Props {
   open: boolean;
   onClose: () => void;
 }
 
-const MobileNavigationDrawer: React.FC<MobileNavigationDrawerProps> = ({
+const MobileMenuContentV3: React.FC<MobileMenuContentV3Props> = ({
   open,
   onClose,
 }) => {
@@ -73,7 +73,7 @@ const MobileNavigationDrawer: React.FC<MobileNavigationDrawerProps> = ({
             }}
           >
             <Typography variant="body2">{"Language"}</Typography>
-            <LanguageSelectorV3Example />
+            {/* <LanguageSelectorV3Example /> */}   <Typography variant="body2">{"LanguageSelector"}</Typography>
           </Box>
         </Box>
 
@@ -147,4 +147,4 @@ const MobileNavigationDrawer: React.FC<MobileNavigationDrawerProps> = ({
   );
 };
 
-export default MobileNavigationDrawer;
+export default MobileMenuContentV3;
