@@ -7,6 +7,7 @@ import { useTheme } from "@mui/material";
 import DefactorLogo from "../components/V3/AppbarV3/defactor-logo.svg";
 import EngageLogo from "../components/V3/AppbarV3/engage-logo.svg";
 import ClaimTokensButtonV3 from "../components/V3/ClaimTokensButtonV3";
+import { WalletSelectorExample } from "../components/WalletComponent/WalletSelectorExample";
 
 export default {
   title: "V3/AppbarV3",
@@ -35,9 +36,7 @@ Default.args = {
     </div>
   ),
   walletSelector: () => (
-    <div>
-      <h6 style={{ color: "grey" }}>WALLET SELECTOR</h6>
-    </div>
+   <WalletSelectorExample />
   ),
   languageSelector: () => (
     <div>
