@@ -3,13 +3,12 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { AppbarV3, AppbarV3Props } from "../components/V3/AppbarV3";
-import { useTheme } from "@mui/material";
 import DefactorLogo from "../components/V3/AppbarV3/defactor-logo.svg";
 import EngageLogo from "../components/V3/AppbarV3/engage-logo.svg";
-import ClaimTokensButtonV3 from "../components/V3/ClaimTokensButtonV3";
 import { WalletSelectorExample } from "../components/WalletComponent/WalletSelectorExample";
 import { MobileNavExample } from "../components/MobileMenu/MobileMenuExample";
 import { LanguageSelectorExample } from "../components/LanguageSelector/LanguageSelectorExample";
+import { ClaimTokensButtonV3Example } from "../components/V3/ClaimTokensButtonV3/ClaimTokensButtonV3Example";
 
 export default {
   title: "V3/AppbarV3",
@@ -25,30 +24,15 @@ export default {
 } as ComponentMeta<typeof AppbarV3>;
 
 const Template: ComponentStory<typeof AppbarV3> = (args: AppbarV3Props) => {
-
   return <AppbarV3 {...args} />;
 };
 
 export const Default = Template.bind({});
 Default.args = {
-  mobileMenu: () => (
-   <MobileNavExample />
-  ),
-  walletSelector: () => (
-   <WalletSelectorExample />
-  ),
-  languageSelector: () => (
-   <LanguageSelectorExample />
-  ),
-  ClaimTokensBtn: () => (
-    <ClaimTokensButtonV3
-      web3AccountHook={() => ({
-        isConnected: true,
-        address: "0x1234567890abcdef1234567890abcdef12345678",
-        chainId: 1,
-      })}
-    />
-  ),
+  mobileMenu: () => <MobileNavExample />,
+  walletSelector: () => <WalletSelectorExample />,
+  languageSelector: () => <LanguageSelectorExample />,
+  ClaimTokensBtn: () => <ClaimTokensButtonV3Example />,
   appLogoAlt: "App Logo",
   appLogo: DefactorLogo,
   currentLogoAlt: "Current Logo",
