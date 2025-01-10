@@ -9,6 +9,7 @@ import EngageLogo from "../components/V3/AppbarV3/engage-logo.svg";
 import ClaimTokensButtonV3 from "../components/V3/ClaimTokensButtonV3";
 import { WalletSelectorExample } from "../components/WalletComponent/WalletSelectorExample";
 import { MobileNavExample } from "../components/MobileMenu/MobileMenuExample";
+import { LanguageSelectorExample } from "../components/LanguageSelector/LanguageSelectorExample";
 
 export default {
   title: "V3/AppbarV3",
@@ -24,7 +25,6 @@ export default {
 } as ComponentMeta<typeof AppbarV3>;
 
 const Template: ComponentStory<typeof AppbarV3> = (args: AppbarV3Props) => {
-  const theme = useTheme();
 
   return <AppbarV3 {...args} />;
 };
@@ -38,9 +38,7 @@ Default.args = {
    <WalletSelectorExample />
   ),
   languageSelector: () => (
-    <div>
-      <h6 style={{ color: "grey" }}>LANGUAGE SELECTOR</h6>
-    </div>
+   <LanguageSelectorExample />
   ),
   ClaimTokensBtn: () => (
     <ClaimTokensButtonV3
