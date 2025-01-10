@@ -1,15 +1,13 @@
 import { Box, Divider, Drawer, Typography, useTheme } from "@mui/material";
 import React from "react";
 
-//import WalletSelector from "app/components/WalletV2";
 import { generalConfig } from "./config";
 
-//import LanguageSelector from "../LanguageSelector";
 import MenuItem from "./MenuItem";
 import ToolItem from "./toolItem";
 import useSidebarHook from "./useSidebarHook";
 import routes from "./routes";
-import { LanguageSelectorExample } from "../../LanguageSelector/LanguageSelectorExample";
+import { LanguageSelectorV3Example } from "../LanguageSelectorV3/LanguageSelectorV3Example";
 import { WalletSelectorExample } from "../../WalletComponent/WalletSelectorExample";
 
 interface MobileNavigationDrawerProps {
@@ -75,7 +73,7 @@ const MobileNavigationDrawer: React.FC<MobileNavigationDrawerProps> = ({
             }}
           >
             <Typography variant="body2">{"Language"}</Typography>
-            <LanguageSelectorExample />
+            <LanguageSelectorV3Example />
           </Box>
         </Box>
 
