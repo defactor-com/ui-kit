@@ -45,6 +45,7 @@ export interface ILineChart extends IChart {
   series: SeriesDataType[];
   filterBgColor?: string;
   currentFilter?: string;
+  showCheckBox?: boolean;
   dateFilter?: string[];
   color?: string;
 }
