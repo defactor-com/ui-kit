@@ -43,7 +43,7 @@ export const MobileMenuV3 = ({
   roles = ROLES,
   userContext: context = userContext,
   onClick,
-  connectWalletBtn = <Button>Test</Button>,
+  connectWalletBtn,
 }: IMenuMobileV3) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
