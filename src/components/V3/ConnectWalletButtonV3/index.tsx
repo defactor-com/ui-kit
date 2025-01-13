@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Button, useTheme } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import React from "react";
 
 export interface ConnectWalletButtonV3Props {
@@ -8,12 +8,9 @@ export interface ConnectWalletButtonV3Props {
   backgroundColor?: string;
 }
 
-const theme = useTheme();
-
-
 export const ConnectWalletButtonV3: React.FC<ConnectWalletButtonV3Props> = ({
   claimButtonText = "Connect Wallet",
-  backgroundColor = theme.palette.primary.main
+  backgroundColor = "#5a5beb"
 }) => {
 
   const handleClick = () => {

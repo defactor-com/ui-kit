@@ -15,16 +15,17 @@ const theme = createTheme();
 export default {
   title: "V3/MobileMenuV3",
   component: MobileMenuV3,
-  argTypes: {
-   
-  },
+  argTypes: {},
 } as ComponentMeta<typeof MobileMenuV3>;
 
-interface MobileMenuV3StoryArgs extends React.ComponentProps<typeof MobileMenuV3> {
+interface MobileMenuV3StoryArgs
+  extends React.ComponentProps<typeof MobileMenuV3> {
   currentPath?: string;
 }
 
-const Template: ComponentStory<typeof MobileMenuV3> = (args: MobileMenuV3StoryArgs) => {
+const Template: ComponentStory<typeof MobileMenuV3> = (
+  args: MobileMenuV3StoryArgs
+) => {
   const { currentPath, ...menuProps } = args;
   return (
     <ThemeProvider theme={theme}>
@@ -46,11 +47,12 @@ const appsData = [
   },
 ];
 
-export const Default = Template.bind({});
-Default.args = {
+export const BasicMobileMenu = Template.bind({});
+BasicMobileMenu.args = {
   mainApp: { logo: { src: poolsIcon, height: 21, width: 53 }, url: "" },
   appsData: appsData,
   languageLabel: "Language",
   languageSelector: <LanguageSelectorV3Example />,
- connectWalletBtn: <ConnectWalletButtonV3 />
+  connectWalletBtn: <ConnectWalletButtonV3 />,
+  defaultPath: "/",
 };
