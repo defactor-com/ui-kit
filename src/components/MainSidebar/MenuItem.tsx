@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Button, useTheme } from "@mui/material";
 import { ElementType } from "react";
-import Link from "next/link";
 
 export interface MenuItemProps {
   text: string;
