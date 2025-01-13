@@ -11,14 +11,15 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
-// Default icons
+import { routes as getRoutes } from '../../MainSidebar/demoRoutes';
+
 import menuIcon from "/assets/menu-icon.svg";
 import linkIcon from "/assets/link-icon.svg";
 import closeMenuIcon from "/assets/close-mobile-icon.svg";
 
 import { IMenuMobileV3 } from "./MobileMenuTypes";
 import MainMenuItem from "../../MainSidebar/MenuItem";
-import { Route } from "../../MainSidebar/icons/types"; 
+import { Route } from "../../MainSidebar/icons/types";
 
 export const MobileMenuV3 = ({
   fontFamily,
@@ -38,12 +39,13 @@ export const MobileMenuV3 = ({
   notificationsCount = 5,
   roles = { admin: 'admin' },
   userContext = { role: 'admin' },
-  onClick,
-  routes = [], // provide a default routes array or from a context/store if applicable
+  onClick
 }: IMenuMobileV3) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
+
+  const { firstRoutes, secondRoutes } = getRoutes(); 
 
   return (
     <Box mr={marginRight} ml={marginLeft}>
@@ -62,7 +64,7 @@ export const MobileMenuV3 = ({
         }}>
           <Box paddingX={2} paddingY={3} display="flex" alignItems="center" justifyContent="space-between">
             {mainApp?.logo?.src ? (
-              <Image src={mainApp.logo.src} alt="Tool icon" width={mainApp.logo.width} height={mainApp.logo.height} />
+              <Image src={mainApp.logo.src} alt="Tool logo" width={mainApp.logo.width} height={mainApp.logo.height} />
             ) : (
               <Image src="/assets/default-logo.svg" alt="Default logo" width={50} height={50} />
             )}
@@ -73,7 +75,7 @@ export const MobileMenuV3 = ({
           <Box pb={2} height="100%" sx={{ overflowY: "auto" }}>
             <Box pb={2} onClick={handleClose}>
               <Box sx={{ overflow: "auto" }}>
-                {routes.filter(route => route.public || userContext.role === roles.admin).map((route, index) => (
+                {[...firstRoutes, ...secondRoutes].map((route: Route, index: number) => (
                   <MainMenuItem
                     key={index}
                     icon={route.icon}
