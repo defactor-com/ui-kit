@@ -92,44 +92,55 @@ export const MobileMenuV3 = ({
           }}
         >
           <Box
-            paddingX={2}
-            paddingY={3}
+            px={2}
+            py={3}
             display="flex"
             alignItems="center"
             justifyContent="space-between"
           >
-            {mainApp?.logo?.src ? (
-              <Image
-                src={mainApp.logo.src}
-                alt="Tool logo"
-                width={mainApp.logo.width}
-                height={mainApp.logo.height}
-              />
-            ) : (
-              <Image
-                src="/assets/default-logo.svg"
-                alt="Default logo"
-                width={50}
-                height={50}
-              />
+            {mainApp?.logo?.src && (
+              <Box display="flex" alignItems="center">
+                <Image
+                  src={mainApp.logo.src}
+                  alt="Tool logo"
+                  width={mainApp.logo.width}
+                  height={mainApp.logo.height}
+                />
+              </Box>
             )}
-            <IconButton
-              onClick={handleClose}
-              sx={{
-                width: "40px",
-                height: "40px",
-                borderRadius: "20px",
-                border: "1.25px solid #EDF0F7",
-              }}
-            >
-              <Image
-                src={closeMenuIcon}
-                width={16}
-                height={16}
-                alt="Close menu icon"
-              />
-            </IconButton>
+
+            <Box display="flex" alignItems="center">
+              {mainApp?.logo?.src && (
+                <Box ml={2} display="flex" alignItems="center">
+                  <Image
+                    src={mainApp.logo.src}
+                    alt="Tool logo"
+                    width={mainApp.logo.width}
+                    height={mainApp.logo.height}
+                  />
+                </Box>
+              )}
+              <Box ml={2}>
+                <IconButton
+                  onClick={handleClose}
+                  sx={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: "20px",
+                    border: "1.25px solid #EDF0F7",
+                  }}
+                >
+                  <Image
+                    src={closeMenuIcon}
+                    width={16}
+                    height={16}
+                    alt="Close menu icon"
+                  />
+                </IconButton>
+              </Box>
+            </Box>
           </Box>
+
           <Box pb={2} height="100%" sx={{ overflowY: "auto" }}>
             <Box pb={2} onClick={handleClose}>
               <Box sx={{ overflow: "auto" }}>
@@ -160,9 +171,7 @@ export const MobileMenuV3 = ({
                       }}
                     />
                   ))}
-                {routes().secondRoutes.length > 0 && (
-                  <Divider />
-                )}
+                {routes().secondRoutes.length > 0 && <Divider />}
                 {[...secondRoutes]
                   .filter(
                     (route: Route) =>
@@ -218,12 +227,7 @@ export const MobileMenuV3 = ({
             </Box>
           </Box>
           {appsData && (
-            <Box
-              bottom={0}
-              width="100%"
-              display="flex"
-              position="absolute"
-            >
+            <Box bottom={0} width="100%" display="flex" position="absolute">
               <Box width="100%">
                 {appsData?.map((item: AppData, index: number) => (
                   <ToolItemV3 key={index} item={item} index={index} />
