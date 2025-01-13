@@ -225,7 +225,6 @@ export const MobileMenuV3 = ({
             <Box
               bottom={0}
               width="100%"
-              height="53px"
               display="flex"
               position="absolute"
               borderTop="1px solid #EDF0F7"
