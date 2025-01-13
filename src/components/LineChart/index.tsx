@@ -235,6 +235,7 @@ const Chart = ({
   fontFamily,
   dateFilter,
   missingData,
+  showCheckBox,
   currentFilter,
   color = "white",
   loaderComponent,
@@ -311,34 +312,36 @@ const Chart = ({
           handleCloseTooltip={handleCloseTooltip}
         />
       </Box>
-      <div className={clsx("display-flex", "hide-bars-container")}>
-        <div className={clsx("display-flex", "checkbox-container")}>
-          {(keyNames || []).map((name, index) => (
-            <span
-              className={clsx("flex-center", "variant-body1")}
-              style={{ fontFamily: fontFamily }}
-              key={`checkbox-${name}`}
-            >
-              <Checkbox
-                checked={!isHide?.(name)}
-                onChange={(e) => {
-                  setHide?.((prev) => ({
-                    ...prev,
-                    [name]: !e.target.checked,
-                  }));
-                }}
-                sx={{
-                  color: colors[index % colors.length],
-                  "&.Mui-checked": {
+      {showCheckBox && (
+        <div className={clsx("display-flex", "hide-bars-container")}>
+          <div className={clsx("display-flex", "checkbox-container")}>
+            {(keyNames || []).map((name, index) => (
+              <span
+                className={clsx("flex-center", "variant-body1")}
+                style={{ fontFamily: fontFamily }}
+                key={`checkbox-${name}`}
+              >
+                <Checkbox
+                  checked={!isHide?.(name)}
+                  onChange={(e) => {
+                    setHide?.((prev) => ({
+                      ...prev,
+                      [name]: !e.target.checked,
+                    }));
+                  }}
+                  sx={{
                     color: colors[index % colors.length],
-                  },
-                }}
-              />
-              <Point color={colors[index % colors.length]} /> {name}
-            </span>
-          ))}
+                    "&.Mui-checked": {
+                      color: colors[index % colors.length],
+                    },
+                  }}
+                />
+                <Point color={colors[index % colors.length]} /> {name}
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
@@ -357,6 +360,7 @@ export const LineChart = ({
   loaderComponent,
   emptyDescription,
   handleChangeFilter,
+  showCheckBox = true,
   filterBgColor = "#26a66b",
   formatValue = (value) => value.toLocaleString("en-US"),
   formatDate = (value) => new Date(value).toLocaleString(),
@@ -382,6 +386,7 @@ export const LineChart = ({
       formatDate={formatDate}
       formatValue={formatValue}
       missingData={missingData}
+      showCheckBox={showCheckBox}
       currentFilter={currentFilter}
       filterBgColor={filterBgColor}
       loaderComponent={loaderComponent}
