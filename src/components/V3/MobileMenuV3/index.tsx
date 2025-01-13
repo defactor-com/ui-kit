@@ -8,6 +8,7 @@ import {
   Modal,
   Typography,
   Divider,
+  useMediaQuery,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
@@ -21,8 +22,11 @@ import { IMenuMobileV3 } from "./MobileMenuTypes";
 import MainMenuItem from "../../MainSidebar/MenuItem";
 import { Route } from "../../MainSidebar/icons/types";
 import { ROLES, userContext } from "../../MainSidebar/demoAppsData";
+import { useSidebarHook } from "../../MainSidebar/useSidebarHook";
 
 export const MobileMenuV3 = ({
+  hideOnBreakpoint = "xs",
+  defaultPath = "/",
   fontFamily,
   languageLabel,
   languageSelector,
@@ -46,6 +50,21 @@ export const MobileMenuV3 = ({
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
+
+  const theme = useTheme();
+
+  const { isSelected } = useSidebarHook();
+  const isHidden = useMediaQuery(theme.breakpoints.down(hideOnBreakpoint));
+
+  const checkSelected = (path: string) => {
+    const result =
+      isSelected(path) || (isSelected("/") && path === defaultPath);
+    return result;
+  };
+
+  if (isHidden) {
+    return null;
+  }
 
   const { firstRoutes, secondRoutes } = demoRoutes
     ? { firstRoutes: demoRoutes.slice(0, 2), secondRoutes: demoRoutes.slice(2) }
