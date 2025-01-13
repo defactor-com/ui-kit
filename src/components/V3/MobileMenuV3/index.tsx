@@ -7,6 +7,7 @@ import {
   Link,
   Modal,
   Typography,
+  Divider,
 } from "@mui/material";
 
 import menuIcon from "/assets/menu-icon.svg";
@@ -14,6 +15,10 @@ import linkIcon from "/assets/link-icon.svg";
 import closeMenuIcon from "/assets/close-mobile-icon.svg";
 
 import { IMenuMobileV3 } from "./MobileMenuTypes";
+import MainMenuItem from "../../MainSidebar/MenuItem";
+import { Route } from "../../MainSidebar/icons/types"; 
+import { routes } from "../../MainSidebar/demoRoutes";
+import { useTheme } from "@mui/material/styles"; 
 
 const style = {
   top: "50%",
@@ -29,15 +34,27 @@ export const MobileMenuV3 = ({
   mainApp,
   appsData,
   fontFamily,
-  menuOptions,
   languageLabel,
   languageSelector,
   marginRight = 0,
-  marginLeft = 1
+  marginLeft = 1,
+  onClick
 }: IMenuMobileV3) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
+  const theme = useTheme();
+
+  const context = { role: 'admin' }; // Example context, adjust based on your actual context logic
+  const roles = { admin: 'admin' }; // Example roles, adjust as needed
+  const notificationsCount = 5; // Example count, adjust as needed
+  const navLinkTextColor = theme.palette.text.primary;
+  const iconsColor = theme.palette.text.secondary;
+  const activeTextColor = theme.palette.text.primary;
+  const activeIconColor = theme.palette.primary.main;
+  const activeBorderColor = theme.palette.primary.dark;
+  const notificationColor = theme.palette.error.main;
+  const selectedBgColor = theme.palette.action.selected;
 
   return (
     <Box mr={marginRight} ml={marginLeft}>
@@ -86,7 +103,67 @@ export const MobileMenuV3 = ({
           </Box>
           <Box pb={2} height="100%" sx={{ overflowY: "auto" }}>
             <Box pb={2} onClick={handleClose}>
-              {menuOptions}
+              <Box sx={{ overflow: "auto" }}>
+                {[...routes().firstRoutes]
+                  .filter(
+                    (route: Route) => route.public || context.role === roles.admin
+                  )
+                  .map((route: Route, index: number) => (
+                    <MainMenuItem
+                      key={index}
+                      icon={route.icon}
+                      text={route.text}
+                      path={route.path}
+                      isSelected={route.path === "/" ? true : false} // Modify as needed
+                      notificationsCount={
+                        route.path === "/notifications" ? notificationsCount : 0
+                      }
+                      navLinkTextColor={navLinkTextColor}
+                      iconsColor={iconsColor}
+                      activeTextColor={activeTextColor}
+                      activeIconColor={activeIconColor}
+                      activeBorderColor={activeBorderColor}
+                      notificationColor={notificationColor}
+                      selectedBgColor={selectedBgColor}
+                      onClick={() => {
+                        if (onClick) onClick(route.path);
+                      }}
+                    />
+                  ))}
+                {routes().secondRoutes.length > 0 && (
+                  <Divider
+                    sx={{
+                      border: `${theme.palette.grey[300]} 1px solid`,
+                    }}
+                  />
+                )}
+                {[...routes().secondRoutes]
+                  .filter(
+                    (route: Route) => route.public || context.role === roles.admin
+                  )
+                  .map((route: Route, index: number) => (
+                    <MainMenuItem
+                      key={index}
+                      icon={route.icon}
+                      text={route.text}
+                      path={route.path}
+                      isSelected={route.path === "/" ? true : false}
+                      notificationsCount={
+                        route.path === "/notifications" ? notificationsCount : 0
+                      }
+                      navLinkTextColor={navLinkTextColor}
+                      iconsColor={iconsColor}
+                      activeTextColor={activeTextColor}
+                      activeIconColor={activeIconColor}
+                      activeBorderColor={activeBorderColor}
+                      notificationColor={notificationColor}
+                      selectedBgColor={selectedBgColor}
+                      onClick={() => {
+                        if (onClick) onClick(route.path);
+                      }}
+                    />
+                  ))}
+              </Box>
             </Box>
             <Box
               p={2}

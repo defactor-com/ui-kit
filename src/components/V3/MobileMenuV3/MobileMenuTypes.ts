@@ -9,4 +9,5 @@ export interface IMenuMobileV3 {
   appsData?: Array<AppDataType>;
   menuOptions?: React.ReactNode;
   languageSelector: React.ReactNode;
+  onClick?: (path: string) => void;
 }

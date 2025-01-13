@@ -36,7 +36,7 @@ const appsData = [
 
 const Template: Story<IMenuMobileV3> = (args) => <MobileMenuV3 {...args} />;
 
-const allRoutes = [...sideBarItems().firstRoutes, ...sideBarItems().secondRoutes]; // Combine both routes from the function
+const allRoutes = [...sideBarItems().firstRoutes, ...sideBarItems().secondRoutes]; 
 
 export const MobileMenuItem = Template.bind({});
 MobileMenuItem.args = {
