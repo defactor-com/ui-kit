@@ -6,16 +6,18 @@ import React from "react";
 export interface ConnectWalletButtonV3Props {
   claimButtonText?: string;
   backgroundColor?: string;
+  handleClick?: () => void;
 }
+
+const handleClickDemo = () => {
+    console.log("Button clicked");
+  };
 
 export const ConnectWalletButtonV3: React.FC<ConnectWalletButtonV3Props> = ({
   claimButtonText = "Connect Wallet",
-  backgroundColor = "#5a5beb"
+  backgroundColor = "#5a5beb",
+  handleClick = handleClickDemo
 }) => {
-
-  const handleClick = () => {
-    console.log("Button clicked");
-  };
 
   return (
     <Button
