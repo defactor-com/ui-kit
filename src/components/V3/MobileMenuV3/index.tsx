@@ -13,11 +13,11 @@ import { routes } from "../../MainSidebar/demoRoutes";
 import menuIcon from "/assets/menu-icon.svg";
 import closeMenuIcon from "/assets/close-mobile-icon.svg";
 import { IMenuMobileV3 } from "./MobileMenuTypes";
-import MainMenuItem from "../../MainSidebar/MenuItem";
 import { Route, AppData } from "../../MainSidebar/icons/types";
 import { ROLES, userContext } from "../../MainSidebar/demoAppsData";
 import { useSidebarHook } from "../../MainSidebar/useSidebarHook";
 import { ToolItemV3 } from "../ToolItemV3";
+import { MobileMenuItem } from "./MenuItem";
 
 export const MobileMenuV3 = ({
   hideOnBreakpoint = "xs",
@@ -139,7 +139,7 @@ export const MobileMenuV3 = ({
                       route.public || context.role === roles.admin
                   )
                   .map((route: Route, index: number) => (
-                    <MainMenuItem
+                    <MobileMenuItem
                       key={index}
                       icon={route.icon}
                       text={route.text}
@@ -161,11 +161,7 @@ export const MobileMenuV3 = ({
                     />
                   ))}
                 {routes().secondRoutes.length > 0 && (
-                  <Divider
-                    sx={{
-                      border: `${theme.palette.grey[300]} 1px solid`,
-                    }}
-                  />
+                  <Divider />
                 )}
                 {[...secondRoutes]
                   .filter(
@@ -173,7 +169,7 @@ export const MobileMenuV3 = ({
                       route.public || context.role === roles.admin
                   )
                   .map((route: Route, index: number) => (
-                    <MainMenuItem
+                    <MobileMenuItem
                       key={index}
                       icon={route.icon}
                       text={route.text}
@@ -196,7 +192,7 @@ export const MobileMenuV3 = ({
                   ))}
               </Box>
             </Box>
-            <Box borderTop="1px solid #EDF0F7"></Box>
+            <Divider />
             {connectWalletBtn ? (
               <Box
                 p={2}
@@ -210,7 +206,7 @@ export const MobileMenuV3 = ({
               <></>
             )}
             <Box
-              p={2}
+              p={3}
               display="flex"
               alignItems="center"
               justifyContent="space-between"
@@ -227,7 +223,6 @@ export const MobileMenuV3 = ({
               width="100%"
               display="flex"
               position="absolute"
-              borderTop="1px solid #EDF0F7"
             >
               <Box width="100%">
                 {appsData?.map((item: AppData, index: number) => (
