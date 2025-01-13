@@ -43,6 +43,7 @@ export const MobileMenuV3 = ({
   roles = ROLES,
   userContext: context = userContext,
   onClick,
+  connectWalletBtn = <Button>Test</Button>,
 }: IMenuMobileV3) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
@@ -200,8 +201,16 @@ export const MobileMenuV3 = ({
             <Box
               p={2}
               display="flex"
-              alignItems="center"
               borderTop="1px solid #EDF0F7"
+              alignItems="center"
+              justifyContent="space-between"
+            >
+              {connectWalletBtn}
+            </Box>
+            <Box
+              p={2}
+              display="flex"
+              alignItems="center"
               justifyContent="space-between"
             >
               <Typography variant="body1" sx={{ fontFamily }}>

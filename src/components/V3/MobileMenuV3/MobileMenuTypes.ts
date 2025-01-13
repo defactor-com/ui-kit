@@ -25,4 +25,5 @@ export interface IMenuMobileV3 {
   roles?: Record<string, string>;
   userContext?: { role: string };
   onClick?: (path: string) => void;
+  connectWalletBtn?: any;
 }
