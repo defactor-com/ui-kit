@@ -37,6 +37,10 @@ const Template: ComponentStory<typeof MobileMenuV3> = (
   );
 };
 
+const handleClickDemo = () => {
+  console.log("Button clicked");
+};
+
 const appsData = [
   {
     logo: { src: engageIcon, height: 21, width: 80 },
@@ -48,7 +52,6 @@ const appsData = [
   },
 ];
 
-
 export const BasicMobileMenu = Template.bind({});
 BasicMobileMenu.args = {
   mainApp: { logo: { src: defactorIcon, height: 22, width: 114 }, url: "" },
@@ -56,6 +59,12 @@ BasicMobileMenu.args = {
   appsData: appsData,
   languageLabel: "Language",
   languageSelector: <LanguageSelectorV3Example />,
-  connectWalletBtn: <ConnectWalletButtonV3 />,
+  connectWalletBtn: (
+    <ConnectWalletButtonV3
+      buttonText="Connect Wallet"
+      backgroundColor="#5a5beb"
+      handleClick={handleClickDemo}
+    />
+  ),
   defaultPath: "/",
 };
