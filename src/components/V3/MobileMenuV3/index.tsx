@@ -12,12 +12,41 @@ import { useTheme } from "@mui/material/styles";
 import { routes } from "../../MainSidebar/demoRoutes";
 import menuIcon from "/assets/menu-icon.svg";
 import closeMenuIcon from "/assets/close-mobile-icon.svg";
-import { IMenuMobileV3 } from "./MobileMenuTypes";
 import { Route, AppData } from "../../MainSidebar/icons/types";
 import { ROLES, userContext } from "../../MainSidebar/demoAppsData";
 import { useSidebarHook } from "../../MainSidebar/useSidebarHook";
 import { ToolItemV3 } from "../ToolItemV3";
 import { MobileMenuItem } from "./MenuItem";
+
+export interface MobileMenuV3Props {
+  fontFamily: string;
+  marginLeft?: number | string;
+  marginRight?: number | string;
+  languageLabel: string;
+  menuOptions?: React.ReactNode;
+  languageSelector: React.ReactNode;
+  mainApp?: AppData;
+  currentApp?: AppData;
+  appsData?: AppData[];
+  mainSidebarBgColor?: string;
+  navLinkTextColor?: string;
+  iconsColor?: string;
+  activeTextColor?: string;
+  activeIconColor?: string;
+  activeBorderColor?: string;
+  notificationColor?: string;
+  notificationsCount?: number;
+  hideOnBreakpoint?: "xs" | "sm" | "md" | "lg" | "xl";
+  defaultPath?: string;
+  routes?: Route[];
+  mt?: number | string;
+  selectedBgColor?: string;
+  roles?: Record<string, string>;
+  userContext?: { role: string };
+  onClick?: (path: string) => void;
+  connectWalletBtn?: React.ReactNode;
+}
+
 
 export const MobileMenuV3 = ({
   hideOnBreakpoint = "xs",
@@ -43,7 +72,7 @@ export const MobileMenuV3 = ({
   userContext: context = userContext,
   onClick,
   connectWalletBtn,
-}: IMenuMobileV3) => {
+}: MobileMenuV3Props) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
