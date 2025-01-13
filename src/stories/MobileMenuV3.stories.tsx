@@ -1,39 +1,27 @@
 import React from "react";
 import { Story } from "@storybook/react";
-
-import { MenuOption } from "../components/MenuOption";
 import { MobileMenuV3 } from "../components/V3/MobileMenuV3";
-import lendingIcon from "../../public/assets/lending.svg";
+import { IMenuMobileV3 } from "../components/V3/MobileMenuV3/MobileMenuTypes";
+import { LanguageSelectorV3Example } from "../components/V3/LanguageSelectorV3/LanguageSelectorV3Example";
+import { routes as sideBarItems } from "../components/MainSidebar/demoRoutes";
+import { MenuOption } from "../components/MenuOption";
+
 import poolsIcon from "../../public/assets/pools-logo.svg";
 import assetsIcon from "../../public/assets/assets-logo.svg";
 import engageIcon from "../../public/assets/engage-logo.svg";
-import dashboardIcon from "../../public/assets/dashboard.svg";
-import borrowingIcon from "../../public/assets/borrowing.svg";
-import { IMenuMobileV3 } from "../components/V3/MobileMenuV3/MobileMenuTypes";
-import { LanguageSelectorV3Example } from "../components/V3/LanguageSelectorV3/LanguageSelectorV3Example";
 
 export default {
   title: "V3/MobileMenuV3",
   component: MobileMenuV3,
 };
 
-const sideBarItems = [
-  {
-    icon: dashboardIcon,
-    text: "Dashboard",
-    isSelected: true,
-  },
-  {
-    icon: lendingIcon,
-    isSelected: false,
-    text: "Lending",
-  },
-  {
-    icon: borrowingIcon,
-    isSelected: false,
-    text: "Borrowing",
-  },
-];
+interface RouteItem {
+  text: string;
+  icon: React.FC;
+  path: string;
+  public: boolean;
+  isSelected?: boolean;
+}
 
 const appsData = [
   {
@@ -46,26 +34,24 @@ const appsData = [
   },
 ];
 
-const Template: Story<IMenuMobileV3> = (args) => {
-  return <MobileMenuV3 {...args} />;
-};
+const Template: Story<IMenuMobileV3> = (args) => <MobileMenuV3 {...args} />;
+
+const allRoutes = [...sideBarItems().firstRoutes, ...sideBarItems().secondRoutes]; // Combine both routes from the function
 
 export const MobileMenuItem = Template.bind({});
 MobileMenuItem.args = {
   appsData: appsData,
-  languageSelector: (
-    <LanguageSelectorV3Example />
-  ),
+  languageSelector: <LanguageSelectorV3Example />,
   languageLabel: "Language",
   menuOptions: (
     <div>
-      {sideBarItems.map((data) => (
+      {allRoutes.map((data: RouteItem) => (
         <div key={data.text} style={{ width: "100%" }}>
           <MenuOption
             text={data.text}
-            icon={data.icon}
-            isSelected={data.isSelected}
-            color={data.isSelected ? "#26A66B" : undefined}
+            icon={React.createElement(data.icon)}
+            isSelected={false}
+            color={"#26A66B"} 
           />
         </div>
       ))}
