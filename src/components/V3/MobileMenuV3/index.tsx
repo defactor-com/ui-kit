@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
+// Default icons
 import menuIcon from "/assets/menu-icon.svg";
 import linkIcon from "/assets/link-icon.svg";
 import closeMenuIcon from "/assets/close-mobile-icon.svg";
@@ -38,7 +39,7 @@ export const MobileMenuV3 = ({
   roles = { admin: 'admin' },
   userContext = { role: 'admin' },
   onClick,
-  routes = [] // provide a default routes array or from a context/store if applicable
+  routes = [], // provide a default routes array or from a context/store if applicable
 }: IMenuMobileV3) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
@@ -60,7 +61,11 @@ export const MobileMenuV3 = ({
           position: "absolute"
         }}>
           <Box paddingX={2} paddingY={3} display="flex" alignItems="center" justifyContent="space-between">
-            <Image src={mainApp?.logo.src} alt="Tool icon" width={mainApp?.logo.width} height={mainApp?.logo.height} />
+            {mainApp?.logo?.src ? (
+              <Image src={mainApp.logo.src} alt="Tool icon" width={mainApp.logo.width} height={mainApp.logo.height} />
+            ) : (
+              <Image src="/assets/default-logo.svg" alt="Default logo" width={50} height={50} />
+            )}
             <IconButton onClick={handleClose} sx={{ width: "40px", height: "40px", borderRadius: "20px", border: "1.25px solid #EDF0F7" }}>
               <Image src={closeMenuIcon} width={16} height={16} alt="Close menu icon" />
             </IconButton>
@@ -98,7 +103,11 @@ export const MobileMenuV3 = ({
               {appsData.map((item, index) => (
                 <Button key={index} fullWidth sx={{ display: "flex", alignItems: "center", justifyContent: "center", borderRight: "1px solid #EDF0F7" }}>
                   <Link href={item.url} target="_blank" sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <Image src={item.logo.src} width={65} height={21} alt="Tool logo" style={{ marginRight: "8px" }} />
+                    {item.logo.src ? (
+                      <Image src={item.logo.src} width={65} height={21} alt="Tool logo" style={{ marginRight: "8px" }} />
+                    ) : (
+                      <Image src="/assets/default-app-icon.svg" width={65} height={21} alt="Default app icon" />
+                    )}
                     <Image src={linkIcon} width={12} height={12} alt="Link icon" />
                   </Link>
                 </Button>
