@@ -198,15 +198,19 @@ export const MobileMenuV3 = ({
                   ))}
               </Box>
             </Box>
-            <Box
-              p={2}
-              display="flex"
-              borderTop="1px solid #EDF0F7"
-              alignItems="center"
-              justifyContent="space-between"
-            >
-              {connectWalletBtn}
-            </Box>
+            <Box borderTop="1px solid #EDF0F7"></Box>
+            {connectWalletBtn ? (
+              <Box
+                p={2}
+                display="flex"
+                alignItems="center"
+                justifyContent="space-between"
+              >
+                {connectWalletBtn}
+              </Box>
+            ) : (
+              <></>
+            )}
             <Box
               p={2}
               display="flex"

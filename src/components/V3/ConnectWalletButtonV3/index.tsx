@@ -35,3 +35,4 @@ export const ConnectWalletButtonV3: React.FC<ConnectWalletButtonV3Props> = ({
     </Button>
   );
 };
+
