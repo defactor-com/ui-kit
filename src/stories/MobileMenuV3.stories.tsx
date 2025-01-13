@@ -7,6 +7,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import poolsIcon from "../../public/assets/pools-logo.svg";
 import assetsIcon from "../../public/assets/assets-logo.svg";
 import engageIcon from "../../public/assets/engage-logo.svg";
+import defactorIcon from "../../public/assets/defactor-logo.svg";
 import { LanguageSelectorV3Example } from "../components/V3/LanguageSelectorV3/LanguageSelectorV3Example";
 import { ConnectWalletButtonV3 } from "../components/V3/ConnectWalletButtonV3";
 
@@ -47,9 +48,11 @@ const appsData = [
   },
 ];
 
+
 export const BasicMobileMenu = Template.bind({});
 BasicMobileMenu.args = {
-  mainApp: { logo: { src: poolsIcon, height: 21, width: 53 }, url: "" },
+  mainApp: { logo: { src: defactorIcon, height: 22, width: 114 }, url: "" },
+  currentApp: { logo: { src: poolsIcon, height: 21, width: 53 }, url: "" },
   appsData: appsData,
   languageLabel: "Language",
   languageSelector: <LanguageSelectorV3Example />,

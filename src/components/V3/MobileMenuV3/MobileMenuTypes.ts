@@ -8,6 +8,7 @@ export interface IMenuMobileV3 {
   menuOptions?: React.ReactNode;
   languageSelector: React.ReactNode;
   mainApp?: AppData;
+  currentApp?: AppData;
   appsData?: AppData[];
   mainSidebarBgColor?: string;
   navLinkTextColor?: string;

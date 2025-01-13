@@ -26,6 +26,7 @@ export const MobileMenuV3 = ({
   languageLabel,
   languageSelector,
   mainApp,
+  currentApp,
   appsData,
   marginLeft = 1,
   marginRight = 0,
@@ -102,20 +103,20 @@ export const MobileMenuV3 = ({
               <Box display="flex" alignItems="center">
                 <Image
                   src={mainApp.logo.src}
-                  alt="Tool logo"
+                  alt="Main App Logo"
                   width={mainApp.logo.width}
                   height={mainApp.logo.height}
                 />
               </Box>
             )}
             <Box display="flex" alignItems="center">
-              {mainApp?.logo?.src && (
+              {currentApp?.logo?.src && (
                 <Box ml={2} display="flex" alignItems="center">
                   <Image
-                    src={mainApp.logo.src}
-                    alt="Tool logo"
-                    width={mainApp.logo.width}
-                    height={mainApp.logo.height}
+                    src={currentApp.logo.src}
+                    alt="Current App Logo"
+                    width={currentApp.logo.width}
+                    height={currentApp.logo.height}
                   />
                 </Box>
               )}
