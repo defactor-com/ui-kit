@@ -36,7 +36,7 @@ export const MobileMenuV3 = ({
   activeBorderColor = useTheme().palette.primary.dark,
   notificationColor = useTheme().palette.error.main,
   selectedBgColor = useTheme().palette.action.selected,
-  notificationsCount = 5,
+  notificationsCount = 0,
   routes: demoRoutes,
   roles = ROLES,
   userContext: context = userContext,
@@ -108,7 +108,6 @@ export const MobileMenuV3 = ({
                 />
               </Box>
             )}
-
             <Box display="flex" alignItems="center">
               {mainApp?.logo?.src && (
                 <Box ml={2} display="flex" alignItems="center">
