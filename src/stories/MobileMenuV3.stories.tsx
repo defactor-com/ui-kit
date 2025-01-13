@@ -9,10 +9,8 @@ import assetsIcon from "../../public/assets/assets-logo.svg";
 import engageIcon from "../../public/assets/engage-logo.svg";
 import dashboardIcon from "../../public/assets/dashboard.svg";
 import borrowingIcon from "../../public/assets/borrowing.svg";
-import EnglishFlag from "../../public/assets/english-flag.svg";
-import SpanishFlag from "../../public/assets/spanish-flag.svg";
-import { LanguageSelector } from "../components/LanguageSelector";
 import { IMenuMobileV3 } from "../components/V3/MobileMenuV3/MobileMenuTypes";
+import { LanguageSelectorV3Example } from "../components/V3/LanguageSelectorV3/LanguageSelectorV3Example";
 
 export default {
   title: "V3/MobileMenuV3",
@@ -56,22 +54,7 @@ export const MobileMenuItem = Template.bind({});
 MobileMenuItem.args = {
   appsData: appsData,
   languageSelector: (
-    <LanguageSelector
-      locale="en"
-      t={() => {}}
-      router={() => {}}
-      pathname={() => {}}
-      options={[
-        {
-          id: "en",
-          flag: EnglishFlag,
-        },
-        {
-          id: "es",
-          flag: SpanishFlag,
-        },
-      ]}
-    />
+    <LanguageSelectorV3Example />
   ),
   languageLabel: "Language",
   menuOptions: (
