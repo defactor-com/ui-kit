@@ -3,6 +3,10 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { MobileMenuV3 } from "../components/V3/MobileMenuV3";
 import { PathProvider } from "../components/MainSidebar/PathProvider";
 
+import poolsIcon from "../../public/assets/pools-logo.svg";
+import assetsIcon from "../../public/assets/assets-logo.svg";
+import engageIcon from "../../public/assets/engage-logo.svg";
+
 export default {
   title: "V3/MobileMenuV3",
   component: MobileMenuV3,
@@ -24,7 +28,19 @@ const Template: ComponentStory<typeof MobileMenuV3> = (args: MobileMenuV3StoryAr
   );
 };
 
+const appsData = [
+  {
+    logo: { src: engageIcon, height: 21, width: 80 },
+    url: "https://engage.defactor.com/dashboard",
+  },
+  {
+    logo: { src: assetsIcon, height: 21, width: 74 },
+    url: "https://assets.defactor.dev/",
+  },
+];
+
 export const Default = Template.bind({});
 Default.args = {
-
+  mainApp: { logo: { src: poolsIcon, height: 21, width: 53 }, url: "" },
+  appsData: appsData
 };

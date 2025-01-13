@@ -11,13 +11,10 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-
 import { routes } from "../../MainSidebar/demoRoutes";
-
 import menuIcon from "/assets/menu-icon.svg";
 import linkIcon from "/assets/link-icon.svg";
 import closeMenuIcon from "/assets/close-mobile-icon.svg";
-
 import { IMenuMobileV3 } from "./MobileMenuTypes";
 import MainMenuItem from "../../MainSidebar/MenuItem";
 import { Route } from "../../MainSidebar/icons/types";
@@ -69,6 +66,8 @@ export const MobileMenuV3 = ({
   const { firstRoutes, secondRoutes } = demoRoutes
     ? { firstRoutes: demoRoutes.slice(0, 2), secondRoutes: demoRoutes.slice(2) }
     : routes();
+
+    console.log(appsData)
 
   return (
     <Box mr={marginRight} ml={marginLeft}>
