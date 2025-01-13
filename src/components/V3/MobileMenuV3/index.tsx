@@ -67,8 +67,6 @@ export const MobileMenuV3 = ({
     ? { firstRoutes: demoRoutes.slice(0, 2), secondRoutes: demoRoutes.slice(2) }
     : routes();
 
-    console.log(appsData)
-
   return (
     <Box mr={marginRight} ml={marginLeft}>
       <IconButton

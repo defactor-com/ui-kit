@@ -6,6 +6,7 @@ import { PathProvider } from "../components/MainSidebar/PathProvider";
 import poolsIcon from "../../public/assets/pools-logo.svg";
 import assetsIcon from "../../public/assets/assets-logo.svg";
 import engageIcon from "../../public/assets/engage-logo.svg";
+import { LanguageSelectorV3Example } from "../components/V3/LanguageSelectorV3/LanguageSelectorV3Example";
 
 export default {
   title: "V3/MobileMenuV3",
@@ -42,5 +43,7 @@ const appsData = [
 export const Default = Template.bind({});
 Default.args = {
   mainApp: { logo: { src: poolsIcon, height: 21, width: 53 }, url: "" },
-  appsData: appsData
+  appsData: appsData,
+  languageLabel: "Language",
+  languageSelector: <LanguageSelectorV3Example />
 };
