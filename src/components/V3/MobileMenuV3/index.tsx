@@ -195,7 +195,7 @@ export const MobileMenuV3 = ({
             <Divider />
             {connectWalletBtn ? (
               <Box
-                p={2}
+                p={"21px 16px 8px 16px"}
                 display="flex"
                 alignItems="center"
                 justifyContent="space-between"
