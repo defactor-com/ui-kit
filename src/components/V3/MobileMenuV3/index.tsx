@@ -23,7 +23,6 @@ export interface MobileMenuV3Props {
   marginLeft?: number | string;
   marginRight?: number | string;
   languageLabel: string;
-  menuOptions?: React.ReactNode;
   languageSelector: React.ReactNode;
   mainApp?: AppData;
   currentApp?: AppData;
