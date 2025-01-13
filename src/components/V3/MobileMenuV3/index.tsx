@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import {
   Box,
-  Button,
   IconButton,
-  Link,
   Modal,
   Typography,
   Divider,
@@ -13,13 +11,13 @@ import {
 import { useTheme } from "@mui/material/styles";
 import { routes } from "../../MainSidebar/demoRoutes";
 import menuIcon from "/assets/menu-icon.svg";
-import linkIcon from "/assets/link-icon.svg";
 import closeMenuIcon from "/assets/close-mobile-icon.svg";
 import { IMenuMobileV3 } from "./MobileMenuTypes";
 import MainMenuItem from "../../MainSidebar/MenuItem";
-import { Route } from "../../MainSidebar/icons/types";
+import { Route, AppData } from "../../MainSidebar/icons/types";
 import { ROLES, userContext } from "../../MainSidebar/demoAppsData";
 import { useSidebarHook } from "../../MainSidebar/useSidebarHook";
+import { ToolItemV3 } from "../ToolItemV3";
 
 export const MobileMenuV3 = ({
   hideOnBreakpoint = "xs",
@@ -232,51 +230,11 @@ export const MobileMenuV3 = ({
               position="absolute"
               borderTop="1px solid #EDF0F7"
             >
-              {appsData.map((item, index) => (
-                <Button
-                  key={index}
-                  fullWidth
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    borderRight: "1px solid #EDF0F7",
-                  }}
-                >
-                  <Link
-                    href={item.url}
-                    target="_blank"
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    {item.logo.src ? (
-                      <Image
-                        src={item.logo.src}
-                        width={65}
-                        height={21}
-                        alt="Tool logo"
-                        style={{ marginRight: "8px" }}
-                      />
-                    ) : (
-                      <Image
-                        src="/assets/default-app-icon.svg"
-                        width={65}
-                        height={21}
-                        alt="Default app icon"
-                      />
-                    )}
-                    <Image
-                      src={linkIcon}
-                      width={12}
-                      height={12}
-                      alt="Link icon"
-                    />
-                  </Link>
-                </Button>
-              ))}
+              <Box width="100%">
+                {appsData?.map((item: AppData, index: number) => (
+                  <ToolItemV3 key={index} item={item} index={index} />
+                ))}
+              </Box>
             </Box>
           )}
         </Box>
