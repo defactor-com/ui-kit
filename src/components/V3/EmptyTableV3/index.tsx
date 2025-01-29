@@ -1,7 +1,8 @@
-import React from 'react'
-import { Box, Typography, useTheme } from '@mui/material'
-import { CircleIconV3 } from '../CircleIconV3'
-import { CoinsStacked01 } from '@untitled-ui/icons-react';
+import React from 'react';
+import { Box, Typography, useTheme } from '@mui/material';
+import { CircleIconV3 } from '../CircleIconV3';
+import { CoinsStacked01, PlusCircle } from '@untitled-ui/icons-react';
+import { Button } from '../../Button';
 
 export interface EmptyTableProps {
     title?: string;
@@ -18,6 +19,14 @@ export interface EmptyTableProps {
     alignItems?: string;
     justifyContent?: string;
     icon?: React.ReactElement;
+    showBtn?: boolean;
+    btnIcon?: React.ReactElement;
+    btnBgColor?: string;
+    btnOnClick?: () => void;
+    btnFontSize?: string;
+    btnPadding?: string;
+    btnLabel?: string;
+    btnMt?: string | number;
 }
 
 export const EmptyTableV3: React.FC<EmptyTableProps> = ({
@@ -25,7 +34,7 @@ export const EmptyTableV3: React.FC<EmptyTableProps> = ({
     description = 'Lorem ipsum dolor sit amet consectetur. Ultrices hendrerit fringilla et rhoncus elit dolor.',
     backgroundColor = '#ffffff',
     height = '420px',
-    width = "100%",
+    width = '100%',
     maxWidth = '1164px',
     gap = 3,
     padding = 2,
@@ -34,45 +43,62 @@ export const EmptyTableV3: React.FC<EmptyTableProps> = ({
     textAlign = 'center',
     alignItems = 'center',
     justifyContent = 'center',
-    icon = <CoinsStacked01 style={{ width: 40, height: 40, color: '#5A5BEB' }} />
-
+    icon = <CoinsStacked01 style={{ width: 40, height: 40, color: '#5A5BEB' }} />,
+    btnBgColor,
+    btnOnClick,
+    showBtn = false,
+    btnFontSize = '14px',
+    btnIcon = <PlusCircle style={{ width: 24, height: 24 }} />,
+    btnPadding,
+    btnLabel = "Lorem Ipsum",
+    btnMt= 3
 }) => {
-    const theme = useTheme()
+    const theme = useTheme();
 
     return (
         <Box
             sx={{
-                display: display,
-                flexDirection: flexDirection,
-                textAlign: textAlign,
-                alignItems: alignItems,
-                justifyContent: justifyContent,
-                gap: gap,
-                backgroundColor: backgroundColor,
-                height: height,
-                width: width,
-                maxWidth: maxWidth,
-                p: padding
+                display,
+                flexDirection,
+                textAlign,
+                alignItems,
+                justifyContent,
+                gap,
+                backgroundColor,
+                height,
+                width,
+                maxWidth,
+                p: padding,
             }}
         >
-            <CircleIconV3
-                backgroundColor="#EFEFFD"
-                icon={icon}
-            />
-            <Typography variant='h6' maxWidth='550px' fontWeight={700}>
+            <CircleIconV3 backgroundColor="#EFEFFD" icon={icon} />
+            <Typography variant="h6" maxWidth="550px" fontWeight={700}>
                 {title}
             </Typography>
-            <Box
-                sx={{
-                    display: 'flex',
-                    maxWidth: '80%',
-                }}
-            >
-                <Typography variant='body1' maxWidth='350px' sx={{ color: theme.palette.grey[400] }}>
-
-                    {description}
-                </Typography>
+            <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+                <Box sx={{ display: 'flex', maxWidth: '80%' }}>
+                    <Typography variant="body1" maxWidth="350px" sx={{ color: theme.palette.grey[400] }}>
+                        {description}
+                    </Typography>
+                </Box>
+                {showBtn && (
+                    <Box sx={{ display: 'flex', maxWidth: '80%', mt: btnMt }}>
+                        <Button
+                            variant="contained"
+                            label={btnLabel}
+                            icon={btnIcon}
+                            optionalStyles={{
+                                fontSize: btnFontSize,
+                                padding: btnPadding || theme.spacing(1, 3),
+                            }}
+                            bgColor={btnBgColor || theme.palette.primary.main}
+                            fontFamily={theme.typography.fontFamily}
+                            onClick={btnOnClick}
+                        />
+                    </Box>
+                )}
             </Box>
-        </Box >
-    )
-}
+
+        </Box>
+    );
+};
