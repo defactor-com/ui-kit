@@ -8,6 +8,8 @@ export interface EmptyTableProps {
     title?: string;
     description?: string;
     backgroundColor?: string;
+    titleColor?: string;
+    descColor?: string;
     height?: string;
     width?: string;
     maxWidth?: string;
@@ -33,6 +35,8 @@ export const EmptyTableV3: React.FC<EmptyTableProps> = ({
     title = 'Lorem ipsum dolor sit amet consectetur',
     description = 'Lorem ipsum dolor sit amet consectetur. Ultrices hendrerit fringilla et rhoncus elit dolor.',
     backgroundColor = '#ffffff',
+    titleColor,
+    descColor,
     height = '420px',
     width = '100%',
     maxWidth = '1164px',
@@ -72,12 +76,12 @@ export const EmptyTableV3: React.FC<EmptyTableProps> = ({
             }}
         >
             <CircleIconV3 backgroundColor="#EFEFFD" icon={icon} />
-            <Typography variant="h6" maxWidth="550px" fontWeight={700}>
+            <Typography variant="h6" maxWidth="550px" fontWeight={700} sx={{ color: titleColor || theme.palette.text.primary }}>
                 {title}
             </Typography>
             <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center">
                 <Box sx={{ display: 'flex', maxWidth: '80%' }}>
-                    <Typography variant="body1" maxWidth="350px" sx={{ color: theme.palette.grey[400] }}>
+                    <Typography variant="body1" maxWidth="350px" sx={{ color: descColor || theme.palette.grey[400] }}>
                         {description}
                     </Typography>
                 </Box>
@@ -87,8 +91,8 @@ export const EmptyTableV3: React.FC<EmptyTableProps> = ({
                             variant="contained"
                             label={btnLabel}
                             icon={btnIcon}
+                            fontSize={btnFontSize}
                             optionalStyles={{
-                                fontSize: btnFontSize,
                                 padding: btnPadding || theme.spacing(1, 3),
                             }}
                             bgColor={btnBgColor || theme.palette.primary.main}
