@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.34
+
+### Patch Changes
+
+- 248e41c: EmptyTableV3: Added prop iconBgColor.
+
 ## 0.5.33
 
 ### Patch Changes
