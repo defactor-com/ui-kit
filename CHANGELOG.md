@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.32
+
+### Patch Changes
+
+- 2bfb5c4: Added Btn and props to EmptyTableV3.
+
 ## 0.5.30
 
 ### Patch Changes
