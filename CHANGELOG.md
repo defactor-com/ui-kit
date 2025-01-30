@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.33
+
+### Patch Changes
+
+- ba32d33: Fixed fontSize and added props.
+
 ## 0.5.32
 
 ### Patch Changes
