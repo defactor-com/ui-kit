@@ -87,8 +87,8 @@ export const EmptyTableV3: React.FC<EmptyTableProps> = ({
                             variant="contained"
                             label={btnLabel}
                             icon={btnIcon}
+                            fontSize={btnFontSize}
                             optionalStyles={{
-                                fontSize: btnFontSize,
                                 padding: btnPadding || theme.spacing(1, 3),
                             }}
                             bgColor={btnBgColor || theme.palette.primary.main}
