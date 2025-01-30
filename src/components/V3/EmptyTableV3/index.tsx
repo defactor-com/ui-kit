@@ -29,6 +29,7 @@ export interface EmptyTableProps {
     btnPadding?: string;
     btnLabel?: string;
     btnMt?: string | number;
+    iconBgColor?: string;
 }
 
 export const EmptyTableV3: React.FC<EmptyTableProps> = ({
@@ -48,6 +49,7 @@ export const EmptyTableV3: React.FC<EmptyTableProps> = ({
     alignItems = 'center',
     justifyContent = 'center',
     icon = <CoinsStacked01 style={{ width: 40, height: 40, color: '#5A5BEB' }} />,
+    iconBgColor,
     btnBgColor,
     btnOnClick,
     showBtn = false,
@@ -75,7 +77,7 @@ export const EmptyTableV3: React.FC<EmptyTableProps> = ({
                 p: padding,
             }}
         >
-            <CircleIconV3 backgroundColor="#EFEFFD" icon={icon} />
+            <CircleIconV3 backgroundColor={iconBgColor || "#EFEFFD"} icon={icon} />
             <Typography variant="h6" maxWidth="550px" fontWeight={700} sx={{ color: titleColor || theme.palette.text.primary }}>
                 {title}
             </Typography>
