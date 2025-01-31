@@ -93,7 +93,7 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
                     <OutlinedInput
                       sx={{
                         "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                          borderColor: focusedColor || theme.palette.secondary.main, // Focus border color
+                          borderColor: focusedColor || theme.palette.secondary.main,
                         },
                       }}
                     />
