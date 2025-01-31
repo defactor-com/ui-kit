@@ -5,11 +5,13 @@ import TooltipIcon from "../Icons/v2/tooltipIcon";
 export interface CustomTooltipProps {
   tooltipText?: string;
   iconColor?: string;
+  tooltipBgColor?: string;
 }
 
 export const CustomTooltip: React.FC<CustomTooltipProps> = ({
   tooltipText = "",
   iconColor,
+  tooltipBgColor
 }) => {
   const theme = useTheme();
   const defaultColor = iconColor || theme.palette.grey[500];
@@ -26,9 +28,9 @@ export const CustomTooltip: React.FC<CustomTooltipProps> = ({
       componentsProps={{
         tooltip: {
           sx: {
-            bgcolor: theme.palette.primary.main,
+            bgcolor: tooltipBgColor || theme.palette.primary.main,
             "& .MuiTooltip-arrow": {
-              color: theme.palette.primary.main,
+              color: tooltipBgColor || theme.palette.primary.main,
             },
           },
         },
