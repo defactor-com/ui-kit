@@ -6,6 +6,7 @@ import {
     Select,
     SelectChangeEvent,
     Typography,
+    OutlinedInput,
 } from "@mui/material";
 import React from "react";
 
@@ -31,6 +32,7 @@ export interface CustomDropdownProps {
     disabled?: boolean;
     required?: boolean;
     tooltipBgColor: string;
+    focusedColor?: string;
 }
 
 export const CustomDropdown: React.FC<CustomDropdownProps> = ({
@@ -42,7 +44,8 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
     tooltip = "",
     disabled = false,
     required = false,
-    tooltipBgColor
+    tooltipBgColor,
+    focusedColor
 }) => {
     const theme = useTheme();
 
@@ -86,6 +89,15 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
                     )
                 }
                 onChange={handleChange}
+                input={
+                    <OutlinedInput
+                      sx={{
+                        "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                          borderColor: focusedColor || theme.palette.secondary.main,
+                        },
+                      }}
+                    />
+                  }
             >
                 {menuItems.map((menuItem) => (
                     <MenuItem key={menuItem.label} value={menuItem.value}>
