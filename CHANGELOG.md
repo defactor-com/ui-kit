@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.35
+
+### Patch Changes
+
+- c9423bc: Added tooltipBgColor props.
+
 ## 0.5.34
 
 ### Patch Changes
