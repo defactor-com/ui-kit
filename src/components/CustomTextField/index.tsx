@@ -18,6 +18,7 @@ export interface CustomTextFieldProps {
   tooltip?: string;
   suffix?: string | React.ReactNode;
   suffixColor?: string;
+  tooltipBgColor ?: string;
   disabled?: boolean;
   whiteBg?: boolean;
   required?: boolean;
@@ -31,6 +32,7 @@ export const CustomTextField: React.FC<CustomTextFieldProps> = ({
   tooltip = "",
   suffix = "",
   suffixColor,
+  tooltipBgColor,
   onChange,
   disabled = false,
   whiteBg = false,
@@ -69,7 +71,7 @@ export const CustomTextField: React.FC<CustomTextFieldProps> = ({
             *
           </Typography>
         )}
-        {tooltip && <CustomTooltip tooltipText={tooltip} />}
+        {tooltip && <CustomTooltip tooltipText={tooltip} tooltipBgColor={tooltipBgColor} />}
       </Box>
       <OutlinedInput
         endAdornment={

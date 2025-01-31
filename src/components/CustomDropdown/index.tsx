@@ -30,6 +30,7 @@ export interface CustomDropdownProps {
     tooltip?: string;
     disabled?: boolean;
     required?: boolean;
+    tooltipBgColor: string;
 }
 
 export const CustomDropdown: React.FC<CustomDropdownProps> = ({
@@ -41,6 +42,7 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
     tooltip = "",
     disabled = false,
     required = false,
+    tooltipBgColor
 }) => {
     const theme = useTheme();
 
@@ -73,7 +75,7 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
                         *
                     </Typography>
                 )}
-                {tooltip && <CustomTooltip tooltipText={tooltip} />}
+                {tooltip && <CustomTooltip tooltipText={tooltip} tooltipBgColor={tooltipBgColor} />}
             </Box>
             <Select
                 value={value || ""}
