@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.36
+
+### Patch Changes
+
+- d875648: Fixed fucused colors.
+
 ## 0.5.35
 
 ### Patch Changes
