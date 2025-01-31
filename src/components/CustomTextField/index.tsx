@@ -18,7 +18,8 @@ export interface CustomTextFieldProps {
   tooltip?: string;
   suffix?: string | React.ReactNode;
   suffixColor?: string;
-  tooltipBgColor ?: string;
+  tooltipBgColor?: string;
+  focusedColor?: string;
   disabled?: boolean;
   whiteBg?: boolean;
   required?: boolean;
@@ -33,6 +34,7 @@ export const CustomTextField: React.FC<CustomTextFieldProps> = ({
   suffix = "",
   suffixColor,
   tooltipBgColor,
+  focusedColor,
   onChange,
   disabled = false,
   whiteBg = false,
@@ -71,14 +73,22 @@ export const CustomTextField: React.FC<CustomTextFieldProps> = ({
             *
           </Typography>
         )}
-        {tooltip && <CustomTooltip tooltipText={tooltip} tooltipBgColor={tooltipBgColor} />}
+        {tooltip && (
+          <CustomTooltip
+            tooltipText={tooltip}
+            tooltipBgColor={tooltipBgColor}
+          />
+        )}
       </Box>
       <OutlinedInput
         endAdornment={
           <InputAdornment position="end">
             <Typography
               variant="caption"
-              sx={{ color: suffixColor || theme.palette.text.secondary, textTransform: "uppercase" }}
+              sx={{
+                color: suffixColor || theme.palette.text.secondary,
+                textTransform: "uppercase",
+              }}
             >
               {suffix}
             </Typography>
@@ -88,6 +98,11 @@ export const CustomTextField: React.FC<CustomTextFieldProps> = ({
         value={value}
         sx={{
           backgroundColor: whiteBg ? theme.palette.common.white : "transparent",
+          "&.MuiOutlinedInput-root": {
+            "&.Mui-focused fieldset": {
+              borderColor: focusedColor || theme.palette.secondary.main,
+            },
+          },
         }}
         onChange={onChange}
         inputProps={{
