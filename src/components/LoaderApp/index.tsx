@@ -3,7 +3,13 @@ import Image from "next/image";
 import { Box, Typography } from "@mui/material";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
-export const LoaderApp = ({ image }: { image: string | StaticImport }) => {
+export const LoaderApp = ({
+  image,
+  title,
+}: {
+  title?: string | undefined;
+  image: string | StaticImport;
+}) => {
   return (
     <Box
       width="100%"
@@ -33,7 +39,7 @@ export const LoaderApp = ({ image }: { image: string | StaticImport }) => {
           fontSize: { xs: "90px", md: "100px" },
         }}
       >
-        defactor
+        {title || "defactor"}
       </Typography>
     </Box>
   );
