@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.40
+
+### Patch Changes
+
+- 7f62026: Fixed icons.
+
 ## 0.5.36
 
 ### Patch Changes
