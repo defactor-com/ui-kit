@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.41
+
+### Patch Changes
+
+- af19130: Improve MultichainSelectorV3 Design.
+
 ## 0.5.40
 
 ### Patch Changes
