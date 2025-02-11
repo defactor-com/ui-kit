@@ -12,6 +12,7 @@ import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import { IMultiChainSelector, NetworksDataType } from "./MultiChainSelectorTypesV3";
+import Image from "next/image";
 
 export const MultichainSelectorV3: React.FC<IMultiChainSelector & { disabled?: boolean }> = ({
   networkSelected,
@@ -30,7 +31,7 @@ export const MultichainSelectorV3: React.FC<IMultiChainSelector & { disabled?: b
       </Typography>
       {selected.map((value) => (
         <Box mr={0.5} display="flex" alignItems="center" key={value.chainId}>
-          <img
+          <Image
             width={20}
             height={20}
             alt={`Network ${value.name} icon`}
@@ -44,9 +45,7 @@ export const MultichainSelectorV3: React.FC<IMultiChainSelector & { disabled?: b
   return (
     <FormControl
       sx={{
-        maxWidth: 240,
         fontFamily,
-        width: (networksList.length === 1 ? 160 : 87) * networksList.length,
         opacity: disabled ? 0.7 : 1,
         pointerEvents: disabled ? "none" : "auto",
       }}
@@ -70,10 +69,7 @@ export const MultichainSelectorV3: React.FC<IMultiChainSelector & { disabled?: b
         MenuProps={{
           PaperProps: {
             style: {
-              maxWidth: 240,
-              fontFamily,
-              maxHeight: 48 * 4.5 + 8,
-              width: (networksList.length === 1 ? 160 : 87) * networksList.length,
+              fontFamily
             },
           },
         }}
@@ -88,7 +84,7 @@ export const MultichainSelectorV3: React.FC<IMultiChainSelector & { disabled?: b
                 checked={!!networkSelected.find((net) => net.chainId === chain.chainId)}
               />
               <Box mr={1} display="flex" alignItems="center">
-                <img
+                <Image
                   width={24}
                   height={24}
                   alt={`Network ${chain.name} icon`}
