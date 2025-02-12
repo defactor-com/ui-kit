@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.42
+
+### Patch Changes
+
+- 39e902c: Enhance Button Component with Centered Loader and Hidden Text During Loading State.
+
 ## 0.5.41
 
 ### Patch Changes
