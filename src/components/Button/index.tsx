@@ -23,7 +23,7 @@ export const Button = ({
 }: IButton) => {
   const classNames = `btn btn-${variant} ${
     fullWidth ? "full-width" : undefined
-  } ${disabled || loader ? "btn-desabled" : undefined}`;
+  } ${disabled || loader ? "btn-disabled" : undefined}`;
 
   const defaultStyles: React.CSSProperties = {
     borderColor: borderColor,
@@ -45,13 +45,18 @@ export const Button = ({
       disabled={disabled}
       {...props}
     >
-      {icon && typeof icon === "string" ? (
-        <img src={icon} alt="icon button" />
+      {loader ? (
+        loader
       ) : (
-        icon
+        <>
+          {icon && typeof icon === "string" ? (
+            <img src={icon} alt="icon button" />
+          ) : (
+            icon
+          )}
+          {label}
+        </>
       )}
-      {label}
-      {loader}
     </button>
   );
 };
