@@ -19,6 +19,8 @@ export const Button = ({
   fontSize,
   fontWeight,
   MaxHeight,
+  minBtnWidth,
+  minBtnHeight,
   ...props
 }: IButton) => {
   const classNames = `btn btn-${variant} ${
@@ -40,7 +42,9 @@ export const Button = ({
         ...optionalStyles,
         fontSize: fontSize,
         fontWeight: fontWeight,
-        maxHeight: MaxHeight
+        maxHeight: MaxHeight,
+        minWidth: minBtnWidth || 'none',
+        minHeight: minBtnHeight || 'none'
       }}
       disabled={disabled}
       {...props}

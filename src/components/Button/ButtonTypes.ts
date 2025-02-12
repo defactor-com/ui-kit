@@ -16,4 +16,6 @@ export interface IButton extends React.HTMLAttributes<HTMLButtonElement> {
   fontSize?: number | string;
   fontWeight?: number | string;
   MaxHeight?: number | string;
+  minBtnWidth?: number | string;
+  minBtnHeight?: number | string;
 }

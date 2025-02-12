@@ -50,4 +50,5 @@ LoadingButton.args = {
   bgColor: "#26A66B",
   label: "Loading...",
   loader: <CircularProgress size={24} color="inherit" />,
+  minBtnWidth: '156px' 
 };
