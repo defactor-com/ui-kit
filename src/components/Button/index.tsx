@@ -19,11 +19,13 @@ export const Button = ({
   fontSize,
   fontWeight,
   MaxHeight,
+  minBtnWidth,
+  minBtnHeight,
   ...props
 }: IButton) => {
   const classNames = `btn btn-${variant} ${
     fullWidth ? "full-width" : undefined
-  } ${disabled || loader ? "btn-desabled" : undefined}`;
+  } ${disabled || loader ? "btn-disabled" : undefined}`;
 
   const defaultStyles: React.CSSProperties = {
     borderColor: borderColor,
@@ -40,18 +42,25 @@ export const Button = ({
         ...optionalStyles,
         fontSize: fontSize,
         fontWeight: fontWeight,
-        maxHeight: MaxHeight
+        maxHeight: MaxHeight,
+        minWidth: minBtnWidth || 'none',
+        minHeight: minBtnHeight || 'none'
       }}
       disabled={disabled}
       {...props}
     >
-      {icon && typeof icon === "string" ? (
-        <img src={icon} alt="icon button" />
+      {loader ? (
+        loader
       ) : (
-        icon
+        <>
+          {icon && typeof icon === "string" ? (
+            <img src={icon} alt="icon button" />
+          ) : (
+            icon
+          )}
+          {label}
+        </>
       )}
-      {label}
-      {loader}
     </button>
   );
 };

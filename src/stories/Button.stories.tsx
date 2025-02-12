@@ -4,6 +4,7 @@ import { Story } from "@storybook/react";
 import { Button } from "../components/Button";
 import { IButton } from "../components/Button/ButtonTypes";
 import lendingIcon from "../../public/assets/lending-white.svg";
+import { CircularProgress } from "@mui/material";
 
 const additionalStyles: React.CSSProperties = {
   border: "4px solid #7cd7ad",
@@ -41,4 +42,13 @@ IconButton.args = {
   bgColor: "#26A66B",
   icon: lendingIcon,
   label: "Lend",
+};
+
+export const LoadingButton = Template.bind({});
+LoadingButton.args = {
+  variant: "contained",
+  bgColor: "#26A66B",
+  label: "Loading...",
+  loader: <CircularProgress size={24} color="inherit" />,
+  minBtnWidth: '156px' 
 };
