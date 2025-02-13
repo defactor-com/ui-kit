@@ -6,6 +6,7 @@ export * from "./components/Modal";
 export * from "./components/Table";
 export * from "./components/Input";
 export * from "./components/Button";
+export * from "./components/MultiLineButton";
 export * from "./components/Sidebar";
 export * from "./components/Tooltip";
 export * from "./components/BarChart";
