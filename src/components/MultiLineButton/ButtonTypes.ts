@@ -11,11 +11,11 @@ export interface IButton extends React.HTMLAttributes<HTMLButtonElement> {
   loader?: React.ReactElement;
   icon?: React.ReactElement | string;
   label?: string | React.ReactElement;
-  subLabel1?: string | React.ReactElement;
-  subLabel2?: string | React.ReactElement;
+  subLabel?: string | React.ReactElement;
   optionalStyles?: React.CSSProperties;
   variant: "contained" | "outlined" | "text";
   fontSize?: number | string;
+  height?: string | number;
   fontWeight?: number | string;
   MaxHeight?: number | string;
   minBtnWidth?: number | string;

@@ -16,8 +16,11 @@ export const Outlined = Template.bind({});
 Outlined.args = {
   variant: "outlined",
   label: "Claim",
-  subLabel1: "0.01",
-  subLabel2: "FACTR",
+  subLabel: "0.01 FACTR",
+  borderColor: "#5F66FF",
+  labelColor: "#5F66FF",
+  height: '40px',
+  minBtnWidth: '156px',
 };
 
 export const LoadingButton = Template.bind({});

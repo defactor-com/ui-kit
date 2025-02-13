@@ -8,8 +8,7 @@ export const MultiLineButton = ({
   icon,
   color,
   label,
-  subLabel1,
-  subLabel2,
+  subLabel,
   loader,
   variant,
   bgColor,
@@ -21,10 +20,11 @@ export const MultiLineButton = ({
   disabled = false,
   fontSize,
   fontWeight,
-  MaxHeight = '40px',
-  minBtnWidth = '156px',
+  height,
+  MaxHeight,
+  minBtnWidth,
   minBtnHeight,
-  labelColor = "labelColor",
+  labelColor,
   ...props
 }: IButton) => {
   const classNames = `btn btn-${variant} ${
@@ -45,6 +45,7 @@ export const MultiLineButton = ({
         ...defaultStyles,
         ...optionalStyles,
         fontSize: fontSize,
+        height: height,
         fontWeight: fontWeight,
         maxHeight: MaxHeight,
         minWidth: minBtnWidth || 'none',
@@ -63,12 +64,12 @@ export const MultiLineButton = ({
             icon
           )}
         <Box display="flex" flexDirection="column" alignItems="center">
-            <Typography variant="body2" fontWeight={700} fontSize="14px" lineHeight='14px' color={labelColor}>
+            <Typography variant="body2" fontSize="14px" lineHeight={1.2} fontWeight={700}  color={labelColor}>
               {label}
             </Typography>
-            {subLabel1 && (
-              <Typography variant="caption" fontSize="11px" lineHeight='11px' color={labelColor}>
-                {subLabel1}<span>{subLabel2}</span>
+            {subLabel && (
+              <Typography variant="caption" fontSize="11px" lineHeight={1.2} fontWeight={400} color={labelColor}>
+                {subLabel}
               </Typography>
             )}
           </Box>
