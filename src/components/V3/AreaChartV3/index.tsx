@@ -6,6 +6,7 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
+  Tooltip,
   ResponsiveContainer,
 } from "recharts";
 import { formatLargeNumber } from "../../../utils/formatValues";
@@ -27,6 +28,27 @@ export interface AreaChartV3Props {
   boxPadding?: string | number;
   ml?: string | number;
 }
+
+export const CustomTooltip = ({ active, payload }: any) => {
+  if (active && payload && payload.length) {
+    return (
+      <Box
+        sx={{
+          backgroundColor: "white",
+          padding: "8px",
+          borderRadius: "4px",
+          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        <p style={{ margin: 0, fontWeight: 600 }}>{payload[0].payload.time}</p>
+        <p style={{ margin: 0, color: payload[0].color }}>
+          Value: {formatLargeNumber(payload[0].value)}
+        </p>
+      </Box>
+    );
+  }
+  return null;
+};
 
 export const AreaChartV3: React.FC<AreaChartV3Props> = ({
   data,
@@ -108,6 +130,7 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
             }
             domain={["auto", "auto"]}
           />
+          <Tooltip content={<CustomTooltip />} />
           <Area
             type="monotone"
             dataKey={yKey}
