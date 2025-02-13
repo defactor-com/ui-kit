@@ -2,11 +2,14 @@ import React from "react";
 import clsx from "clsx";
 
 import { IButton } from "./ButtonTypes";
+import { Box, Typography } from "@mui/material";
 
 export const MultiLineButton = ({
   icon,
   color,
   label,
+  subLabel1,
+  subLabel2,
   loader,
   variant,
   bgColor,
@@ -18,9 +21,10 @@ export const MultiLineButton = ({
   disabled = false,
   fontSize,
   fontWeight,
-  MaxHeight,
-  minBtnWidth,
+  MaxHeight = '40px',
+  minBtnWidth = '156px',
   minBtnHeight,
+  labelColor = "labelColor",
   ...props
 }: IButton) => {
   const classNames = `btn btn-${variant} ${
@@ -58,7 +62,16 @@ export const MultiLineButton = ({
           ) : (
             icon
           )}
-          {label}
+        <Box display="flex" flexDirection="column" alignItems="center">
+            <Typography variant="body2" fontWeight={700} fontSize="14px" lineHeight='14px' color={labelColor}>
+              {label}
+            </Typography>
+            {subLabel1 && (
+              <Typography variant="caption" fontSize="11px" lineHeight='11px' color={labelColor}>
+                {subLabel1}<span>{subLabel2}</span>
+              </Typography>
+            )}
+          </Box>
         </>
       )}
     </button>

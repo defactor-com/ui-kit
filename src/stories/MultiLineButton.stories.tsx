@@ -3,12 +3,7 @@ import { Story } from "@storybook/react";
 
 import { MultiLineButton } from "../components/MultiLineButton";
 import { IButton } from "../components/MultiLineButton/ButtonTypes";
-import { Box, Typography } from "@mui/material";
 import { CircularProgress } from "@mui/material";
-
-const additionalStyles: React.CSSProperties = {
-  border: "4px solid #7cd7ad",
-};
 
 export default {
   title: "MultiLineButton",
@@ -20,16 +15,9 @@ const Template: Story<IButton> = (args) => <MultiLineButton {...args} />;
 export const Outlined = Template.bind({});
 Outlined.args = {
   variant: "outlined",
-  label: (
-<Box>
-      <Typography variant="body2" fontWeight={700}>
-        Claim
-      </Typography>
-      <Typography variant="caption">
-        123
-      </Typography>
-    </Box>
-  ),
+  label: "Claim",
+  subLabel1: "0.01",
+  subLabel2: "FACTR",
 };
 
 export const LoadingButton = Template.bind({});
