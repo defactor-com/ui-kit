@@ -1,11 +1,12 @@
 import React from "react";
-import { Box, alpha, useTheme, useMediaQuery } from "@mui/material";
+import { Box, alpha, useTheme, useMediaQuery, Typography } from "@mui/material";
 import {
   AreaChart,
   Area,
   XAxis,
   YAxis,
   CartesianGrid,
+  Tooltip,
   ResponsiveContainer,
 } from "recharts";
 import { formatLargeNumber } from "../../../utils/formatValues";
@@ -27,6 +28,29 @@ export interface AreaChartV3Props {
   boxPadding?: string | number;
   ml?: string | number;
 }
+
+export const CustomTooltip = ({ active, payload }: any) => {
+  if (active && payload && payload.length) {
+    return (
+      <Box
+        sx={{
+          backgroundColor: "white",
+          padding: "8px",
+          borderRadius: "4px",
+          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        <Typography sx={{ margin: 0, fontWeight: 600 }}>
+          {payload[0].payload.time}
+        </Typography>
+        <Typography sx={{ margin: 0, color: payload[0].color }}>
+          Value: {formatLargeNumber(payload[0].value)}
+        </Typography>
+      </Box>
+    );
+  }
+  return null;
+};
 
 export const AreaChartV3: React.FC<AreaChartV3Props> = ({
   data,
@@ -108,6 +132,7 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
             }
             domain={["auto", "auto"]}
           />
+          <Tooltip content={<CustomTooltip />} />
           <Area
             type="monotone"
             dataKey={yKey}
