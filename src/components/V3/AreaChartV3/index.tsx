@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, alpha, useTheme, useMediaQuery } from "@mui/material";
+import { Box, alpha, useTheme, useMediaQuery, Typography } from "@mui/material";
 import {
   AreaChart,
   Area,
@@ -40,10 +40,12 @@ export const CustomTooltip = ({ active, payload }: any) => {
           boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.1)",
         }}
       >
-        <p style={{ margin: 0, fontWeight: 600 }}>{payload[0].payload.time}</p>
-        <p style={{ margin: 0, color: payload[0].color }}>
+        <Typography sx={{ margin: 0, fontWeight: 600 }}>
+          {payload[0].payload.time}
+        </Typography>
+        <Typography sx={{ margin: 0, color: payload[0].color }}>
           Value: {formatLargeNumber(payload[0].value)}
-        </p>
+        </Typography>
       </Box>
     );
   }
