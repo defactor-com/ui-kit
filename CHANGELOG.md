@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.43
+
+### Patch Changes
+
+- 6fbd4cd: Added MultiLineButton.
+
 ## 0.5.42
 
 ### Patch Changes
