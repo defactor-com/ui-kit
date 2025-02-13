@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.44
+
+### Patch Changes
+
+- d7bb559: Added a Tooltip component to the AreaChartV3.
+
 ## 0.5.43
 
 ### Patch Changes
