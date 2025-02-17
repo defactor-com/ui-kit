@@ -119,7 +119,7 @@ export const MultichainSelectorItemOnTheRight: Story<IMultiChainSelector> = (arg
       fontFamily=""
       color="#26A66B"
       onClick={() => {}}
-      textFieldLabel="Chains"
+      textFieldLabel="Chains Test"
       networksList={networksList}
       networksAssets={networksAssets}
       networkSelected={networkSelected}

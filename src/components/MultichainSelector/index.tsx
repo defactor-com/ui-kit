@@ -26,9 +26,7 @@ export const MultichainSelector = ({
 }: IMultiChainSelector) => (
   <FormControl
     sx={{
-      maxWidth: 240,
-      fontFamily: fontFamily,
-      width: (networksList.length === 1 ? 160 : 87) * networksList.length,
+      fontFamily: fontFamily
     }}
   >
     <Select
