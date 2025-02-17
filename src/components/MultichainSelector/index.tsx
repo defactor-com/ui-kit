@@ -35,7 +35,7 @@ export const MultichainSelector = ({
       multiple
       sx={{
         height: 40,
-        borderRadius: "30px",
+        borderRadius: "30px"
       }}
       className="selector"
       value={networkSelected}
@@ -60,10 +60,8 @@ export const MultichainSelector = ({
       MenuProps={{
         PaperProps: {
           style: {
-            maxWidth: 240,
             fontFamily: fontFamily,
             maxHeight: 48 * 4.5 + 8,
-            width: (networksList.length === 1 ? 160 : 87) * networksList.length,
           },
         },
       }}
@@ -74,8 +72,8 @@ export const MultichainSelector = ({
             display="flex"
             alignItems="center"
             onClick={() => onClick(chain)}
-          >
-            <Checkbox
+          >         
+             <Checkbox
               icon={<CheckBoxOutlineBlankIcon />}
               checkedIcon={<CheckBoxIcon sx={{ color: color }} />}
               checked={
