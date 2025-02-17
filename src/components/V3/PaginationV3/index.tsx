@@ -3,12 +3,12 @@ import clsx from "clsx";
 
 import rightIcon from "/assets/chevron_right.svg";
 import leftIcon from "/assets/chevron_left.svg";
-import { Button } from "../Button";
 
-import usePaginationState from "../V3/PaginationV3/usePaginationState";
-import { IPagination } from "../V3/PaginationV3/PaginationTypes";
+import usePaginationState from "./usePaginationState";
+import { IPagination } from "./PaginationTypes";
+import { Button } from "../../Button";
 
-export const Pagination = ({
+export const PaginationV3 = ({
   handleSelectedRowsPage,
   handleSelectedPage,
   rowsPageSelected,

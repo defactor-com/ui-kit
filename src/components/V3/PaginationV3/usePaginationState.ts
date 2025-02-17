@@ -1,4 +1,4 @@
-import { IFilterSelectedObject } from "../Table/TableTypes";
+import { IFilterSelectedObject } from "../../Table/TableTypes";
 
 import { IUsePaginatioState } from "./PaginationTypes";
 

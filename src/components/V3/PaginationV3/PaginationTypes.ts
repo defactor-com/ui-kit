@@ -1,5 +1,5 @@
 import React from "react";
-import { IFilterObject, IFilterSelectedObject } from "../Table/TableTypes";
+import { IFilterObject, IFilterSelectedObject } from "../../Table/TableTypes";
 
 export interface IPagination {
   fontFamily?: string;

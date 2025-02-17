@@ -7,13 +7,13 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { Button } from "../Button";
 import { DropDown } from "../DropDown";
 import { Container } from "../Container";
-import { Pagination } from "../Pagination";
 import AdmirationIcon from "../Icons/admirationIcon";
-import downIcon from "../../../public/assets/arrow-down-icon.svg";
-import filterIcon from "../../../public/assets/filter-options-icon.svg";
+import downIcon from "/assets/arrow-down-icon.svg";
+import filterIcon from "/assets/filter-options-icon.svg";
 
 import useTableState from "./useTableState";
 import { ITable, IFilterObject, IHeaderObject } from "./TableTypes";
+import { PaginationV3 } from "../V3/PaginationV3";
 
 export const Table = ({
   rows,
@@ -206,7 +206,7 @@ export const Table = ({
               </span>
             </div>
           )}
-          <Pagination
+          <PaginationV3
             handleSelectedRowsPage={handleSelectedRowsPage}
             handleSelectedPage={handleSelectedPage}
             rowsPageSelected={rowsPageSelected}
