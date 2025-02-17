@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.46
+
+### Patch Changes
+
+- 86a1ba3: Added padding to MultichainSelector.
+
 ## 0.5.45
 
 ### Patch Changes
