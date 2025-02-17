@@ -3,18 +3,19 @@ import { Story, Meta } from "@storybook/react";
 
 import { MultichainSelectorV3 } from "../components/V3/MultichainSelectorV3";
 import { IMultiChainSelector } from "../components/V3/MultichainSelectorV3/MultiChainSelectorTypesV3";
+import { Box } from "@mui/material";
 
 export default {
   title: "V3/MultichainSelectorV3",
   component: MultichainSelectorV3,
   argTypes: {
-    fontFamily: { control: 'text' },
-    color: { control: 'color' },
-    onClick: { action: 'clicked' },
-    textFieldLabel: { control: 'text' },
-    networksList: { control: 'object' },
-    networksAssets: { control: 'object' },
-    networkSelected: { control: 'object' },
+    fontFamily: { control: "text" },
+    color: { control: "color" },
+    onClick: { action: "clicked" },
+    textFieldLabel: { control: "text" },
+    networksList: { control: "object" },
+    networksAssets: { control: "object" },
+    networkSelected: { control: "object" },
   },
 } as Meta;
 
@@ -22,7 +23,7 @@ const networksList = [
   {
     chainId: 80002,
     rpcUrl: "https://polygon-amoy.g.alchemy.com/v2",
-    name: "Amoy",
+    name: "Amoy Long Name Test",
     currency: "MATIC",
     explorerUrl: "https://www.oklink.com/amoy",
     baseTokenAddress: "0x60E87395b0101F85C623c38Be010574f958496db",
@@ -111,7 +112,7 @@ export const MultichainMainItem: Story<IMultiChainSelector> = (args) => {
       {...args}
       fontFamily=""
       color="#26A66B"
-      onClick={() => { }}
+      onClick={() => {}}
       textFieldLabel="Chains"
       networksList={networksList}
       networksAssets={networksAssets}
@@ -126,12 +127,30 @@ export const MultichainDisabledItem: Story<IMultiChainSelector> = (args) => {
       {...args}
       fontFamily=""
       color="#26A66B"
-      onClick={() => { }}
+      onClick={() => {}}
       textFieldLabel="Chains"
       networksList={networksList}
       networksAssets={networksAssets}
       networkSelected={networkSelected}
       disabled={true}
     />
+  );
+};
+
+export const MultichainItemOnTheRight: Story<IMultiChainSelector> = (args) => {
+  return (
+    <Box display="flex" justifyContent="flex-end" alignContent="flex-start">
+      <MultichainSelectorV3
+        {...args}
+        fontFamily=""
+        color="#26A66B"
+        onClick={() => {}}
+        textFieldLabel="Chains Long Name Test"
+        networksList={networksList}
+        networksAssets={networksAssets}
+        networkSelected={networkSelected}
+        disabled={false}
+      />
+    </Box>
   );
 };
