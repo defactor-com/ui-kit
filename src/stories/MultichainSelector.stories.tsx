@@ -2,7 +2,6 @@ import React from "react";
 import { Story } from "@storybook/react";
 
 import { MultichainSelector } from "../components/MultichainSelector";
-import AdmirationIcon from "../components/Icons/admirationIcon";
 import { IMultiChainSelector } from "../components/MultichainSelector/MultiChainSelectorTypes";
 import { Box } from "@mui/material";
 
@@ -15,7 +14,7 @@ const networksList = [
   {
     chainId: 80002,
     rpcUrl: "https://polygon-amoy.g.alchemy.com/v2",
-    name: "Amoy",
+    name: "Amoy Test long names..................",
     currency: "MATIC",
     explorerUrl: "https://www.oklink.com/amoy",
     baseTokenAddress: "0x60E87395b0101F85C623c38Be010574f958496db",
