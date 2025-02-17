@@ -70,6 +70,7 @@ export const MultichainSelector = ({
             display="flex"
             alignItems="center"
             onClick={() => onClick(chain)}
+            pr={2}
           >         
              <Checkbox
               icon={<CheckBoxOutlineBlankIcon />}
