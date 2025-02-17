@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.45
+
+### Patch Changes
+
+- 6b52636: Styled Multichain component width and applied small fixes to prevent network name cutoff.
+
 ## 0.5.44
 
 ### Patch Changes
