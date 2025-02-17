@@ -2,8 +2,8 @@ import React from "react";
 import { Story } from "@storybook/react";
 
 import { MultichainSelector } from "../components/MultichainSelector";
-import AdmirationIcon from "../components/Icons/admirationIcon";
 import { IMultiChainSelector } from "../components/MultichainSelector/MultiChainSelectorTypes";
+import { Box } from "@mui/material";
 
 export default {
   title: "MultichainSelector",
@@ -14,7 +14,7 @@ const networksList = [
   {
     chainId: 80002,
     rpcUrl: "https://polygon-amoy.g.alchemy.com/v2",
-    name: "Amoy",
+    name: "Amoy Test long names..................",
     currency: "MATIC",
     explorerUrl: "https://www.oklink.com/amoy",
     baseTokenAddress: "0x60E87395b0101F85C623c38Be010574f958496db",
@@ -109,5 +109,21 @@ export const MultichainSelectorItem: Story<IMultiChainSelector> = (args) => {
       networksAssets={networksAssets}
       networkSelected={networkSelected}
     />
+  );
+};
+export const MultichainSelectorItemOnTheRight: Story<IMultiChainSelector> = (args) => {
+  return (
+  <Box display='flex' justifyContent='flex-end' alignContent='flex-start'>
+    <MultichainSelector
+      {...args}
+      fontFamily=""
+      color="#26A66B"
+      onClick={() => {}}
+      textFieldLabel="Chains Test"
+      networksList={networksList}
+      networksAssets={networksAssets}
+      networkSelected={networkSelected}
+    />
+    </Box>
   );
 };
