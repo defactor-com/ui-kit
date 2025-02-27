@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-import { ChevronLeft, ChevronRight } from '@untitled-ui/icons-react';
+import { ChevronLeft, ChevronRight } from "@untitled-ui/icons-react";
 import { Button } from "../Button";
 
 import usePaginationState from "./usePaginationState";
@@ -97,7 +97,7 @@ export const Pagination = ({
             externalStyles={clsx("button-style", "padding-button")}
             onClick={() => nextPage("-")}
             fontFamily={fontFamily}
-            icon={<ChevronLeft />} 
+            icon={<ChevronLeft width={16} height={16} />}
             variant="text"
           />
           <RenderPagination handleSelectedPage={handleSelectedPage} />
@@ -105,7 +105,7 @@ export const Pagination = ({
             externalStyles={clsx("button-style", "padding-button")}
             onClick={() => nextPage("+")}
             fontFamily={fontFamily}
-            icon={<ChevronRight />} 
+            icon={<ChevronRight width={16} height={16} />}
             variant="text"
           />
         </div>
