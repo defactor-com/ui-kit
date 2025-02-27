@@ -9,6 +9,7 @@ import {
   OutlinedInput,
 } from "@mui/material";
 import React from "react";
+import { ChevronDown } from "@untitled-ui/icons-react";
 
 import { CustomTooltip } from "../CustomTooltip";
 
@@ -53,7 +54,7 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
   focusedColor,
   flexDirectionRow = false,
   numColor,
-  numSize
+  numSize,
 }) => {
   const theme = useTheme();
 
@@ -108,12 +109,36 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
       <Select
         value={value || ""}
         displayEmpty
+        IconComponent={(props) => (
+          <Box
+            component="span"
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "100%",
+            }}
+          >
+            <ChevronDown
+              {...props}
+              style={{
+                width: "20px",
+              }}
+            />
+          </Box>
+        )}
         sx={{
           color: numColor,
           fontSize: numSize,
           ".MuiSelect-select": {
+            display: "flex",
+            alignItems: "center",
             paddingTop: `${paddingSize}`,
             paddingBottom: `${paddingSize}`,
+          },
+          "& .MuiSelect-icon": {
+            top: "50%",
+            transform: "translateY(-50%)",
           },
         }}
         renderValue={(selected) =>
