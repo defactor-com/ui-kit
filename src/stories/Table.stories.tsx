@@ -102,7 +102,7 @@ const Template: Story<ITable> = (args) => {
       totalRowsNumber={22}
       rowsPageSelected={5}
       rowsPage={[5, 10, 15]}
-      rowsNumberLabel="Rows per page:"
+      rowsNumberLabel="Show:"
       handleSelectedRowsPage={() => {}}
       handleSelectedPage={handleSelectedPage}
       setFilters={setFilters}

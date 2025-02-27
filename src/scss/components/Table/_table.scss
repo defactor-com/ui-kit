@@ -148,7 +148,7 @@ tr {
 }
 
 .container-rows-per-page {
-  position: absolute;
+  position: relative;
   @media (max-width: $breakpoint-mobile) {
     position: relative;
   }

@@ -86,26 +86,6 @@ export const Pagination = ({
 
   return (
     <div className="pagination-container">
-      <div className="container-rows-per-page">
-        <span className="variant-body1" style={{ fontFamily: fontFamily }}>
-          {rowsNumberLabel}
-        </span>
-        <select
-          className="select-item"
-          onChange={(e) => handleSelectedRowsPage(e.target.value)}
-        >
-          {rowsPage?.map((item) => (
-            <option
-              style={{ fontFamily: fontFamily }}
-              className="variant-body1"
-              value={item}
-              key={item}
-            >
-              {item}
-            </option>
-          ))}
-        </select>
-      </div>
       {totalRowsNumber > rowsPageSelected && nextPage ? (
         <div className="page-selector-container">
           <Button
@@ -127,6 +107,26 @@ export const Pagination = ({
       ) : (
         <></>
       )}
+      <div className="container-rows-per-page">
+        <span className="variant-body1" style={{ fontFamily: fontFamily }}>
+          {rowsNumberLabel}
+        </span>
+        <select
+          className="select-item"
+          onChange={(e) => handleSelectedRowsPage(e.target.value)}
+        >
+          {rowsPage?.map((item) => (
+            <option
+              style={{ fontFamily: fontFamily }}
+              className="variant-body1"
+              value={item}
+              key={item}
+            >
+              {item}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 };
