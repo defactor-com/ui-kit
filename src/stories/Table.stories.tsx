@@ -102,7 +102,7 @@ const Template: Story<ITable> = (args) => {
       totalRowsNumber={22}
       rowsPageSelected={5}
       rowsPage={[5, 10, 15]}
-      rowsNumberLabel="Show:"
+      rowsNumberLabel="Show"
       notVisibleNumColor = "#353535"
       arrowColor = "#797A7A"
       ofText = "of"

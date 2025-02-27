@@ -144,9 +144,7 @@ export const Pagination = ({
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "flex-end",
-          pr: 4,
           gap: 1,
-          position: "absolute",
           right: 0,
           "@media (max-width: 600px)": {
             position: "relative",

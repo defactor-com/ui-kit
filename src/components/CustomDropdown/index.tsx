@@ -78,7 +78,7 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
-          minHeight: "34px",
+          height: "28px",
         }}
       >
         {label && (
@@ -155,7 +155,7 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
         input={
           <OutlinedInput
             sx={{
-              height: "37px",
+              height: "28px",
               "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                 borderColor: focusedColor || theme.palette.secondary.main,
               },
