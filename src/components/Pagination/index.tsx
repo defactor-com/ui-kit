@@ -22,7 +22,8 @@ export const Pagination = ({
   nextPage,
   filters,
   notVisibleNumColor,
-  arrowColor
+  arrowColor,
+  ofText
 }: IPagination) => {
   const theme = useTheme();
 
@@ -99,7 +100,7 @@ export const Pagination = ({
           color={ arrowColor || theme.palette.grey[400]}
           fontWeight={500}
         >
-          {`${rowsPageSelected} of ${totalRowsNumber} rows`}
+          {`${rowsPageSelected} ${ofText} ${totalRowsNumber}`}
         </Typography>
       </Box>
       {totalRowsNumber > rowsPageSelected && nextPage ? (

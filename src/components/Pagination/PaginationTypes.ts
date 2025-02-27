@@ -17,6 +17,7 @@ export interface IPagination {
   handleSelectedRowsPage(selectedValue: string): void;
   notVisibleNumColor?: string;
   arrowColor?: string;
+  ofText?: string;
 }
 
 export interface IUsePaginatioState {

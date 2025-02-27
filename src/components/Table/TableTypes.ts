@@ -56,6 +56,7 @@ export interface ITable {
   handleSelectedRowsPage(selectedValue: string): void;
   notVisibleNumColor?: string;
   arrowColor?: string;
+  ofText?: string;
 }
 
 export interface IUseTableState {

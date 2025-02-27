@@ -38,7 +38,8 @@ export const Table = ({
   emptyIcon = <AdmirationIcon />,
   rowsHoverColor = "rgba(38, 166, 107, 0.1)",
   notVisibleNumColor,
-  arrowColor
+  arrowColor,
+  ofText = "of"
 }: ITable) => {
   const [
     { activeFilter, hoverItem, isHovered },
@@ -222,6 +223,7 @@ export const Table = ({
             filters={filters}
             notVisibleNumColor={notVisibleNumColor}
             arrowColor={arrowColor}
+            ofText={ofText}
           />
         </>
       }
