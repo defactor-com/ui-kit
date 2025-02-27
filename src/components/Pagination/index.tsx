@@ -21,6 +21,8 @@ export const Pagination = ({
   rowsPage,
   nextPage,
   filters,
+  notVisibleNumColor,
+  arrowColor
 }: IPagination) => {
   const theme = useTheme();
 
@@ -67,7 +69,7 @@ export const Pagination = ({
               alignItems: "center",
               justifyContent: "center",
               background: visiblePage === num ? "white" : "white",
-              fontWeight: visiblePage === num ? "bold" : "normal",
+              fontWeight: visiblePage === num ? "bold" : "bold"
             }}
             onClick={() => handleSelectedPage && handleSelectedPage(num)}
           >
@@ -78,7 +80,7 @@ export const Pagination = ({
               color={
                 visiblePage === num
                   ? theme.palette.secondary.main
-                  : theme.palette.grey[600]
+                  : notVisibleNumColor || theme.palette.grey[600]
               }
             >
               {num}
@@ -97,7 +99,7 @@ export const Pagination = ({
             externalStyles={clsx("button-style", "padding-button")}
             onClick={() => nextPage("-")}
             fontFamily={fontFamily}
-            icon={<ChevronLeft width={16} height={16} />}
+            icon={<ChevronLeft width={16} height={16} color={arrowColor || theme.palette.grey[400]} />}
             variant="text"
           />
           <RenderPagination handleSelectedPage={handleSelectedPage} />
@@ -105,7 +107,7 @@ export const Pagination = ({
             externalStyles={clsx("button-style", "padding-button")}
             onClick={() => nextPage("+")}
             fontFamily={fontFamily}
-            icon={<ChevronRight width={16} height={16} />}
+            icon={<ChevronRight width={16} height={16} color={arrowColor || theme.palette.grey[400]} />}
             variant="text"
           />
         </div>

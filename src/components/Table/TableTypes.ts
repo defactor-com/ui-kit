@@ -54,6 +54,8 @@ export interface ITable {
     React.SetStateAction<Array<IFilterSelectedObject>>
   >;
   handleSelectedRowsPage(selectedValue: string): void;
+  notVisibleNumColor?: string;
+  arrowColor?: string;
 }
 
 export interface IUseTableState {

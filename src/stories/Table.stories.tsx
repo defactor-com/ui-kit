@@ -98,6 +98,8 @@ const Template: Story<ITable> = (args) => {
       loading
       haveOptions
       visiblePage={currentPage}
+      notVisibleNumColor="#353535"
+      arrowColor="#797A7A"
       nextPage={() => {}}
       totalRowsNumber={22}
       rowsPageSelected={5}
