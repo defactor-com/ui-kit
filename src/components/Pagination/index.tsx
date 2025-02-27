@@ -93,6 +93,15 @@ export const Pagination = ({
 
   return (
     <div className="pagination-container">
+       <Box>
+        <Typography
+          variant="caption"
+          color={ arrowColor || theme.palette.grey[400]}
+          fontWeight={500}
+        >
+          {`${rowsPageSelected} of ${totalRowsNumber} rows`}
+        </Typography>
+      </Box>
       {totalRowsNumber > rowsPageSelected && nextPage ? (
         <div className="page-selector-container">
           <Button
