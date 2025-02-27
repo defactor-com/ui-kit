@@ -122,7 +122,7 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
             <ChevronDown
               {...props}
               style={{
-                width: "14px"
+                width: "14px",
               }}
             />
           </Box>
@@ -155,7 +155,7 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
         input={
           <OutlinedInput
             sx={{
-                height: "37px",
+              height: "37px",
               "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                 borderColor: focusedColor || theme.palette.secondary.main,
               },
@@ -164,7 +164,13 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
         }
       >
         {menuItems.map((menuItem) => (
-          <MenuItem key={menuItem.label} value={menuItem.value}>
+          <MenuItem
+            key={menuItem.label}
+            value={menuItem.value}
+            sx={{
+              fontSize: numSize || "12px",
+            }}
+          >
             {menuItem.label}
           </MenuItem>
         ))}
