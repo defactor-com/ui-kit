@@ -141,7 +141,6 @@ export const Pagination = ({
               value: option,
             }))}
             value={rowsPageSelected.toString()}
-            // size="small"
             flexDirectionRow={true}
             paddingSize="4px"
             tooltipBgColor={theme.palette.primary.main}
