@@ -142,8 +142,9 @@ export const Pagination = ({
             }))}
             value={rowsPageSelected.toString()}
             // size="small"
-            //  paddingSize="4px"
-            tooltipBgColor="red"
+            flexDirectionRow={true}
+            paddingSize="4px"
+            tooltipBgColor={theme.palette.primary.main}
             onChange={(str) => handleSelectedRowsPage(str)}
           />
         </Box>
