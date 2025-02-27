@@ -122,7 +122,7 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
             <ChevronDown
               {...props}
               style={{
-                width: "20px",
+                width: "14px"
               }}
             />
           </Box>
@@ -135,6 +135,11 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
             alignItems: "center",
             paddingTop: `${paddingSize}`,
             paddingBottom: `${paddingSize}`,
+          },
+          "& .MuiOutlinedInput-root": {
+            display: "flex",
+            alignItems: "center",
+            height: "100%",
           },
           "& .MuiSelect-icon": {
             top: "50%",
@@ -150,6 +155,7 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
         input={
           <OutlinedInput
             sx={{
+                height: "37px",
               "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                 borderColor: focusedColor || theme.palette.secondary.main,
               },
