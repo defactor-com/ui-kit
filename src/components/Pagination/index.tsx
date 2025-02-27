@@ -39,53 +39,55 @@ export const Pagination = ({
   }: {
     handleSelectedPage?(selectedValue: number): void;
   }) => {
-    const pages = buildPaginationArray && buildPaginationArray();
-    let pagesMobile: number[] = [];
+    const pages = buildPaginationArray ? buildPaginationArray() : [];
+    const pagesMobile = buildPaginationArrayMobile(pages);
 
-    if (buildPaginationArrayMobile && pages)
-      pagesMobile = buildPaginationArrayMobile(pages);
-
-    if (window.innerWidth > 600) {
-      return (
-        <>
-          {pages?.map((item) => (
-            <span
-              className={clsx("variant-body1", "number-page-button")}
-              style={{
-                fontFamily: fontFamily,
-                color: visiblePage === item ? "#26A66B" : "none",
-                fontWeight: visiblePage === item ? "bold" : "normal",
-                background: visiblePage === item ? "#EAF7F1" : "white",
-              }}
-              key={item}
-              onClick={() => handleSelectedPage && handleSelectedPage(item)}
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          gap: 2,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {(window.innerWidth > 600 ? pages : pagesMobile).map((num) => (
+          <Box
+            key={num}
+            sx={{
+              display: "flex",
+              cursor: "pointer",
+              border:
+                visiblePage === num
+                  ? `1px solid ${theme.palette.secondary.main}`
+                  : "none",
+              borderRadius: 1,
+              width: 28,
+              height: 28,
+              alignItems: "center",
+              justifyContent: "center",
+              background: visiblePage === num ? "#EAF7F1" : "white",
+              fontWeight: visiblePage === num ? "bold" : "normal",
+            }}
+            onClick={() => handleSelectedPage && handleSelectedPage(num)}
+          >
+            <Typography
+              variant="caption"
+              fontWeight={500}
+              lineHeight={1}
+              color={
+                visiblePage === num
+                  ? theme.palette.secondary.main
+                  : theme.palette.grey[600]
+              }
             >
-              {item}
-            </span>
-          ))}
-        </>
-      );
-    } else {
-      return (
-        <>
-          {pagesMobile.map((item) => (
-            <span
-              className={clsx("variant-body1", "number-page-button")}
-              style={{
-                fontFamily: fontFamily,
-                color: visiblePage === item ? "#26A66B" : "none",
-                fontWeight: visiblePage === item ? "bold" : "normal",
-                background: visiblePage === item ? "#EAF7F1" : "white",
-              }}
-              key={item}
-              onClick={() => handleSelectedPage && handleSelectedPage(item)}
-            >
-              {item}
-            </span>
-          ))}
-        </>
-      );
-    }
+              {num}
+            </Typography>
+          </Box>
+        ))}
+      </Box>
+    );
   };
 
   return (
