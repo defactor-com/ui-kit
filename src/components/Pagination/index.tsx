@@ -116,14 +116,14 @@ export const Pagination = ({
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
-          justifyContent: "flex-end", // Align to the right
-          pr: 4, // Adjust padding as needed
+          justifyContent: "flex-end",
+          pr: 4,
           gap: 1,
-          position: "absolute", // Maintain right positioning
-          right: 0, // Ensure it sticks to the right
+          position: "absolute",
+          right: 0,
           "@media (max-width: 600px)": {
             position: "relative",
-            justifyContent: "center", // Center it on mobile
+            justifyContent: "center",
           },
         }}
       >
