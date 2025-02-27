@@ -23,7 +23,9 @@ export const Pagination = ({
   filters,
   notVisibleNumColor,
   arrowColor,
-  ofText
+  ofText,
+  numColor,
+  numSize,
 }: IPagination) => {
   const theme = useTheme();
 
@@ -70,7 +72,7 @@ export const Pagination = ({
               alignItems: "center",
               justifyContent: "center",
               background: visiblePage === num ? "white" : "white",
-              fontWeight: visiblePage === num ? "bold" : "bold"
+              fontWeight: visiblePage === num ? "bold" : "bold",
             }}
             onClick={() => handleSelectedPage && handleSelectedPage(num)}
           >
@@ -94,10 +96,10 @@ export const Pagination = ({
 
   return (
     <div className="pagination-container">
-       <Box>
+      <Box>
         <Typography
           variant="caption"
-          color={ arrowColor || theme.palette.grey[400]}
+          color={arrowColor || theme.palette.grey[400]}
           fontWeight={500}
         >
           {`${rowsPageSelected} ${ofText} ${totalRowsNumber}`}
@@ -109,7 +111,13 @@ export const Pagination = ({
             externalStyles={clsx("button-style", "padding-button")}
             onClick={() => nextPage("-")}
             fontFamily={fontFamily}
-            icon={<ChevronLeft width={16} height={16} color={arrowColor || theme.palette.grey[400]} />}
+            icon={
+              <ChevronLeft
+                width={16}
+                height={16}
+                color={arrowColor || theme.palette.grey[400]}
+              />
+            }
             variant="text"
           />
           <RenderPagination handleSelectedPage={handleSelectedPage} />
@@ -117,7 +125,13 @@ export const Pagination = ({
             externalStyles={clsx("button-style", "padding-button")}
             onClick={() => nextPage("+")}
             fontFamily={fontFamily}
-            icon={<ChevronRight width={16} height={16} color={arrowColor || theme.palette.grey[400]} />}
+            icon={
+              <ChevronRight
+                width={16}
+                height={16}
+                color={arrowColor || theme.palette.grey[400]}
+              />
+            }
             variant="text"
           />
         </div>
@@ -141,7 +155,7 @@ export const Pagination = ({
         }}
       >
         <Typography
-          color={theme.palette.grey[900]}
+          color={arrowColor || theme.palette.grey[400]}
           variant="caption"
           fontWeight={500}
         >
@@ -149,6 +163,8 @@ export const Pagination = ({
         </Typography>
         <Box sx={{ display: "flex" }}>
           <CustomDropdown
+            numColor={numColor || theme.palette.grey[700]}
+            numSize={numSize || "12px"}
             menuItems={rowsPage?.map((option) => ({
               label: option.toString(),
               value: option,

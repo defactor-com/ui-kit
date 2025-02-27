@@ -18,6 +18,8 @@ export interface IPagination {
   notVisibleNumColor?: string;
   arrowColor?: string;
   ofText?: string;
+  numColor?: string;
+  numSize?: string;
 }
 
 export interface IUsePaginatioState {

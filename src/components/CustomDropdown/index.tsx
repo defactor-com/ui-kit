@@ -35,6 +35,8 @@ export interface CustomDropdownProps {
   focusedColor?: string;
   paddingSize?: string;
   flexDirectionRow?: boolean;
+  numColor?: string;
+  numSize?: string;
 }
 
 export const CustomDropdown: React.FC<CustomDropdownProps> = ({
@@ -49,7 +51,9 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
   tooltipBgColor,
   paddingSize,
   focusedColor,
-  flexDirectionRow = false
+  flexDirectionRow = false,
+  numColor,
+  numSize
 }) => {
   const theme = useTheme();
 
@@ -60,14 +64,14 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
   };
 
   return (
-<FormControl
-  variant="outlined"
-  fullWidth
-  disabled={disabled}
-  sx={{
-    flexDirection: flexDirectionRow ? 'row' : 'column',
-  }}
->
+    <FormControl
+      variant="outlined"
+      fullWidth
+      disabled={disabled}
+      sx={{
+        flexDirection: flexDirectionRow ? "row" : "column",
+      }}
+    >
       <Box
         sx={{
           display: "flex",
@@ -105,6 +109,8 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
         value={value || ""}
         displayEmpty
         sx={{
+          color: numColor,
+          fontSize: numSize,
           ".MuiSelect-select": {
             paddingTop: `${paddingSize}`,
             paddingBottom: `${paddingSize}`,

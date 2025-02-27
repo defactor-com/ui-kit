@@ -57,6 +57,8 @@ export interface ITable {
   notVisibleNumColor?: string;
   arrowColor?: string;
   ofText?: string;
+  numColor?: string;
+  numSize?: string;
 }
 
 export interface IUseTableState {
