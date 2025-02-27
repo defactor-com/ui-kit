@@ -1,8 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-import rightIcon from "../../../public/assets/chevron_right.svg";
-import leftIcon from "../../../public/assets/chevron_left.svg";
+import { ChevronLeft, ChevronRight } from '@untitled-ui/icons-react';
 import { Button } from "../Button";
 
 import usePaginationState from "./usePaginationState";
@@ -67,7 +66,7 @@ export const Pagination = ({
               height: 28,
               alignItems: "center",
               justifyContent: "center",
-              background: visiblePage === num ? "#EAF7F1" : "white",
+              background: visiblePage === num ? "white" : "white",
               fontWeight: visiblePage === num ? "bold" : "normal",
             }}
             onClick={() => handleSelectedPage && handleSelectedPage(num)}
@@ -98,7 +97,7 @@ export const Pagination = ({
             externalStyles={clsx("button-style", "padding-button")}
             onClick={() => nextPage("-")}
             fontFamily={fontFamily}
-            icon={leftIcon}
+            icon={<ChevronLeft />} 
             variant="text"
           />
           <RenderPagination handleSelectedPage={handleSelectedPage} />
@@ -106,7 +105,7 @@ export const Pagination = ({
             externalStyles={clsx("button-style", "padding-button")}
             onClick={() => nextPage("+")}
             fontFamily={fontFamily}
-            icon={rightIcon}
+            icon={<ChevronRight />} 
             variant="text"
           />
         </div>
