@@ -156,6 +156,7 @@ export const Pagination = ({
       >
         <Typography
           color={arrowColor || theme.palette.grey[400]}
+          fontSize={numSize || "12px"}
           variant="caption"
           fontWeight={500}
         >
