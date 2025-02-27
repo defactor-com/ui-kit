@@ -7,6 +7,8 @@ import { Button } from "../Button";
 
 import usePaginationState from "./usePaginationState";
 import { IPagination } from "./PaginationTypes";
+import { Box, Typography, useTheme } from "@mui/material";
+import { CustomDropdown } from "../CustomDropdown";
 
 export const Pagination = ({
   handleSelectedRowsPage,
@@ -21,6 +23,8 @@ export const Pagination = ({
   nextPage,
   filters,
 }: IPagination) => {
+  const theme = useTheme();
+
   const [{ buildPaginationArrayMobile, buildPaginationArray }] =
     usePaginationState({
       totalRowsNumber,
@@ -107,26 +111,43 @@ export const Pagination = ({
       ) : (
         <></>
       )}
-      <div className="container-rows-per-page">
-        <span className="variant-body1" style={{ fontFamily: fontFamily }}>
-          {rowsNumberLabel}
-        </span>
-        <select
-          className="select-item"
-          onChange={(e) => handleSelectedRowsPage(e.target.value)}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "flex-end", // Align to the right
+          pr: 4, // Adjust padding as needed
+          gap: 1,
+          position: "absolute", // Maintain right positioning
+          right: 0, // Ensure it sticks to the right
+          "@media (max-width: 600px)": {
+            position: "relative",
+            justifyContent: "center", // Center it on mobile
+          },
+        }}
+      >
+        <Typography
+          color={theme.palette.grey[900]}
+          variant="caption"
+          fontWeight={500}
         >
-          {rowsPage?.map((item) => (
-            <option
-              style={{ fontFamily: fontFamily }}
-              className="variant-body1"
-              value={item}
-              key={item}
-            >
-              {item}
-            </option>
-          ))}
-        </select>
-      </div>
+          {rowsNumberLabel}
+        </Typography>
+        <Box sx={{ display: "flex" }}>
+          <CustomDropdown
+            menuItems={rowsPage?.map((option) => ({
+              label: option.toString(),
+              value: option,
+            }))}
+            value={rowsPageSelected.toString()}
+            // size="small"
+            //  paddingSize="4px"
+            tooltipBgColor="red"
+            onChange={(str) => handleSelectedRowsPage(str)}
+          />
+        </Box>
+      </Box>
     </div>
   );
 };
