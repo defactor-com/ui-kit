@@ -41,7 +41,8 @@ export const Table = ({
   arrowColor,
   ofText = "of",
   numColor,
-  numSize
+  numSize,
+  fontSize = "14px",
 }: ITable) => {
   const [
     { activeFilter, hoverItem, isHovered },
@@ -69,7 +70,13 @@ export const Table = ({
             >
               <tr>
                 {headers.map((item: IHeaderObject) => (
-                  <th style={{ fontFamily: fontFamily }} key={item.label}>
+                  <th
+                    style={{
+                      fontFamily: fontFamily,
+                      fontSize: fontSize,
+                    }}
+                    key={item.label}
+                  >
                     <div
                       className={clsx("center-element", item.externalStyles)}
                       style={{ ...item.optionalStyles }}
@@ -166,7 +173,11 @@ export const Table = ({
                     {row.items.map((itemRow, indexRow) => (
                       <td
                         className={clsx(itemRow.externalStyles)}
-                        style={{ ...itemRow.optionalStyles }}
+                        style={{
+                          ...itemRow.optionalStyles,
+                          fontFamily: fontFamily,
+                          fontSize: fontSize,
+                        }}
                         onClick={
                           itemRow.activeAction ? row.onClickRow : undefined
                         }
