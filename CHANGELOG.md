@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.48
+
+### Patch Changes
+
+- 9ae4bf9: Adjusted pagination boxes positions, size, and font size of table elements.
+
 ## 0.5.47
 
 ### Patch Changes
