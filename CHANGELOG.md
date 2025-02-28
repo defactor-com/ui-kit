@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.47
+
+### Patch Changes
+
+- b21f842: Table Improvements: Updated pagination design and applied various style fixes.
+
 ## 0.5.46
 
 ### Patch Changes
