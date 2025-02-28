@@ -1,12 +1,13 @@
 import React from "react";
 import clsx from "clsx";
 
-import rightIcon from "../../../public/assets/chevron_right.svg";
-import leftIcon from "../../../public/assets/chevron_left.svg";
+import { ChevronLeft, ChevronRight } from "@untitled-ui/icons-react";
 import { Button } from "../Button";
 
 import usePaginationState from "./usePaginationState";
 import { IPagination } from "./PaginationTypes";
+import { Box, Typography, useTheme } from "@mui/material";
+import { CostomPaginationDropdown } from "../CostomPaginationDropdown";
 
 export const Pagination = ({
   handleSelectedRowsPage,
@@ -20,7 +21,14 @@ export const Pagination = ({
   rowsPage,
   nextPage,
   filters,
+  notVisibleNumColor,
+  arrowColor,
+  ofText,
+  numColor,
+  numSize,
 }: IPagination) => {
+  const theme = useTheme();
+
   const [{ buildPaginationArrayMobile, buildPaginationArray }] =
     usePaginationState({
       totalRowsNumber,
@@ -35,84 +43,81 @@ export const Pagination = ({
   }: {
     handleSelectedPage?(selectedValue: number): void;
   }) => {
-    const pages = buildPaginationArray && buildPaginationArray();
-    let pagesMobile: number[] = [];
+    const pages = buildPaginationArray ? buildPaginationArray() : [];
+    const pagesMobile = buildPaginationArrayMobile(pages);
 
-    if (buildPaginationArrayMobile && pages)
-      pagesMobile = buildPaginationArrayMobile(pages);
-
-    if (window.innerWidth > 600) {
-      return (
-        <>
-          {pages?.map((item) => (
-            <span
-              className={clsx("variant-body1", "number-page-button")}
-              style={{
-                fontFamily: fontFamily,
-                color: visiblePage === item ? "#26A66B" : "none",
-                fontWeight: visiblePage === item ? "bold" : "normal",
-                background: visiblePage === item ? "#EAF7F1" : "white",
-              }}
-              key={item}
-              onClick={() => handleSelectedPage && handleSelectedPage(item)}
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          gap: 2,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {(window.innerWidth > 600 ? pages : pagesMobile).map((num) => (
+          <Box
+            key={num}
+            sx={{
+              display: "flex",
+              cursor: "pointer",
+              border:
+                visiblePage === num
+                  ? `1px solid ${theme.palette.secondary.main}`
+                  : "none",
+              borderRadius: 1,
+              width: 28,
+              height: 28,
+              alignItems: "center",
+              justifyContent: "center",
+              background: visiblePage === num ? "white" : "white",
+              fontWeight: visiblePage === num ? "bold" : "bold",
+            }}
+            onClick={() => handleSelectedPage && handleSelectedPage(num)}
+          >
+            <Typography
+              variant="caption"
+              fontWeight={500}
+              lineHeight={1}
+              color={
+                visiblePage === num
+                  ? theme.palette.secondary.main
+                  : notVisibleNumColor || theme.palette.grey[600]
+              }
             >
-              {item}
-            </span>
-          ))}
-        </>
-      );
-    } else {
-      return (
-        <>
-          {pagesMobile.map((item) => (
-            <span
-              className={clsx("variant-body1", "number-page-button")}
-              style={{
-                fontFamily: fontFamily,
-                color: visiblePage === item ? "#26A66B" : "none",
-                fontWeight: visiblePage === item ? "bold" : "normal",
-                background: visiblePage === item ? "#EAF7F1" : "white",
-              }}
-              key={item}
-              onClick={() => handleSelectedPage && handleSelectedPage(item)}
-            >
-              {item}
-            </span>
-          ))}
-        </>
-      );
-    }
+              {num}
+            </Typography>
+          </Box>
+        ))}
+      </Box>
+    );
   };
 
   return (
     <div className="pagination-container">
-      <div className="container-rows-per-page">
-        <span className="variant-body1" style={{ fontFamily: fontFamily }}>
-          {rowsNumberLabel}
-        </span>
-        <select
-          className="select-item"
-          onChange={(e) => handleSelectedRowsPage(e.target.value)}
+      <Box>
+        <Typography
+          variant="caption"
+          color={arrowColor || theme.palette.grey[400]}
+          fontWeight={500}
         >
-          {rowsPage?.map((item) => (
-            <option
-              style={{ fontFamily: fontFamily }}
-              className="variant-body1"
-              value={item}
-              key={item}
-            >
-              {item}
-            </option>
-          ))}
-        </select>
-      </div>
+          {`${rowsPageSelected} ${ofText} ${totalRowsNumber}`}
+        </Typography>
+      </Box>
       {totalRowsNumber > rowsPageSelected && nextPage ? (
         <div className="page-selector-container">
           <Button
             externalStyles={clsx("button-style", "padding-button")}
             onClick={() => nextPage("-")}
             fontFamily={fontFamily}
-            icon={leftIcon}
+            icon={
+              <ChevronLeft
+                width={16}
+                height={16}
+                color={arrowColor || theme.palette.grey[400]}
+              />
+            }
             variant="text"
           />
           <RenderPagination handleSelectedPage={handleSelectedPage} />
@@ -120,13 +125,57 @@ export const Pagination = ({
             externalStyles={clsx("button-style", "padding-button")}
             onClick={() => nextPage("+")}
             fontFamily={fontFamily}
-            icon={rightIcon}
+            icon={
+              <ChevronRight
+                width={16}
+                height={16}
+                color={arrowColor || theme.palette.grey[400]}
+              />
+            }
             variant="text"
           />
         </div>
       ) : (
         <></>
       )}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "flex-end",
+          gap: 1,
+          right: 0,
+          "@media (max-width: 600px)": {
+            position: "relative",
+            justifyContent: "center",
+          },
+        }}
+      >
+        <Typography
+          color={arrowColor || theme.palette.grey[400]}
+          fontSize={numSize || "12px"}
+          variant="caption"
+          fontWeight={500}
+        >
+          {rowsNumberLabel}
+        </Typography>
+        <Box sx={{ display: "flex" }}>
+          <CostomPaginationDropdown
+            numColor={numColor || theme.palette.grey[700]}
+            numSize={numSize || "12px"}
+            menuItems={rowsPage?.map((option) => ({
+              label: option.toString(),
+              value: option,
+            }))}
+            value={rowsPageSelected.toString()}
+            flexDirectionRow={true}
+            paddingSize="8px"
+            tooltipBgColor={theme.palette.primary.main}
+            onChange={(str) => handleSelectedRowsPage(str)}
+          />
+        </Box>
+      </Box>
     </div>
   );
 };

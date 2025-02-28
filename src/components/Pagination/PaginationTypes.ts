@@ -15,6 +15,11 @@ export interface IPagination {
     React.SetStateAction<Array<IFilterSelectedObject>>
   >;
   handleSelectedRowsPage(selectedValue: string): void;
+  notVisibleNumColor?: string;
+  arrowColor?: string;
+  ofText?: string;
+  numColor?: string;
+  numSize?: string;
 }
 
 export interface IUsePaginatioState {

@@ -37,6 +37,11 @@ export const Table = ({
   handleSelectedRowsPage,
   emptyIcon = <AdmirationIcon />,
   rowsHoverColor = "rgba(38, 166, 107, 0.1)",
+  notVisibleNumColor,
+  arrowColor,
+  ofText = "of",
+  numColor,
+  numSize
 }: ITable) => {
   const [
     { activeFilter, hoverItem, isHovered },
@@ -218,6 +223,11 @@ export const Table = ({
             nextPage={nextPage}
             rowsPage={rowsPage}
             filters={filters}
+            notVisibleNumColor={notVisibleNumColor}
+            arrowColor={arrowColor}
+            ofText={ofText}
+            numColor={numColor}
+            numSize={numSize}
           />
         </>
       }
