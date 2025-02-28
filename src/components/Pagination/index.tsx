@@ -96,7 +96,7 @@ export const Pagination = ({
 
   return (
     <div className="pagination-container">
-      <Box>
+      <Box flex="1">
         <Typography
           variant="caption"
           color={arrowColor || theme.palette.grey[400]}
@@ -105,42 +105,45 @@ export const Pagination = ({
           {`${rowsPageSelected} ${ofText} ${totalRowsNumber}`}
         </Typography>
       </Box>
-      {totalRowsNumber > rowsPageSelected && nextPage ? (
-        <div className="page-selector-container">
-          <Button
-            externalStyles={clsx("button-style", "padding-button")}
-            onClick={() => nextPage("-")}
-            fontFamily={fontFamily}
-            icon={
-              <ChevronLeft
-                width={16}
-                height={16}
-                color={arrowColor || theme.palette.grey[400]}
-              />
-            }
-            variant="text"
-          />
-          <RenderPagination handleSelectedPage={handleSelectedPage} />
-          <Button
-            externalStyles={clsx("button-style", "padding-button")}
-            onClick={() => nextPage("+")}
-            fontFamily={fontFamily}
-            icon={
-              <ChevronRight
-                width={16}
-                height={16}
-                color={arrowColor || theme.palette.grey[400]}
-              />
-            }
-            variant="text"
-          />
-        </div>
-      ) : (
-        <></>
-      )}
+      <Box display="flex" flex="1">
+        {totalRowsNumber > rowsPageSelected && nextPage ? (
+          <div className="page-selector-container">
+            <Button
+              externalStyles={clsx("button-style", "padding-button")}
+              onClick={() => nextPage("-")}
+              fontFamily={fontFamily}
+              icon={
+                <ChevronLeft
+                  width={16}
+                  height={16}
+                  color={arrowColor || theme.palette.grey[400]}
+                />
+              }
+              variant="text"
+            />
+            <RenderPagination handleSelectedPage={handleSelectedPage} />
+            <Button
+              externalStyles={clsx("button-style", "padding-button")}
+              onClick={() => nextPage("+")}
+              fontFamily={fontFamily}
+              icon={
+                <ChevronRight
+                  width={16}
+                  height={16}
+                  color={arrowColor || theme.palette.grey[400]}
+                />
+              }
+              variant="text"
+            />
+          </div>
+        ) : (
+          <></>
+        )}
+      </Box>
       <Box
+        display="flex"
+        flex="1"
         sx={{
-          display: "flex",
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "flex-end",

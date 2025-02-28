@@ -59,6 +59,7 @@ export interface ITable {
   ofText?: string;
   numColor?: string;
   numSize?: string;
+  fontSize?: string;
 }
 
 export interface IUseTableState {
