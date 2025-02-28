@@ -7,7 +7,7 @@ import { Button } from "../Button";
 import usePaginationState from "./usePaginationState";
 import { IPagination } from "./PaginationTypes";
 import { Box, Typography, useTheme } from "@mui/material";
-import { CustomDropdown } from "../CostomPaginationDropdown";
+import { CostomPaginationDropdown } from "../CostomPaginationDropdown";
 
 export const Pagination = ({
   handleSelectedRowsPage,
@@ -161,7 +161,7 @@ export const Pagination = ({
           {rowsNumberLabel}
         </Typography>
         <Box sx={{ display: "flex" }}>
-          <CustomDropdown
+          <CostomPaginationDropdown
             numColor={numColor || theme.palette.grey[700]}
             numSize={numSize || "12px"}
             menuItems={rowsPage?.map((option) => ({

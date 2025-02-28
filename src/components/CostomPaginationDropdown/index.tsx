@@ -23,7 +23,7 @@ export interface MenuItemsProps {
   value: string | number;
 }
 
-export interface CustomDropdownProps {
+export interface CostomPaginationDropdownProps {
   label?: string;
   placeholder?: string;
   value?: string;
@@ -40,7 +40,7 @@ export interface CustomDropdownProps {
   numSize?: string;
 }
 
-export const CustomDropdown: React.FC<CustomDropdownProps> = ({
+export const CostomPaginationDropdown: React.FC<CostomPaginationDropdownProps> = ({
   label = "",
   placeholder = "Choose...",
   value = "",
