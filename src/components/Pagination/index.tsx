@@ -7,7 +7,7 @@ import { Button } from "../Button";
 import usePaginationState from "./usePaginationState";
 import { IPagination } from "./PaginationTypes";
 import { Box, Typography, useTheme } from "@mui/material";
-import { CustomDropdown } from "../CustomDropdown";
+import { CustomDropdown } from "../CostomPaginationDropdown";
 
 export const Pagination = ({
   handleSelectedRowsPage,
