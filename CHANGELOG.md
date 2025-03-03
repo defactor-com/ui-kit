@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.49
+
+### Patch Changes
+
+- 1a77d10: Ensured rowsPageSelected does not exceed totalRowsNumber.
+
 ## 0.5.48
 
 ### Patch Changes
