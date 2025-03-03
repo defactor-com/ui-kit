@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.50
+
+### Patch Changes
+
+- dce4089: Always display pagination when only one page exists.
+
 ## 0.5.49
 
 ### Patch Changes
