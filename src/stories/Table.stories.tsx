@@ -100,8 +100,8 @@ const Template: Story<ITable> = (args) => {
       visiblePage={currentPage}
       nextPage={() => {}}
       totalRowsNumber={7}
-      rowsPageSelected={5}
-      rowsPage={[5, 10, 15]}
+      rowsPageSelected={10}
+      rowsPage={[10, 20, 30]}
       rowsNumberLabel="Show"
       notVisibleNumColor = "#353535"
       arrowColor = "#797A7A"
