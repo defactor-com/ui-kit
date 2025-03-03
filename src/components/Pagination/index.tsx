@@ -111,11 +111,11 @@ export const Pagination = ({
         </Typography>
       </Box>
       <Box display="flex" flex="1">
-        {totalRowsNumber > rowsPageSelected && nextPage ? (
+      {totalRowsNumber > 0 ? (
           <div className="page-selector-container">
             <Button
               externalStyles={clsx("button-style", "padding-button")}
-              onClick={() => nextPage("-")}
+              onClick={() => nextPage && nextPage("-")}
               fontFamily={fontFamily}
               icon={
                 <ChevronLeft
@@ -129,7 +129,7 @@ export const Pagination = ({
             <RenderPagination handleSelectedPage={handleSelectedPage} />
             <Button
               externalStyles={clsx("button-style", "padding-button")}
-              onClick={() => nextPage("+")}
+              onClick={() => nextPage && nextPage("+")}
               fontFamily={fontFamily}
               icon={
                 <ChevronRight
