@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.52
+
+### Patch Changes
+
+- 7919ef5: Changed padding.
+
 ## 0.5.51
 
 ### Patch Changes
