@@ -99,7 +99,7 @@ const Template: Story<ITable> = (args) => {
       haveOptions
       visiblePage={currentPage}
       nextPage={() => {}}
-      totalRowsNumber={22}
+      totalRowsNumber={7}
       rowsPageSelected={5}
       rowsPage={[5, 10, 15]}
       rowsNumberLabel="Show"

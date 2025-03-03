@@ -29,6 +29,11 @@ export const Pagination = ({
 }: IPagination) => {
   const theme = useTheme();
 
+  const adjustedRowsPageSelected = Math.min(
+    rowsPageSelected,
+    totalRowsNumber || 0
+  );
+
   const [{ buildPaginationArrayMobile, buildPaginationArray }] =
     usePaginationState({
       totalRowsNumber,
@@ -102,7 +107,7 @@ export const Pagination = ({
           color={arrowColor || theme.palette.grey[400]}
           fontWeight={500}
         >
-          {`${rowsPageSelected} ${ofText} ${totalRowsNumber}`}
+          {`${adjustedRowsPageSelected} ${ofText} ${totalRowsNumber}`}
         </Typography>
       </Box>
       <Box display="flex" flex="1">
