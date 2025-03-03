@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.51
+
+### Patch Changes
+
+- 9afc096: Pagination: Added pagColor prop.
+
 ## 0.5.50
 
 ### Patch Changes
