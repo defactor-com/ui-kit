@@ -43,6 +43,7 @@ export const Table = ({
   numColor,
   numSize,
   fontSize = "14px",
+  pagColor
 }: ITable) => {
   const [
     { activeFilter, hoverItem, isHovered },
@@ -239,6 +240,7 @@ export const Table = ({
             ofText={ofText}
             numColor={numColor}
             numSize={numSize}
+            pagColor={pagColor}
           />
         </>
       }
