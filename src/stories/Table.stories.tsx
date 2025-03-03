@@ -108,6 +108,7 @@ const Template: Story<ITable> = (args) => {
       ofText = "of"
       numColor = "#211F23"
       numSize = "12px"
+      pagColor = "green"
       handleSelectedRowsPage={() => {}}
       handleSelectedPage={handleSelectedPage}
       setFilters={setFilters}

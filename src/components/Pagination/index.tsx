@@ -26,6 +26,7 @@ export const Pagination = ({
   ofText,
   numColor,
   numSize,
+  pagColor
 }: IPagination) => {
   const theme = useTheme();
 
@@ -67,10 +68,9 @@ export const Pagination = ({
             sx={{
               display: "flex",
               cursor: "pointer",
-              border:
-                visiblePage === num
-                  ? `1px solid ${theme.palette.secondary.main}`
-                  : "none",
+              border: visiblePage === num 
+              ? `1px solid ${pagColor || theme.palette.secondary.main}` 
+              : "none",            
               borderRadius: 1,
               width: 28,
               height: 28,
@@ -87,7 +87,7 @@ export const Pagination = ({
               lineHeight={1}
               color={
                 visiblePage === num
-                  ? theme.palette.secondary.main
+                  ? pagColor || theme.palette.secondary.main
                   : notVisibleNumColor || theme.palette.grey[600]
               }
             >

@@ -60,6 +60,7 @@ export interface ITable {
   numColor?: string;
   numSize?: string;
   fontSize?: string;
+  pagColor?: string;
 }
 
 export interface IUseTableState {

@@ -20,6 +20,7 @@ export interface IPagination {
   ofText?: string;
   numColor?: string;
   numSize?: string;
+  pagColor?: string;
 }
 
 export interface IUsePaginatioState {
