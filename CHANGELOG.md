@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.53
+
+### Patch Changes
+
+- 10b84f3: AreaChartV3: Adjust y-axis domain for constant data values.
+
 ## 0.5.52
 
 ### Patch Changes
