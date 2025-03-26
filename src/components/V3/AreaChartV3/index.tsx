@@ -137,7 +137,7 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
               },
               (dataMin: number, dataMax: number) => {
                 if (!isFinite(dataMin)) return 0;
-                return dataMin === dataMax ? dataMin * 0.9 : dataMin;
+                return dataMin === dataMax ? dataMin * 0.9 : dataMin * 2;
               },
             ]}
           />
