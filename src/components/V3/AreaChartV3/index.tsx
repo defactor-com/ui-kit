@@ -135,10 +135,7 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
                 if (!isFinite(dataMax)) return 0;
                 return dataMin === dataMax ? dataMax * 1.1 : dataMax;
               },
-              (dataMin: number, dataMax: number) => {
-                if (!isFinite(dataMin)) return 0;
-                return dataMin === dataMax ? dataMin * 0.9 : dataMin;
-              },
+             "auto",
             ]}
           />
           <Tooltip content={<CustomTooltip />} />
