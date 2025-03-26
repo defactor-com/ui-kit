@@ -130,7 +130,13 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
                     fill: fillTickColor,
                   }
             }
-            domain={["auto", "auto"]}
+            domain={[
+              (dataMin: number, dataMax: number) => {
+                if (!isFinite(dataMax)) return 0;
+                return dataMin === dataMax ? dataMax * 1.1 : dataMax;
+              },
+             "auto"
+            ]}
           />
           <Tooltip content={<CustomTooltip />} />
           <Area
