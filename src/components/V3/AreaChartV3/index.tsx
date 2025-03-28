@@ -71,6 +71,12 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
+  const maxTicks = 5;
+  const tickInterval = data.length > maxTicks ? Math.floor(data.length / maxTicks) : 0;
+  
+  const renderDots =
+    data.length > 50 ? false : { r: 2, stroke: areaColor, strokeWidth: 2, fill: areaColor };
+
   return (
     <Box
       maxWidth={maxWidth}
@@ -94,6 +100,7 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
           />
           <XAxis
             dataKey={xKey}
+            interval={tickInterval}
             tickFormatter={
               hideFirstTickXTrue
                 ? (tick, index) => (index === 0 ? "" : tick)
@@ -145,13 +152,8 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
             stroke={areaColor}
             fill={alpha(areaColor, 0.1)}
             fillOpacity={1}
-            dot={{ r: 2, stroke: areaColor, strokeWidth: 2, fill: areaColor }}
-            activeDot={{
-              r: 2,
-              stroke: areaColor,
-              strokeWidth: 2,
-              fill: areaColor,
-            }}
+            dot={renderDots}
+            activeDot={renderDots}
           />
         </AreaChart>
       </ResponsiveContainer>
