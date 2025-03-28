@@ -72,10 +72,29 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const maxTicks = 5;
-  const tickInterval = data.length > maxTicks ? Math.floor(data.length / maxTicks) : 0;
-  
-  const renderDots =
-    data.length > 50 ? false : { r: 2, stroke: areaColor, strokeWidth: 2, fill: areaColor };
+  const tickInterval =
+    data.length > maxTicks ? Math.floor(data.length / maxTicks) : 0;
+
+  const maxDots = 10;
+  const dotInterval =
+    data.length > maxDots ? Math.floor(data.length / maxDots) : 1;
+
+  const renderDots = (dotProps: any) => {
+    const { cx, cy, index } = dotProps;
+    if (index % dotInterval !== 0) {
+      return <g />;
+    }
+    return (
+      <circle
+        cx={cx}
+        cy={cy}
+        r={2}
+        stroke={areaColor}
+        strokeWidth={2}
+        fill={areaColor}
+      />
+    );
+  };
 
   return (
     <Box
@@ -142,7 +161,7 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
                 if (!isFinite(dataMax)) return 0;
                 return dataMin === dataMax ? dataMax * 1.1 : dataMax;
               },
-             "auto"
+              "auto",
             ]}
           />
           <Tooltip content={<CustomTooltip />} />
