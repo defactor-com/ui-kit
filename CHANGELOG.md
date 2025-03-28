@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.54
+
+### Patch Changes
+
+- a9da26b: AreaChartV3: updated story, reduced width and ticks, added dot interval.
+
 ## 0.5.53
 
 ### Patch Changes
