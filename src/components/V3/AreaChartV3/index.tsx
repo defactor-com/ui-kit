@@ -71,6 +71,31 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
+  const maxTicks = 5;
+  const tickInterval =
+    data.length > maxTicks ? Math.floor(data.length / maxTicks) : 0;
+
+  const maxDots = 10;
+  const dotInterval =
+    data.length > maxDots ? Math.floor(data.length / maxDots) : 1;
+
+  const renderDots = (dotProps: any) => {
+    const { cx, cy, index } = dotProps;
+    if (index % dotInterval !== 0) {
+      return <g />;
+    }
+    return (
+      <circle
+        cx={cx}
+        cy={cy}
+        r={2}
+        stroke={areaColor}
+        strokeWidth={2}
+        fill={areaColor}
+      />
+    );
+  };
+
   return (
     <Box
       maxWidth={maxWidth}
@@ -94,6 +119,7 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
           />
           <XAxis
             dataKey={xKey}
+            interval={tickInterval}
             tickFormatter={
               hideFirstTickXTrue
                 ? (tick, index) => (index === 0 ? "" : tick)
@@ -135,7 +161,7 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
                 if (!isFinite(dataMax)) return 0;
                 return dataMin === dataMax ? dataMax * 1.1 : dataMax;
               },
-             "auto"
+              "auto",
             ]}
           />
           <Tooltip content={<CustomTooltip />} />
@@ -145,13 +171,8 @@ export const AreaChartV3: React.FC<AreaChartV3Props> = ({
             stroke={areaColor}
             fill={alpha(areaColor, 0.1)}
             fillOpacity={1}
-            dot={{ r: 2, stroke: areaColor, strokeWidth: 2, fill: areaColor }}
-            activeDot={{
-              r: 2,
-              stroke: areaColor,
-              strokeWidth: 2,
-              fill: areaColor,
-            }}
+            dot={renderDots}
+            activeDot={renderDots}
           />
         </AreaChart>
       </ResponsiveContainer>
