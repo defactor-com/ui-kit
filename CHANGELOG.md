@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.55
+
+### Patch Changes
+
+- 73c2349: Edited EmptyTableV3.
+
 ## 0.5.54
 
 ### Patch Changes
