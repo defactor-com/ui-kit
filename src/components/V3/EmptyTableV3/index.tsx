@@ -82,13 +82,13 @@ export const EmptyTableV3: React.FC<EmptyTableProps> = ({
                 {title}
             </Typography>
             <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center">
-                <Box sx={{ display: 'flex', maxWidth: '80%' }}>
+                <Box sx={{ display: 'flex' }}>
                     <Typography variant="body1" maxWidth="350px" sx={{ color: descColor || theme.palette.grey[400] }}>
                         {description}
                     </Typography>
                 </Box>
                 {showBtn && (
-                    <Box sx={{ display: 'flex', maxWidth: '80%', mt: btnMt }}>
+                    <Box sx={{ display: 'flex', mt: btnMt }}>
                         <Button
                             variant="contained"
                             label={btnLabel}
