@@ -18,6 +18,7 @@ export interface CustomTabsContainerProps {
     sx: SxProps<Theme>;
   };
   px?: number | string;
+  width?: number | string;
 }
 
 export const defaultTabSx: SxProps<Theme> = {
@@ -37,12 +38,13 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
   items,
   tabSx,
   tabIndicatorProps,
-  px = 0
+  px = 0,
+  width = '100%'
 }) => {
   const theme = useTheme();
 
   return (
-    <Box>
+    <Box width={width}>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <TabList
