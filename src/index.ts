@@ -114,3 +114,9 @@ export { PathProvider } from "./components/MainSidebar/PathProvider";
 export { useSidebarHook } from "./components/MainSidebar/useSidebarHook";
 export { usePathname } from "./components/MainSidebar/PathProvider";
 export { ToolItemV3, ToolItemV3Props } from "./components/V3/ToolItemV3";
+export {
+  CustomTabsContainerV3,
+  CustomTabsContainerProps,
+  TabItem,
+  defaultTabSx,
+} from "./components/V3/CustomTabsContainerV3";
