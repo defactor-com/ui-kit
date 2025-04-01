@@ -27,6 +27,7 @@ export const defaultTabSx: SxProps<Theme> = {
   fontSize: "18px",
   pr: { xs: 3, md: 6 },
   pl: 3,
+  textTransform: 'none'
 };
 
 export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
