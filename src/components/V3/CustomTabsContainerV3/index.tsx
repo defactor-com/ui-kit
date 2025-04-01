@@ -9,7 +9,7 @@ export interface TabItem {
   tabsContent: React.ReactNode
 }
 
-export interface CustomTabContainerProps {
+export interface CustomTabsContainerProps {
   value: string
   onChange: (event: React.SyntheticEvent, newValue: string) => void
   items: TabItem[]
@@ -26,7 +26,7 @@ const defaultTabSx: SxProps<Theme> = {
   pl: 3
 }
 
-const CustomTabsContainerV3: React.FC<CustomTabContainerProps> = ({
+const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
   value,
   onChange,
   items,
