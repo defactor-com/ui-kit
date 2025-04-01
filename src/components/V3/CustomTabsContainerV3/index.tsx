@@ -37,7 +37,7 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
   items,
   tabSx,
   tabIndicatorProps,
-  px = 1
+  px = 0
 }) => {
   const theme = useTheme();
 
