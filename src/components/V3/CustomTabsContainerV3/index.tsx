@@ -17,6 +17,7 @@ export interface CustomTabsContainerProps {
   tabIndicatorProps?: {
     sx: SxProps<Theme>;
   };
+  px?: number | string;
 }
 
 export const defaultTabSx: SxProps<Theme> = {
@@ -27,7 +28,7 @@ export const defaultTabSx: SxProps<Theme> = {
   fontSize: "18px",
   pr: { xs: 3, md: 6 },
   pl: 3,
-  textTransform: 'none'
+  textTransform: "none",
 };
 
 export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
@@ -36,6 +37,7 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
   items,
   tabSx,
   tabIndicatorProps,
+  px = 1
 }) => {
   const theme = useTheme();
 
@@ -66,7 +68,13 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
           </TabList>
         </Box>
         {items.map((tab) => (
-          <TabPanel key={tab.value} value={tab.value}>
+          <TabPanel
+            key={tab.value}
+            value={tab.value}
+            sx={{
+              px: px,
+            }}
+          >
             {tab.tabsContent}
           </TabPanel>
         ))}
