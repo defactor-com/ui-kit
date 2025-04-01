@@ -1,5 +1,5 @@
 import { TabContext, TabList, TabPanel } from "@mui/lab";
-import { Box, Tab, SxProps, Theme } from "@mui/material";
+import { Box, Tab, SxProps, Theme, useTheme } from "@mui/material";
 import React from "react";
 
 export interface TabItem {
@@ -14,6 +14,9 @@ export interface CustomTabsContainerProps {
   onChange: (event: React.SyntheticEvent, newValue: string) => void;
   items: TabItem[];
   tabSx?: SxProps<Theme>;
+  tabIndicatorProps?: {
+    sx: SxProps<Theme>;
+  };
 }
 
 export const defaultTabSx: SxProps<Theme> = {
@@ -31,7 +34,10 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
   onChange,
   items,
   tabSx,
+  tabIndicatorProps,
 }) => {
+  const theme = useTheme();
+
   return (
     <Box>
       <TabContext value={value}>
@@ -40,6 +46,11 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
             onChange={onChange}
             aria-label="custom tabs"
             textColor="inherit"
+            TabIndicatorProps={
+              tabIndicatorProps || {
+                sx: { backgroundColor: theme.palette.primary.main },
+              }
+            }
           >
             {items.map((tab) => (
               <Tab
