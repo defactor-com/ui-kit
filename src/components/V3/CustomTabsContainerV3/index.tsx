@@ -1,5 +1,5 @@
 import { TabContext, TabList, TabPanel } from '@mui/lab'
-import { Box, Tab } from '@mui/material'
+import { Box, Tab, SxProps, Theme } from '@mui/material'
 import React from 'react'
 
 export interface TabItem {
@@ -13,12 +13,24 @@ export interface CustomTabContainerProps {
   value: string
   onChange: (event: React.SyntheticEvent, newValue: string) => void
   items: TabItem[]
+  tabSx?: SxProps<Theme>
+}
+
+const defaultTabSx: SxProps<Theme> = {
+  padding: 1,
+  minWidth: 30,
+  minHeight: 0,
+  fontWeight: 700,
+  fontSize: '18px',
+  pr: { xs: 3, md: 6 },
+  pl: 3
 }
 
 const CustomTabsContainerV3: React.FC<CustomTabContainerProps> = ({
   value,
   onChange,
-  items
+  items,
+  tabSx
 }) => {
   return (
     <Box>
@@ -36,15 +48,7 @@ const CustomTabsContainerV3: React.FC<CustomTabContainerProps> = ({
                 label={tab.label}
                 icon={tab.icon || undefined}
                 iconPosition='start'
-                sx={{
-                  padding: 1,
-                  minWidth: 30,
-                  minHeight: 0,
-                  fontWeight: 700,
-                  fontSize: '18px',
-                  pr: { xs: 3, md: 6 },
-                  pl: 3
-                }}
+                sx={{ ...defaultTabSx, ...tabSx }}
               />
             ))}
           </TabList>
