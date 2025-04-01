@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.58
+
+### Patch Changes
+
+- 4f9c929: CustomTabsContainerV3: Added optional width prop.
+
 ## 0.5.57
 
 ### Patch Changes
