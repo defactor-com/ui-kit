@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.56
+
+### Patch Changes
+
+- d7d7bc6: Added CustomTabsContainerV3.
+
 ## 0.5.55
 
 ### Patch Changes
