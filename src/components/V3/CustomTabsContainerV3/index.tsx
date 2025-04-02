@@ -19,6 +19,8 @@ export interface CustomTabsContainerProps {
   };
   px?: number | string;
   width?: number | string;
+  textActive?: string;
+  textDisabled?: string;
 }
 
 export const defaultTabSx: SxProps<Theme> = {
@@ -40,6 +42,8 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
   tabIndicatorProps,
   px = 0,
   width = "100%",
+  textActive = '#000000',
+  textDisabled = '#797A7A'
 }) => {
   const theme = useTheme();
 
@@ -66,7 +70,14 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
                 label={tab.label}
                 icon={tab.icon || undefined}
                 iconPosition="start"
-                sx={{ ...defaultTabSx, ...tabSx }}
+                sx={{
+                  ...defaultTabSx,
+                  ...tabSx,
+                  color:
+                    value === tab.value
+                      ? textActive
+                      : textDisabled,
+                }}
               />
             ))}
           </TabList>
