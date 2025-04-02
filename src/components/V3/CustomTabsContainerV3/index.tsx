@@ -50,6 +50,8 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
           <TabList
             onChange={onChange}
             aria-label="custom tabs"
+            variant="scrollable"
+            scrollButtons="auto"
             textColor="inherit"
             TabIndicatorProps={
               tabIndicatorProps || {
