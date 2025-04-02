@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.59
+
+### Patch Changes
+
+- 070cbe7: CustomTabsContainerV3: Adjust the component for mobile devices.
+
 ## 0.5.58
 
 ### Patch Changes
