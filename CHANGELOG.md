@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.60
+
+### Patch Changes
+
+- c15dcac: CustomTabsContainerV3: Add scrollable styles and props.
+
 ## 0.5.59
 
 ### Patch Changes
