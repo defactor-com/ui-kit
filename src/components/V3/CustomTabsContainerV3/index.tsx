@@ -26,9 +26,9 @@ export const defaultTabSx: SxProps<Theme> = {
   minWidth: 30,
   minHeight: 0,
   fontWeight: 700,
-  fontSize: "18px",
-  pr: { xs: 3, md: 6 },
-  pl: 3,
+  fontSize: { xs: "14px", md: "18px" },
+  pr: { xs: 1, md: 6 },
+  pl: { xs: 1, md: 3 },
   textTransform: "none",
 };
 
@@ -39,7 +39,7 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
   tabSx,
   tabIndicatorProps,
   px = 0,
-  width = '100%'
+  width = "100%",
 }) => {
   const theme = useTheme();
 
