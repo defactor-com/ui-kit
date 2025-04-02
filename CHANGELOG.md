@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.61
+
+### Patch Changes
+
+- a638b0c: CustomTabsContainerV3: Added textActive and textDisabled props.
+
 ## 0.5.60
 
 ### Patch Changes
