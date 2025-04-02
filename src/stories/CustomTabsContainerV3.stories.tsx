@@ -55,7 +55,7 @@ const tabItems: TabItem[] = [
         This is the <strong>Archive</strong> tab content.
       </Typography>
     ),
-  }
+  },
 ];
 
 export const DefaultTabs = Template.bind({});
