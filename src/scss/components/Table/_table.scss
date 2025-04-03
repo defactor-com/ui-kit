@@ -138,7 +138,7 @@ tr {
   padding: 8px 24px;
   display: flex;
   height: 64px;
-  @media (max-width: $breakpoint-mobile) {
+  @media (max-width: '300px') {
     flex-direction: column-reverse;
     justify-content: center;
     padding: 8px;
