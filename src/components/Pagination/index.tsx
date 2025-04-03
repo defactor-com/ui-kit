@@ -154,7 +154,7 @@ export const Pagination = ({
           justifyContent: "flex-end",
           gap: 1,
           right: 0,
-          "@media (max-width: 600px)": {
+          "@media (max-width: 300px)": {
             position: "relative",
             justifyContent: "center",
           },
