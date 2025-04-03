@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.62
+
+### Patch Changes
+
+- 7fbad75: Table: Updated pagination-container media query breakpoint from 600px to 300px.
+
 ## 0.5.61
 
 ### Patch Changes
