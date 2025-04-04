@@ -24,7 +24,7 @@ export interface CustomTabsContainerProps {
 }
 
 export const defaultTabSx: SxProps<Theme> = {
-  padding: 1,
+  padding: 2,
   minWidth: 30,
   minHeight: 0,
   fontWeight: 700,
@@ -42,8 +42,8 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
   tabIndicatorProps,
   px = 0,
   width = "100%",
-  textActive = '#000000',
-  textDisabled = '#797A7A'
+  textActive = "#000000",
+  textDisabled = "#797A7A",
 }) => {
   const theme = useTheme();
 
@@ -52,11 +52,12 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <TabList
+            scrollButtons={false}
             onChange={onChange}
             aria-label="custom tabs"
             variant="scrollable"
-            scrollButtons="auto"
             textColor="inherit"
+            sx={{ minHeight: "unset" }}
             TabIndicatorProps={
               tabIndicatorProps || {
                 sx: { backgroundColor: theme.palette.primary.main },
@@ -71,12 +72,12 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
                 icon={tab.icon || undefined}
                 iconPosition="start"
                 sx={{
+                  flex: { xs: 1, md: "initial" },
+                  fontWeight: value === tab.value ? 700 : 500,
+                  color: value === tab.value ? textActive : textDisabled,
                   ...defaultTabSx,
                   ...tabSx,
-                  color:
-                    value === tab.value
-                      ? textActive
-                      : textDisabled,
+                  minWidth: "120px"
                 }}
               />
             ))}
