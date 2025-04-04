@@ -73,6 +73,7 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
                 sx={{
                   ...defaultTabSx,
                   ...tabSx,
+                  fontWeight: value === tab.value ? 700 : 500,
                   color:
                     value === tab.value
                       ? textActive
