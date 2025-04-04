@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.64
+
+### Patch Changes
+
+- b699ee2: Table Pagination: center show 10 only on @media (max-width: 400px)
+
 ## 0.5.63
 
 ### Patch Changes
