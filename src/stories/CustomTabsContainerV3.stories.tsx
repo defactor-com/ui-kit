@@ -12,6 +12,7 @@ const customTabSx: SxProps<Theme> = {
   fontSize: "14px",
   pr: 1,
   pl: 1,
+  flex: 1,
 };
 
 interface StoryProps extends CustomTabsContainerProps {

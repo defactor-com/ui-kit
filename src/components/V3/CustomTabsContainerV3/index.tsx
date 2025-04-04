@@ -42,8 +42,8 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
   tabIndicatorProps,
   px = 0,
   width = "100%",
-  textActive = '#000000',
-  textDisabled = '#797A7A'
+  textActive = "#000000",
+  textDisabled = "#797A7A",
 }) => {
   const theme = useTheme();
 
@@ -72,14 +72,11 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
                 icon={tab.icon || undefined}
                 iconPosition="start"
                 sx={{
-                  ...defaultTabSx,
-                  ...tabSx,
                   flex: { xs: 1, md: "initial" },
                   fontWeight: value === tab.value ? 700 : 500,
-                  color:
-                    value === tab.value
-                      ? textActive
-                      : textDisabled,
+                  color: value === tab.value ? textActive : textDisabled,
+                  ...defaultTabSx,
+                  ...tabSx,
                 }}
               />
             ))}
