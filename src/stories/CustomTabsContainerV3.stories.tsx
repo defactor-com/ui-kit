@@ -70,35 +70,7 @@ const tabItems: TabItem[] = [
         This is the <strong>Archive</strong> tab content.
       </Typography>
     ),
-  },
-  {
-    value: "3",
-    label: "Archive",
-    icon: (
-      <Box mr={1} sx={{ display: "flex", alignItems: "center" }}>
-        <Trash04 width="20px" height="20px" />
-      </Box>
-    ),
-    tabsContent: (
-      <Typography p={2}>
-        This is the <strong>Archive</strong> tab content.
-      </Typography>
-    ),
-  },
-  {
-    value: "4",
-    label: "Archive",
-    icon: (
-      <Box mr={1} sx={{ display: "flex", alignItems: "center" }}>
-        <Trash04 width="20px" height="20px" />
-      </Box>
-    ),
-    tabsContent: (
-      <Typography p={2}>
-        This is the <strong>Archive</strong> tab content.
-      </Typography>
-    ),
-  },
+  }
 ];
 
 export const DefaultTabs = Template.bind({});
