@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.63
+
+### Patch Changes
+
+- 0ce7e43: Table and CustomTabsContainerV3: New Design Adjustments.
+
 ## 0.5.62
 
 ### Patch Changes
