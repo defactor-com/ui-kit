@@ -52,10 +52,10 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <TabList
+            scrollButtons={false}
             onChange={onChange}
             aria-label="custom tabs"
             variant="scrollable"
-            scrollButtons="auto"
             textColor="inherit"
             sx={{ minHeight: "unset" }}
             TabIndicatorProps={
@@ -77,6 +77,7 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
                   color: value === tab.value ? textActive : textDisabled,
                   ...defaultTabSx,
                   ...tabSx,
+                  minWidth: "120px"
                 }}
               />
             ))}
