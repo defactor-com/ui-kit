@@ -33,7 +33,9 @@ const tabItems: TabItem[] = [
     label: "Positions",
     icon: (
       <Box mr={1}>
-        <Coins01 />
+           <Box mr={1}>
+        <Coins01 color='#5a5beb' />
+      </Box>
       </Box>
     ),
     tabsContent: (
