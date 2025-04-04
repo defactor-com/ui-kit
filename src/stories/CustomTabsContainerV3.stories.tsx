@@ -47,7 +47,7 @@ const tabItems: TabItem[] = [
     label: "Positions",
     icon: (
       <Box mr={1}>
-        <Coins01 color="#5a5beb" />
+        <Coins01 width="20px" height="20px" color="#5a5beb" />
       </Box>
     ),
     tabsContent: (
@@ -61,7 +61,7 @@ const tabItems: TabItem[] = [
     label: "Archive",
     icon: (
       <Box mr={1}>
-        <Trash04 />
+        <Trash04 width="20px" height="20px"/>
       </Box>
     ),
     tabsContent: (
