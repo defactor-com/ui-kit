@@ -35,7 +35,7 @@ const Template: StoryFn<StoryProps> = ({
   };
 
   return (
-    <Box sx={{ width: containerWidth, border: '1px solid #1EA7FD'}}>
+    <Box sx={{ width: containerWidth, border: "1px solid #1EA7FD" }}>
       <CustomTabsContainerV3 {...args} value={value} onChange={handleChange} />
     </Box>
   );
@@ -46,7 +46,7 @@ const tabItems: TabItem[] = [
     value: "1",
     label: "Positions",
     icon: (
-      <Box mr={1}>
+      <Box mr={1} sx={{ display: "flex", alignItems: "center" }}>
         <Coins01 width="20px" height="20px" color="#5a5beb" />
       </Box>
     ),
@@ -60,8 +60,8 @@ const tabItems: TabItem[] = [
     value: "2",
     label: "Archive",
     icon: (
-      <Box mr={1}>
-        <Trash04 width="20px" height="20px"/>
+      <Box mr={1} sx={{ display: "flex", alignItems: "center" }}>
+        <Trash04 width="20px" height="20px" />
       </Box>
     ),
     tabsContent: (
@@ -82,5 +82,5 @@ export const MobileTabs = Template.bind({});
 MobileTabs.args = {
   items: tabItems,
   containerWidth: "400px",
-  tabSx: customTabSx
+  tabSx: customTabSx,
 };

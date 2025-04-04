@@ -24,7 +24,7 @@ export interface CustomTabsContainerProps {
 }
 
 export const defaultTabSx: SxProps<Theme> = {
-  padding: 1,
+  padding: 2,
   minWidth: 30,
   minHeight: 0,
   fontWeight: 700,
@@ -57,6 +57,7 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
             variant="scrollable"
             scrollButtons="auto"
             textColor="inherit"
+            sx={{ minHeight: "unset" }}
             TabIndicatorProps={
               tabIndicatorProps || {
                 sx: { backgroundColor: theme.palette.primary.main },
