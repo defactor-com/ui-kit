@@ -35,7 +35,7 @@ const Template: StoryFn<StoryProps> = ({
   };
 
   return (
-    <Box sx={{ width: containerWidth }}>
+    <Box sx={{ width: containerWidth, border: '1px solid #1EA7FD'}}>
       <CustomTabsContainerV3 {...args} value={value} onChange={handleChange} />
     </Box>
   );
@@ -82,5 +82,5 @@ export const MobileTabs = Template.bind({});
 MobileTabs.args = {
   items: tabItems,
   containerWidth: "400px",
-  tabSx: customTabSx,
+  tabSx: customTabSx
 };
