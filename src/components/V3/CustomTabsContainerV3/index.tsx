@@ -56,7 +56,7 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
           sx={{
             borderBottom: 1,
             borderColor: "divider",
-            width: dividerWidth
+            width:{ xs: "100%", md: dividerWidth}
           }}
         >
           <TabList
