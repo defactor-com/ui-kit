@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.66
+
+### Patch Changes
+
+- 853249d: CustomTabsContainerV3: Adjusted divider width for mobile responsiveness.
+
 ## 0.5.65
 
 ### Patch Changes
