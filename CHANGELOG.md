@@ -1,5 +1,11 @@
 # @defactor/ui-kit
 
+## 0.5.65
+
+### Patch Changes
+
+- 68a9b0d: CustomTabsContainerV3: Add dividerWidth as prop.
+
 ## 0.5.64
 
 ### Patch Changes
