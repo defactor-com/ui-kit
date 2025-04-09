@@ -1,6 +1,6 @@
 {
   "name": "@defactor/ui-kit",
-  "version": "0.5.64",
+  "version": "0.5.65",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.js",
