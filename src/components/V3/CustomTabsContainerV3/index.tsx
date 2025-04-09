@@ -21,6 +21,7 @@ export interface CustomTabsContainerProps {
   width?: number | string;
   textActive?: string;
   textDisabled?: string;
+  dividerWidth?: number | string;
 }
 
 export const defaultTabSx: SxProps<Theme> = {
@@ -44,13 +45,20 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
   width = "100%",
   textActive = "#000000",
   textDisabled = "#797A7A",
+  dividerWidth = "100%"
 }) => {
   const theme = useTheme();
 
   return (
     <Box width={width}>
       <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Box
+          sx={{
+            borderBottom: 1,
+            borderColor: "divider",
+            width: dividerWidth
+          }}
+        >
           <TabList
             scrollButtons={false}
             onChange={onChange}
@@ -77,7 +85,7 @@ export const CustomTabsContainerV3: React.FC<CustomTabsContainerProps> = ({
                   color: value === tab.value ? textActive : textDisabled,
                   ...defaultTabSx,
                   ...tabSx,
-                  minWidth: "120px"
+                  minWidth: "120px",
                 }}
               />
             ))}
