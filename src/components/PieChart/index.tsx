@@ -89,8 +89,25 @@ const Chart = ({
         <RechartsPieChart>
           <Pie
             cx="50%"
+            data={[{ value: 10 }]}
+            fill="#e0e0e0"
+            stroke="#e0e0e0"
+            strokeWidth={1}
+            dataKey="value"
+            paddingAngle={0}
+            innerRadius={110}
+            outerRadius={122}
+            opacity={0.2}
+            activeShape={false}
+            tooltipType="none"
+            onMouseEnter={undefined}
+            onClick={undefined}
+          />
+          <Pie
+            cx="50%"
             data={data}
             fill="#8884d8"
+            stroke="#8884d8"
             strokeWidth={0}
             dataKey="value"
             paddingAngle={5}
@@ -102,21 +119,24 @@ const Chart = ({
             {data.map((_entry, index) => (
               <Cell
                 key={`cell-item-${index}`}
+                fill={_entry.value > 0 ? _entry.color : "transparent"}
+                stroke={_entry.color}
                 fontFamily={fontFamily}
-                fill={_entry.color}
                 fontWeight={700}
               />
             ))}
           </Pie>
-          <Tooltip
-            content={
-              <CustomTooltip
-                colors={colors || []}
-                fontFamily={fontFamily}
-                formatValue={formatValue}
-              />
-            }
-          />
+          {data.length > 0 && data.some((item) => item.value > 0) && (
+            <Tooltip
+              content={
+                <CustomTooltip
+                  colors={colors || []}
+                  fontFamily={fontFamily}
+                  formatValue={formatValue}
+                />
+              }
+            />
+          )}
           {internalContent && (
             <foreignObject x="0" y="8%" width="100%" height="82%">
               <Box
@@ -136,7 +156,7 @@ const Chart = ({
         groupData &&
         groupData(data).map((data, index) => (
           <div className="pie-chart-legend-container" key={`subgroup-${index}`}>
-            {(data || []).map(({ name, color }, index) => (
+            {(data || []).map(({ name, color }) => (
               <span
                 className={clsx(
                   "flex-center",
